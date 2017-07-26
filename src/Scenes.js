@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
+import { Text } from 'react-native';
 
 class Scenes extends Component {
   render() {
     return (
       <WrapperScene>
-        <Title>Welcome to Moi app!</Title>
+        <Title color='white'>Welcome to Moi app!</Title>
+        <Text>This is a first component</Text>
       </WrapperScene>
     );
   }
@@ -16,13 +18,14 @@ class Scenes extends Component {
  */
 
 const WrapperScene = styled.View`
-  background-color: #FFB658;
+  background-color: #ffb658;
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
 
 const Title = styled.Text`
+  color: ${({ color }) => color && color};
   font-size: 25;
   font-weight: bold;
 `;
