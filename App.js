@@ -1,2 +1,3 @@
-import Scenes from './src/Scenes'
+import Scenes from './src/Scenes';
+
 export default Scenes;

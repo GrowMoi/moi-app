@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+
+const colorWhite = '#fff';
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colorWhite,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default class Scenes extends Component {
+  state = {
+    asd: null,
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -10,12 +24,3 @@ export default class Scenes extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
