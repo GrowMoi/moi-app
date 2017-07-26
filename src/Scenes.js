@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import styled from 'styled-components/native';
 
-const colorWhite = '#fff';
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colorWhite,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default class Scenes extends Component {
-  state = {
-    asd: null,
-  }
-
+class Scenes extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Welcome to Moi App!</Text>
-      </View>
+      <WrapperScene>
+        <Title>Welcome to Moi app!</Title>
+      </WrapperScene>
     );
   }
 }
+
+/**
+ * Styled components that use in this Scene
+ */
+
+const WrapperScene = styled.View`
+  background-color: #FFB658;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Title = styled.Text`
+  font-size: 25;
+  font-weight: bold;
+`;
+
+export default Scenes;
