@@ -1,2 +1,2 @@
-import Scenes from './src/containers/Scenes'
+import Scenes from './src/Scenes'
 export default Scenes;
