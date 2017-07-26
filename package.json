@@ -27,8 +27,10 @@
     "test:dev": "node node_modules/jest/bin/jest.js --watch",
     "test":"node node_modules/jest/bin/jest.js",
     "lint:styles": "stylelint './src/**/*.js'",
+      "postlint:styles": "npm run test",
     "lint": "eslint ./src/**/*.js",
-      "postlint": "npm run lint:styles"
+      "postlint": "npm run lint:styles",
+    "lint:fix": "eslint ./src/**/*.js --fix"
   },
   "jest": {
     "preset": "jest-expo"
