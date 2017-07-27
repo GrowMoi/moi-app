@@ -11,11 +11,4 @@ const scenes = Actions.create(
   </Scene>,
 );
 
-export default class RouterScenes extends Component {
-  render() {
-    return (
-      <Router scenes={scenes} />
-    );
-  }
-}
-
+export default scenes;
