@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Actions, Scene, Router } from 'react-native-router-flux';
+import React from 'react';
+import { Actions, Scene } from 'react-native-router-flux';
 
 import Welcome from './containers/Welcome';
 import Home from './containers/Home';
 
-const scenes = Actions.create(
+const routes = Actions.create(
   <Scene key="root">
     <Scene key="welcome" component={Welcome} title="Welcome"/>
     <Scene key="home" component={Home} title="Home" />
   </Scene>,
 );
 
-export default scenes;
+export default routes;

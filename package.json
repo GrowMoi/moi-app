@@ -30,6 +30,7 @@
     "ios": "react-native-scripts ios",
     "test:watch": "node node_modules/jest/bin/jest.js --watch",
     "test": "node node_modules/jest/bin/jest.js",
+    "test:snapshots": "node node_modules/jest/bin/jest.js -u",
     "lint:styles": "stylelint './src/**/*.js'",
     "lint": "eslint ./src/**/*.js",
     "postlint": "npm run lint:styles",
@@ -42,6 +43,7 @@
   },
   "dependencies": {
     "expo": "^19.0.0",
+    "prop-types": "^15.5.10",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.46.1",
     "react-native-router-flux": "3",
