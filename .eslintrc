@@ -15,6 +15,8 @@
   ],
   "rules": {
     "class-methods-use-this": 0,
+    "react/jsx-no-bind": 2,
+    "react/prop-types": 2,
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
     "react-native/no-inline-styles": 2,
@@ -22,11 +24,15 @@
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+    "import/no-extraneous-dependencies": 0,
+    "global-require": 1,
+    "import/prefer-default-export": 0
   },
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "modules": true
     }
   },
   "env": {

@@ -12,10 +12,6 @@ class Scenes extends Component {
   }
 }
 
-/**
- * Styled components that use in this Scene
- */
-
 const WrapperScene = styled.View`
   flex: 1;
 `;
