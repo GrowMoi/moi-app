@@ -32,7 +32,7 @@
     "test": "node node_modules/jest/bin/jest.js",
     "lint:styles": "stylelint './src/**/*.js'",
     "lint": "eslint ./src/**/*.js",
-      "postlint": "npm run lint:styles",
+    "postlint": "npm run lint:styles",
     "lint:autofix": "eslint ./src/**/*.js --fix",
     "storybook": "storybook start -p 7007",
     "dev": "concurrently --kill-others -p \"[{name}]\" -n \"STB,RN\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run storybook\" \"react-native-scripts start\""
@@ -44,6 +44,7 @@
     "expo": "^19.0.0",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.46.1",
+    "react-native-router-flux": "3",
     "styled-components": "^2.1.1"
   }
 }

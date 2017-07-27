@@ -27,7 +27,8 @@
     "jest/valid-expect": "error",
     "import/no-extraneous-dependencies": 0,
     "global-require": 1,
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "react/jsx-boolean-value": 2
   },
   "parserOptions": {
     "ecmaFeatures": {

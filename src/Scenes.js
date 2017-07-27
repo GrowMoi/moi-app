@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import styled from 'styled-components/native';
-import Welcome from './containers/Welcome';
+import RouterScenes from './routes';
 
-class Scenes extends Component {
+export default class Scenes extends Component {
   render() {
     return (
-      <WrapperScene>
-        <Welcome />
-      </WrapperScene>
+      <RouterScenes />
     );
   }
 }
-
-const WrapperScene = styled.View`
-  flex: 1;
-`;
-
-export default Scenes;

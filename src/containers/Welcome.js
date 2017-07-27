@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
+import { Actions } from 'react-native-router-flux';
 import { LinearGradient } from 'expo';
 
 class Welcome extends Component {
+  goToHome = () => {
+    Actions.home();
+  };
+
   render() {
     return (
       <Gradient colors={['#5FE89F', '#5EDFA7', '#66CDF7']}
         start={[0.1, 0.1]}
         end={[1, 1]}>
-        <Title color='white'>Welcome to Moi app!</Title>
+        <Title color='white' onPress={this.goToHome}>Welcome to Moi app!</Title>
         <SimpleText>This is a first component</SimpleText>
       </Gradient>
     );
@@ -22,6 +27,7 @@ class Welcome extends Component {
 const Title = styled.Text`
   color: ${({ color }) => color && color};
   font-size: 25;
+  padding-vertical: 10;
   font-weight: bold;
   background-color: transparent;
 `;
