@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 const Home = () => (
   <WrapperScene>
     <TouchableOpacity>
-      <Text onPress={Actions.pop}>Press Me!</Text>
+      <Text color='white' onPress={Actions.pop}>Press Me!</Text>
     </TouchableOpacity>
   </WrapperScene>
 );
