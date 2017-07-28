@@ -7,6 +7,7 @@
     "babel-eslint": "^7.2.3",
     "concurrently": "^3.5.0",
     "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
@@ -55,7 +56,6 @@
     ]
   },
   "dependencies": {
-    "enzyme-to-json": "^1.5.1",
     "expo": "^19.0.0",
     "intl": "^1.2.5",
     "prop-types": "^15.5.10",
