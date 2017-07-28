@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
 import { LinearGradient } from 'expo';
@@ -13,8 +14,12 @@ class Welcome extends Component {
       <Gradient colors={['#5FE89F', '#5EDFA7', '#66CDF7']}
         start={[0.1, 0.1]}
         end={[1, 1]}>
-        <Title color='white' onPress={this.goToHome}>Welcome to Moi app!</Title>
-        <SimpleText>This is a first component</SimpleText>
+        <Title color='white' onPress={this.goToHome}>
+          <FormattedMessage id="commons.welcome" />!
+        </Title>
+        <SimpleText>
+          <FormattedMessage id="commons.text" />
+        </SimpleText>
       </Gradient>
     );
   }
