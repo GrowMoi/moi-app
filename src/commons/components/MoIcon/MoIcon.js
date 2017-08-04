@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import MoImages from './IconImages';
 
 const aspectRatio = (17 / 20);
@@ -34,17 +34,28 @@ export default class MoIcon extends Component {
   }
 
   render() {
-    const { name, size, active, source, fadeDuration, ...rest } = this.props;
+    const { name, size, active, source, fadeDuration, resizeMode, onPress, ...rest } = this.props;
 
-    return (
+    const iconImage = (
       <IconImage
         source={this.sourceIcon.icon}
         size={size}
+        resizeMode={resizeMode}
         type={this.sourceIcon.type}
         fadeDuration={fadeDuration}
         {...rest}
       />
     );
+
+    if (onPress) {
+      return (
+        <TouchableOpacity onPress={onPress}>
+          {iconImage}
+        </TouchableOpacity>
+      );
+    }
+
+    return iconImage;
   }
 }
 
@@ -52,6 +63,7 @@ MoIcon.defaultProps = {
   size: 60,
   name: 'task',
   fadeDuration: 0,
+  resizeMode: 'contain',
 };
 
 MoIcon.propTypes = {
@@ -60,4 +72,6 @@ MoIcon.propTypes = {
   active: PropTypes.bool,
   fadeDuration: PropTypes.number,
   source: PropTypes.any,
+  resizeMode: PropTypes.string,
+  onPress: PropTypes.func,
 };

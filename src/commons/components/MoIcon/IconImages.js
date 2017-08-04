@@ -45,4 +45,11 @@ export default {
     };
   },
 
+  get fav() {
+    return {
+      icon: require('../../../assets/icons/fav/fav.png'),
+      type: 'square',
+    };
+  },
+
 };

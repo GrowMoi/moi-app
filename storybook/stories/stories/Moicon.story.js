@@ -9,10 +9,12 @@ const stories = storiesOf('Moi Icon', module);
 stories.addDecorator(getStory => <CenterView>{getStory()}</CenterView>);
 
 // Basic Moi icon
-stories.add('Basic MoIcon', () => (<MoIcon name='search' />));
+stories.add('Basic MoIcon', () => (<MoIcon name='search' size={80} />));
 
 stories.add('MoIcon active', () => (<MoIcon name='search' active />));
 
 stories.add('MoIcon unknown icon', () => (<MoIcon name='asd' />));
 
-stories.add('MoIcon custom size', () => (<MoIcon name='random' size={120} active />));
+stories.add('MoIcon custom size', () => (<MoIcon name='fav' size={120} />));
+
+stories.add('With touch events', () => (<MoIcon name='fav' size={120} onPress={action('On press fav icon!')} />));
