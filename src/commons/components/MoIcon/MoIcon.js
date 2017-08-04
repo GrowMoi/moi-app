@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import MoImages from './IconImages';
+import Badge from '../Badge/Badge';
 
 const aspectRatio = (17 / 20);
+
+
+const IconContainer = styled(View)`
+  position: relative;
+`;
 
 const IconImage = styled(Image)`
   width: ${props => props.size};
   height: ${props => (props.type === 'landscape' ? aspectRatio * props.size : props.size)};
+`;
+
+const BadgeContainer = styled(View)`
+  position: absolute;
+  top: 0;
+  right: -7;
 `;
 
 export default class MoIcon extends Component {
@@ -34,17 +46,34 @@ export default class MoIcon extends Component {
   }
 
   render() {
-    const { name, size, active, source, fadeDuration, resizeMode, onPress, ...rest } = this.props;
+    const {
+      name,
+      size,
+      active,
+      source,
+      fadeDuration,
+      resizeMode,
+      onPress,
+      badgeValue,
+      ...rest
+    } = this.props;
 
     const iconImage = (
-      <IconImage
-        source={this.sourceIcon.icon}
-        size={size}
-        resizeMode={resizeMode}
-        type={this.sourceIcon.type}
-        fadeDuration={fadeDuration}
-        {...rest}
-      />
+      <IconContainer>
+        <IconImage
+          source={this.sourceIcon.icon}
+          size={size}
+          resizeMode={resizeMode}
+          type={this.sourceIcon.type}
+          fadeDuration={fadeDuration}
+          {...rest}
+        />
+        {badgeValue > 0 && (
+          <BadgeContainer>
+            <Badge value={badgeValue} size={size / 2.2} />
+          </BadgeContainer>
+        )}
+      </IconContainer>
     );
 
     if (onPress) {
@@ -64,6 +93,7 @@ MoIcon.defaultProps = {
   name: 'task',
   fadeDuration: 0,
   resizeMode: 'contain',
+  badgeValue: 0,
 };
 
 MoIcon.propTypes = {
@@ -74,4 +104,5 @@ MoIcon.propTypes = {
   source: PropTypes.any,
   resizeMode: PropTypes.string,
   onPress: PropTypes.func,
+  badgeValue: PropTypes.number,
 };
