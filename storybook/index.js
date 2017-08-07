@@ -8,6 +8,7 @@ const { hostname } = url.parse(NativeModules.SourceCode.scriptURL);
 configure(() => {
   require('./stories/stories/Moicon.story');
   require('./stories/stories/Badge.story');
+  require('./stories/stories/TabIcon.story');
 }, module);
 
 const StorybookUI = getStorybookUI({ port: 7007, host: hostname, onDeviceUI: true });
