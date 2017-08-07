@@ -3,8 +3,11 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
+const aspectRatioFont = 0.55;
+const halfSize = 2;
+
 const Circle = styled(View)`
-  border-radius: ${props => props.size / 2};
+  border-radius: ${props => props.size / halfSize};
   background-color: ${props => props.badgeColor && props.badgeColor};
   padding-horizontal: 2;
   padding-vertical: 2;
@@ -18,7 +21,7 @@ const Counter = styled(Text)`
   background-color: transparent;
   color: ${props => props.numberColor && props.numberColor};
   font-weight: bold;
-  font-size: ${props => (props.size * 0.55)};
+  font-size: ${props => (props.size * aspectRatioFont)};
 `;
 
 const Badge = ({ size, value, badgeColor, numberColor }) => (

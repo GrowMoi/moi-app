@@ -6,7 +6,7 @@ import MoImages from './IconImages';
 import Badge from '../Badge/Badge';
 
 const aspectRatio = (17 / 20);
-
+const aspectRatioBadge = 2.2;
 
 const IconContainer = styled(View)`
   position: relative;
@@ -70,7 +70,7 @@ export default class MoIcon extends Component {
         />
         {badgeValue > 0 && (
           <BadgeContainer>
-            <Badge value={badgeValue} size={size / 2.2} />
+            <Badge value={badgeValue} size={size / aspectRatioBadge} />
           </BadgeContainer>
         )}
       </IconContainer>
