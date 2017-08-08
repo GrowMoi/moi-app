@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { LinearGradient } from 'expo';
 
 class Welcome extends Component {
-  goToHome = () => Actions.home();
+  goToHome = () => Actions.tabbars();
 
   render() {
     return (

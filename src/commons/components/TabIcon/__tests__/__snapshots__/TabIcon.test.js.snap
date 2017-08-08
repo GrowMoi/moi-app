@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Moicon it should render correctly with default props 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+      },
+      undefined,
+    ]
+  }
+>
+  <MoIcon
+    badgeValue={0}
+    fadeDuration={0}
+    name="task"
+    resizeMode="contain"
+    size={40}
+  />
+  <Styled(Text)
+    titleSize={11}
+  />
+</View>
+`;
+
+exports[`Moicon it should render without name prop 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "position": "relative",
+        },
+        undefined,
+      ]
+    }
+  >
+    <Image
+      fadeDuration={0}
+      resizeMode="contain"
+      size={40}
+      source={1}
+      style={
+        Array [
+          Object {
+            "height": 40,
+            "width": 40,
+          },
+          undefined,
+        ]
+      }
+      type="square"
+    />
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "fontSize": 11,
+          "marginTop": 5,
+        },
+        undefined,
+      ]
+    }
+    titleSize={11}
+  />
+</View>
+`;
