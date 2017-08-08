@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import { Util, AppLoading } from 'expo';
+import { Util, AppLoading, Font } from 'expo';
 import { Text } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
@@ -12,6 +12,7 @@ import routes from './routes';
 import messages from './messages';
 import store from './store';
 import { flattenMessages } from './commons/utils';
+import typography from './assets/fonts';
 
 addLocaleData([...en, ...es]);
 
@@ -21,10 +22,16 @@ export default class Scenes extends Component {
   state = {
     locale: null,
     appIsReady: false,
+    fontLoaded: false,
   }
 
   componentWillMount() {
     this.getCurrentLocale();
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync(typography);
+    this.setState({ fontLoaded: true });
   }
 
   async getCurrentLocale() {
@@ -37,9 +44,9 @@ export default class Scenes extends Component {
   }
 
   render() {
-    const { locale, appIsReady } = this.state;
+    const { locale, appIsReady, fontLoaded } = this.state;
 
-    if (appIsReady) {
+    if (appIsReady && fontLoaded) {
       return (
         <Provider store={store}>
           <IntlProvider locale={locale} messages={flattenMessages(messages[locale])} textComponent={Text}>

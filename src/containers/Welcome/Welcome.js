@@ -33,11 +33,13 @@ const Title = styled.Text`
   padding-vertical: 10;
   font-weight: bold;
   background-color: transparent;
+  font-family: 'Museo900';
 `;
 
 const SimpleText = styled.Text`
   background-color: transparent;
   font-weight: bold;
+  font-family: 'FuturaBold';
 `;
 
 const Gradient = styled(LinearGradient)`

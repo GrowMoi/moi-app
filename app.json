@@ -2,7 +2,7 @@
   "expo": {
     "sdkVersion": "19.0.0",
     "packagerOpts": {
-      "assetExts": ["ttf"]
+      "assetExts": ["ttf", "otf"]
     }
   }
 }
