@@ -1,18 +1,15 @@
 export default {
-  NoodleItalic: require('./big_noodle_titling_oblique.ttf'),
-  Noodle: require('./big_noodle_titling.ttf'),
+  noodleItalic: require('./big_noodle_titling_oblique.ttf'),
+  noodle: require('./big_noodle_titling.ttf'),
 
-  FuturaBold: require('./FuturaLT-Bold.ttf'),
-  FuturaCondensed: require('./FuturaLT-Condensed.ttf'),
-  FuturaHeavy: require('./FuturaLT-Heavy.ttf'),
-  Futura: require('./FuturaLT.ttf'),
+  futuraBold: require('./futura_bold.ttf'),
+  futuraCondensed: require('./futura_condensed.ttf'),
+  futuraHeavy: require('./futura_heavy.ttf'),
+  futura: require('./futura.ttf'),
 
-  HelveticaBook: require('./HelveticaLTStd-BlkObl.otf'),
-  HelveticaLight: require('./HelveticaLTStd-Light_0.otf'),
-
-  Museo100: require('./Museo100-Regular.otf'),
-  Museo300: require('./Museo300-Regular.otf'),
-  Museo500: require('./Museo500-Regular.otf'),
-  Museo700: require('./Museo700-Regular.otf'),
-  Museo900: require('./Museo900-Regular.otf'),
+  museo100: require('./museosans_100.ttf'),
+  museo300: require('./museosans_300.ttf'),
+  museo500: require('./museosans_500.ttf'),
+  museo700: require('./museosans_700.ttf'),
+  museo900: require('./museosans_900.ttf'),
 };

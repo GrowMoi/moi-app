@@ -12,7 +12,7 @@ import routes from './routes';
 import messages from './messages';
 import store from './store';
 import { flattenMessages } from './commons/utils';
-import typography from './assets/fonts';
+import fonts from './assets/fonts';
 
 addLocaleData([...en, ...es]);
 
@@ -22,16 +22,22 @@ export default class Scenes extends Component {
   state = {
     locale: null,
     appIsReady: false,
-    fontLoaded: false,
   }
 
   componentWillMount() {
-    this.getCurrentLocale();
+    this.preLoadingAssets();
   }
 
-  async componentDidMount() {
-    await Font.loadAsync(typography);
-    this.setState({ fontLoaded: true });
+  async preLoadingAssets() {
+    let locale;
+    try {
+      locale = await this.getCurrentLocale();
+      await Font.loadAsync(fonts);
+    } catch (error) {
+      console.log('caught error', error);
+    } finally {
+      this.setState({ appIsReady: true, locale });
+    }
   }
 
   async getCurrentLocale() {
@@ -39,22 +45,24 @@ export default class Scenes extends Component {
     let locale;
     if (/^es/.test(currentLocale)) locale = 'es';
     else if (/^en/.test(currentLocale)) locale = 'en';
+    else locale = 'es';
 
-    this.setState({ locale, appIsReady: true });
+    return locale;
   }
 
   render() {
-    const { locale, appIsReady, fontLoaded } = this.state;
+    const { locale, appIsReady } = this.state;
 
-    if (appIsReady && fontLoaded) {
+    if (appIsReady) {
       return (
         <Provider store={store}>
           <IntlProvider locale={locale} messages={flattenMessages(messages[locale])} textComponent={Text}>
             <RouterWithRedux scenes={routes}/>
           </IntlProvider>
-        </ Provider>
+        </Provider>
       );
     }
+
     return <AppLoading />;
   }
 }
