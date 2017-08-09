@@ -12,7 +12,7 @@ import routes from './routes';
 import messages from './messages';
 import store from './store';
 import { flattenMessages } from './commons/utils';
-import fonts from './assets/fonts';
+import fonts from '../assets/fonts';
 
 addLocaleData([...en, ...es]);
 
@@ -29,15 +29,10 @@ export default class Scenes extends Component {
   }
 
   async preLoadingAssets() {
-    let locale;
-    try {
-      locale = await this.getCurrentLocale();
-      await Font.loadAsync(fonts);
-    } catch (error) {
-      console.log('caught error', error);
-    } finally {
-      this.setState({ appIsReady: true, locale });
-    }
+    const locale = await this.getCurrentLocale();
+    await Font.loadAsync(fonts);
+
+    this.setState({ appIsReady: true, locale });
   }
 
   async getCurrentLocale() {

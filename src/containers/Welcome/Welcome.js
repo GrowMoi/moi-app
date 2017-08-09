@@ -31,15 +31,13 @@ const Title = styled.Text`
   color: ${({ color }) => color && color};
   font-size: 25;
   padding-vertical: 10;
-  font-weight: bold;
   background-color: transparent;
-  font-family: 'futura';
+  font-family: 'Futura';
 `;
 
 const SimpleText = styled.Text`
   background-color: transparent;
-  font-weight: bold;
-  font-family: 'museo100';
+  font-family: 'Museo300';
 `;
 
 const Gradient = styled(LinearGradient)`

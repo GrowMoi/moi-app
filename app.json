@@ -3,6 +3,7 @@
     "sdkVersion": "19.0.0",
     "name": "Moi",
     "slug": "moi-app",
+    "orientation": "portrait",
     "packagerOpts": {
       "assetExts": ["ttf", "otf"]
     }
