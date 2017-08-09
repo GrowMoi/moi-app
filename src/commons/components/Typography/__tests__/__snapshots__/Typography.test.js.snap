@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography it should render description expected 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  disabled={false}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#818180",
+        "fontFamily": "Futura",
+        "fontSize": 11,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`Typography it should render text body expected 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  disabled={false}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#818180",
+        "fontFamily": "Futura",
+        "fontSize": 14,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`Typography it should render title expected 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  disabled={false}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "black",
+        "fontFamily": "Museo100",
+        "fontSize": 25,
+      },
+      undefined,
+    ]
+  }
+/>
+`;

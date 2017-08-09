@@ -2,7 +2,7 @@ export default {
   NoodleItalic: require('./big_noodle_titling_oblique.ttf'),
   Noodle: require('./big_noodle_titling.ttf'),
 
-  FuturaBold: require('./futura_bold.ttf'),
+  FuturaBold: require('./futura_bolder.ttf'),
   FuturaCondensed: require('./futura_condensed.ttf'),
   FuturaHeavy: require('./futura_heavy.ttf'),
   Futura: require('./futura.ttf'),
