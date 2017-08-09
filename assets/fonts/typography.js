@@ -3,7 +3,7 @@ export { default as NoodleItalic } from './big_noodle_titling_oblique.ttf';
 export { default as Noodle } from './big_noodle_titling.ttf';
 
 // Futura
-export { default as FuturaBold } from './futura_bold.ttf';
+export { default as FuturaBold } from './futura_bolder.ttf';
 export { default as FuturaCondensed } from './futura_condensed.ttf';
 export { default as FuturaHeavy } from './futura_heavy.ttf';
 export { default as Futura } from './futura.ttf';
