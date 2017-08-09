@@ -1,20 +1,21 @@
 import React from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
+import { Palette, Size, Font } from '../../styles';
 
 const StyledTitle = styled(Text)`
-  font-size: 25;
+  font-size: ${Size.fontTitle};
   font-family: ${(props) => {
-    if (props.bolder) return 'Museo500';
-    else if (props.heavy) return 'Museo700';
-    else if (props.book) return 'Museo900';
-    return 'Museo100';
+    if (props.bolder) return Font.museo('bolder');
+    else if (props.heavy) return Font.museo('heavy');
+    else if (props.book) return Font.museo('book');
+    return Font.museo();
   }};
   color: ${(props) => {
-    if (props.inverted) return 'white';
+    if (props.inverted) return Palette.invertedText;
     else if (props.color) return props.color;
-    else if (props.hightlight) return '#4A4B21';
-    return 'black';
+    else if (props.hightlight) return Palette.accent;
+    return Palette.dark;
   }};
 `;
 

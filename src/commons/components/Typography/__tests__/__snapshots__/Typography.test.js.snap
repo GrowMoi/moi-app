@@ -9,7 +9,7 @@ exports[`Typography it should render description expected 1`] = `
   style={
     Array [
       Object {
-        "color": "#818180",
+        "color": "#4a4b21",
         "fontFamily": "Futura",
         "fontSize": 11,
       },
@@ -28,7 +28,7 @@ exports[`Typography it should render text body expected 1`] = `
   style={
     Array [
       Object {
-        "color": "#818180",
+        "color": "#4a4b21",
         "fontFamily": "Futura",
         "fontSize": 14,
       },
@@ -47,8 +47,8 @@ exports[`Typography it should render title expected 1`] = `
   style={
     Array [
       Object {
-        "color": "black",
-        "fontFamily": "Museo100",
+        "color": "#4a4b21",
+        "fontFamily": "Museo300",
         "fontSize": 25,
       },
       undefined,
