@@ -48,8 +48,8 @@ exports[`Welcome Scene renders expected markup 1`] = `
         Object {
           "backgroundColor": "transparent",
           "color": "white",
+          "fontFamily": "Futura",
           "fontSize": 25,
-          "fontWeight": "bold",
           "paddingVertical": 10,
         },
         undefined,
@@ -75,7 +75,7 @@ exports[`Welcome Scene renders expected markup 1`] = `
       Array [
         Object {
           "backgroundColor": "transparent",
-          "fontWeight": "bold",
+          "fontFamily": "Museo300",
         },
         undefined,
       ]

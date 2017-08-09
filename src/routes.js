@@ -16,7 +16,7 @@ const tabBarStyles = {
 const routes = Actions.create(
   <Scene key="root">
 
-    <Scene key='tabbars' tabs type='replace' initial tabBarStyle={tabBarStyles}>
+    <Scene key='tabbars' tabs initial tabBarStyle={tabBarStyles}>
 
       <Scene key='task' title='Task' icon={TaskIcon} initial>
         <Scene key='taskviews' component={Home} title='Home' />
