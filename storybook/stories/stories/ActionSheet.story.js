@@ -3,11 +3,11 @@ import { storiesOf } from '@storybook/react-native';
 import { Button, View } from 'react-native';
 import ActionSheet from '../../../src/commons/components/ActionSheets/ActionSheet';
 // import { action } from '@storybook/addon-actions';
-import CenterView from '../help-components/CenterView';
+import CenterFontView from '../help-components/CenterFontView';
 
 
 const stories = storiesOf('Action Sheet', module);
-stories.addDecorator(getStory => <CenterView>{getStory()}</CenterView>);
+stories.addDecorator(getStory => <CenterFontView>{getStory()}</CenterFontView>);
 
 class OpenActions extends React.Component {
   state = {

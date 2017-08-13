@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'expo';
-import { Modal, TouchableOpacity, Animated } from 'react-native';
+import { Modal, TouchableOpacity, Animated, Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { TextBody } from '../Typography';
-import { Palette } from '../../styles';
+import { Palette, Size } from '../../styles';
 
 const Overlay = styled(TouchableOpacity)`
   background-color: ${Palette.black.alpha(0.2).css()};
-  justify-content: flex-end;
+  justify-content: ${Platform.OS === 'android' ? 'center' : 'flex-end'};
   align-self: stretch;
   flex: 1;
 `;
@@ -16,6 +16,7 @@ const Overlay = styled(TouchableOpacity)`
 const OptionsBox = styled(Animated.View)`
   background-color: white;
   position: relative;
+  margin-horizontal: ${Platform.OS === 'android' ? Size.spaceLarge : 0};
 `;
 
 const Option = styled(TouchableOpacity)`
@@ -70,6 +71,7 @@ export default class ActionSheet extends Component {
 
     const transitionStyles = {
       transform: translate.getTranslateTransform(),
+      opacity: 1,
     };
 
     return (
