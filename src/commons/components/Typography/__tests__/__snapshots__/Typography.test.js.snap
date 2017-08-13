@@ -30,7 +30,7 @@ exports[`Typography it should render text body expected 1`] = `
       Object {
         "color": "#4a4b21",
         "fontFamily": "Futura",
-        "fontSize": 14,
+        "fontSize": 15,
       },
       undefined,
     ]

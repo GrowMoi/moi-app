@@ -1,5 +1,5 @@
 export default {
-  fontBody: 14,
+  fontBody: 15,
   fontTitle: 25,
   fontDescription: 11,
   spaceXSmall: 5,

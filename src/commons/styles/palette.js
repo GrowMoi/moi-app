@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 
-const colors = {
+export const colors = {
   orange: chroma('#E67543'),
   green: chroma('#767B3A'),
   dark: chroma('#4A4B21'),
@@ -17,7 +17,7 @@ const palette = {
   invertedText: colors.white.alpha(0.9).css(),
   dark: colors.dark,
   black: colors.black,
-  neutral: colors.neutral,
+  neutral: colors.gray,
 };
 
 export default palette;

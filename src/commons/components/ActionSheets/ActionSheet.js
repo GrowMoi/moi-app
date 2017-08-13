@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text, Modal, TouchableOpacity, Animated } from 'react-native';
+import { Icon } from 'expo';
+import { Modal, TouchableOpacity, Animated } from 'react-native';
 import styled from 'styled-components/native';
+import { TextBody } from '../Typography';
 import { Palette } from '../../styles';
 
 const Overlay = styled(TouchableOpacity)`
@@ -19,19 +21,19 @@ const OptionsBox = styled(Animated.View)`
 const Option = styled(TouchableOpacity)`
   padding-horizontal: 20;
   padding-vertical: 13;
+  flex-direction: row;
+  justify-content: flex-start;
 `;
 
-const TextCancel = styled(Text)`
-  color: red;
+const OptionIcon = styled(Icon.Ionicons)`
+  margin-right: 10;
 `;
 
-const options = [
-  'Galería',
-  'Recomendaciones',
-  'Perfil',
-  'Links Relacionados',
-  'Notas',
-];
+const CancelOption = styled(Option)`
+  border-top-width: 1;
+  border-top-color: ${Palette.neutral.alpha(0.3).css()};
+  padding-vertical: 20;
+`;
 
 export default class ActionSheet extends Component {
   state = {
@@ -43,7 +45,7 @@ export default class ActionSheet extends Component {
     if (onDismiss) {
       setTimeout(() => {
         onDismiss();
-      }, 150);
+      }, 200);
     }
     this.triggerOptions('hide');
   }
@@ -56,15 +58,15 @@ export default class ActionSheet extends Component {
     const { translate } = this.state;
     const valueY = state === 'hide' ? 400 : 0;
 
-    Animated.spring(translate, {
+    Animated.timing(translate, {
       toValue: { x: 0, y: valueY },
-      duration: 100,
+      duration: 250,
     }).start();
   }
 
   render() {
     const { translate } = this.state;
-    const { visible } = this.props;
+    const { visible, hasCancelOption, options = [] } = this.props;
 
     const transitionStyles = {
       transform: translate.getTranslateTransform(),
@@ -80,14 +82,18 @@ export default class ActionSheet extends Component {
       >
         <Overlay onPress={this.dismiss} activeOpacity={1}>
           <OptionsBox style={transitionStyles}>
-            {options.map((option, i) => (
+            {options.length > 0 && options.map((option, i) => (
               <Option key={i}>
-                <Text>{option}</Text>
+                <OptionIcon name={option.icon} size={20} />
+                <TextBody>{option.label}</TextBody>
               </Option>
             ))}
-            <Option onPress={this.dismiss}>
-              <TextCancel>Cancel</TextCancel>
-            </Option>
+            {hasCancelOption && (
+              <CancelOption onPress={this.dismiss}>
+                <OptionIcon name='md-close' size={20} />
+                <TextBody>Cancel</TextBody>
+              </CancelOption>
+            )}
           </OptionsBox>
         </Overlay>
       </Modal>
@@ -102,4 +108,9 @@ ActionSheet.defaultProps = {
 ActionSheet.propTypes = {
   visible: PropTypes.bool,
   onDismiss: PropTypes.func,
+  hasCancelOption: PropTypes.bool,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    icon: PropTypes.string,
+  })).isRequired,
 };

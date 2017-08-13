@@ -21,10 +21,13 @@ class OpenActions extends React.Component {
 
   render() {
     const { isVisible } = this.state;
+    const { ...rest } = this.props;
+
     return (
       <View>
         <Button title='Open Options' onPress={this.toggleModal} />
         <ActionSheet
+          {...rest}
           visible={isVisible}
           onDismiss={this.toggleModal} />
       </View>
@@ -32,5 +35,13 @@ class OpenActions extends React.Component {
   }
 }
 
+const options = [
+  { label: 'Galeria', icon: 'md-photos' },
+  { label: 'Recomendaciones', icon: 'md-thumbs-up' },
+  { label: 'Links', icon: 'md-link' },
+  { label: 'Notas', icon: 'md-create' },
+];
+
 // Actions Sheet
-stories.add('Basic Action sheet', () => <OpenActions />);
+stories.add('Basic Action sheet', () => <OpenActions options={options} />);
+stories.add('Action sheet with cancel button', () => <OpenActions options={options} hasCancelOption />);
