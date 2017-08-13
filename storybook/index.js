@@ -10,7 +10,8 @@ configure(() => {
   require('./stories/stories/Badge.story');
   require('./stories/stories/TabIcon.story');
   require('./stories/stories/Typography.story');
+  require('./stories/stories/ActionSheet.story');
 }, module);
 
-const StorybookUI = getStorybookUI({ port: 7007, host: hostname, onDeviceUI: true });
+const StorybookUI = getStorybookUI({ port: 7007, host: hostname });
 export default StorybookUI;
