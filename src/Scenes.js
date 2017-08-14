@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import { Util, AppLoading, Font } from 'expo';
+import { Util, AppLoading, Font, Icon } from 'expo';
 import { Text } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
@@ -29,8 +29,13 @@ export default class Scenes extends Component {
   }
 
   async preLoadingAssets() {
+    const allFonts = {
+      ...fonts,
+      ...Icon.Ionicons.font,
+      ...Icon.FontAwesome.font,
+    };
     const locale = await this.getCurrentLocale();
-    await Font.loadAsync(fonts);
+    await Font.loadAsync(allFonts);
 
     this.setState({ appIsReady: true, locale });
   }
