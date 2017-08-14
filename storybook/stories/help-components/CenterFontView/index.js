@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Font, AppLoading } from 'expo';
+import { Font, AppLoading, Icon } from 'expo';
 import style from './style';
 import fonts from '../../../../assets/fonts';
 
@@ -14,7 +14,13 @@ export default class CenterFontView extends Component {
   }
 
   async loadFontsAsync() {
-    await Font.loadAsync(fonts);
+    const customFonts = {
+      ...fonts,
+      ...Icon.Ionicons.font,
+      ...Icon.FontAwesome.font,
+    };
+
+    await Font.loadAsync(customFonts);
     this.setState({ isReady: true });
   }
 

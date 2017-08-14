@@ -29,7 +29,7 @@ class OpenActions extends React.Component {
         <ActionSheet
           {...rest}
           visible={isVisible}
-          onDismiss={this.toggleModal} />
+          dismiss={this.toggleModal} />
       </View>
     );
   }

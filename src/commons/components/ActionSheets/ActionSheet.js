@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'expo';
 import { Modal, TouchableOpacity, Animated, Platform } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { Palette, Size } from '../../styles';
 
@@ -17,6 +17,12 @@ const OptionsBox = styled(Animated.View)`
   background-color: white;
   position: relative;
   margin-horizontal: ${Platform.OS === 'android' ? Size.spaceLarge : 0};
+  ${Platform.OS === 'android' && css`
+    shadow-opacity: 0.3;
+    shadow-radius: 2.5px;
+    shadow-color: ${Palette.black.alpha(0.4).css()};
+    shadow-offset: 0 0;
+  `};
 `;
 
 const Option = styled(TouchableOpacity)`
@@ -37,17 +43,12 @@ const CancelOption = styled(Option)`
 `;
 
 export default class ActionSheet extends Component {
-  state = {
-    translate: new Animated.ValueXY({ x: 0, y: 400 }),
-  }
+  scaleValue = new Animated.Value(0)
+  translateValue = new Animated.ValueXY({ x: 0, y: 400 })
 
   dismiss = () => {
-    const { onDismiss } = this.props;
-    if (onDismiss) {
-      setTimeout(() => {
-        onDismiss();
-      }, 200);
-    }
+    const { dismiss } = this.props;
+    if (dismiss) setTimeout(() => dismiss(), 200);
     this.triggerOptions('hide');
   }
 
@@ -56,23 +57,31 @@ export default class ActionSheet extends Component {
   }
 
   triggerOptions(state) {
-    const { translate } = this.state;
     const valueY = state === 'hide' ? 400 : 0;
+    const scaleValue = state === 'hide' ? 0 : 1;
 
-    Animated.timing(translate, {
-      toValue: { x: 0, y: valueY },
-      duration: 250,
-    }).start();
+    if (Platform.OS === 'android') {
+      Animated.spring(this.scaleValue, {
+        toValue: scaleValue,
+      }).start();
+    } else {
+      Animated.timing(this.translateValue, {
+        toValue: { x: 0, y: valueY },
+        duration: 250,
+      }).start();
+    }
   }
 
   render() {
-    const { translate } = this.state;
     const { visible, hasCancelOption, options = [] } = this.props;
-
-    const transitionStyles = {
-      transform: translate.getTranslateTransform(),
-      opacity: 1,
-    };
+    const iconSize = 20;
+    const nearFar = this.scaleValue.interpolate({
+      inputRange: [0, 0.5, 1],
+      outputRange: [1, 1.05, 1],
+    });
+    const currentAnim = Platform.OS === 'android'
+      ? { transform: [{ scale: nearFar }] }
+      : { transform: this.translateValue.getTranslateTransform() };
 
     return (
       <Modal
@@ -83,16 +92,16 @@ export default class ActionSheet extends Component {
         onShow={this.onShow}
       >
         <Overlay onPress={this.dismiss} activeOpacity={1}>
-          <OptionsBox style={transitionStyles}>
+          <OptionsBox style={currentAnim}>
             {options.length > 0 && options.map((option, i) => (
               <Option key={i}>
-                <OptionIcon name={option.icon} size={20} />
+                <OptionIcon name={option.icon} size={iconSize} />
                 <TextBody>{option.label}</TextBody>
               </Option>
             ))}
             {hasCancelOption && (
               <CancelOption onPress={this.dismiss}>
-                <OptionIcon name='md-close' size={20} />
+                <OptionIcon name='md-close' size={iconSize} />
                 <TextBody>Cancel</TextBody>
               </CancelOption>
             )}
@@ -109,7 +118,7 @@ ActionSheet.defaultProps = {
 
 ActionSheet.propTypes = {
   visible: PropTypes.bool,
-  onDismiss: PropTypes.func,
+  dismiss: PropTypes.func,
   hasCancelOption: PropTypes.bool,
   options: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
