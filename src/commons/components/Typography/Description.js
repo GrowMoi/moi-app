@@ -14,7 +14,7 @@ const StyledTDescription = styled(Text)`
   color: ${(props) => {
     if (props.inverted) return Palette.invertedText;
     else if (props.color) return props.color;
-    else if (props.hightlight) return Palette.accent;
+    else if (props.highlight) return Palette.accent;
     return Palette.dark;
   }};
 `;

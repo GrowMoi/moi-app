@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { Palette, Size, Font } from '../../styles';
 
 const StyledTextBody = styled(Text)`
-  font-size: ${Size.fontBody};
+  font-size: ${props => (props.small ? Size.fontBodySmall : Size.fontBody)};
   font-family: ${(props) => {
     if (props.bolder) return Font.futura('bolder');
     else if (props.heavy) return Font.futura('heavy');
@@ -14,7 +14,8 @@ const StyledTextBody = styled(Text)`
   color: ${(props) => {
     if (props.inverted) return Palette.invertedText;
     else if (props.color) return props.color;
-    else if (props.hightlight) return Palette.accent;
+    else if (props.secondary) return Palette.neutral;
+    else if (props.highlight) return Palette.accent;
     return Palette.dark;
   }};
 `;

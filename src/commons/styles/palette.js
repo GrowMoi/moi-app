@@ -18,6 +18,7 @@ const palette = {
   dark: colors.dark,
   black: colors.black,
   neutral: colors.gray,
+  white: colors.white,
 };
 
 export default palette;

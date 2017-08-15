@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content Preview it should render row as expected 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  focusedOpacity={0.7}
+  style={
+    Array [
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#ffffff",
+        "borderColor": "rgba(129,129,128,0.2)",
+        "borderWidth": 1,
+        "flexDirection": "row",
+      },
+      undefined,
+    ]
+  }
+>
+  <Styled(Image)
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "http://www.wolaver.org/space/crab.jpg",
+      }
+    }
+  />
+  <Styled(View)>
+    <Styled(Text)
+      ellipsizeMode="tail"
+      numberOfLines={1}
+    >
+      Grab Nebula
+    </Styled(Text)>
+    <Styled(Text)
+      secondary={true}
+      small={true}
+    >
+      Que es?
+    </Styled(Text)>
+    <Styled(Text)
+      ellipsizeMode="tail"
+      numberOfLines={4}
+      small={true}
+    >
+      lorem lorem loremlorem lorem lorem laskdj flakd jfalskdfj alskdf jsadkfj jasdl;fk jasdfkl diasdj asdfh aksdfjh akdfjh akldfjhas fjd
+    </Styled(Text)>
+  </Styled(View)>
+</TouchableOpacity>
+`;
