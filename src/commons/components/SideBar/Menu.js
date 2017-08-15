@@ -12,7 +12,6 @@ import styled from 'styled-components/native';
 const { width, height } = Dimensions.get('window');
 const uri = 'https://pickaface.net/gallery/avatar/Opi51c74d0125fd4.png';
 
-
 const MenuView = styled(ScrollView)`
   flex: 1;
   width: ${width};
