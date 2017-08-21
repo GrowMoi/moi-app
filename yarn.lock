@@ -6878,6 +6878,12 @@ react-native-scripts@1.0.0:
     qrcode-terminal "^0.11.0"
     xdl "43.0.0"
 
+react-native-side-menu@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-side-menu/-/react-native-side-menu-1.0.2.tgz#863f8bb253b7512c8c62cefc477aecd653383ddb"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-svg@5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-5.3.0.tgz#0d2ca98bee6726d627c2ca31617ac9c5f7d42daf"
