@@ -52,4 +52,11 @@ export default {
     };
   },
 
+  get profile() {
+    return {
+      icon: require('../../../../assets/icons/profile/profile.png'),
+      type: 'square',
+    };
+  },
+
 };
