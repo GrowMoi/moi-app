@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 import { Image, Dimensions, StatusBar, View } from 'react-native';
 import { ScreenOrientation } from 'expo';
 import styled from 'styled-components/native';
-import tabbarImage from '../../../../assets/images/navbar/barra_sup_horizontal.png';
+import navbarImageLandscape from '../../../../assets/images/navbar/barra_sup_landscape.png';
+import navbarImagePortrait from '../../../../assets/images/navbar/barra_superior_portrait.png';
 import { Size } from '../../styles';
 
 const Bar = styled(View)`
@@ -24,6 +27,7 @@ export default class Navbar extends Component {
   width = Dimensions.get('screen').width
   state = {
     currentWidth: this.width,
+    currentImage: navbarImagePortrait,
   }
 
   componentWillMount() {
@@ -31,22 +35,43 @@ export default class Navbar extends Component {
     Dimensions.addEventListener('change', this.currentDimensions);
   }
 
+  componentWillUnmount() {
+    Dimensions.removeEventListener('change', this.currentDimensions);
+  }
+
   currentDimensions = () => {
     const { width } = Dimensions.get('screen');
-    this.setState({ currentWidth: width });
+    this.setState({
+      currentWidth: width,
+    });
+  }
+
+  goToProfile = () => {
+    Actions.profile();
   }
 
   render() {
     const { currentWidth } = this.state;
+    const { width } = Dimensions.get('screen');
+
+    const maxWidth = 500;
+    const currentImage = width >= maxWidth ? navbarImageLandscape : navbarImagePortrait;
+
     return (
       <Bar>
         <StatusBar hidden />
         <BackgroundImage
-          resizeMode='cover'
+          resizeMode='stretch'
           width={currentWidth}
-          source={tabbarImage}
+          source={currentImage}
         />
       </Bar>
     );
   }
 }
+
+Navbar.propTypes = {
+  title: PropTypes.string,
+  rightButton: PropTypes.any,
+  leftButton: PropTypes.any,
+};

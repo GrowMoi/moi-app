@@ -1,50 +1,34 @@
 import React from 'react';
 import { Actions, Scene } from 'react-native-router-flux';
 import Welcome from './containers/Welcome';
-import Home from './containers/Home';
+import Menu from './commons/components/Drawer';
+import Tree from './containers/Tree';
 import Profile from './containers/Profile';
-import TabIcon from '../src/commons/components/TabIcon/TabIcon';
-import Moicon from './commons/components/MoIcon/MoIcon';
-import { Font } from './commons/styles';
+// import TabIcon from '../src/commons/components/TabIcon/TabIcon';
+import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
 
-const TaskIcon = ({ selected, title }) => <TabIcon name='task' selected={selected} title={title} size={30} />; //eslint-disable-line
-const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
-const ProfileButton = () => <Moicon name="profile" size={35} onPress={() => Actions.profile()} />; //eslint-disable-line
-
-const profileStyles = {
-  top: 0,
-  position: 'absolute',
-  right: 10,
-};
-
-const navigationStyles = {
-  backgroundColor: 'transparent',
-  borderBottomWidth: 0,
-};
-
-const titleStyle = {
-  color: '#FFF',
-  fontSize: 20,
-  fontFamily: Font.museo('bolder'),
-  top: -15,
-};
+// const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
 
 const routes = Actions.create(
   <Scene key="root">
 
-    <Scene key='moiTree' title='Tree' initial navigationBarStyle={navigationStyles}>
-      <Scene
-        key='tree'
-        component={Home}
-        title='Árbol'
-        titleStyle={titleStyle}
-        rightButtonStyle={profileStyles}
-        renderRightButton={ProfileButton} />
-      <Scene key="profile" title="Profile" component={Profile} />
+    <Scene key='moiDrawer' title='Tree' component={Menu} open={false}>
+      <Scene key="main" tabs>
+        <Scene
+          key='tree'
+          initial
+          component={Tree}
+          {...navbarPropStyles}
+          title='Arbol' />
+        <Scene
+          key="profile"
+          title="Profile"
+          component={Profile}
+          {...navbarPropStyles} />
+      </Scene>
     </Scene>
 
-
-    <Scene key='search' title='Search' navigationBarStyle={navigationStyles}>
+    <Scene key='search' title='Search' {...navbarPropStyles}>
       <Scene key="welcome" component={Welcome} title="Welcome" hideNavBar />
     </Scene>
   </Scene>,

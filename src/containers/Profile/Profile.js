@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import Navbar from '../../commons/components/Navbar/Navbar';
 
 export default class Profile extends Component {
   render() {
     return (
-      <Text>Profile</Text>
+      <View>
+        <Navbar />
+        <Text>Profile View</Text>
+      </View>
     );
   }
 }

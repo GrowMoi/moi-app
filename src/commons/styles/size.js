@@ -14,5 +14,5 @@ export default {
   spaceLarge: 40,
   spaceXLarge: 80,
 
-  navbarHeight: 64,
+  navbarHeight: 45,
 };

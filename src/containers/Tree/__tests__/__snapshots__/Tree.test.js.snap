@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing Home component renders without crashing and take a snapshot of the structure 1`] = `
+exports[`Testing Tree View renders without crashing and take a snapshot of the structure 1`] = `
 <Styled(View)>
   <Navbar />
   <TouchableOpacity
