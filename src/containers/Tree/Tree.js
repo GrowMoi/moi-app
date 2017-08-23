@@ -18,11 +18,12 @@ export default class Tree extends Component {
     console.log(this.props);
   }
 
+  toggle
+
   render() {
-    const { title } = this.props;
     return (
       <WrapperScene>
-        <Navbar title={title} />
+        <Navbar />
         <TouchableOpacity>
           <Text color='white' onPress={() => Actions.refresh({ key: 'moiDrawer', open: value => !value })}>Press Me!</Text>
         </TouchableOpacity>

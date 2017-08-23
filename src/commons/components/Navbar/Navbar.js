@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { Image, Dimensions, StatusBar, View } from 'react-native';
 import { ScreenOrientation } from 'expo';
@@ -24,9 +23,8 @@ const BackgroundImage = styled(Image)`
 `;
 
 export default class Navbar extends Component {
-  width = Dimensions.get('screen').width
   state = {
-    currentWidth: this.width,
+    currentWidth: Dimensions.get('window').width,
     currentImage: navbarImagePortrait,
   }
 
@@ -40,7 +38,7 @@ export default class Navbar extends Component {
   }
 
   currentDimensions = () => {
-    const { width } = Dimensions.get('screen');
+    const { width } = Dimensions.get('window');
     this.setState({
       currentWidth: width,
     });
@@ -52,7 +50,7 @@ export default class Navbar extends Component {
 
   render() {
     const { currentWidth } = this.state;
-    const { width } = Dimensions.get('screen');
+    const { width } = Dimensions.get('window');
 
     const maxWidth = 500;
     const currentImage = width >= maxWidth ? navbarImageLandscape : navbarImagePortrait;
@@ -69,9 +67,3 @@ export default class Navbar extends Component {
     );
   }
 }
-
-Navbar.propTypes = {
-  title: PropTypes.string,
-  rightButton: PropTypes.any,
-  leftButton: PropTypes.any,
-};
