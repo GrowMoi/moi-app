@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import { Util, AppLoading, Font, Icon } from 'expo';
-import { Text } from 'react-native';
+import { Util, AppLoading, Font, Icon, Asset } from 'expo';
+import { Text, Image } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -28,12 +28,22 @@ export default class Scenes extends Component {
     this.preLoadingAssets();
   }
 
+  cacheImages = (images) => {
+    return images.map((image) => {
+      if (typeof image === 'string') {
+        return Image.prefetch(image);
+      }
+      return Asset.fromModule(image).downloadAsync();
+    });
+  }
+
   async preLoadingAssets() {
     const allFonts = {
       ...fonts,
       ...Icon.Ionicons.font,
       ...Icon.FontAwesome.font,
     };
+
     const locale = await this.getCurrentLocale();
     await Font.loadAsync(allFonts);
 

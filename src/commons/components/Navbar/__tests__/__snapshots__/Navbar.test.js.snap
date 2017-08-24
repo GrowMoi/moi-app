@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Moicon it should render as expected 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "height": 45,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": -2,
+      },
+      undefined,
+    ]
+  }
+>
+  <Image
+    resizeMode="stretch"
+    source={1}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "height": 45,
+          "position": "relative",
+          "width": 750,
+        },
+        undefined,
+      ]
+    }
+    width={750}
+  />
+</View>
+`;

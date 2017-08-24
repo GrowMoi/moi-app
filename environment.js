@@ -1,3 +1,3 @@
 export default {
-  STORYBOOK: true,
+  STORYBOOK: false,
 };
