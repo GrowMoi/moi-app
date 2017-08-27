@@ -2,21 +2,23 @@
 
 exports[`Testing Tree View renders without crashing and take a snapshot of the structure 1`] = `
 <Styled(View)>
-  <Navbar />
-  <TouchableOpacity
-    activeOpacity={0.2}
-    focusedOpacity={0.7}
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      color="white"
-      disabled={false}
-      ellipsizeMode="tail"
-      onPress={[Function]}
+  <MoiBackground>
+    <Navbar />
+    <TouchableOpacity
+      activeOpacity={0.2}
+      focusedOpacity={0.7}
     >
-      Press Me!
-    </Text>
-  </TouchableOpacity>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        color="white"
+        disabled={false}
+        ellipsizeMode="tail"
+        onPress={[Function]}
+      >
+        Press Me!
+      </Text>
+    </TouchableOpacity>
+  </MoiBackground>
 </Styled(View)>
 `;

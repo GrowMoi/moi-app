@@ -25,7 +25,6 @@ const BackgroundImage = styled(Image)`
 export default class Navbar extends Component {
   state = {
     currentWidth: Dimensions.get('window').width,
-    currentImage: navbarImagePortrait,
   }
 
   componentWillMount() {
@@ -39,9 +38,7 @@ export default class Navbar extends Component {
 
   currentDimensions = () => {
     const { width } = Dimensions.get('window');
-    this.setState({
-      currentWidth: width,
-    });
+    this.setState({ currentWidth: width });
   }
 
   goToProfile = () => {
@@ -49,10 +46,12 @@ export default class Navbar extends Component {
   }
 
   render() {
+    console.log('Render NAVBAR');
+
     const { currentWidth } = this.state;
     const { width } = Dimensions.get('window');
 
-    const maxWidth = 500;
+    const maxWidth = 475;
     const currentImage = width >= maxWidth ? navbarImageLandscape : navbarImagePortrait;
 
     return (
