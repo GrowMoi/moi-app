@@ -31,7 +31,6 @@ export default class MoiBackground extends Component {
   }
 
   render() {
-    console.log('Render MOIBACKGROUND');
     const { width, height } = Dimensions.get('window');
     const { currentWidth } = this.state;
     const currentImage = currentWidth >= this.maxWidth ? backgroundLandscape : backgroundPortrait;

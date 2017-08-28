@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing Tree View renders without crashing and take a snapshot of the structure 1`] = `
-<Styled(View)>
-  <MoiBackground>
-    <Navbar />
+<MoiBackground>
+  <Navbar />
+  <Styled(View)>
     <TouchableOpacity
       activeOpacity={0.2}
       focusedOpacity={0.7}
@@ -19,6 +19,7 @@ exports[`Testing Tree View renders without crashing and take a snapshot of the s
         Press Me!
       </Text>
     </TouchableOpacity>
-  </MoiBackground>
-</Styled(View)>
+  </Styled(View)>
+  <BottomBar />
+</MoiBackground>
 `;
