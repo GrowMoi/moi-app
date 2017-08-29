@@ -7,6 +7,7 @@ import ActionSheet from '../../../commons/components/ActionSheets/ActionSheet';
 
 const BottomContainer = styled(View)`
   position: relative;
+  height: 50;
 `;
 
 const BarContainer = styled(View)`
@@ -20,13 +21,12 @@ const BarContainer = styled(View)`
 const MacetaContainer = styled(View)`
   position: absolute;
   align-items: center;
-  height: 100;
   left: 0;
   right: 0;
   bottom: 0;
 `;
 
-const ButtonMore = styled(Icon.Ionicons)`
+const ButtonMore = styled(TouchableOpacity)`
   position: absolute;
   bottom: 15;
   right: 15;
@@ -58,9 +58,9 @@ export default class TreeBottom extends Component {
       <BottomContainer>
         <BarContainer><BottomBar/></BarContainer>
         <MacetaContainer><Maceta width={200}/></MacetaContainer>
-        <TouchableOpacity onPress={this.showOptions}>
-          <ButtonMore name="ios-more" size={45} />
-        </TouchableOpacity>
+        <ButtonMore onPress={this.showOptions}>
+          <Icon.Ionicons name="ios-more" size={45} />
+        </ButtonMore>
         <ActionSheet
           options={options}
           visible={optionsAreVisible}

@@ -20,7 +20,6 @@ const treeImageAspectRatio = (4 / 5);
 const TreeImage = styled(Image)`
   width: ${props => props.width || 250};
   height: ${props => treeImageAspectRatio * props.width};
-  bottom: 50;
 `;
 
 export default class Tree extends Component {
