@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar it should render as expected 1`] = `
+exports[`Navbar it should render as expected with connected redux state 1`] = `
 <View
   style={
     Array [

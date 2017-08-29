@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
 @connect(mapStateToProps)
 class Navbar extends Component {
   static propTypes = {
-    device: PropTypes.object,
+    device: PropTypes.any,
   }
 
   goToProfile = () => {

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import 'jest-styled-components/native';
 import Navbar from '../Navbar';
 
-const initialState = {
+const store = {
   dimensions: {
     width: 320,
     height: 568,
@@ -13,9 +13,8 @@ const initialState = {
 };
 
 describe('Navbar', () => {
-  it('it should render as expected', () => {
-    const wrapper = shallow(<Navbar device={initialState}/>);
-
+  it('it should render as expected with connected redux state', () => {
+    const wrapper = shallow(<Navbar device={store}/>);
     const render = wrapper.dive();
     expect(render).toMatchSnapshot();
   });
