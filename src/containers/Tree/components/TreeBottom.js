@@ -65,6 +65,8 @@ export default class TreeBottom extends Component {
           options={options}
           visible={optionsAreVisible}
           hasCancelOption
+          supportedOrientations={['portrait', 'landscape', 'portrait-upside-down']}
+          hardwareAccelerated
           dismiss={this.hideOptions} />
       </BottomContainer>
     );
