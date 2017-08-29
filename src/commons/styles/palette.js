@@ -7,6 +7,7 @@ export const colors = {
   white: chroma('white'),
   black: chroma('black'),
   gray: chroma('#818180'),
+  darkGreen: chroma('#122C1B'),
 };
 
 const palette = {

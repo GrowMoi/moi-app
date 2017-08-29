@@ -59,4 +59,11 @@ export default {
     };
   },
 
+  get treeIcon() {
+    return {
+      icon: require('../../../../assets/icons/treeIcon/tree_icon.png'),
+      type: 'square',
+    };
+  },
+
 };
