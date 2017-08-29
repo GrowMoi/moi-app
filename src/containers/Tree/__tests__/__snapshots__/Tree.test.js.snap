@@ -20,25 +20,6 @@ exports[`Testing Tree View renders without crashing and take a snapshot of the s
       </Text>
     </TouchableOpacity>
   </Styled(View)>
-  <Styled(View)>
-    <Styled(View)>
-      <BottomBar />
-    </Styled(View)>
-    <Styled(View)>
-      <Maceta
-        width={200}
-      />
-    </Styled(View)>
-    <TouchableOpacity
-      activeOpacity={0.2}
-      focusedOpacity={0.7}
-      onPress={[Function]}
-    >
-      <Styled(Icon)
-        name="ios-more"
-        size={45}
-      />
-    </TouchableOpacity>
-  </Styled(View)>
+  <TreeBottom />
 </MoiBackground>
 `;
