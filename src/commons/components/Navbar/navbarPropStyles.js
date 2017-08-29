@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from 'expo';
+import { Platform } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Font } from '../../styles';
 import MoIcon from '../MoIcon/MoIcon';
@@ -25,7 +26,14 @@ export default {
     color: '#FFF',
     fontSize: 20,
     fontFamily: Font.museo('bolder'),
-    top: -25,
+    ...Platform.select({
+      ios: {
+        top: -25,
+      },
+      android: {
+        top: -10,
+      },
+    }),
   },
 
   leftButtonStyle: {

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
-import { Image, Dimensions, StatusBar, View } from 'react-native';
-import { ScreenOrientation } from 'expo';
+import { connect } from 'react-redux';
+import { Image, StatusBar, View } from 'react-native';
 import styled from 'styled-components/native';
 import navbarImageLandscape from '../../../../assets/images/navbar/barra_sup_landscape.png';
 import navbarImagePortrait from '../../../../assets/images/navbar/barra_superior_portrait.png';
 import { Size } from '../../styles';
+import { LANDSCAPE } from '../../../constants';
 
 const Bar = styled(View)`
   position: absolute;
@@ -22,26 +24,14 @@ const BackgroundImage = styled(Image)`
   height: ${Size.navbarHeight};
 `;
 
-export default class Navbar extends Component {
-  state = {
-    currentWidth: Dimensions.get('window').width,
-    currentImage: navbarImagePortrait,
-  }
+const mapStateToProps = state => ({
+  device: state.device,
+});
 
-  componentWillMount() {
-    ScreenOrientation.allow('ALL');
-    Dimensions.addEventListener('change', this.currentDimensions);
-  }
-
-  componentWillUnmount() {
-    Dimensions.removeEventListener('change', this.currentDimensions);
-  }
-
-  currentDimensions = () => {
-    const { width } = Dimensions.get('window');
-    this.setState({
-      currentWidth: width,
-    });
+@connect(mapStateToProps)
+class Navbar extends Component {
+  static propTypes = {
+    device: PropTypes.any,
   }
 
   goToProfile = () => {
@@ -49,21 +39,21 @@ export default class Navbar extends Component {
   }
 
   render() {
-    const { currentWidth } = this.state;
-    const { width } = Dimensions.get('window');
-
-    const maxWidth = 500;
-    const currentImage = width >= maxWidth ? navbarImageLandscape : navbarImagePortrait;
+    const { device } = this.props;
+    const { width, orientation } = device.dimensions;
+    const currentImage = orientation === LANDSCAPE ? navbarImageLandscape : navbarImagePortrait;
 
     return (
       <Bar>
         <StatusBar hidden />
         <BackgroundImage
           resizeMode='stretch'
-          width={currentWidth}
+          width={width}
           source={currentImage}
         />
       </Bar>
     );
   }
 }
+
+export default Navbar;

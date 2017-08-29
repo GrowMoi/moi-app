@@ -34,7 +34,8 @@
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true,
-      "modules": true
+      "modules": true,
+      "experimentalDecorators": true
     }
   },
   "env": {

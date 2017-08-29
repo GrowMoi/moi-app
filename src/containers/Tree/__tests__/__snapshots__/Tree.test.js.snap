@@ -1,22 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing Tree View renders without crashing and take a snapshot of the structure 1`] = `
-<Styled(View)>
+<MoiBackground>
   <Navbar />
-  <TouchableOpacity
-    activeOpacity={0.2}
-    focusedOpacity={0.7}
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      color="white"
-      disabled={false}
-      ellipsizeMode="tail"
-      onPress={[Function]}
-    >
-      Press Me!
-    </Text>
-  </TouchableOpacity>
-</Styled(View)>
+  <Styled(View)>
+    <Styled(Image)
+      resizeMode="contain"
+      source={1}
+      width={300}
+    />
+  </Styled(View)>
+  <TreeBottom />
+</MoiBackground>
 `;
