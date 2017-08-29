@@ -16,10 +16,29 @@ exports[`Testing Tree View renders without crashing and take a snapshot of the s
         ellipsizeMode="tail"
         onPress={[Function]}
       >
-        Press Me!
+        Contenido
       </Text>
     </TouchableOpacity>
   </Styled(View)>
-  <BottomBar />
+  <Styled(View)>
+    <Styled(View)>
+      <BottomBar />
+    </Styled(View)>
+    <Styled(View)>
+      <Maceta
+        width={200}
+      />
+    </Styled(View)>
+    <TouchableOpacity
+      activeOpacity={0.2}
+      focusedOpacity={0.7}
+      onPress={[Function]}
+    >
+      <Styled(Icon)
+        name="ios-more"
+        size={45}
+      />
+    </TouchableOpacity>
+  </Styled(View)>
 </MoiBackground>
 `;

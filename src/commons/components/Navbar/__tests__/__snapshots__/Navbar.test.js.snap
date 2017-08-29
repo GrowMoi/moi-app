@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Moicon it should render as expected 1`] = `
+exports[`Navbar it should render as expected 1`] = `
 <View
   style={
     Array [
@@ -15,23 +15,15 @@ exports[`Moicon it should render as expected 1`] = `
     ]
   }
 >
-  <Image
+  <StatusBar
+    animated={false}
+    hidden={true}
+    showHideTransition="fade"
+  />
+  <Styled(Image)
     resizeMode="stretch"
     source={1}
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 45,
-          "position": "relative",
-          "width": 750,
-        },
-        undefined,
-      ]
-    }
-    width={750}
+    width={320}
   />
 </View>
 `;

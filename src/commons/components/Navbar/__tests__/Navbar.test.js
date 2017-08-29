@@ -1,15 +1,22 @@
 import React from 'react';
 import 'react-native';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import 'jest-styled-components/native';
 import Navbar from '../Navbar';
 
-describe('Moicon', () => {
-  it('it should render as expected', () => {
-    const wrapper = renderer.create(<Navbar />);
-    wrapper.toJSON();
+const initialState = {
+  dimensions: {
+    width: 320,
+    height: 568,
+    orientation: 'PORTRAIT',
+  },
+};
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper).toBeTruthy();
+describe('Navbar', () => {
+  it('it should render as expected', () => {
+    const wrapper = shallow(<Navbar device={initialState}/>);
+
+    const render = wrapper.dive();
+    expect(render).toMatchSnapshot();
   });
 });

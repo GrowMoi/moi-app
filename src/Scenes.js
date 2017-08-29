@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import { Util, AppLoading, Font, Icon, Asset } from 'expo';
-import { Text, Image } from 'react-native';
+import { Util, AppLoading, Font, Icon } from 'expo';
+import { Text, Dimensions } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -13,6 +13,7 @@ import messages from './messages';
 import store from './store';
 import { flattenMessages } from './commons/utils';
 import fonts from '../assets/fonts';
+import { setDeviceDimensions } from './actions/deviceActions';
 
 addLocaleData([...en, ...es]);
 
@@ -28,13 +29,17 @@ export default class Scenes extends Component {
     this.preLoadingAssets();
   }
 
-  cacheImages = (images) => {
-    return images.map((image) => {
-      if (typeof image === 'string') {
-        return Image.prefetch(image);
-      }
-      return Asset.fromModule(image).downloadAsync();
-    });
+  componentDidMount() {
+    this.setOrientation();
+    Dimensions.addEventListener('change', this.setOrientation);
+  }
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener('change', this.setOrientation);
+  }
+
+  setOrientation = () => {
+    store.dispatch(setDeviceDimensions());
   }
 
   async preLoadingAssets() {
@@ -66,7 +71,10 @@ export default class Scenes extends Component {
     if (appIsReady) {
       return (
         <Provider store={store}>
-          <IntlProvider locale={locale} messages={flattenMessages(messages[locale])} textComponent={Text}>
+          <IntlProvider
+            locale={locale}
+            messages={flattenMessages(messages[locale])}
+            textComponent={Text}>
             <RouterWithRedux scenes={routes}/>
           </IntlProvider>
         </Provider>
@@ -76,4 +84,3 @@ export default class Scenes extends Component {
     return <AppLoading />;
   }
 }
-
