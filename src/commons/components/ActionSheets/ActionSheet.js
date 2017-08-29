@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'expo';
-import { Modal, TouchableOpacity, Animated, Platform } from 'react-native';
+import { Modal, TouchableOpacity, Animated, Platform, StatusBar } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { Palette, Size } from '../../styles';

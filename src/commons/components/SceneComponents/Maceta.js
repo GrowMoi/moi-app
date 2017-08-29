@@ -4,10 +4,10 @@ import { Image } from 'react-native';
 import styled from 'styled-components/native';
 import maceta from '../../../../assets/images/maceta/maceta.png';
 
+const aspectRatio = (4 / 11);
 const MacetaImage = styled(Image)`
-  left: 0;
-  right: 0;
   width: ${props => props.width || 250};
+  height: ${props => aspectRatio * props.width};
 `;
 
 
