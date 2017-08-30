@@ -7,7 +7,7 @@ export const colors = {
   white: chroma('white'),
   black: chroma('black'),
   gray: chroma('#818180'),
-  darkGreen: chroma('#122C1B'),
+  darkGreen: chroma('#888a4e'),
 };
 
 const palette = {
@@ -20,6 +20,7 @@ const palette = {
   black: colors.black,
   neutral: colors.gray,
   white: colors.white,
+  menuBackground: colors.darkGreen,
 };
 
 export default palette;
