@@ -5,7 +5,7 @@ import CenterFontView from '../help-components/CenterFontView';
 
 import { ContentPreview } from '../../../src/commons/components/Neuron';
 
-const stories = storiesOf('Neurons', module);
+const stories = storiesOf('ContentPreview', module);
 stories.addDecorator(getStory => <CenterFontView>{getStory()}</CenterFontView>);
 
 // Neurons Components
