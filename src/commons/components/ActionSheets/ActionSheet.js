@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'expo';
-import { Modal, TouchableOpacity, Animated, Platform, StatusBar } from 'react-native';
+import { Modal, TouchableOpacity, Animated, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { Palette, Size } from '../../styles';
@@ -18,6 +18,8 @@ const OptionsBox = styled(Animated.View)`
   position: relative;
   margin-horizontal: ${Platform.OS === 'android' ? Size.spaceLarge : 0};
   ${Platform.OS === 'android' && css`
+    width: 280;
+    align-self: center;
     shadow-opacity: 0.3;
     shadow-radius: 2.5px;
     shadow-color: ${Palette.black.alpha(0.4).css()};
@@ -73,7 +75,7 @@ export default class ActionSheet extends Component {
   }
 
   render() {
-    const { visible, hasCancelOption, options = [] } = this.props;
+    const { visible, hasCancelOption, options = [], ...rest } = this.props;
     const iconSize = 20;
     const nearFar = this.scaleValue.interpolate({
       inputRange: [0, 0.5, 1],
@@ -90,6 +92,7 @@ export default class ActionSheet extends Component {
         visible={visible}
         onRequestClose={this.dismiss}
         onShow={this.onShow}
+        {...rest}
       >
         <Overlay onPress={this.dismiss} activeOpacity={1}>
           <OptionsBox style={currentAnim}>

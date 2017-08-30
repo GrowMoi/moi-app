@@ -5,8 +5,8 @@ export default {
   fontTitle: 25,
   fontDescription: 11,
 
-  fontHeader: 17,
-  fontHeaderSmall: 14,
+  fontHeader: 20,
+  fontHeaderSmall: 15,
 
   spaceXSmall: 5,
   spaceSmall: 10,

@@ -6,10 +6,11 @@ import { Palette, Size, Font } from '../../styles';
 const StyledHeader = styled(Text)`
   font-size: ${props => (props.small ? Size.fontHeaderSmall : Size.fontHeader)};
   font-family: ${(props) => {
-    if (props.bolder) return Font.futura('bolder');
-    else if (props.heavy) return Font.futura('heavy');
-    else if (props.condensed) return Font.futura('condensed');
-    return Font.futura();
+    if (props.bolder) return Font.museo('bolder');
+    else if (props.heavy) return Font.museo('heavy');
+    else if (props.condensed) return Font.museo('condensed');
+    else if (props.lighter) return Font.museo('lighter');
+    return Font.museo();
   }};
   color: ${(props) => {
     if (props.inverted) return Palette.invertedText;
