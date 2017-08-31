@@ -11,13 +11,20 @@ import es from 'react-intl/locale-data/es';
 import routes from './routes';
 import messages from './messages';
 import store from './store';
-import { flattenMessages } from './commons/utils';
+import { flattenMessages, cacheImages } from './commons/utils';
+import allImages from '../assets/images';
 import fonts from '../assets/fonts';
 import { setDeviceDimensions } from './actions/deviceActions';
 
 addLocaleData([...en, ...es]);
 
 const RouterWithRedux = connect()(Router);
+
+const allFonts = {
+  ...fonts,
+  ...Icon.Ionicons.font,
+  ...Icon.FontAwesome.font,
+};
 
 export default class Scenes extends Component {
   state = {
@@ -26,11 +33,8 @@ export default class Scenes extends Component {
   }
 
   componentWillMount() {
-    this.preLoadingAssets();
-  }
-
-  componentDidMount() {
     this.setOrientation();
+    this.preLoadingAssets();
     Dimensions.addEventListener('change', this.setOrientation);
   }
 
@@ -43,13 +47,8 @@ export default class Scenes extends Component {
   }
 
   async preLoadingAssets() {
-    const allFonts = {
-      ...fonts,
-      ...Icon.Ionicons.font,
-      ...Icon.FontAwesome.font,
-    };
-
     const locale = await this.getCurrentLocale();
+    await cacheImages(allImages);
     await Font.loadAsync(allFonts);
 
     this.setState({ appIsReady: true, locale });
@@ -81,6 +80,6 @@ export default class Scenes extends Component {
       );
     }
 
-    return <AppLoading />;
+    return <Text>Loading...</Text>;
   }
 }
