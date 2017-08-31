@@ -67,19 +67,18 @@ export default class Scenes extends Component {
   render() {
     const { locale, appIsReady } = this.state;
 
-    if (appIsReady) {
-      return (
-        <Provider store={store}>
-          <IntlProvider
-            locale={locale}
-            messages={flattenMessages(messages[locale])}
-            textComponent={Text}>
-            <RouterWithRedux scenes={routes}/>
-          </IntlProvider>
-        </Provider>
-      );
+    if (!appIsReady) {
+      return <AppLoading/>;
     }
-
-    return <Text>Loading...</Text>;
+    return (
+      <Provider store={store}>
+        <IntlProvider
+          locale={locale}
+          messages={flattenMessages(messages[locale])}
+          textComponent={Text}>
+          <RouterWithRedux scenes={routes}/>
+        </IntlProvider>
+      </Provider>
+    );
   }
 }

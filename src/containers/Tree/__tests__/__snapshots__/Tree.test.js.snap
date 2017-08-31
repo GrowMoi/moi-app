@@ -2,14 +2,31 @@
 
 exports[`Testing Tree View renders without crashing and take a snapshot of the structure 1`] = `
 <MoiBackground>
-  <Navbar />
-  <Styled(View)>
+  <ScrollViewMock
+    contentContainerStyle={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "flex-end",
+        "position": "relative",
+        "zIndex": 1,
+      }
+    }
+    maximumZoomScale={3}
+    minimumZoomScale={1}
+  >
+    <Styled(View)>
+      <Maceta
+        width={200}
+      />
+    </Styled(View)>
     <Styled(Image)
       resizeMode="contain"
       source={1}
       width={300}
     />
-  </Styled(View)>
+  </ScrollViewMock>
+  <Navbar />
   <TreeBottom />
 </MoiBackground>
 `;
