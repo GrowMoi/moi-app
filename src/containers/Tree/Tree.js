@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image, ScrollView, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
+import ViewTransformer from 'react-native-view-transformer';
 import { ScreenOrientation } from 'expo';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -12,10 +13,7 @@ import treeStaticImage from '../../../assets/images/tree/static_tree.png';
 const styles = StyleSheet.create({
   treeView: {
     flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
     position: 'relative',
-    zIndex: 1,
   },
 });
 
@@ -27,13 +25,13 @@ const MacetaContainer = styled(View)`
   bottom: 0;
 `;
 
-
 const treeImageAspectRatio = (4 / 5);
 const TreeImage = styled(Image)`
   width: ${props => props.width || 250};
   height: ${props => treeImageAspectRatio * props.width};
   position: absolute;
   bottom: 50;
+  align-self: center;
 `;
 
 export default class Tree extends Component {
@@ -44,16 +42,15 @@ export default class Tree extends Component {
   render() {
     return (
       <MoiBackground>
-        <ScrollView
-          contentContainerStyle={styles.treeView}
-          maximumZoomScale={3}
-          minimumZoomScale={1}>
+        <ViewTransformer
+          style={styles.treeView}
+          maxScale={4}>
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           <TreeImage
             width={300}
             source={treeStaticImage}
             resizeMode='contain' />
-        </ScrollView>
+        </ViewTransformer>
         <Navbar/>
         <TreeBottom />
       </MoiBackground>

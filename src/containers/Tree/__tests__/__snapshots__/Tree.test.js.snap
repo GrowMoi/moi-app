@@ -2,18 +2,19 @@
 
 exports[`Testing Tree View renders without crashing and take a snapshot of the structure 1`] = `
 <MoiBackground>
-  <ScrollViewMock
-    contentContainerStyle={
+  <ViewTransformer
+    enableResistance={false}
+    enableScale={true}
+    enableTransform={true}
+    enableTranslate={true}
+    maxOverScrollDistance={20}
+    maxScale={4}
+    style={
       Object {
-        "alignItems": "center",
         "flex": 1,
-        "justifyContent": "flex-end",
         "position": "relative",
-        "zIndex": 1,
       }
     }
-    maximumZoomScale={3}
-    minimumZoomScale={1}
   >
     <Styled(View)>
       <Maceta
@@ -25,7 +26,7 @@ exports[`Testing Tree View renders without crashing and take a snapshot of the s
       source={1}
       width={300}
     />
-  </ScrollViewMock>
+  </ViewTransformer>
   <Navbar />
   <TreeBottom />
 </MoiBackground>
