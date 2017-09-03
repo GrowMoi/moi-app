@@ -2,31 +2,9 @@
 
 exports[`Testing Tree View renders without crashing and take a snapshot of the structure 1`] = `
 <MoiBackground>
-  <ViewTransformer
-    enableResistance={false}
-    enableScale={true}
-    enableTransform={true}
-    enableTranslate={true}
-    maxOverScrollDistance={20}
-    maxScale={4}
-    style={
-      Object {
-        "flex": 1,
-        "position": "relative",
-      }
-    }
-  >
-    <Styled(View)>
-      <Maceta
-        width={200}
-      />
-    </Styled(View)>
-    <Styled(Image)
-      resizeMode="contain"
-      source={1}
-      width={300}
-    />
-  </ViewTransformer>
+  <Styled(View)>
+    <Tree />
+  </Styled(View)>
   <Navbar />
   <TreeBottom />
 </MoiBackground>

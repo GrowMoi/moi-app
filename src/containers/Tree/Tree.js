@@ -1,40 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image, StyleSheet } from 'react-native';
-import ViewTransformer from 'react-native-view-transformer';
 import { ScreenOrientation } from 'expo';
+import { View } from 'react-native';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import TreeBottom from './components/TreeBottom';
-import { Maceta } from '../../commons/components/SceneComponents';
-import treeStaticImage from '../../../assets/images/tree/static_tree.png';
+import Tree from '../../commons/components/Tree';
 
-const styles = StyleSheet.create({
-  treeView: {
-    flex: 1,
-    position: 'relative',
-  },
-});
-
-const MacetaContainer = styled(View)`
-  position: absolute;
-  align-items: center;
-  left: 0;
-  right: 0;
-  bottom: 0;
+const ContentScreen = styled(View)`
+  flex: 1;
 `;
 
-const treeImageAspectRatio = (4 / 5);
-const TreeImage = styled(Image)`
-  width: ${props => props.width || 250};
-  height: ${props => treeImageAspectRatio * props.width};
-  position: absolute;
-  bottom: 50;
-  align-self: center;
-`;
-
-export default class Tree extends Component {
+export default class TreeScene extends Component {
   componentDidMount() {
     ScreenOrientation.allow('ALL');
   }
@@ -42,15 +20,9 @@ export default class Tree extends Component {
   render() {
     return (
       <MoiBackground>
-        <ViewTransformer
-          style={styles.treeView}
-          maxScale={4}>
-          <MacetaContainer><Maceta width={200}/></MacetaContainer>
-          <TreeImage
-            width={300}
-            source={treeStaticImage}
-            resizeMode='contain' />
-        </ViewTransformer>
+        <ContentScreen>
+          <Tree />
+        </ContentScreen>
         <Navbar/>
         <TreeBottom />
       </MoiBackground>
