@@ -9,6 +9,7 @@ export default [
   require('./navbar/barra_superior_portrait.png'),
   require('./tabBar/tabBar.png'),
   require('./tree/static_tree.png'),
+  require('./neurona/neurona_descubierta.png'),
 
   /**
    * Moi Tree
