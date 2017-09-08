@@ -38,9 +38,7 @@ export default class Level1 extends Component {
           resizeMode='contain'
         >
           <Neuron
-            position={{
-              left: 10,
-            }}
+            position={{ left: 10 }}
           />
         </TreeLevel1>
       </Container>
