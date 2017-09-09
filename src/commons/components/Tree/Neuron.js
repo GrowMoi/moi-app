@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableWithoutFeedback, Animated } from 'react-native';
+import { TouchableWithoutFeedback, Animated, View } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import neuronaDescubierta from '../../../../assets/images/neurona/neurona_descubierta.png';
 
-const NeuronImage = styled(Animated.Image)`
+const NeuronContainer = styled(View)`
+  justify-content: center;
+  align-items: center;
   width: ${props => props.size};
   height: ${props => props.size};
-  position: absolute;
   ${props => props.pos.left && css`
     left: ${props.pos.left};
   `};
@@ -22,13 +23,21 @@ const NeuronImage = styled(Animated.Image)`
   `};
 `;
 
+const NeuronImage = styled(Animated.Image)`
+  width: ${props => props.size};
+  height: ${props => props.size};
+  position: absolute;
+`;
+
 export default class Neuron extends Component {
   componentWillMount() {
     this.animatedValue = new Animated.Value(1);
   }
 
-  onPress = () => {
+  onPressNeuron = (e) => {
     // Alert.alert('Hi');
+    const { onPress } = this.props;
+    if (onPress) onPress(e);
   }
 
   onPressIn = () => {
@@ -45,32 +54,53 @@ export default class Neuron extends Component {
     }).start();
   }
 
+  calculateSize(contentsLearned, totalContents) {
+    const { max, min } = this.props.size;
+    const percentage = (max - min) / totalContents;
+    const value = (contentsLearned * percentage) + min;
+
+    return value;
+  }
+
   render() {
-    const { position, size, style } = this.props;
-    const animatedStyle = {
-      transform: [{ scale: this.animatedValue }],
-    };
+    const {
+      position,
+      style,
+      size,
+      contentsLearned,
+      totalContents,
+    } = this.props;
+    const { max: maxSize } = size;
+    const animatedStyle = { transform: [{ scale: this.animatedValue }] };
+    const neuronSize = this.calculateSize(contentsLearned, totalContents);
 
     return (
-      <TouchableWithoutFeedback
-        onPressOut={this.onPressOut}
-        onPressIn={this.onPressIn}
-        onPress={this.onPress}
+      <NeuronContainer
+        size={maxSize}
+        pos={position}
       >
-        <NeuronImage
-          pos={position}
-          style={[animatedStyle, style]}
-          size={size}
-          source={neuronaDescubierta}
-          resizeMode='contain'
-        />
-      </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback
+          onPressOut={this.onPressOut}
+          onPressIn={this.onPressIn}
+          onPress={this.onPressNeuron}
+        >
+          <NeuronImage
+            size={neuronSize}
+            style={[animatedStyle, style]}
+            source={neuronaDescubierta}
+            resizeMode='contain'
+          />
+        </TouchableWithoutFeedback>
+      </NeuronContainer>
     );
   }
 }
 
 Neuron.defaultProps = {
-  size: 35,
+  size: {
+    max: 50,
+    min: 35,
+  },
 };
 
 Neuron.propTypes = {
@@ -78,8 +108,14 @@ Neuron.propTypes = {
   name: PropTypes.string,
   color: PropTypes.string,
   state: PropTypes.string,
-  size: PropTypes.number,
+  size: PropTypes.shape({
+    max: PropTypes.number,
+    min: PropTypes.number,
+  }),
+  totalContents: PropTypes.number,
+  contentsLearned: PropTypes.number,
   style: PropTypes.object,
+  onPress: PropTypes.func,
   position: PropTypes.shape({
     top: PropTypes.number,
     bottom: PropTypes.number,

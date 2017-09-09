@@ -37,7 +37,10 @@ export default class Tree extends Component {
 
     switch (level) {
       case 1:
-        return { component: <Level1 />, zoomScale: 1 };
+        return {
+          component: <Level1 />,
+          zoomScale: 1,
+        };
       case 9:
         return { component: <Level1 />, zoomScale: 1 };
       default:
