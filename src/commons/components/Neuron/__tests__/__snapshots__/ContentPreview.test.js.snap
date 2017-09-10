@@ -8,10 +8,24 @@ exports[`Content Preview it should render row as expected 1`] = `
     Array [
       Object {
         "alignSelf": "stretch",
-        "backgroundColor": "#ffffff",
-        "borderColor": "rgba(129,129,128,0.2)",
-        "borderWidth": 1,
+        "backgroundColor": "#9fbc65",
+        "borderColor": "transparent",
+        "borderLeftColor": "transparent",
+        "borderRadius": 10,
+        "borderRightColor": "rgba(255,255,255,0.4)",
+        "borderTopColor": "rgba(255,255,255,0.4)",
+        "borderWidth": 2,
         "flexDirection": "row",
+        "marginBottom": 10,
+        "paddingHorizontal": 10,
+        "paddingVertical": 10,
+        "shadowColor": "#4a4b21",
+        "shadowOffset": Object {
+          "height": 5,
+          "width": -5,
+        },
+        "shadowOpacity": 0.2,
+        "shadowRadius": 2,
       },
       undefined,
     ]

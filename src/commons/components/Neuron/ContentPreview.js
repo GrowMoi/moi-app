@@ -8,9 +8,29 @@ import { Size, Palette } from '../../styles';
 const RowContainer = styled(TouchableOpacity)`
   flex-direction: row;
   align-self: stretch;
-  background-color: ${Palette.white};
-  border-color: ${Palette.neutral.alpha(0.2).css()};
-  border-width: 1;
+  background-color: ${(props) => {
+    if (props.inverted) return '#b9cc91';
+    return '#9fbc65';
+  }};
+  border-radius: 10;
+  shadow-color: ${Palette.dark};
+  shadow-opacity: 0.2;
+  shadow-offset: -5px 5px;
+  shadow-radius: 2;
+  margin-bottom: ${Size.spaceSmall};
+  padding-horizontal: ${Size.spaceSmall};
+  padding-vertical: ${Size.spaceSmall};
+  border-color: transparent;
+  border-right-color: ${(props) => {
+    if (props.inverted) return 'transparent';
+    return Palette.white.alpha(0.4).css();
+  }};
+  border-top-color: ${Palette.white.alpha(0.4).css()};
+  border-left-color: ${(props) => {
+    if (props.inverted) return Palette.white.alpha(0.4).css();
+    return 'transparent';
+  }};
+  border-width: 2;
 `;
 
 const ContentImage = styled(Image)`
@@ -58,9 +78,9 @@ export default class ContentPreview extends Component {
   }
 
   render() {
-    const { onPress } = this.props;
+    const { onPress, inverted } = this.props;
     return (
-      <RowContainer onPress={onPress}>
+      <RowContainer onPress={onPress} inverted={inverted}>
         {this.rowContent}
       </RowContainer>
     );
