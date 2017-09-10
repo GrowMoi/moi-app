@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { TouchableWithoutFeedback, Animated, View } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import neuronaDescubierta from '../../../../assets/images/neurona/neurona_descubierta.png';
+import neuronaAzul from '../../../../assets/images/neurona/neurona_color_azul.png';
+import neuronaVerde from '../../../../assets/images/neurona/neurona_color_verde.png';
+import neuronaFucsia from '../../../../assets/images/neurona/neurona_color_fucsia.png';
+import neuronaNaranja from '../../../../assets/images/neurona/neurona_color_naranja.png';
+import neuronaAmarilla from '../../../../assets/images/neurona/neurona_color_amarillo.png';
+import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_color_naranja_oscuro.png'
 
 const NeuronContainer = styled(View)`
   justify-content: center;
@@ -23,9 +29,13 @@ const NeuronContainer = styled(View)`
   `};
 `;
 
+const neuronWidth = 390;
+const neuronHeight = 368;
+const aspect = neuronWidth / neuronHeight;
+
 const NeuronImage = styled(Animated.Image)`
   width: ${props => props.size};
-  height: ${props => props.size};
+  height: ${props => Math.round(props.size / aspect)};
   position: absolute;
 `;
 
@@ -42,7 +52,7 @@ export default class Neuron extends Component {
 
   onPressIn = () => {
     Animated.spring(this.animatedValue, {
-      toValue: 0.8,
+      toValue: 0.5,
     }).start();
   }
 
@@ -60,6 +70,31 @@ export default class Neuron extends Component {
     const value = (contentsLearned * percentage) + min;
 
     return value;
+  }
+
+  get neuronColor() {
+    const {
+      color,
+      contentsLearned,
+    } = this.props;
+
+    if (contentsLearned === 0 || !color) return neuronaDescubierta;
+    switch (color) {
+      case 'blue':
+        return neuronaAzul;
+      case 'yellow':
+        return neuronaAmarilla;
+      case 'orange':
+        return neuronaNaranja;
+      case 'dark_orange':
+        return neuronaNaranjaOscuro;
+      case 'fuchsia':
+        return neuronaFucsia;
+      case 'green':
+        return neuronaVerde;
+      default:
+        return neuronaDescubierta;
+    }
   }
 
   render() {
@@ -87,7 +122,7 @@ export default class Neuron extends Component {
           <NeuronImage
             size={neuronSize}
             style={[animatedStyle, style]}
-            source={neuronaDescubierta}
+            source={this.neuronColor}
             resizeMode='contain'
           />
         </TouchableWithoutFeedback>
@@ -106,7 +141,10 @@ Neuron.defaultProps = {
 Neuron.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
-  color: PropTypes.string,
+  color: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
   state: PropTypes.string,
   size: PropTypes.shape({
     max: PropTypes.number,

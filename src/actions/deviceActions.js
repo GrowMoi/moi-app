@@ -1,3 +1,3 @@
-export const SET_DEVICE_DIMENSIONS = 'SET_DEVICE_DIMENSIONS';
+import * as actionTypes from './actionTypes';
 
-export const setDeviceDimensions = () => ({ type: SET_DEVICE_DIMENSIONS });
+export const setDeviceDimensions = () => ({ type: actionTypes.SET_DEVICE_DIMENSIONS });

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Image, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components/native';
 import Neuron from './Neuron';
 import treeLevel1Gray from '../../../../assets/images/tree/nivel_1/nivel_1_descubierta.png';
 import treeLevel1Color from '../../../../assets/images/tree/nivel_1/nivel_1_color.png';
+import actions from '../../../actions/treeActions';
 
 const treeHeight = 371;
 const treeWidth = 213;
@@ -17,6 +19,7 @@ const TreeLevel1 = styled(Image)`
   position: absolute;
   bottom: 50;
   align-self: center;
+  overflow: visible;
 `;
 
 const Container = styled(View)`
@@ -24,6 +27,9 @@ const Container = styled(View)`
   flex: 1;
 `;
 
+@connect(store => ({
+  userTree: store.tree.userTree,
+}))
 export default class Level1 extends Component {
   static defaultProps = {
     width: 50,
@@ -31,33 +37,40 @@ export default class Level1 extends Component {
 
   static propTypes = {
     width: PropTypes.number,
+    userTree: PropTypes.object,
   }
 
   onPressNeuron = () => {
-    Actions.content({ neuron_id: 1, title: 'Jugar' });
+    const { tree } = this.props.userTree;
+    setTimeout(() => {
+      Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
+    }, 400);
   }
 
   render() {
-    const { width } = this.props;
-    const contentsLearned = 0;
-    const totalContents = 8;
-    const currentTree = contentsLearned > 0 ? treeLevel1Color : treeLevel1Gray;
+    const { width, userTree } = this.props;
+    const { tree } = userTree;
+    const contentsLearned = tree.root.contentsLearned;
+    const totalContents = tree.root.totalContents;
+    const treeColor = tree.root.state === 'florecida' ? treeLevel1Color : treeLevel1Gray;
+    const neuronColor = tree.root.state === 'florecida' && 'yellow';
 
     return (
       <Container>
         <TreeLevel1
           width={width}
-          source={currentTree}
+          source={treeColor}
           resizeMode='contain'
         >
           <Neuron
             onPress={this.onPressNeuron}
-            name='Jugar'
-            id={1}
+            color={neuronColor}
+            name={tree.root.title}
+            id={tree.root.id}
             contentsLearned={contentsLearned}
             totalContents={totalContents}
-            size={{ max: 50, min: 37 }}
-            position={{ left: 7, bottom: 6 }}
+            size={{ max: 50, min: 30 }}
+            position={{ left: 7, bottom: 8 }}
           />
         </TreeLevel1>
       </Container>

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image, StyleSheet } from 'react-native';
+import { AppLoading } from 'expo';
+import { View, Image, StyleSheet, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer';
 import { Maceta } from '../SceneComponents';
+import actions from '../../../actions/treeActions';
 
 import Level1 from './Level1';
 
@@ -14,6 +16,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+const Loading = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
 
 const TreeContainer = styled(View)`
   flex: 1;
@@ -30,10 +38,27 @@ const MacetaContainer = styled(View)`
 
 @connect(store => ({
   device: store.device,
-}))
+  userTree: store.tree.userTree,
+}), {
+  loadTreeAsync: actions.loadTreeAsync,
+})
 export default class Tree extends Component {
+  state = {
+    loading: true,
+  }
+
+  async componentDidMount() {
+    const { loadTreeAsync } = this.props;
+    await loadTreeAsync(1);
+
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 2000);
+  }
+
   get level() {
-    const level = 1;
+    const { userTree } = this.props;
+    const level = userTree.meta.depth;
 
     switch (level) {
       case 1:
@@ -49,6 +74,9 @@ export default class Tree extends Component {
   }
 
   render() {
+    const { loading } = this.state;
+    if (loading) return <Loading><AppLoading /></Loading>;
+
     return (
       <TreeContainer>
         <ViewTransformer

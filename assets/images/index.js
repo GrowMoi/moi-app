@@ -9,7 +9,15 @@ export default [
   require('./navbar/barra_superior_portrait.png'),
   require('./tabBar/tabBar.png'),
   require('./tree/static_tree.png'),
+
+  // Neurons
   require('./neurona/neurona_descubierta.png'),
+  require('./neurona/neurona_color_amarillo.png'),
+  require('./neurona/neurona_color_azul.png'),
+  require('./neurona/neurona_color_fucsia.png'),
+  require('./neurona/neurona_color_naranja.png'),
+  require('./neurona/neurona_color_naranja_oscuro.png'),
+  require('./neurona/neurona_color_verde.png'),
 
   /**
    * Moi Tree
@@ -17,6 +25,7 @@ export default [
 
   // Level 1
   require('./tree/nivel_1/nivel_1_descubierta.png'),
+  require('./tree/nivel_1/nivel_1_color.png'),
 
   // Level 2
   require('./tree/nivel_2/nivel_2_descubierta_r1.png'),

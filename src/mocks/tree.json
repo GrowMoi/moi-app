@@ -3,8 +3,8 @@
     "root":{
       "id":1,
       "title":"Jugar",
-      "totalContents": 8,
-      "contentsLearned": 4,
+      "totalContents": 13,
+      "contentsLearned": 0,
       "parent_id":null,
       "children":[
           {
