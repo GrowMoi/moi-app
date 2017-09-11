@@ -31,7 +31,7 @@ const routes = Actions.create(
           key='singleContent'
           component={SingleContentScene}
           {...navbarPropStyles}
-          title='Contenido'
+          title='Contenido Individual'
         />
         <Scene
           key="profile"

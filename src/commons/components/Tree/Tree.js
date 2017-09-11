@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer';
 import { Maceta } from '../SceneComponents';
 import actions from '../../../actions/treeActions';
+import loadingGif from '../../../../assets/images/loading.gif';
 
 // Levels
 import Level1 from './Level1';
@@ -37,6 +38,11 @@ const MacetaContainer = styled(View)`
   bottom: 0;
 `;
 
+const LoadingNeuron = styled(Image)`
+  width: 40px;
+  height: 40px;
+`;
+
 @connect(store => ({
   device: store.device,
   userTree: store.tree.userTree,
@@ -54,7 +60,7 @@ export default class Tree extends Component {
 
     setTimeout(() => {
       this.setState({ loading: false });
-    }, 2000);
+    }, 4000);
   }
 
   get level() {
@@ -79,7 +85,7 @@ export default class Tree extends Component {
     if (loading) {
       return (
         <Loading>
-          <ActivityIndicator size='large' />
+          <LoadingNeuron source={loadingGif} resizeMode='contain' />
         </Loading>
       );
     }

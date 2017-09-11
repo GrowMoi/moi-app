@@ -10,6 +10,10 @@ export default [
   require('./tabBar/tabBar.png'),
   require('./tree/static_tree.png'),
   require('./tree/tree_icon_color.png'),
+  require('./loading.gif'),
+
+  // Buttons
+  require('./buttons/back_arrow.png'),
 
   // Neurons
   require('./neurona/neurona_descubierta.png'),

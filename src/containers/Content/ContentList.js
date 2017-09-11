@@ -6,7 +6,7 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import actions from '../../actions/neuronActions';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
-import { BottomBar } from '../../commons/components/SceneComponents';
+import { BottomBar, BackButton, BackButtonContainer } from '../../commons/components/SceneComponents';
 import { normalize } from '../../commons/utils';
 
 @connect(store => ({
@@ -20,9 +20,13 @@ export default class ContentListScene extends Component {
     loading: true,
   }
 
-  async componentDidMount() {
-    const { loadNeuronByIdAsync } = this.props;
-    await loadNeuronByIdAsync(1);
+  componentDidMount() {
+    this.getCurrentContents();
+  }
+
+  getCurrentContents = async () => {
+    const { loadNeuronByIdAsync, neuron_id } = this.props;
+    await loadNeuronByIdAsync(neuron_id);
 
     this.setState({ loading: false });
   }
@@ -59,6 +63,11 @@ export default class ContentListScene extends Component {
             );
           })}
         </ContentBox>
+
+        <BackButtonContainer>
+          <BackButton onPress={() => Actions.tree()}/>
+        </BackButtonContainer>
+
         <Navbar/>
         <BottomBar />
       </MoiBackground>
@@ -69,4 +78,5 @@ export default class ContentListScene extends Component {
 ContentListScene.propTypes = {
   title: PropTypes.string,
   neuronSelected: PropTypes.object,
+  neuron_id: PropTypes.number,
 };
