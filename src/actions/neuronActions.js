@@ -13,6 +13,18 @@ const loadNeuronByIdAsync = id => async (dispatch) => {
   return neuron;
 };
 
+const setCurrentContent = content => ({
+  type: actionTypes.LOAD_CONTENT_SELECTED,
+  payload: content,
+});
+
+const loadContentByIdAsync = id => async (dispatch) => {
+  const content = await api.contents.getContentById(id);
+  dispatch(setCurrentContent(content));
+  return content;
+};
+
 export default {
   loadNeuronByIdAsync,
+  loadContentByIdAsync,
 };

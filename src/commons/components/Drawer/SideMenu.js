@@ -67,16 +67,22 @@ const options = [
   { label: 'Privacidad' },
 ];
 
-@connect(store => ({ device: store.device }))
+@connect(store => ({
+  device: store.device,
+  userTree: store.tree.userTree,
+}))
 export default class SideMenu extends Component {
   static propTypes = {
     device: PropTypes.any,
+    userTree: PropTypes.any,
   }
 
   render() {
-    const { device } = this.props;
+    const { device, userTree } = this.props;
     const { orientation } = device.dimensions;
     const portraitOrientation = orientation === PORTRAIT;
+
+    const treeIsLoaded = 'tree' in userTree;
 
     return (
       <SideMenuContainer>
@@ -93,7 +99,7 @@ export default class SideMenu extends Component {
         >
           <UserNameContainer>
             <UserName numberOfLines={1} small heavy inverted>Pedro Jimenez</UserName>
-            <Header small heavy inverted>Nivel: 2</Header>
+            <Header small heavy inverted>Nivel: {treeIsLoaded && userTree.meta.depth}</Header>
           </UserNameContainer>
 
           <Options options={options}/>

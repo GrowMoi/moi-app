@@ -44,7 +44,7 @@ export default class Level1 extends Component {
     const { tree } = this.props.userTree;
     setTimeout(() => {
       Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
-    }, 400);
+    }, 800);
   }
 
   render() {

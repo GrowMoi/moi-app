@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import CenterFontView from '../help-components/CenterFontView';
 
-import { ContentPreview } from '../../../src/commons/components/Neuron';
+import { ContentPreview } from '../../../src/commons/components/ContentComponents';
 
 const stories = storiesOf('ContentPreview', module);
 stories.addDecorator(getStory => <CenterFontView>{getStory()}</CenterFontView>);

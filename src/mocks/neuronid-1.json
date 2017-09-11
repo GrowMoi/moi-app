@@ -3,8 +3,8 @@
     "id": 1,
     "title": "Jugar",
     "neuron_can_read": true,
-    "totalContents": 13,
-    "contentsLearned": 0,
+    "totalContents": 12,
+    "contentsLearned": 6,
     "contents": [
       {
         "id": 69,

@@ -42,7 +42,7 @@ exports[`Content Preview it should render row as expected 1`] = `
   <Styled(View)>
     <Styled(Text)
       ellipsizeMode="tail"
-      numberOfLines={1}
+      numberOfLines={2}
     >
       Grab Nebula
     </Styled(Text)>

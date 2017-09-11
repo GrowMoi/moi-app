@@ -3,7 +3,8 @@ import { Actions, Scene } from 'react-native-router-flux';
 import Welcome from './containers/Welcome';
 import Menu from './commons/components/Drawer';
 import TreeScene from './containers/Tree';
-import ContentScene from './containers/Content/Content';
+import ContentListScene from './containers/Content/ContentList';
+import SingleContentScene from './containers/Content/SingleContent';
 import Profile from './containers/Profile';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
@@ -23,9 +24,15 @@ const routes = Actions.create(
           title='Arbol' />
         <Scene
           key='content'
-          component={ContentScene}
+          component={ContentListScene}
           {...navbarPropStyles}
           title='Contenido' />
+        <Scene
+          key='singleContent'
+          component={SingleContentScene}
+          {...navbarPropStyles}
+          title='Contenido'
+        />
         <Scene
           key="profile"
           title="Profile"

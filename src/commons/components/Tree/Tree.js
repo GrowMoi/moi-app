@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { AppLoading } from 'expo';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import { View, Image, StyleSheet, Text, ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer';
 import { Maceta } from '../SceneComponents';
 import actions from '../../../actions/treeActions';
 
+// Levels
 import Level1 from './Level1';
 
 const styles = StyleSheet.create({
@@ -75,7 +76,13 @@ export default class Tree extends Component {
 
   render() {
     const { loading } = this.state;
-    if (loading) return <Loading><AppLoading /></Loading>;
+    if (loading) {
+      return (
+        <Loading>
+          <ActivityIndicator size='large' />
+        </Loading>
+      );
+    }
 
     return (
       <TreeContainer>
@@ -93,4 +100,5 @@ export default class Tree extends Component {
 
 Tree.propTypes = {
   device: PropTypes.any,
+  userTree: PropTypes.object,
 };

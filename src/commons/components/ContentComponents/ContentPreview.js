@@ -53,6 +53,10 @@ export default class ContentPreview extends Component {
     subtitle: PropTypes.string,
     description: PropTypes.string,
     onPress: PropTypes.func,
+    id: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
   }
 
   get rowContent() {
@@ -60,7 +64,7 @@ export default class ContentPreview extends Component {
 
     const content = (
       <Content key='row-description'>
-        <Header ellipsizeMode='tail' numberOfLines={1}>{title}</Header>
+        <Header ellipsizeMode='tail' numberOfLines={2}>{title}</Header>
         <TextBody small secondary>{subtitle}</TextBody>
         <TextBody small ellipsizeMode='tail' numberOfLines={4}>{description}</TextBody>
       </Content>
@@ -78,9 +82,9 @@ export default class ContentPreview extends Component {
   }
 
   render() {
-    const { onPress, inverted } = this.props;
+    const { onPress, inverted, id } = this.props;
     return (
-      <RowContainer onPress={onPress} inverted={inverted}>
+      <RowContainer id={id} onPress={onPress} inverted={inverted}>
         {this.rowContent}
       </RowContainer>
     );

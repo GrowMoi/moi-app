@@ -11,6 +11,8 @@ import footerBarLandscape from '../../../../assets/images/bottomBar/bottom_bar_l
 const Bar = styled(Image)`
   height: 20;
   width: ${props => props.width};
+  position: absolute;
+  bottom: -2;
 `;
 
 @connect(store => ({ device: store.device }))

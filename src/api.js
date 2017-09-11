@@ -1,6 +1,7 @@
 import axios from 'axios';
 import neuronJSON from './mocks/neuronid-1.json';
 import treeJSON from './mocks/tree.json';
+import contentJSON from './mocks/contentid-1.json';
 
 const api = {
   neuron: {
@@ -14,6 +15,13 @@ const api = {
     async getUserTree(id = 1) {
       const tree = await treeJSON;
       return tree;
+    },
+  },
+
+  contents: {
+    async getContentById(id = 1) {
+      const content = await contentJSON;
+      return content;
     },
   },
 };
