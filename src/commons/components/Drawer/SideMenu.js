@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Image, ScrollView, StyleSheet } from 'react-native';
+import {
+  View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components/native';
@@ -105,7 +112,9 @@ export default class SideMenu extends Component {
           <Options options={options}/>
 
           <TreContainer>
-            <Maceta width={DRAWER_OFFSET - 2} source={macetaMenu} resizeMode='contain' />
+            <TouchableOpacity onPress={() => Actions.tree()}>
+              <Maceta width={DRAWER_OFFSET - 2} source={macetaMenu} resizeMode='contain' />
+            </TouchableOpacity>
           </TreContainer>
         </ScrollView>
       </SideMenuContainer>
