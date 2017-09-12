@@ -12,6 +12,7 @@ configure(() => {
   require('./stories/stories/Typography.story');
   require('./stories/stories/ActionSheet.story');
   require('./stories/stories/Contents.story');
+  require('./stories/stories/Carousel.story');
 }, module);
 
 const StorybookUI = getStorybookUI({ port: 7007, host: hostname });
