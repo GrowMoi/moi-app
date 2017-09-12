@@ -46,23 +46,25 @@ export default class ContentListScene extends Component {
 
     return (
       <MoiBackground>
-        <ContentBox>
-          {!loading && neuronSelected.neuron.contents.map((content, i) => {
-            const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
-            const oddInverted = i % 2 === 1;
+        {!loading && (
+          <ContentBox>
+            {neuronSelected.neuron.contents.map((content, i) => {
+              const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
+              const oddInverted = i % 2 === 1;
 
-            return (
-              <ContentPreview
-                onPress={e => this.onPressRowcontent(e, content)}
-                inverted={oddInverted}
-                key={content.id}
-                title={content.title}
-                subtitle={normalizeKind}
-                source={{ uri: content.media[0] }}
-              />
-            );
-          })}
-        </ContentBox>
+              return (
+                <ContentPreview
+                  onPress={e => this.onPressRowcontent(e, content)}
+                  inverted={oddInverted}
+                  key={content.id}
+                  title={content.title}
+                  subtitle={normalizeKind}
+                  source={{ uri: content.media[0] }}
+                />
+              );
+            })}
+          </ContentBox>
+        )}
 
         <BackButtonContainer>
           <BackButton onPress={() => Actions.tree()}/>
