@@ -1,0 +1,439 @@
+{
+  "tree":{
+    "root":{
+      "id":1,
+      "title":"Jugar",
+      "totalContents": 12,
+      "contentsLearned": 6,
+      "parent_id":null,
+      "children":[
+          {
+            "id":3,
+            "title":"aprender",
+            "parent_id":1,
+            "children":[
+                {
+                  "id":32,
+                  "title":"contar",
+                  "parent_id":3,
+                  "children":[
+                      {
+                        "id":34,
+                        "title":"ordenar",
+                        "parent_id":32,
+                        "children":[
+                            {
+                              "id":42,
+                              "title":"conjuntos",
+                              "parent_id":34,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":43,
+                              "title":"Observar",
+                              "parent_id":34,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":44,
+                              "title":"cambio",
+                              "parent_id":34,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      },
+                      {
+                        "id":33,
+                        "title":"repetir",
+                        "parent_id":32,
+                        "children":[
+
+                        ],
+                        "state":"descubierta"
+                      },
+                      {
+                        "id":39,
+                        "title":"numeros naturales",
+                        "parent_id":32,
+                        "children":[
+                            {
+                              "id":47,
+                              "title":"matemáticas",
+                              "parent_id":39,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":48,
+                              "title":"numeros enteros",
+                              "parent_id":39,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":56,
+                              "title":"n.racionales",
+                              "parent_id":39,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      }
+                  ],
+                  "state":"florecida"
+                }
+            ],
+            "state":"florecida"
+          },
+          {
+            "id":9,
+            "title":"Naturaleza",
+            "parent_id":1,
+            "children":[
+                {
+                  "id":4,
+                  "title":"química",
+                  "parent_id":9,
+                  "children":[
+                      {
+                        "id":40,
+                        "title":"enlace covalente",
+                        "parent_id":4,
+                        "children":[
+                            {
+                              "id":66,
+                              "title":"tabla periodica",
+                              "parent_id":40,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":67,
+                              "title":"reaccion quimica",
+                              "parent_id":40,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      },
+                      {
+                        "id":41,
+                        "title":"temperatura",
+                        "parent_id":4,
+                        "children":[
+
+                        ],
+                        "state":"florecida"
+                      }
+                  ],
+                  "state":"florecida"
+                },
+                {
+                  "id":35,
+                  "title":"vida",
+                  "parent_id":9,
+                  "children":[
+                      {
+                        "id":37,
+                        "title":"ecosistema",
+                        "parent_id":35,
+                        "children":[
+                            {
+                              "id":60,
+                              "title":"agua",
+                              "parent_id":37,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":61,
+                              "title":"fuego",
+                              "parent_id":37,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":62,
+                              "title":"ecologia",
+                              "parent_id":37,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":63,
+                              "title":"contaminacion",
+                              "parent_id":37,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":64,
+                              "title":"aire",
+                              "parent_id":37,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":65,
+                              "title":"suelo",
+                              "parent_id":37,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      },
+                      {
+                        "id":38,
+                        "title":"celula",
+                        "parent_id":35,
+                        "children":[
+
+                        ],
+                        "state":"descubierta"
+                      }
+                  ],
+                  "state":"florecida"
+                }
+            ],
+            "state":"florecida"
+          },
+          {
+            "id":8,
+            "title":"Lenguaje",
+            "parent_id":1,
+            "children":[
+                {
+                  "id":5,
+                  "title":"comunicacion",
+                  "parent_id":8,
+                  "children":[
+                      {
+                        "id":15,
+                        "title":"mensaje",
+                        "parent_id":5,
+                        "children":[
+                            {
+                              "id":68,
+                              "title":"escuchar",
+                              "parent_id":15,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":69,
+                              "title":"interactuar",
+                              "parent_id":15,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":70,
+                              "title":"hablar",
+                              "parent_id":15,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      },
+                      {
+                        "id":6,
+                        "title":"pensar",
+                        "parent_id":5,
+                        "children":[
+
+                        ],
+                        "state":"descubierta"
+                      }
+                  ],
+                  "state":"florecida"
+                }
+            ],
+            "state":"florecida"
+          },
+          {
+            "id":10,
+            "title":"Arte",
+            "parent_id":1,
+            "children":[
+                {
+                  "id":7,
+                  "title":"artes aplicadas",
+                  "parent_id":10,
+                  "children":[
+                      {
+                        "id":20,
+                        "title":"arquitectura",
+                        "parent_id":7,
+                        "children":[
+                            {
+                              "id":73,
+                              "title":"diseño industrial",
+                              "parent_id":20,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      },
+                      {
+                        "id":36,
+                        "title":"historia del arte",
+                        "parent_id":7,
+                        "children":[
+
+                        ],
+                        "state":"descubierta"
+                      }
+                  ],
+                  "state":"florecida"
+                },
+                {
+                  "id":2,
+                  "title":"bellas artes",
+                  "parent_id":10,
+                  "children":[
+                      {
+                        "id":11,
+                        "title":"Literatura",
+                        "parent_id":2,
+                        "children":[
+
+                        ],
+                        "state":"descubierta"
+                      },
+                      {
+                        "id":31,
+                        "title":"musica",
+                        "parent_id":2,
+                        "children":[
+
+                        ],
+                        "state":"descubierta"
+                      },
+                      {
+                        "id":29,
+                        "title":"Escultura",
+                        "parent_id":2,
+                        "children":[
+                            {
+                              "id":30,
+                              "title":"instalacion artistica",
+                              "parent_id":29,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      },
+                      {
+                        "id":27,
+                        "title":"dibujar",
+                        "parent_id":2,
+                        "children":[
+                            {
+                              "id":81,
+                              "title":"graficar",
+                              "parent_id":27,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":82,
+                              "title":"pintura",
+                              "parent_id":27,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      },
+                      {
+                        "id":28,
+                        "title":"Teatro",
+                        "parent_id":2,
+                        "children":[
+                            {
+                              "id":83,
+                              "title":"tragedia",
+                              "parent_id":28,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            },
+                            {
+                              "id":84,
+                              "title":"poesia",
+                              "parent_id":28,
+                              "children":[
+
+                              ],
+                              "state":"descubierta"
+                            }
+                        ],
+                        "state":"florecida"
+                      }
+                  ],
+                  "state":"florecida"
+                }
+            ],
+            "state":"florecida"
+          }
+      ],
+      "state":"florecida"
+    }
+  },
+  "meta":{
+     "depth":1
+  }
+}

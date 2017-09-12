@@ -12,6 +12,11 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         scene: action.scene,
       };
+    case ActionConst.BACK:
+      return {
+        ...state,
+        scene: action.scene,
+      };
 
     // ...other actions
 

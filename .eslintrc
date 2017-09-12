@@ -15,7 +15,6 @@
   ],
   "rules": {
     "class-methods-use-this": 0,
-    "react/jsx-no-bind": 2,
     "react/prop-types": 2,
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
@@ -29,7 +28,12 @@
     "import/no-extraneous-dependencies": 0,
     "global-require": 1,
     "import/prefer-default-export": 0,
-    "react/jsx-boolean-value": 2
+    "react/jsx-boolean-value": 2,
+    "react/jsx-no-bind": [2, {
+      "ignoreRefs": true,
+      "allowArrowFunctions": true,
+      "allowBind": false
+    }]
   },
   "parserOptions": {
     "ecmaFeatures": {

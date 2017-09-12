@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Image, ScrollView, StyleSheet } from 'react-native';
+import {
+  View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components/native';
@@ -67,16 +74,22 @@ const options = [
   { label: 'Privacidad' },
 ];
 
-@connect(store => ({ device: store.device }))
+@connect(store => ({
+  device: store.device,
+  userTree: store.tree.userTree,
+}))
 export default class SideMenu extends Component {
   static propTypes = {
     device: PropTypes.any,
+    userTree: PropTypes.any,
   }
 
   render() {
-    const { device } = this.props;
+    const { device, userTree } = this.props;
     const { orientation } = device.dimensions;
     const portraitOrientation = orientation === PORTRAIT;
+
+    const treeIsLoaded = 'tree' in userTree;
 
     return (
       <SideMenuContainer>
@@ -93,13 +106,15 @@ export default class SideMenu extends Component {
         >
           <UserNameContainer>
             <UserName numberOfLines={1} small heavy inverted>Pedro Jimenez</UserName>
-            <Header small heavy inverted>Nivel: 2</Header>
+            <Header small heavy inverted>Nivel: {treeIsLoaded && userTree.meta.depth}</Header>
           </UserNameContainer>
 
           <Options options={options}/>
 
           <TreContainer>
-            <Maceta width={DRAWER_OFFSET - 2} source={macetaMenu} resizeMode='contain' />
+            <TouchableOpacity onPress={() => Actions.tree()}>
+              <Maceta width={DRAWER_OFFSET - 2} source={macetaMenu} resizeMode='contain' />
+            </TouchableOpacity>
           </TreContainer>
         </ScrollView>
       </SideMenuContainer>

@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image } from 'react-native';
 import { ScreenOrientation } from 'expo';
+import { View } from 'react-native';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import TreeBottom from './components/TreeBottom';
-import treeStaticImage from '../../../assets/images/tree/static_tree.png';
+import Tree from '../../commons/components/Tree';
 
-const Content = styled(View)`
+const ContentScreen = styled(View)`
   flex: 1;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
-  z-index: 1;
 `;
 
-const treeImageAspectRatio = (4 / 5);
-const TreeImage = styled(Image)`
-  width: ${props => props.width || 250};
-  height: ${props => treeImageAspectRatio * props.width};
-`;
-
-export default class Tree extends Component {
+export default class TreeScene extends Component {
   componentDidMount() {
     ScreenOrientation.allow('ALL');
   }
@@ -30,13 +20,10 @@ export default class Tree extends Component {
   render() {
     return (
       <MoiBackground>
+        <ContentScreen>
+          <Tree />
+        </ContentScreen>
         <Navbar/>
-        <Content>
-          <TreeImage
-            width={300}
-            source={treeStaticImage}
-            resizeMode='contain' />
-        </Content>
         <TreeBottom />
       </MoiBackground>
     );

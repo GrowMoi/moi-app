@@ -1,0 +1,186 @@
+{
+  "content": {
+    "id": 1466,
+    "neuron_id": 2284,
+    "media": [
+      "http://moi-backend.growmoi.com/uploads/content_media/media/2643/play.gif",
+      "http://moi-backend.growmoi.com/uploads/content_media/media/464/gifs-animados-jugar-418724.jpg",
+      "http://moi-backend.growmoi.com/uploads/content_media/media/465/gifs-animados-jugar-025736.jpg"
+    ],
+    "level": 1,
+    "kind": "que-es",
+    "description": "Jugar es descubrir. Es tener una aventura que estimula nuestros sentidos porque nos lleva a imaginar nuevas posibilidades para nosotros mismos y nuestro mundo.  \r\n\r\nTiene un carácter incierto. Al ser una actividad creativa, espontánea y original, el resultado final del juego fluctúa constantemente, lo que motiva la presencia de una agradable incertidumbre que nos cautiva a todos.\r\n\r\nEl juego es una actividad libre: es un acontecimiento voluntario, nadie está obligado a jugar.\r\n\r\nEl juego se desarrolla en un mundo aparte, ficticio, es como un juego narrado con acciones, alejado de la vida cotidiana, un continuo mensaje simbólico.\r\n",
+    "source": "https://es.wikipedia.org/wiki/Juego (edit)",
+    "title": "¿Qué es Jugar?",
+    "read": false,
+    "learnt": false,
+    "links": [
+      "http://jugar.com/",
+      "https://www.youtube.com/watch?v=yXub3dAAtb0",
+      "https://www.youtube.com/watch?v=qHd1_2Km4AQ"
+    ],
+    "videos": [
+      {
+        "url": "https://www.youtube.com/watch?v=fFrtS9vCpEg",
+        "thumbnail": "//img.youtube.com/vi/fFrtS9vCpEg/0.jpg"
+      }
+    ],
+    "user_notes": null,
+    "content_tasks": [
+      {
+        "id": 39,
+        "user_id": 1263,
+        "content_id": 1466,
+        "created_at": "2017-06-12T17:44:28.877-05:00",
+        "updated_at": "2017-06-12T17:44:28.877-05:00",
+        "deleted": false
+      },
+      {
+        "id": 69,
+        "user_id": 978,
+        "content_id": 1466,
+        "created_at": "2017-06-14T16:16:05.192-05:00",
+        "updated_at": "2017-06-14T16:16:05.192-05:00",
+        "deleted": false
+      },
+      {
+        "id": 80,
+        "user_id": 1356,
+        "content_id": 1466,
+        "created_at": "2017-06-14T18:22:25.726-05:00",
+        "updated_at": "2017-06-14T18:22:25.726-05:00",
+        "deleted": false
+      },
+      {
+        "id": 86,
+        "user_id": 1653,
+        "content_id": 1466,
+        "created_at": "2017-06-14T18:48:50.483-05:00",
+        "updated_at": "2017-06-14T18:48:50.483-05:00",
+        "deleted": false
+      },
+      {
+        "id": 185,
+        "user_id": 4134,
+        "content_id": 1466,
+        "created_at": "2017-06-23T16:30:20.582-05:00",
+        "updated_at": "2017-06-23T16:30:20.582-05:00",
+        "deleted": false
+      },
+      {
+        "id": 188,
+        "user_id": 5950,
+        "content_id": 1466,
+        "created_at": "2017-06-23T17:12:06.582-05:00",
+        "updated_at": "2017-06-23T17:12:06.582-05:00",
+        "deleted": false
+      },
+      {
+        "id": 102,
+        "user_id": 1676,
+        "content_id": 1466,
+        "created_at": "2017-06-15T19:20:26.171-05:00",
+        "updated_at": "2017-06-15T19:20:26.171-05:00",
+        "deleted": false
+      },
+      {
+        "id": 145,
+        "user_id": 1026,
+        "content_id": 1466,
+        "created_at": "2017-06-20T15:38:43.048-05:00",
+        "updated_at": "2017-06-20T15:38:43.048-05:00",
+        "deleted": false
+      },
+      {
+        "id": 199,
+        "user_id": 4299,
+        "content_id": 1466,
+        "created_at": "2017-06-23T19:40:04.542-05:00",
+        "updated_at": "2017-06-23T20:32:19.272-05:00",
+        "deleted": true
+      },
+      {
+        "id": 240,
+        "user_id": 5970,
+        "content_id": 1466,
+        "created_at": "2017-06-25T16:51:37.408-05:00",
+        "updated_at": "2017-06-25T16:51:37.408-05:00",
+        "deleted": false
+      },
+      {
+        "id": 247,
+        "user_id": 5973,
+        "content_id": 1466,
+        "created_at": "2017-06-26T21:53:08.540-05:00",
+        "updated_at": "2017-06-26T21:53:08.540-05:00",
+        "deleted": false
+      },
+      {
+        "id": 254,
+        "user_id": 5445,
+        "content_id": 1466,
+        "created_at": "2017-06-29T14:33:57.181-05:00",
+        "updated_at": "2017-06-29T14:33:57.181-05:00",
+        "deleted": false
+      },
+      {
+        "id": 287,
+        "user_id": 5981,
+        "content_id": 1466,
+        "created_at": "2017-07-03T15:07:08.908-05:00",
+        "updated_at": "2017-07-03T15:07:08.908-05:00",
+        "deleted": false
+      },
+      {
+        "id": 299,
+        "user_id": 3417,
+        "content_id": 1466,
+        "created_at": "2017-07-05T18:50:28.591-05:00",
+        "updated_at": "2017-07-05T18:50:28.591-05:00",
+        "deleted": false
+      },
+      {
+        "id": 322,
+        "user_id": 5998,
+        "content_id": 1466,
+        "created_at": "2017-07-13T12:39:05.122-05:00",
+        "updated_at": "2017-07-13T12:39:05.122-05:00",
+        "deleted": false
+      },
+      {
+        "id": 342,
+        "user_id": 6009,
+        "content_id": 1466,
+        "created_at": "2017-08-03T15:07:16.665-05:00",
+        "updated_at": "2017-08-03T15:07:16.665-05:00",
+        "deleted": false
+      },
+      {
+        "id": 402,
+        "user_id": 2128,
+        "content_id": 1466,
+        "created_at": "2017-08-23T11:47:33.992-05:00",
+        "updated_at": "2017-08-23T11:47:33.992-05:00",
+        "deleted": false
+      },
+      {
+        "id": 405,
+        "user_id": 4675,
+        "content_id": 1466,
+        "created_at": "2017-08-23T11:58:10.180-05:00",
+        "updated_at": "2017-08-23T11:58:10.180-05:00",
+        "deleted": false
+      },
+      {
+        "id": 427,
+        "user_id": 3580,
+        "content_id": 1466,
+        "created_at": "2017-09-05T15:37:39.585-05:00",
+        "updated_at": "2017-09-05T15:37:39.585-05:00",
+        "deleted": false
+      }
+    ],
+    "neuron_can_read": true,
+    "favorite": false
+  }
+}

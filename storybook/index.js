@@ -11,8 +11,7 @@ configure(() => {
   require('./stories/stories/TabIcon.story');
   require('./stories/stories/Typography.story');
   require('./stories/stories/ActionSheet.story');
-  require('./stories/stories/Neuron.story');
-  require('./stories/stories/SideBar.story');
+  require('./stories/stories/Contents.story');
 }, module);
 
 const StorybookUI = getStorybookUI({ port: 7007, host: hostname });
