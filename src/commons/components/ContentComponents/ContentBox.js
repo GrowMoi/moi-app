@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { ScrollView, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { Size, Palette } from '../../styles';
 
-const ContentScreen = styled(ScrollView)`
+const ContentScreen = styled(View)`
   flex: 1;
   border-radius: 10;
   padding-horizontal: ${Size.spaceSmall};
@@ -17,14 +17,9 @@ const ContentScreen = styled(ScrollView)`
   margin-horizontal: ${Size.spaceSmall};
   margin-bottom: ${Size.spaceMedium};
   background-color: #96be59;
+  justify-content: flex-start;
+  align-items: center;
 `;
-
-const styles = StyleSheet.create({
-  containerScrollView: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-});
 
 export default class ContentBox extends Component {
   render() {
@@ -37,7 +32,6 @@ export default class ContentBox extends Component {
     return (
       <ContentScreen
         style={style}
-        contentContainerStyle={[styles.containerScrollView, contentContainerStyle]}
         {...rest}>
         {this.props.children}
       </ContentScreen>

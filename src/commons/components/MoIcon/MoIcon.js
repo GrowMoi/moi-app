@@ -48,6 +48,7 @@ export default class MoIcon extends Component {
   render() {
     const {
       name,
+      style,
       size,
       active,
       source,
@@ -59,7 +60,7 @@ export default class MoIcon extends Component {
     } = this.props;
 
     const iconImage = (
-      <IconContainer>
+      <IconContainer style={style}>
         <IconImage
           source={this.sourceIcon.icon}
           size={size}

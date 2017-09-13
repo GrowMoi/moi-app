@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -7,6 +8,7 @@ import MoiBackground from '../../commons/components/Background/MoiBackground';
 import actions from '../../actions/neuronActions';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
 import { BottomBar, BackButton, BackButtonContainer } from '../../commons/components/SceneComponents';
+import Preloader from '../../commons/components/Preloader/Preloader';
 import { normalize } from '../../commons/utils';
 
 @connect(store => ({
@@ -46,7 +48,7 @@ export default class ContentListScene extends Component {
 
     return (
       <MoiBackground>
-        {!loading && (
+        {!loading ? (
           <ContentBox>
             {neuronSelected.neuron.contents.map((content, i) => {
               const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
@@ -64,6 +66,8 @@ export default class ContentListScene extends Component {
               );
             })}
           </ContentBox>
+        ) : (
+          <Preloader />
         )}
 
         <BackButtonContainer>

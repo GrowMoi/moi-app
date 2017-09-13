@@ -19,7 +19,7 @@ const setCurrentContent = content => ({
 });
 
 const loadContentByIdAsync = id => async (dispatch) => {
-  const content = await api.contents.getContentById(id);
+  const content = await api.content.getContentById(id);
   dispatch(setCurrentContent(content));
   return content;
 };
