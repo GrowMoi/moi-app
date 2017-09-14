@@ -33,9 +33,12 @@ const RowContainer = styled(TouchableOpacity)`
   border-width: 2;
 `;
 
+const imageWidth = 150;
+const imageHeight = 120;
+const aspect = imageWidth / imageHeight;
 const ContentImage = styled(Image)`
-  width: 150;
-  height: 120;
+  width: ${props => props.width};
+  height: ${props => Math.round(props.width / aspect)};
   background-color: ${Palette.dark};
 `;
 
@@ -57,10 +60,15 @@ export default class ContentPreview extends Component {
       PropTypes.number,
       PropTypes.string,
     ]),
+    width: PropTypes.number,
+  }
+
+  static defaultProps = {
+    width: 100,
   }
 
   get rowContent() {
-    const { inverted, title, subtitle, description, source } = this.props;
+    const { inverted, title, subtitle, description, source, width } = this.props;
 
     const content = (
       <Content key='row-description'>
@@ -72,6 +80,7 @@ export default class ContentPreview extends Component {
 
     const image = (
       <ContentImage
+        width={width}
         key='row-image'
         resizeMode='cover'
         source={source} />

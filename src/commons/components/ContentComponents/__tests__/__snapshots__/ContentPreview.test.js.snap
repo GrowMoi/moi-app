@@ -38,6 +38,7 @@ exports[`Content Preview it should render row as expected 1`] = `
         "uri": "http://www.wolaver.org/space/crab.jpg",
       }
     }
+    width={100}
   />
   <Styled(View)>
     <Styled(Text)

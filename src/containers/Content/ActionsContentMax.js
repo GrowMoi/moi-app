@@ -7,8 +7,6 @@ const OptionsHeader = styled(View)`
   padding-vertical: ${Size.spaceSmall};
   align-items: center;
   flex-direction: row;
-  margin-right: ${Size.spaceMedium};
-  margin-left: ${Size.spaceMedium};
   justify-content: flex-end;
   border-bottom-width: 1;
   border-bottom-color: ${Palette.white.alpha(0.4).css()};
