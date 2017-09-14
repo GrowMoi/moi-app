@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { Entypo } from '@expo/vector-icons';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
 import ContentImage from './ContentImage';
@@ -26,6 +26,7 @@ export default class Carousel extends Component {
       <ContainerSwiper size={size}>
         <Swiper
           {...rest}
+          loadMinimalLoader={<ActivityIndicator />}
           nextButton={<Entypo name='chevron-right' size={35} color={colors.lightGray.css()} />}
           prevButton={<Entypo name='chevron-left' size={35} color={colors.lightGray.css()} />}
         >

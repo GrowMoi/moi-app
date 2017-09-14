@@ -2,10 +2,17 @@
   "expo": {
     "sdkVersion": "19.0.0",
     "name": "Moi",
+    "version": "1.0.0",
     "slug": "moi-app",
     "orientation": "portrait",
     "packagerOpts": {
       "assetExts": ["ttf", "otf"]
+    },
+    "ios": {
+      "bundleIdentifier": "com.growmoi.moi"
+    },
+    "android": {
+      "package": "com.growmoi.moi"
     }
   }
 }

@@ -5,6 +5,7 @@ import { Palette, Size } from '../../commons/styles';
 
 const OptionsHeader = styled(View)`
   padding-vertical: ${Size.spaceSmall};
+  margin-bottom: ${Size.spaceSmall};
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;

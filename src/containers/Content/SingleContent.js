@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { View, Alert, ScrollView, Image, Dimensions } from 'react-native';
+import { View, Alert, ScrollView, Image, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
-import { Ionicons } from '@expo/vector-icons';
-import { Video } from 'expo';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import { BottomBar, BackButton, BackButtonContainer } from '../../commons/components/SceneComponents';
+import { BottomBar } from '../../commons/components/SceneComponents';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import actions from '../../actions/neuronActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
@@ -23,6 +22,7 @@ const { width } = Dimensions.get('window');
 
 const HeaderContent = styled(View)`
   margin-vertical: ${Size.spaceSmall};
+  align-items: center;
 `;
 
 const TextContainer = styled(View)`
@@ -50,18 +50,30 @@ const Divider = styled(View)`
   align-self: stretch;
 `;
 
-const ContentContainer = styled(ScrollView)`
-  padding-horizontal: ${Size.spaceSmall};
-  padding-vertical: ${Size.spaceSmall};
-`;
-
-const VideoRecomended = styled(Video)`
-  width: 200;
+const VideoRecomended = styled(Image)`
+  width: 120;
   height: 100;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 `;
 const VideoContainer = styled(View)`
   flex: 1;
+  margin-vertical: ${Size.spaceSmall};
 `;
+const PlayIcon = styled(FontAwesome)`
+  color: ${Palette.white};
+  position: absolute;
+  background-color: transparent;
+  opacity: 0.8;
+`;
+
+const styles = StyleSheet.create({
+  scrollContainer: {
+    // width: width - Size.spaceLarge,
+    alignSelf: 'stretch',
+  },
+});
 
 @connect(store => ({
   contentSelected: store.neuron.contentSelected,
@@ -75,6 +87,7 @@ export default class SingleContentScene extends Component {
 
   componentDidMount() {
     this.loadContentAsync();
+    console.log('Component Did Mount');
   }
 
   loadContentAsync = async () => {
@@ -92,26 +105,27 @@ export default class SingleContentScene extends Component {
       <MoiBackground>
         {loading && <Preloader />}
         {!loading && (
-          <ContentBox staticBox>
+          <ContentBox>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
 
-            <HeaderContent>
-              <Header bolder inverted>{contentSelected.content.title}</Header>
-            </HeaderContent>
+              <HeaderContent>
+                <Header bolder inverted>{contentSelected.content.title}</Header>
+              </HeaderContent>
 
-            <Carousel
-              showsPagination={false}
-              showsButtons
-              size={{ height: 200, width: (width - Size.spaceLarge) }}
-              images={contentSelected.content.media}
-            />
+              <Carousel
+                showsPagination
+                loop
+                autoplay
+                size={{ height: 200, width: (width - Size.spaceLarge) }}
+                images={contentSelected.content.media}
+              />
 
-            <ActionsHeader>
-              <MoiIcon onPress={() => Alert.alert('Fav Clicked')} name='fav' size={20} />
-              <Ionicons onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} />
-              <Ionicons name='ios-more' size={20} color={Palette.white.css()} />
-            </ActionsHeader>
+              <ActionsHeader>
+                <MoiIcon onPress={() => Alert.alert('Fav Clicked')} name='fav' size={20} />
+                <Ionicons onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} />
+                <Ionicons name='ios-more' size={20} color={Palette.white.css()} />
+              </ActionsHeader>
 
-            <ContentContainer>
               <TextContainer>
                 <TextBody inverted>{contentSelected.content.description}</TextBody>
                 <Source>
@@ -132,12 +146,15 @@ export default class SingleContentScene extends Component {
 
               <TextContainer>
                 <Header inverted bolder>Notas</Header>
-                {contentSelected.content.user_notes &&
+                {contentSelected.content.user_notes ?
                   contentSelected.content.user_notes.map((note, i) => (
                     <TextLeftBorder key={i}>
                       <Description inverted>{note}</Description>
                     </TextLeftBorder>
-                  ))}
+                  )) : (
+                    <Description>No tiene notas</Description>
+                  )
+                }
               </TextContainer>
 
               <TextContainer>
@@ -145,21 +162,23 @@ export default class SingleContentScene extends Component {
                 <VideoContainer>
                   {contentSelected.content.videos &&
                     contentSelected.content.videos.map((video, i) => (
-                      <VideoRecomended
-                        key={i}
-                        source={{ uri: `https://${video.thumbnail}` }}
-                        resizeMode="cover"
-                      />
-                    ))}
+                      <TouchableOpacity key={i}>
+                        <VideoRecomended
+                          source={{ uri: `https:${video.thumbnail}` }}
+                          resizeMode="cover"
+                        >
+                          <PlayIcon name='play-circle' size={40} />
+                        </VideoRecomended>
+                      </TouchableOpacity>
+                    ))
+                  }
                 </VideoContainer>
               </TextContainer>
-            </ContentContainer>
 
+            </ScrollView>
           </ContentBox>
         )}
-        <BackButtonContainer>
-          <BackButton onPress={() => Actions.content()}/>
-        </BackButtonContainer>
+
         <Navbar/>
         <BottomBar />
       </MoiBackground>
