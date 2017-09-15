@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Alert, ScrollView, Image, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Alert, ScrollView, Image, Dimensions, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
@@ -12,7 +12,7 @@ import { BottomBar } from '../../commons/components/SceneComponents';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import actions from '../../actions/neuronActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
-import { Title, TextBody, Description, Header } from '../../commons/components/Typography';
+import { TextBody, Description, Header } from '../../commons/components/Typography';
 import Carousel from '../../commons/components/Carousel/Carousel';
 import MoiIcon from '../../commons/components/MoIcon/MoIcon';
 import { Palette, Size } from '../../commons/styles';
@@ -25,8 +25,11 @@ const HeaderContent = styled(View)`
   align-items: center;
 `;
 
-const TextContainer = styled(View)`
-  margin-bottom: ${Size.spaceSmall};
+const Section = styled(View)`
+  margin-bottom: ${(props) => {
+    if (props.notBottomSpace) return 0;
+    return Size.spaceLarge;
+  }};
 `;
 
 const TextLeftBorder = styled(View)`
@@ -50,15 +53,18 @@ const Divider = styled(View)`
   align-self: stretch;
 `;
 
-const VideoRecomended = styled(Image)`
-  width: 120;
+const VideoImg = styled(Image)`
+  width: 130;
   height: 100;
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-bottom: ${Size.spaceSmall};
 `;
 const VideoContainer = styled(View)`
   flex: 1;
+  flex-flow: row wrap;
+  justify-content: space-around;
   margin-vertical: ${Size.spaceSmall};
 `;
 const PlayIcon = styled(FontAwesome)`
@@ -70,7 +76,6 @@ const PlayIcon = styled(FontAwesome)`
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    // width: width - Size.spaceLarge,
     alignSelf: 'stretch',
   },
 });
@@ -126,54 +131,52 @@ export default class SingleContentScene extends Component {
                 <Ionicons name='ios-more' size={20} color={Palette.white.css()} />
               </ActionsHeader>
 
-              <TextContainer>
+              <Section>
                 <TextBody inverted>{contentSelected.content.description}</TextBody>
                 <Source>
                   <TextBody bolder color={Palette.dark}>Fuente</TextBody>
                   <Divider color={Palette.dark.alpha(0.2).css()} />
-                  <Description inverted>{contentSelected.content.source}</Description>
+                  <TextBody inverted>{contentSelected.content.source}</TextBody>
                 </Source>
-              </TextContainer>
+              </Section>
 
-              <TextContainer>
+              <Section>
                 <Header inverted bolder>Links</Header>
                 {contentSelected.content.links.map((link, i) => (
                   <TextLeftBorder key={i}>
                     <TextBody inverted>{link}</TextBody>
                   </TextLeftBorder>
                 ))}
-              </TextContainer>
+              </Section>
 
-              <TextContainer>
+              <Section>
                 <Header inverted bolder>Notas</Header>
-                {contentSelected.content.user_notes ?
+                {contentSelected.content.user_notes &&
                   contentSelected.content.user_notes.map((note, i) => (
                     <TextLeftBorder key={i}>
                       <Description inverted>{note}</Description>
                     </TextLeftBorder>
-                  )) : (
-                    <Description>No tiene notas</Description>
-                  )
+                  ))
                 }
-              </TextContainer>
+              </Section>
 
-              <TextContainer>
+              <Section notBottomSpace>
                 <Header inverted bolder>Recomendados</Header>
                 <VideoContainer>
                   {contentSelected.content.videos &&
                     contentSelected.content.videos.map((video, i) => (
-                      <TouchableOpacity key={i}>
-                        <VideoRecomended
+                      <TouchableWithoutFeedback key={i}>
+                        <VideoImg
                           source={{ uri: `https:${video.thumbnail}` }}
                           resizeMode="cover"
                         >
                           <PlayIcon name='play-circle' size={40} />
-                        </VideoRecomended>
-                      </TouchableOpacity>
+                        </VideoImg>
+                      </TouchableWithoutFeedback>
                     ))
                   }
                 </VideoContainer>
-              </TextContainer>
+              </Section>
 
             </ScrollView>
           </ContentBox>
