@@ -12,11 +12,12 @@ import { BottomBar } from '../../commons/components/SceneComponents';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import actions from '../../actions/neuronActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
-import { TextBody, Description, Header } from '../../commons/components/Typography';
+import { TextBody, Header } from '../../commons/components/Typography';
 import Carousel from '../../commons/components/Carousel/Carousel';
 import MoiIcon from '../../commons/components/MoIcon/MoIcon';
 import { Palette, Size } from '../../commons/styles';
 import ActionsHeader from './ActionsContentMax';
+import NoteInput from '../../commons/components/NoteInput/NoteInput';
 
 const { width } = Dimensions.get('window');
 
@@ -151,13 +152,9 @@ export default class SingleContentScene extends Component {
 
               <Section>
                 <Header inverted bolder>Notas</Header>
-                {contentSelected.content.user_notes &&
-                  contentSelected.content.user_notes.map((note, i) => (
-                    <TextLeftBorder key={i}>
-                      <Description inverted>{note}</Description>
-                    </TextLeftBorder>
-                  ))
-                }
+                <TextLeftBorder>
+                  <NoteInput text={contentSelected.content.user_notes} />
+                </TextLeftBorder>
               </Section>
 
               <Section notBottomSpace>
