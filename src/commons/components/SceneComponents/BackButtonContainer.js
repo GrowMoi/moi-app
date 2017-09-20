@@ -1,10 +1,10 @@
 import React from 'react';
-import { View  } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
 
 const BackButtonContainer = styled(View)`
   position: absolute;
-  bottom: 0;
+  top: 100;
   left: 0;
 `;
 

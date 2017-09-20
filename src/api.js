@@ -18,7 +18,7 @@ const api = {
     },
   },
 
-  contents: {
+  content: {
     async getContentById(id = 1) {
       const content = await contentJSON;
       return content;
