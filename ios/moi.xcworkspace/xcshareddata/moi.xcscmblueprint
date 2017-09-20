@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E9772C7B7D29BDBBABEBD8F27C5B02FE4715B022",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E04B61FE3FE0207C13F6AE4C8B4DB901E81151EA" : 9223372036854775807,
+    "E9772C7B7D29BDBBABEBD8F27C5B02FE4715B022" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "38A3CC75-28CC-414C-A1CD-3DA2512F2C04",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E04B61FE3FE0207C13F6AE4C8B4DB901E81151EA" : "moi-app\/node_modules\/react-native-youtube\/",
+    "E9772C7B7D29BDBBABEBD8F27C5B02FE4715B022" : "moi-app\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "moi",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios\/moi.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/inProgress-team\/react-native-youtube.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E04B61FE3FE0207C13F6AE4C8B4DB901E81151EA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:GrowMoi\/moi-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E9772C7B7D29BDBBABEBD8F27C5B02FE4715B022"
+    }
+  ]
+}

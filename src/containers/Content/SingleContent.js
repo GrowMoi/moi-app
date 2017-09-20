@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { View, Alert, ScrollView, Image, Dimensions, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import {
+  View,
+  Alert,
+  ScrollView,
+  Image,
+  Dimensions,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
@@ -18,6 +26,8 @@ import MoiIcon from '../../commons/components/MoIcon/MoIcon';
 import { Palette, Size } from '../../commons/styles';
 import ActionsHeader from './ActionsContentMax';
 import NoteInput from '../../commons/components/NoteInput/NoteInput';
+import YoutubePlayer from '../../commons/components/VideoPlayer/YoutubePlayer';
+import { youtube } from '../../commons/utils';
 
 const { width } = Dimensions.get('window');
 
@@ -89,11 +99,12 @@ const styles = StyleSheet.create({
 export default class SingleContentScene extends Component {
   state = {
     loading: true,
+    videoModalVisible: false,
+    currentVideoId: '',
   }
 
   componentDidMount() {
     this.loadContentAsync();
-    console.log('Component Did Mount');
   }
 
   loadContentAsync = async () => {
@@ -103,9 +114,20 @@ export default class SingleContentScene extends Component {
     this.setState({ loading: false });
   }
 
+  setModalVisible(visible, currentId = '') {
+    this.setState({
+      videoModalVisible: visible,
+      currentVideoId: currentId,
+    });
+  }
+
   render() {
     const { contentSelected } = this.props;
-    const { loading } = this.state;
+    const {
+      loading,
+      videoModalVisible,
+      currentVideoId,
+    } = this.state;
 
     return (
       <MoiBackground>
@@ -161,16 +183,21 @@ export default class SingleContentScene extends Component {
                 <Header inverted bolder>Recomendados</Header>
                 <VideoContainer>
                   {contentSelected.content.videos &&
-                    contentSelected.content.videos.map((video, i) => (
-                      <TouchableWithoutFeedback key={i}>
-                        <VideoImg
-                          source={{ uri: `https:${video.thumbnail}` }}
-                          resizeMode="cover"
-                        >
-                          <PlayIcon name='play-circle' size={40} />
-                        </VideoImg>
-                      </TouchableWithoutFeedback>
-                    ))
+                    contentSelected.content.videos.length > 0 &&
+                    contentSelected.content.videos.map((video, i) => {
+                      const videoId = youtube.extractIdFromUrl(video.url);
+
+                      return (
+                        <TouchableWithoutFeedback key={i} onPress={() => this.setModalVisible(!this.state.videoModalVisible, videoId)}>
+                          <VideoImg
+                            source={{ uri: `https:${video.thumbnail}` }}
+                            resizeMode="cover"
+                          >
+                            <PlayIcon name='play-circle' size={40} />
+                          </VideoImg>
+                        </TouchableWithoutFeedback>
+                      );
+                    })
                   }
                 </VideoContainer>
               </Section>
@@ -181,6 +208,12 @@ export default class SingleContentScene extends Component {
 
         <Navbar/>
         <BottomBar />
+        {/* Modal */}
+        <YoutubePlayer
+          videoId={currentVideoId}
+          visible={videoModalVisible}
+          onPressClose={() => this.setModalVisible(false)}
+        />
       </MoiBackground>
     );
   }
