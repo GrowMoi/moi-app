@@ -134,7 +134,7 @@ export default class Neuron extends Component {
 Neuron.defaultProps = {
   size: {
     max: 50,
-    min: 35,
+    min: 30,
   },
 };
 

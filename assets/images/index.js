@@ -33,8 +33,8 @@ export default [
   require('./tree/nivel_1/nivel_1_color.png'),
 
   // Level 2
-  require('./tree/nivel_2/nivel_2_descubierta_r1.png'),
-  require('./tree/nivel_2/nivel_2_descubierta_r2.png'),
-  require('./tree/nivel_2/nivel_2_descubierta_r3.png'),
-  require('./tree/nivel_2/nivel_2_descubierta_r4.png'),
+  require('./tree/nivel_2/nivel_2_descubierta_right.png'),
+  require('./tree/nivel_2/nivel_2_descubierta_right_center.png'),
+  require('./tree/nivel_2/nivel_2_descubierta_left_center.png'),
+  require('./tree/nivel_2/nivel_2_descubierta_left.png'),
 ];
