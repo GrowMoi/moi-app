@@ -5,12 +5,19 @@ import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import Level1 from './Level1';
 import Neuron from './Neuron';
+import { FLORECIDA } from '../../../constants';
 
-// branch images
+// branch images descubiertas
 import descubiertaRight from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_right.png';
 import descubiertaRightCenter from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_right_center.png';
 import descubiertaLeftCenter from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_left_center.png';
 import descubiertaLeft from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_left.png';
+
+// branch images color
+import colorRight from '../../../../assets/images/tree/nivel_2/nivel_2_color_right.png';
+import colorRightCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_right_center.png';
+import colorLeftCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_left_center.png';
+import colorLeft from '../../../../assets/images/tree/nivel_2/nivel_2_color_left.png';
 
 const sideBranchHeight = 573;
 const sideBranchWidth = 397;
@@ -70,7 +77,6 @@ const BranchContainer = styled(View)`
   align-self: center;
 `;
 
-
 @connect(store => ({
   userTree: store.tree.userTree,
 }))
@@ -80,81 +86,117 @@ export default class Level2 extends Component {
     userTree: PropTypes.object,
   }
 
-  render() {
-    const { userTree } = this.props;
-    const { tree } = userTree;
+  currentBranch(index = 0, data) {
     const neuronConfig = {
       left: {
-        color: 'orange',
-        name: 'Izquierda',
-        id: 2,
-        contentsLearned: 4,
+        color: 'blue',
+        contentsLearned: 0,
         totalContents: 5,
         position: { left: -10, top: -17 },
       },
-      right: {
-        color: 'blue',
-        name: 'Derecha',
-        id: 3,
-        contentsLearned: 0,
-        totalContents: 8,
-        position: { right: -67, top: -20 },
+      leftCenter: {
+        color: 'green',
+        contentsLearned: 1,
+        totalContents: 2,
+        position: { right: -5, top: -20 },
       },
       rightCenter: {
-        color: 'dark_orange',
-        name: 'Derecha',
+        color: 'yellow',
         id: 4,
         contentsLearned: 3,
         totalContents: 5,
         position: { right: -20, top: -10 },
       },
-      leftCenter: {
-        color: 'green',
-        name: 'Derecha',
-        id: 5,
-        contentsLearned: 0,
-        totalContents: 2,
-        position: { right: -5, top: -20 },
+      right: {
+        color: 'fuchsia',
+        contentsLearned: 8,
+        totalContents: 8,
+        position: { right: -67, top: -20 },
       },
     };
 
+    const isflorecida = data.state === FLORECIDA;
+    switch (index) {
+      case 0:
+        return (
+          <LeftBranch
+            key={index}
+            width={100}
+            source={isflorecida ? colorLeft : descubiertaLeft}
+            resizeMode='contain'
+          >
+            <Neuron
+              id={data.id}
+              name={data.title}
+              {...neuronConfig.left}
+            />
+          </LeftBranch>
+        );
+      case 1:
+        return (
+          <LeftCenterBranch
+            key={index}
+            width={70}
+            source={isflorecida ? colorLeftCenter : descubiertaLeftCenter}
+            resizeMode='contain'
+          >
+            <Neuron
+              id={data.id}
+              name={data.title}
+              {...neuronConfig.leftCenter}
+            />
+          </LeftCenterBranch>
+        );
+      case 2:
+        return (
+          <RightCenterBranch
+            key={index}
+            width={70}
+            source={isflorecida ? colorRightCenter : descubiertaRightCenter}
+            resizeMode='contain'
+          >
+            <Neuron
+              id={data.id}
+              name={data.title}
+              {...neuronConfig.rightCenter}
+            />
+          </RightCenterBranch>
+        );
+      case 3:
+        return (
+          <RightBranch
+            key={index}
+            width={100}
+            source={isflorecida ? colorRight : descubiertaRight}
+            resizeMode='contain'
+          >
+            <Neuron
+              id={data.id}
+              name={data.title}
+              {...neuronConfig.right}
+            />
+          </RightBranch>
+        );
+      default:
+        return null;
+    }
+  }
+
+  render() {
+    const { userTree } = this.props;
+    const { tree } = userTree;
+
+    const childrenExist = !!tree.root.children;
+    if (childrenExist) return null;
     return (
       <Container>
         <Level1>
           <BranchContainer>
-
-            <RightBranch
-              width={100}
-              source={descubiertaRight}
-              resizeMode='contain'
-            >
-              <Neuron {...neuronConfig.right} />
-            </RightBranch>
-
-            <RightCenterBranch
-              width={70}
-              source={descubiertaRightCenter}
-              resizeMode='contain'
-            >
-              <Neuron {...neuronConfig.rightCenter} />
-            </RightCenterBranch>
-
-            <LeftCenterBranch
-              width={70}
-              source={descubiertaLeftCenter}
-              resizeMode='contain'
-            >
-              <Neuron {...neuronConfig.leftCenter} />
-            </LeftCenterBranch>
-
-            <LeftBranch
-              width={100}
-              source={descubiertaLeft}
-              resizeMode='contain'
-            >
-              <Neuron {...neuronConfig.left} />
-            </LeftBranch>
-
+            {tree.root.children.length > 0 && (
+              tree.root.children.map((child, i) => (
+                this.currentBranch(i, child)
+              ))
+            )}
           </BranchContainer>
         </Level1>
       </Container>
