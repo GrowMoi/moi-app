@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import Level1 from './Level1';
 import Neuron from './Neuron';
 import { FLORECIDA } from '../../../constants';
@@ -86,6 +87,10 @@ export default class Level2 extends Component {
     userTree: PropTypes.object,
   }
 
+  onPressNeuron = (e, data) => {
+    Actions.content({ title: data.title, neuron_id: data.id });
+  }
+
   currentBranch(index = 0, data) {
     const neuronConfig = {
       left: {
@@ -102,7 +107,6 @@ export default class Level2 extends Component {
       },
       rightCenter: {
         color: 'yellow',
-        id: 4,
         contentsLearned: 3,
         totalContents: 5,
         position: { right: -20, top: -10 },
@@ -126,6 +130,7 @@ export default class Level2 extends Component {
             resizeMode='contain'
           >
             <Neuron
+              onPress={e => this.onPressNeuron(e, data)}
               id={data.id}
               name={data.title}
               {...neuronConfig.left}
@@ -141,6 +146,7 @@ export default class Level2 extends Component {
             resizeMode='contain'
           >
             <Neuron
+              onPress={e => this.onPressNeuron(e, data)}
               id={data.id}
               name={data.title}
               {...neuronConfig.leftCenter}
@@ -156,6 +162,7 @@ export default class Level2 extends Component {
             resizeMode='contain'
           >
             <Neuron
+              onPress={e => this.onPressNeuron(e, data)}
               id={data.id}
               name={data.title}
               {...neuronConfig.rightCenter}
@@ -171,6 +178,7 @@ export default class Level2 extends Component {
             resizeMode='contain'
           >
             <Neuron
+              onPress={e => this.onPressNeuron(e, data)}
               id={data.id}
               name={data.title}
               {...neuronConfig.right}
@@ -187,7 +195,7 @@ export default class Level2 extends Component {
     const { tree } = userTree;
 
     const childrenExist = !!tree.root.children;
-    if (childrenExist) return null;
+    if (!childrenExist) return null;
     return (
       <Container>
         <Level1>

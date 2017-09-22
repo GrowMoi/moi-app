@@ -37,7 +37,7 @@ export default [
   require('./tree/nivel_2/nivel_2_descubierta_right_center.png'),
   require('./tree/nivel_2/nivel_2_descubierta_left_center.png'),
   require('./tree/nivel_2/nivel_2_descubierta_left.png'),
-  require('./tree/nivel_2/nivel_2_color_right.png'),
+  require('./tree/nivel_2/nivel_2_color_left.png'),
   require('./tree/nivel_2/nivel_2_color_right_center.png'),
   require('./tree/nivel_2/nivel_2_color_left.png'),
   require('./tree/nivel_2/nivel_2_color_left_center.png'),

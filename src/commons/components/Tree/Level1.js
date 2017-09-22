@@ -8,6 +8,7 @@ import Neuron from './Neuron';
 import treeLevel1Gray from '../../../../assets/images/tree/nivel_1/nivel_1_descubierta.png';
 import treeLevel1Color from '../../../../assets/images/tree/nivel_1/nivel_1_color.png';
 import actions from '../../../actions/treeActions';
+import { FLORECIDA  } from '../../../constants';
 
 const treeHeight = 371;
 const treeWidth = 213;
@@ -44,9 +45,7 @@ export default class Level1 extends Component {
 
   onPressNeuron = () => {
     const { tree } = this.props.userTree;
-    setTimeout(() => {
-      Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
-    }, 350);
+    Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
   }
 
   render() {
@@ -54,8 +53,8 @@ export default class Level1 extends Component {
     const { tree } = userTree;
     const contentsLearned = tree.root.contentsLearned;
     const totalContents = tree.root.totalContents;
-    const treeColor = tree.root.state === 'florecida' ? treeLevel1Color : treeLevel1Gray;
-    const neuronColor = tree.root.state === 'florecida' && 'yellow';
+    const treeColor = tree.root.state === FLORECIDA ? treeLevel1Color : treeLevel1Gray;
+    const neuronColor = tree.root.state === FLORECIDA && 'yellow';
 
     return (
       <Container>
