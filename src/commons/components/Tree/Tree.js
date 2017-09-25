@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { AppLoading } from 'expo';
-import { View, Image, StyleSheet, Text, ActivityIndicator } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer';
@@ -11,6 +10,7 @@ import loadingGif from '../../../../assets/images/loading.gif';
 
 // Levels
 import Level1 from './Level1';
+import Level2 from './Level2';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -60,12 +60,13 @@ export default class Tree extends Component {
 
     setTimeout(() => {
       this.setState({ loading: false });
-    }, 4000);
+    }, 0);
   }
 
   get level() {
     const { userTree } = this.props;
-    const level = userTree.meta.depth;
+    // const level = userTree.meta.depth;
+    const level = 2;
 
     switch (level) {
       case 1:
@@ -73,8 +74,11 @@ export default class Tree extends Component {
           component: <Level1 />,
           zoomScale: 1,
         };
-      case 9:
-        return { component: <Level1 />, zoomScale: 1 };
+      case 2:
+        return {
+          component: <Level2 />,
+          zoomScale: 1,
+        };
       default:
         return { component: <Level1 />, zoomScale: 1 };
     }

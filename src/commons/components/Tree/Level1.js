@@ -8,12 +8,13 @@ import Neuron from './Neuron';
 import treeLevel1Gray from '../../../../assets/images/tree/nivel_1/nivel_1_descubierta.png';
 import treeLevel1Color from '../../../../assets/images/tree/nivel_1/nivel_1_color.png';
 import actions from '../../../actions/treeActions';
+import { FLORECIDA  } from '../../../constants';
 
 const treeHeight = 371;
 const treeWidth = 213;
 const aspect = treeWidth / treeHeight;
 
-const TreeLevel1 = styled(Image)`
+const TreeLevel = styled(Image)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspect)};
   position: absolute;
@@ -25,6 +26,7 @@ const TreeLevel1 = styled(Image)`
 const Container = styled(View)`
   position: relative;
   flex: 1;
+  overflow: visible;
 `;
 
 @connect(store => ({
@@ -38,26 +40,26 @@ export default class Level1 extends Component {
   static propTypes = {
     width: PropTypes.number,
     userTree: PropTypes.object,
+    children: PropTypes.any,
   }
 
   onPressNeuron = () => {
     const { tree } = this.props.userTree;
-    setTimeout(() => {
-      Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
-    }, 350);
+    Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
   }
 
   render() {
-    const { width, userTree } = this.props;
+    const { width, userTree, children } = this.props;
     const { tree } = userTree;
     const contentsLearned = tree.root.contentsLearned;
     const totalContents = tree.root.totalContents;
-    const treeColor = tree.root.state === 'florecida' ? treeLevel1Color : treeLevel1Gray;
-    const neuronColor = tree.root.state === 'florecida' && 'yellow';
+    const treeColor = tree.root.state === FLORECIDA ? treeLevel1Color : treeLevel1Gray;
+    const neuronColor = tree.root.state === FLORECIDA && 'yellow';
 
     return (
       <Container>
-        <TreeLevel1
+        {children}
+        <TreeLevel
           width={width}
           source={treeColor}
           resizeMode='contain'
@@ -72,7 +74,7 @@ export default class Level1 extends Component {
             size={{ max: 50, min: 30 }}
             position={{ left: 7, bottom: 8 }}
           />
-        </TreeLevel1>
+        </TreeLevel>
       </Container>
     );
   }

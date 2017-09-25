@@ -47,7 +47,11 @@ export default class Neuron extends Component {
   onPressNeuron = (e) => {
     // Alert.alert('Hi');
     const { onPress } = this.props;
-    if (onPress) onPress(e);
+    if (onPress) {
+      setTimeout(() => {
+        onPress(e);
+      }, 250);
+    }
   }
 
   onPressIn = () => {
@@ -134,7 +138,7 @@ export default class Neuron extends Component {
 Neuron.defaultProps = {
   size: {
     max: 50,
-    min: 35,
+    min: 30,
   },
 };
 

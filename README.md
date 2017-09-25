@@ -13,6 +13,7 @@ Install all dependencies: `yarn` or `npm i`
   * Xcode (Command Line Tools)*
   * expo global installed [Expo](https://expo.io)
   * react-native-cli
+  * install react-native-debugger `brew update && brew cask install react-native-debugger`
 
 **Note:** * All (*) requirements are optionals if you have a device.
 * XCode and Android Studio are required for run app on the Simulator.
