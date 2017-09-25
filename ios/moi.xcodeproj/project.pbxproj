@@ -6,6 +6,7 @@
 	objectVersion = 46;
 	objects = {
 /* Begin PBXBuildFile section */
+		7CF46608F8FD4792AE62C868 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = E9C9C5C0F9E14B44930B37AC /* YTPlayerView-iframe-player.html */; };
 		B501732B1DC01252003445D9 /* EXShell.plist in Resources */ = {isa = PBXBuildFile; fileRef = B501732A1DC01252003445D9 /* EXShell.plist */; };
 		B56386491DB9693800A0598C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56386481DB9693800A0598C /* AppDelegate.m */; };
 		B56386511DB9693800A0598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56386501DB9693800A0598C /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		B5CFBF4F1EDE419400B4BE24 /* EXBuildConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5CFBF4E1EDE419400B4BE24 /* EXBuildConstants.plist */; };
 		D06F32EFE1A74711ABCE0C98 /* libRCTYouTube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33757C804A0148658F3E5A09 /* libRCTYouTube.a */; };
 		EBB8117C1BFA0514F79CAF74 /* libPods-moi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A88D15726AD99E8A257BC7 /* libPods-moi.a */; };
-		7CF46608F8FD4792AE62C868 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = E9C9C5C0F9E14B44930B37AC /* YTPlayerView-iframe-player.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,7 @@
 		B5CFBF4E1EDE419400B4BE24 /* EXBuildConstants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EXBuildConstants.plist; sourceTree = "<group>"; };
 		C4A88D15726AD99E8A257BC7 /* libPods-moi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-moi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBC0B61E5FB4679BBEDA834 /* RCTYouTube.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTYouTube.xcodeproj; path = "../node_modules/react-native-youtube/RCTYouTube.xcodeproj"; sourceTree = "<group>"; };
-		E9C9C5C0F9E14B44930B37AC /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; name = "YTPlayerView-iframe-player.html"; path = "../node_modules/react-native-youtube/assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E9C9C5C0F9E14B44930B37AC /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YTPlayerView-iframe-player.html"; path = "../node_modules/react-native-youtube/assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +104,7 @@
 				1A42804E64B7E9E0AB8B6799 /* Frameworks */,
 				38DB71315BAD423889B2F973 /* Libraries */,
 				2E25AE5F7BAF43F18B3CE538 /* Resources */,
+				EF9BB5DD1F7553BA00B6E3BE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +139,14 @@
 				B563865E1DB96A5E00A0598C /* main.m */,
 			);
 			path = Supporting;
+			sourceTree = "<group>";
+		};
+		EF9BB5DD1F7553BA00B6E3BE /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				33757C804A0148658F3E5A09 /* libRCTYouTube.a */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		EFFFD3E11F730B8700A28868 /* Products */ = {
@@ -183,7 +192,7 @@
 				TargetAttributes = {
 					B56386401DB9693800A0598C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = C8D8QTF339;
+						DevelopmentTeam = KBSL37LE47;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -427,7 +436,7 @@
 			baseConfigurationReference = 2C1548D9E4CB1AEFA5CCAE6D /* Pods-moi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = C8D8QTF339;
+				DEVELOPMENT_TEAM = KBSL37LE47;
 				INFOPLIST_FILE = "$(SRCROOT)/moi/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -444,7 +453,7 @@
 			baseConfigurationReference = A47FE4D7F70906B7DC8CE39B /* Pods-moi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = C8D8QTF339;
+				DEVELOPMENT_TEAM = KBSL37LE47;
 				INFOPLIST_FILE = "$(SRCROOT)/moi/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
