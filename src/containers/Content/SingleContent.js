@@ -15,7 +15,7 @@ import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import { BottomBar } from '../../commons/components/SceneComponents';
+import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import actions from '../../actions/neuronActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 
 @connect(store => ({
   contentSelected: store.neuron.contentSelected,
+  device: store.device,
 }), {
   loadContentByIdAsync: actions.loadContentByIdAsync,
 })
@@ -121,7 +122,7 @@ export default class SingleContentScene extends Component {
   }
 
   render() {
-    const { contentSelected } = this.props;
+    const { contentSelected, device } = this.props;
     const {
       loading,
       videoModalVisible,
@@ -206,7 +207,7 @@ export default class SingleContentScene extends Component {
         )}
 
         <Navbar/>
-        <BottomBar />
+        <BottomBarWithButtons width={device.dimensions.width}/>
         {/* Modal */}
         <YoutubePlayer
           videoId={currentVideoId}
@@ -221,4 +222,5 @@ export default class SingleContentScene extends Component {
 SingleContentScene.propTypes = {
   title: PropTypes.string,
   contentSelected: PropTypes.object,
+  device: PropTypes.object,
 };
