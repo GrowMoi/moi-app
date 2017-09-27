@@ -7,8 +7,7 @@ import styled from 'styled-components/native';
 import Neuron from './Neuron';
 import treeLevel1Gray from '../../../../assets/images/tree/nivel_1/nivel_1_descubierta.png';
 import treeLevel1Color from '../../../../assets/images/tree/nivel_1/nivel_1_color.png';
-import actions from '../../../actions/treeActions';
-import { FLORECIDA  } from '../../../constants';
+import { FLORECIDA } from '../../../constants';
 
 const treeHeight = 371;
 const treeWidth = 213;

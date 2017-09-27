@@ -15,7 +15,7 @@ const ContentScreen = styled(View)`
   shadow-radius: 2;
   margin-top: ${Size.navbarHeight + Size.spaceXSmall};
   margin-horizontal: ${Size.spaceSmall};
-  margin-bottom: ${Size.spaceMedium};
+  margin-bottom: ${Size.spaceSmall};
   background-color: #96be59;
   justify-content: flex-start;
   align-items: center;
