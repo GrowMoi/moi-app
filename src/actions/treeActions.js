@@ -1,9 +1,8 @@
 import api from '../api';
-
-export const LOAD_USER_TREE = 'LOAD_USER_TREE';
+import * as actionTypes from './actionTypes';
 
 const loadUserTree = treeInfo => ({
-  type: LOAD_USER_TREE,
+  type: actionTypes.LOAD_USER_TREE,
   payload: treeInfo,
 });
 

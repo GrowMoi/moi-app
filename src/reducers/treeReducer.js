@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { LOAD_USER_TREE } from './../actions/treeActions';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   userTree: {},
@@ -7,7 +7,7 @@ const initialState = {
 
 const userTree = (state = initialState.userTree, action = {}) => {
   switch (action.type) {
-    case LOAD_USER_TREE:
+    case actionTypes.LOAD_USER_TREE:
       return action.payload;
     default:
       return state;

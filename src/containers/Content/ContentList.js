@@ -7,7 +7,7 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import actions from '../../actions/neuronActions';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
-import { BottomBar } from '../../commons/components/SceneComponents';
+import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { normalize } from '../../commons/utils';
 import { Size } from '../../commons/styles';
@@ -82,7 +82,7 @@ export default class ContentListScene extends Component {
         )}
 
         <Navbar/>
-        <BottomBar />
+        <BottomBarWithButtons width={device.dimensions.width} />
       </MoiBackground>
     );
   }

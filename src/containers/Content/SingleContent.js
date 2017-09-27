@@ -11,7 +11,6 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { Actions } from 'react-native-router-flux';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 import Navbar from '../../commons/components/Navbar/Navbar';
