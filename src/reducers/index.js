@@ -3,6 +3,7 @@ import routes from './routes';
 import device from './deviceReducer';
 import neuron from './neuronReducer';
 import tree from './treeReducer';
+import user from './userReducer';
 // ... other reducers
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
   device,
   neuron,
   tree,
+  user,
   // ... other reducers
 });
