@@ -6,8 +6,9 @@ import { Actions, DefaultRenderer } from 'react-native-router-flux';
 import { LANDSCAPE, DRAWER_OFFSET } from '../../../constants';
 import SideMenu from './SideMenu';
 
-
-@connect(store => ({ device: store.device }))
+@connect(store => ({
+  device: store.device,
+}))
 export default class Menu extends Component {
   render() {
     const { device } = this.props;

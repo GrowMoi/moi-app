@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 import * as constants from './constants';
-import neuronJSON from './mocks/neuronid-1.json';
-import treeJSON from './mocks/tree.json';
-import contentJSON from './mocks/contentid-1.json';
 import { setAuthorizationToken } from './commons/utils';
 
 export const client = axios.create({
@@ -14,54 +11,84 @@ const handleError = (err) => {
   console.log('ERROR', err);
 };
 
-const setHeaders = async (response) => {
-  const headers = {
-    'access-token': response.headers['access-token'],
-    'token-type': response.headers['token-type'],
-    client: response.headers.client,
-    expiry: response.headers.expiry,
-    uid: response.headers.uid,
+const parseExpiry = (headers) => { // eslint-disable-line
+  return (parseInt(headers['expiry'], 10) * 1000) || null;
+};
+
+const setAuthHeaders = async (res) => {
+  const authHeader = {
+    'access-token': res.headers['access-token'],
+    'token-type': res.headers['token-type'],
+    'client': res.headers['client'], // eslint-disable-line
+    'expiry': res.headers['expiry'], // eslint-disable-line
+    'uid': res.headers['uid'], // eslint-disable-line
   };
 
-  await AsyncStorage.setItem('auth', JSON.stringify(headers));
-  setAuthorizationToken(headers);
+  try {
+    // await AsyncStorage.removeItem('auth');
+    await AsyncStorage.setItem('@store:auth', JSON.stringify(authHeader));
+    const item = await AsyncStorage.getItem('@store:auth');
+    console.log('ASYNC STORAGE', item);
+
+    setAuthorizationToken(authHeader);
+  } catch (error) {
+    console.log('ERROR ASYNC STORAGE');
+  }
 };
 
 const api = {
   neuron: {
     async getNeuronById(id = 1) {
-      const response = await neuronJSON;
-      return response;
+      const endpoint = `/api/neurons/${id}`;
+
+      const res = await client.get(endpoint);
+      await setAuthHeaders(res);
+
+      console.log('GET NEURON BY ID', res);
+
+      return res.data;
     },
   },
 
   user: {
-    async getUserTree(id = 1) {
-      const tree = await treeJSON;
-      return tree;
-    },
     async sign_in(profile) {
       const endpoint = '/api/auth/user/sign_in';
 
-      const response = await client.post(endpoint, profile);
-      setHeaders(response);
+      const res = await client.post(endpoint, profile);
+      await setAuthHeaders(res);
+      console.log('SING IN', res);
 
-      return response.data.data;
+      return res.data.data;
     },
     async validate_token() {
       const endpoint = '/api/auth/user/validate_token';
 
-      const response = await client.get(endpoint);
-      setHeaders(response);
+      const res = await client.get(endpoint);
+      await setAuthHeaders(res);
 
-      return response.data.data;
+      return res.data.data;
     },
   },
 
-  content: {
-    async getContentById(id = 1) {
-      const content = await contentJSON;
-      return content;
+  contents: {
+    async getContentById(neuronId = 1, contentId = 1) {
+      const endpoint = `api/neurons/${neuronId}/contents/${contentId}`;
+      const res = await client.get(endpoint);
+      await setAuthHeaders(res);
+      console.log('CONTENT ID', res);
+
+      return res.data;
+    },
+  },
+
+  trees: {
+    async getTree() {
+      const endpoint = '/api/tree';
+      const res = await client.get(endpoint);
+      // console.log('GET TREE', res);
+      // await setAuthHeaders(res);
+
+      return res.data;
     },
   },
 };

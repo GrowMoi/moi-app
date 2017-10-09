@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 
 @connect(store => ({
   contentSelected: store.neuron.contentSelected,
+  currentNeuron: store.neuron.neuronSelected,
   device: store.device,
 }), {
   loadContentByIdAsync: actions.loadContentByIdAsync,
@@ -108,8 +109,8 @@ export default class SingleContentScene extends Component {
   }
 
   loadContentAsync = async () => {
-    const { loadContentByIdAsync, content_id } = this.props;
-    await loadContentByIdAsync(content_id);
+    const { loadContentByIdAsync, content_id, neuron_id } = this.props;
+    await loadContentByIdAsync(neuron_id, content_id);
 
     this.setState({ loading: false });
   }

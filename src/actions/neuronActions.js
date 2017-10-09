@@ -18,8 +18,8 @@ const setCurrentContent = content => ({
   payload: content,
 });
 
-const loadContentByIdAsync = id => async (dispatch) => {
-  const content = await api.content.getContentById(id);
+const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
+  const content = await api.contents.getContentById(neuronId, contentId);
   dispatch(setCurrentContent(content));
   return content;
 };

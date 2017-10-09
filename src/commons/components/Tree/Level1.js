@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Image, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components/native';
@@ -28,9 +27,6 @@ const Container = styled(View)`
   overflow: visible;
 `;
 
-@connect(store => ({
-  userTree: store.tree.userTree,
-}))
 export default class Level1 extends Component {
   static defaultProps = {
     width: 50,
@@ -50,8 +46,10 @@ export default class Level1 extends Component {
   render() {
     const { width, userTree, children } = this.props;
     const { tree } = userTree;
-    const contentsLearned = tree.root.contentsLearned;
-    const totalContents = tree.root.totalContents;
+
+    const contentsLearned = tree.root.contentsLearned || 0;
+    const totalContents = tree.root.totalContents || 0;
+
     const treeColor = tree.root.state === FLORECIDA ? treeLevel1Color : treeLevel1Gray;
     const neuronColor = tree.root.state === FLORECIDA && 'yellow';
 
@@ -68,8 +66,8 @@ export default class Level1 extends Component {
             color={neuronColor}
             name={tree.root.title}
             id={tree.root.id}
-            contentsLearned={contentsLearned}
-            totalContents={totalContents}
+            contentsLearned={0}
+            totalContents={3}
             size={{ max: 50, min: 30 }}
             position={{ left: 7, bottom: 8 }}
           />

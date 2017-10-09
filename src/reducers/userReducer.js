@@ -2,7 +2,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  user: {},
+  profile: {},
   authenticate: false,
 };
 
@@ -11,7 +11,7 @@ const user = (state = initialState, action = {}) => {
     case actionTypes.AUTH_VALID:
       return {
         ...state,
-        user: action.payload,
+        profile: action.payload,
         authenticate: true,
       };
     case actionTypes.AUTH_NOTVALID:

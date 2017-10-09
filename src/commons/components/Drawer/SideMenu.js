@@ -77,15 +77,17 @@ const options = [
 @connect(store => ({
   device: store.device,
   userTree: store.tree.userTree,
+  user: store.user,
 }))
 export default class SideMenu extends Component {
   static propTypes = {
     device: PropTypes.any,
     userTree: PropTypes.any,
+    user: PropTypes.object,
   }
 
   render() {
-    const { device, userTree } = this.props;
+    const { device, userTree, user } = this.props;
     const { orientation } = device.dimensions;
     const portraitOrientation = orientation === PORTRAIT;
 
@@ -105,7 +107,7 @@ export default class SideMenu extends Component {
           showsVerticalScrollIndicator
         >
           <UserNameContainer>
-            <UserName numberOfLines={1} small heavy inverted>Pedro Jimenez</UserName>
+            <UserName numberOfLines={1} small heavy inverted>{user.profile.name || 'NO NAME'}</UserName>
             <Header small heavy inverted>Nivel: {treeIsLoaded && userTree.meta.depth}</Header>
           </UserNameContainer>
 

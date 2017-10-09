@@ -18,8 +18,7 @@ export default class Login extends Component {
   }
 
   onChangeInput = (id, text) => {
-    this.setState(prevState => ({
-      ...prevState,
+    this.setState(({
       [id]: text,
     }));
   }

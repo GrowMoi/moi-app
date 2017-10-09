@@ -30,8 +30,8 @@ const validateToken = () => async (dispatch) => {
     dispatch(authenticate(response));
   } catch (error) {
     dispatch(notAuthenticate());
-    const auth = await AsyncStorage.getItem('auth');
-    if (auth) { AsyncStorage.removeItem('auth'); }
+    const auth = await AsyncStorage.getItem('@store:auth');
+    if (auth) { AsyncStorage.removeItem('@store:auth'); }
   }
 
   return response;

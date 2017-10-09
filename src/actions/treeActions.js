@@ -1,15 +1,15 @@
 import api from '../api';
 import * as actionTypes from './actionTypes';
 
-const loadUserTree = treeInfo => ({
+const loadUserTree = tree => ({
   type: actionTypes.LOAD_USER_TREE,
-  payload: treeInfo,
+  payload: tree,
 });
 
-const loadTreeAsync = userId => async (dispatch) => {
-  const level = await api.user.getUserTree(userId);
-  dispatch(loadUserTree(level));
-  return level;
+const loadTreeAsync = () => async (dispatch) => {
+  const tree = await api.trees.getTree();
+  dispatch(loadUserTree(tree));
+  return tree;
 };
 
 export default {

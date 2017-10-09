@@ -16,7 +16,6 @@ import allImages from '../assets/images';
 import fonts from '../assets/fonts';
 import { setDeviceDimensions } from './actions/deviceActions';
 import userActions from './actions/userActions';
-import api, { client } from './api';
 
 addLocaleData([...en, ...es]);
 
@@ -72,7 +71,7 @@ export default class Scenes extends Component {
   }
 
   validateAuth = async () => {
-    const headers = await AsyncStorage.getItem('auth');
+    const headers = await AsyncStorage.getItem('@store:auth');
     if (headers) {
       setAuthorizationToken(JSON.parse(headers));
       await store.dispatch(userActions.validateToken());
