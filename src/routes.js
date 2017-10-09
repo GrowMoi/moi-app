@@ -39,11 +39,6 @@ const routes = Actions.create(
           component={TreeScene}
           {...navbarPropStyles}
           title='Arbol' />
-        <Scene
-          key="profile"
-          title="Profile"
-          component={Profile}
-          {...navbarPropStyles} />
       </Scene>
     </Scene>
 
@@ -59,6 +54,13 @@ const routes = Actions.create(
       renderBackButton={backButton}
       {...navbarPropStyles}
       title='Contenido Individual'
+    />
+    <Scene
+      key="profile"
+      title="Profile"
+      component={Profile}
+      renderBackButton={backButton}
+      {...navbarPropStyles}
     />
 
     <Scene key='search' title='Search' {...navbarPropStyles}>

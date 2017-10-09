@@ -1,43 +1,60 @@
-import { AsyncStorage } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import api from '../api';
 import * as actionTypes from './actionTypes';
-
-const authenticate = response => ({
-  type: actionTypes.AUTH_VALID,
-  payload: response,
-});
 
 const notAuthenticate = () => ({
   type: actionTypes.AUTH_NOTVALID,
 });
 
-const loginAsync = user => async (dispatch) => {
-  let response;
+const login = (user, headers) => ({
+  type: actionTypes.LOGIN,
+  user,
+  headers,
+});
+
+const loginAsync = ({ email, password }) => async (dispatch) => {
+  let res;
   try {
-    response = await api.user.sign_in(user);
-    dispatch(authenticate(response));
+    res = await api.user.signIn({ email, password });
+    const { data: { data: user }, headers } = res;
+    dispatch(login(user, headers));
+    Actions.moiDrawer();
   } catch (error) {
     dispatch(notAuthenticate());
   }
 
-  return response;
+  return res;
 };
 
 const validateToken = () => async (dispatch) => {
-  let response;
+  let res;
   try {
-    response = await api.user.validate_token();
-    dispatch(authenticate(response));
+    dispatch({ type: actionTypes.VALIDATE_TOKEN });
+    res = await api.user.validateToken();
+    const { data: { data: user }, headers } = res;
+    dispatch(login(user, headers));
   } catch (error) {
     dispatch(notAuthenticate());
-    const auth = await AsyncStorage.getItem('@store:auth');
-    if (auth) { AsyncStorage.removeItem('@store:auth'); }
   }
 
-  return response;
+  return res;
+};
+
+const logoutAsync = () => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.signOut();
+    dispatch({ type: actionTypes.LOGOUT });
+    Actions.login();
+  } catch (error) {
+    console.log('SING OUT', error);
+  }
+
+  return res;
 };
 
 export default {
   loginAsync,
   validateToken,
+  logoutAsync,
 };

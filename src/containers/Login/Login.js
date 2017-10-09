@@ -34,7 +34,6 @@ export default class Login extends Component {
 
     try {
       await loginAsync({ email, password });
-      Actions.moiDrawer();
     } catch (error) {
       Alert.alert('Credenciales incorrectas');
     }

@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
 import { Util, AppLoading, Font, Icon } from 'expo';
-import { Text, Dimensions, AsyncStorage } from 'react-native';
+import { Text, Dimensions } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -11,7 +11,7 @@ import es from 'react-intl/locale-data/es';
 import routes from './routes';
 import messages from './messages';
 import store from './store';
-import { flattenMessages, cacheImages, setAuthorizationToken } from './commons/utils';
+import { flattenMessages, cacheImages } from './commons/utils';
 import allImages from '../assets/images';
 import fonts from '../assets/fonts';
 import { setDeviceDimensions } from './actions/deviceActions';
@@ -71,12 +71,7 @@ export default class Scenes extends Component {
   }
 
   validateAuth = async () => {
-    const headers = await AsyncStorage.getItem('@store:auth');
-    if (headers) {
-      setAuthorizationToken(JSON.parse(headers));
-      await store.dispatch(userActions.validateToken());
-    }
-
+    await store.dispatch(userActions.validateToken());
     this.setState({ appIsReady: true });
   }
 

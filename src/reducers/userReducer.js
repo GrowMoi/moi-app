@@ -3,15 +3,17 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   profile: {},
+  headers: {},
   authenticate: false,
 };
 
 const user = (state = initialState, action = {}) => {
   switch (action.type) {
-    case actionTypes.AUTH_VALID:
+    case actionTypes.LOGIN:
       return {
         ...state,
-        profile: action.payload,
+        profile: action.user,
+        headers: action.headers,
         authenticate: true,
       };
     case actionTypes.AUTH_NOTVALID:
