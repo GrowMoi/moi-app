@@ -17,7 +17,7 @@ const StyledButton = styled(View)`
 const Button = ({ title, onPress, style }) => (
   <TouchableOpacity onPress={onPress} style={style} >
     <StyledButton>
-      <Header heavy>{title}</Header>
+      <Header small heavy>{title}</Header>
     </StyledButton>
   </TouchableOpacity>
 );
