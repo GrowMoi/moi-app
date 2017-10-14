@@ -18,8 +18,10 @@ const routes = Actions.create(
   <Scene key="root">
     <Scene
       key='login'
-      title='Login'
       component={Login}
+      {...navbarPropStyles}
+      renderLeftButton={null}
+      renderRightButton={null}
     />
     <Scene
       key='register'

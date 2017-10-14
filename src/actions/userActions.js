@@ -1,4 +1,5 @@
 import { Actions } from 'react-native-router-flux';
+import { Alert } from 'react-native';
 import api from '../api';
 import * as actionTypes from './actionTypes';
 
@@ -21,6 +22,7 @@ const loginAsync = ({ email, password }) => async (dispatch) => {
     Actions.moiDrawer();
   } catch (error) {
     dispatch(notAuthenticate());
+    Alert.alert('Credenciales Incorrectas');
   }
 
   return res;
@@ -47,7 +49,7 @@ const logoutAsync = () => async (dispatch) => {
     dispatch({ type: actionTypes.LOGOUT });
     Actions.login();
   } catch (error) {
-    console.log('SING OUT', error);
+    // console.log('SING OUT', error);
   }
 
   return res;
