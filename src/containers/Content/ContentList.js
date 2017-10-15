@@ -36,11 +36,12 @@ export default class ContentListScene extends Component {
   }
 
   onPressRowcontent = (e, content) => {
-    const { neuronSelected } = this.props;
+    const { neuronSelected, neuron_id } = this.props;
 
     Actions.singleContent({
       content_id: content.id,
       title: neuronSelected.neuron.title,
+      neuron_id,
     });
   }
 
@@ -59,22 +60,25 @@ export default class ContentListScene extends Component {
         {!loading ? (
           <ContentBox>
             <ScrollView contentContainerStyle={containerStyles}>
-              {neuronSelected.neuron.contents.map((content, i) => {
-                const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
-                const oddInverted = i % 2 === 1;
+              {!!neuronSelected.neuron &&
+                neuronSelected.neuron.contents.length > 0 &&
+                neuronSelected.neuron.contents.map((content, i) => {
+                  const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
+                  const oddInverted = i % 2 === 1;
 
-                return (
-                  <ContentPreview
-                    width={widthContentPreview}
-                    onPress={e => this.onPressRowcontent(e, content)}
-                    inverted={oddInverted}
-                    key={content.id}
-                    title={content.title}
-                    subtitle={normalizeKind}
-                    source={{ uri: content.media[0] }}
-                  />
-                );
-              })}
+                  return (
+                    <ContentPreview
+                      width={widthContentPreview}
+                      onPress={e => this.onPressRowcontent(e, content)}
+                      inverted={oddInverted}
+                      key={content.id}
+                      title={content.title}
+                      subtitle={normalizeKind}
+                      source={{ uri: content.media[0] }}
+                    />
+                  );
+                })
+              }
             </ScrollView>
           </ContentBox>
         ) : (

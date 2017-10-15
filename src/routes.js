@@ -3,6 +3,7 @@ import { Actions, Scene } from 'react-native-router-flux';
 import Welcome from './containers/Welcome';
 import Menu from './commons/components/Drawer';
 import TreeScene from './containers/Tree';
+import Login from './containers/Login/Login';
 import ContentListScene from './containers/Content/ContentList';
 import SingleContentScene from './containers/Content/SingleContent';
 import Profile from './containers/Profile';
@@ -15,8 +16,22 @@ const backButton = () => <BackButton style={{ left: -5, top: 3 }} onPress={() =>
 
 const routes = Actions.create(
   <Scene key="root">
-
-    <Scene key='moiDrawer' title='Tree' component={Menu} open={false}>
+    <Scene
+      key='login'
+      title='Login'
+      component={Login}
+    />
+    <Scene
+      key='register'
+      title='Registro'
+      component={Login}
+    />
+    <Scene
+      type='replace'
+      key='moiDrawer'
+      title='Tree'
+      component={Menu}
+      open={false}>
       <Scene key="main" tabs>
         <Scene
           key='tree'
@@ -24,11 +39,6 @@ const routes = Actions.create(
           component={TreeScene}
           {...navbarPropStyles}
           title='Arbol' />
-        <Scene
-          key="profile"
-          title="Profile"
-          component={Profile}
-          {...navbarPropStyles} />
       </Scene>
     </Scene>
 
@@ -44,6 +54,13 @@ const routes = Actions.create(
       renderBackButton={backButton}
       {...navbarPropStyles}
       title='Contenido Individual'
+    />
+    <Scene
+      key="profile"
+      title="Profile"
+      component={Profile}
+      renderBackButton={backButton}
+      {...navbarPropStyles}
     />
 
     <Scene key='search' title='Search' {...navbarPropStyles}>

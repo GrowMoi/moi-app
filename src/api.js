@@ -1,27 +1,51 @@
 import axios from 'axios';
-import neuronJSON from './mocks/neuronid-1.json';
-import treeJSON from './mocks/tree.json';
-import contentJSON from './mocks/contentid-1.json';
+import * as constants from './constants';
+
+export const client = axios.create({
+  baseURL: constants.URL_BASE,
+});
 
 const api = {
   neuron: {
     async getNeuronById(id = 1) {
-      const response = await neuronJSON;
-      return response;
+      const endpoint = `/api/neurons/${id}`;
+      const res = await client.get(endpoint);
+      return res;
     },
   },
 
   user: {
-    async getUserTree(id = 1) {
-      const tree = await treeJSON;
-      return tree;
+    async signIn({ email, password }) {
+      const endpoint = '/api/auth/user/sign_in';
+      const res = await client.post(endpoint, { email, password });
+      return res;
+    },
+    async validateToken() {
+      const endpoint = '/api/auth/user/validate_token';
+      const headers = client.defaults.headers.common;
+      const res = await client.get(endpoint, headers);
+      return res;
+    },
+    async signOut() {
+      const endpoint = '/api/auth/user/sign_out';
+      const res = await client.delete(endpoint);
+      return res;
     },
   },
 
-  content: {
-    async getContentById(id = 1) {
-      const content = await contentJSON;
-      return content;
+  contents: {
+    async getContentById(neuronId = 1, contentId = 1) {
+      const endpoint = `api/neurons/${neuronId}/contents/${contentId}`;
+      const res = await client.get(endpoint);
+      return res;
+    },
+  },
+
+  trees: {
+    async getTree() {
+      const endpoint = '/api/tree';
+      const res = await client.get(endpoint);
+      return res;
     },
   },
 };

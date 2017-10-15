@@ -34,6 +34,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "start": "exp start",
     "test": "node node_modules/jest/bin/jest.js",
     "test:watch": "node node_modules/jest/bin/jest.js --watch",
     "test:coverage": "node node_modules/jest/bin/jest.js --coverage",

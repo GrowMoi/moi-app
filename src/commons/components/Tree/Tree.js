@@ -5,8 +5,8 @@ import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer';
 import { Maceta } from '../SceneComponents';
-import actions from '../../../actions/treeActions';
-import loadingGif from '../../../../assets/images/loading.gif';
+import treeActions from '../../../actions/treeActions';
+import Preloader from '../Preloader/Preloader';
 
 // Levels
 import Level1 from './Level1';
@@ -47,61 +47,70 @@ const LoadingNeuron = styled(Image)`
   device: store.device,
   userTree: store.tree.userTree,
 }), {
-  loadTreeAsync: actions.loadTreeAsync,
+  loadTreeAsync: treeActions.loadTreeAsync,
 })
 export default class Tree extends Component {
   state = {
     loading: true,
+    hasUserTree: false,
+    level: null,
+    zoomScale: 1,
   }
 
   async componentDidMount() {
     const { loadTreeAsync } = this.props;
-    await loadTreeAsync(1);
+    try {
+      await loadTreeAsync();
+      this.getTreeLevel();
+    } catch (error) {
+      console.log('ERROR TO GET TREE');
+    }
 
-    setTimeout(() => {
-      this.setState({ loading: false });
-    }, 0);
+    this.setState({ loading: false });
   }
 
-  get level() {
-    const { userTree } = this.props;
-    // const level = userTree.meta.depth;
-    const level = 2;
+  selectCurrentLevel = (userTree) => {
+    const level = userTree.meta.depth;
+
+    const levels = {
+      tree1: <Level1 userTree={userTree} />,
+      tree2: <Level2 userTree={userTree} />,
+    };
 
     switch (level) {
       case 1:
-        return {
-          component: <Level1 />,
-          zoomScale: 1,
-        };
+        return { component: levels.tree1, zoomScale: 1 };
       case 2:
-        return {
-          component: <Level2 />,
-          zoomScale: 1,
-        };
+        return { component: levels.tree2, zoomScale: 1 };
       default:
-        return { component: <Level1 />, zoomScale: 1 };
+        return { component: levels.tree1, zoomScale: 1 };
+    }
+  }
+
+  getTreeLevel = () => {
+    const { userTree } = this.props;
+
+    if (userTree.meta) {
+      this.setState({
+        hasUserTree: true,
+        level: this.selectCurrentLevel(userTree).component,
+        zoomScale: this.selectCurrentLevel(userTree).zoomScale,
+      });
     }
   }
 
   render() {
-    const { loading } = this.state;
-    if (loading) {
-      return (
-        <Loading>
-          <LoadingNeuron source={loadingGif} resizeMode='contain' />
-        </Loading>
-      );
-    }
+    const { loading, level, zoomScale, hasUserTree } = this.state;
 
+    if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
         <ViewTransformer
           style={styles.treeView}
-          maxScale={this.level.zoomScale}
+          maxScale={zoomScale}
         >
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
-          {this.level.component}
+          {level}
         </ViewTransformer>
       </TreeContainer>
     );

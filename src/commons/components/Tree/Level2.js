@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Level1 from './Level1';
@@ -78,9 +77,6 @@ const BranchContainer = styled(View)`
   align-self: center;
 `;
 
-@connect(store => ({
-  userTree: store.tree.userTree,
-}))
 export default class Level2 extends Component {
   static propTypes = {
     width: PropTypes.number,

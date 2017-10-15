@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { TouchableOpacity, View, Button } from 'react-native';
 import Navbar from '../../commons/components/Navbar/Navbar';
+import userActions from './../../actions/userActions';
 
+@connect(store => ({
+  user: store.user,
+}),{
+  logoutAsync: userActions.logoutAsync,
+})
 export default class Profile extends Component {
+  logout = () => {
+    const { logoutAsync } = this.props;
+    logoutAsync();
+  }
+
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Navbar />
-        <Text>Profile View</Text>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Button onPress={this.logout} title='Cerrar Sesión' />
+        </View>
       </View>
     );
   }

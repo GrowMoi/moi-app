@@ -15,6 +15,7 @@ import { flattenMessages, cacheImages } from './commons/utils';
 import allImages from '../assets/images';
 import fonts from '../assets/fonts';
 import { setDeviceDimensions } from './actions/deviceActions';
+import userActions from './actions/userActions';
 
 addLocaleData([...en, ...es]);
 
@@ -29,6 +30,7 @@ const allFonts = {
 export default class Scenes extends Component {
   state = {
     locale: null,
+    assetsLoaded: false,
     appIsReady: false,
   }
 
@@ -36,6 +38,10 @@ export default class Scenes extends Component {
     this.setOrientation();
     this.preLoadingAssets();
     Dimensions.addEventListener('change', this.setOrientation);
+  }
+
+  componentDidMount() {
+    this.validateAuth();
   }
 
   componentWillUnmount() {
@@ -51,7 +57,7 @@ export default class Scenes extends Component {
     await cacheImages(allImages);
     await Font.loadAsync(allFonts);
 
-    this.setState({ appIsReady: true, locale });
+    this.setState({ assetsLoaded: true, locale });
   }
 
   async getCurrentLocale() {
@@ -64,21 +70,27 @@ export default class Scenes extends Component {
     return locale;
   }
 
-  render() {
-    const { locale, appIsReady } = this.state;
+  validateAuth = async () => {
+    await store.dispatch(userActions.validateToken());
+    this.setState({ appIsReady: true });
+  }
 
-    if (!appIsReady) {
-      return <AppLoading/>;
+  render() {
+    const { locale, appIsReady, assetsLoaded } = this.state;
+
+    if (appIsReady && assetsLoaded) {
+      return (
+        <Provider store={store}>
+          <IntlProvider
+            locale={locale}
+            messages={flattenMessages(messages[locale])}
+            textComponent={Text}>
+            <RouterWithRedux scenes={routes}/>
+          </IntlProvider>
+        </Provider>
+      );
     }
-    return (
-      <Provider store={store}>
-        <IntlProvider
-          locale={locale}
-          messages={flattenMessages(messages[locale])}
-          textComponent={Text}>
-          <RouterWithRedux scenes={routes}/>
-        </IntlProvider>
-      </Provider>
-    );
+
+    return <AppLoading/>;
   }
 }
