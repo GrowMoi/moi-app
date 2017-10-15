@@ -30,6 +30,7 @@ exports[`Typography it should render header expected 1`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "transparent",
         "color": "#4a4b21",
         "fontFamily": "Museo300",
         "fontSize": 20,
