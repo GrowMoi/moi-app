@@ -13,6 +13,11 @@ const login = (user, headers) => ({
   headers,
 });
 
+const loadContentTasks = userContentTasks => ({
+  type: actionTypes.GET_USER_CONTENT_TASKS,
+  payload: userContentTasks,
+});
+
 const loginAsync = ({ email, password }) => async (dispatch) => {
   let res;
   try {
@@ -55,8 +60,22 @@ const logoutAsync = () => async (dispatch) => {
   return res;
 };
 
+const loadUserContentTasksAsync = page => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.contentTasks(page);
+    const { data } = res;
+    dispatch(loadContentTasks(data));
+  } catch (error) {
+    // console.log(error);
+  }
+
+  return res;
+};
+
 export default {
   loginAsync,
   validateToken,
   logoutAsync,
+  loadUserContentTasksAsync,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { Actions } from 'react-native-router-flux';
 import { Image, View, Alert, TouchableOpacity } from 'react-native';
 import MoIcon from '../MoIcon/MoIcon';
 import { Size } from '../../styles';
@@ -62,7 +63,7 @@ const BottomBarWithButtons = (props) => {
   const hasHigherWidth = props.width > 320;
 
   const buttonPress = () => {
-    Alert.alert('Hi');
+    Actions.tasks();
   };
 
   return (

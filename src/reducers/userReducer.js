@@ -1,13 +1,16 @@
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  profile: {},
-  headers: {},
-  authenticate: false,
+  userData: {
+    profile: {},
+    headers: {},
+    authenticate: false,
+  },
+  tasks: {},
 };
 
-const user = (state = initialState, action = {}) => {
+const userData = (state = initialState.userData, action = {}) => {
   switch (action.type) {
     case actionTypes.LOGIN:
       return {
@@ -22,5 +25,19 @@ const user = (state = initialState, action = {}) => {
       return state;
   }
 };
+
+const tasks = (state = initialState.tasks, action = {}) => {
+  switch (action.type) {
+    case actionTypes.GET_USER_CONTENT_TASKS:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const user = combineReducers({
+  userData,
+  tasks,
+});
 
 export default user;

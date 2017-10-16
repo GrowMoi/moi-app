@@ -14,17 +14,14 @@ import {
 
 import userActions from './../../actions/userActions';
 import { WoodTitle } from '../../commons/components/SceneComponents';
-import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
-import backgound from '../../../assets/images/background/background_tree_portrait.jpg';
 import { getHeightAspectRatio } from '../../commons/utils';
 import Input from '../../commons/components/Input/Input';
 import { Size } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
+import MoiBackground from '../../commons/components/Background/MoiBackground';
+import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 
-const Background = styled(Image)`
-  flex: 1;
-  width: ${props => props.width};
-  height: ${props => props.height};
+const Background = styled(MoiBackground)`
   justify-content: center;
   align-items: center;
 `;
@@ -56,7 +53,7 @@ const Form = styled(View)`
 `;
 
 @connect(store => ({
-  user: store.user,
+  user: store.user.userData,
   device: store.device,
 }), {
   loginAsync: userActions.loginAsync,
@@ -93,11 +90,7 @@ export default class Login extends Component {
       <TouchableWithoutFeedback
         onPress={() => Keyboard.dismiss()}
       >
-        <Background
-          source={backgound}
-          width={width}
-          height={height}
-        >
+        <Background>
           <BackgroundTree
             source={backgroundTree}
             width={width}

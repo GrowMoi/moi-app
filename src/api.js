@@ -31,13 +31,23 @@ const api = {
       const res = await client.delete(endpoint);
       return res;
     },
+    async contentTasks(page = 1) {
+      const endpoint = '/api/users/content_tasks';
+      const res = await client.get(endpoint, { page });
+      return res;
+    },
   },
 
   contents: {
     async getContentById(neuronId = 1, contentId = 1) {
-      const endpoint = `api/neurons/${neuronId}/contents/${contentId}`;
+      const endpoint = `/api/neurons/${neuronId}/contents/${contentId}`;
       const res = await client.get(endpoint);
       return res;
+    },
+    async storeContentTask(neuronId = 1, contentId = 1) {
+      const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/tasks`;
+      // const res = await client.post(endpoint);
+      // return res;
     },
   },
 
