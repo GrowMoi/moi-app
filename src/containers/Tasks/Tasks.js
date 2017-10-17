@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import { ContentBox, ContentPreview } from '../../commons/components/ContentComponents';
@@ -33,6 +34,16 @@ class Tasks extends Component {
     await loadUserContentTasksAsync(1);
 
     this.setState({ loading: false });
+  }
+
+  onPressRowcontent = (e, content) => {
+    const { neuronSelected, neuron_id } = this.props;
+
+    Actions.singleContent({
+      content_id: content.id,
+      title: neuronSelected.neuron.title,
+      neuron_id,
+    });
   }
 
   render() {
@@ -86,6 +97,7 @@ Tasks.propTypes = {
   neuronSelected: PropTypes.object,
   device: PropTypes.object,
   user: PropTypes.object,
+  neuron_id: PropTypes.number,
 };
 
 export default Tasks;

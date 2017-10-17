@@ -21,7 +21,8 @@ import Button from '../../commons/components/Buttons/Button';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 
-const Background = styled(MoiBackground)`
+const LoginContainer = styled(View)`
+  flex: 1;
   justify-content: center;
   align-items: center;
 `;
@@ -84,44 +85,46 @@ export default class Login extends Component {
 
   render() {
     const { device } = this.props;
-    const { width, height } = device.dimensions;
+    const { width } = device.dimensions;
 
     return (
       <TouchableWithoutFeedback
         onPress={() => Keyboard.dismiss()}
       >
-        <Background>
-          <BackgroundTree
-            source={backgroundTree}
-            width={width}
-          />
-          <FormContainer
-            behavior="padding"
-            width={width - Size.spaceXLarge}
-            keyboardVerticalOffset={Size.spaceLarge}
-          >
-            <StatusBar hidden/>
-            <WoodTitle title='Login' />
+        <MoiBackground>
+          <LoginContainer>
+            <BackgroundTree
+              source={backgroundTree}
+              width={width}
+            />
+            <FormContainer
+              behavior="padding"
+              width={width - Size.spaceXLarge}
+              keyboardVerticalOffset={Size.spaceLarge}
+            >
+              <StatusBar hidden/>
+              <WoodTitle title='Login' />
 
-            <Form>
-              <Input
-                placeholder='email'
-                keyboardType='email-address'
-                onChangeText={text => this.onChangeInput('email', text)}
-              />
-              <Input
-                placeholder='contraseña'
-                secureTextEntry
-                onChangeText={text => this.onChangeInput('password', text)}
-              />
+              <Form>
+                <Input
+                  placeholder='email'
+                  keyboardType='email-address'
+                  onChangeText={text => this.onChangeInput('email', text)}
+                />
+                <Input
+                  placeholder='contraseña'
+                  secureTextEntry
+                  onChangeText={text => this.onChangeInput('password', text)}
+                />
 
-              <ButtonsContainer>
-                <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
-                <Button style={{ flex: 1 }} title='Jugar' onPress={this.submit} />
-              </ButtonsContainer>
-            </Form>
-          </FormContainer>
-        </Background>
+                <ButtonsContainer>
+                  <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
+                  <Button style={{ flex: 1 }} title='Jugar' onPress={this.submit} />
+                </ButtonsContainer>
+              </Form>
+            </FormContainer>
+          </LoginContainer>
+        </MoiBackground>
       </TouchableWithoutFeedback>
     );
   }
@@ -129,4 +132,5 @@ export default class Login extends Component {
 
 Login.propTypes = {
   user: PropTypes.object,
+  device: PropTypes.object,
 };

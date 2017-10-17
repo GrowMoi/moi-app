@@ -97,7 +97,7 @@ export default class ActionSheet extends Component {
         <Overlay onPress={this.dismiss} activeOpacity={1}>
           <OptionsBox style={currentAnim}>
             {options.length > 0 && options.map((option, i) => (
-              <Option key={i}>
+              <Option key={i} onPress={() => !!option.fn && option.fn()}>
                 <OptionIcon name={option.icon} size={iconSize} />
                 <TextBody>{option.label}</TextBody>
               </Option>
@@ -105,7 +105,7 @@ export default class ActionSheet extends Component {
             {hasCancelOption && (
               <CancelOption onPress={this.dismiss}>
                 <OptionIcon name='md-close' size={iconSize} />
-                <TextBody>Cancel</TextBody>
+                <TextBody>Cancelar</TextBody>
               </CancelOption>
             )}
           </OptionsBox>

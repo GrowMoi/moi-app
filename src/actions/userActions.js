@@ -2,6 +2,7 @@ import { Actions } from 'react-native-router-flux';
 import { Alert } from 'react-native';
 import api from '../api';
 import * as actionTypes from './actionTypes';
+import { setHeaders } from './headerActions';
 
 const notAuthenticate = () => ({
   type: actionTypes.AUTH_NOTVALID,
@@ -64,12 +65,25 @@ const loadUserContentTasksAsync = page => async (dispatch) => {
   let res;
   try {
     res = await api.user.contentTasks(page);
-    const { data } = res;
+    const { data, headers } = res;
     dispatch(loadContentTasks(data));
+    dispatch(setHeaders(headers));
   } catch (error) {
     // console.log(error);
   }
 
+  return res;
+};
+
+const storeTaskAsync = (neuronId = 1, contentId = 1) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.contents.storeContentTask(neuronId, contentId);
+    const { headers } = res;
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error);
+  }
   return res;
 };
 
@@ -78,4 +92,5 @@ export default {
   validateToken,
   logoutAsync,
   loadUserContentTasksAsync,
+  storeTaskAsync,
 };

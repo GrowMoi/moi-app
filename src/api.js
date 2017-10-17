@@ -46,8 +46,8 @@ const api = {
     },
     async storeContentTask(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/tasks`;
-      // const res = await client.post(endpoint);
-      // return res;
+      const res = await client.post(endpoint, { id: contentId });
+      return res;
     },
   },
 
