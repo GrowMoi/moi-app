@@ -68,12 +68,6 @@ const styles = StyleSheet.create({
 });
 
 
-const options = [
-  { label: 'Inventario' },
-  { label: 'Configuración' },
-  { label: 'Privacidad' },
-];
-
 @connect(store => ({
   device: store.device,
   userTree: store.tree.userTree,
@@ -92,6 +86,12 @@ export default class SideMenu extends Component {
     const portraitOrientation = orientation === PORTRAIT;
 
     const treeIsLoaded = 'tree' in userTree;
+
+    const options = [
+      { label: 'Inventario' },
+      { label: 'Configuración', onPress: () => Actions.refresh({ key: 'settings' }) },
+      { label: 'Privacidad' },
+    ];
 
     return (
       <SideMenuContainer>
@@ -114,7 +114,7 @@ export default class SideMenu extends Component {
           <Options options={options}/>
 
           <TreContainer>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => Actions.refresh({ key: 'tree' })}>
               <Maceta width={DRAWER_OFFSET - 2} source={macetaMenu} resizeMode='contain' />
             </TouchableOpacity>
           </TreContainer>

@@ -22,7 +22,7 @@ export default class Options extends Component {
       <ContainerOptions>
         {options.length > 0 && options.map((option, i) => {
           return (
-            <Item key={i}>
+            <Item key={i} onPress={() => option.onPress && option.onPress(option, i)}>
               <Header bolder small inverted>{option.label}</Header>
             </Item>
           );
@@ -34,4 +34,5 @@ export default class Options extends Component {
 
 Options.propTypes = {
   options: PropTypes.array,
+  onPress: PropTypes.func,
 };
