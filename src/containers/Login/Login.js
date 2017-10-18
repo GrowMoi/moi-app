@@ -14,17 +14,15 @@ import {
 
 import userActions from './../../actions/userActions';
 import { WoodTitle } from '../../commons/components/SceneComponents';
-import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
-import backgound from '../../../assets/images/background/background_tree_portrait.jpg';
 import { getHeightAspectRatio } from '../../commons/utils';
 import Input from '../../commons/components/Input/Input';
 import { Size } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
+import MoiBackground from '../../commons/components/Background/MoiBackground';
+import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 
-const Background = styled(Image)`
+const LoginContainer = styled(View)`
   flex: 1;
-  width: ${props => props.width};
-  height: ${props => props.height};
   justify-content: center;
   align-items: center;
 `;
@@ -56,7 +54,7 @@ const Form = styled(View)`
 `;
 
 @connect(store => ({
-  user: store.user,
+  user: store.user.userData,
   device: store.device,
 }), {
   loginAsync: userActions.loginAsync,
@@ -87,48 +85,46 @@ export default class Login extends Component {
 
   render() {
     const { device } = this.props;
-    const { width, height } = device.dimensions;
+    const { width } = device.dimensions;
 
     return (
       <TouchableWithoutFeedback
         onPress={() => Keyboard.dismiss()}
       >
-        <Background
-          source={backgound}
-          width={width}
-          height={height}
-        >
-          <BackgroundTree
-            source={backgroundTree}
-            width={width}
-          />
-          <FormContainer
-            behavior="padding"
-            width={width - Size.spaceXLarge}
-            keyboardVerticalOffset={Size.spaceLarge}
-          >
-            <StatusBar hidden/>
-            <WoodTitle title='Login' />
+        <MoiBackground>
+          <LoginContainer>
+            <BackgroundTree
+              source={backgroundTree}
+              width={width}
+            />
+            <FormContainer
+              behavior="padding"
+              width={width - Size.spaceXLarge}
+              keyboardVerticalOffset={Size.spaceLarge}
+            >
+              <StatusBar hidden/>
+              <WoodTitle title='Login' />
 
-            <Form>
-              <Input
-                placeholder='email'
-                keyboardType='email-address'
-                onChangeText={text => this.onChangeInput('email', text)}
-              />
-              <Input
-                placeholder='contraseña'
-                secureTextEntry
-                onChangeText={text => this.onChangeInput('password', text)}
-              />
+              <Form>
+                <Input
+                  placeholder='email'
+                  keyboardType='email-address'
+                  onChangeText={text => this.onChangeInput('email', text)}
+                />
+                <Input
+                  placeholder='contraseña'
+                  secureTextEntry
+                  onChangeText={text => this.onChangeInput('password', text)}
+                />
 
-              <ButtonsContainer>
-                <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
-                <Button style={{ flex: 1 }} title='Jugar' onPress={this.submit} />
-              </ButtonsContainer>
-            </Form>
-          </FormContainer>
-        </Background>
+                <ButtonsContainer>
+                  <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
+                  <Button style={{ flex: 1 }} title='Jugar' onPress={this.submit} />
+                </ButtonsContainer>
+              </Form>
+            </FormContainer>
+          </LoginContainer>
+        </MoiBackground>
       </TouchableWithoutFeedback>
     );
   }
@@ -136,4 +132,5 @@ export default class Login extends Component {
 
 Login.propTypes = {
   user: PropTypes.object,
+  device: PropTypes.object,
 };

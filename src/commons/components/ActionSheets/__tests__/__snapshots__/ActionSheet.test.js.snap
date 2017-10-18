@@ -321,7 +321,7 @@ exports[`Action Sheet it should render as expected 1`] = `
             ]
           }
         >
-          Cancel
+          Cancelar
         </Text>
       </View>
     </View>

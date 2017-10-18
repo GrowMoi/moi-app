@@ -17,7 +17,6 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import { ContentBox } from '../../commons/components/ContentComponents';
-import actions from '../../actions/neuronActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { TextBody, Header } from '../../commons/components/Typography';
 import Carousel from '../../commons/components/Carousel/Carousel';
@@ -27,6 +26,11 @@ import ActionsHeader from './ActionsContentMax';
 import NoteInput from '../../commons/components/NoteInput/NoteInput';
 import YoutubePlayer from '../../commons/components/VideoPlayer/YoutubePlayer';
 import { youtube } from '../../commons/utils';
+import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
+
+// Redux
+import neuronActions from '../../actions/neuronActions';
+import userActions from '../../actions/userActions';
 
 const { width } = Dimensions.get('window');
 
@@ -95,13 +99,15 @@ const styles = StyleSheet.create({
   currentNeuron: store.neuron.neuronSelected,
   device: store.device,
 }), {
-  loadContentByIdAsync: actions.loadContentByIdAsync,
+  loadContentByIdAsync: neuronActions.loadContentByIdAsync,
+  storeTaskAsync: userActions.storeTaskAsync,
 })
 export default class SingleContentScene extends Component {
   state = {
     loading: true,
     videoModalVisible: false,
     currentVideoId: '',
+    actionSheetsVisible: false,
   }
 
   componentDidMount() {
@@ -122,13 +128,54 @@ export default class SingleContentScene extends Component {
     });
   }
 
+  toggleActionSheets = () => {
+    const { actionSheetsVisible } = this.state;
+    this.setActionSheetVisible(!actionSheetsVisible);
+  }
+
+  dismissActionSheets = () => {
+    this.setActionSheetVisible(false);
+  }
+
+  setActionSheetVisible = (isVisible) => {
+    this.setState({ actionSheetsVisible: isVisible });
+  }
+
+  showAlert = (description = '') => {
+    Alert.alert('Contenido', description, [{
+      text: 'OK',
+    }]);
+  }
+
+  storeTask = async (neuronId, contentId) => {
+    const { storeTaskAsync } = this.props;
+    const res = await storeTaskAsync(neuronId, contentId);
+    const { data: { exist } } = res;
+    if (exist) {
+      this.showAlert('Este contenido ya se encuentra almacenado en tus tareas');
+    } else {
+      this.showAlert('Este contenido fué almacenado correctamente');
+    }
+  }
+
   render() {
-    const { contentSelected, device } = this.props;
+    const { contentSelected: { content }, device } = this.props;
     const {
       loading,
       videoModalVisible,
       currentVideoId,
+      actionSheetsVisible,
     } = this.state;
+
+    const options = [
+      { label: 'Compartir', icon: 'md-share' },
+      {
+        label: 'Guardar',
+        icon: 'md-download',
+        fn: () => this.storeTask(content.neuron_id, content.id),
+      },
+      { label: 'Favoritos', icon: 'md-star', fn() { console.log('Favoritos'); } },
+    ];
 
     return (
       <MoiBackground>
@@ -138,7 +185,7 @@ export default class SingleContentScene extends Component {
             <ScrollView contentContainerStyle={styles.scrollContainer}>
 
               <HeaderContent>
-                <Header bolder inverted>{contentSelected.content.title}</Header>
+                <Header bolder inverted>{content.title}</Header>
               </HeaderContent>
 
               <Carousel
@@ -146,27 +193,27 @@ export default class SingleContentScene extends Component {
                 loop
                 autoplay
                 size={{ height: 200, width: (width - Size.spaceLarge) }}
-                images={contentSelected.content.media}
+                images={content.media}
               />
 
               <ActionsHeader>
                 <MoiIcon onPress={() => Alert.alert('Fav Clicked')} name='fav' size={20} />
                 <Ionicons onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} />
-                <Ionicons name='ios-more' size={20} color={Palette.white.css()} />
+                <Ionicons name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
               </ActionsHeader>
 
               <Section>
-                <TextBody inverted>{contentSelected.content.description}</TextBody>
+                <TextBody inverted>{content.description}</TextBody>
                 <Source>
                   <TextBody bolder color={Palette.dark}>Fuente</TextBody>
                   <Divider color={Palette.dark.alpha(0.2).css()} />
-                  <TextBody inverted>{contentSelected.content.source}</TextBody>
+                  <TextBody inverted>{content.source}</TextBody>
                 </Source>
               </Section>
 
               <Section>
                 <Header inverted bolder>Links</Header>
-                {contentSelected.content.links.map((link, i) => (
+                {content.links.map((link, i) => (
                   <TextLeftBorder key={i}>
                     <TextBody inverted>{link}</TextBody>
                   </TextLeftBorder>
@@ -176,16 +223,16 @@ export default class SingleContentScene extends Component {
               <Section>
                 <Header inverted bolder>Notas</Header>
                 <TextLeftBorder>
-                  <NoteInput text={contentSelected.content.user_notes} />
+                  <NoteInput text={content.user_notes} />
                 </TextLeftBorder>
               </Section>
 
               <Section notBottomSpace>
                 <Header inverted bolder>Recomendados</Header>
                 <VideoContainer>
-                  {contentSelected.content.videos &&
-                    contentSelected.content.videos.length > 0 &&
-                    contentSelected.content.videos.map((video, i) => {
+                  {content.videos &&
+                    content.videos.length > 0 &&
+                    content.videos.map((video, i) => {
                       const videoId = youtube.extractIdFromUrl(video.url);
 
                       return (
@@ -209,6 +256,13 @@ export default class SingleContentScene extends Component {
 
         <Navbar/>
         <BottomBarWithButtons width={device.dimensions.width}/>
+        {/* Action Sheets */}
+        <ActionSheet
+          hasCancelOption
+          visible={actionSheetsVisible}
+          options={options}
+          dismiss={this.dismissActionSheets}
+        />
         {/* Modal */}
         <YoutubePlayer
           videoId={currentVideoId}
@@ -224,4 +278,5 @@ SingleContentScene.propTypes = {
   title: PropTypes.string,
   contentSelected: PropTypes.object,
   device: PropTypes.object,
+  storeTaskAsync: PropTypes.func,
 };

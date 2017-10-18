@@ -2,6 +2,7 @@ import { Actions } from 'react-native-router-flux';
 import { Alert } from 'react-native';
 import api from '../api';
 import * as actionTypes from './actionTypes';
+import { setHeaders } from './headerActions';
 
 const notAuthenticate = () => ({
   type: actionTypes.AUTH_NOTVALID,
@@ -11,6 +12,11 @@ const login = (user, headers) => ({
   type: actionTypes.LOGIN,
   user,
   headers,
+});
+
+const loadContentTasks = userContentTasks => ({
+  type: actionTypes.GET_USER_CONTENT_TASKS,
+  payload: userContentTasks,
 });
 
 const loginAsync = ({ email, password }) => async (dispatch) => {
@@ -55,8 +61,36 @@ const logoutAsync = () => async (dispatch) => {
   return res;
 };
 
+const loadUserContentTasksAsync = page => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.contentTasks(page);
+    const { data, headers } = res;
+    dispatch(loadContentTasks(data));
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error);
+  }
+
+  return res;
+};
+
+const storeTaskAsync = (neuronId = 1, contentId = 1) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.contents.storeContentTask(neuronId, contentId);
+    const { headers } = res;
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error);
+  }
+  return res;
+};
+
 export default {
   loginAsync,
   validateToken,
   logoutAsync,
+  loadUserContentTasksAsync,
+  storeTaskAsync,
 };

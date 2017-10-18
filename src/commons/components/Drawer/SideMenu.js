@@ -77,7 +77,7 @@ const options = [
 @connect(store => ({
   device: store.device,
   userTree: store.tree.userTree,
-  user: store.user,
+  user: store.user.userData,
 }))
 export default class SideMenu extends Component {
   static propTypes = {

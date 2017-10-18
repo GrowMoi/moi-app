@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TouchableOpacity, View, Button } from 'react-native';
+import { View, Button } from 'react-native';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import userActions from './../../actions/userActions';
 
 @connect(store => ({
-  user: store.user,
-}),{
+  user: store.user.userData,
+}), {
   logoutAsync: userActions.logoutAsync,
 })
 export default class Profile extends Component {

@@ -31,4 +31,5 @@ export default class MoiBackground extends Component {
 MoiBackground.propTypes = {
   children: PropTypes.any,
   device: PropTypes.object,
+  style: PropTypes.object,
 };
