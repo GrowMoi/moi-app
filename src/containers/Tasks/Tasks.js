@@ -67,6 +67,9 @@ class Tasks extends Component {
 
               return (
                 <ContentPreview
+                  closeButton
+                  id={content.id}
+                  onPressCloseButton={id => console.log('CLOSE CONTENT', id)}
                   width={widthContentPreview}
                   onPress={e => this.onPressRowcontent(e, content)}
                   inverted={oddInverted}

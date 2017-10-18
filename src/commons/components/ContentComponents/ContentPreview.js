@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { View, Image, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
@@ -46,6 +47,19 @@ const Content = styled(View)`
   flex: 1;
   padding-horizontal: ${Size.spaceSmall};
   padding-vertical: ${Size.spaceXSmall};
+  position: relative;
+`;
+
+const CloseAction = styled(TouchableOpacity)`
+  position: absolute;
+  top: -5;
+  right: -10;
+  width: 20;
+  height: 20;
+  border-radius: 10;
+  background-color: ${Palette.dark};
+  align-items: center;
+  justify-content: center;
 `;
 
 export default class ContentPreview extends Component {
@@ -61,6 +75,8 @@ export default class ContentPreview extends Component {
       PropTypes.string,
     ]),
     width: PropTypes.number,
+    closeButton: PropTypes.bool,
+    onPressCloseButton: PropTypes.func,
   }
 
   static defaultProps = {
@@ -68,7 +84,7 @@ export default class ContentPreview extends Component {
   }
 
   get rowContent() {
-    const { inverted, title, subtitle, description, source, width } = this.props;
+    const { inverted, title, subtitle, description, source, width, closeButton } = this.props;
 
     const content = (
       <Content key='row-description'>
@@ -91,9 +107,16 @@ export default class ContentPreview extends Component {
   }
 
   render() {
-    const { onPress, inverted, id } = this.props;
+    const { onPress, inverted, id, closeButton, onPressCloseButton } = this.props;
+    const closeAction = closeButton && (
+      <CloseAction onPress={() => onPressCloseButton && onPressCloseButton(id)}>
+        <Ionicons name='md-close' size={15} color={Palette.white.css()}/>
+      </CloseAction>
+    );
+
     return (
       <RowContainer id={id} onPress={onPress} inverted={inverted}>
+        {closeAction}
         {this.rowContent}
       </RowContainer>
     );
