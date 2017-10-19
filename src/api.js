@@ -51,6 +51,14 @@ const api = {
     },
   },
 
+  preferences: {
+    async update(kind, level) {
+      const endpoint = `/api/content_preferences/${kind}`;
+      const res = await client.put(endpoint, { kind, level });
+      return res;
+    },
+  },
+
   trees: {
     async getTree() {
       const endpoint = '/api/tree';

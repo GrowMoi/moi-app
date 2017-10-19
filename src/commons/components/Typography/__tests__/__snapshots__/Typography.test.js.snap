@@ -9,6 +9,7 @@ exports[`Typography it should render description expected 1`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "transparent",
         "color": "#4a4b21",
         "fontFamily": "Futura",
         "fontSize": 11,

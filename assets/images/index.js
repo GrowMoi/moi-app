@@ -21,6 +21,7 @@ export default [
   require('./buttons/lightgreen_button.png'),
   require('./buttons/boton_login.png'),
   require('./buttons/boton_registro_jugar.png'),
+  require('./buttons/slider_button.png'),
 
   // Neurons
   require('./neurona/neurona_descubierta.png'),
@@ -30,6 +31,9 @@ export default [
   require('./neurona/neurona_color_naranja.png'),
   require('./neurona/neurona_color_naranja_oscuro.png'),
   require('./neurona/neurona_color_verde.png'),
+
+  // Settings
+  require('./settings/row_levels.png'),
 
   /**
    * Moi Tree
