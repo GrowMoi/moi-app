@@ -42,5 +42,8 @@ export default class ContentBox extends Component {
 ContentBox.propTypes = {
   children: PropTypes.any,
   contentContainerStyle: PropTypes.any,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };

@@ -8,6 +8,7 @@ import ContentListScene from './containers/Content/ContentList';
 import SingleContentScene from './containers/Content/SingleContent';
 import Profile from './containers/Profile';
 import Tasks from './containers/Tasks/Tasks';
+import Settings from './containers/Settings/Settings';
 import BackButton from './commons/components/SceneComponents/BackButton';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
@@ -42,6 +43,11 @@ const routes = Actions.create(
           component={TreeScene}
           {...navbarPropStyles}
           title='Arbol' />
+        <Scene
+          key='settings'
+          title='Settings'
+          component={Settings}
+          {...navbarPropStyles} />
       </Scene>
     </Scene>
 

@@ -9,6 +9,8 @@ export const colors = {
   gray: chroma('#818180'),
   darkGreen: chroma('#888a4e'),
   lightGray: chroma('#b7b7b3'),
+  darkenGreen: chroma('#6d893a'),
+  cream: chroma('#f4ef95'),
 };
 
 const palette = {
