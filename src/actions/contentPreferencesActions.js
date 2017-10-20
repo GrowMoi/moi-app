@@ -7,7 +7,7 @@ const setCurrentPreferencesAsync = (kind, level) => async (dispatch) => {
     res = await api.preferences.update(kind, level);
     dispatch(setHeaders(res.headers));
   } catch (error) {
-    // console.log(error);
+    // console.log(error)
   }
   return res;
 };

@@ -6,22 +6,19 @@ import styled from 'styled-components/native';
 
 // Moi Components
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import { BottomBar, Line } from '../../commons/components/SceneComponents';
+import { BottomBar, InterestBox } from '../../commons/components/SceneComponents';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import { Size } from '../../commons/styles';
 import HeaderLevels from './HeaderLevels';
-import { Header } from '../../commons/components/Typography';
 import RowLevel from './RowLevel';
 import preferencesActions from '../../actions/contentPreferencesActions';
+import SettingsSection from './SettingsSection';
+import InterestButton from './InterestButton';
+
 
 const StyledContentBox = styled(ContentBox)`
   margin-bottom: ${Size.spaceMedium};
-`;
-
-const StyledLine = styled(Line)`
-  margin-bottom: ${Size.spaceMedium};
-  margin-top: ${Size.spaceSmall};
 `;
 
 const labelPreferences = {
@@ -40,7 +37,7 @@ const labelPreferences = {
 export default class Settings extends Component {
   setSettingValue = async (kind, level) => {
     const { updatePreferencesAsync } = this.props;
-    updatePreferencesAsync(kind, level);
+    await updatePreferencesAsync(kind, level);
   }
 
   render() {
@@ -61,15 +58,19 @@ export default class Settings extends Component {
     ));
 
     const sliderSection = (
-      <View>
-        <Header heavy>Levels</Header>
-        <StyledLine size={2} />
+      <SettingsSection title='Levels'>
         <HeaderLevels />
-        <View>
-          {rows}
-        </View>
-      </View>
+        {rows}
+      </SettingsSection>
     );
+
+    // const interestSection = (
+    //   <SettingsSection title='Interest'>
+    //     <InterestBox>
+    //       <InterestButton type='sport'/>
+    //     </InterestBox>
+    //   </SettingsSection>
+    // );
 
     const contentBox = (
       <StyledContentBox>

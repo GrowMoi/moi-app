@@ -34,6 +34,20 @@ export default [
 
   // Settings
   require('./settings/row_levels.png'),
+  require('./settings/box_interests.png'),
+
+  require('./settings/animal_button.png'),
+  require('./settings/art_button.png'),
+  require('./settings/culture_button.png'),
+  require('./settings/brain_button.png'),
+  require('./settings/emotion_button.png'),
+  require('./settings/numbers_button.png'),
+  require('./settings/place_button.png'),
+  require('./settings/plants_button.png'),
+  require('./settings/sport_button.png'),
+  require('./settings/space_button.png'),
+  require('./settings/stories_button.png'),
+  require('./settings/comunication_button.png'),
 
   /**
    * Moi Tree
