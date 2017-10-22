@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import styled from 'styled-components/native';
+import { ScrollView, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import actions from '../../actions/neuronActions';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { normalize } from '../../commons/utils';
 import { Size } from '../../commons/styles';
+import { Header } from '../../commons/components/Typography';
+
+import neuronActions from '../../actions/neuronActions';
+import userActions from '../../actions/userActions';
+
+const MessageContainer = styled(View)`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
 
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   device: store.device,
 }),
 {
-  loadNeuronByIdAsync: actions.loadNeuronByIdAsync,
+  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+  readContentAsync: userActions.readContentAsync,
 })
 export default class ContentListScene extends Component {
   state = {
@@ -45,6 +56,17 @@ export default class ContentListScene extends Component {
     });
   }
 
+  takeTest = async () => {
+    const { readContentAsync, neuronSelected: { neuron } } = this.props;
+
+    if (neuron) {
+      const readContents = neuron.contents.filter(cont => cont.read);
+      if (readContents.length > 0) {
+        const res = await readContentAsync(neuron.id, readContents[0].id);
+      }
+    }
+  }
+
   render() {
     const { loading } = this.state;
     const { neuronSelected, device } = this.props;
@@ -55,30 +77,36 @@ export default class ContentListScene extends Component {
       paddingHorizontal: Size.spaceSmall,
     };
 
+    const contents = !!neuronSelected.neuron && neuronSelected.neuron.contents.filter(c => !c.read);
+
+    const testMessage = (
+      <MessageContainer>
+        <Header>No existen, contenidos por aprender, en esta neurona.</Header>
+      </MessageContainer>
+    );
+
     return (
       <MoiBackground>
         {!loading ? (
           <ContentBox>
             <ScrollView contentContainerStyle={containerStyles}>
-              {!!neuronSelected.neuron &&
-                neuronSelected.neuron.contents.length > 0 &&
-                neuronSelected.neuron.contents.map((content, i) => {
-                  const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
-                  const oddInverted = i % 2 === 1;
+              {contents && contents.map((content, i) => {
+                const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
+                const oddInverted = i % 2 === 1;
 
-                  return (
-                    <ContentPreview
-                      width={widthContentPreview}
-                      onPress={e => this.onPressRowcontent(e, content)}
-                      inverted={oddInverted}
-                      key={content.id}
-                      title={content.title}
-                      subtitle={normalizeKind}
-                      source={{ uri: content.media[0] }}
-                    />
-                  );
-                })
-              }
+                return (
+                  <ContentPreview
+                    width={widthContentPreview}
+                    onPress={e => this.onPressRowcontent(e, content)}
+                    inverted={oddInverted}
+                    key={content.id}
+                    title={content.title}
+                    subtitle={normalizeKind}
+                    source={{ uri: content.media[0] }}
+                  />
+                );
+              })}
+              {!contents.length > 0 && testMessage}
             </ScrollView>
           </ContentBox>
         ) : (
@@ -86,7 +114,10 @@ export default class ContentListScene extends Component {
         )}
 
         <Navbar/>
-        <BottomBarWithButtons width={device.dimensions.width} />
+        <BottomBarWithButtons
+          width={device.dimensions.width}
+          onPressReadButton={this.takeTest}
+        />
       </MoiBackground>
     );
   }

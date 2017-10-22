@@ -78,7 +78,20 @@ const loadUserContentTasksAsync = page => async (dispatch) => {
 const storeTaskAsync = (neuronId = 1, contentId = 1) => async (dispatch) => {
   let res;
   try {
-    res = await api.contents.storeContentTask(neuronId, contentId);
+    res = await api.contents.storeTask(neuronId, contentId);
+    const { headers } = res;
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error);
+  }
+  return res;
+};
+
+const readContentAsync = (neuronId = 1, contentId = 1) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.contents.readContent(neuronId, contentId);
+    console.log(res);
     const { headers } = res;
     dispatch(setHeaders(headers));
   } catch (error) {
@@ -93,4 +106,5 @@ export default {
   logoutAsync,
   loadUserContentTasksAsync,
   storeTaskAsync,
+  readContentAsync,
 };

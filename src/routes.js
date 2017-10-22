@@ -9,6 +9,7 @@ import SingleContentScene from './containers/Content/SingleContent';
 import Profile from './containers/Profile';
 import Tasks from './containers/Tasks/Tasks';
 import Settings from './containers/Settings/Settings';
+import QuizScene from './containers/Quiz/Quiz';
 import BackButton from './commons/components/SceneComponents/BackButton';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
@@ -18,6 +19,11 @@ const backButton = () => <BackButton style={{ left: -5, top: 3 }} onPress={() =>
 
 const routes = Actions.create(
   <Scene key="root">
+    <Scene
+      key='quiz'
+      component={QuizScene}
+      title='Quiz'
+    />
     <Scene
       key='login'
       component={Login}
@@ -51,6 +57,12 @@ const routes = Actions.create(
       </Scene>
     </Scene>
 
+    <Scene
+      key='content'
+      component={ContentListScene}
+      renderBackButton={backButton}
+      {...navbarPropStyles}
+      title='Contenido' />
     <Scene
       key='content'
       component={ContentListScene}

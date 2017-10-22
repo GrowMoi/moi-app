@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
-import { Image, View, Alert, TouchableOpacity } from 'react-native';
+import { Image, View, TouchableOpacity } from 'react-native';
 import MoIcon from '../MoIcon/MoIcon';
 import { Size } from '../../styles';
 import bottomBarWithButtons from '../../../../assets/images/bottomBar/bottom_bar_with_buttons.png';
@@ -66,6 +67,10 @@ const BottomBarWithButtons = (props) => {
     Actions.tasks();
   };
 
+  const readContent = () => {
+    if (props.onPressReadButton) props.onPressReadButton();
+  };
+
   return (
     <BottomBar
       width={props.width}
@@ -114,7 +119,7 @@ const BottomBarWithButtons = (props) => {
         </Button>
       </ButtonsContainer>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={readContent}>
         <LightGreenButton
           pos={{
             right: 5,
@@ -132,6 +137,11 @@ const BottomBarWithButtons = (props) => {
 
 BottomBarWithButtons.defaultProps = {
   width: 320,
+};
+
+BottomBarWithButtons.propTypes = {
+  width: PropTypes.number,
+  onPressReadButton: PropTypes.func,
 };
 
 export default BottomBarWithButtons;

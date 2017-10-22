@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
@@ -101,6 +102,7 @@ const styles = StyleSheet.create({
 }), {
   loadContentByIdAsync: neuronActions.loadContentByIdAsync,
   storeTaskAsync: userActions.storeTaskAsync,
+  readContentAsync: userActions.readContentAsync,
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -141,9 +143,10 @@ export default class SingleContentScene extends Component {
     this.setState({ actionSheetsVisible: isVisible });
   }
 
-  showAlert = (description = '') => {
+  showAlert = (description = '', onPress) => {
     Alert.alert('Contenido', description, [{
       text: 'OK',
+      onPress,
     }]);
   }
 
@@ -157,6 +160,26 @@ export default class SingleContentScene extends Component {
       this.showAlert('Este contenido fué almacenado correctamente');
     }
   }
+
+  redirectTo = (route) => {
+    Actions.refresh(route);
+  }
+
+  readContent = async (neuronId, contentId) => {
+    const { readContentAsync } = this.props;
+    const res = await readContentAsync(neuronId, contentId);
+    if (!res.data.test) {
+      this.showAlert(
+        'Contenido aprendido',
+        Actions.pop(),
+      );
+    } else {
+      this.showAlert(
+        'Genial! Has aprendido 4 contenidos, es hora de probar tus conocimientos',
+        Actions.pop(),
+      );
+    }
+  };
 
   render() {
     const { contentSelected: { content }, device } = this.props;
@@ -255,7 +278,10 @@ export default class SingleContentScene extends Component {
         )}
 
         <Navbar/>
-        <BottomBarWithButtons width={device.dimensions.width}/>
+        <BottomBarWithButtons
+          onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
+          width={device.dimensions.width}
+        />
         {/* Action Sheets */}
         <ActionSheet
           hasCancelOption
