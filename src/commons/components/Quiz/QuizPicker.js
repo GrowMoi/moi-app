@@ -9,9 +9,10 @@ export default class QuizPicker extends Component {
   }
 
   onPressOption = (option) => {
-    const { selectedValue } = this.props;
-    this.setState({ selectedValue: option });
-    if (selectedValue) selectedValue(option);
+    const { selectedValue, contentId = 0 } = this.props;
+    const currentOption = { ...option, content_id: contentId }
+    this.setState({ selectedValue: currentOption });
+    if (selectedValue) selectedValue(currentOption);
   }
 
   render() {
@@ -38,4 +39,5 @@ export default class QuizPicker extends Component {
 QuizPicker.propTypes = {
   selectedValue: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.object),
+  contentId: PropTypes.number,
 };

@@ -19,6 +19,11 @@ const loadContentTasks = userContentTasks => ({
   payload: userContentTasks,
 });
 
+const storeQuiz = quiz => ({
+  type: actionTypes.STORE_QUIZ,
+  payload: quiz,
+});
+
 const loginAsync = ({ email, password }) => async (dispatch) => {
   let res;
   try {
@@ -75,7 +80,7 @@ const loadUserContentTasksAsync = page => async (dispatch) => {
   return res;
 };
 
-const storeTaskAsync = (neuronId = 1, contentId = 1) => async (dispatch) => {
+const storeTaskAsync = (neuronId, contentId) => async (dispatch) => {
   let res;
   try {
     res = await api.contents.storeTask(neuronId, contentId);
@@ -87,16 +92,31 @@ const storeTaskAsync = (neuronId = 1, contentId = 1) => async (dispatch) => {
   return res;
 };
 
-const readContentAsync = (neuronId = 1, contentId = 1) => async (dispatch) => {
+const readContentAsync = (neuronId, contentId) => async (dispatch) => {
   let res;
   try {
     res = await api.contents.readContent(neuronId, contentId);
-    console.log(res);
-    const { headers } = res;
+    const { headers, data } = res;
+
+    dispatch(storeQuiz(data.test));
     dispatch(setHeaders(headers));
   } catch (error) {
     // console.log(error);
   }
+  return res;
+};
+
+const learnContentsAsync = (testId, answers) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.learn.learn(testId, answers);
+    const { headers } = res;
+
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error);
+  }
+
   return res;
 };
 
@@ -107,4 +127,5 @@ export default {
   loadUserContentTasksAsync,
   storeTaskAsync,
   readContentAsync,
+  learnContentsAsync,
 };

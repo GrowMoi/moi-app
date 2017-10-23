@@ -19,12 +19,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const Loading = styled(View)`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
 const TreeContainer = styled(View)`
   flex: 1;
   justify-content: flex-end;
@@ -36,11 +30,6 @@ const MacetaContainer = styled(View)`
   left: 0;
   right: 0;
   bottom: 0;
-`;
-
-const LoadingNeuron = styled(Image)`
-  width: 40px;
-  height: 40px;
 `;
 
 @connect(store => ({

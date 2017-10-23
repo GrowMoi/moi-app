@@ -71,6 +71,14 @@ const api = {
       return res;
     },
   },
+
+  learn: {
+    async learn(testId = 1, answers = '') {
+      const endpoint = '/api/learn';
+      const res = await client.post(endpoint, { test_id: testId, answers });
+      return res;
+    },
+  },
 };
 
 export default api;

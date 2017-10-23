@@ -20,11 +20,6 @@ const backButton = () => <BackButton style={{ left: -5, top: 3 }} onPress={() =>
 const routes = Actions.create(
   <Scene key="root">
     <Scene
-      key='quiz'
-      component={QuizScene}
-      title='Quiz'
-    />
-    <Scene
       key='login'
       component={Login}
       {...navbarPropStyles}
@@ -64,12 +59,6 @@ const routes = Actions.create(
       {...navbarPropStyles}
       title='Contenido' />
     <Scene
-      key='content'
-      component={ContentListScene}
-      renderBackButton={backButton}
-      {...navbarPropStyles}
-      title='Contenido' />
-    <Scene
       key='singleContent'
       component={SingleContentScene}
       renderBackButton={backButton}
@@ -89,6 +78,14 @@ const routes = Actions.create(
       component={Profile}
       renderBackButton={backButton}
       {...navbarPropStyles}
+    />
+    <Scene
+      key='quiz'
+      component={QuizScene}
+      title='Quiz'
+      {...navbarPropStyles}
+      renderLeftButton={null}
+      renderRightButton={null}
     />
 
     <Scene key='search' title='Search' {...navbarPropStyles}>

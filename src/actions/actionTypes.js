@@ -10,3 +10,4 @@ export const LOGIN = 'LOGIN';
 export const SESSION_TIMEOUT = 'SESSION_TIMEOUT';
 export const SET_HEADERS = 'SET_HEADERS';
 export const GET_USER_CONTENT_TASKS = 'GET_USER_CONTENT_TASKS';
+export const STORE_QUIZ = 'STORE_QUIZ';

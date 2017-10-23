@@ -99,10 +99,13 @@ const styles = StyleSheet.create({
   contentSelected: store.neuron.contentSelected,
   currentNeuron: store.neuron.neuronSelected,
   device: store.device,
+  quiz: store.user.quiz,
 }), {
   loadContentByIdAsync: neuronActions.loadContentByIdAsync,
   storeTaskAsync: userActions.storeTaskAsync,
   readContentAsync: userActions.readContentAsync,
+  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -166,17 +169,22 @@ export default class SingleContentScene extends Component {
   }
 
   readContent = async (neuronId, contentId) => {
-    const { readContentAsync } = this.props;
+    const { readContentAsync, currentNeuron: { neuron }, loadNeuronByIdAsync } = this.props;
     const res = await readContentAsync(neuronId, contentId);
-    if (!res.data.test) {
+    const { data } = res;
+
+    if (data.test) {
       this.showAlert(
-        'Contenido aprendido',
-        Actions.pop(),
+        'Genial! Has aprendido 4 contenidos, es hora de probar tus conocimientos',
+        () => Actions.quiz(),
       );
     } else {
       this.showAlert(
-        'Genial! Has aprendido 4 contenidos, es hora de probar tus conocimientos',
-        Actions.pop(),
+        'Contenido aprendido',
+        async () => {
+          await loadNeuronByIdAsync(neuron.id);
+          Actions.pop();
+        },
       );
     }
   };
