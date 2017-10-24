@@ -7,8 +7,14 @@ const loadUserTree = tree => ({
 });
 
 const loadTreeAsync = () => async (dispatch) => {
-  const res = await api.trees.getTree();
-  dispatch(loadUserTree(res.data));
+  let res;
+  try {
+    res = await api.trees.getTree();
+    dispatch(loadUserTree(res.data));
+  } catch (error) {
+    // console.log(error)
+  }
+
   return res;
 };
 
