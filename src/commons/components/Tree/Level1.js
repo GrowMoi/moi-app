@@ -47,8 +47,8 @@ export default class Level1 extends Component {
     const { width, userTree, children } = this.props;
     const { tree } = userTree;
 
-    const contentsLearned = tree.root.contentsLearned || 0;
-    const totalContents = tree.root.totalContents || 0;
+    const contentsLearned = tree.root.learnt_contents || 0;
+    const totalContents = tree.root.total_approved_contents || 0;
 
     const treeColor = tree.root.state === FLORECIDA ? treeLevel1Color : treeLevel1Gray;
     const neuronColor = tree.root.state === FLORECIDA && 'yellow';
@@ -66,8 +66,8 @@ export default class Level1 extends Component {
             color={neuronColor}
             name={tree.root.title}
             id={tree.root.id}
-            contentsLearned={0}
-            totalContents={3}
+            contentsLearned={contentsLearned}
+            totalContents={totalContents}
             size={{ max: 50, min: 30 }}
             position={{ left: 7, bottom: 8 }}
           />

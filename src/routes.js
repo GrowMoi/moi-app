@@ -9,6 +9,7 @@ import SingleContentScene from './containers/Content/SingleContent';
 import Profile from './containers/Profile';
 import Tasks from './containers/Tasks/Tasks';
 import Settings from './containers/Settings/Settings';
+import QuizScene from './containers/Quiz/Quiz';
 import BackButton from './commons/components/SceneComponents/BackButton';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
@@ -77,6 +78,14 @@ const routes = Actions.create(
       component={Profile}
       renderBackButton={backButton}
       {...navbarPropStyles}
+    />
+    <Scene
+      key='quiz'
+      component={QuizScene}
+      title='Quiz'
+      {...navbarPropStyles}
+      renderLeftButton={null}
+      renderRightButton={null}
     />
 
     <Scene key='search' title='Search' {...navbarPropStyles}>

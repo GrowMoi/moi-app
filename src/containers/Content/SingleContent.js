@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
@@ -98,9 +99,13 @@ const styles = StyleSheet.create({
   contentSelected: store.neuron.contentSelected,
   currentNeuron: store.neuron.neuronSelected,
   device: store.device,
+  quiz: store.user.quiz,
 }), {
   loadContentByIdAsync: neuronActions.loadContentByIdAsync,
   storeTaskAsync: userActions.storeTaskAsync,
+  readContentAsync: userActions.readContentAsync,
+  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -141,9 +146,10 @@ export default class SingleContentScene extends Component {
     this.setState({ actionSheetsVisible: isVisible });
   }
 
-  showAlert = (description = '') => {
+  showAlert = (description = '', onPress) => {
     Alert.alert('Contenido', description, [{
       text: 'OK',
+      onPress,
     }]);
   }
 
@@ -157,6 +163,31 @@ export default class SingleContentScene extends Component {
       this.showAlert('Este contenido fué almacenado correctamente');
     }
   }
+
+  redirectTo = (route) => {
+    Actions.refresh(route);
+  }
+
+  readContent = async (neuronId, contentId) => {
+    const { readContentAsync, currentNeuron: { neuron }, loadNeuronByIdAsync } = this.props;
+    const res = await readContentAsync(neuronId, contentId);
+    const { data } = res;
+
+    if (data.test) {
+      this.showAlert(
+        'Genial! Has aprendido 4 contenidos, es hora de probar tus conocimientos',
+        () => Actions.quiz(),
+      );
+    } else {
+      this.showAlert(
+        'Contenido aprendido',
+        async () => {
+          await loadNeuronByIdAsync(neuron.id);
+          Actions.pop();
+        },
+      );
+    }
+  };
 
   render() {
     const { contentSelected: { content }, device } = this.props;
@@ -255,7 +286,10 @@ export default class SingleContentScene extends Component {
         )}
 
         <Navbar/>
-        <BottomBarWithButtons width={device.dimensions.width}/>
+        <BottomBarWithButtons
+          onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
+          width={device.dimensions.width}
+        />
         {/* Action Sheets */}
         <ActionSheet
           hasCancelOption

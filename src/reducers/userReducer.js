@@ -8,6 +8,7 @@ const initialState = {
     authenticate: false,
   },
   tasks: {},
+  quiz: null,
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -35,9 +36,19 @@ const tasks = (state = initialState.tasks, action = {}) => {
   }
 };
 
+const quiz = (state = initialState.quiz, action = {}) => {
+  switch (action.type) {
+    case actionTypes.STORE_QUIZ:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const user = combineReducers({
   userData,
   tasks,
+  quiz,
 });
 
 export default user;

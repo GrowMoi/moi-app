@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Level1 from './Level1';
 import Neuron from './Neuron';
@@ -78,6 +78,10 @@ const BranchContainer = styled(View)`
 `;
 
 export default class Level2 extends Component {
+  state = {
+    loading: true,
+  }
+
   static propTypes = {
     width: PropTypes.number,
     userTree: PropTypes.object,
@@ -87,30 +91,22 @@ export default class Level2 extends Component {
     Actions.content({ title: data.title, neuron_id: data.id });
   }
 
-  currentBranch(index = 0, data) {
+  currentBranch = (index = 0, data) => {
     const neuronConfig = {
       left: {
         color: 'blue',
-        contentsLearned: 0,
-        totalContents: 5,
         position: { left: -10, top: -17 },
       },
       leftCenter: {
         color: 'green',
-        contentsLearned: 1,
-        totalContents: 2,
         position: { right: -5, top: -20 },
       },
       rightCenter: {
         color: 'yellow',
-        contentsLearned: 3,
-        totalContents: 5,
         position: { right: -20, top: -10 },
       },
       right: {
         color: 'fuchsia',
-        contentsLearned: 8,
-        totalContents: 8,
         position: { right: -67, top: -20 },
       },
     };
@@ -129,6 +125,8 @@ export default class Level2 extends Component {
               onPress={e => this.onPressNeuron(e, data)}
               id={data.id}
               name={data.title}
+              contentsLearned={data.learnt_contents}
+              totalContents={data.total_approved_contents}
               {...neuronConfig.left}
             />
           </LeftBranch>
@@ -145,6 +143,8 @@ export default class Level2 extends Component {
               onPress={e => this.onPressNeuron(e, data)}
               id={data.id}
               name={data.title}
+              contentsLearned={data.learnt_contents}
+              totalContents={data.total_approved_contents}
               {...neuronConfig.leftCenter}
             />
           </LeftCenterBranch>
@@ -161,6 +161,8 @@ export default class Level2 extends Component {
               onPress={e => this.onPressNeuron(e, data)}
               id={data.id}
               name={data.title}
+              contentsLearned={data.learnt_contents}
+              totalContents={data.total_approved_contents}
               {...neuronConfig.rightCenter}
             />
           </RightCenterBranch>
@@ -177,6 +179,8 @@ export default class Level2 extends Component {
               onPress={e => this.onPressNeuron(e, data)}
               id={data.id}
               name={data.title}
+              contentsLearned={data.learnt_contents}
+              totalContents={data.total_approved_contents}
               {...neuronConfig.right}
             />
           </RightBranch>
@@ -188,21 +192,20 @@ export default class Level2 extends Component {
 
   render() {
     const { userTree } = this.props;
-    const { tree } = userTree;
 
-    const childrenExist = !!tree.root.children;
-    if (!childrenExist) return null;
     return (
       <Container>
-        <Level1>
-          <BranchContainer>
-            {tree.root.children.length > 0 && (
-              tree.root.children.map((child, i) => (
-                this.currentBranch(i, child)
-              ))
-            )}
-          </BranchContainer>
-        </Level1>
+        {!!userTree.tree && (
+          <Level1 userTree={userTree}>
+            <BranchContainer>
+              {userTree.tree.root.children.length > 0 && (
+                userTree.tree.root.children.map((child, i) => (
+                  this.currentBranch(i, child)
+                ))
+              )}
+            </BranchContainer>
+          </Level1>
+        )}
       </Container>
     );
   }

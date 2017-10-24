@@ -19,12 +19,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const Loading = styled(View)`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
 const TreeContainer = styled(View)`
   flex: 1;
   justify-content: flex-end;
@@ -36,11 +30,6 @@ const MacetaContainer = styled(View)`
   left: 0;
   right: 0;
   bottom: 0;
-`;
-
-const LoadingNeuron = styled(Image)`
-  width: 40px;
-  height: 40px;
 `;
 
 @connect(store => ({
@@ -59,13 +48,9 @@ export default class Tree extends Component {
 
   async componentDidMount() {
     const { loadTreeAsync } = this.props;
-    try {
-      await loadTreeAsync();
-      this.getTreeLevel();
-    } catch (error) {
-      console.log('ERROR TO GET TREE');
-    }
+    await loadTreeAsync();
 
+    this.getTreeLevel();
     this.setState({ loading: false });
   }
 
@@ -75,6 +60,7 @@ export default class Tree extends Component {
     const levels = {
       tree1: <Level1 userTree={userTree} />,
       tree2: <Level2 userTree={userTree} />,
+      tree3: <Level2 userTree={userTree} />,
     };
 
     switch (level) {
@@ -82,6 +68,8 @@ export default class Tree extends Component {
         return { component: levels.tree1, zoomScale: 1 };
       case 2:
         return { component: levels.tree2, zoomScale: 1 };
+      case 3:
+        return { component: levels.tree3, zoomScale: 2 };
       default:
         return { component: levels.tree1, zoomScale: 1 };
     }
@@ -91,10 +79,12 @@ export default class Tree extends Component {
     const { userTree } = this.props;
 
     if (userTree.meta) {
+      const currentLevel = this.selectCurrentLevel(userTree);
+
       this.setState({
         hasUserTree: true,
-        level: this.selectCurrentLevel(userTree).component,
-        zoomScale: this.selectCurrentLevel(userTree).zoomScale,
+        level: currentLevel.component,
+        zoomScale: currentLevel.zoomScale,
       });
     }
   }
