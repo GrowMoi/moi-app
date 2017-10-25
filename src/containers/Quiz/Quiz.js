@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { View, Alert } from 'react-native';
+import { Alert } from 'react-native';
 import styled from 'styled-components/native';
-import { Title } from '../../commons/components/Typography';
+import Navbar from '../../commons/components/Navbar/Navbar';
+import { BottomBar } from '../../commons/components/SceneComponents';
 import { Quiz, Question } from '../../commons/components/Quiz';
 import userActions from '../../actions/userActions';
+import MoiBackground from '../../commons/components/Background/MoiBackground';
 
-const Container = styled(View)`
+const Background = styled(MoiBackground)`
   flex: 1;
   align-items: center;
   justify-content: center;
@@ -44,8 +46,9 @@ export default class QuizScene extends Component {
 
   render() {
     const { quiz } = this.props;
+
     return (
-      <Container>
+      <Background>
         <Quiz onQuizComplete={this.quizFinished}>
           {!!quiz.questions && quiz.questions.map((question) => {
             return (
@@ -55,11 +58,14 @@ export default class QuizScene extends Component {
                 title={question.title}
                 options={question.possible_answers}
                 buttonTitle='Siguiente'
+                mediaUrl={question.media_url}
               />
             );
           })}
         </Quiz>
-      </Container>
+        <Navbar/>
+        <BottomBar />
+      </Background>
     );
   }
 }

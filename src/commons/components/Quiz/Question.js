@@ -1,7 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, Button } from 'react-native';
+import styled from 'styled-components/native';
+import { View, Image } from 'react-native';
 import QuizPicker from './QuizPicker';
+import { Header } from '../Typography';
+import Button from '../Buttons/Button';
+
+const Container = styled(View)`
+  flex: 1;
+  width: 240px
+  justify-content: center;
+  align-items: flex-start;
+  align-self: center;
+`;
+
+const QuizPickerContainer = styled(View)`
+  align-self: stretch;
+`;
+
+const Thumbnail = styled(Image)`
+  align-self: stretch;
+  height: 160px;
+  border-radius: 2;
+  margin-top: 10;
+`;
+
+const ButtonContainer = styled(View)`
+  justify-content: flex-end;
+  flex-direction: row;
+  align-self: stretch;
+`;
 
 export default class Question extends Component {
   state = {
@@ -19,12 +47,13 @@ export default class Question extends Component {
   }
 
   render() {
-    const { title = '', options, buttonTitle = '', contentId } = this.props;
+    const { title = '', options, buttonTitle = '', contentId, mediaUrl } = this.props;
 
     return (
-      <View>
-        <Text>{title}</Text>
-        <View>
+      <Container>
+        <Header bolder inverted>{title}</Header>
+        {mediaUrl && <Thumbnail source={{uri: mediaUrl }} />}
+        <QuizPickerContainer>
           {options &&
             <QuizPicker
               contentId={contentId}
@@ -32,11 +61,11 @@ export default class Question extends Component {
               selectedValue={this.onSelectedAnswer}
             />
           }
-        </View>
-        <View>
+        </QuizPickerContainer>
+        <ButtonContainer>
           <Button onPress={this.submitAnswer} title={buttonTitle} />
-        </View>
-      </View>
+        </ButtonContainer>
+      </Container>
     );
   }
 }
@@ -49,4 +78,5 @@ Question.propTypes = {
   onSubmit: PropTypes.func,
   buttonTitle: PropTypes.string,
   contentId: PropTypes.number,
+  mediaUrl: PropTypes.any,
 };
