@@ -15,6 +15,11 @@ export default [
   require('./bottomBar/bottom_bar_landscape.png'),
   require('./navbar/barra_sup_landscape.png'),
   require('./navbar/barra_superior_portrait.png'),
+  require('./bottomBar/barra.png'),
+  require('./bottomBar/Boton_inf_1.png'),
+  require('./bottomBar/Boton_inf_2.png'),
+  require('./bottomBar/Boton_inf_3.png'),
+  require('./bottomBar/Boton_inf_blue.png'),
 
   // Buttons
   require('./buttons/back_arrow.png'),
@@ -22,6 +27,9 @@ export default [
   require('./buttons/boton_login.png'),
   require('./buttons/boton_registro_jugar.png'),
   require('./buttons/slider_button.png'),
+  require('./buttons/task_button.png'),
+  require('./buttons/search_button.png'),
+  require('./buttons/random_button.png'),
 
   // Neurons
   require('./neurona/neurona_descubierta.png'),
