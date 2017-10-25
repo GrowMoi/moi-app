@@ -17,11 +17,11 @@ const Background = styled(Image)`
 @connect(store => ({ device: store.device }))
 export default class MoiBackground extends Component {
   render() {
-    const { device } = this.props;
+    const { device, style } = this.props;
     const { width, height, orientation } = device.dimensions;
     const currentImage = orientation === LANDSCAPE ? backgroundLandscape : backgroundPortrait;
     return (
-      <Background width={width} height={height} source={currentImage} resizeMode='cover'>
+      <Background style={style} width={width} height={height} source={currentImage} resizeMode='cover'>
         {this.props.children}
       </Background>
     );
@@ -31,5 +31,5 @@ export default class MoiBackground extends Component {
 MoiBackground.propTypes = {
   children: PropTypes.any,
   device: PropTypes.object,
-  style: PropTypes.object,
+  style: PropTypes.any,
 };

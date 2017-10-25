@@ -15,6 +15,7 @@ import BackButton from './commons/components/SceneComponents/BackButton';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
 
 const backButton = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.pop()}/>;
+const backButtonQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.moiDrawer()}/>;
 // const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
 
 const routes = Actions.create(
@@ -82,9 +83,9 @@ const routes = Actions.create(
     <Scene
       key='quiz'
       component={QuizScene}
-      title='Quiz'
+      title='Test'
       {...navbarPropStyles}
-      renderLeftButton={null}
+      renderBackButton={backButtonQuiz}
       renderRightButton={null}
     />
 

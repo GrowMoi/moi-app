@@ -77,114 +77,115 @@ const BranchContainer = styled(View)`
   align-self: center;
 `;
 
+const config = {
+  left: {
+    neuron: {
+      color: 'blue',
+      position: { left: -10, top: -17 },
+    },
+    branch: {
+      props: {
+        width: 100,
+      },
+      florecidaImg: colorLeft,
+      descubiertaImg: descubiertaLeft,
+      styles: LeftBranch,
+    },
+  },
+
+  leftCenter: {
+    neuron: {
+      color: 'green',
+      position: { right: -5, top: -20 },
+    },
+    branch: {
+      props: {
+        width: 70,
+      },
+      florecidaImg: colorLeftCenter,
+      descubiertaImg: descubiertaLeftCenter,
+      styles: LeftCenterBranch,
+    },
+  },
+
+  rightCenter: {
+    neuron: {
+      color: 'yellow',
+      position: { right: -20, top: -10 },
+    },
+    branch: {
+      props: {
+        width: 70,
+      },
+      florecidaImg: colorRightCenter,
+      descubiertaImg: descubiertaRightCenter,
+      styles: RightCenterBranch,
+    },
+  },
+
+  right: {
+    neuron: {
+      color: 'fuchsia',
+      position: { right: -67, top: -20 },
+    },
+    branch: {
+      props: {
+        width: 100,
+      },
+      florecidaImg: colorRight,
+      descubiertaImg: descubiertaRight,
+      styles: RightBranch,
+    },
+  },
+};
+
 export default class Level2 extends Component {
   state = {
     loading: true,
-  }
-
-  static propTypes = {
-    width: PropTypes.number,
-    userTree: PropTypes.object,
   }
 
   onPressNeuron = (e, data) => {
     Actions.content({ title: data.title, neuron_id: data.id });
   }
 
-  currentBranch = (index = 0, data) => {
-    const neuronConfig = {
-      left: {
-        color: 'blue',
-        position: { left: -10, top: -17 },
-      },
-      leftCenter: {
-        color: 'green',
-        position: { right: -5, top: -20 },
-      },
-      rightCenter: {
-        color: 'yellow',
-        position: { right: -20, top: -10 },
-      },
-      right: {
-        color: 'fuchsia',
-        position: { right: -67, top: -20 },
-      },
+  renderTreeBranch = (branchDirection, neuronData, index) => {
+    const neuronPrivateProps = neuronData && {
+      onPress: e => this.onPressNeuron(e, neuronData),
+      id: neuronData.id,
+      name: neuronData.title,
+      contentsLearned: neuronData.learnt_contents,
+      totalContents: neuronData.total_approved_contents,
     };
 
-    const isflorecida = data.state === FLORECIDA;
+    const isflorecida = neuronData.state === FLORECIDA;
+    const tree = config[branchDirection];
+
+    const StyledComponent = tree.branch.styles;
+    return (
+      <StyledComponent
+        key={index}
+        { ...tree.branch.props }
+        source={isflorecida ? tree.branch.florecidaImg : tree.branch.descubiertaImg }
+        resizeMode='contain'
+      >
+        <Neuron
+          { ...tree.neuron }
+          { ...neuronPrivateProps }
+        />
+      </StyledComponent>
+    );
+  }
+
+  currentBranch = (data, index = 0) => {
     switch (index) {
       case 0:
-        return (
-          <LeftBranch
-            key={index}
-            width={100}
-            source={isflorecida ? colorLeft : descubiertaLeft}
-            resizeMode='contain'
-          >
-            <Neuron
-              onPress={e => this.onPressNeuron(e, data)}
-              id={data.id}
-              name={data.title}
-              contentsLearned={data.learnt_contents}
-              totalContents={data.total_approved_contents}
-              {...neuronConfig.left}
-            />
-          </LeftBranch>
-        );
+        return this.renderTreeBranch('left', data, index);
       case 1:
-        return (
-          <LeftCenterBranch
-            key={index}
-            width={70}
-            source={isflorecida ? colorLeftCenter : descubiertaLeftCenter}
-            resizeMode='contain'
-          >
-            <Neuron
-              onPress={e => this.onPressNeuron(e, data)}
-              id={data.id}
-              name={data.title}
-              contentsLearned={data.learnt_contents}
-              totalContents={data.total_approved_contents}
-              {...neuronConfig.leftCenter}
-            />
-          </LeftCenterBranch>
-        );
+        return this.renderTreeBranch('leftCenter', data, index);
       case 2:
-        return (
-          <RightCenterBranch
-            key={index}
-            width={70}
-            source={isflorecida ? colorRightCenter : descubiertaRightCenter}
-            resizeMode='contain'
-          >
-            <Neuron
-              onPress={e => this.onPressNeuron(e, data)}
-              id={data.id}
-              name={data.title}
-              contentsLearned={data.learnt_contents}
-              totalContents={data.total_approved_contents}
-              {...neuronConfig.rightCenter}
-            />
-          </RightCenterBranch>
-        );
+        return this.renderTreeBranch('rightCenter', data, index);
       case 3:
-        return (
-          <RightBranch
-            key={index}
-            width={100}
-            source={isflorecida ? colorRight : descubiertaRight}
-            resizeMode='contain'
-          >
-            <Neuron
-              onPress={e => this.onPressNeuron(e, data)}
-              id={data.id}
-              name={data.title}
-              contentsLearned={data.learnt_contents}
-              totalContents={data.total_approved_contents}
-              {...neuronConfig.right}
-            />
-          </RightBranch>
-        );
+        return this.renderTreeBranch('right', data, index);
       default:
         return null;
     }
@@ -200,7 +201,7 @@ export default class Level2 extends Component {
             <BranchContainer>
               {userTree.tree.root.children.length > 0 && (
                 userTree.tree.root.children.map((child, i) => (
-                  this.currentBranch(i, child)
+                  this.currentBranch(child, i)
                 ))
               )}
             </BranchContainer>
@@ -210,3 +211,8 @@ export default class Level2 extends Component {
     );
   }
 }
+
+Level2.propTypes = {
+  width: PropTypes.number,
+  userTree: PropTypes.object,
+};
