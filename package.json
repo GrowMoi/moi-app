@@ -27,9 +27,6 @@
     "react-test-renderer": "16.0.0-alpha.12",
     "redux-devtools-extension": "^2.13.2",
     "redux-mock-store": "^1.2.3",
-    "stylelint": "^8.0.0",
-    "stylelint-config-standard": "^17.0.0",
-    "stylelint-processor-styled-components": "^0.2.1",
     "url": "^0.11.0"
   },
   "main": "index.js",
@@ -39,9 +36,7 @@
     "test:watch": "node node_modules/jest/bin/jest.js --watch",
     "test:coverage": "node node_modules/jest/bin/jest.js --coverage",
     "test:snapshots": "node node_modules/jest/bin/jest.js -u",
-    "lint:styles": "stylelint './src/**/*.js'",
     "lint": "eslint ./src/**/*.js",
-    "postlint": "npm run lint:styles",
     "lint:autofix": "eslint ./src/**/*.js --fix",
     "storybook": "storybook start -p 7007",
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19002'"
