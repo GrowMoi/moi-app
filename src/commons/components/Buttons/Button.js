@@ -14,8 +14,8 @@ const StyledButton = styled(View)`
   align-items: center;
 `;
 
-const Button = ({ title, onPress, style }) => (
-  <TouchableOpacity onPress={onPress} style={style} >
+const Button = ({ title, onPress, style, ...rest }) => (
+  <TouchableOpacity onPress={onPress} style={style} { ...rest }>
     <StyledButton>
       <Header small heavy>{title}</Header>
     </StyledButton>
@@ -29,7 +29,7 @@ Button.defaultProps = {
 Button.propTypes = {
   onPress: PropTypes.func,
   title: PropTypes.string,
-  style: PropTypes.object,
+  style: PropTypes.any,
 };
 
 export default Button;
