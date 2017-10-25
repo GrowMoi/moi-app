@@ -56,17 +56,6 @@ export default class ContentListScene extends Component {
     });
   }
 
-  takeTest = async () => {
-    const { readContentAsync, neuronSelected: { neuron } } = this.props;
-
-    if (neuron) {
-      const readContents = neuron.contents.filter(cont => cont.read);
-      if (readContents.length > 0) {
-        const res = await readContentAsync(neuron.id, readContents[0].id);
-      }
-    }
-  }
-
   render() {
     const { loading } = this.state;
     const { neuronSelected, device } = this.props;
@@ -115,8 +104,8 @@ export default class ContentListScene extends Component {
 
         <Navbar/>
         <BottomBarWithButtons
+          readButton={ false }
           width={device.dimensions.width}
-          onPressReadButton={this.takeTest}
         />
       </MoiBackground>
     );

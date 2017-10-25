@@ -21,13 +21,23 @@ const hCommonBtn = 73;
 const Button = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(wCommonBtn, hCommonBtn, props.width)};
-  flex: 1;
   flex-direction: row;
   bottom: ${props => props.bottom || 0};
   left: ${props => props.left || 0};
   position: relative;
   overflow: visible;
   z-index: ${props => props.zIndex || 0};
+`;
+
+const blueFrameWidth = 174;
+const blueFrameHeight = 97;
+const ReadFrame = styled(Image)`
+  width: ${props => props.width};
+  height: ${props => getHeightAspectRatio(blueFrameWidth, blueFrameHeight, props.width)};
+  left: 0;
+  bottom: 11;
+  position: relative;
+  overflow: visible;
 `;
 
 const BottomBar = styled(Image)`
@@ -37,10 +47,17 @@ const BottomBar = styled(Image)`
   overflow: visible;
 `;
 
+const Container = styled(View)`
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex: 1;
+`;
+
 const ButtonsContainer = styled(View)`
   bottom: -5px;
-  width: 250px;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -49,7 +66,6 @@ const taskHeightBtn = 371;
 const TaskButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
-  position: absolute;
   bottom: 1;
   left: 20;
 `;
@@ -57,7 +73,6 @@ const TaskButton = styled(Image)`
 const SearchButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
-  position: absolute;
   bottom: 0;
   left: 20;
 `;
@@ -65,7 +80,6 @@ const SearchButton = styled(Image)`
 const RandomButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
-  position: absolute;
   bottom: 0;
   left: 20;
 `;
@@ -75,8 +89,8 @@ const lightGreenBtnHeight = 88;
 const BlueButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(lightGreenBtnWidth, lightGreenBtnHeight, props.width)};
-  left: 18;
-  bottom: -2;
+  left: 16;
+  bottom: 3;
 `;
 
 const BottomBarWithButtons = (props) => {
@@ -107,7 +121,7 @@ const BottomBarWithButtons = (props) => {
     task: { width: 48, source: taskButtonImg },
     random: { width: 50, source: randomButtonImg },
     search: { width: 50, source: searchButtonImg },
-    read: { width: 50, source: blueButtonImg },
+    read: { width: 55, source: blueButtonImg },
   };
 
   return (
@@ -116,23 +130,27 @@ const BottomBarWithButtons = (props) => {
       source={bottomBarWithoutButtons}
       resizeMode='contain'>
 
-      <ButtonsContainer>
-        <Button zIndex={2} width={80} source={btnInf1} resizeMode='contain' left={0} bottom={7}>
-          {renderButton(TaskButton, elementProps.task, buttonPress)}
-        </Button>
+      <Container>
+        <ButtonsContainer>
+          <Button zIndex={2} width={80} source={btnInf1} resizeMode='contain' left={18} bottom={7}>
+            {renderButton(TaskButton, elementProps.task, buttonPress)}
+          </Button>
 
-        <Button zIndex={1} width={80} source={btnInf2} resizeMode='contain' left={-20} bottom={6.2}>
-          {renderButton(SearchButton, elementProps.search, buttonPress)}
-        </Button>
+          <Button zIndex={1} width={80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
+            {renderButton(SearchButton, elementProps.search, buttonPress)}
+          </Button>
 
-        <Button zIndex={0} width={81} source={btnInf3} resizeMode='contain' left={-38} bottom={6.5}>
-          {renderButton(RandomButton, elementProps.random, buttonPress)}
-        </Button>
-      </ButtonsContainer>
+          <Button zIndex={0} width={81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
+            {renderButton(RandomButton, elementProps.random, buttonPress)}
+          </Button>
+        </ButtonsContainer>
+      </Container>
 
-      <Button width={120} source={btnInfBlue} resizeMode='contain' left={0} bottom={13.8}>
-        {renderButton(BlueButton, elementProps.read, readContent)}
-      </Button>
+      {props.readButton &&
+        <ReadFrame width={70} source={btnInfBlue} resizeMode='contain'>
+          {renderButton(BlueButton, elementProps.read, readContent)}
+        </ReadFrame>
+      }
 
     </BottomBar>
   );
@@ -140,11 +158,13 @@ const BottomBarWithButtons = (props) => {
 
 BottomBarWithButtons.defaultProps = {
   width: 320,
+  readButton: true,
 };
 
 BottomBarWithButtons.propTypes = {
   width: PropTypes.number,
   onPressReadButton: PropTypes.func,
+  readButton: PropTypes.bool,
 };
 
 export default BottomBarWithButtons;
