@@ -57,7 +57,6 @@ export default class Tree extends Component {
 
   selectCurrentLevel = (userTree) => {
     const level = userTree.meta.depth;
-    console.log(userTree);
 
     const levels = {
       tree1: <Level1 userTree={userTree} />,
@@ -71,7 +70,7 @@ export default class Tree extends Component {
       case 2:
         return { component: levels.tree2, zoomScale: 1 };
       case 3:
-        return { component: levels.tree3, zoomScale: 3 };
+        return { component: levels.tree3, zoomScale: 2 };
       default:
         return { component: levels.tree1, zoomScale: 1 };
     }

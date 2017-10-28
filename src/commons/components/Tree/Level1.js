@@ -69,7 +69,7 @@ export default class Level1 extends Component {
             contentsLearned={contentsLearned}
             totalContents={totalContents}
             size={{ max: 50, min: 30 }}
-            position={{ left: 7, bottom: 8 }}
+            position={{ left: 5, top: -10 }}
           />
         </TreeLevel>
       </Container>
