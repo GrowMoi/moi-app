@@ -8,20 +8,20 @@ import neuronaVerde from '../../../../assets/images/neurona/neurona_color_verde.
 import neuronaFucsia from '../../../../assets/images/neurona/neurona_color_fucsia.png';
 import neuronaNaranja from '../../../../assets/images/neurona/neurona_color_naranja.png';
 import neuronaAmarilla from '../../../../assets/images/neurona/neurona_color_amarillo.png';
-import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_color_naranja_oscuro.png'
+import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_color_naranja_oscuro.png';
 
-const NeuronContainer = styled(View)`
+export const NeuronContainer = styled(View)`
   justify-content: center;
   align-items: center;
-  width: ${props => props.size};
-  height: ${props => props.size};
-  ${props => {
-      if(props.pos.left) return css`left: ${props.pos.left}`;
-      else if(props.pos.right) return css`right: ${props.pos.right}`;
+  width: ${props => props.size || 0};
+  height: ${props => props.size || 0};
+  ${(props) => {
+    if (props.pos.left) return css`left: ${props.pos.left}`;
+    else if (props.pos.right) return css`right: ${props.pos.right}`;
   }};
-  ${props => {
-      if(props.pos.bottom) return css`bottom: ${props.pos.bottom}`;
-      else if(props.pos.top) return css`top: ${props.pos.top}`;
+  ${(props) => {
+    if (props.pos.bottom) return css`bottom: ${props.pos.bottom}`;
+    else if (props.pos.top) return css`top: ${props.pos.top}`;
   }};
   position: absolute;
 `;
@@ -34,7 +34,7 @@ const NeuronImage = styled(Animated.Image)`
   width: ${props => props.size};
   height: ${props => Math.round(props.size / aspect)};
   position: absolute;
-`;
+  `;
 
 export default class Neuron extends Component {
   componentWillMount() {
@@ -42,7 +42,6 @@ export default class Neuron extends Component {
   }
 
   onPressNeuron = (e) => {
-    // Alert.alert('Hi');
     const { onPress } = this.props;
     if (onPress) {
       setTimeout(() => {

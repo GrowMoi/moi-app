@@ -58,10 +58,12 @@ export default class Tree extends Component {
   selectCurrentLevel = (userTree) => {
     const level = userTree.meta.depth;
 
+    const levelData = { userTree };
+
     const levels = {
-      tree1: <Level1 userTree={userTree} />,
-      tree2: <Level2 userTree={userTree} />,
-      tree3: <Level3 userTree={userTree} />,
+      tree1: <Level1 { ...levelData } />,
+      tree2: <Level2 { ...levelData } />,
+      tree3: <Level3 { ...levelData } />,
     };
 
     switch (level) {
