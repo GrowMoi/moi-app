@@ -98,4 +98,8 @@ export default [
   require('./tree/arbol_adulto/nivel_3/fondo060.png'),
   require('./tree/arbol_adulto/nivel_3/fondo081.png'),
 
+  // Big tree level 4
+  require('./tree/arbol_adulto/nivel_4/fondo-rama031.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo082.png'),
+
 ];

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { View, Image } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { getHeightAspectRatio } from '../../utils';
 import { FLORECIDA } from '../../../constants';
 import Neuron, { NeuronContainer } from './Neuron';
@@ -12,6 +12,7 @@ import secondLevelConfig from './neuronConfigs/level2.config';
 import thirdLevelConfig from './neuronConfigs/level3.config';
 
 import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
+import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
 import arbolColorNivel2 from '../../../../assets/images/tree/arbol_adulto/nivel_2/arbol_nivel2_color.png';
 
 const Container = styled(View)`
@@ -34,13 +35,20 @@ const TreeBase = styled(Image)`
 `;
 
 const FloweredBranch = TreeBase.extend``;
-// const NeuronContainer = styled(View)``;
 
 const Levels = styled(View)`
-  position: relative;
   align-items: center;
   flex: 1;
   overflow: visible;
+  ${props => (props.level === 4 ? css`
+    transform: scale(0.7);
+    position: absolute;
+    bottom: 15;
+    left: 0;
+    right: 0;
+  ` : css`
+    position: relative;
+  `)}
 `;
 
 const NeuronsLayer = styled(View)`
@@ -74,7 +82,7 @@ export default class Level3 extends Component {
     });
   }
 
-  addFloweredBranch = (floweredBranchs, id) => {
+  addFloweredBranch = (floweredBranches, id) => {
     const { currenTreeWidth } = this.state;
     const branchProps = {
       resizeMode: 'contain',
@@ -82,19 +90,19 @@ export default class Level3 extends Component {
     };
 
 
-    const branchs = floweredBranchs.map((branch, i) => {
-      return (
+    if (floweredBranches && floweredBranches.length) {
+      const branches = floweredBranches.map((branch, i) => (
         <FloweredBranch
           key={`flowered-branch-level3-${id}-${i}`}
           source={branch}
           {...branchProps}
         />
-      );
-    });
+      ));
 
-    this.setState(prevState => ({
-      floweredBranches: prevState.floweredBranches.concat(branchs),
-    }));
+      this.setState(prevState => ({
+        floweredBranches: prevState.floweredBranches.concat(branches),
+      }));
+    }
   }
 
   onPressNeuron = (e, data) => {
@@ -129,7 +137,7 @@ export default class Level3 extends Component {
     const renderNeuron = (branchDirection, neuron) => {
       const level2Config = secondLevelConfig[branchDirection];
       const level3Config = thirdLevelConfig[branchDirection];
-      const hasChildren = neuron.children.length;
+      const level2HasChildren = neuron.children.length;
 
       const neuronComponent = (
         <Neuron
@@ -139,33 +147,76 @@ export default class Level3 extends Component {
           name={neuron.title}
           contentsLearned={neuron.learnt_contents}
           totalContents={neuron.total_approved_contents}
-          position={hasChildren ? {} : level2Config.level3.position}
+          position={level2HasChildren ? {} : level2Config.level3.position}
           { ...level2Config.neuron }
           { ...neuronCommonProps }
         />
       );
 
-      if (hasChildren && hasChildren > 0) {
+      if (level2HasChildren && level2HasChildren > 0) {
         const children = neuron.children.map((child, i) => {
           const isFlowered = child.state === FLORECIDA;
+
+          const neuronChildrenLevel3 = (
+            <Neuron
+              id={child.id}
+              key={`neuron-level3-${child.id}`}
+              name={child.title}
+              onPress={e => this.onPressNeuron(e, child)}
+              contentsLearned={child.learnt_contents}
+              totalContents={child.total_approved_contents}
+              position={child.children.length ? {} : level3Config.level3[i].position}
+              { ...neuronCommonProps }
+              { ...level3Config.neuron }
+            />
+          );
 
           if (isFlowered) {
             this.addFloweredBranch(level3Config.level3[i].floweredImg, child.id);
           }
 
-          return (
-            <Neuron
-              id={child.id}
-              key={`neuron-level3-${child.id}`}
-              name={child.title}
-              onPress={(e) => this.onPressNeuron(e, child)}
-              contentsLearned={child.learnt_contents}
-              totalContents={child.total_approved_contents}
-              position={level3Config.level3[i].position}
-              { ...neuronCommonProps }
-              { ...level3Config.neuron }
-            />
-          );
+          if (child.children && child.children.length) {
+            const childrenLevel4 = child.children.map((childLevel4, indexChildLevel4) => {
+              const isFloweredLevel4 = childLevel4.state === FLORECIDA;
+
+              if (isFloweredLevel4) {
+                this.addFloweredBranch(
+                  level3Config.level3[i].children[indexChildLevel4].floweredImg,
+                  childLevel4.id,
+                );
+              }
+
+              const neuronLevel4 = (
+                <Neuron
+                  id={childLevel4.id}
+                  key={`neuron-level4-${childLevel4.id}`}
+                  name={childLevel4.title}
+                  onPress={e => this.onPressNeuron(e, child)}
+                  contentsLearned={childLevel4.learnt_contents}
+                  totalContents={childLevel4.total_approved_contents}
+                  position={childLevel4.children.length ? {} : level3Config.level3[i].children[indexChildLevel4].position}
+                  { ...neuronCommonProps }
+                  { ...level3Config.neuron }
+                />
+              );
+
+
+              return neuronLevel4;
+            });
+
+            return (
+              <NeuronContainer
+                key={`branch-level4-${child.id}`}
+                pos={level3Config.level3[i].position}
+                size={neuronCommonProps.size.max}
+              >
+                {neuronChildrenLevel3}
+                {childrenLevel4}
+              </NeuronContainer>
+            );
+          }
+
+          return neuronChildrenLevel3;
         });
 
         return (
@@ -195,7 +246,8 @@ export default class Level3 extends Component {
 
   render() {
     const { floweredBranches, currenTreeWidth, neuronsLayer } = this.state;
-    const { userTree: { tree, meta } } = this.props;
+    const { userTree: { tree, meta: { depth } } } = this.props;
+    const isLevel4 = depth === 4;
 
     const defaultProps = {
       resizeMode: 'contain',
@@ -205,8 +257,8 @@ export default class Level3 extends Component {
     return (
       <Container>
         {!!tree && (
-          <Levels>
-            <TreeBase source={arbolNivel3Gris} {...defaultProps} />
+          <Levels level={depth}>
+            <TreeBase source={isLevel4 ? arbolNivel4Gris : arbolNivel3Gris} {...defaultProps} />
             {floweredBranches}
             <TreeBase source={arbolColorNivel2} {...defaultProps} />
             <NeuronsLayer>

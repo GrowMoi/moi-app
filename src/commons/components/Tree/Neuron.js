@@ -13,6 +13,7 @@ import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_colo
 export const NeuronContainer = styled(View)`
   justify-content: center;
   align-items: center;
+  position: absolute;
   width: ${props => props.size || 0};
   height: ${props => props.size || 0};
   ${(props) => {
@@ -23,7 +24,6 @@ export const NeuronContainer = styled(View)`
     if (props.pos.bottom) return css`bottom: ${props.pos.bottom}`;
     else if (props.pos.top) return css`top: ${props.pos.top}`;
   }};
-  position: absolute;
 `;
 
 const neuronWidth = 390;
@@ -66,8 +66,11 @@ export default class Neuron extends Component {
 
   calculateSize(contentsLearned, totalContents) {
     const { max, min } = this.props.size;
-    const percentage = (max - min) / totalContents;
-    const value = (contentsLearned * percentage) + min;
+    let value = min;
+    if (totalContents) {
+      const percentage = (max - min) / totalContents;
+      value = (contentsLearned * percentage) + min;
+    }
 
     return value;
   }
