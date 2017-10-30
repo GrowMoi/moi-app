@@ -266,16 +266,18 @@ export default class SingleContentScene extends Component {
                     content.videos.map((video, i) => {
                       const videoId = youtube.extractIdFromUrl(video.url);
 
-                      return (
-                        <TouchableWithoutFeedback key={i} onPress={() => this.setModalVisible(!this.state.videoModalVisible, videoId)}>
-                          <VideoImg
-                            source={{ uri: `https:${video.thumbnail}` }}
-                            resizeMode="cover"
-                          >
-                            <PlayIcon name='play-circle' size={40} />
-                          </VideoImg>
-                        </TouchableWithoutFeedback>
-                      );
+                      if (videoId) {
+                        return (
+                          <TouchableWithoutFeedback key={i} onPress={() => this.setModalVisible(!this.state.videoModalVisible, videoId)}>
+                            <VideoImg
+                              source={{ uri: `https:${video.thumbnail}` }}
+                              resizeMode="cover"
+                            >
+                              <PlayIcon name='play-circle' size={40} />
+                            </VideoImg>
+                          </TouchableWithoutFeedback>
+                        );
+                      }
                     })
                   }
                 </VideoContainer>
