@@ -74,4 +74,42 @@ export default [
   require('./tree/nivel_2/nivel_2_color_right_center.png'),
   require('./tree/nivel_2/nivel_2_color_left.png'),
   require('./tree/nivel_2/nivel_2_color_left_center.png'),
+
+  // Arbol adulto
+
+  // Gray tree
+  require('./tree/arbol_adulto/gris/arbol_nivel1_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol_nivel2_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol_nivel3_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol_nivel4_gris.png'),
+
+  // Big tree level 2
+  require('./tree/arbol_adulto/nivel_2/arbol_nivel2_color.png'),
+
+  // Big tree level 3
+  require('./tree/arbol_adulto/nivel_3/fondo-rama002.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo-rama004.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo-rama033.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo-rama079.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo-rama080.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo001.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo003.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo032.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo060.png'),
+  require('./tree/arbol_adulto/nivel_3/fondo081.png'),
+
+  // Big tree level 4
+  require('./tree/arbol_adulto/nivel_4/fondo-rama031.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo082.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama005.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo007.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama006.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama034.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama061.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo085.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama087.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama083.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama084.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama086.png'),
+
 ];

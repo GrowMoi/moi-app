@@ -11,6 +11,7 @@ import Preloader from '../Preloader/Preloader';
 // Levels
 import Level1 from './Level1';
 import Level2 from './Level2';
+import Level3 from './Level3';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -57,10 +58,12 @@ export default class Tree extends Component {
   selectCurrentLevel = (userTree) => {
     const level = userTree.meta.depth;
 
+    const levelData = { userTree };
+
     const levels = {
-      tree1: <Level1 userTree={userTree} />,
-      tree2: <Level2 userTree={userTree} />,
-      tree3: <Level2 userTree={userTree} />,
+      tree1: <Level1 { ...levelData } />,
+      tree2: <Level2 { ...levelData } />,
+      tree3: <Level3 { ...levelData } />,
     };
 
     switch (level) {
@@ -70,6 +73,8 @@ export default class Tree extends Component {
         return { component: levels.tree2, zoomScale: 1 };
       case 3:
         return { component: levels.tree3, zoomScale: 2 };
+      case 4:
+        return { component: levels.tree3, zoomScale: 3 };
       default:
         return { component: levels.tree1, zoomScale: 1 };
     }

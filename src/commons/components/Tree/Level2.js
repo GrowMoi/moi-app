@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image, Text } from 'react-native';
+import { View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Level1 from './Level1';
 import Neuron from './Neuron';
 import { FLORECIDA } from '../../../constants';
+import secondLevelConfig from './neuronConfigs/level2.config';
 
 // branch images descubiertas
 import descubiertaRight from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_right.png';
@@ -18,6 +19,21 @@ import colorRight from '../../../../assets/images/tree/nivel_2/nivel_2_color_rig
 import colorRightCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_right_center.png';
 import colorLeftCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_left_center.png';
 import colorLeft from '../../../../assets/images/tree/nivel_2/nivel_2_color_left.png';
+
+const Container = styled(View)`
+  flex: 1;
+  position: relative;
+`;
+
+const BranchContainer = styled(View)`
+  flex: 1;
+  width: 50;
+  position: relative;
+  bottom: 50;
+  justify-content: flex-end;
+  align-self: center;
+`;
+
 
 const sideBranchHeight = 573;
 const sideBranchWidth = 397;
@@ -63,26 +79,9 @@ const RightCenterBranch = styled(Image)`
   overflow: visible;
 `;
 
-const Container = styled(View)`
-  flex: 1;
-  position: relative;
-`;
 
-const BranchContainer = styled(View)`
-  flex: 1;
-  width: 50;
-  position: relative;
-  bottom: 50;
-  justify-content: flex-end;
-  align-self: center;
-`;
-
-const config = {
+const levelConfig = {
   left: {
-    neuron: {
-      color: 'blue',
-      position: { left: -10, top: -17 },
-    },
     branch: {
       props: {
         width: 100,
@@ -94,10 +93,6 @@ const config = {
   },
 
   leftCenter: {
-    neuron: {
-      color: 'green',
-      position: { right: -5, top: -20 },
-    },
     branch: {
       props: {
         width: 70,
@@ -109,10 +104,6 @@ const config = {
   },
 
   rightCenter: {
-    neuron: {
-      color: 'yellow',
-      position: { right: -20, top: -10 },
-    },
     branch: {
       props: {
         width: 70,
@@ -124,10 +115,6 @@ const config = {
   },
 
   right: {
-    neuron: {
-      color: 'fuchsia',
-      position: { right: -67, top: -20 },
-    },
     branch: {
       props: {
         width: 100,
@@ -149,18 +136,20 @@ export default class Level2 extends Component {
   }
 
   renderTreeBranch = (branchDirection, neuronData, index) => {
+    const currentNeuron = secondLevelConfig[branchDirection];
+    const tree = levelConfig[branchDirection];
+    const isflorecida = neuronData.state === FLORECIDA;
+    const StyledComponent = tree.branch.styles;
+
     const neuronPrivateProps = neuronData && {
       onPress: e => this.onPressNeuron(e, neuronData),
       id: neuronData.id,
       name: neuronData.title,
       contentsLearned: neuronData.learnt_contents,
       totalContents: neuronData.total_approved_contents,
+      position: currentNeuron.level2.position,
     };
 
-    const isflorecida = neuronData.state === FLORECIDA;
-    const tree = config[branchDirection];
-
-    const StyledComponent = tree.branch.styles;
     return (
       <StyledComponent
         key={index}
@@ -169,7 +158,7 @@ export default class Level2 extends Component {
         resizeMode='contain'
       >
         <Neuron
-          { ...tree.neuron }
+          { ...currentNeuron.neuron }
           { ...neuronPrivateProps }
         />
       </StyledComponent>

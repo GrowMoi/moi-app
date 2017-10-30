@@ -8,25 +8,22 @@ import neuronaVerde from '../../../../assets/images/neurona/neurona_color_verde.
 import neuronaFucsia from '../../../../assets/images/neurona/neurona_color_fucsia.png';
 import neuronaNaranja from '../../../../assets/images/neurona/neurona_color_naranja.png';
 import neuronaAmarilla from '../../../../assets/images/neurona/neurona_color_amarillo.png';
-import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_color_naranja_oscuro.png'
+import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_color_naranja_oscuro.png';
 
-const NeuronContainer = styled(View)`
+export const NeuronContainer = styled(View)`
   justify-content: center;
   align-items: center;
-  width: ${props => props.size};
-  height: ${props => props.size};
-  ${props => props.pos.left && css`
-    left: ${props.pos.left};
-  `};
-  ${props => props.pos.right && css`
-    right: ${props.pos.right};
-  `};
-  ${props => props.pos.bottom && css`
-    bottom: ${props.pos.bottom};
-  `};
-  ${props => props.pos.top && css`
-    top: ${props.pos.top};
-  `};
+  position: absolute;
+  width: ${props => props.size || 0};
+  height: ${props => props.size || 0};
+  ${({ pos = {} }) => {
+    if (pos.left) return css`left: ${pos.left}`;
+    else if (pos.right) return css`right: ${pos.right}`;
+  }};
+  ${({ pos = {} }) => {
+    if (pos.bottom) return css`bottom: ${pos.bottom}`;
+    else if (pos.top) return css`top: ${pos.top}`;
+  }};
 `;
 
 const neuronWidth = 390;
@@ -37,7 +34,7 @@ const NeuronImage = styled(Animated.Image)`
   width: ${props => props.size};
   height: ${props => Math.round(props.size / aspect)};
   position: absolute;
-`;
+  `;
 
 export default class Neuron extends Component {
   componentWillMount() {
@@ -45,7 +42,6 @@ export default class Neuron extends Component {
   }
 
   onPressNeuron = (e) => {
-    // Alert.alert('Hi');
     const { onPress } = this.props;
     if (onPress) {
       setTimeout(() => {
@@ -70,8 +66,11 @@ export default class Neuron extends Component {
 
   calculateSize(contentsLearned, totalContents) {
     const { max, min } = this.props.size;
-    const percentage = (max - min) / totalContents;
-    const value = (contentsLearned * percentage) + min;
+    let value = min;
+    if (totalContents) {
+      const percentage = (max - min) / totalContents;
+      value = (contentsLearned * percentage) + min;
+    }
 
     return value;
   }
@@ -140,6 +139,7 @@ Neuron.defaultProps = {
     max: 50,
     min: 30,
   },
+  position: {},
 };
 
 Neuron.propTypes = {
