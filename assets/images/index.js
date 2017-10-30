@@ -101,5 +101,14 @@ export default [
   // Big tree level 4
   require('./tree/arbol_adulto/nivel_4/fondo-rama031.png'),
   require('./tree/arbol_adulto/nivel_4/fondo082.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama005.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo007.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama006.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama034.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama061.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo085.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama087.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama083.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama084.png'),
 
 ];

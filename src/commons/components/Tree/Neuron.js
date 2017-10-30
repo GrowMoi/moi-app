@@ -16,13 +16,13 @@ export const NeuronContainer = styled(View)`
   position: absolute;
   width: ${props => props.size || 0};
   height: ${props => props.size || 0};
-  ${(props) => {
-    if (props.pos.left) return css`left: ${props.pos.left}`;
-    else if (props.pos.right) return css`right: ${props.pos.right}`;
+  ${({ pos = {} }) => {
+    if (pos.left) return css`left: ${pos.left}`;
+    else if (pos.right) return css`right: ${pos.right}`;
   }};
-  ${(props) => {
-    if (props.pos.bottom) return css`bottom: ${props.pos.bottom}`;
-    else if (props.pos.top) return css`top: ${props.pos.top}`;
+  ${({ pos = {} }) => {
+    if (pos.bottom) return css`bottom: ${pos.bottom}`;
+    else if (pos.top) return css`top: ${pos.top}`;
   }};
 `;
 

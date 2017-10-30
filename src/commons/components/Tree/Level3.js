@@ -40,7 +40,7 @@ const Levels = styled(View)`
   align-items: center;
   flex: 1;
   overflow: visible;
-  ${props => (props.level === 4 ? css`
+  ${({ level }) => (level === 4 ? css`
     transform: scale(0.7);
     position: absolute;
     bottom: 15;
@@ -56,6 +56,12 @@ const NeuronsLayer = styled(View)`
   height: 140;
   position: absolute;
   bottom: 50;
+  ${({ level }) => level === 4 && css`
+    transform: scale(0.9);
+    width: 302;
+    height: 154;
+    bottom: 38;
+  `};
 `;
 
 const neuronCommonProps = {
@@ -88,7 +94,6 @@ export default class Level3 extends Component {
       resizeMode: 'contain',
       width: currenTreeWidth,
     };
-
 
     if (floweredBranches && floweredBranches.length) {
       const branches = floweredBranches.map((branch, i) => (
@@ -137,7 +142,6 @@ export default class Level3 extends Component {
     const renderNeuron = (branchDirection, neuron) => {
       const level2Config = secondLevelConfig[branchDirection];
       const level3Config = thirdLevelConfig[branchDirection];
-      const level2HasChildren = neuron.children.length;
 
       const neuronComponent = (
         <Neuron
@@ -147,13 +151,13 @@ export default class Level3 extends Component {
           name={neuron.title}
           contentsLearned={neuron.learnt_contents}
           totalContents={neuron.total_approved_contents}
-          position={level2HasChildren ? {} : level2Config.level3.position}
+          position={neuron.children.length ? {} : level2Config.level3.position}
           { ...level2Config.neuron }
           { ...neuronCommonProps }
         />
       );
 
-      if (level2HasChildren && level2HasChildren > 0) {
+      if (neuron.children && neuron.children.length) {
         const children = neuron.children.map((child, i) => {
           const isFlowered = child.state === FLORECIDA;
 
@@ -186,32 +190,34 @@ export default class Level3 extends Component {
                 );
               }
 
-              const neuronLevel4 = (
+              return (
                 <Neuron
                   id={childLevel4.id}
                   key={`neuron-level4-${childLevel4.id}`}
                   name={childLevel4.title}
-                  onPress={e => this.onPressNeuron(e, child)}
+                  onPress={e => this.onPressNeuron(e, childLevel4)}
                   contentsLearned={childLevel4.learnt_contents}
                   totalContents={childLevel4.total_approved_contents}
-                  position={childLevel4.children.length ? {} : level3Config.level3[i].children[indexChildLevel4].position}
+                  position={level3Config.level3[i].children[indexChildLevel4].position}
                   { ...neuronCommonProps }
                   { ...level3Config.neuron }
                 />
               );
-
-
-              return neuronLevel4;
             });
 
             return (
               <NeuronContainer
-                key={`branch-level4-${child.id}`}
+                key={`branch-level3-${child.id}`}
                 pos={level3Config.level3[i].position}
                 size={neuronCommonProps.size.max}
               >
                 {neuronChildrenLevel3}
-                {childrenLevel4}
+                <NeuronContainer
+                  key={`branch-level4-${child.id}`}
+                  size={neuronCommonProps.size.max}
+                >
+                  {childrenLevel4}
+                </NeuronContainer>
               </NeuronContainer>
             );
           }
@@ -221,7 +227,7 @@ export default class Level3 extends Component {
 
         return (
           <NeuronContainer
-            key={`branch-level3-${neuron.id}`}
+            key={`branch-level2-${neuron.id}`}
             pos={level2Config.level3.position}
             size={neuronCommonProps.size.max}
           >
@@ -261,7 +267,7 @@ export default class Level3 extends Component {
             <TreeBase source={isLevel4 ? arbolNivel4Gris : arbolNivel3Gris} {...defaultProps} />
             {floweredBranches}
             <TreeBase source={arbolColorNivel2} {...defaultProps} />
-            <NeuronsLayer>
+            <NeuronsLayer level={depth}>
               {neuronsLayer}
             </NeuronsLayer>
           </Levels>
