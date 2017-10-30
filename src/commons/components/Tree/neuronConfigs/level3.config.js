@@ -8,6 +8,7 @@ import branch033 from '../../../../../assets/images/tree/arbol_adulto/nivel_3/fo
 import branch060 from '../../../../../assets/images/tree/arbol_adulto/nivel_3/fondo060.png';
 import branch003 from '../../../../../assets/images/tree/arbol_adulto/nivel_3/fondo003.png';
 import branch032 from '../../../../../assets/images/tree/arbol_adulto/nivel_3/fondo032.png';
+import branch081 from '../../../../../assets/images/tree/arbol_adulto/nivel_3/fondo081.png';
 
 // Branches level 4
 import branch031 from '../../../../../assets/images/tree/arbol_adulto/nivel_4/fondo-rama031.png';
@@ -21,6 +22,7 @@ import branch085 from '../../../../../assets/images/tree/arbol_adulto/nivel_4/fo
 import branch087 from '../../../../../assets/images/tree/arbol_adulto/nivel_4/fondo-rama087.png';
 import branch083 from '../../../../../assets/images/tree/arbol_adulto/nivel_4/fondo-rama083.png';
 import branch084 from '../../../../../assets/images/tree/arbol_adulto/nivel_4/fondo-rama084.png';
+import branch086 from '../../../../../assets/images/tree/arbol_adulto/nivel_4/fondo-rama086.png';
 
 export default {
   left: {
@@ -114,33 +116,33 @@ export default {
     level3: {
       0: {
         position: { left: 67, bottom: 31 },
-        floweredImg: [branch082],
+        floweredImg: [branch082, branch079, branch080],
         children: {
           0: {
-            position: { left: 40, bottom: 36 },
+            position: { left: 7, bottom: 40 },
             floweredImg: [branch083],
           },
           1: {
             position: { left: 78, bottom: 16 },
-            floweredImg: [branch084],
+            floweredImg: [branch086],
           },
         },
       },
       1: {
         position: { left: 55, top: 2 },
-        floweredImg: [branch079, branch080],
+        floweredImg: [branch081],
         children: {
           0: {
             position: { left: 41, bottom: 4 },
-            floweredImg: [branch085],
+            floweredImg: [],
           },
           1: {
             position: { left: 57, bottom: 27 },
-            floweredImg: [branch085],
+            floweredImg: [branch084],
           },
           2: {
             position: { left: 84, top: 10 },
-            floweredImg: [branch087],
+            floweredImg: [branch085],
           },
           3: {
             position: { left: 82, bottom: 20 },
@@ -148,7 +150,7 @@ export default {
           },
           4: {
             position: { left: 123, bottom: 34 },
-            floweredImg: [branch085],
+            floweredImg: [branch087],
           },
         },
       },

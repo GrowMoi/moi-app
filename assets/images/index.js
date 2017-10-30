@@ -110,5 +110,6 @@ export default [
   require('./tree/arbol_adulto/nivel_4/fondo-rama087.png'),
   require('./tree/arbol_adulto/nivel_4/fondo-rama083.png'),
   require('./tree/arbol_adulto/nivel_4/fondo-rama084.png'),
+  require('./tree/arbol_adulto/nivel_4/fondo-rama086.png'),
 
 ];
