@@ -174,10 +174,7 @@ export default class SingleContentScene extends Component {
     const { data } = res;
 
     if (data.test) {
-      this.showAlert(
-        'Genial! Has aprendido 4 contenidos, es hora de probar tus conocimientos',
-        () => Actions.quiz(),
-      );
+      Actions.quiz();
     } else {
       this.showAlert(
         'Contenido aprendido',

@@ -12,6 +12,9 @@ const StyledButton = styled(View)`
   border-radius: 3px;
   justify-content: center;
   align-items: center;
+  shadow-offset: 0px 0px;
+  shadow-opacity: 0.3;
+  shadow-radius: 2;
 `;
 
 const Button = ({ title, onPress, style, ...rest }) => (

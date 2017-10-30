@@ -20,6 +20,7 @@ export default [
   require('./bottomBar/Boton_inf_2.png'),
   require('./bottomBar/Boton_inf_3.png'),
   require('./bottomBar/Boton_inf_blue.png'),
+  require('./quiz/icon_test.png'),
 
   // Buttons
   require('./buttons/back_arrow.png'),
