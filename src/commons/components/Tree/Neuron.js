@@ -24,7 +24,7 @@ export const NeuronContainer = styled(View)`
     if (pos.bottom) return css`bottom: ${pos.bottom}`;
     else if (pos.top) return css`top: ${pos.top}`;
   }};
-`;
+  `;
 
 const neuronWidth = 390;
 const neuronHeight = 368;
@@ -140,6 +140,8 @@ Neuron.defaultProps = {
     min: 30,
   },
   position: {},
+  contentsLearned: 0,
+  totalContents: 4,
 };
 
 Neuron.propTypes = {

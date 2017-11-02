@@ -58,6 +58,8 @@ export default class Tree extends Component {
   selectCurrentLevel = (userTree) => {
     const level = userTree.meta.depth;
 
+    console.log(level);
+
     const levelData = { userTree };
 
     const levels = {
