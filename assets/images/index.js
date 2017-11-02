@@ -83,6 +83,8 @@ export default [
   require('./tree/arbol_adulto/gris/arbol_nivel2_gris.png'),
   require('./tree/arbol_adulto/gris/arbol_nivel3_gris.png'),
   require('./tree/arbol_adulto/gris/arbol_nivel4_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol_nivel5_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol-nivel6_gris.png'),
 
   // Big tree level 2
   require('./tree/arbol_adulto/nivel_2/arbol_nivel2_color.png'),
@@ -113,4 +115,22 @@ export default [
   require('./tree/arbol_adulto/nivel_4/fondo-rama084.png'),
   require('./tree/arbol_adulto/nivel_4/fondo-rama086.png'),
 
+  // Big tree level 5
+  require('./tree/arbol_adulto/nivel_5/fondo009.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo010.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo011.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo012.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo013.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo035.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo036.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo037.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo038.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo041.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo062.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo088.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo089.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo090.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo091.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo092.png'),
+  require('./tree/arbol_adulto/nivel_5/fondo093.png'),
 ];
