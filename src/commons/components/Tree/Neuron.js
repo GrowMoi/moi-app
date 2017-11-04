@@ -14,8 +14,8 @@ export const NeuronContainer = styled(View)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: ${props => props.size || 0};
-  height: ${props => props.size || 0};
+  width: ${props => props.size || 1};
+  height: ${props => props.size || 1};
   ${({ pos = {} }) => {
     if (pos.left) return css`left: ${pos.left}`;
     else if (pos.right) return css`right: ${pos.right}`;

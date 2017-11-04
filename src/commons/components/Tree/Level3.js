@@ -9,7 +9,7 @@ import Neuron, { NeuronContainer } from './Neuron';
 
 // configs
 import secondLevelConfig from './neuronConfigs/level2.config';
-import thirdLevelConfig from './neuronConfigs/level3.config';
+import thirdLevelConfig from './neuronConfigs/level3-4.config';
 
 import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
 import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
@@ -22,10 +22,10 @@ const Container = styled(View)`
 
 const treeBaseWidth = 1000;
 const treeBaseHeight = 845;
-
+const BOTTOM_POSITON = 50;
 const TreeBase = styled(Image)`
   position: absolute;
-  bottom: 50;
+  bottom: ${BOTTOM_POSITON};
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(treeBaseWidth, treeBaseHeight, props.width)};
   z-index: ${props => props.zIndex || 0};
@@ -55,8 +55,8 @@ const NeuronsLayer = styled(View)`
   width: 300;
   height: 140;
   position: absolute;
-  bottom: 50;
-  ${({ level }) => level === 4 && css`
+  bottom: ${BOTTOM_POSITON};
+  ${({ level }) => level >= 4 && css`
     transform: scale(0.9);
     width: 302;
     height: 154;
