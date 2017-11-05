@@ -6,36 +6,54 @@ import Neuron, { NeuronContainer } from '../Neuron';
 import { getHeightAspectRatio } from '../../../utils';
 
 import { FLORECIDA } from '../../../../constants';
-import secondLevelConfig from '../neuronConfigs/level2.config';
-import thirdAndFourLevelConfig from '../neuronConfigs/level3-4.config';
+import levelsConfig from '../neuronConfigs/levels.config';
 
 const Container = styled(View)`
   width: ${({ width }) => width};
   height: ${({ treeDimensions: { width: _width, height }, width }) => getHeightAspectRatio(_width, height, width)};
   position: absolute;
   bottom: 50;
+  overflow: visible;
 `;
 
-// const maxLevel = 4;
-const RecursiveNeuron = ({ neuron, depth = 2, maxLevel }) => {
-
+const RecursiveNeuron = ({ neuron, depthFrom = 2, maxLevel, configs, index = 0, size = {} }) => {
   let children;
+
+  const maximunGrowSize = size.max || 30;
+  const minimunSize = size.min || 20;
+
   const neuronProps = {
     id: neuron.id,
     name: neuron.title,
     contentsLearned: neuron.learnt_contents,
     totalContents: neuron.total_approved_contents,
+    color: configs.neuron.color,
+    position: children && children.length ? configs[`level${depthFrom}`][index].position : {},
+    size: { max: maximunGrowSize, min: minimunSize },
   };
 
   if (neuron.children && neuron.children.length) {
-    children = neuron.children.map((child) => {
-      if (depth === maxLevel) return null;
-      return <RecursiveNeuron key={`neuron-${child.parent_id}-${child.id}-${child.title}`} neuron={child} depth={depth + 1} maxLevel={maxLevel}/>;
+    children = neuron.children.map((child, childIndex) => {
+      if (depthFrom === maxLevel) return null;
+      return (
+        <RecursiveNeuron
+          key={`neuron-${child.parent_id}-${child.id}-${child.title}`}
+          neuron={child}
+          depthFrom={depthFrom + 1}
+          maxLevel={maxLevel}
+          configs={configs}
+          size={size}
+          index={childIndex}
+        />
+      );
     });
   }
 
   return (
-    <NeuronContainer key={`neuron-${neuron.id}-${neuron.title}`} pos={{ bottom: 1, right: 20 }}>
+    <NeuronContainer
+      key={`neuron-${neuron.id}-${neuron.title}`}
+      pos={children && children.length ? configs[`level${depthFrom}`][index].position : {}}
+    >
       <Neuron {...neuronProps} />
       {children}
     </NeuronContainer>
@@ -43,7 +61,7 @@ const RecursiveNeuron = ({ neuron, depth = 2, maxLevel }) => {
 };
 
 export default class NeuronsLayer extends Component {
-  size = { max: 30, min: 20 }
+  size = { max: 18, min: 12 }
 
   get renderLevelOne() {
     const { data } = this.props;
@@ -58,7 +76,7 @@ export default class NeuronsLayer extends Component {
       color,
       contentsLearned,
       totalContents,
-      position: { bottom: 2, left: 140 },
+      position: { bottom: 10, left: 145 },
       size: this.size,
     };
 
@@ -67,21 +85,18 @@ export default class NeuronsLayer extends Component {
     );
   }
 
-  renderNeuronByDirection = (direction, data, index, configs) => {
-    const level2Config = secondLevelConfig[direction];
-    const level3Config = thirdAndFourLevelConfig[direction];
+  renderNeuronByDirection = (direction, data, index) => {
+    const levelConfig = levelsConfig[direction];
 
-    const customProps = {
-      index,
-      direction,
-      id: data.id,
-      title: data.title,
-      contentsLearned: data.learnt_contents,
-      totalContents: data.total_approved_contents,
-      position: data.children.length ? {} : level2Config['level5-6'].position,
-    };
-
-    return <RecursiveNeuron key={`${direction}`} neuron={data} maxLevel={4} />;
+    return (
+      <RecursiveNeuron
+        size={this.size}
+        key={`${direction}`}
+        neuron={data}
+        maxLevel={3}
+        configs={levelConfig}
+      />
+    );
   }
 
   renderLevels = () => {
