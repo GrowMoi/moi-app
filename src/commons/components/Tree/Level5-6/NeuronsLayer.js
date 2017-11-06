@@ -16,11 +16,22 @@ const Container = styled(View)`
   overflow: visible;
 `;
 
-const RecursiveNeuron = ({ neuron, depthFrom = 2, maxLevel, configs, index = 0, size = {} }) => {
+const RecursiveNeuron = ({
+  neuron,
+  level = 2,
+  maxLevel,
+  configs,
+  index = 0,
+  size = {},
+  parentIndex = 0,
+}) => {
   let children;
 
   const maximunGrowSize = size.max || 30;
   const minimunSize = size.min || 20;
+
+  const parentIndexExistInConfigs = `${parentIndex}` in configs[`level${level}`];
+  const indexExistInConfigs = parentIndexExistInConfigs && `${index}` in configs[`level${level}`][parentIndex];
 
   const neuronProps = {
     id: neuron.id,
@@ -28,21 +39,21 @@ const RecursiveNeuron = ({ neuron, depthFrom = 2, maxLevel, configs, index = 0, 
     contentsLearned: neuron.learnt_contents,
     totalContents: neuron.total_approved_contents,
     color: configs.neuron.color,
-    position: children && children.length ? configs[`level${depthFrom}`][index].position : {},
     size: { max: maximunGrowSize, min: minimunSize },
   };
 
   if (neuron.children && neuron.children.length) {
     children = neuron.children.map((child, childIndex) => {
-      if (depthFrom === maxLevel) return null;
+      if (level === maxLevel) return null;
       return (
         <RecursiveNeuron
           key={`neuron-${child.parent_id}-${child.id}-${child.title}`}
           neuron={child}
-          depthFrom={depthFrom + 1}
+          level={level + 1}
           maxLevel={maxLevel}
           configs={configs}
           size={size}
+          parentIndex={index}
           index={childIndex}
         />
       );
@@ -52,7 +63,7 @@ const RecursiveNeuron = ({ neuron, depthFrom = 2, maxLevel, configs, index = 0, 
   return (
     <NeuronContainer
       key={`neuron-${neuron.id}-${neuron.title}`}
-      pos={children && children.length ? configs[`level${depthFrom}`][index].position : {}}
+      pos={indexExistInConfigs ? configs[`level${level}`][parentIndex][index].position : {}}
     >
       <Neuron {...neuronProps} />
       {children}
@@ -93,7 +104,7 @@ export default class NeuronsLayer extends Component {
         size={this.size}
         key={`${direction}`}
         neuron={data}
-        maxLevel={3}
+        maxLevel={4}
         configs={levelConfig}
       />
     );
