@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View } from 'react-native';
-import Neuron, { NeuronContainer } from '../Neuron';
-import { getHeightAspectRatio } from '../../../utils';
+import { View, Image } from 'react-native';
+import Neuron, { NeuronContainer } from './Neuron';
+import { getHeightAspectRatio } from '../../utils';
 
-import { FLORECIDA } from '../../../../constants';
-import levelsConfig from '../neuronConfigs/levels.config';
+import { FLORECIDA } from '../../../constants';
+import levelsConfig from './neuronConfigs/levels.config';
 
 const Container = styled(View)`
   width: ${({ width }) => width};
@@ -73,6 +73,7 @@ const RecursiveNeuron = ({
 
 export default class NeuronsLayer extends Component {
   size = { max: 18, min: 12 }
+  branches = [];
 
   get renderLevelOne() {
     const { data } = this.props;
@@ -96,7 +97,7 @@ export default class NeuronsLayer extends Component {
     );
   }
 
-  renderNeuronByDirection = (direction, data, index) => {
+  renderNeuronByDirection = (direction, data) => {
     const levelConfig = levelsConfig[direction];
 
     return (

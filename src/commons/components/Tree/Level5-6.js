@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
-import { getHeightAspectRatio } from '../../../utils';
+import { getHeightAspectRatio } from '../../utils';
 import NeuronsLayer from './NeuronsLayer';
+import Branches from './allBranches';
 
-import arbolNivel5Gris from '../../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel5_gris.png';
-import arbolNivel6Gris from '../../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel6_gris.png';
-import arbolColorNivel2 from '../../../../../assets/images/tree/arbol_adulto/nivel_2/arbol_nivel2_color.png';
+import arbolNivel5Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel5_gris.png';
+import arbolNivel6Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel6_gris.png';
+import arbolColorNivel2 from '../../../../assets/images/tree/arbol_adulto/nivel_2/arbol_nivel2_color.png';
 
 const Container = styled(View)`
   flex: 1;
@@ -27,8 +28,6 @@ const TreeBase = styled(Image)`
   align-items: center;
 `;
 
-const FloweredBranch = TreeBase.extend``;
-
 const Levels = styled(View)`
   align-items: center;
   flex: 1;
@@ -36,12 +35,7 @@ const Levels = styled(View)`
 `;
 
 export default class Level5and6 extends Component {
-  state = {
-    floweredBranches: [],
-  }
-
   render() {
-    const { floweredBranches } = this.state;
     const { userTree: { tree, meta: { depth } } } = this.props;
     const isLevel5 = depth === 5;
     const isLevel6 = depth === 6;
@@ -52,20 +46,22 @@ export default class Level5and6 extends Component {
       width: CURRENT_TREE_WIDTH,
     };
 
+    const treeDimensions = {
+      width: treeBaseWidth,
+      height: treeBaseHeight,
+    };
+
     return (
       <Container>
         <Levels>
           {isLevel5 && <TreeBase source={arbolNivel5Gris} {...defaultProps}/>}
           {isLevel6 && <TreeBase source={arbolNivel6Gris} {...defaultProps}/>}
-          {floweredBranches}
           <TreeBase source={arbolColorNivel2} {...defaultProps}/>
+          <Branches data={tree} width={CURRENT_TREE_WIDTH} treeDimensions={treeDimensions}/>
           <NeuronsLayer
             level={depth}
             data={tree}
-            treeDimensions={{
-              width: treeBaseWidth,
-              height: treeBaseHeight,
-            }}
+            treeDimensions={treeDimensions}
             width={CURRENT_TREE_WIDTH}
           />
         </Levels>

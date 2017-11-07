@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer';
@@ -12,7 +12,7 @@ import Preloader from '../Preloader/Preloader';
 import Level1 from './Level1';
 import Level2 from './Level2';
 import Level3 from './Level3';
-import Level5and6 from './Level5-6/Level5-6';
+import Level5and6 from './Level5-6';
 
 const styles = StyleSheet.create({
   treeView: {
