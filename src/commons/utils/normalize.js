@@ -11,7 +11,7 @@ export const capitalizeFirstLetter = (str) => {
 };
 
 export const normalizeText = str =>
-  str.match(onlyWords).join(' ');
+  (str.match(onlyWords) || []).join(' ');
 
 export const normalizeAllCapLetter = str =>
   str.match(onlyWords).map(capitalizeAllLetters).join(' ');

@@ -102,8 +102,8 @@ const BottomBarWithButtons = (props) => {
     Actions.search();
   };
 
-  const pressRandomButton = () => {
-    Actions.random();
+  const goToRandomContent = () => {
+    Actions.randomContents();
   };
 
   const readContent = () => {
@@ -149,7 +149,7 @@ const BottomBarWithButtons = (props) => {
           </Button>
 
           <Button zIndex={0} width={81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
-            {renderButton(RandomButton, elementProps.random, pressRandomButton)}
+            {renderButton(RandomButton, elementProps.random, goToRandomContent)}
           </Button>
         </ButtonsContainer>
       </Container>
