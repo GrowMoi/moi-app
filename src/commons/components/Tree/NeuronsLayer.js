@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 import Neuron, { NeuronContainer } from './Neuron';
 import { getHeightAspectRatio } from '../../utils';
 
@@ -24,14 +24,13 @@ const RecursiveNeuron = ({
   index = 0,
   size = {},
   parentIndex = 0,
+  parentLevel = 2,
+  path = '',
 }) => {
   let children;
 
   const maximunGrowSize = size.max || 30;
   const minimunSize = size.min || 20;
-
-  const parentIndexExistInConfigs = `${parentIndex}` in configs[`level${level}`];
-  const indexExistInConfigs = parentIndexExistInConfigs && `${index}` in configs[`level${level}`][parentIndex];
 
   const neuronProps = {
     id: neuron.id,
@@ -41,6 +40,15 @@ const RecursiveNeuron = ({
     color: configs.neuron.color,
     size: { max: maximunGrowSize, min: minimunSize },
   };
+
+  let newPath;
+  if (path) {
+    newPath = `${path}.${level}.${index}`;
+  } else {
+    newPath = `${level}.${index}`;
+  }
+
+  const neuronPosition = newPath in configs ? configs[newPath].position : {};
 
   if (neuron.children && neuron.children.length) {
     children = neuron.children.map((child, childIndex) => {
@@ -55,6 +63,8 @@ const RecursiveNeuron = ({
           size={size}
           parentIndex={index}
           index={childIndex}
+          parentLevel={level}
+          path={newPath}
         />
       );
     });
@@ -62,8 +72,8 @@ const RecursiveNeuron = ({
 
   return (
     <NeuronContainer
-      key={`neuron-${neuron.id}-${neuron.title}`}
-      pos={indexExistInConfigs ? configs[`level${level}`][parentIndex][index].position : {}}
+      key={`neuron-${neuron.id}-${newPath}-${neuron.title}`}
+      pos={neuronPosition}
     >
       <Neuron {...neuronProps} />
       {children}
@@ -72,7 +82,7 @@ const RecursiveNeuron = ({
 };
 
 export default class NeuronsLayer extends Component {
-  size = { max: 18, min: 12 }
+  size = { max: 15, min: 8 }
   branches = [];
 
   get renderLevelOne() {
@@ -99,13 +109,14 @@ export default class NeuronsLayer extends Component {
 
   renderNeuronByDirection = (direction, data) => {
     const levelConfig = levelsConfig[direction];
+    const { level } = this.props;
 
     return (
       <RecursiveNeuron
         size={this.size}
         key={`${direction}`}
         neuron={data}
-        maxLevel={4}
+        maxLevel={level}
         configs={levelConfig}
       />
     );

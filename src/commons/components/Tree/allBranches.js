@@ -15,7 +15,6 @@ const Container = styled(View)`
   overflow: visible;
 `;
 
-
 const FloweredBranch = styled(Image)`
   width: ${({ width }) => width};
   height: ${({ treeDimensions: { width: _width, height }, width }) => getHeightAspectRatio(_width, height, width)};
@@ -40,13 +39,23 @@ const RecursiveBranches = ({
   index = 0,
   width,
   treeDimensions,
-  parentIndex = 0
+  parentIndex = 0,
+  path = '',
 }) => {
   let children;
 
   const isFlowered = data.state === FLORECIDA;
-  const parentIndexExistInConfigs = `${parentIndex}` in configs[`level${level}`];
-  const indexExistInConfigs = parentIndexExistInConfigs && `${index}` in configs[`level${level}`][parentIndex];
+  // const parentIndexExistInConfigs = `${parentIndex}` in configs[`level${level}`];
+  // const indexExistInConfigs = parentIndexExistInConfigs && `${index}` in configs[`level${level}`][parentIndex];
+
+  let newPath;
+  if (path) {
+    newPath = `${path}.${level}.${index}`;
+  } else {
+    newPath = `${level}.${index}`;
+  }
+
+
 
   if (data.children && data.children.length) {
     children = data.children.map((child, childIndex) => {
@@ -62,6 +71,7 @@ const RecursiveBranches = ({
           index={childIndex}
           width={width}
           treeDimensions={treeDimensions}
+          path={newPath}
         />
       );
     });
@@ -70,7 +80,7 @@ const RecursiveBranches = ({
 
   return (
     <FloweredBranchContainer width={width} treeDimensions={treeDimensions}>
-      {indexExistInConfigs && isFlowered && configs[`level${level}`][parentIndex][index].floweredBranches.map((sourceBranch, branchIndex) => {
+      {isFlowered && (configs[newPath].floweredBranches || []).map((sourceBranch, branchIndex) => {
         return (
           <FloweredBranch
             key={`branch-level${level}-${parentIndex}-${index}-branch${branchIndex}`}
@@ -95,7 +105,7 @@ export default class Branches extends Component {
       <RecursiveBranches
         key={`branch-${direction}`}
         data={data}
-        maxLevel={4}
+        maxLevel={5}
         width={width}
         treeDimensions={treeDimensions}
         configs={levelConfig}

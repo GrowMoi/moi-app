@@ -37,6 +37,7 @@ const Levels = styled(View)`
 export default class Level5and6 extends Component {
   render() {
     const { userTree: { tree, meta: { depth } } } = this.props;
+    console.log(depth)
     const isLevel5 = depth === 5;
     const isLevel6 = depth === 6;
 
