@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer';
@@ -12,6 +12,7 @@ import Preloader from '../Preloader/Preloader';
 import Level1 from './Level1';
 import Level2 from './Level2';
 import Level3 from './Level3';
+import AllLevels from './AllLevels';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -64,6 +65,7 @@ export default class Tree extends Component {
       tree1: <Level1 { ...levelData } />,
       tree2: <Level2 { ...levelData } />,
       tree3: <Level3 { ...levelData } />,
+      allLevels: <AllLevels { ...levelData } />,
     };
 
     switch (level) {
@@ -75,6 +77,12 @@ export default class Tree extends Component {
         return { component: levels.tree3, zoomScale: 2 };
       case 4:
         return { component: levels.tree3, zoomScale: 3 };
+      case 5:
+        return { component: levels.allLevels, zoomScale: 4 };
+      case 6:
+        return { component: levels.allLevels, zoomScale: 4 };
+      case 7:
+        return { component: levels.allLevels, zoomScale: 4 };
       default:
         return { component: levels.tree1, zoomScale: 1 };
     }

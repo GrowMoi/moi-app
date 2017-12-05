@@ -14,8 +14,8 @@ export const NeuronContainer = styled(View)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: ${props => props.size || 0};
-  height: ${props => props.size || 0};
+  width: ${props => props.size || 1};
+  height: ${props => props.size || 1};
   ${({ pos = {} }) => {
     if (pos.left) return css`left: ${pos.left}`;
     else if (pos.right) return css`right: ${pos.right}`;
@@ -24,7 +24,7 @@ export const NeuronContainer = styled(View)`
     if (pos.bottom) return css`bottom: ${pos.bottom}`;
     else if (pos.top) return css`top: ${pos.top}`;
   }};
-`;
+  `;
 
 const neuronWidth = 390;
 const neuronHeight = 368;
@@ -140,6 +140,8 @@ Neuron.defaultProps = {
     min: 30,
   },
   position: {},
+  contentsLearned: 0,
+  totalContents: 4,
 };
 
 Neuron.propTypes = {
