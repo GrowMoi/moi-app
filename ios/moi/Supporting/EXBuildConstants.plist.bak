@@ -5,6 +5,6 @@
 	<key>EXPO_RUNTIME_VERSION</key>
 	<string>1.18.2</string>
 	<key>developmentUrl</key>
-	<string>exp38ad664a8eed498684a294850b285443://pq-ke9.mvinan.moi-app.exp.direct:80</string>
+	<string>exp38ad664a8eed498684a294850b285443://192.168.201.76:80</string>
 </dict>
 </plist>

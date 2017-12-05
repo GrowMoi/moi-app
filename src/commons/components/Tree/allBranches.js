@@ -99,13 +99,13 @@ const RecursiveBranches = ({
 export default class Branches extends Component {
   renderBranchByDirection = (direction, data) => {
     const levelConfig = levelsConfig[direction];
-    const { treeDimensions, width } = this.props;
+    const { treeDimensions, width, level } = this.props;
 
     return (
       <RecursiveBranches
         key={`branch-${direction}`}
         data={data}
-        maxLevel={5}
+        maxLevel={level}
         width={width}
         treeDimensions={treeDimensions}
         configs={levelConfig}

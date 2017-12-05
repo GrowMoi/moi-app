@@ -34,12 +34,14 @@ const Levels = styled(View)`
   overflow: visible;
 `;
 
-export default class Level5and6 extends Component {
+export default class AllLevels extends Component {
   render() {
     const { userTree: { tree, meta: { depth } } } = this.props;
-    console.log(depth)
     const isLevel5 = depth === 5;
     const isLevel6 = depth === 6;
+    const isLevel7 = depth === 7;
+    const isLevel8 = depth === 8;
+    const isLevel9 = depth === 9;
 
     const CURRENT_TREE_WIDTH = 320;
     const defaultProps = {
@@ -57,8 +59,16 @@ export default class Level5and6 extends Component {
         <Levels>
           {isLevel5 && <TreeBase source={arbolNivel5Gris} {...defaultProps}/>}
           {isLevel6 && <TreeBase source={arbolNivel6Gris} {...defaultProps}/>}
+          {isLevel7 && <TreeBase source={arbolNivel6Gris} {...defaultProps}/>}
+          {isLevel8 && <TreeBase source={arbolNivel6Gris} {...defaultProps}/>}
+          {isLevel9 && <TreeBase source={arbolNivel6Gris} {...defaultProps}/>}
           <TreeBase source={arbolColorNivel2} {...defaultProps}/>
-          <Branches data={tree} width={CURRENT_TREE_WIDTH} treeDimensions={treeDimensions}/>
+          <Branches
+            level={depth}
+            data={tree}
+            treeDimensions={treeDimensions}
+            width={CURRENT_TREE_WIDTH}
+          />
           <NeuronsLayer
             level={depth}
             data={tree}
@@ -71,6 +81,6 @@ export default class Level5and6 extends Component {
   }
 }
 
-Level5and6.propTypes = {
+AllLevels.propTypes = {
   userTree: PropTypes.object,
 };

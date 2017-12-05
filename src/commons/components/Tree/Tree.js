@@ -12,7 +12,7 @@ import Preloader from '../Preloader/Preloader';
 import Level1 from './Level1';
 import Level2 from './Level2';
 import Level3 from './Level3';
-import Level5and6 from './Level5-6';
+import AllLevels from './AllLevels';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -65,7 +65,7 @@ export default class Tree extends Component {
       tree1: <Level1 { ...levelData } />,
       tree2: <Level2 { ...levelData } />,
       tree3: <Level3 { ...levelData } />,
-      'tree5-6': <Level5and6 { ...levelData } />,
+      allLevels: <AllLevels { ...levelData } />,
     };
 
     switch (level) {
@@ -78,7 +78,11 @@ export default class Tree extends Component {
       case 4:
         return { component: levels.tree3, zoomScale: 3 };
       case 5:
-        return { component: levels['tree5-6'], zoomScale: 4 };
+        return { component: levels.allLevels, zoomScale: 4 };
+      case 6:
+        return { component: levels.allLevels, zoomScale: 4 };
+      case 7:
+        return { component: levels.allLevels, zoomScale: 4 };
       default:
         return { component: levels.tree1, zoomScale: 1 };
     }

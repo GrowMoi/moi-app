@@ -48,6 +48,8 @@ const RecursiveNeuron = ({
     newPath = `${level}.${index}`;
   }
 
+  // console.log(newPath);
+
   const neuronPosition = newPath in configs ? configs[newPath].position : {};
 
   if (neuron.children && neuron.children.length) {
@@ -98,7 +100,7 @@ export default class NeuronsLayer extends Component {
       color,
       contentsLearned,
       totalContents,
-      position: { bottom: 10, left: 145 },
+      position: { bottom: 10, left: 147 },
       size: this.size,
     };
 
