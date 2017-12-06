@@ -55,8 +55,6 @@ const RecursiveBranches = ({
     newPath = `${level}.${index}`;
   }
 
-
-
   if (data.children && data.children.length) {
     children = data.children.map((child, childIndex) => {
       if (level === maxLevel) return null;
@@ -80,7 +78,7 @@ const RecursiveBranches = ({
 
   return (
     <FloweredBranchContainer width={width} treeDimensions={treeDimensions}>
-      {isFlowered && (configs[newPath].floweredBranches || []).map((sourceBranch, branchIndex) => {
+      {isFlowered && ((configs[newPath] || {}).floweredBranches || []).map((sourceBranch, branchIndex) => {
         return (
           <FloweredBranch
             key={`branch-level${level}-${parentIndex}-${index}-branch${branchIndex}`}

@@ -161,4 +161,6 @@ export default [
   require('./tree/arbol_adulto/nivel_6/fondo098.png'),
   require('./tree/arbol_adulto/nivel_6/fondo099.png'),
   require('./tree/arbol_adulto/nivel_6/fondo100.png'),
+
+  // Big tree level 7
 ];

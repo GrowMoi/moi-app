@@ -1,6 +1,6 @@
 export default {
   meta: {
-    depth: 6,
+    depth: 7,
   },
   tree: {
     root: {
