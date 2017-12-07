@@ -5,3 +5,4 @@ npm-debug.*
 coverage/
 .DS_Store
 environment.js
+./ios/moi.xcworkspace/xcuserdata/miguelvinanhidalgo.xcuserdatad/UserInterfaceState.xcuserstate
