@@ -9,6 +9,8 @@ import Branches from './allBranches';
 import arbolNivel5Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel5_gris.png';
 import arbolNivel6Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel6_gris.png';
 import arbolNivel7Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel7_gris.png';
+import arbolNivel8Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel8_gris.png';
+import arbolNivel9Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel9_gris.png';
 import arbolColorNivel2 from '../../../../assets/images/tree/arbol_adulto/nivel_2/arbol_nivel2_color.png';
 
 const Container = styled(View)`
@@ -61,8 +63,8 @@ export default class AllLevels extends Component {
           {isLevel5 && <TreeBase source={arbolNivel5Gris} {...defaultProps}/>}
           {isLevel6 && <TreeBase source={arbolNivel6Gris} {...defaultProps}/>}
           {isLevel7 && <TreeBase source={arbolNivel7Gris} {...defaultProps}/>}
-          {isLevel8 && <TreeBase source={arbolNivel7Gris} {...defaultProps}/>}
-          {isLevel9 && <TreeBase source={arbolNivel7Gris} {...defaultProps}/>}
+          {isLevel8 && <TreeBase source={arbolNivel8Gris} {...defaultProps}/>}
+          {isLevel9 && <TreeBase source={arbolNivel9Gris} {...defaultProps}/>}
           <TreeBase source={arbolColorNivel2} {...defaultProps}/>
           <Branches
             level={depth}
