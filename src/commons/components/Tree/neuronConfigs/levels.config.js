@@ -71,6 +71,22 @@ import branch098 from '../../../../../assets/images/tree/arbol_adulto/nivel_6/fo
 import branch099 from '../../../../../assets/images/tree/arbol_adulto/nivel_6/fondo099.png';
 import branch100 from '../../../../../assets/images/tree/arbol_adulto/nivel_6/fondo100.png';
 
+// Branches level 7
+import branch018 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo018.png';
+import branch020 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo020.png';
+import branch021 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo021.png';
+import branch022 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo022.png';
+import branch023 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo023.png';
+import branch024 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo024.png';
+import branch048 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo048.png';
+import branch049 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo049.png';
+import branch050 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo050.png';
+import branch051 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo051.png';
+import branch052 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo052.png';
+import branch069 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo069.png';
+import branch070 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo070.png';
+import branch101 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo101.png';
+import branch102 from '../../../../../assets/images/tree/arbol_adulto/nivel_7/fondo102.png';
 
 export default {
   /**
@@ -85,24 +101,37 @@ export default {
     '2.0.3.0.4.0': { position: { right: 20, bottom: 7 }, floweredBranches: [] },
     '2.0.3.0.4.0.5.0': { position: { right: 50, bottom: 32 }, floweredBranches: [branch006, branch007] },
     '2.0.3.0.4.0.5.0.6.0': { position: { right: 9, top: 20 }, floweredBranches: [branch015] },
+    '2.0.3.0.4.0.5.1.6.0.7.0': { position: { left: 11, bottom: 43 }, floweredBranches: [branch018] },
+    '2.0.3.0.4.0.5.1.6.0.7.1': { position: { left: 9, bottom: 55 }, floweredBranches: [branch018] },
+    '2.0.3.0.4.0.5.1.6.0.7.2': { position: { left: 12, bottom: 66 }, floweredBranches: [branch022] },
+    '2.0.3.0.4.0.5.1.6.0.7.3': { position: { right: 1, bottom: 77 }, floweredBranches: [branch022] },
 
     '2.0.3.0.4.0.5.1': { position: { right: 50, bottom: 60 }, floweredBranches: [branch013] },
     '2.0.3.0.4.0.5.1.6.0': { position: { right: 19, top: 34 }, floweredBranches: [branch014] },
     '2.0.3.0.4.0.5.1.6.1': { position: { right: 17, top: 20 }, floweredBranches: [branch014] },
+    '2.0.3.0.4.0.5.1.6.1.7.0': { position: { left: 9, bottom: 63 }, floweredBranches: [branch023] },
+    '2.0.3.0.4.0.5.1.6.1.7.1': { position: { left: 5, bottom: 74 }, floweredBranches: [branch023] },
     '2.0.3.0.4.0.5.1.6.2': { position: { right: 16, top: 4 }, floweredBranches: [branch014] },
+    '2.0.3.0.4.0.5.1.6.2.7.0': { position: { left: 15, bottom: 64 }, floweredBranches: [branch023] },
+    '2.0.3.0.4.0.5.1.6.2.7.1': { position: { left: 1, bottom: 70 }, floweredBranches: [branch023] },
 
     '2.0.3.0.4.0.5.2': { position: { right: 29, bottom: 40 }, floweredBranches: [branch012] },
     '2.0.3.0.4.1': { position: { right: 38, bottom: 13 }, floweredBranches: [branch006, branch007] },
     '2.0.3.0.4.1.5.0': { position: { left: 17, bottom: 40 }, floweredBranches: [branch011] },
     '2.0.3.0.4.1.5.0.6.0': { position: { right: 37, bottom: 8 }, floweredBranches: [branch017] },
+    '2.0.3.0.4.1.5.0.6.0.7.0': { position: { left: 14, bottom: 57 }, floweredBranches: [branch020] },
+    '2.0.3.0.4.1.5.0.6.0.7.1': { position: { left: 30, bottom: 57 }, floweredBranches: [branch021] },
     '2.0.3.0.4.1.5.0.6.1': { position: { right: 36, bottom: 24 }, floweredBranches: [branch019] },
+    '2.0.3.0.4.1.5.0.6.1.7.0': { position: { left: 25, bottom: 54 }, floweredBranches: [branch021] },
     '2.0.3.0.4.1.5.0.6.2': { position: { right: 32, bottom: 40 }, floweredBranches: [branch019] },
+    '2.0.3.0.4.1.5.0.6.2.7.0': { position: { right: 2, bottom: 29 }, floweredBranches: [branch024] },
     '2.0.3.0.4.1.5.0.6.3': { position: { right: 33, bottom: 55 }, floweredBranches: [branch019] },
 
     '2.0.3.0.4.1.5.1': { position: { left: 28, bottom: 20 }, floweredBranches: [branch010] },
     '2.0.3.0.4.1.5.1.6.0': { position: { right: 32, bottom: 30 }, floweredBranches: [] },
     '2.0.3.0.4.1.5.1.6.1': { position: { right: 26, bottom: 45 }, floweredBranches: [branch016] },
     '2.0.3.0.4.1.5.1.6.2': { position: { right: 22, bottom: 60 }, floweredBranches: [branch016] },
+    '2.0.3.0.4.1.5.1.6.2.7.0': { position: { right: 10, bottom: 44 }, floweredBranches: [branch024] },
 
     '2.0.3.0.4.2': { position: { right: 40, bottom: 1 }, floweredBranches: [branch005, branch003] },
   },
@@ -120,6 +149,8 @@ export default {
     '2.0.3.0.4.0': { position: { right: 14, bottom: 14 }, floweredBranches: [branch032, branch034] },
     '2.0.3.0.4.0.5.0': { position: { right: 12, bottom: 25 }, floweredBranches: [branch009] },
     '2.0.3.0.4.0.5.0.6.0': { position: { right: 7, bottom: 19 }, floweredBranches: [branch044] },
+    '2.0.3.0.4.0.5.0.6.0.7.0': { position: { left: 9, bottom: 37 }, floweredBranches: [branch052] },
+    '2.0.3.0.4.0.5.0.6.0.7.1': { position: { left: 20, bottom: 36 }, floweredBranches: [branch051] },
     '2.0.3.0.4.0.5.0.6.1': { position: { right: 20, bottom: 18 }, floweredBranches: [branch044] },
 
     '2.0.3.0.4.1': { position: { right: 13, bottom: 27 }, floweredBranches: [branch032, branch034] },
@@ -132,16 +163,21 @@ export default {
 
     '2.0.3.0.4.2.5.2': { position: { right: 23, bottom: 33 }, floweredBranches: [] },
     '2.0.3.0.4.2.5.2.6.0': { position: { right: 24 , bottom: 27 }, floweredBranches: [branch045] },
+    '2.0.3.0.4.2.5.2.6.0.7.0': { position: { left: 6, bottom: 25 }, floweredBranches: [branch052] },
 
     '2.0.3.0.4.2.5.3': { position: { left: 26, bottom: 9 }, floweredBranches: [branch036] },
     '2.0.3.0.4.2.5.3.6.0': { position: { bottom: 60, right: 1 }, floweredBranches: [branch045] },
+    '2.0.3.0.4.2.5.3.6.0.7.0': { position: { right: 62, bottom: 27 }, floweredBranches: [branch052] },
+    '2.0.3.0.4.2.5.3.6.0.7.1': { position: { right: 78, bottom: 36 }, floweredBranches: [branch052] },
     '2.0.3.0.4.2.5.3.6.1': { position: { bottom: 50, left: 3 }, floweredBranches: [branch045] },
+    '2.0.3.0.4.2.5.3.6.1.7.0': { position: { right: 72, bottom: 52 }, floweredBranches: [branch052] },
 
     '2.0.3.0.4.2.5.4': { position: { left: 23, bottom: 22 }, floweredBranches: [branch037] },
     '2.0.3.0.4.2.5.4.6.0': { position: { bottom: 50, right: 70 }, floweredBranches: [branch045] },
 
     '2.0.3.0.4.2.5.5': { position: { left: 7, bottom: 27 }, floweredBranches: [branch038] },
     '2.0.3.0.4.2.5.5.6.0': { position: { right: 32, bottom: 18 }, floweredBranches: [] },
+    '2.0.3.0.4.2.5.5.6.0.7.0': { position: { left: 22, bottom: 40 }, floweredBranches: [branch051] },
 
     '2.0.3.1': { position: { left: 6, bottom: 11 }, floweredBranches: [branch001, branch031] },
     '2.0.3.1.4.0': { position: { right: 14, bottom: 10 }, floweredBranches: [branch061] },
@@ -151,9 +187,19 @@ export default {
 
     '2.0.3.1.4.0.5.1': { position: { left: 4, bottom: 26 }, floweredBranches: [] },
     '2.0.3.1.4.0.5.1.6.0': { position: { bottom: 49, right: 13 }, floweredBranches: [branch046] },
+    '2.0.3.1.4.0.5.1.6.0.7.0': { position: { right: 12, bottom: 33 }, floweredBranches: [branch051] },
+    '2.0.3.1.4.0.5.1.6.0.7.1': { position: { left: 1, bottom: 40 }, floweredBranches: [branch051] },
+    '2.0.3.1.4.0.5.1.6.0.7.2': { position: { left: 28, bottom: 16 }, floweredBranches: [branch050] },
+    '2.0.3.1.4.0.5.1.6.0.7.3': { position: { left: 23, bottom: 26 }, floweredBranches: [branch049] },
     '2.0.3.1.4.0.5.1.6.1': { position: { bottom: 60, right: 17 }, floweredBranches: [branch047] },
     '2.0.3.1.4.0.5.1.6.2': { position: { bottom: 64, right: 2 }, floweredBranches: [branch046] },
+    '2.0.3.1.4.0.5.1.6.2.7.0': { position: { left: 25, bottom: 14 }, floweredBranches: [branch050] },
+    '2.0.3.1.4.0.5.1.6.2.7.1': { position: { left: 9, bottom: 21 }, floweredBranches: [branch050] },
+    '2.0.3.1.4.0.5.1.6.2.7.2': { position: { left: 22, bottom: 29 }, floweredBranches: [branch050] },
+
     '2.0.3.1.4.0.5.1.6.3': { position: { bottom: 45, right: 1 }, floweredBranches: [branch043, branch040] },
+    '2.0.3.1.4.0.5.1.6.3.7.0': { position: { right: 1, bottom: 49 }, floweredBranches: [branch050] },
+    '2.0.3.1.4.0.5.1.6.3.7.1': { position: { left: 6, bottom: 58 }, floweredBranches: [branch050] },
   },
 
   /**
@@ -169,6 +215,8 @@ export default {
     '2.0.3.0.4.0': { position: { left: 8, bottom: 10 }, floweredBranches: [branch061] },
     '2.0.3.0.4.0.5.0': { position: { left: 20, bottom: 23 }, floweredBranches: [branch062] },
     '2.0.3.0.4.0.5.0.6.0': { position: { left: 8, bottom: 8 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.0': { position: { left: 10, bottom: 68 }, floweredBranches: [branch070] },
+    '2.0.3.0.4.0.5.0.6.0.7.1': { position: { left: 8, bottom: 84 }, floweredBranches: [branch070] },
 
     '2.0.3.0.4.0.5.1': { position: { left: 18, bottom: 40 }, floweredBranches: [] },
     '2.0.3.0.4.0.5.1.6.0': { position: { left: 15, bottom: 10 }, floweredBranches: [branch063] },
@@ -186,10 +234,13 @@ export default {
     '2.0.3.0.4.1': { position: { left: 25, bottom: 12 }, floweredBranches: [branch061] },
     '2.0.3.0.4.1.5.0': { position: { right: 11, bottom: 13 }, floweredBranches: [] },
     '2.0.3.0.4.1.5.0.6.0': { position: { left: 41, bottom: 44 }, floweredBranches: [branch065] },
+    '2.0.3.0.4.1.5.0.6.0.7.0': { position: { left: 13, bottom: 50 }, floweredBranches: [branch069] },
     '2.0.3.0.4.1.5.0.6.1': { position: { left: 47, bottom: 59 }, floweredBranches: [branch065] },
+    '2.0.3.0.4.1.5.0.6.1.7.0': { position: { left: 30, bottom: 42 }, floweredBranches: [branch069] },
 
     '2.0.3.0.4.1.5.1': { position: { right: 16, bottom: 44 }, floweredBranches: [branch035] },
     '2.0.3.0.4.1.5.1.6.0': { position: { left: 44, bottom: 44 }, floweredBranches: [branch067] },
+    '2.0.3.0.4.1.5.1.6.0.7.0': { position: { left: 26, bottom: 33 }, floweredBranches: [branch069] },
     '2.0.3.0.4.1.5.1.6.1': { position: { left: 64, bottom: 20 }, floweredBranches: [branch065] },
   },
 
@@ -223,14 +274,18 @@ export default {
     '2.0.3.1.4.0.5.0.6.0': { position: { left: 29, bottom: 100 }, floweredBranches: [branch100] },
     '2.0.3.1.4.0.5.1': { position: { left: 34, bottom: 34 }, floweredBranches: [] },
     '2.0.3.1.4.0.5.1.6.0': { position: { left: 9, bottom: 95 }, floweredBranches: [branch098] },
+    '2.0.3.1.4.0.5.1.6.0.7.0': { position: { left: 6, bottom: 9 }, floweredBranches: [branch102] },
 
     '2.0.3.1.4.1': { position: { left: 36, bottom: 16 }, floweredBranches: [branch084] },
     '2.0.3.1.4.1.5.0': { position: { left: 36, bottom: 16 }, floweredBranches: [branch089] },
     '2.0.3.1.4.1.5.0.6.0': { position: { right: 29, bottom: 83 }, floweredBranches: [branch096] },
+    '2.0.3.1.4.1.5.0.6.0.7.0': { position: { left: 36, bottom: 36 }, floweredBranches: [branch101] },
     '2.0.3.1.4.1.5.0.6.1': { position: { right: 25, bottom: 97 }, floweredBranches: [branch096] },
+    '2.0.3.1.4.1.5.0.6.1.7.0': { position: { left: 34, bottom: 33 }, floweredBranches: [branch101] },
 
     '2.0.3.1.4.1.5.1': { position: { left: 46, bottom: 32 }, floweredBranches: [branch089] },
     '2.0.3.1.4.1.5.1.6.0': { position: { bottom: 93, right: 33 }, floweredBranches: [branch096] },
+    '2.0.3.1.4.1.5.1.6.0.7.0': { position: { left: 10, bottom: 27 }, floweredBranches: [branch102] },
     '2.0.3.1.4.1.5.2': { position: { left: 31, bottom: 27 }, floweredBranches: [branch089] },
     '2.0.3.1.4.1.5.3': { position: { left: 36, bottom: 40 }, floweredBranches: [] },
 
@@ -240,13 +295,16 @@ export default {
     '2.0.3.1.4.3.5.0': { position: { left: 7, bottom: 43 }, floweredBranches: [branch090] },
     '2.0.3.1.4.3.5.1': { position: { left: 19, bottom: 52 }, floweredBranches: [branch091] },
     '2.0.3.1.4.3.5.1.6.0': { position: { right: 17, bottom: 45 }, floweredBranches: [] },
+    '2.0.3.1.4.3.5.1.6.0.7.0': { position: { right: 12, bottom: 48 }, floweredBranches: [branch102] },
     '2.0.3.1.4.3.5.1.6.1': { position: { right: 17, bottom: 76 }, floweredBranches: [branch098] },
+    '2.0.3.1.4.3.5.1.6.1.7.0': { position: { left: 13, bottom: 10 }, floweredBranches: [branch101] },
 
     '2.0.3.1.4.4': { position: { left: 66, bottom: 13 }, floweredBranches: [branch087] },
     '2.0.3.1.4.4.5.0': { position: { left: 1, bottom: 71 }, floweredBranches: [branch092] },
     '2.0.3.1.4.4.5.1': { position: { left: 21, bottom: 83 }, floweredBranches: [branch093] },
     '2.0.3.1.4.4.5.1.6.0': { position: { right: 10, bottom: 13 }, floweredBranches: [] },
     '2.0.3.1.4.4.5.1.6.1': { position: { right: 4, bottom: 30 }, floweredBranches: [branch099] },
+    '2.0.3.1.4.4.5.1.6.1.7.0': { position: { right: 11, bottom: 51 }, floweredBranches: [branch101] },
     '2.0.3.1.4.4.5.1.6.2': { position: { right: 6, bottom: 43 }, floweredBranches: [branch099] },
   },
 };
