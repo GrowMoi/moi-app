@@ -11,8 +11,8 @@ const Container = styled(View)`
   width: ${({ width }) => width};
   height: ${({ treeDimensions: { width: _width, height }, width }) => getHeightAspectRatio(_width, height, width)};
   bottom: 50;
-  left: 0;
   overflow: visible;
+  align-items: center;
 `;
 
 const FloweredBranch = styled(Image)`
