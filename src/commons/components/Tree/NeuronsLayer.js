@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components/native';
 import { View } from 'react-native';
 import Neuron, { NeuronContainer } from './Neuron';
@@ -32,6 +33,10 @@ const RecursiveNeuron = ({
   const maximunGrowSize = size.max || 30;
   const minimunSize = size.min || 20;
 
+  const onPressNeuron = (e, _data) => {
+    Actions.content({ title: _data.title, neuron_id: _data.id });
+  };
+
   const neuronProps = {
     id: neuron.id,
     name: neuron.title,
@@ -39,6 +44,7 @@ const RecursiveNeuron = ({
     totalContents: neuron.total_approved_contents,
     color: configs.neuron.color,
     size: { max: maximunGrowSize, min: minimunSize },
+    onPress: e => onPressNeuron(e, neuron),
   };
 
   let newPath;
