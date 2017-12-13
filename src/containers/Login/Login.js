@@ -21,6 +21,10 @@ import Button from '../../commons/components/Buttons/Button';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 
+// Login Images
+import loginImages from './loginImages';
+import LoginImage from './LoginImage';
+
 const LoginContainer = styled(View)`
   flex: 1;
   justify-content: center;
@@ -53,6 +57,11 @@ const Form = styled(View)`
   margin-top: ${Size.spaceMedium};
 `;
 
+const ContainerLoginImages = styled(View)`
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
 @connect(store => ({
   user: store.user.userData,
   device: store.device,
@@ -62,8 +71,11 @@ const Form = styled(View)`
 })
 export default class Login extends Component {
   state = {
-    email: '',
-    password: '',
+    login: '',
+    authorization_key: '',
+    showingSelectionKey: false,
+    showingUsername: true,
+    currentSelected: '',
   }
 
   onChangeInput = (id, text) => {
@@ -78,13 +90,26 @@ export default class Login extends Component {
   }
 
   submit = async () => {
-    const { email, password } = this.state;
+    const { login, authorization_key } = this.state;
     const { loginAsync } = this.props;
-    loginAsync({ email, password });
+    loginAsync({ login, authorization_key });
+  }
+
+  showSelectionKey = () => {
+    this.setState({ showingSelectionKey: true });
+  }
+
+  onPressLoginImage = (data, key) => {
+    this.setState({ authorization_key: key });
+  }
+
+  returnToUsername = () => {
+    this.setState({ showingSelectionKey: false });
   }
 
   render() {
     const { device } = this.props;
+    const { showingSelectionKey, key } = this.state;
     const { width } = device.dimensions;
 
     return (
@@ -106,21 +131,44 @@ export default class Login extends Component {
               <WoodTitle title='Login' />
 
               <Form>
-                <Input
-                  placeholder='email'
-                  keyboardType='email-address'
-                  onChangeText={text => this.onChangeInput('email', text)}
-                />
-                <Input
-                  placeholder='contraseña'
-                  secureTextEntry
-                  onChangeText={text => this.onChangeInput('password', text)}
-                />
-
-                <ButtonsContainer>
-                  <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
-                  <Button style={{ flex: 1 }} title='Jugar' onPress={this.submit} />
-                </ButtonsContainer>
+                {!showingSelectionKey &&
+                  <Input
+                    placeholder='nombre de usuario'
+                    keyboardType='email-address'
+                    autoCorrect={false}
+                    onChangeText={text => this.onChangeInput('login', text)}
+                  />
+                }
+                {
+                  showingSelectionKey &&
+                  <ContainerLoginImages>
+                    {loginImages.map((image) => {
+                      const selected = image.key === key;
+                      return (
+                        <LoginImage
+                          selected={selected}
+                          key={image.key}
+                          keyName={image.key}
+                          source={image.source}
+                          name={image.name}
+                          onPress={this.onPressLoginImage}
+                        />
+                      );
+                    })}
+                  </ContainerLoginImages>
+                }
+                {!showingSelectionKey &&
+                  <ButtonsContainer>
+                    <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
+                    <Button style={{ flex: 1 }} title='Siguiente' onPress={this.showSelectionKey} />
+                  </ButtonsContainer>
+                }
+                {showingSelectionKey &&
+                  <ButtonsContainer>
+                    <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Atras' onPress={this.returnToUsername} />
+                    <Button style={{ flex: 1 }} title='Login' onPress={this.submit} />
+                  </ButtonsContainer>
+                }
               </Form>
             </FormContainer>
           </LoginContainer>

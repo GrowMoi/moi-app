@@ -21,26 +21,6 @@ const backButtonQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={(
 const routes = Actions.create(
   <Scene key="root">
     <Scene
-      type='replace'
-      key='moiDrawer'
-      title='Tree'
-      component={Menu}
-      open={false}>
-      <Scene key="main" tabs>
-        <Scene
-          key='tree'
-          initial
-          component={TreeScene}
-          {...navbarPropStyles}
-          title='Arbol' />
-        <Scene
-          key='settings'
-          title='Settings'
-          component={Settings}
-          {...navbarPropStyles} />
-      </Scene>
-    </Scene>
-    <Scene
       key='login'
       component={Login}
       {...navbarPropStyles}

@@ -15,9 +15,9 @@ const api = {
   },
 
   user: {
-    async signIn({ email, password }) {
-      const endpoint = '/api/auth/user/sign_in';
-      const res = await client.post(endpoint, { email, password });
+    async signIn({ login, authorization_key }) {
+      const endpoint = '/api/auth/user/key_authorize';
+      const res = await client.post(endpoint, { login, authorization_key });
       return res;
     },
     async validateToken() {
