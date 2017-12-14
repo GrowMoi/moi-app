@@ -109,7 +109,7 @@ export default class Login extends Component {
 
   render() {
     const { device } = this.props;
-    const { showingSelectionKey, key } = this.state;
+    const { showingSelectionKey, authorization_key: key, login } = this.state;
     const { width } = device.dimensions;
 
     return (
@@ -136,6 +136,7 @@ export default class Login extends Component {
                     placeholder='nombre de usuario'
                     keyboardType='email-address'
                     autoCorrect={false}
+                    value={login}
                     onChangeText={text => this.onChangeInput('login', text)}
                   />
                 }
@@ -147,6 +148,7 @@ export default class Login extends Component {
                       return (
                         <LoginImage
                           selected={selected}
+                          selectedImage={image.selected}
                           key={image.key}
                           keyName={image.key}
                           source={image.source}
@@ -159,14 +161,14 @@ export default class Login extends Component {
                 }
                 {!showingSelectionKey &&
                   <ButtonsContainer>
-                    <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
-                    <Button style={{ flex: 1 }} title='Siguiente' onPress={this.showSelectionKey} />
+                    <Button style={{ width: 120, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
+                    <Button style={{ width: 120 }} title='Siguiente' disabled={!((login.trim()).length > 0)} onPress={this.showSelectionKey} />
                   </ButtonsContainer>
                 }
                 {showingSelectionKey &&
                   <ButtonsContainer>
-                    <Button style={{ flex: 1, marginRight: Size.spaceMedium }} title='Atras' onPress={this.returnToUsername} />
-                    <Button style={{ flex: 1 }} title='Login' onPress={this.submit} />
+                    <Button style={{ width: 120, marginRight: Size.spaceMedium }} title='Atras' onPress={this.returnToUsername} />
+                    <Button style={{ width: 120 }} title='Login' onPress={this.submit} />
                   </ButtonsContainer>
                 }
               </Form>

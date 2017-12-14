@@ -8,10 +8,9 @@ const notAuthenticate = () => ({
   type: actionTypes.AUTH_NOTVALID,
 });
 
-const signIn = (user, headers) => ({
+const userLogin = user => ({
   type: actionTypes.LOGIN,
   user,
-  headers,
 });
 
 const loadContentTasks = userContentTasks => ({
@@ -29,7 +28,9 @@ const loginAsync = ({ login, authorization_key }) => async (dispatch) => {
   try {
     res = await api.user.signIn({ login, authorization_key });
     const { data: { data: user }, headers } = res;
-    dispatch(signIn(user, headers));
+
+    dispatch(userLogin(user));
+    dispatch(setHeaders(headers));
     Actions.moiDrawer();
   } catch (error) {
     dispatch(notAuthenticate());
@@ -43,9 +44,10 @@ const validateToken = () => async (dispatch) => {
   let res;
   try {
     dispatch({ type: actionTypes.VALIDATE_TOKEN });
-    res = await api.user.validateToken();
+    res = await api.user.validation();
     const { data: { data: user }, headers } = res;
-    dispatch(signIn(user, headers));
+    dispatch(userLogin(user));
+    dispatch(setHeaders(headers));
   } catch (error) {
     dispatch(notAuthenticate());
   }

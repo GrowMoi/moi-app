@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { View, Image } from 'react-native';
 import { Description } from '../../commons/components/Typography';
-import sportButton from '../../../assets/images/settings/sport_button.png';
+import sportButton from '../../../assets/images/settings/sports_button.png';
 import { getHeightAspectRatio } from '../../commons/utils';
 
 const ContainerButton = styled(View)`

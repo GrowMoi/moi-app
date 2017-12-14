@@ -2,17 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
+import { getHeightAspectRatio } from '../../commons/utils';
+
+const WIDTH = 40;
+const widthImage = 83;
+const heightImage = 75;
 
 const ImageContainer = styled(TouchableOpacity)`
   margin-right: 5;
   margin-left: 5;
   margin-top: 5;
   margin-bottom: 5;
-  width: ${props => props.width};
 `;
 
-
 const StyledImage = styled(Image)`
+  width: ${props => props.width};
+  height: ${props => getHeightAspectRatio(widthImage, heightImage, props.width)};
 `;
 
 const StyledText = styled(Text)`
@@ -20,12 +25,11 @@ const StyledText = styled(Text)`
   background-color: transparent;
 `;
 
-const WIDTH = 55;
 
-const LoginImage = ({ name, source, keyName, onPress, selected = false }) => {
+const LoginImage = ({ name, source, keyName, onPress, selected = false, selectedImage }) => {
   return (
-    <ImageContainer width={WIDTH} onPress={ () => { if (onPress) { onPress(name, keyName); } }}>
-      <StyledImage source={source} resizeMode='contain' />
+    <ImageContainer onPress={ () => { if (onPress) { onPress(name, keyName); } }}>
+      <StyledImage width={WIDTH} source={selected ? selectedImage : source} resizeMode='contain' />
       <StyledText>{name}</StyledText>
     </ImageContainer>
   );
@@ -37,6 +41,7 @@ LoginImage.propTypes = {
   keyName: PropTypes.string,
   onPress: PropTypes.func,
   selected: PropTypes.bool,
+  selectedImage: PropTypes.any,
 };
 
 export default LoginImage;

@@ -11,6 +11,7 @@ export const colors = {
   lightGray: chroma('#b7b7b3'),
   darkenGreen: chroma('#6d893a'),
   cream: chroma('#f4ef95'),
+  creamButton: chroma('#fff9bb'),
   lightGreen: chroma('#c7b75d'),
 };
 
