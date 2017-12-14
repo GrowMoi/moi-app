@@ -107,7 +107,7 @@ export default class SideMenu extends Component {
           showsVerticalScrollIndicator
         >
           <UserNameContainer>
-            <UserName numberOfLines={1} small heavy inverted>{user.profile.name || 'NO NAME'}</UserName>
+            <UserName numberOfLines={1} small heavy inverted>{user.profile.name || user.profile.username || 'INVITADO'}</UserName>
             <Header small heavy inverted>Nivel: {treeIsLoaded && userTree.meta.depth}</Header>
           </UserNameContainer>
 
