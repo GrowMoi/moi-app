@@ -17,6 +17,10 @@ const Container = styled(View)`
   overflow: visible;
 `;
 
+const onPressNeuron = (e, _data) => {
+  Actions.content({ title: _data.title, neuron_id: _data.id });
+};
+
 const RecursiveNeuron = ({
   neuron,
   level = 2,
@@ -32,10 +36,6 @@ const RecursiveNeuron = ({
 
   const maximunGrowSize = size.max || 30;
   const minimunSize = size.min || 20;
-
-  const onPressNeuron = (e, _data) => {
-    Actions.content({ title: _data.title, neuron_id: _data.id });
-  };
 
   const neuronProps = {
     id: neuron.id,
@@ -108,6 +108,7 @@ export default class NeuronsLayer extends Component {
       totalContents,
       position: { bottom: 10, left: 147 },
       size: this.size,
+      onPress: e => onPressNeuron(e, data.root),
     };
 
     return (

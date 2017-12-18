@@ -1,12 +1,12 @@
 export default {
   meta: {
-    depth: 9,
+    depth: 6,
   },
   tree: {
     root: {
       id: 1,
       parent_id: null,
-      title: 'Jugar',
+      title: 'Jugaradfadfasdfadfadsfa',
       is_public: true,
       active: true,
       deleted: false,
