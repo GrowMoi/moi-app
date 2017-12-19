@@ -8,3 +8,6 @@ environment.js
 xcuserdata
 *.xcuserstate
 project.xcworkspace
+*.bak
+EXBuildConstants.json
+EXBuildConstants.plist
