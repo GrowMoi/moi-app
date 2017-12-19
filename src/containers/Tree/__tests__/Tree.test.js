@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 // import renderer from 'react-test-renderer';
-import 'jest-styled-components/native';
 import Tree from '../Tree';
 
 describe('Testing Tree View', () => {

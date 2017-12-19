@@ -3,7 +3,6 @@ import 'react-native';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import 'jest-styled-components/native';
 import ActionSheet from '../ActionSheet';
 
 const options = [

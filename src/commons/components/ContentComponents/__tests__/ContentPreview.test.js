@@ -1,6 +1,5 @@
 import React from 'react';
 import 'react-native';
-import 'jest-styled-components/native';
 import { shallow } from 'enzyme';
 import ContentPreview from '../ContentPreview';
 

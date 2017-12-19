@@ -2,7 +2,6 @@ import React from 'react';
 import 'react-native';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import 'jest-styled-components/native';
 import { Title, TextBody, Description, Header } from '../index';
 
 describe('Typography', () => {

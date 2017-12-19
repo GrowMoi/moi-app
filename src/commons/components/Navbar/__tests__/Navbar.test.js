@@ -1,7 +1,6 @@
 import React from 'react';
 import 'react-native';
 import { shallow } from 'enzyme';
-import 'jest-styled-components/native';
 import Navbar from '../Navbar';
 
 const store = {
