@@ -5,3 +5,10 @@ npm-debug.*
 coverage/
 .DS_Store
 environment.js
+xcuserdata
+*.xcuserstate
+project.xcworkspace
+*.bak
+ios/moi/Supporting/EXBuildConstants.json
+ios/moi/Supporting/EXBuildConstants.plist
+ios/moi/Supporting/EXBuildConstants.plist.bak
