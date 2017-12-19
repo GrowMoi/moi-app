@@ -9,5 +9,6 @@ xcuserdata
 *.xcuserstate
 project.xcworkspace
 *.bak
-EXBuildConstants.json
-EXBuildConstants.plist
+ios/moi/Supporting/EXBuildConstants.json
+ios/moi/Supporting/EXBuildConstants.plist
+ios/moi/Supporting/EXBuildConstants.plist.bak
