@@ -4,7 +4,6 @@ node_modules/
 npm-debug.*
 coverage/
 .DS_Store
-environment.js
 xcuserdata
 *.xcuserstate
 project.xcworkspace
