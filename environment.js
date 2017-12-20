@@ -1,4 +1,4 @@
 export default {
   STORYBOOK: false,
-  MOCK_LEVELS: true,
+  MOCK_LEVELS: false,
 };

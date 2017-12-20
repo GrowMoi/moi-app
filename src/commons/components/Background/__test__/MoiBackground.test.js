@@ -1,7 +1,6 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import 'jest-styled-components/native';
 
 import MoiBackground from '../MoiBackground';
 
