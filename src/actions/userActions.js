@@ -23,7 +23,7 @@ const storeQuiz = quiz => ({
   payload: quiz,
 });
 
-const loginAsync = ({ login, authorizationKey }) => async (dispatch) => {
+const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   let res;
   try {
     res = await api.user.signIn({ login, authorization_key: authorizationKey });
