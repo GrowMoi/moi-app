@@ -23,7 +23,7 @@ const storeQuiz = quiz => ({
   payload: quiz,
 });
 
-const loginAsync = ({ login, authorizationKey }) => async (dispatch) => {
+const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   let res;
   try {
     res = await api.user.signIn({ login, authorization_key: authorizationKey });
@@ -122,6 +122,18 @@ const learnContentsAsync = (testId, answers) => async (dispatch) => {
   return res;
 };
 
+const storeNotesAsync = (neuronId, contentId, notes) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.contents.storeNotes(neuronId, contentId, notes);
+    const { headers } = res;
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error);
+  }
+  return res;
+};
+
 export default {
   loginAsync,
   validateToken,
@@ -130,4 +142,5 @@ export default {
   storeTaskAsync,
   readContentAsync,
   learnContentsAsync,
+  storeNotesAsync,
 };
