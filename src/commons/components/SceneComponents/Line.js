@@ -7,6 +7,8 @@ const StyledLine = styled(View)`
   background-color: ${props => props.color};
   align-self: stretch;
   border-radius: 5;
+  margin-top: 5;
+  margin-bottom: 5;
   height: ${props => props.size};
 `;
 

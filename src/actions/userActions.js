@@ -23,6 +23,11 @@ const storeQuiz = quiz => ({
   payload: quiz,
 });
 
+const loadUserFavorites = favorites => ({
+  type: actionTypes.LOAD_USER_FAVORITES,
+  payload: favorites,
+});
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   let res;
   try {
@@ -134,6 +139,22 @@ const storeNotesAsync = (neuronId, contentId, notes) => async (dispatch) => {
   return res;
 };
 
+
+const loadAllFavorites = page => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.getFavorites(page);
+    const { headers, data } = res;
+    dispatch(loadUserFavorites(data));
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error)
+  }
+
+  return res;
+};
+
+
 export default {
   loginAsync,
   validateToken,
@@ -143,4 +164,6 @@ export default {
   readContentAsync,
   learnContentsAsync,
   storeNotesAsync,
+  loadAllFavorites,
 };
+

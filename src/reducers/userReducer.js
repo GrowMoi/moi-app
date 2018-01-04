@@ -7,6 +7,7 @@ const initialState = {
     headers: {},
     authenticate: false,
   },
+  favorites: null,
   tasks: {},
   quiz: null,
 };
@@ -45,10 +46,20 @@ const quiz = (state = initialState.quiz, action = {}) => {
   }
 };
 
+const favorites = (state = initialState.favorites, action) => {
+  switch (action.type) {
+    case actionTypes.LOAD_USER_FAVORITES:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const user = combineReducers({
   userData,
   tasks,
   quiz,
+  favorites,
 });
 
 export default user;
