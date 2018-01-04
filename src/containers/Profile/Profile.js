@@ -14,7 +14,7 @@ import Button from '../../commons/components/Buttons/Button';
 import { normalizeAllCapLetter } from '../../commons/utils/normalize';
 import { Size } from '../../commons/styles';
 import Tabs from '../../commons/components/Tabs';
-import Preloader from '../../commons/components/Preloader/Preloader';
+import FavoritesTab from './TabsContent/FavoritesTab';
 
 const { width } = Dimensions.get('window');
 
@@ -42,17 +42,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const FormBox = styled(View)`
-  border-radius: 5;
-  border-color: #94aa5b;
-  border-width: 2;
-  background-color: #99b461;
-  padding-horizontal: 5;
-  padding-vertical: 5;
-  margin-top: 20;
-  margin-bottom: 20;
-`;
-
 const PersonalInfo = styled(View)`
   background-color: #90b653;
   border-radius: 5px;
@@ -61,6 +50,7 @@ const PersonalInfo = styled(View)`
   padding-horizontal: ${Size.spaceSmall};
   padding-vertical: ${Size.spaceSmall};
   flex-direction: row;
+  margin-bottom: ${Size.spaceXSmall};
 `;
 
 const TreeImage = styled(View)`
@@ -79,11 +69,6 @@ const DescriptionContainer = styled(View)`
   flex: 1;
 `;
 
-const StyledButton = styled(Button)`
-  width: 120;
-  align-self: flex-end;
-`;
-
 const TabContainer = styled(View)`
   flex: 1;
 `;
@@ -97,21 +82,18 @@ const TabContainer = styled(View)`
   loadAllFavoritesAsync: userActions.loadAllFavorites,
 })
 export default class ProfileScene extends Component {
-  state = {
-    favoritesLoading: true,
-  }
-
   logout = () => {
     const { logoutAsync } = this.props;
     logoutAsync();
   }
 
-  async componentDidMount() {
-    const { loadAllFavoritesAsync, favorites } = this.props;
+  componentDidMount() {
+    this.getAllFavorites();
+  }
 
-    if (!favorites) await loadAllFavoritesAsync(1);
-
-    this.setState({ favoritesLoading: false });
+  getAllFavorites = () => {
+    const { loadAllFavoritesAsync } = this.props;
+    loadAllFavoritesAsync(1);
   }
 
   editProfile = () => {
@@ -119,14 +101,7 @@ export default class ProfileScene extends Component {
   }
 
   render() {
-    const { favoritesLoading } = this.state;
-    const { user, tree: { meta: { depth } } } = this.props;
-
-    const favorites = (
-      <TabContainer>
-        {favoritesLoading && <Preloader />}
-      </TabContainer>
-    );
+    const { user, tree: { meta: { depth } }, favorites: _fav } = this.props;
 
     const latest = (
       <TabContainer>
@@ -141,7 +116,7 @@ export default class ProfileScene extends Component {
     );
 
     const tabsData = [
-      { label: 'Favoritos', content: favorites },
+      { label: 'Favoritos', content: <FavoritesTab loading={!_fav} data={_fav} /> },
       { label: 'Ultimos 4', content: latest },
       { label: 'Tutores', content: tutors },
     ];
@@ -160,7 +135,7 @@ export default class ProfileScene extends Component {
               <Profile width={40}/>
               <NameContainer>
                 <Title heavy>{userName}</Title>
-                <Button onPress={this.editProfile} title='Editar' />
+                <Button onPress={this.editProfile} title='Editar' rightIcon='md-create' />
               </NameContainer>
             </HeaderProfile>
 
@@ -178,9 +153,12 @@ export default class ProfileScene extends Component {
                 <Header inverted bolder small>Escuela: {user.profile.school || '-'}</Header>
               </DescriptionContainer>
             </PersonalInfo>
-            <TreeImage>
 
-            </TreeImage>
+            {user.tree_image && (
+              <TreeImage>
+              </TreeImage>
+            )}
+
             <Tabs data={tabsData} />
 
           </ScrollView>

@@ -5,6 +5,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { Size } from '../../styles';
 import { colors } from '../../styles/palette';
 import { Header } from '../Typography';
+import { Ionicons } from '@expo/vector-icons';
 
 const StyledButton = styled(View)`
   padding-horizontal: ${Size.spaceSmall};
@@ -16,12 +17,25 @@ const StyledButton = styled(View)`
   shadow-offset: 0px 0px;
   shadow-opacity: 0.3;
   shadow-radius: 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Button = ({ title, onPress, style, disabled, ...rest }) => {
+const LeftIcon = styled(Ionicons)`
+  margin-right: ${Size.spaceXSmall};
+`;
+
+const RightIcon = styled(Ionicons)`
+  margin-left: ${Size.spaceXSmall};
+`;
+
+const Button = ({ title, onPress, style, disabled, leftIcon, rightIcon, ...rest }) => {
   const CreamButton = (
     <StyledButton disabled={disabled} style={disabled ? style : null}>
+      {leftIcon && <LeftIcon name={leftIcon} size={20} color="#4b4a21" />}
       <Header small heavy>{title}</Header>
+      {rightIcon && <RightIcon name={rightIcon} size={20} color="#4b4a21" />}
     </StyledButton>
   );
 
@@ -43,6 +57,8 @@ Button.propTypes = {
   title: PropTypes.string,
   style: PropTypes.any,
   disabled: PropTypes.bool,
+  leftIcon: PropTypes.string,
+  rightIcon: PropTypes.string,
 };
 
 export default Button;

@@ -54,6 +54,11 @@ const api = {
       const res = await client.post(endpoint, { id: contentId });
       return res;
     },
+    async storeAsFavorite(neuronId, contentId) {
+      const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/favorites`;
+      const res = await client.post(endpoint, { id: contentId });
+      return res;
+    },
     async readContent(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/read`;
       const res = await client.post(endpoint, { neuron_id: neuronId, content_id: contentId });

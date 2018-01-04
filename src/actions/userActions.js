@@ -99,6 +99,20 @@ const storeTaskAsync = (neuronId, contentId) => async (dispatch) => {
   return res;
 };
 
+const storeAsFavoriteAsync = (neuronId, contentId) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.contents.storeAsFavorite(neuronId, contentId);
+    const { headers } = res;
+    dispatch(setHeaders(headers));
+    Alert.alert('Favorito', 'Listo, Este contenido fue agregado como favorito.');
+  } catch (error) {
+    // console.log(error);
+    Alert.alert('Favorito', 'Ups!, No pudimos agregar este contenido como favorito, intentalo más tarde.');
+  }
+  return res;
+};
+
 const readContentAsync = (neuronId, contentId) => async (dispatch) => {
   let res;
   try {
@@ -165,5 +179,6 @@ export default {
   learnContentsAsync,
   storeNotesAsync,
   loadAllFavorites,
+  storeAsFavoriteAsync,
 };
 
