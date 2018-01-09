@@ -5,7 +5,7 @@ import { TextBody } from '../Typography';
 import { Size } from '../../styles';
 
 const TabContainer = styled(View)`
-  min-height: 250;
+  height: 250;
 `;
 
 const Labels = styled(View)`

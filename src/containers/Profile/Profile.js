@@ -75,11 +75,9 @@ const TabContainer = styled(View)`
 
 @connect(store => ({
   user: store.user.userData,
-  favorites: store.user.favorites,
   tree: store.tree.userTree,
 }), {
   logoutAsync: userActions.logoutAsync,
-  loadAllFavoritesAsync: userActions.loadAllFavorites,
 })
 export default class ProfileScene extends Component {
   logout = () => {
@@ -87,21 +85,12 @@ export default class ProfileScene extends Component {
     logoutAsync();
   }
 
-  componentDidMount() {
-    this.getAllFavorites();
-  }
-
-  getAllFavorites = () => {
-    const { loadAllFavoritesAsync } = this.props;
-    loadAllFavoritesAsync(1);
-  }
-
   editProfile = () => {
     Actions.editProfile();
   }
 
   render() {
-    const { user, tree: { meta: { depth } }, favorites: _fav } = this.props;
+    const { user, tree: { meta: { depth } } } = this.props;
 
     const latest = (
       <TabContainer>
@@ -116,7 +105,7 @@ export default class ProfileScene extends Component {
     );
 
     const tabsData = [
-      { label: 'Favoritos', content: <FavoritesTab loading={!_fav} data={_fav} /> },
+      { label: 'Favoritos', content: <FavoritesTab /> },
       { label: 'Ultimos 4', content: latest },
       { label: 'Tutores', content: tutors },
     ];

@@ -36,9 +36,9 @@ const api = {
       const res = await client.get(endpoint, { page });
       return res;
     },
-    async getFavorites(page = 1) {
+    async getFavorites(page) {
       const endpoint = '/api/users/content_favorites';
-      const res = await client.get(endpoint, { page });
+      const res = await client.get(endpoint, { params: { page } });
       return res;
     },
   },
