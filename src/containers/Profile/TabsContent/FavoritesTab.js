@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components/native';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -78,8 +79,15 @@ class FavoritesTab extends PureComponent {
     const { device: { dimensions } } = this.props;
     const widthImagePreview = dimensions.width > 320 ? 150 : 130;
 
+    const onPress = () => Actions.singleContent({ content_id: info.item.id, neuron_id: info.item.neuron_id, title: 'Favorito' });
     return (
-      <ContentImagePreview key={info.index} data={info.item} width={widthImagePreview} />
+      <ContentImagePreview
+        touchProps={{
+          onPress,
+        }}
+        data={info.item}
+        width={widthImagePreview}
+      />
     );
   }
   _keyExtractor = item => item.id;

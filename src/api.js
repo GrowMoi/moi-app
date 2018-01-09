@@ -41,6 +41,11 @@ const api = {
       const res = await client.get(endpoint, { params: { page } });
       return res;
     },
+    async getProfile(id) {
+      const endpoint = `/api/users/${id}/profile`;
+      const res = await client.get(endpoint);
+      return res;
+    },
   },
 
   contents: {

@@ -15,6 +15,7 @@ import { normalizeAllCapLetter } from '../../commons/utils/normalize';
 import { Size } from '../../commons/styles';
 import Tabs from '../../commons/components/Tabs';
 import FavoritesTab from './TabsContent/FavoritesTab';
+import LastContentsLearnt from './TabsContent/LastContentsLearnt';
 
 const { width } = Dimensions.get('window');
 
@@ -76,10 +77,16 @@ const TabContainer = styled(View)`
 @connect(store => ({
   user: store.user.userData,
   tree: store.tree.userTree,
+  profile: store.user.profile,
 }), {
   logoutAsync: userActions.logoutAsync,
+  getProfileAsync: userActions.getUserProfileAsync,
 })
 export default class ProfileScene extends Component {
+  async componentDidMount() {
+    const { getProfileAsync, user } = this.props;
+    await getProfileAsync(user.profile.id);
+  }
   logout = () => {
     const { logoutAsync } = this.props;
     logoutAsync();
@@ -90,24 +97,11 @@ export default class ProfileScene extends Component {
   }
 
   render() {
-    const { user, tree: { meta: { depth } } } = this.props;
-
-    const latest = (
-      <TabContainer>
-        <TextBody>Latest llllllas</TextBody>
-      </TabContainer>
-    );
-
-    const tutors = (
-      <TabContainer>
-        <TextBody>Tutores</TextBody>
-      </TabContainer>
-    );
+    const { user, tree: { meta: { depth } }, profile } = this.props;
 
     const tabsData = [
       { label: 'Favoritos', content: <FavoritesTab /> },
-      { label: 'Ultimos 4', content: latest },
-      { label: 'Tutores', content: tutors },
+      { label: 'Ultimos 4', content: <LastContentsLearnt /> },
     ];
 
     let userName = 'INVITADO';

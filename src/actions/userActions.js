@@ -28,6 +28,11 @@ const loadUserFavorites = favorites => ({
   payload: favorites,
 });
 
+const getProfile = profile => ({
+  type: actionTypes.GET_USER_PROFILE,
+  payload: profile,
+});
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   let res;
   try {
@@ -168,6 +173,19 @@ const loadAllFavorites = page => async (dispatch) => {
   return res;
 };
 
+const getUserProfileAsync = id => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.getProfile(id);
+    const { headers, data } = res;
+
+    dispatch(getProfile(data));
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error)
+  }
+};
+
 
 export default {
   loginAsync,
@@ -180,5 +198,6 @@ export default {
   storeNotesAsync,
   loadAllFavorites,
   storeAsFavoriteAsync,
+  getUserProfileAsync,
 };
 

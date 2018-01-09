@@ -7,6 +7,7 @@ const initialState = {
     headers: {},
     authenticate: false,
   },
+  data: {},
   favorites: null,
   tasks: {},
   quiz: null,
@@ -55,11 +56,21 @@ const favorites = (state = initialState.favorites, action) => {
   }
 };
 
+const profile = (state = initialState.data, action) => {
+  switch (action.type) {
+    case actionTypes.GET_USER_PROFILE:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const user = combineReducers({
   userData,
   tasks,
   quiz,
   favorites,
+  profile,
 });
 
 export default user;

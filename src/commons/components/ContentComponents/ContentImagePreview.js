@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { View, Image, TouchableOpacity } from 'react-native';
 import { TextBody } from '../Typography';
-import { Size, Palette } from '../../styles';
+import { Palette } from '../../styles';
 import { getHeightAspectRatio } from '../../utils';
 
 const width = 130;
@@ -31,10 +31,10 @@ const TitleContainer = styled(View)`
   background-color: ${Palette.black.alpha(0.5).css()};
 `;
 
-const ContentImagePreview = ({ width = 130, data }) => {
+const ContentImagePreview = ({ width = 130, data, touchProps, imageProps }) => {
   return (
-    <StyledButton width={width}>
-      <StyledImage source={data.media.length ? { uri: data.media[0] } : null } resizeMode='cover' >
+    <StyledButton width={width} {...touchProps}>
+      <StyledImage {...imageProps} source={data.media.length ? { uri: data.media[0] } : null } resizeMode='cover' >
         <TitleContainer>
           <TextBody numberOfLines={1} inverted>{data.title}</TextBody>
         </TitleContainer>

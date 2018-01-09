@@ -288,7 +288,7 @@ export default class SingleContentScene extends Component {
                   <Header inverted bolder>Recomendados</Header>
                   <VideoContainer>
                     {content.videos &&
-                        content.videos.length > 0 &&
+                      content.videos.length > 0 &&
                         content.videos.map((video, i) => {
                           const videoId = youtube.extractIdFromUrl(video.url);
 
