@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
-import { View, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import { View, ScrollView, StyleSheet, Dimensions, Image } from 'react-native';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import userActions from './../../actions/userActions';
 import Moibackground from '../../commons/components/Background/MoiBackground';
@@ -53,7 +53,7 @@ const PersonalInfo = styled(View)`
   margin-bottom: ${Size.spaceXSmall};
 `;
 
-const TreeImage = styled(View)`
+const TreeImage = styled(Image)`
   border-radius: 5px;
   border-color: #87a749;
   border-width: 1px;
@@ -132,21 +132,14 @@ export default class ProfileScene extends Component {
 
             <PersonalInfo>
               <DescriptionContainer>
-                <Header bolder small>Mensaje Personal:</Header>
-                <TextBody></TextBody>
-              </DescriptionContainer>
-              <DescriptionContainer>
-                <Header inverted bolder small>Edad: {user.profile.birthday || '-'}</Header>
-                <Header inverted bolder small>Curso: {'-'}</Header>
-                <Header inverted bolder small>Nivel: {depth || '-'}</Header>
-                <Header inverted bolder small>Escuela: {user.profile.school || '-'}</Header>
+                <Header inverted heavy small>Edad: {user.profile.birthday || '-'}</Header>
+                <Header inverted heavy small>Curso: {'-'}</Header>
+                <Header inverted heavy small>Nivel: {depth || '-'}</Header>
+                <Header inverted heavy small>Escuela: {user.profile.school || '-'}</Header>
               </DescriptionContainer>
             </PersonalInfo>
 
-            {user.tree_image && (
-              <TreeImage>
-              </TreeImage>
-            )}
+            {user.profile.tree_image && (<TreeImage source={{ uri: user.profile.tree_image }} resizeMode='cover' />)}
 
             <Tabs data={tabsData} />
 
