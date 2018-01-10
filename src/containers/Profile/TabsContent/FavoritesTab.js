@@ -90,7 +90,7 @@ class FavoritesTab extends PureComponent {
       />
     );
   }
-  _keyExtractor = item => item.id;
+  _keyExtractor = item => `${item.title}-${item.id}`;
 
   render() {
     const { favorites: data } = this.props;
