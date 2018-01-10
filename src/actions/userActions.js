@@ -184,6 +184,24 @@ const getUserProfileAsync = id => async (dispatch) => {
   } catch (error) {
     // console.log(error)
   }
+
+  return res;
+};
+
+const updateUserAccountAsync = (dataToChange, id) => async (dispatch) => {
+  let res;
+  try {
+    await api.user.updateUserAccount(dataToChange);
+    res = await api.user.getProfile(id);
+    const { headers, data } = res;
+
+    dispatch(getProfile(data));
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error)
+  }
+
+  return res;
 };
 
 
@@ -199,5 +217,5 @@ export default {
   loadAllFavorites,
   storeAsFavoriteAsync,
   getUserProfileAsync,
+  updateUserAccountAsync,
 };
-

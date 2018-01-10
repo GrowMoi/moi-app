@@ -80,13 +80,8 @@ const TabContainer = styled(View)`
   profile: store.user.profile,
 }), {
   logoutAsync: userActions.logoutAsync,
-  getProfileAsync: userActions.getUserProfileAsync,
 })
 export default class ProfileScene extends Component {
-  async componentDidMount() {
-    const { getProfileAsync, user } = this.props;
-    await getProfileAsync(user.profile.id);
-  }
   logout = () => {
     const { logoutAsync } = this.props;
     logoutAsync();
@@ -104,9 +99,9 @@ export default class ProfileScene extends Component {
       { label: 'Ultimos 4', content: <LastContentsLearnt /> },
     ];
 
-    let userName = 'INVITADO';
-    if (user.profile.name) userName = normalizeAllCapLetter(user.profile.name);
-    else if (user.profile.username) userName = normalizeAllCapLetter(user.profile.username);
+    let userName = '-';
+    if (profile.name) userName = normalizeAllCapLetter(profile.name);
+    else if (profile.username) userName = normalizeAllCapLetter(profile.username);
 
     return (
       <Moibackground>
@@ -117,7 +112,7 @@ export default class ProfileScene extends Component {
             <HeaderProfile>
               <Profile width={40}/>
               <NameContainer>
-                <Title heavy>{userName}</Title>
+                <Title style={{ flex: 1 }} numberOfLines={1} heavy>{userName}</Title>
                 <Button onPress={this.editProfile} title='Editar' rightIcon='md-create' />
               </NameContainer>
             </HeaderProfile>
@@ -126,14 +121,14 @@ export default class ProfileScene extends Component {
 
             <PersonalInfo>
               <DescriptionContainer>
-                <Header inverted heavy small>Edad: {user.profile.birthday || '-'}</Header>
+                <Header inverted heavy small>Edad: {profile.age || '-'}</Header>
                 <Header inverted heavy small>Curso: {'-'}</Header>
                 <Header inverted heavy small>Nivel: {depth || '-'}</Header>
-                <Header inverted heavy small>Escuela: {user.profile.school || '-'}</Header>
+                <Header inverted heavy small>Escuela: {profile.school || '-'}</Header>
               </DescriptionContainer>
             </PersonalInfo>
 
-            {user.profile.tree_image && (<TreeImage source={{ uri: user.profile.tree_image }} resizeMode='cover' />)}
+            {profile.tree_image && (<TreeImage source={{ uri: profile.tree_image }} resizeMode='cover' />)}
 
             <Tabs data={tabsData} />
 

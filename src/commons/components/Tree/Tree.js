@@ -13,6 +13,7 @@ import Level1 from './Level1';
 import Level2 from './Level2';
 import Level3 from './Level3';
 import AllLevels from './AllLevels';
+import userActions from '../../../actions/userActions';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -37,8 +38,10 @@ const MacetaContainer = styled(View)`
 @connect(store => ({
   device: store.device,
   userTree: store.tree.userTree,
+  user: store.user.userData,
 }), {
   loadTreeAsync: treeActions.loadTreeAsync,
+  getUserProfileAsync: userActions.getUserProfileAsync,
 })
 export default class Tree extends Component {
   state = {
@@ -49,8 +52,9 @@ export default class Tree extends Component {
   }
 
   async componentDidMount() {
-    const { loadTreeAsync } = this.props;
+    const { loadTreeAsync, user, getUserProfileAsync } = this.props;
     await loadTreeAsync();
+    await getUserProfileAsync(user.profile.id);
 
     this.getTreeLevel();
     this.setState({ loading: false });

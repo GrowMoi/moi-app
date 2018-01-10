@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 import routes from './routes';
 import device from './deviceReducer';
 import neuron from './neuronReducer';
@@ -12,5 +13,6 @@ export default combineReducers({
   neuron,
   tree,
   user,
+  form,
   // ... other reducers
 });

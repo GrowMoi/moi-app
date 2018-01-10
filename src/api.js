@@ -46,6 +46,11 @@ const api = {
       const res = await client.get(endpoint);
       return res;
     },
+    async updateUserAccount(data) {
+      const endpoint = '/api/users/account';
+      const res = await client.put(endpoint, { ...data });
+      return res;
+    }
   },
 
   contents: {
