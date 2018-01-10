@@ -199,7 +199,7 @@ export default class SingleContentScene extends Component {
       this.showAlert(
         'Contenido aprendido',
         async () => {
-          await loadNeuronByIdAsync(neuron.id);
+          await loadNeuronByIdAsync(neuronId);
           Actions.pop();
         },
       );
@@ -313,12 +313,11 @@ export default class SingleContentScene extends Component {
             </KeyboardAvoidingView>
           </ContentBox>
         )}
-
-        <Navbar/>
-        <BottomBarWithButtons
+        {!loading && <BottomBarWithButtons
+          readButton={!(content.learnt || content.read)}
           onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
           width={device.dimensions.width}
-        />
+        />}
         {/* Action Sheets */}
         <ActionSheet
           hasCancelOption
@@ -332,6 +331,8 @@ export default class SingleContentScene extends Component {
           visible={videoModalVisible}
           onPressClose={() => this.setModalVisible(false)}
         />
+
+        <Navbar/>
       </MoiBackground>
     );
   }
