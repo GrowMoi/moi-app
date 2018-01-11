@@ -217,4 +217,7 @@ export default [
   require('./tree/arbol_adulto/nivel_9/fondo076.png'),
   require('./tree/arbol_adulto/nivel_9/fondo078.png'),
   require('./tree/arbol_adulto/nivel_9/fondo104.png'),
+
+  // Profile assets
+  require('./profile/profile_photo.png'),
 ];

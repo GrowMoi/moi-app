@@ -36,6 +36,21 @@ const api = {
       const res = await client.get(endpoint, { page });
       return res;
     },
+    async getFavorites(page) {
+      const endpoint = '/api/users/content_favorites';
+      const res = await client.get(endpoint, { params: { page } });
+      return res;
+    },
+    async getProfile(id) {
+      const endpoint = `/api/users/${id}/profile`;
+      const res = await client.get(endpoint);
+      return res;
+    },
+    async updateUserAccount(data) {
+      const endpoint = '/api/users/account';
+      const res = await client.put(endpoint, { ...data });
+      return res;
+    }
   },
 
   contents: {
@@ -46,6 +61,11 @@ const api = {
     },
     async storeTask(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/tasks`;
+      const res = await client.post(endpoint, { id: contentId });
+      return res;
+    },
+    async storeAsFavorite(neuronId, contentId) {
+      const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/favorites`;
       const res = await client.post(endpoint, { id: contentId });
       return res;
     },

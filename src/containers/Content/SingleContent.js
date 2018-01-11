@@ -7,7 +7,7 @@ import {
   Dimensions,
   StyleSheet,
   TouchableWithoutFeedback,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   readContentAsync: userActions.readContentAsync,
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
   storeNotesAsync: userActions.storeNotesAsync,
-
+  storeAsFavoriteAsync: userActions.storeAsFavoriteAsync,
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -115,6 +115,7 @@ export default class SingleContentScene extends Component {
     videoModalVisible: false,
     currentVideoId: '',
     actionSheetsVisible: false,
+    favorite: false,
   }
 
   componentDidMount() {
@@ -176,6 +177,13 @@ export default class SingleContentScene extends Component {
     }
   }
 
+  storeAsFavorite = async (neuronId, contentId) => {
+    const { storeAsFavoriteAsync } = this.props;
+
+    const res = await storeAsFavoriteAsync(neuronId, contentId);
+    if (res.status === 200) this.setState({ favorite: res.data.favorite });
+  };
+
   redirectTo = (route) => {
     Actions.refresh(route);
   }
@@ -191,7 +199,7 @@ export default class SingleContentScene extends Component {
       this.showAlert(
         'Contenido aprendido',
         async () => {
-          await loadNeuronByIdAsync(neuron.id);
+          await loadNeuronByIdAsync(neuronId);
           Actions.pop();
         },
       );
@@ -205,6 +213,7 @@ export default class SingleContentScene extends Component {
       videoModalVisible,
       currentVideoId,
       actionSheetsVisible,
+      favorite,
     } = this.state;
 
     const options = [
@@ -214,7 +223,11 @@ export default class SingleContentScene extends Component {
         icon: 'md-download',
         fn: () => this.storeTask(content.neuron_id, content.id),
       },
-      { label: 'Favoritos', icon: 'md-star', fn() { console.log('Favoritos'); } },
+      {
+        label: 'Favoritos',
+        icon: 'md-star',
+        fn: () => (this.storeAsFavorite(content.neuron_id, content.id)),
+      },
     ];
 
     return (
@@ -225,57 +238,57 @@ export default class SingleContentScene extends Component {
             <KeyboardAvoidingView keyboardVerticalOffset={50} behavior="padding">
               <ScrollView contentContainerStyle={styles.scrollContainer}>
 
-                  <HeaderContent>
-                    <Header bolder inverted>{content.title}</Header>
-                  </HeaderContent>
+                <HeaderContent>
+                  <Header bolder inverted>{content.title}</Header>
+                </HeaderContent>
 
-                  <Carousel
-                    showsPagination
-                    loop
-                    autoplay
-                    size={{ height: 200, width: (width - Size.spaceLarge) }}
-                    images={content.media}
-                  />
+                <Carousel
+                  showsPagination
+                  loop
+                  autoplay
+                  size={{ height: 200, width: (width - Size.spaceLarge) }}
+                  images={content.media}
+                />
 
-                  <ActionsHeader>
-                    <MoiIcon onPress={() => Alert.alert('Fav Clicked')} name='fav' size={20} />
-                    <Ionicons onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} />
-                    <Ionicons name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
-                  </ActionsHeader>
+                <ActionsHeader>
+                  {(content.favorite || favorite) && <MoiIcon name='fav' size={20} />}
+                  <Ionicons onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} />
+                  <Ionicons name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
+                </ActionsHeader>
 
-                  <Section>
-                    <TextBody inverted>{content.description}</TextBody>
-                    <Source>
-                      <TextBody bolder color={Palette.dark}>Fuente</TextBody>
-                      <Divider color={Palette.dark.alpha(0.2).css()} />
-                      <TextBody inverted>{content.source}</TextBody>
-                    </Source>
-                  </Section>
+                <Section>
+                  <TextBody inverted>{content.description}</TextBody>
+                  <Source>
+                    <TextBody bolder color={Palette.dark}>Fuente</TextBody>
+                    <Divider color={Palette.dark.alpha(0.2).css()} />
+                    <TextBody inverted>{content.source}</TextBody>
+                  </Source>
+                </Section>
 
-                  <Section>
-                    <Header inverted bolder>Links</Header>
-                    {content.links.map((link, i) => (
-                      <TextLeftBorder key={i}>
-                        <TextBody inverted>{link}</TextBody>
-                      </TextLeftBorder>
-                    ))}
-                  </Section>
-
-                  <Section>
-                    <Header inverted bolder>Notas</Header>
-                    <TextLeftBorder>
-                      <NoteInput
-                        text={content.user_notes}
-                        onEndEditing={(e) => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
-                      />
+                <Section>
+                  <Header inverted bolder>Links</Header>
+                  {content.links.map((link, i) => (
+                    <TextLeftBorder key={i}>
+                      <TextBody inverted>{link}</TextBody>
                     </TextLeftBorder>
-                  </Section>
+                  ))}
+                </Section>
 
-                  <Section notBottomSpace>
-                    <Header inverted bolder>Recomendados</Header>
-                    <VideoContainer>
-                      {content.videos &&
-                        content.videos.length > 0 &&
+                <Section>
+                  <Header inverted bolder>Notas</Header>
+                  <TextLeftBorder>
+                    <NoteInput
+                      text={content.user_notes}
+                      onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
+                    />
+                  </TextLeftBorder>
+                </Section>
+
+                <Section notBottomSpace>
+                  <Header inverted bolder>Recomendados</Header>
+                  <VideoContainer>
+                    {content.videos &&
+                      content.videos.length > 0 &&
                         content.videos.map((video, i) => {
                           const videoId = youtube.extractIdFromUrl(video.url);
 
@@ -292,20 +305,19 @@ export default class SingleContentScene extends Component {
                             );
                           }
                         })
-                      }
-                    </VideoContainer>
-                  </Section>
+                    }
+                  </VideoContainer>
+                </Section>
 
               </ScrollView>
             </KeyboardAvoidingView>
           </ContentBox>
         )}
-
-        <Navbar/>
-        <BottomBarWithButtons
+        {!loading && <BottomBarWithButtons
+          readButton={!(content.learnt || content.read)}
           onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
           width={device.dimensions.width}
-        />
+        />}
         {/* Action Sheets */}
         <ActionSheet
           hasCancelOption
@@ -319,6 +331,8 @@ export default class SingleContentScene extends Component {
           visible={videoModalVisible}
           onPressClose={() => this.setModalVisible(false)}
         />
+
+        <Navbar/>
       </MoiBackground>
     );
   }

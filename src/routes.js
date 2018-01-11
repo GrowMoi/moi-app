@@ -6,7 +6,7 @@ import TreeScene from './containers/Tree';
 import Login from './containers/Login/Login';
 import ContentListScene from './containers/Content/ContentList';
 import SingleContentScene from './containers/Content/SingleContent';
-import Profile from './containers/Profile';
+import ProfileScene, { EditProfile } from './containers/Profile';
 import Tasks from './containers/Tasks/Tasks';
 import Settings from './containers/Settings/Settings';
 import QuizScene from './containers/Quiz/Quiz';
@@ -75,8 +75,15 @@ const routes = Actions.create(
     />
     <Scene
       key="profile"
-      title="Profile"
-      component={Profile}
+      title="Perfil"
+      component={ProfileScene}
+      renderBackButton={backButton}
+      {...navbarPropStyles}
+    />
+    <Scene
+      key="editProfile"
+      title="Editar Perfil"
+      component={EditProfile}
       renderBackButton={backButton}
       {...navbarPropStyles}
     />

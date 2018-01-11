@@ -16,6 +16,7 @@ import { Title, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 import { DRAWER_OFFSET, PORTRAIT } from '../../../constants';
 import macetaMenu from '../../../../assets/images/macetaMenu/maceta_menu.png';
+import { normalizeAllCapLetter } from '../../utils';
 
 const SideMenuContainer = styled(View)`
   flex: 1;
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
   device: store.device,
   userTree: store.tree.userTree,
   user: store.user.userData,
+  profile: store.user.profile,
 }))
 export default class SideMenu extends Component {
   static propTypes = {
@@ -81,7 +83,7 @@ export default class SideMenu extends Component {
   }
 
   render() {
-    const { device, userTree, user } = this.props;
+    const { device, userTree, user, profile, data } = this.props;
     const { orientation } = device.dimensions;
     const portraitOrientation = orientation === PORTRAIT;
 
@@ -107,7 +109,7 @@ export default class SideMenu extends Component {
           showsVerticalScrollIndicator
         >
           <UserNameContainer>
-            <UserName numberOfLines={1} small heavy inverted>{user.profile.name || user.profile.username || 'INVITADO'}</UserName>
+            <UserName numberOfLines={1} small heavy inverted>{profile.name || profile.username}</UserName>
             <Header small heavy inverted>Nivel: {treeIsLoaded && userTree.meta.depth}</Header>
           </UserNameContainer>
 
