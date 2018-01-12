@@ -28,7 +28,7 @@ export default class Menu extends Component {
         open={state.open}
         onOpen={() => Actions.refresh({ key: state.key, open: true })} // eslint-disable-line
         onClose={() => Actions.refresh({ key: state.key, open: false })} // eslint-disable-line
-        type="displace"
+        type="overlay"
         content={<SideMenu />}
         tapToClose
         openDrawerOffset={(viewport) => viewport.width - DRAWER_OFFSET} // eslint-disable-line

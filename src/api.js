@@ -53,6 +53,14 @@ const api = {
     }
   },
 
+  leaderboard: {
+    async getLeaderboard(user_id) {
+      const endpoint = `/api/leaderboard`;
+      const res = await client.get(endpoint, { user_id });
+      return res;
+    }
+  },
+
   contents: {
     async getContentById(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}`;

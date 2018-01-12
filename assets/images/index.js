@@ -220,4 +220,7 @@ export default [
 
   // Profile assets
   require('./profile/profile_photo.png'),
+
+  // LeaderBoard
+  require('./frames/leaderboard_frame.png'),
 ];

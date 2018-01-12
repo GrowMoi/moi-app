@@ -5,6 +5,7 @@ import device from './deviceReducer';
 import neuron from './neuronReducer';
 import tree from './treeReducer';
 import user from './userReducer';
+import leaderboard from './leaderboardReducer';
 // ... other reducers
 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
   tree,
   user,
   form,
+  leaderboard,
   // ... other reducers
 });

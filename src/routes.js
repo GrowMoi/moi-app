@@ -11,6 +11,7 @@ import Tasks from './containers/Tasks/Tasks';
 import Settings from './containers/Settings/Settings';
 import QuizScene from './containers/Quiz/Quiz';
 import BackButton from './commons/components/SceneComponents/BackButton';
+import LeaderBoard from './containers/LeaderBoard/Leaderboard';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
 
@@ -50,9 +51,13 @@ const routes = Actions.create(
           title='Settings'
           component={Settings}
           {...navbarPropStyles} />
+        <Scene
+          key='leaderboard'
+          title='Leader Board'
+          component={LeaderBoard}
+          {...navbarPropStyles} />
       </Scene>
     </Scene>
-
     <Scene
       key='content'
       component={ContentListScene}
