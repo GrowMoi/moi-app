@@ -9,6 +9,7 @@ import { Palette, Size } from '../../commons/styles';
 import LeaderRow from '../../commons/components/LeaderRow/LeaderRow';
 import leaderboardActions from '../../actions/leaderboardActions';
 import { normalize } from '../../commons/utils';
+import { BottomBar } from '../../commons/components/SceneComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
 
@@ -56,7 +57,7 @@ export default class LeaderBoard extends Component {
       <MoiBackground>
         <Navbar />
         <FrameContainer>
-          <LeaderFrame width={(width - 30)}>
+          <LeaderFrame width={(width - 35)}>
             <FlatList
               onEndReached={this.fetchNextPage}
               onEndReachedThreshold={0}
@@ -66,6 +67,7 @@ export default class LeaderBoard extends Component {
             />
           </LeaderFrame>
         </FrameContainer>
+        <BottomBar />
       </MoiBackground>
     );
   }

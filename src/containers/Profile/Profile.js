@@ -16,8 +16,13 @@ import { Size } from '../../commons/styles';
 import Tabs from '../../commons/components/Tabs';
 import FavoritesTab from './TabsContent/FavoritesTab';
 import LastContentsLearnt from './TabsContent/LastContentsLearnt';
+import { BottomBar } from '../../commons/components/SceneComponents';
 
 const { width } = Dimensions.get('window');
+
+const StyledContentBox = styled(ContentBox)`
+  margin-bottom: 28;
+`
 
 const HeaderProfile = styled(View)`
   align-items: center;
@@ -106,8 +111,7 @@ export default class ProfileScene extends Component {
     return (
       <Moibackground>
         <Navbar />
-
-        <ContentBox>
+        <StyledContentBox>
           <ScrollView contentContainerStyle={styles.scrollContainer}>
             <HeaderProfile>
               <Profile width={40}/>
@@ -133,7 +137,8 @@ export default class ProfileScene extends Component {
             <Tabs data={tabsData} />
 
           </ScrollView>
-        </ContentBox>
+        </StyledContentBox>
+        <BottomBar />
       </Moibackground>
     );
   }

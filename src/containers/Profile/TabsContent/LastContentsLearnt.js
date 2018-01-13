@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import uuid from 'uuid/v4';
 import PropTypes from 'prop-types';
 import { MaterialIcons } from '@expo/vector-icons';
 import { View, FlatList, StyleSheet } from 'react-native';
@@ -68,8 +69,7 @@ class LastContentsLearnt extends Component {
     );
   }
 
-  _keyExtractor = item => item.id;
-
+  _keyExtractor = item => uuid();
 
   render() {
     const { dataLoaded } = this.state;

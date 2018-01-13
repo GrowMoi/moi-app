@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { MaterialIcons } from '@expo/vector-icons';
 import { View, FlatList, StyleSheet } from 'react-native';
+import uuid from 'uuid/v4';
+
 import Preloader from '../../../commons/components/Preloader/Preloader';
 import { TextBody } from '../../../commons/components/Typography';
 import { ContentImagePreview } from '../../../commons/components/ContentComponents';
@@ -90,7 +92,7 @@ class FavoritesTab extends PureComponent {
       />
     );
   }
-  _keyExtractor = item => `${item.title}-${item.id}`;
+  _keyExtractor = item => uuid();
 
   render() {
     const { favorites: data } = this.props;
