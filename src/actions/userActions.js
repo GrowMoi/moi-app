@@ -204,7 +204,6 @@ const updateUserAccountAsync = (dataToChange, id) => async (dispatch) => {
   return res;
 };
 
-
 export default {
   loginAsync,
   validateToken,

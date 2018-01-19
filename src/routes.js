@@ -1,6 +1,5 @@
 import React from 'react';
 import { Actions, Scene } from 'react-native-router-flux';
-import Welcome from './containers/Welcome';
 import Menu from './commons/components/Drawer';
 import TreeScene from './containers/Tree';
 import Login from './containers/Login/Login';
@@ -12,6 +11,7 @@ import Settings from './containers/Settings/Settings';
 import QuizScene from './containers/Quiz/Quiz';
 import BackButton from './commons/components/SceneComponents/BackButton';
 import LeaderBoard from './containers/LeaderBoard/Leaderboard';
+import Search from './containers/Search/Search';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
 
@@ -79,6 +79,13 @@ const routes = Actions.create(
       {...navbarPropStyles}
     />
     <Scene
+      key="search"
+      title="Busqueda"
+      component={Search}
+      renderBackButton={backButton}
+      {...navbarPropStyles}
+    />
+    <Scene
       key="profile"
       title="Perfil"
       component={ProfileScene}
@@ -100,10 +107,6 @@ const routes = Actions.create(
       renderBackButton={backButtonQuiz}
       renderRightButton={null}
     />
-
-    <Scene key='search' title='Search' {...navbarPropStyles}>
-      <Scene key="welcome" component={Welcome} title="Welcome" hideNavBar />
-    </Scene>
   </Scene>,
 );
 

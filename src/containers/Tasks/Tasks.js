@@ -12,7 +12,6 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import userActions from '../../actions/userActions';
 
-
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   device: store.device,

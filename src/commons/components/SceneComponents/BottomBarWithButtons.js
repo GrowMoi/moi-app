@@ -94,8 +94,16 @@ const BlueButton = styled(Image)`
 `;
 
 const BottomBarWithButtons = (props) => {
-  const buttonPress = () => {
+  const pressTaskButton = () => {
     Actions.tasks();
+  };
+
+  const pressSearchButton = () => {
+    Actions.search();
+  };
+
+  const pressRandomButton = () => {
+    Actions.random();
   };
 
   const readContent = () => {
@@ -133,15 +141,15 @@ const BottomBarWithButtons = (props) => {
       <Container>
         <ButtonsContainer>
           <Button zIndex={2} width={80} source={btnInf1} resizeMode='contain' left={18} bottom={7}>
-            {renderButton(TaskButton, elementProps.task, buttonPress)}
+            {renderButton(TaskButton, elementProps.task, pressTaskButton)}
           </Button>
 
           <Button zIndex={1} width={80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
-            {renderButton(SearchButton, elementProps.search, buttonPress)}
+            {renderButton(SearchButton, elementProps.search, pressSearchButton)}
           </Button>
 
           <Button zIndex={0} width={81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
-            {renderButton(RandomButton, elementProps.random, buttonPress)}
+            {renderButton(RandomButton, elementProps.random, pressRandomButton)}
           </Button>
         </ButtonsContainer>
       </Container>
