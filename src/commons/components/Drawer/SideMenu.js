@@ -94,6 +94,7 @@ export default class SideMenu extends Component {
       { label: 'Configuración', onPress: () => Actions.refresh({ key: 'settings' }) },
       { label: 'Privacidad' },
       { label: 'Leader Board', onPress: () => Actions.refresh({ key: 'leaderboard' }) },
+      { label: 'Buscar Amigos', onPress: () => Actions.refresh({ key: 'searchFriends' }) },
     ];
 
     return (

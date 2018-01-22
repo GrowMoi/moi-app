@@ -20,6 +20,11 @@ const api = {
       const res = await client.get(endpoint, { params: { page, query } });
       return res;
     },
+    async getUsers(page = 1, query) {
+      const endpoint = '/api/users/search';
+      const res = await client.get(endpoint, { params: { page, query } });
+      return res;
+    },
   },
 
   user: {

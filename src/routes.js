@@ -12,6 +12,7 @@ import QuizScene from './containers/Quiz/Quiz';
 import BackButton from './commons/components/SceneComponents/BackButton';
 import LeaderBoard from './containers/LeaderBoard/Leaderboard';
 import Search from './containers/Search/Search';
+import SearchFriends from './containers/Search/SearchFriends';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
 
@@ -56,6 +57,12 @@ const routes = Actions.create(
           title='Leader Board'
           component={LeaderBoard}
           {...navbarPropStyles} />
+        <Scene
+          key="searchFriends"
+          title="Buscar Amigos"
+          component={SearchFriends}
+          {...navbarPropStyles}
+        />
       </Scene>
     </Scene>
     <Scene
