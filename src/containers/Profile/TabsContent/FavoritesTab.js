@@ -66,17 +66,6 @@ class FavoritesTab extends PureComponent {
     } else if (!content_tasks.length) this.setState({ noMoreData: true });
   }
 
-  fetchNewFavorites = async () => {
-    const { loadAllFavorites } = this.props;
-    const { page, dataSource } = this.state;
-
-    const nextPage = page + 1;
-    await loadAllFavorites(nextPage);
-    const { favorites: { content_tasks: { content_tasks } } } = this.props;
-
-    this.setState(({ page: nextPage, dataSource: dataSource.concat(content_tasks) }));
-  }
-
   _renderItem = (info) => {
     const { device: { dimensions } } = this.props;
     const widthImagePreview = dimensions.width > 320 ? 150 : 130;

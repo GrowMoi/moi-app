@@ -6,6 +6,7 @@ import neuron from './neuronReducer';
 import tree from './treeReducer';
 import user from './userReducer';
 import leaderboard from './leaderboardReducer';
+import search from './searchReducer';
 // ... other reducers
 
 export default combineReducers({
@@ -16,5 +17,6 @@ export default combineReducers({
   user,
   form,
   leaderboard,
+  search,
   // ... other reducers
 });

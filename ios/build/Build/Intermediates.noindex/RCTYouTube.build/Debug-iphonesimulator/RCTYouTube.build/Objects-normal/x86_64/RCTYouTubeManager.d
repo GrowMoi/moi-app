@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/RCTYouTubeManager.m \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/RCTYouTubeManager.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTViewManager.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTBridgeModule.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTDefines.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTConvert.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTAnimationType.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTBorderStyle.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTLog.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTAssert.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTUtils.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTPointerEvents.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTTextDecorationLineType.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/yoga/Yoga.h \
+  ../../ios/Pods/Headers/Public/Yoga/YGEnums.h \
+  ../../ios/Pods/Headers/Public/Yoga/YGMacros.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTEventDispatcher.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTBridge.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTBridgeDelegate.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTJavaScriptLoader.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTFrameUpdate.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTInvalidating.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/UIView+React.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTComponent.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/RCTYouTube.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/YTPlayerView/YTPlayerView.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTUIManager.h \
+  /Users/miguelvinanhidalgo/Documents/Projects/moi/moi-app/node_modules/react-native-youtube/../../ios/Pods/Headers/Public/React/RCTRootView.h

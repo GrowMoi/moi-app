@@ -14,6 +14,14 @@ const api = {
     },
   },
 
+  search: {
+    async getContents(page = 1, query) {
+      const endpoint = '/api/search';
+      const res = await client.get(endpoint, { params: { page, query } });
+      return res;
+    },
+  },
+
   user: {
     async signIn({ login, authorization_key }) {
       const endpoint = '/api/auth/user/key_authorize';
@@ -50,12 +58,12 @@ const api = {
       const endpoint = '/api/users/account';
       const res = await client.put(endpoint, { ...data });
       return res;
-    }
+    },
   },
 
   leaderboard: {
     async getLeaderboard(user_id) {
-      const endpoint = `/api/leaderboard`;
+      const endpoint = '/api/leaderboard';
       const res = await client.get(endpoint, { user_id });
       return res;
     }

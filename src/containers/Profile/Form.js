@@ -11,7 +11,7 @@ class EditProfileForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <ScrollView keyboardShouldPersistTaps={'handled'}>
+      <ScrollView>
         <Field
           placeholder='Nombre'
           label='Nombre'
