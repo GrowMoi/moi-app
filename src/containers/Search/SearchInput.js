@@ -22,7 +22,7 @@ const Icon = styled(FontAwesome)`
   right: 0;
   top: 7;
   z-index: 1;
-`
+`;
 
 class SearchInput extends Component {
   state = {

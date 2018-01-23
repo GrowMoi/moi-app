@@ -7,6 +7,11 @@ const setContents = contents => ({
   payload: contents,
 });
 
+const setUsersResult = users => ({
+  type: actionTypes.GET_USERS_RESULT,
+  payload: users,
+});
+
 const getContentsAsync = (page, query) => async (dispatch) => {
   let res;
   try {
@@ -22,6 +27,20 @@ const getContentsAsync = (page, query) => async (dispatch) => {
   return res;
 };
 
+const getUsersAsync = (page, query) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.search.getUsers(page, query);
+    const { headers, data } = res;
+
+    dispatch(setUsersResult(data.search_users.users));
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error)
+  }
+};
+
 export default {
   getContentsAsync,
+  getUsersAsync,
 };

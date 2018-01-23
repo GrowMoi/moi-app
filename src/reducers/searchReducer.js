@@ -15,9 +15,9 @@ const contents = (state = initialState.contentResults, action = {}) => {
   }
 };
 
-const friends = (state = initialState.contentResults, action = {}) => {
+const friends = (state = initialState.friendResults, action = {}) => {
   switch (action.type) {
-    case actionTypes.GET_FRIEND_RESULT:
+    case actionTypes.GET_USERS_RESULT:
       return action.payload;
     default:
       return state;

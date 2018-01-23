@@ -17,14 +17,15 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import searchActions from '../../actions/searchActions';
 import { TextBody } from '../../commons/components/Typography';
+import UserPreview from '../../commons/components/UserPreview';
 
 @connect(store => ({
   device: store.device,
   search: store.search,
 }), {
-  getContentsAsync: searchActions.getContentsAsync,
+  getUsersAsync: searchActions.getUsersAsync,
 })
-export default class Search extends PureComponent {
+export default class SearchFriends extends PureComponent {
   state = {
     loading: false,
     page: 0,
@@ -44,17 +45,14 @@ export default class Search extends PureComponent {
   _renderItem = ({ item, index }) => {
     const { device } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 150 : 100;
-    const normalizeKind = `¿${normalize.normalizeFirstCapLetter(item.kind)}?`
-    const oddInverted = index % 2 === 1;
+
+    console.log(item);
 
     return (
-      <ContentPreview
-        width={widthContentPreview}
-        title={item.title}
-        subtitle={normalizeKind}
-        inverted={oddInverted}
-        source={{ uri: item.media[0] }}
-        onPress={() => this.onPressRowContent(item)}
+      <UserPreview
+        name={item.name || item.username}
+        school={item.school}
+        country={item.country}
       />
     );
   }
@@ -62,13 +60,13 @@ export default class Search extends PureComponent {
   onSubmit = async (query) => {
     if(!query.trim()) return;
 
-    const { getContentsAsync } = this.props;
+    const { getUsersAsync } = this.props;
     const getInitialPage = 1;
     this.setState({ searching: true, dataSource: [] });
 
-    await getContentsAsync(getInitialPage, query);
+    await getUsersAsync(getInitialPage, query);
     const { search } = this.props;
-    this.setState({ dataSource: search.contents, searching: false });
+    this.setState({ dataSource: search.friends, searching: false });
   }
 
   render() {
