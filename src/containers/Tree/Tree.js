@@ -13,10 +13,6 @@ const ContentScreen = styled(View)`
 `;
 
 export default class TreeScene extends Component {
-  componentDidMount() {
-    ScreenOrientation.allow('ALL');
-  }
-
   render() {
     return (
       <MoiBackground>

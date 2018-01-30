@@ -33,6 +33,11 @@ const getProfile = profile => ({
   payload: profile,
 });
 
+const setAchievements = achievements => ({
+  type: actionTypes.GET_USER_ACHIEVEMENTS,
+  payload: achievements,
+});
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   let res;
   try {
@@ -204,6 +209,36 @@ const updateUserAccountAsync = (dataToChange, id) => async (dispatch) => {
   return res;
 };
 
+const getAchievementsAsync = () => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.getAchievements();
+    const { data: { achievements }, headers } = res;
+
+    dispatch(setAchievements(achievements));
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error)
+  }
+
+  return res;
+};
+
+const updateAchievementsAsync = id => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.updateAchievements(id);
+    const { headers } = res;
+
+    dispatch(setHeaders(headers));
+  } catch (error) {
+    // console.log(error);
+    Alert.alert('Error', 'Ups, tuvimos un error al intentar actualizar este item, intentalo más tarde por favor');
+  }
+
+  return res;
+};
+
 export default {
   loginAsync,
   validateToken,
@@ -217,4 +252,6 @@ export default {
   storeAsFavoriteAsync,
   getUserProfileAsync,
   updateUserAccountAsync,
+  getAchievementsAsync,
+  updateAchievementsAsync,
 };

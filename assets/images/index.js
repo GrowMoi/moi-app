@@ -223,4 +223,36 @@ export default [
 
   // LeaderBoard
   require('./frames/leaderboard_frame.png'),
+
+  // Inventory
+  require('./frames/wood_frame.png'),
+  require('./items/inventario1.png'),
+  require('./items/inventario1_inactive.png'),
+
+  require('./items/inventario2.png'),
+  require('./items/inventario2_inactive.png'),
+
+  require('./items/inventario3.png'),
+  require('./items/inventario3_inactive.png'),
+
+  require('./items/inventario4.png'),
+  require('./items/inventario4_inactive.png'),
+
+  require('./items/inventario5.png'),
+  require('./items/inventario5_inactive.png'),
+
+  require('./items/inventario6.png'),
+  require('./items/inventario6_inactive.png'),
+
+  require('./items/inventario7.png'),
+  require('./items/inventario7_inactive.png'),
+
+  require('./items/inventario8.png'),
+  require('./items/inventario8_inactive.png'),
+
+  require('./items/inventario9.png'),
+  require('./items/inventario9_inactive.png'),
+
+  require('./items/item_container.png'),
+
 ];

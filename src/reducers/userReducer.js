@@ -11,6 +11,7 @@ const initialState = {
   favorites: null,
   tasks: {},
   quiz: null,
+  achievements: [],
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -65,12 +66,22 @@ const profile = (state = initialState.data, action) => {
   }
 };
 
+const achievements = (state = initialState.data, action) => {
+  switch (action.type) {
+    case actionTypes.GET_USER_ACHIEVEMENTS:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const user = combineReducers({
   userData,
   tasks,
   quiz,
   favorites,
   profile,
+  achievements,
 });
 
 export default user;

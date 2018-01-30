@@ -42,6 +42,7 @@ const MacetaContainer = styled(View)`
 }), {
   loadTreeAsync: treeActions.loadTreeAsync,
   getUserProfileAsync: userActions.getUserProfileAsync,
+  getAchievementsAsync: userActions.getAchievementsAsync,
 })
 export default class Tree extends Component {
   state = {
@@ -52,9 +53,17 @@ export default class Tree extends Component {
   }
 
   async componentDidMount() {
-    const { loadTreeAsync, user, getUserProfileAsync } = this.props;
-    await loadTreeAsync();
-    await getUserProfileAsync(user.profile.id);
+    const { loadTreeAsync, user, getUserProfileAsync, getAchievementsAsync } = this.props;
+
+    await Promise.all([
+      loadTreeAsync(),
+      getUserProfileAsync(user.profile.id),
+      getAchievementsAsync(),
+    ])
+
+    // await loadTreeAsync();
+    // await getUserProfileAsync(user.profile.id);
+    // await getAchievementsAsync();
 
     this.getTreeLevel();
     this.setState({ loading: false });
