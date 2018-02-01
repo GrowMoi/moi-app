@@ -53,6 +53,7 @@ exports[`Typography it should render text body expected 1`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "transparent",
         "color": "#4a4b21",
         "fontFamily": "Futura",
         "fontSize": 15,
@@ -75,6 +76,7 @@ exports[`Typography it should render text body with props 1`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "transparent",
         "color": "rgba(255,255,255,0.9)",
         "fontFamily": "Futura",
         "fontSize": 15,
@@ -97,6 +99,7 @@ exports[`Typography it should render text body with props 2`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "transparent",
         "color": "purple",
         "fontFamily": "Futura",
         "fontSize": 15,
@@ -119,6 +122,7 @@ exports[`Typography it should render text body with props 3`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "transparent",
         "color": "#818180",
         "fontFamily": "Futura",
         "fontSize": 15,
@@ -141,6 +145,7 @@ exports[`Typography it should render text body with props 4`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "transparent",
         "color": "#e67543",
         "fontFamily": "Futura",
         "fontSize": 15,

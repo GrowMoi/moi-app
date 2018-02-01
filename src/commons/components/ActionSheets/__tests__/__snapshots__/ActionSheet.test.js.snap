@@ -99,6 +99,7 @@ exports[`Action Sheet it should render as expected 1`] = `
           style={
             Array [
               Object {
+                "backgroundColor": "transparent",
                 "color": "#4a4b21",
                 "fontFamily": "Futura",
                 "fontSize": 15,
@@ -152,6 +153,7 @@ exports[`Action Sheet it should render as expected 1`] = `
           style={
             Array [
               Object {
+                "backgroundColor": "transparent",
                 "color": "#4a4b21",
                 "fontFamily": "Futura",
                 "fontSize": 15,
@@ -205,6 +207,7 @@ exports[`Action Sheet it should render as expected 1`] = `
           style={
             Array [
               Object {
+                "backgroundColor": "transparent",
                 "color": "#4a4b21",
                 "fontFamily": "Futura",
                 "fontSize": 15,
@@ -258,6 +261,7 @@ exports[`Action Sheet it should render as expected 1`] = `
           style={
             Array [
               Object {
+                "backgroundColor": "transparent",
                 "color": "#4a4b21",
                 "fontFamily": "Futura",
                 "fontSize": 15,
@@ -313,6 +317,7 @@ exports[`Action Sheet it should render as expected 1`] = `
           style={
             Array [
               Object {
+                "backgroundColor": "transparent",
                 "color": "#4a4b21",
                 "fontFamily": "Futura",
                 "fontSize": 15,
