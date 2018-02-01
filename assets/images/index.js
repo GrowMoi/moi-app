@@ -255,4 +255,13 @@ export default [
 
   require('./items/item_container.png'),
 
+  // Box contents
+  require('./background/amarillo_box.png'),
+  require('./background/azul_box.png'),
+  require('./background/fuccia_box.png'),
+  require('./background/lila_box.png'),
+  require('./background/naranja_box.png'),
+  require('./background/verde_box.png'),
+  require('./background/regular_box.png'),
+
 ];

@@ -61,10 +61,6 @@ export default class Tree extends Component {
       getAchievementsAsync(),
     ])
 
-    // await loadTreeAsync();
-    // await getUserProfileAsync(user.profile.id);
-    // await getAchievementsAsync();
-
     this.getTreeLevel();
     this.setState({ loading: false });
   }

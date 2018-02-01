@@ -32,34 +32,10 @@ const FrameContainer = styled(View)`
   updateAchievementsAsync: userActions.updateAchievementsAsync,
 })
 export default class Inventory extends Component {
-  state = {
-    achievements: [],
-  }
-
-  async componentDidMount() {
-    const { getAchievementsAsync } = this.props;
-    await getAchievementsAsync();
-
-    const { achievements } = this.props;
-    this.setState({ achievements });
-  }
-
   updateItem = async ({ id, name }) => {
-    const { achievements } = this.state;
     const { updateAchievementsAsync } = this.props;
 
-    if(id) {
-        const res = await updateAchievementsAsync(id);
-
-        if((res || {}).status === 200) {
-          const updatedAchievements = achievements.map(item => {
-            if(item.id === id) return { ...item, active: !item.active };
-            return item;
-          })
-
-          this.setState({ achievements: updatedAchievements });
-        }
-    }
+    if(id) await updateAchievementsAsync(id);
   }
 
   activeItem = item => {
@@ -99,8 +75,7 @@ export default class Inventory extends Component {
   }
 
   render() {
-    const { achievements } = this.state;
-    const { device: { dimensions: { width, height } } } = this.props;
+    const { device: { dimensions: { width, height } }, achievements } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
 

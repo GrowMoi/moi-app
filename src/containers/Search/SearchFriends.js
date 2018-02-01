@@ -89,7 +89,7 @@ export default class SearchFriends extends PureComponent {
     const { device } = this.props;
 
     const containerStyles = {
-      width: (device.dimensions.width - Size.spaceLarge),
+      width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
 

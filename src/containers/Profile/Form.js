@@ -42,12 +42,13 @@ class EditProfileForm extends Component {
           name='school'
           component={ReduxFormInput}
         />
-        <Field
+        {/* <Field
           placeholder='Edad'
           label='Edad'
           name='age'
+          type='number'
           component={ReduxFormInput}
-        />
+        /> */}
         <Field
           placeholder='Nombre de Usuario'
           label='Nombre de Usuario'
@@ -71,7 +72,7 @@ const mapStateToProps = state => ({
     city: state.user.profile.city,
     country: state.user.profile.country,
     school: state.user.profile.school,
-    age: state.user.profile.age,
+    // age: state.user.profile.age,
     username: state.user.profile.username,
   },
 });

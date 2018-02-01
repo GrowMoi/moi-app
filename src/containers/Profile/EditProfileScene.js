@@ -22,6 +22,7 @@ const HeaderProfile = styled(View)`
   flex-direction: row;
   align-self: stretch;
   margin-bottom: 15;
+  padding-top: 20;
 `;
 
 const NameContainer = styled(View)`
@@ -68,9 +69,10 @@ export default class EditProfileScene extends Component {
 
   submit = async (values = {}) => {
     const { updateUserAccountAsync, profile } = this.props;
-    if(Object.keys(values)) {
+    if(Object.keys(values).length) {
       const res = await updateUserAccountAsync(values, profile.id);
-      if(!!res) {
+
+      if(res.status === 202) {
         Alert.alert('Editar Perfil', 'Datos actualizados correctamente!');
       } else {
         Alert.alert('Editar Perfil', 'Ups! tuvimos un error intentalo más tarde por favor.');
@@ -88,25 +90,24 @@ export default class EditProfileScene extends Component {
     return (
       <Moibackground>
         <Navbar />
+          <ContentBox>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
+              <HeaderProfile>
+                <Profile />
+                <NameContainer>
+                  <Title numberOfLines={2} style={{ flex: 1 }} heavy>{userName}</Title>
+                  {/* <TextBody>Cambiar Photo</TextBody> */}
+                </NameContainer>
+              </HeaderProfile>
 
-        <ContentBox>
-          <ScrollView contentContainerStyle={styles.scrollContainer}>
-            <HeaderProfile>
-              <Profile />
-              <NameContainer>
-                <Title numberOfLines={2} style={{ flex: 1 }} heavy>{userName}</Title>
-                {/* <TextBody>Cambiar Photo</TextBody> */}
-              </NameContainer>
-            </HeaderProfile>
+              <Line />
 
-            <Line />
+              <FormBox>
+                <Form onSubmit={this.submit} />
+              </FormBox>
 
-            <FormBox>
-              <Form onSubmit={this.submit} />
-            </FormBox>
-
-          </ScrollView>
-        </ContentBox>
+            </ScrollView>
+          </ContentBox>
       </Moibackground>
     );
   }

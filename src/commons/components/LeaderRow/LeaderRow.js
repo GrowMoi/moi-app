@@ -6,9 +6,9 @@ import { Header, TextBody } from '../Typography';
 import MoIcon from '../MoIcon/MoIcon';
 
 const Container = styled(View)`
-  background-color: ${Palette.white.alpha(0.4).css()};
   flex: 1;
   height: 40;
+  background-color: ${Palette.white.alpha(0.4).css()};
   align-self: stretch;
   margin-horizontal: 10;
   margin-vertical: 5;
