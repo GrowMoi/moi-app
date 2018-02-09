@@ -207,7 +207,8 @@ export default class SingleContentScene extends Component {
   };
 
   render() {
-    const { contentSelected: { content }, device } = this.props;
+    const { contentSelected: content, device } = this.props;
+
     const {
       loading,
       videoModalVisible,

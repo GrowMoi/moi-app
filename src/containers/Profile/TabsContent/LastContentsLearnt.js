@@ -48,13 +48,15 @@ class LastContentsLearnt extends Component {
     }
   }
 
-  _renderItem = (data) => {
+  _renderItem = ({ item }) => {
     const { profile, device: { dimensions } } = this.props;
     const widthImagePreview = dimensions.width > 320 ? 150 : 130;
 
+    const { id: content_id, neuron_id } = item;
+
     const onPress = () => Actions.singleContent({
-      content_id: data.item.id,
-      neuron_id: data.item.neuron_id,
+      content_id,
+      neuron_id,
       title: 'Últimos contenidos',
     });
 
@@ -63,7 +65,7 @@ class LastContentsLearnt extends Component {
         touchProps={{
           onPress,
         }}
-        data={data.item}
+        data={item}
         width={widthImagePreview}
       />
     );

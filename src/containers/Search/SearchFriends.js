@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   FlatList,
+  Alert,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 
+// Components
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import SearchInput from './SearchInput';
 import { ContentBox, ContentPreview } from '../../commons/components/ContentComponents';
@@ -15,15 +17,21 @@ import { normalize } from '../../commons/utils';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
-import searchActions from '../../actions/searchActions';
 import { TextBody } from '../../commons/components/Typography';
 import UserPreview from '../../commons/components/UserPreview';
+
+// Actions
+import searchActions from '../../actions/searchActions';
+import profilesActions from '../../actions/profileActions';
+import treeActions from '../../actions/treeActions';
 
 @connect(store => ({
   device: store.device,
   search: store.search,
 }), {
   getUsersAsync: searchActions.getUsersAsync,
+  getPublicProfileAsync: profilesActions.loadProfileAsync,
+  loadTreeAsync: treeActions.loadTreeAsync,
 })
 export default class SearchFriends extends PureComponent {
   state = {
@@ -33,12 +41,20 @@ export default class SearchFriends extends PureComponent {
     searching: false,
   }
 
-  onPressRowContent = (item) => {
-    Actions.singleContent({
-      content_id: item.id,
-      neuron_id: item.neuron_id,
-      title: 'Resultado',
-    })
+  onPressProfile = async (item) => {
+    const { getPublicProfileAsync, loadTreeAsync } = this.props;
+
+    if(item.username === undefined) return;
+
+    const profile = await getPublicProfileAsync(item.username);
+
+    const isPublic = true;
+    const tree = await loadTreeAsync(item.username, isPublic);
+
+    Actions.publicProfile({
+      profile: profile.data,
+      level: tree.data.meta.depth,
+    });
   }
 
   _keyExtractor = item => uuid();
@@ -46,13 +62,12 @@ export default class SearchFriends extends PureComponent {
     const { device } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 150 : 100;
 
-    console.log(item);
-
     return (
       <UserPreview
         name={item.name || item.username}
         school={item.school}
         country={item.country}
+        onPress={ () => this.onPressProfile(item) }
       />
     );
   }
@@ -105,7 +120,10 @@ export default class SearchFriends extends PureComponent {
         {contentBox}
         {loading && <Preloader />}
         <Navbar />
-        <BottomBarWithButtons width={device.dimensions.width} />
+        <BottomBarWithButtons
+          readButton={false}
+          width={device.dimensions.width}
+        />
       </MoiBackground>
     )
   }

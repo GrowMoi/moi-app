@@ -22,6 +22,7 @@ const loadNeuronByIdAsync = id => async (dispatch) => {
 
 const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
   const res = await api.contents.getContentById(neuronId, contentId);
+
   dispatch(setCurrentContent(res.data));
   dispatch(setHeaders(res.headers));
 
