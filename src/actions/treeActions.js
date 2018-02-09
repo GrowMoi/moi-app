@@ -8,7 +8,7 @@ const loadUserTree = tree => ({
   payload: tree,
 });
 
-const loadTreeAsync = () => async (dispatch) => {
+const loadTreeAsync = (username, isPublic = false) => async (dispatch) => {
   if (env.MOCK_LEVELS) {
     dispatch(loadUserTree(allLevels));
     return allLevels;
@@ -16,10 +16,13 @@ const loadTreeAsync = () => async (dispatch) => {
 
   let res;
   try {
-    res = await api.trees.getTree();
-    dispatch(loadUserTree(res.data));
+    res = await api.trees.getTree(username);
+
+    if (!isPublic) {
+      dispatch(loadUserTree(res.data));
+    }
   } catch (error) {
-    // console.log(error)
+    // console.log(error);
   }
 
   return res;

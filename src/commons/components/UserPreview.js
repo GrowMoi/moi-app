@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import {
   View,
@@ -24,40 +25,45 @@ const Content = styled(View)`
 
 const Info = styled(View)`
   flex-direction: row;
-`
+`;
 const IconLabel = styled(View)`
     flex-direction: row;
     margin-right: 30;
-`
+`;
 const Icon = styled(FontAwesome)`
-`
+  background-color: transparent;
+`;
 
-const lightColor = "#fef8bd";
-const UserPreview = ({ name, school, country, onPress }) => {
+const lightColor = '#fef8bd';
+const UserPreview = ({ name, school, country, onPress }) => (
+  <TouchableOpacity onPress={onPress}>
+    <Container>
+      <Profile width={50}/>
 
-  return (
-    <TouchableOpacity onPress={onPress}>
-      <Container>
-        <Profile width={50}/>
+      <Content>
+        <Title heavy color={lightColor}>{name}</Title>
+        <Info>
+          <IconLabel>
+            <Icon name='book' size={20} color={lightColor} />
+            <Header bolder inverted >{school || '-'}</Header>
+          </IconLabel>
+          <IconLabel>
+            <Icon name='flag' size={20} color={lightColor} />
+            <Header bolder inverted>{country || '-'}</Header>
+          </IconLabel>
+        </Info>
+      </Content>
 
-        <Content>
-          <Title heavy color={lightColor}>{name}</Title>
-          <Info>
-            <IconLabel>
-              <Icon name='book' size={20} color={lightColor} />
-              <Header bolder inverted >{school || '-'}</Header>
-            </IconLabel>
-            <IconLabel>
-              <Icon name='flag' size={20} color={lightColor} />
-              <Header bolder inverted>{country || '-'}</Header>
-            </IconLabel>
-          </Info>
-        </Content>
+      <Icon name='chevron-right' size={15} color={lightColor} />
+    </Container>
+  </TouchableOpacity>
+);
 
-        <Icon name='chevron-right' size={15} color={lightColor} />
-      </Container>
-    </TouchableOpacity>
-  );
+UserPreview.propTypes = {
+  name: PropTypes.string,
+  school: PropTypes.string,
+  country: PropTypes.string,
+  onPress: PropTypes.func,
 };
 
 export default UserPreview;

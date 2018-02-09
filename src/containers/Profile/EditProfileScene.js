@@ -60,7 +60,7 @@ const StyledButton = styled(Button)`
   logoutAsync: userActions.logoutAsync,
   updateUserAccountAsync: userActions.updateUserAccountAsync,
 })
-export default class ProfileScene extends Component {
+export default class EditProfileScene extends Component {
   logout = () => {
     const { logoutAsync } = this.props;
     logoutAsync();

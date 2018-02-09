@@ -64,6 +64,16 @@ const api = {
       const res = await client.put(endpoint, { ...data });
       return res;
     },
+    async getAchievements() {
+      const endpoint = '/api/users/achievements';
+      const res = await client.get(endpoint);
+      return res;
+    },
+    async updateAchievements(id) {
+      const endpoint = `/api/users/achievements/${id}/active`;
+      const res = await client.put(endpoint, { id });
+      return res;
+    },
   },
 
   leaderboard: {
@@ -71,7 +81,7 @@ const api = {
       const endpoint = '/api/leaderboard';
       const res = await client.get(endpoint, { user_id });
       return res;
-    }
+    },
   },
 
   contents: {
@@ -111,9 +121,9 @@ const api = {
   },
 
   trees: {
-    async getTree() {
+    async getTree(username) {
       const endpoint = '/api/tree';
-      const res = await client.get(endpoint);
+      const res = await client.get(endpoint, { params: username });
       return res;
     },
   },
@@ -122,6 +132,14 @@ const api = {
     async learn(testId = 1, answers = '') {
       const endpoint = '/api/learn';
       const res = await client.post(endpoint, { test_id: testId, answers });
+      return res;
+    },
+  },
+
+  profiles: {
+    async getProfile(username) {
+      const endpoint = '/api/users/profile';
+      const res = await client.get(endpoint, { params: { username } });
       return res;
     },
   },

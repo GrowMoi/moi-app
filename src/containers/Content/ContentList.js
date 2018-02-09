@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
-import { ScrollView, View } from 'react-native';
+import {
+  ScrollView,
+  View,
+  FlatList
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+
+// Common Components
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
@@ -13,6 +19,7 @@ import { normalize } from '../../commons/utils';
 import { Size } from '../../commons/styles';
 import { Header } from '../../commons/components/Typography';
 
+// Actions
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
 
@@ -51,8 +58,8 @@ export default class ContentListScene extends Component {
 
     Actions.singleContent({
       content_id: content.id,
-      title: neuronSelected.neuron.title,
       neuron_id,
+      title: neuronSelected.title,
     });
   }
 
@@ -66,7 +73,10 @@ export default class ContentListScene extends Component {
       paddingHorizontal: Size.spaceSmall,
     };
 
-    const contents = !!neuronSelected.neuron && neuronSelected.neuron.contents.filter(c => !c.read);
+    let contents;
+    if(neuronSelected !== undefined) {
+      contents = (neuronSelected.contents || []).filter(c => !c.read);
+    }
 
     const testMessage = (
       <MessageContainer>
@@ -79,7 +89,7 @@ export default class ContentListScene extends Component {
         {!loading ? (
           <ContentBox>
             <ScrollView contentContainerStyle={containerStyles}>
-              {contents && contents.map((content, i) => {
+              {contents && (contents || []).map((content, i) => {
                 const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
                 const oddInverted = i % 2 === 1;
 

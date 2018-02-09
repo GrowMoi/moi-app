@@ -35,48 +35,35 @@ const styles = StyleSheet.create({
 });
 
 @connect(store => ({
-  favorites: store.user.favorites,
   device: store.device,
-}), {
-  loadAllFavorites: userActions.loadAllFavorites,
-})
-class FavoritesTab extends PureComponent {
+}))
+class ContentTab extends PureComponent {
   state = {
     dataLoaded: false,
     dataSource: [],
     page: 0,
     noMoreData: false,
+    isLoading: false,
   }
 
   componentDidMount() {
-    this.getFavorites();
+    const { data: last_contents_learnt } = this.props;
+
+    if (last_contents_learnt.length) {
+      this.setState({ dataLoaded: true, dataSource: last_contents_learnt });
+    }
   }
 
-  getFavorites = async () => {
-    const { loadAllFavorites } = this.props;
-    const { page, dataSource } = this.state;
-
-    const nextPage = page + 1;
-    await loadAllFavorites(nextPage);
-
-    const { favorites: { content_tasks: { content_tasks } } } = this.props;
-
-    if (content_tasks.length) {
-      this.setState({ dataLoaded: true, dataSource: dataSource.concat(content_tasks), page: nextPage });
-    } else if (!content_tasks.length) this.setState({ noMoreData: true });
-  }
-
-  _renderItem = (info) => {
-    const { device: { dimensions } } = this.props;
+  _renderItem = ({ item }) => {
+    const { device: { dimensions }, onClickItem } = this.props;
     const widthImagePreview = dimensions.width > 320 ? 150 : 130;
 
-    const onPress = () => Actions.singleContent({ content_id: info.item.id, neuron_id: info.item.neuron_id, title: 'Favorito' });
     return (
       <ContentImagePreview
         touchProps={{
-          onPress,
+          onPress: () => (onClickItem ? onClickItem(item) : null),
         }}
-        data={info.item}
+        data={item}
         width={widthImagePreview}
       />
     );
@@ -85,22 +72,20 @@ class FavoritesTab extends PureComponent {
   _keyExtractor = item => uuid();
 
   render() {
-    const { favorites: data } = this.props;
-    const { dataLoaded, dataSource, noMoreData } = this.state;
+    const { onEndReached } = this.props;
+    const { dataLoaded, dataSource, noMoreData, isLoading } = this.state;
 
-    const loading = !dataLoaded;
-    const hasItems = dataLoaded && (((data || {}).meta || {}).total_items > 0);
+    const hasItems = dataSource.length > 0;
 
     return (
       <Container>
-        {loading && <Preloader />}
-        {!loading && (hasItems ? (
+        {isLoading && <Preloader />}
+        {!isLoading && (hasItems ? (
           <TabContainer>
             <FlatList
               contentContainerStyle={styles.contentContainer}
               data={dataSource}
-              onEndReached={this.getFavorites}
-              ListFooterComponent={!noMoreData && <Preloader />}
+              onEndReached={onEndReached}
               renderItem={this._renderItem}
               onEndReachedThreshold={0}
               keyExtractor={this._keyExtractor}
@@ -118,9 +103,10 @@ class FavoritesTab extends PureComponent {
   }
 }
 
-FavoritesTab.propTypes = {
-  loading: PropTypes.bool,
-  favorites: PropTypes.any,
+ContentTab.propTypes = {
+  isLoading: PropTypes.bool,
+  data: PropTypes.array,
+  onEndReached: PropTypes.func,
 };
 
-export default FavoritesTab;
+export default ContentTab;
