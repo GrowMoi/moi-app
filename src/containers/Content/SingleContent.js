@@ -41,6 +41,10 @@ const HeaderContent = styled(View)`
   align-items: center;
 `;
 
+const Icon = styled(Ionicons)`
+  background-color: transparent;
+`;
+
 const Section = styled(View)`
   margin-bottom: ${(props) => {
     if (props.notBottomSpace) return 0;
@@ -93,6 +97,7 @@ const PlayIcon = styled(FontAwesome)`
 const styles = StyleSheet.create({
   scrollContainer: {
     alignSelf: 'stretch',
+    paddingHorizontal: Size.spaceSmall,
   },
 });
 
@@ -247,14 +252,14 @@ export default class SingleContentScene extends Component {
                   showsPagination
                   loop
                   autoplay
-                  size={{ height: 200, width: (width - Size.spaceLarge) }}
+                  size={{ height: 200, width: (width - Size.spaceXLarge) }}
                   images={content.media}
                 />
 
                 <ActionsHeader>
                   {(content.favorite || favorite) && <MoiIcon name='fav' size={20} />}
-                  <Ionicons onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} />
-                  <Ionicons name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
+                  {/* <Icon onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} /> */}
+                  <Icon name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
                 </ActionsHeader>
 
                 <Section>
@@ -290,15 +295,15 @@ export default class SingleContentScene extends Component {
                   <VideoContainer>
                     {content.videos &&
                       content.videos.length > 0 &&
-                        content.videos.map((video, i) => {
-                          const videoId = youtube.extractIdFromUrl(video.url);
+                      content.videos.map((video, i) => {
+                        const videoId = youtube.extractIdFromUrl(video.url);
 
-                          if (videoId) {
-                            return (
-                              <TouchableWithoutFeedback key={i} onPress={() => this.setModalVisible(!this.state.videoModalVisible, videoId)}>
-                                <VideoImg
-                                  source={{ uri: `https:${video.thumbnail}` }}
-                                  resizeMode="cover"
+                        if (videoId) {
+                          return (
+                            <TouchableWithoutFeedback key={i} onPress={() => this.setModalVisible(!this.state.videoModalVisible, videoId)}>
+                              <VideoImg
+                                source={{ uri: `https:${video.thumbnail}` }}
+                                resizeMode="cover"
                                 >
                                   <PlayIcon name='play-circle' size={40} />
                                 </VideoImg>
@@ -306,14 +311,14 @@ export default class SingleContentScene extends Component {
                             );
                           }
                         })
-                    }
-                  </VideoContainer>
-                </Section>
+                      }
+                    </VideoContainer>
+                  </Section>
 
-              </ScrollView>
-            </KeyboardAvoidingView>
-          </ContentBox>
-        )}
+                </ScrollView>
+              </KeyboardAvoidingView>
+            </ContentBox>
+          )}
         {!loading && <BottomBarWithButtons
           readButton={!(content.learnt || content.read)}
           onPressReadButton={() => this.readContent(content.neuron_id, content.id)}

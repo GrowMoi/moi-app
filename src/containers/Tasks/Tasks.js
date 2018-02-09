@@ -48,10 +48,10 @@ class Tasks extends Component {
   render() {
     const { loading } = this.state;
     const { device, user: { tasks } } = this.props;
-    const widthContentPreview = device.dimensions.width > 320 ? 150 : 100;
+    const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
 
     const containerStyles = {
-      width: (device.dimensions.width - Size.spaceLarge),
+      width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
 

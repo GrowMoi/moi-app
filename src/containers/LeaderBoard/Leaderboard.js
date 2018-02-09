@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { FormattedTime } from 'react-intl';
-import { View, FlatList, Text, Image } from 'react-native';
+import { View, FlatList, Text, Image, StyleSheet } from 'react-native';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { Palette, Size } from '../../commons/styles';
@@ -14,8 +14,11 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
 
 const FrameContainer = styled(View)`
+  flex: 1;
   margin-top: ${Size.navbarHeight};
   align-items: center;
+  justify-content: center;
+  align-self: stretch;
 `;
 
 @connect(state => ({
@@ -52,6 +55,14 @@ export default class LeaderBoard extends Component {
   render() {
     const { leaders: dataLeaders, device: { dimensions: { width, height } } } = this.props;
 
+    const framePadding = 100;
+    const styles = StyleSheet.create({
+      contentContainer: {
+        alignSelf: 'stretch',
+        width: width - framePadding,
+      }
+    })
+
     if(!(dataLeaders.leaders || []).length) return <Preloader />;
     return (
       <MoiBackground>
@@ -59,6 +70,7 @@ export default class LeaderBoard extends Component {
         <FrameContainer>
           <LeaderFrame width={(width - 35)}>
             <FlatList
+              contentContainerStyle={styles.contentContainer}
               onEndReached={this.fetchNextPage}
               onEndReachedThreshold={0}
               data={dataLeaders.leaders}

@@ -70,7 +70,7 @@ const renderIcon = ({ leftIcon, rightIcon, onPress, ...rest }) => {
   return icon;
 }
 
-const ReduxFormInput = ({ input, meta, label, rightIcon = false, leftIcon = false, leftIconColor, rightIconColor, onPressRightIcon, onPressLeftIcon, ...inputProps }) => {
+const ReduxFormInput = ({ input, meta, label, rightIcon = false, leftIcon = false, leftIconColor, rightIconColor, onPressRightIcon, onPressLeftIcon, type = 'text', ...inputProps }) => {
 
   const leftIconProps = {
     leftIcon,
@@ -88,16 +88,23 @@ const ReduxFormInput = ({ input, meta, label, rightIcon = false, leftIcon = fals
   const leftIconC = leftIcon && renderIcon(leftIconProps);
   const rightIconC = rightIcon && renderIcon(rightIconProps);
 
+  let value = input.value;
+  if(typeof input.value === 'number') value = input.value.toString();
+
   return (
     <InputContainer>
       {label && <TextBody bolder>{normalizeAllCapLetter(label)}</TextBody>}
       <Container>
         {leftIconC}
         <StyledInput
-          onChangeText={input.onChange}
+          onChangeText={(text) => {
+            let _text = text;
+            if(type === 'number') _text = parseInt(_text);
+            input.onChange(_text)
+          }}
           onBlur={input.onBlur}
           onFocus={input.onFocus}
-          value={input.value}
+          value={value}
           rightIcon={rightIcon}
           leftIcon={leftIcon}
           {...inputProps}

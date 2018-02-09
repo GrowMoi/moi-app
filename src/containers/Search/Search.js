@@ -43,7 +43,7 @@ export default class Search extends PureComponent {
   _keyExtractor = item => uuid();
   _renderItem = ({ item, index }) => {
     const { device } = this.props;
-    const widthContentPreview = device.dimensions.width > 320 ? 150 : 100;
+    const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
     const normalizeKind = `¿${normalize.normalizeFirstCapLetter(item.kind)}?`
     const oddInverted = index % 2 === 1;
 
@@ -76,7 +76,7 @@ export default class Search extends PureComponent {
     const { device } = this.props;
 
     const containerStyles = {
-      width: (device.dimensions.width - Size.spaceLarge),
+      width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
 

@@ -29,6 +29,12 @@ const MessageContainer = styled(View)`
   justify-content: center;
 `;
 
+const Container = styled(View)`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`
+
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   device: store.device,
@@ -66,10 +72,10 @@ export default class ContentListScene extends Component {
   render() {
     const { loading } = this.state;
     const { neuronSelected, device } = this.props;
-    const widthContentPreview = device.dimensions.width > 320 ? 150 : 100;
+    const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
 
     const containerStyles = {
-      width: (device.dimensions.width - Size.spaceLarge),
+      width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
 

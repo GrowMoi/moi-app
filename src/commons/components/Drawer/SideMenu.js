@@ -90,9 +90,8 @@ export default class SideMenu extends Component {
     const treeIsLoaded = 'tree' in userTree;
 
     const options = [
-      { label: 'Inventario' },
+      { label: 'Inventario', onPress: () => Actions.refresh({ key: 'inventory' }) },
       { label: 'Configuración', onPress: () => Actions.refresh({ key: 'settings' }) },
-      { label: 'Privacidad' },
       { label: 'Leader Board', onPress: () => Actions.refresh({ key: 'leaderboard' }) },
       { label: 'Buscar Amigos', onPress: () => Actions.refresh({ key: 'searchFriends' }) },
     ];

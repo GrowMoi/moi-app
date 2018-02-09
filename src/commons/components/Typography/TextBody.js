@@ -18,6 +18,7 @@ const StyledTextBody = styled(Text)`
     else if (props.highlight) return Palette.accent;
     return Palette.dark;
   }};
+  background-color: transparent;
 `;
 
 export default StyledTextBody;

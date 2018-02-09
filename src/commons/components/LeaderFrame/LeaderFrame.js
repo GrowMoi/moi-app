@@ -12,8 +12,10 @@ const StyledLeaderFrame = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(widthFrame, heightFrame, props.width)};
   padding-horizontal: 20;
-  padding-vertical: 30;
+  padding-vertical: 40;
   border-radius: 10;
+  justify-content: center;
+  align-items: center;
 `;
 
 const LeaderFrame = ({ width = widthFrame, ...rest }) => (
