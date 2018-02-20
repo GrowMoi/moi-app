@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { FormattedTime } from 'react-intl';
-import { View, FlatList, Image, Alert } from 'react-native';
+import {
+  View,
+  FlatList,
+  Image,
+  Alert,
+  Modal
+} from 'react-native';
 import uuid from 'uuid/v4';
 
+import { Video } from '../../commons/components/VideoPlayer';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { Palette, Size } from '../../commons/styles';
@@ -15,6 +22,8 @@ import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
 import Item from '../../commons/components/Item/Item';
 import WoodFrame from '../../commons/components/WoodFrame';
 import { TextBody } from '../../commons/components/Typography';
+
+import vineta_1 from '../../../assets/videos/vineta_1.mp4';
 
 import userActions from '../../actions/userActions';
 
@@ -32,13 +41,26 @@ const FrameContainer = styled(View)`
   updateAchievementsAsync: userActions.updateAchievementsAsync,
 })
 export default class Inventory extends Component {
+  state = {
+    modalVisible: false,
+  }
+
   updateItem = async ({ id, name }) => {
     const { updateAchievementsAsync } = this.props;
 
     if(id) await updateAchievementsAsync(id);
   }
 
+  showVideo = (show = true) => {
+    this.setState({ modalVisible: show });
+  }
+
   activeItem = item => {
+    if(item.number === 1) {
+      this.showVideo();
+      return;
+    }
+
     let currentStatus = {};
 
     if(item.active) {
@@ -75,12 +97,17 @@ export default class Inventory extends Component {
   }
 
   render() {
+    const { modalVisible } = this.state;
     const { device: { dimensions: { width, height } }, achievements } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
 
     const leaderFramePadding = (width - frameLeaderPadding);
     const woodFramePadding = (width - frameWoodPadding);
+    const videoDimensions = {
+        width: 1280,
+        height: 720
+    };
 
     if(!(achievements || []).length) return <TextBody>No tienes logros ganados</TextBody>;
     return (
@@ -98,6 +125,14 @@ export default class Inventory extends Component {
             </WoodFrame>
           </LeaderFrame>
         </FrameContainer>
+
+        <Video
+          videoDimensions={videoDimensions}
+          source={vineta_1}
+          dismiss={() => this.showVideo(false)}
+          visible={modalVisible}
+          width={width}
+        />
         <BottomBar />
       </MoiBackground>
     );
