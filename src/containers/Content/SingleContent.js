@@ -26,7 +26,7 @@ import MoiIcon from '../../commons/components/MoIcon/MoIcon';
 import { Palette, Size } from '../../commons/styles';
 import ActionsHeader from './ActionsContentMax';
 import NoteInput from '../../commons/components/NoteInput/NoteInput';
-import YoutubePlayer from '../../commons/components/VideoPlayer/YoutubePlayer';
+import { YoutubePlayer } from '../../commons/components/VideoPlayer';
 import { youtube } from '../../commons/utils';
 import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
 

@@ -264,4 +264,7 @@ export default [
   require('./background/verde_box.png'),
   require('./background/regular_box.png'),
 
+  //Videos
+  require('../videos/vineta_1.mp4'),
+
 ];
