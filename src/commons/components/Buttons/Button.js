@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableWithoutFeedback, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import * as Animatable from 'react-native-animatable';
 import { Size } from '../../styles';
 import { colors } from '../../styles/palette';
 import { Header } from '../Typography';
-import { Ionicons } from '@expo/vector-icons';
 
 const StyledButton = styled(View)`
   padding-horizontal: ${Size.spaceSmall};
@@ -30,21 +31,43 @@ const RightIcon = styled(Ionicons)`
   margin-left: ${Size.spaceXSmall};
 `;
 
-const Button = ({ title, onPress, style, disabled, leftIcon, rightIcon, ...rest }) => {
-  const CreamButton = (
-    <StyledButton disabled={disabled} style={disabled ? style : null}>
-      {leftIcon && <LeftIcon name={leftIcon} size={20} color="#4b4a21" />}
-      <Header small heavy>{title}</Header>
-      {rightIcon && <RightIcon name={rightIcon} size={20} color="#4b4a21" />}
-    </StyledButton>
-  );
+class Button extends Component {
+  handleButtonRef = ref => this.button = ref;
 
-  if (disabled) return CreamButton;
-  return (
-    <TouchableOpacity onPress={onPress} style={style} { ...rest }>
-      {CreamButton}
-    </TouchableOpacity>
-  );
+  bounce = (e) => {
+    const { onPress } = this.props;
+
+    if(onPress) {
+      this.button.bounceIn(300)
+        .then(endState => {
+          onPress(e);
+        });
+    }
+  }
+
+  onPressButton = (e) => {
+    this.bounce(e);
+  }
+
+
+  render() {
+    const { title, onPress, style, disabled, leftIcon, rightIcon, ...rest } = this.props;
+
+    const AnimatableComponent = Animatable.createAnimatableComponent(StyledButton);
+    const CreamButton = (
+      <AnimatableComponent ref={this.handleButtonRef} disabled={disabled} style={style}>
+        {leftIcon && <LeftIcon name={leftIcon} size={20} color="#4b4a21" />}
+        <Header small heavy>{title}</Header>
+        {rightIcon && <RightIcon name={rightIcon} size={20} color="#4b4a21" />}
+      </AnimatableComponent>
+    );
+
+    return (
+      <TouchableWithoutFeedback onPress={this.onPressButton} { ...rest } disabled={disabled}>
+        {CreamButton}
+      </TouchableWithoutFeedback>
+    );
+  }
 };
 
 

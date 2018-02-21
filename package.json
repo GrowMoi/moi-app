@@ -62,6 +62,7 @@
     "react": "16.0.0-alpha.12",
     "react-intl": "^2.3.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-19.0.0.tar.gz",
+    "react-native-animatable": "^1.2.4",
     "react-native-drawer": "^2.4.0",
     "react-native-router-flux": "3",
     "react-native-side-menu": "^1.0.2",

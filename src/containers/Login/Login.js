@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import * as Animatable from 'react-native-animatable';
 import {
   Image,
   StatusBar,
@@ -57,10 +58,18 @@ const Form = styled(View)`
   margin-top: ${Size.spaceMedium};
 `;
 
+const InputsContainer = styled(View)`
+  height: 135;
+  justify-content: center;
+  flex-shrink: 1;
+`;
+
 const ContainerLoginImages = styled(View)`
   flex-direction: row;
   flex-wrap: wrap;
+  align-self: stretch;
 `;
+const AnimatableContainerLoginKeys = Animatable.createAnimatableComponent(ContainerLoginImages);
 
 @connect(store => ({
   user: store.user.userData,
@@ -128,49 +137,63 @@ export default class Login extends Component {
               keyboardVerticalOffset={Size.spaceLarge}
             >
               <StatusBar hidden/>
-              <WoodTitle title='Login' />
+
+              <Animatable.View animation="bounceInDown" easing="ease-in">
+                <WoodTitle title='Login' />
+              </Animatable.View>
 
               <Form>
-                {!showingSelectionKey &&
-                  <Input
-                    placeholder='nombre de usuario'
-                    keyboardType='email-address'
-                    autoCorrect={false}
-                    value={login}
-                    onChangeText={text => this.onChangeInput('login', text)}
-                  />
-                }
-                {
-                  showingSelectionKey &&
-                  <ContainerLoginImages>
-                    {loginImages.map((image) => {
-                      const selected = image.key === key;
-                      return (
-                        <LoginImage
-                          selected={selected}
-                          selectedImage={image.selected}
-                          key={image.key}
-                          keyName={image.key}
-                          source={image.source}
-                          name={image.name}
-                          onPress={this.onPressLoginImage}
-                        />
-                      );
-                    })}
-                  </ContainerLoginImages>
-                }
-                {!showingSelectionKey &&
-                  <ButtonsContainer>
-                    <Button style={{ width: 120, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
-                    <Button style={{ width: 120 }} title='Siguiente' disabled={!((login.trim()).length > 0)} onPress={this.showSelectionKey} />
-                  </ButtonsContainer>
-                }
-                {showingSelectionKey &&
-                  <ButtonsContainer>
-                    <Button style={{ width: 120, marginRight: Size.spaceMedium }} title='Atras' onPress={this.returnToUsername} />
-                    <Button style={{ width: 120 }} title='Login' onPress={this.submit} />
-                  </ButtonsContainer>
-                }
+                <InputsContainer>
+                  {!showingSelectionKey &&
+                    <Animatable.View animation="fadeIn" delay={500}>
+                      <Input
+                        placeholder='nombre de usuario'
+                        keyboardType='email-address'
+                        autoCorrect={false}
+                        value={login}
+                        onChangeText={text => this.onChangeInput('login', text)}
+                      />
+                    </Animatable.View>
+                  }
+                  {showingSelectionKey &&
+                    <AnimatableContainerLoginKeys animation="fadeIn">
+                      {loginImages.map((image) => {
+                        const selected = image.key === key;
+                        return (
+                          <LoginImage
+                            selected={selected}
+                            selectedImage={image.selected}
+                            key={image.key}
+                            keyName={image.key}
+                            source={image.source}
+                            name={image.name}
+                            onPress={this.onPressLoginImage}
+                          />
+                        );
+                      })}
+                    </AnimatableContainerLoginKeys>
+                  }
+                </InputsContainer>
+
+                <ButtonsContainer>
+                  <Animatable.View animation="bounceInLeft" easing="ease-in">
+                    <Button
+                      style={{ width: 130, marginRight: Size.spaceMedium }}
+                      title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
+                      onPress={!showingSelectionKey ? Actions.register : this.returnToUsername}
+                    />
+                  </Animatable.View>
+
+                  <Animatable.View animation="bounceInRight" easing="ease-in">
+                    <Button
+                      style={{ width: 130 }}
+                      title={!showingSelectionKey ? 'Siguiente' : 'Login'}
+                      disabled={!((login.trim()).length > 0)}
+                      onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
+                    />
+                  </Animatable.View>
+                </ButtonsContainer>
+
               </Form>
             </FormContainer>
           </LoginContainer>
