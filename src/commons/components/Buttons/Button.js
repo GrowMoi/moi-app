@@ -70,7 +70,7 @@ class Button extends Component {
     );
 
     return (
-      <TouchableWithoutFeedback onPress={this.onPressButton} { ...rest } disabled={disabled}>
+      <TouchableWithoutFeedback onPress={this.onPressButton} { ...rest } disabled={loading ? true : disabled}>
         {CreamButton}
       </TouchableWithoutFeedback>
     );

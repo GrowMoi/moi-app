@@ -50,7 +50,6 @@ const loginAsync = ({ login, authorization_key: authorizationKey }) =>
       Actions.moiDrawer();
     } catch (error) {
       dispatch(notAuthenticate());
-      Alert.alert('Credenciales Incorrectas');
     }
 
     const authenticated = getState().user.userData.authenticate;
