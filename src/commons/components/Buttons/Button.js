@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { TouchableWithoutFeedback, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { TouchableWithoutFeedback, View, Animated, Easing } from 'react-native';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
 import { Size } from '../../styles';
 import { colors } from '../../styles/palette';
 import { Header } from '../Typography';
+import Spinner from '../MoIcon/Spinner';
 
 const StyledButton = styled(View)`
   padding-horizontal: ${Size.spaceSmall};
@@ -31,6 +32,8 @@ const RightIcon = styled(Ionicons)`
   margin-left: ${Size.spaceXSmall};
 `;
 
+const AnimatableComponent = Animatable.createAnimatableComponent(StyledButton);
+
 class Button extends Component {
   handleButtonRef = ref => this.button = ref;
 
@@ -49,15 +52,19 @@ class Button extends Component {
     this.bounce(e);
   }
 
-
   render() {
-    const { title, onPress, style, disabled, leftIcon, rightIcon, ...rest } = this.props;
+    const { title, onPress, style, disabled, leftIcon, rightIcon, loading, ...rest } = this.props;
 
-    const AnimatableComponent = Animatable.createAnimatableComponent(StyledButton);
+    let currentText
+    if (loading) currentText = <Spinner />;
+    else currentText = <Header small heavy>{ title }</Header>;
+
     const CreamButton = (
       <AnimatableComponent ref={this.handleButtonRef} disabled={disabled} style={style}>
         {leftIcon && <LeftIcon name={leftIcon} size={20} color="#4b4a21" />}
-        <Header small heavy>{title}</Header>
+
+        {currentText}
+
         {rightIcon && <RightIcon name={rightIcon} size={20} color="#4b4a21" />}
       </AnimatableComponent>
     );

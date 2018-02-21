@@ -85,6 +85,7 @@ export default class Login extends Component {
     showingSelectionKey: false,
     showingUsername: true,
     currentSelected: '',
+    validating: false,
   }
 
   onChangeInput = (id, text) => {
@@ -101,7 +102,14 @@ export default class Login extends Component {
   submit = async () => {
     const { login, authorization_key } = this.state;
     const { loginAsync } = this.props;
-    loginAsync({ login, authorization_key });
+
+    this.setState({ validating: true });
+    const loginResponse = await loginAsync({ login, authorization_key });
+
+    const { authenticated } = loginResponse;
+    if(!authenticated) {
+      this.setState({ validating: false });
+    };
   }
 
   showSelectionKey = () => {
@@ -118,7 +126,7 @@ export default class Login extends Component {
 
   render() {
     const { device } = this.props;
-    const { showingSelectionKey, authorization_key: key, login } = this.state;
+    const { showingSelectionKey, authorization_key: key, login, validating } = this.state;
     const { width } = device.dimensions;
 
     return (
@@ -186,6 +194,7 @@ export default class Login extends Component {
 
                   <Animatable.View animation="bounceInRight" easing="ease-in">
                     <Button
+                      loading={validating}
                       style={{ width: 130 }}
                       title={!showingSelectionKey ? 'Siguiente' : 'Login'}
                       disabled={!((login.trim()).length > 0)}
