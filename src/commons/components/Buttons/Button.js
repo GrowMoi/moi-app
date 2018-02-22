@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { TouchableWithoutFeedback, View, Animated, Easing } from 'react-native';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
 import { Size } from '../../styles';
@@ -41,7 +41,7 @@ class Button extends Component {
     const { onPress } = this.props;
 
     if(onPress) {
-      this.button.bounceIn(300)
+      this.button.bounceIn(800)
         .then(endState => {
           onPress(e);
         });
@@ -60,7 +60,7 @@ class Button extends Component {
     else currentText = <Header small heavy>{ title }</Header>;
 
     const CreamButton = (
-      <AnimatableComponent ref={this.handleButtonRef} disabled={disabled} style={style}>
+      <AnimatableComponent ref={this.handleButtonRef} disabled={disabled} style={ {...style, transform: [{ scale: 1 }]} } >
         {leftIcon && <LeftIcon name={leftIcon} size={20} color="#4b4a21" />}
 
         {currentText}

@@ -8,6 +8,8 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import * as Animatable from 'react-native-animatable';
+import uuid from 'uuid/v4';
 
 // Common Components
 import Navbar from '../../commons/components/Navbar/Navbar';
@@ -34,6 +36,8 @@ const Container = styled(View)`
   align-items: center;
   justify-content: center;
 `
+
+const ContentPreviewAnimatable = Animatable.createAnimatableComponent(ContentPreview);
 
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
@@ -100,15 +104,20 @@ export default class ContentListScene extends Component {
                 const oddInverted = i % 2 === 1;
 
                 return (
-                  <ContentPreview
-                    width={widthContentPreview}
-                    onPress={e => this.onPressRowcontent(e, content)}
-                    inverted={oddInverted}
-                    key={content.id}
-                    title={content.title}
-                    subtitle={normalizeKind}
-                    source={{ uri: content.media[0] }}
-                  />
+                  <Animatable.View
+                    animation="bounceIn"
+                    delay={100 * i}
+                    key={`${uuid()}-${content.id}`}
+                  >
+                    <ContentPreview
+                      width={widthContentPreview}
+                      onPress={e => this.onPressRowcontent(e, content)}
+                      inverted={oddInverted}
+                      title={content.title}
+                      subtitle={normalizeKind}
+                      source={{ uri: content.media[0] }}
+                    />
+                  </Animatable.View>
                 );
               })}
               {!contents.length > 0 && testMessage}
