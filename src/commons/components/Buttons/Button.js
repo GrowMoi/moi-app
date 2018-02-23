@@ -41,10 +41,10 @@ class Button extends Component {
     const { onPress } = this.props;
 
     if(onPress) {
-      this.button.bounceIn(800)
-        .then(endState => {
-          onPress(e);
-        });
+      this.button.bounceIn(800);
+      setTimeout(() => {
+        onPress(e);
+      }, 200);
     }
   }
 

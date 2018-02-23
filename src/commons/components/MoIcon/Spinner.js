@@ -38,7 +38,7 @@ export default class Spinner extends Component {
   }
 
   render() {
-    const { size = 18, color = Palette.dark.css() } = this.props;
+    const { size = 18, color = Palette.dark.css(), name = 'spinner' } = this.props;
     const spin = this.spinValue.interpolate({
       inputRange: [0, 1],
       outputRange: ["0deg", "360deg"]
@@ -47,7 +47,7 @@ export default class Spinner extends Component {
     return (
       <Icon
         style={{transform: [{ 'rotate': spin }]}}
-        name="spinner"
+        name={name}
         size={size}
         color={color}
       />

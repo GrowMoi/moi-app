@@ -38,23 +38,21 @@ const setAchievements = achievements => ({
   payload: achievements,
 });
 
-const loginAsync = ({ login, authorization_key: authorizationKey }) =>
-  async (dispatch, getState) => {
-    let res;
-    try {
-      res = await api.user.signIn({ login, authorization_key: authorizationKey });
-      const { data: { data: user }, headers } = res;
+const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.signIn({ login, authorization_key: authorizationKey });
+    const { data: { data: user }, headers } = res;
 
-      dispatch(userLogin(user));
-      dispatch(setHeaders(headers));
-      Actions.moiDrawer();
-    } catch (error) {
-      dispatch(notAuthenticate());
-    }
+    dispatch(userLogin(user));
+    dispatch(setHeaders(headers));
+    Actions.moiDrawer();
+  } catch (error) {
+    dispatch(notAuthenticate());
+  }
 
-    const authenticated = getState().user.userData.authenticate;
-    return { res, authenticated };
-  };
+  return res;
+};
 
 const validateToken = () => async (dispatch) => {
   let res;

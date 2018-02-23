@@ -108,10 +108,11 @@ export default class Login extends Component {
     const { loginAsync } = this.props;
 
     this.setState({ validating: true });
-    const loginResponse = await loginAsync({ login, authorization_key });
+    await loginAsync({ login, authorization_key });
 
-    const { authenticated } = loginResponse;
-    if(!authenticated) {
+    const { user: { authenticate } } = this.props
+
+    if(!authenticate) {
       const animationDuraction = 800;
       this.formContainer.shake(animationDuraction);
       this.setState({ validating: false });

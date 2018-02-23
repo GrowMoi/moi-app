@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import {
   View,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import * as Animatable from 'react-native-animatable';
 
 import Profile from './Profile/Profile';
 import { Title, Header } from './Typography';
@@ -16,6 +17,7 @@ const Container = styled(View)`
   align-items: center;
   margin-bottom: 20;
 `;
+const AnimatableContainer = Animatable.createAnimatableComponent(Container);
 
 const Content = styled(View)`
   flex: 1;
@@ -35,29 +37,49 @@ const Icon = styled(FontAwesome)`
 `;
 
 const lightColor = '#fef8bd';
-const UserPreview = ({ name, school, country, onPress }) => (
-  <TouchableOpacity onPress={onPress}>
-    <Container>
-      <Profile width={50}/>
+class UserPreview extends Component {
+  handleAnimatableContainer = ref => this.container = ref;
 
-      <Content>
-        <Title heavy color={lightColor}>{name}</Title>
-        <Info>
-          <IconLabel>
-            <Icon name='book' size={20} color={lightColor} />
-            <Header bolder inverted >{school || '-'}</Header>
-          </IconLabel>
-          <IconLabel>
-            <Icon name='flag' size={20} color={lightColor} />
-            <Header bolder inverted>{country || '-'}</Header>
-          </IconLabel>
-        </Info>
-      </Content>
+  onPress = () => {
+    const { onPress } = this.props;
 
-      <Icon name='chevron-right' size={15} color={lightColor} />
-    </Container>
-  </TouchableOpacity>
-);
+    if(onPress) {
+      this.container.pulse(400)
+        .then(endState => {
+          if(endState.finished) {
+            onPress();
+          }
+        })
+    }
+  }
+
+  render() {
+    const { name, school, country } = this.props;
+    return (
+      <TouchableWithoutFeedback onPress={this.onPress}>
+        <AnimatableContainer ref={this.handleAnimatableContainer}>
+          <Profile width={50}/>
+
+          <Content>
+            <Title heavy color={lightColor}>{name}</Title>
+            <Info>
+              <IconLabel>
+                <Icon name='book' size={20} color={lightColor} />
+                <Header bolder inverted >{school || '-'}</Header>
+              </IconLabel>
+              <IconLabel>
+                <Icon name='flag' size={20} color={lightColor} />
+                <Header bolder inverted>{country || '-'}</Header>
+              </IconLabel>
+            </Info>
+          </Content>
+
+          <Icon name='chevron-right' size={15} color={lightColor} />
+        </AnimatableContainer>
+      </TouchableWithoutFeedback>
+    );
+  }
+}
 
 UserPreview.propTypes = {
   name: PropTypes.string,

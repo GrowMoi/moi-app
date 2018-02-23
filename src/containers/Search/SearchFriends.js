@@ -110,7 +110,7 @@ export default class SearchFriends extends PureComponent {
 
     const contentBox = !loading && (
       <ContentBox>
-        <SearchInput handleSubmit={this.onSubmit}/>
+        <SearchInput onSubmit={this.onSubmit}/>
         {results}
       </ContentBox>
     )
