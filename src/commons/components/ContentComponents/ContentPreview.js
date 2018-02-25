@@ -122,14 +122,14 @@ export default class ContentPreview extends Component {
   }
 
   render() {
-    const { inverted, id, closeButton, onPressCloseButton } = this.props;
+    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false } = this.props;
     const closeAction = closeButton && (
       <CloseAction onPress={() => onPressCloseButton && onPressCloseButton(id)}>
         <Ionicons name='md-close' size={15} color={Palette.white.css()}/>
       </CloseAction>
     );
 
-    return (
+    const content = (
       <TouchableWithoutFeedback onPress={this.onPressRow}>
         <Animatable.View ref={this.handleViewRef} style={{ alignSelf: 'stretch' }}>
           <RowContainer id={id} inverted={inverted}>
@@ -138,6 +138,16 @@ export default class ContentPreview extends Component {
           </RowContainer>
         </Animatable.View>
       </TouchableWithoutFeedback>
+    );
+
+    if(withoutAnimation) return content;
+    return (
+      <Animatable.View
+        animation="bounceIn"
+        delay={animationDelay}
+      >
+        {content}
+      </Animatable.View>
     );
   }
 }

@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Animated, Easing } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import styled from 'styled-components/native';
 
 import { Palette } from '../../styles';
 
-const Icon = Animated.createAnimatedComponent(FontAwesome);
+const StyledIcon = styled(FontAwesome)`
+  background-color: transparent;
+`;
+const Icon = Animated.createAnimatedComponent(StyledIcon);
 
 export default class Spinner extends Component {
   spinValue = new Animated.Value(0);

@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
+import Spinner from '../components/MoIcon/Spinner';
 
 import Profile from './Profile/Profile';
 import { Title, Header } from './Typography';
@@ -54,7 +55,12 @@ class UserPreview extends Component {
   }
 
   render() {
-    const { name, school, country } = this.props;
+    const { name, school, country, loading = false } = this.props;
+
+    let currentIcon;
+    if(loading) currentIcon = <Spinner />;
+    else currentIcon = <Icon name='chevron-right' size={15} color={lightColor} />
+
     return (
       <TouchableWithoutFeedback onPress={this.onPress}>
         <AnimatableContainer ref={this.handleAnimatableContainer}>
@@ -74,7 +80,7 @@ class UserPreview extends Component {
             </Info>
           </Content>
 
-          <Icon name='chevron-right' size={15} color={lightColor} />
+          {currentIcon}
         </AnimatableContainer>
       </TouchableWithoutFeedback>
     );

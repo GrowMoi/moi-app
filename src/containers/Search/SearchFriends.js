@@ -24,6 +24,7 @@ import UserPreview from '../../commons/components/UserPreview';
 import searchActions from '../../actions/searchActions';
 import profilesActions from '../../actions/profileActions';
 import treeActions from '../../actions/treeActions';
+import EmptyState from './EmptyState';
 
 @connect(store => ({
   device: store.device,
@@ -41,15 +42,43 @@ export default class SearchFriends extends PureComponent {
     searching: false,
   }
 
+  changeFriendState = (data, itemToActivate, resetAll = false) => {
+    const friendIsLoading = false;
+
+    return data.map(friend => {
+      friend.loading = friendIsLoading;
+
+      if(!resetAll) {
+        if(friend.id === itemToActivate.id) {
+          friend.loading = !friendIsLoading;
+        }
+      }
+      return friend;
+    });
+  }
+
+  setDataSource = (item, resetData = false) => {
+    this.setState(({ dataSource }) => {
+      const _data = this.changeFriendState(dataSource, item, resetData);
+      return { dataSource: _data };
+    });
+  }
+
   onPressProfile = async (item) => {
     const { getPublicProfileAsync, loadTreeAsync } = this.props;
 
+    // console.log(this.state.dataSource);
     if(item.username === undefined) return;
+
+    this.setDataSource(item);
 
     const profile = await getPublicProfileAsync(item.username);
 
     const isPublic = true;
     const tree = await loadTreeAsync(item.username, isPublic);
+
+    const resetData = true;
+    this.setDataSource(item, resetData);
 
     Actions.publicProfile({
       profile: profile.data,
@@ -67,6 +96,7 @@ export default class SearchFriends extends PureComponent {
         name={item.name || item.username}
         school={item.school}
         country={item.country}
+        loading={item.loading}
         onPress={ () => this.onPressProfile(item) }
       />
     );
@@ -81,7 +111,12 @@ export default class SearchFriends extends PureComponent {
 
     await getUsersAsync(getInitialPage, query);
     const { search } = this.props;
-    this.setState({ dataSource: search.friends, searching: false });
+
+    const _data = search.friends.map((friends) => {
+      friends.loading = false;
+      return friends;
+    });
+    this.setState({ dataSource: _data, searching: false });
   }
 
   render() {
@@ -92,6 +127,7 @@ export default class SearchFriends extends PureComponent {
       width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
+
 
     let results;
     if(dataSource.length) {
@@ -104,8 +140,8 @@ export default class SearchFriends extends PureComponent {
         />
       );
     } else {
-      if(searching) results = <TextBody>Buscando...</TextBody>;
-      else results = <TextBody>No hay resultados que mostrar</TextBody>;
+      if(searching) results = <EmptyState text='Buscando...' iconName='md-search' />;
+      else results = <EmptyState text='No hay resultados que mostrar' />;
     }
 
     const contentBox = !loading && (

@@ -103,21 +103,20 @@ export default class ContentListScene extends Component {
                 const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
                 const oddInverted = i % 2 === 1;
 
+                const MILLISECONDS = 100;
+                const delay = MILLISECONDS * i;
+
                 return (
-                  <Animatable.View
-                    animation="bounceIn"
-                    delay={100 * i}
+                  <ContentPreview
+                    animationDelay={delay}
                     key={`${uuid()}-${content.id}`}
-                  >
-                    <ContentPreview
-                      width={widthContentPreview}
-                      onPress={e => this.onPressRowcontent(e, content)}
-                      inverted={oddInverted}
-                      title={content.title}
-                      subtitle={normalizeKind}
-                      source={{ uri: content.media[0] }}
-                    />
-                  </Animatable.View>
+                    width={widthContentPreview}
+                    onPress={e => this.onPressRowcontent(e, content)}
+                    inverted={oddInverted}
+                    title={content.title}
+                    subtitle={normalizeKind}
+                    source={{ uri: content.media[0] }}
+                  />
                 );
               })}
               {!contents.length > 0 && testMessage}
