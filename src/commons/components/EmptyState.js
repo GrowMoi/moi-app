@@ -30,7 +30,7 @@ const EmptyState = ({ text, iconName='md-information-circle', children }) => {
   return (
     <Container>
       <InfoIcon name={iconName} size={30} />
-      <TextBody>{text}</TextBody>
+      <TextBody center>{text}</TextBody>
     </Container>
   )
 }

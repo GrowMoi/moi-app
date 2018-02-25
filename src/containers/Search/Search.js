@@ -7,7 +7,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 
-import EmptyState from './EmptyState';
+import EmptyState from '../../commons/components/EmptyState';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import SearchInput from './SearchInput';
 import { ContentBox, ContentPreview } from '../../commons/components/ContentComponents';

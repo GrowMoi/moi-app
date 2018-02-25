@@ -19,12 +19,12 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import { TextBody } from '../../commons/components/Typography';
 import UserPreview from '../../commons/components/UserPreview';
+import EmptyState from '../../commons/components/EmptyState';
 
 // Actions
 import searchActions from '../../actions/searchActions';
 import profilesActions from '../../actions/profileActions';
 import treeActions from '../../actions/treeActions';
-import EmptyState from './EmptyState';
 
 @connect(store => ({
   device: store.device,

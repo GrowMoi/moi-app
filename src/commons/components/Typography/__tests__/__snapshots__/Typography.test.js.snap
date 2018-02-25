@@ -57,6 +57,7 @@ exports[`Typography it should render text body expected 1`] = `
         "color": "#4a4b21",
         "fontFamily": "Futura",
         "fontSize": 15,
+        "textAlign": "left",
       },
       undefined,
     ]
@@ -80,6 +81,7 @@ exports[`Typography it should render text body with props 1`] = `
         "color": "rgba(255,255,255,0.9)",
         "fontFamily": "Futura",
         "fontSize": 15,
+        "textAlign": "left",
       },
       undefined,
     ]
@@ -103,6 +105,7 @@ exports[`Typography it should render text body with props 2`] = `
         "color": "purple",
         "fontFamily": "Futura",
         "fontSize": 15,
+        "textAlign": "left",
       },
       undefined,
     ]
@@ -126,6 +129,7 @@ exports[`Typography it should render text body with props 3`] = `
         "color": "#818180",
         "fontFamily": "Futura",
         "fontSize": 15,
+        "textAlign": "left",
       },
       undefined,
     ]
@@ -149,6 +153,7 @@ exports[`Typography it should render text body with props 4`] = `
         "color": "#e67543",
         "fontFamily": "Futura",
         "fontSize": 15,
+        "textAlign": "left",
       },
       undefined,
     ]
