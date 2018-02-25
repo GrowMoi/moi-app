@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableWithoutFeedback, Animated, View } from 'react-native';
 import styled, { css } from 'styled-components/native';
+import * as Animatable from 'react-native-animatable';
+
+import { math } from '../../utils';
+
 import neuronaDescubierta from '../../../../assets/images/neurona/neurona_descubierta.png';
 import neuronaAzul from '../../../../assets/images/neurona/neurona_color_azul.png';
 import neuronaVerde from '../../../../assets/images/neurona/neurona_color_verde.png';
@@ -24,7 +28,8 @@ export const NeuronContainer = styled(View)`
     if (pos.bottom) return css`bottom: ${pos.bottom}`;
     else if (pos.top) return css`top: ${pos.top}`;
   }};
-  `;
+`;
+const NeuronAnimatable = Animatable.createAnimatableComponent(NeuronContainer);
 
 const neuronWidth = 390;
 const neuronHeight = 368;
@@ -37,9 +42,8 @@ const NeuronImage = styled(Animated.Image)`
   `;
 
 export default class Neuron extends Component {
-  componentWillMount() {
-    this.animatedValue = new Animated.Value(1);
-  }
+  handleRefNeuron = ref => this._neuron = ref;
+  animatedValue = new Animated.Value(1);
 
   onPressNeuron = (e) => {
     const { onPress } = this.props;
@@ -112,11 +116,32 @@ export default class Neuron extends Component {
     const animatedStyle = { transform: [{ scale: this.animatedValue }] };
     const neuronSize = this.calculateSize(contentsLearned, totalContents);
 
+    let neuronProps = {
+      size: maxSize,
+      pos: position,
+    };
+
+    const ANIMATION_DURATION = 2000;
+    const delayAnimation = { max: 5000, min: 100 };
+    const delay = math.getRandomInt(delayAnimation.min, delayAnimation.max);
+
+    const animationProps = {
+      delay,
+      animation: 'rubberBand',
+      iterationCount: 'infinite',
+      duration: ANIMATION_DURATION,
+      easing: 'ease-in-out',
+    };
+
+    if(contentsLearned === 0) {
+      neuronProps = {
+        ...neuronProps,
+        ...animationProps,
+      }
+    }
+
     return (
-      <NeuronContainer
-        size={maxSize}
-        pos={position}
-      >
+      <NeuronAnimatable {...neuronProps}>
         <TouchableWithoutFeedback
           onPressOut={this.onPressOut}
           onPressIn={this.onPressIn}
@@ -129,7 +154,7 @@ export default class Neuron extends Component {
             resizeMode='contain'
           />
         </TouchableWithoutFeedback>
-      </NeuronContainer>
+      </NeuronAnimatable>
     );
   }
 }

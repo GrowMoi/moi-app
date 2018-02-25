@@ -123,7 +123,7 @@ const api = {
   trees: {
     async getTree(username) {
       const endpoint = '/api/tree';
-      const res = await client.get(endpoint, { params: username });
+      const res = await client.get(endpoint, { params: { username } });
       return res;
     },
   },

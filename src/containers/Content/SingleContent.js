@@ -194,9 +194,11 @@ export default class SingleContentScene extends Component {
   }
 
   readContent = async (neuronId, contentId) => {
-    const { readContentAsync, currentNeuron: { neuron }, loadNeuronByIdAsync } = this.props;
+    const { readContentAsync, loadNeuronByIdAsync } = this.props;
     const res = await readContentAsync(neuronId, contentId);
+
     const { data } = res;
+    if(data === undefined) return;
 
     if (data.test) {
       Actions.quiz();

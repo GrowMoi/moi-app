@@ -133,6 +133,7 @@ const readContentAsync = (neuronId, contentId) => async (dispatch) => {
   } catch (error) {
     // console.log(error);
   }
+
   return res;
 };
 

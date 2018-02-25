@@ -52,15 +52,18 @@ export default class Tree extends Component {
     zoomScale: 1,
   }
 
-  async componentDidMount() {
-    const { loadTreeAsync, user, getUserProfileAsync, getAchievementsAsync } = this.props;
+  initialActions = async () => {
+    const { loadTreeAsync, getUserProfileAsync, getAchievementsAsync, user } = this.props;
 
     await Promise.all([
       loadTreeAsync(),
       getUserProfileAsync(user.profile.id),
       getAchievementsAsync(),
-    ])
+    ]);
+  }
 
+  async componentDidMount() {
+    await this.initialActions();
     this.getTreeLevel();
     this.setState({ loading: false });
   }

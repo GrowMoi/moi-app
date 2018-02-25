@@ -84,6 +84,7 @@ const routes = Actions.create(
       renderBackButton={backButton}
       {...navbarPropStyles}
       title='Contenido Individual'
+      renderRightButton={null}
     />
     <Scene
       key="tasks"
