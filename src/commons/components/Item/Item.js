@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Image,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import styled from 'styled-components/native';
+import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
 
 import { getHeightAspectRatio } from '../../utils';
@@ -27,23 +28,42 @@ const ItemImage = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(itemWidth, itemHeight, props.width)};
 `
+const ItemImageAnimated = Animatable.createAnimatableComponent(ItemImage);
 
-const Item = ({ type = 1, width = 90, onPress, active }) => {
-  const paddingForItem = 30;
-  const renderTypeItem = resources.getItem(type);
-  const box = resources.getBox();
+class Item extends Component {
+  handleViewRef = ref => this.item = ref;
 
-  return (
-    <Container source={box} resizeMode='contain' width={width}>
-      <TouchableOpacity onPress={onPress}>
-        <ItemImage
-          source={active ? renderTypeItem.source : renderTypeItem.inactive}
-          resizeMode='contain'
-          width={(width - paddingForItem)}
-        />
-      </TouchableOpacity>
-    </Container>
-  )
+  onPressItem = () => {
+    const { onPress } = this.props;
+    if(onPress) {
+      this.item.bounceIn(800)
+        .then(endState => {
+          if(endState.finished) {
+            onPress();
+          }
+        })
+    }
+  }
+
+  render() {
+    const { type = 1, width = 90, active } = this.props;
+    const paddingForItem = 30;
+    const renderTypeItem = resources.getItem(type);
+    const box = resources.getBox();
+
+    return (
+      <Container source={box} resizeMode='contain' width={width}>
+        <TouchableWithoutFeedback onPress={this.onPressItem}>
+          <ItemImageAnimated
+            ref={this.handleViewRef}
+            source={active ? renderTypeItem.source : renderTypeItem.inactive}
+            resizeMode='contain'
+            width={(width - paddingForItem)}
+          />
+        </TouchableWithoutFeedback>
+      </Container>
+    )
+  }
 }
 
 export default Item;

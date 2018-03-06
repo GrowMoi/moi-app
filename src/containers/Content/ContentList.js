@@ -8,6 +8,8 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import * as Animatable from 'react-native-animatable';
+import uuid from 'uuid/v4';
 
 // Common Components
 import Navbar from '../../commons/components/Navbar/Navbar';
@@ -22,18 +24,14 @@ import { Header } from '../../commons/components/Typography';
 // Actions
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
-
-const MessageContainer = styled(View)`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
+import EmptyState from '../../commons/components/EmptyState';
 
 const Container = styled(View)`
   flex: 1;
   align-items: center;
   justify-content: center;
 `
+const ContentPreviewAnimatable = Animatable.createAnimatableComponent(ContentPreview);
 
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
@@ -83,36 +81,40 @@ export default class ContentListScene extends Component {
     if(neuronSelected !== undefined) {
       contents = (neuronSelected.contents || []).filter(c => !c.read);
     }
-
-    const testMessage = (
-      <MessageContainer>
-        <Header>No existen, contenidos por aprender, en esta neurona.</Header>
-      </MessageContainer>
-    );
+    const contentsExist = (contents || []).length > 0;
 
     return (
       <MoiBackground>
         {!loading ? (
           <ContentBox>
-            <ScrollView contentContainerStyle={containerStyles}>
-              {contents && (contents || []).map((content, i) => {
-                const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
-                const oddInverted = i % 2 === 1;
+            {contentsExist && (
+              <ScrollView contentContainerStyle={containerStyles}>
+                {(contents || []).map((content, i) => {
+                  const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
+                  const oddInverted = i % 2 === 1;
 
-                return (
-                  <ContentPreview
-                    width={widthContentPreview}
-                    onPress={e => this.onPressRowcontent(e, content)}
-                    inverted={oddInverted}
-                    key={content.id}
-                    title={content.title}
-                    subtitle={normalizeKind}
-                    source={{ uri: content.media[0] }}
-                  />
-                );
-              })}
-              {!contents.length > 0 && testMessage}
-            </ScrollView>
+                  const MILLISECONDS = 100;
+                  const delay = MILLISECONDS * i;
+
+                  return (
+                    <ContentPreview
+                      animationDelay={delay}
+                      key={`${uuid()}-${content.id}`}
+                      width={widthContentPreview}
+                      onPress={e => this.onPressRowcontent(e, content)}
+                      inverted={oddInverted}
+                      title={content.title}
+                      subtitle={normalizeKind}
+                      source={{ uri: content.media[0] }}
+                    />
+                  );
+                })}
+              </ScrollView>
+            )}
+
+            {!contentsExist &&
+              <EmptyState text='Ya haz aprendido todos los contenidos en esta neurona' />
+            }
           </ContentBox>
         ) : (
           <Preloader />

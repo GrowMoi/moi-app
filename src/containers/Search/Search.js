@@ -7,6 +7,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 
+import EmptyState from '../../commons/components/EmptyState';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import SearchInput from './SearchInput';
 import { ContentBox, ContentPreview } from '../../commons/components/ContentComponents';
@@ -36,19 +37,23 @@ export default class Search extends PureComponent {
     Actions.singleContent({
       content_id: item.id,
       neuron_id: item.neuron_id,
-      title: 'Resultado',
+      title: 'Contenido',
     })
   }
 
   _keyExtractor = item => uuid();
   _renderItem = ({ item, index }) => {
     const { device } = this.props;
+
     const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
     const normalizeKind = `¿${normalize.normalizeFirstCapLetter(item.kind)}?`
     const oddInverted = index % 2 === 1;
+    const MILLISECONDS = 100;
+    const delay = MILLISECONDS * index;
 
     return (
       <ContentPreview
+        animationDelay={delay}
         width={widthContentPreview}
         title={item.title}
         subtitle={normalizeKind}
@@ -91,13 +96,13 @@ export default class Search extends PureComponent {
         />
       );
     } else {
-      if(searching) results = <TextBody>Buscando...</TextBody>;
-      else results = <TextBody>No hay resultados que mostrar</TextBody>;
+      if(searching) results = <EmptyState text='Buscando...' iconName='md-search' />
+      else results = <EmptyState text='No hay resultados que mostrar' />
     }
 
     const contentBox = !loading && (
       <ContentBox>
-        <SearchInput handleSubmit={this.onSubmit}/>
+        <SearchInput onSubmit={this.onSubmit}/>
         {results}
       </ContentBox>
     )

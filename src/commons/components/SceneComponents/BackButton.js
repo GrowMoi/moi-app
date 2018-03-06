@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
 import backArrow from '../../../../assets/images/buttons/back_arrow.png';
+import * as Animatable from 'react-native-animatable';
 
 const ButtonContainer = styled(View)`
   position: relative;
@@ -14,14 +15,26 @@ const BackImage = styled(Image)`
   height: 30;
 `;
 
+const ButtonContainerAnimated = Animatable.createAnimatableComponent(ButtonContainer);
+
 export default class BackButton extends Component {
+  handleViewRef = ref => this.backButton = ref;
+
+  onPressButton = () => {
+    const { onPress } = this.props
+    if(onPress) {
+      this.backButton.pulse(300)
+        .then(endState => onPres())
+    }
+  }
+
   render() {
     return (
-      <TouchableOpacity onPress={this.onPressButton} {...this.props}>
-        <ButtonContainer>
+      <TouchableWithoutFeedback onPress={this.onPressButton} {...this.props}>
+        <ButtonContainerAnimated ref={this.handleViewRef}>
           <BackImage source={backArrow} resizeMode='contain' />
-        </ButtonContainer>
-      </TouchableOpacity>
+        </ButtonContainerAnimated>
+      </TouchableWithoutFeedback>
     );
   }
 }

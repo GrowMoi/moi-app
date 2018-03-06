@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import * as Animatable from 'react-native-animatable';
 import {
   Image,
   StatusBar,
   KeyboardAvoidingView,
   Keyboard,
   View,
+  Alert,
   TouchableWithoutFeedback,
 } from 'react-native';
 
@@ -57,10 +59,20 @@ const Form = styled(View)`
   margin-top: ${Size.spaceMedium};
 `;
 
+const InputsContainer = styled(View)`
+  height: 135;
+  justify-content: center;
+  flex-shrink: 1;
+`;
+
 const ContainerLoginImages = styled(View)`
   flex-direction: row;
   flex-wrap: wrap;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
 `;
+const AnimatableContainerLoginKeys = Animatable.createAnimatableComponent(ContainerLoginImages);
 
 @connect(store => ({
   user: store.user.userData,
@@ -76,7 +88,9 @@ export default class Login extends Component {
     showingSelectionKey: false,
     showingUsername: true,
     currentSelected: '',
+    validating: false,
   }
+  handleFormContainer = ref => this.formContainer = ref;
 
   onChangeInput = (id, text) => {
     this.setState(({
@@ -92,7 +106,21 @@ export default class Login extends Component {
   submit = async () => {
     const { login, authorization_key } = this.state;
     const { loginAsync } = this.props;
-    loginAsync({ login, authorization_key });
+
+    this.setState({ validating: true });
+    await loginAsync({ login, authorization_key });
+
+    const { user: { authenticate } } = this.props
+
+    if(!authenticate) {
+      const animationDuraction = 800;
+      this.formContainer.shake(animationDuraction);
+      this.setState({ validating: false });
+
+      setTimeout(() => {
+        Alert.alert('Credenciales Incorrectas');
+      }, animationDuraction / 2);
+    };
   }
 
   showSelectionKey = () => {
@@ -109,7 +137,7 @@ export default class Login extends Component {
 
   render() {
     const { device } = this.props;
-    const { showingSelectionKey, authorization_key: key, login } = this.state;
+    const { showingSelectionKey, authorization_key: key, login, validating } = this.state;
     const { width } = device.dimensions;
 
     return (
@@ -127,51 +155,68 @@ export default class Login extends Component {
               width={width - Size.spaceXLarge}
               keyboardVerticalOffset={Size.spaceLarge}
             >
-              <StatusBar hidden/>
-              <WoodTitle title='Login' />
+              <Animatable.View ref={this.handleFormContainer}>
+                <StatusBar hidden/>
 
-              <Form>
-                {!showingSelectionKey &&
-                  <Input
-                    placeholder='nombre de usuario'
-                    keyboardType='email-address'
-                    autoCorrect={false}
-                    value={login}
-                    onChangeText={text => this.onChangeInput('login', text)}
-                  />
-                }
-                {
-                  showingSelectionKey &&
-                  <ContainerLoginImages>
-                    {loginImages.map((image) => {
-                      const selected = image.key === key;
-                      return (
-                        <LoginImage
-                          selected={selected}
-                          selectedImage={image.selected}
-                          key={image.key}
-                          keyName={image.key}
-                          source={image.source}
-                          name={image.name}
-                          onPress={this.onPressLoginImage}
+                <Animatable.View animation="bounceInDown" easing="ease-in">
+                  <WoodTitle title='Login' />
+                </Animatable.View>
+
+                <Form>
+                  <InputsContainer>
+                    {!showingSelectionKey &&
+                      <Animatable.View animation="fadeIn" delay={300}>
+                        <Input
+                          placeholder='nombre de usuario'
+                          keyboardType='email-address'
+                          autoCorrect={false}
+                          value={login}
+                          onChangeText={text => this.onChangeInput('login', text)}
                         />
-                      );
-                    })}
-                  </ContainerLoginImages>
-                }
-                {!showingSelectionKey &&
+                      </Animatable.View>
+                    }
+                    {showingSelectionKey &&
+                      <AnimatableContainerLoginKeys animation="fadeIn">
+                        {loginImages.map((image) => {
+                          const selected = image.key === key;
+                          return (
+                            <LoginImage
+                              selected={selected}
+                              selectedImage={image.selected}
+                              key={image.key}
+                              keyName={image.key}
+                              source={image.source}
+                              name={image.name}
+                              onPress={this.onPressLoginImage}
+                            />
+                          );
+                        })}
+                      </AnimatableContainerLoginKeys>
+                    }
+                  </InputsContainer>
+
                   <ButtonsContainer>
-                    <Button style={{ width: 120, marginRight: Size.spaceMedium }} title='Registrarse' onPress={Actions.register} />
-                    <Button style={{ width: 120 }} title='Siguiente' disabled={!((login.trim()).length > 0)} onPress={this.showSelectionKey} />
+                    <Animatable.View animation="bounceInLeft" easing="ease-in">
+                      <Button
+                        style={{ width: 130, marginRight: Size.spaceMedium }}
+                        title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
+                        onPress={!showingSelectionKey ? Actions.register : this.returnToUsername}
+                      />
+                    </Animatable.View>
+
+                    <Animatable.View animation="bounceInRight" easing="ease-in">
+                      <Button
+                        loading={validating}
+                        style={{ width: 130 }}
+                        title={!showingSelectionKey ? 'Siguiente' : 'Login'}
+                        disabled={!((login.trim()).length > 0)}
+                        onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
+                      />
+                    </Animatable.View>
                   </ButtonsContainer>
-                }
-                {showingSelectionKey &&
-                  <ButtonsContainer>
-                    <Button style={{ width: 120, marginRight: Size.spaceMedium }} title='Atras' onPress={this.returnToUsername} />
-                    <Button style={{ width: 120 }} title='Login' onPress={this.submit} />
-                  </ButtonsContainer>
-                }
-              </Form>
+
+                </Form>
+              </Animatable.View>
             </FormContainer>
           </LoginContainer>
         </MoiBackground>

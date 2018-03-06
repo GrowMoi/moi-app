@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 import { TextBody, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 
-const RowContainer = styled(TouchableOpacity)`
+const RowContainer = styled(View)`
   flex-direction: row;
   align-self: stretch;
   background-color: ${(props) => {
@@ -83,7 +84,9 @@ export default class ContentPreview extends Component {
     width: 100,
   }
 
-  get rowContent() {
+  handleViewRef = ref => this.contentRow = ref;
+
+  rowContent = () => {
     const { inverted, title, subtitle, description, source, width, closeButton } = this.props;
 
     const content = (
@@ -102,23 +105,49 @@ export default class ContentPreview extends Component {
         source={source} />
     );
 
-    if (inverted) return [content, image];
-    return [image, content];
+    const contentOrder = inverted ? [content, image] : [image, content];
+    return contentOrder;
+  }
+
+  onPressRow = () => {
+    const { onPress } = this.props;
+    if(onPress) {
+      this.contentRow.pulse(300)
+        .then(endState => {
+          if(endState.finished) {
+            onPress();
+          }
+        })
+    }
   }
 
   render() {
-    const { onPress, inverted, id, closeButton, onPressCloseButton } = this.props;
+    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false } = this.props;
     const closeAction = closeButton && (
       <CloseAction onPress={() => onPressCloseButton && onPressCloseButton(id)}>
         <Ionicons name='md-close' size={15} color={Palette.white.css()}/>
       </CloseAction>
     );
 
+    const content = (
+      <TouchableWithoutFeedback onPress={this.onPressRow}>
+        <Animatable.View ref={this.handleViewRef} style={{ alignSelf: 'stretch' }}>
+          <RowContainer id={id} inverted={inverted}>
+            {closeAction}
+            {this.rowContent()}
+          </RowContainer>
+        </Animatable.View>
+      </TouchableWithoutFeedback>
+    );
+
+    if(withoutAnimation) return content;
     return (
-      <RowContainer id={id} onPress={onPress} inverted={inverted}>
-        {closeAction}
-        {this.rowContent}
-      </RowContainer>
+      <Animatable.View
+        animation="bounceIn"
+        delay={animationDelay}
+      >
+        {content}
+      </Animatable.View>
     );
   }
 }

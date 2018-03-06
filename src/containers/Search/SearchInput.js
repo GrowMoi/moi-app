@@ -35,7 +35,7 @@ class SearchInput extends Component {
 
   render() {
     const { query } = this.state;
-    const { handleSubmit } = this.props;
+    const { onSubmit } = this.props;
     return (
       <Container>
         <InputContainer>
@@ -45,7 +45,7 @@ class SearchInput extends Component {
             leftIcon='md-search'
             leftIconColor='white'
             rightIcon='md-refresh'
-            onPressRightIcon={() => handleSubmit(query)}
+            onPressRightIcon={() => onSubmit(query)}
             input={{
               onChange: this.onChangeText,
             }}

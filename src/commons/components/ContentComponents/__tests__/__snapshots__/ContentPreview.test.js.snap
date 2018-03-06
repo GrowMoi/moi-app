@@ -1,65 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Content Preview it should render row as expected 1`] = `
-<TouchableOpacity
-  activeOpacity={0.2}
-  focusedOpacity={0.7}
+<AnimatedComponent
   style={
     Array [
-      Object {
-        "alignSelf": "stretch",
-        "backgroundColor": "#9fbc65",
-        "borderColor": "transparent",
-        "borderLeftColor": "transparent",
-        "borderRadius": 10,
-        "borderRightColor": "rgba(255,255,255,0.4)",
-        "borderTopColor": "rgba(255,255,255,0.4)",
-        "borderWidth": 2,
-        "flexDirection": "row",
-        "marginBottom": 10,
-        "paddingHorizontal": 10,
-        "paddingVertical": 10,
-        "shadowColor": "#4a4b21",
-        "shadowOffset": Object {
-          "height": 5,
-          "width": -5,
-        },
-        "shadowOpacity": 0.2,
-        "shadowRadius": 2,
-      },
       undefined,
+      Object {
+        "opacity": 0,
+        "transform": Array [
+          Object {
+            "scale": 0.3,
+          },
+        ],
+      },
+      Object {},
     ]
   }
 >
-  <Styled(Image)
-    resizeMode="cover"
-    source={
-      Object {
-        "uri": "http://www.wolaver.org/space/crab.jpg",
+  <TouchableWithoutFeedback
+    onPress={[Function]}
+  >
+    <withAnimatable(View)
+      delay={0}
+      direction="normal"
+      iterationCount={1}
+      onAnimationBegin={[Function]}
+      onAnimationEnd={[Function]}
+      style={
+        Object {
+          "alignSelf": "stretch",
+        }
       }
-    }
-    width={100}
-  />
-  <Styled(View)>
-    <Styled(Text)
-      ellipsizeMode="tail"
-      numberOfLines={2}
+      useNativeDriver={false}
     >
-      Grab Nebula
-    </Styled(Text)>
-    <Styled(Text)
-      secondary={true}
-      small={true}
-    >
-      Que es?
-    </Styled(Text)>
-    <Styled(Text)
-      ellipsizeMode="tail"
-      numberOfLines={4}
-      small={true}
-    >
-      lorem lorem loremlorem lorem lorem laskdj flakd jfalskdfj alskdf jsadkfj jasdl;fk jasdfkl diasdj asdfh aksdfjh akdfjh akldfjhas fjd
-    </Styled(Text)>
-  </Styled(View)>
-</TouchableOpacity>
+      <Styled(View)>
+        <Styled(Image)
+          resizeMode="cover"
+          source={
+            Object {
+              "uri": "http://www.wolaver.org/space/crab.jpg",
+            }
+          }
+          width={100}
+        />
+        <Styled(View)>
+          <Styled(Text)
+            ellipsizeMode="tail"
+            numberOfLines={2}
+          >
+            Grab Nebula
+          </Styled(Text)>
+          <Styled(Text)
+            secondary={true}
+            small={true}
+          >
+            Que es?
+          </Styled(Text)>
+          <Styled(Text)
+            ellipsizeMode="tail"
+            numberOfLines={4}
+            small={true}
+          >
+            lorem lorem loremlorem lorem lorem laskdj flakd jfalskdfj alskdf jsadkfj jasdl;fk jasdfkl diasdj asdfh aksdfjh akdfjh akldfjhas fjd
+          </Styled(Text)>
+        </Styled(View)>
+      </Styled(View)>
+    </withAnimatable(View)>
+  </TouchableWithoutFeedback>
+</AnimatedComponent>
 `;

@@ -84,6 +84,7 @@ const routes = Actions.create(
       renderBackButton={backButton}
       {...navbarPropStyles}
       title='Contenido Individual'
+      renderRightButton={null}
     />
     <Scene
       key="tasks"
@@ -105,6 +106,7 @@ const routes = Actions.create(
       component={ProfileScene}
       renderBackButton={backButton}
       {...navbarPropStyles}
+      renderRightButton={null}
     />
     <Scene
       key="editProfile"
@@ -112,6 +114,7 @@ const routes = Actions.create(
       component={EditProfileScene}
       renderBackButton={backButton}
       {...navbarPropStyles}
+      renderRightButton={null}
     />
     <Scene
       key="publicProfile"

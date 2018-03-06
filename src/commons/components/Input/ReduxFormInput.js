@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
-import { TextInput, View, TouchableOpacity } from 'react-native';
+import { TextInput, View, TouchableOpacity, Animated, Easing } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { Palette, Size } from '../../styles';
 import { TextBody } from '../Typography';
@@ -51,23 +51,69 @@ const LeftIcon = styled(Ionicons)`
   z-index: 1;
 `
 
-const renderIcon = ({ leftIcon, rightIcon, onPress, ...rest }) => {
+class RenderIcon extends Component {
+  _spinValue = new Animated.Value(0);
 
-  let CurrentIcon;
-  if(leftIcon) CurrentIcon = LeftIcon;
-  else if (rightIcon) CurrentIcon = RightIcon;
+  onPress = () => {
+    const { onPress, isSpinner } = this.props;
 
-  const icon = <CurrentIcon {...rest} size={20} />
-
-  if(onPress) {
-    return (
-      <TouchableOpacity onPress={onPress}>
-        {icon}
-      </TouchableOpacity>
-    )
+    if (onPress) {
+      if (isSpinner) { this.animate(); }
+      onPress();
+    }
   }
 
-  return icon;
+  animate = () => {
+    const { duration = 800 } = this.props;
+
+    Animated.timing(
+      this._spinValue,
+      {
+        toValue: 1,
+        duration: duration,
+        easing: Easing.linear,
+      }
+    ).start(({ finished }) => {
+      if(finished) { this._spinValue.setValue(0); }
+    });
+  }
+
+  render() {
+    const { leftIcon, rightIcon, onPress, isSpinner, duration, ...rest } = this.props;
+
+    let CurrentIcon;
+    if(leftIcon) CurrentIcon = LeftIcon;
+    else if (rightIcon) CurrentIcon = RightIcon;
+
+    let spin = '0deg';
+    if (isSpinner) {
+      spin = this._spinValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: ['0deg', '360deg']
+      });
+
+      CurrentIcon = Animated.createAnimatedComponent( CurrentIcon );
+    }
+
+    const icon = (
+      <CurrentIcon
+        style={{ transform: [{ rotate: spin }] }}
+        size={20}
+        {...rest}
+      />
+    );
+
+    if(onPress) {
+      return (
+        <TouchableOpacity onPress={this.onPress}>
+          {icon}
+        </TouchableOpacity>
+      )
+    }
+
+    return icon;
+  }
+
 }
 
 const ReduxFormInput = ({ input, meta, label, rightIcon = false, leftIcon = false, leftIconColor, rightIconColor, onPressRightIcon, onPressLeftIcon, type = 'text', ...inputProps }) => {
@@ -84,9 +130,10 @@ const ReduxFormInput = ({ input, meta, label, rightIcon = false, leftIcon = fals
     name: rightIcon,
     color: rightIconColor,
     onPress: onPressRightIcon,
+    isSpinner: true,
   }
-  const leftIconC = leftIcon && renderIcon(leftIconProps);
-  const rightIconC = rightIcon && renderIcon(rightIconProps);
+  const leftIconC = leftIcon && <RenderIcon {...leftIconProps} />;
+  const rightIconC = rightIcon && <RenderIcon {...rightIconProps} />;
 
   let value = input.value;
   if(typeof input.value === 'number') value = input.value.toString();

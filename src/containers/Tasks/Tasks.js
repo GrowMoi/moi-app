@@ -63,10 +63,19 @@ class Tasks extends Component {
             tasks.content_tasks.content_tasks.map((content, i) => {
               const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
               const oddInverted = i % 2 === 1;
+              const MILLISECONDS = 100;
+              const delay = MILLISECONDS * i;
+
+              /*
+               * temporarily the variable will be declared as false,
+               * until the feature (close item) will be implemented.
+              */
+              const hasCloseButton = false;
 
               return (
                 <ContentPreview
-                  closeButton
+                  animationDelay={delay}
+                  closeButton={hasCloseButton}
                   id={content.id}
                   onPressCloseButton={id => console.log('CLOSE CONTENT', id)}
                   width={widthContentPreview}

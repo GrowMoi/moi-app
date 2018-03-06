@@ -3,3 +3,4 @@ export { default as cacheImages } from './cacheImages';
 export { default as normalize } from './normalize';
 export { default as youtube } from './youtube';
 export { default as getHeightAspectRatio } from './getHeightAspectRatio';
+export { default as math } from './math';

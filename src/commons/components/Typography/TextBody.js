@@ -11,6 +11,11 @@ const StyledTextBody = styled(Text)`
     else if (props.condensed) return Font.futura('condensed');
     return Font.futura();
   }};
+  text-align: ${props => {
+    if(props.center) return 'center';
+    else if(props.right) return 'right';
+    return 'left';
+  }};
   color: ${(props) => {
     if (props.inverted) return Palette.invertedText;
     else if (props.color) return props.color;

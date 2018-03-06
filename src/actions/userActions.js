@@ -49,7 +49,6 @@ const loginAsync = ({ login, authorization_key: authorizationKey }) => async (di
     Actions.moiDrawer();
   } catch (error) {
     dispatch(notAuthenticate());
-    Alert.alert('Credenciales Incorrectas');
   }
 
   return res;
@@ -134,6 +133,7 @@ const readContentAsync = (neuronId, contentId) => async (dispatch) => {
   } catch (error) {
     // console.log(error);
   }
+
   return res;
 };
 
