@@ -35,11 +35,16 @@ const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
 };
 
 const loadRecomendedContents = () => async (dispatch) => {
-  const res = await api.contents.getRecomendedContents();
-  dispatch(setCurrentRecomendedContents(res.data));
-  dispatch(setHeaders(res.headers));
+  let res;
+  try {
+    res = await api.contents.getRecomendedContents();
+    dispatch(setCurrentRecomendedContents(res.data));
+    dispatch(setHeaders(res.headers));
+  } catch (error) {
+    // console.log(error);
+  }
 
-  return res.data;
+  return res;
 };
 
 export default {

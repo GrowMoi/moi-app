@@ -32,8 +32,8 @@ class Tasks extends Component {
 
   getRandomContents = async () => {
     const { loadRecomendedContents, loadNeuronByIdAsync } = this.props;
-    const recomendedContents = await loadRecomendedContents(1);
-    const neurons = (recomendedContents.neurons || []);
+    const { data } = await loadRecomendedContents(1);
+    const neurons = (data.neurons || []);
     const randomNeuron = (neurons[Math.floor(Math.random() * neurons.length)] || {});
 
     await loadNeuronByIdAsync(randomNeuron.id || 1);
@@ -53,24 +53,29 @@ class Tasks extends Component {
   render() {
     const { loading } = this.state;
     const { device, user: { tasks }, neuronSelected } = this.props;
-    const widthContentPreview = device.dimensions.width > 320 ? 150 : 100;
+    const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
+
+    console.log(neuronSelected);
 
     const containerStyles = {
-      width: (device.dimensions.width - Size.spaceLarge),
+      width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
 
     const contentBox = !loading && (
       <ContentBox>
         <ScrollView contentContainerStyle={containerStyles}>
-          {((neuronSelected.neuron || {}).contents || []).map((content, i) => {
+          {((neuronSelected || {}).contents || []).map((content, i) => {
               const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind || '')}?`;
               const oddInverted = i % 2 === 1;
 
+              const MILLISECONDS = 100;
+              const delay = MILLISECONDS * i;
+
               return (
                 <ContentPreview
-                  closeButton
                   id={content.id}
+                  animationDelay={delay}
                   width={widthContentPreview}
                   onPress={e => this.onPressRowcontent(e, content)}
                   inverted={oddInverted}
