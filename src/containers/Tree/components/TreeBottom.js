@@ -48,16 +48,18 @@ export default class TreeBottom extends Component {
     return (
       <BottomContainer>
         <BarContainer><BottomBar/></BarContainer>
-        <ButtonMore onPress={this.showOptions}>
-          <Icon.Ionicons name="ios-more" size={45} />
-        </ButtonMore>
-        <ActionSheet
+        {/*
+          <ButtonMore onPress={this.showOptions}>
+            <Icon.Ionicons name="ios-more" size={45} />
+          </ButtonMore>
+          <ActionSheet
           options={options}
           visible={optionsAreVisible}
           hasCancelOption
           supportedOrientations={['portrait', 'landscape', 'portrait-upside-down']}
           hardwareAccelerated
           dismiss={this.hideOptions} />
+        */}
       </BottomContainer>
     );
   }

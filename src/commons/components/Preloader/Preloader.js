@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image } from 'react-native';
+import { View, Image, Modal } from 'react-native';
 import styled from 'styled-components/native';
+
+import { Palette } from '../../styles'
 import loadingGif from '../../../../assets/images/loading.gif';
 
 const PreloaderContainer = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
+  background-color: ${Palette.dark.alpha(0.2).css()};
 `;
 
 const Loader = styled(Image)`
@@ -15,17 +18,46 @@ const Loader = styled(Image)`
   height: ${props => props.size};
 `;
 
-const Preloader = props => (
-  <PreloaderContainer>
-    <Loader
-      size={props.size}
-      source={loadingGif}
-    />
-  </PreloaderContainer>
-);
+class Preloader extends Component {
+  state = {
+    modalIsVisible: true
+  }
+
+  componentWillUnmount() {
+    this.setState({ modalIsVisible: false });
+  }
+
+  render() {
+    const { modalIsVisible } = this.props;
+    const { size, notFullScreen } = this.props;
+
+    const loader = (
+      <PreloaderContainer>
+        <Loader
+          size={size}
+          source={loadingGif}
+        />
+      </PreloaderContainer>
+    );
+
+    if(notFullScreen) return loader;
+    return (
+      <PreloaderContainer>
+        <Modal
+          animationType='fade'
+          transparent={true}
+          visible={modalIsVisible}
+        >
+          {loader}
+        </Modal>
+      </PreloaderContainer>
+    );
+  }
+}
 
 Preloader.propTypes = {
   size: PropTypes.number,
+  notFullScreen: PropTypes.bool,
 };
 
 Preloader.defaultProps = {
