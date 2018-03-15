@@ -63,7 +63,7 @@ export default class LeaderBoard extends Component {
       }
     })
 
-    if(!(dataLeaders.leaders || []).length) return <Preloader />;
+    if(!(dataLeaders.leaders || []).length) return <Preloader notFullScreen />;
     return (
       <MoiBackground>
         <Navbar />
