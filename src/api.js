@@ -110,6 +110,12 @@ const api = {
       const res = await client.post(endpoint, { note: notes });
       return res;
     },
+
+    async getRecomendedContents() {
+      const endpoint = '/api/users/recommended_neurons';
+      const res = await client.get(endpoint);
+      return res;
+    },
   },
 
   preferences: {

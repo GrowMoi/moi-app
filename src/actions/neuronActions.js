@@ -12,6 +12,11 @@ const setCurrentContent = content => ({
   payload: content,
 });
 
+const setCurrentRecomendedContents = content => ({
+  type: actionTypes.LOAD_RECOMENDED_CONTENTS,
+  payload: content,
+});
+
 const loadNeuronByIdAsync = id => async (dispatch) => {
   const res = await api.neuron.getNeuronById(id);
   dispatch(setCurrentNeuron(res.data));
@@ -29,7 +34,21 @@ const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
   return res;
 };
 
+const loadRecomendedContents = () => async (dispatch) => {
+  let res;
+  try {
+    res = await api.contents.getRecomendedContents();
+    dispatch(setCurrentRecomendedContents(res.data));
+    dispatch(setHeaders(res.headers));
+  } catch (error) {
+    // console.log(error);
+  }
+
+  return res;
+};
+
 export default {
   loadNeuronByIdAsync,
   loadContentByIdAsync,
+  loadRecomendedContents,
 };

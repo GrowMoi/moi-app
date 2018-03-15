@@ -7,6 +7,7 @@ import ContentListScene from './containers/Content/ContentList';
 import SingleContentScene from './containers/Content/SingleContent';
 import ProfileScene, { EditProfileScene, PublicProfileScene } from './containers/Profile';
 import Tasks from './containers/Tasks/Tasks';
+import RandomContents from './containers/RandomContents/RandomContents';
 import Settings from './containers/Settings/Settings';
 import QuizScene from './containers/Quiz/Quiz';
 import BackButton from './commons/components/SceneComponents/BackButton';
@@ -131,6 +132,15 @@ const routes = Actions.create(
       renderBackButton={backButtonQuiz}
       renderRightButton={null}
     />
+
+    <Scene
+      key="randomContents"
+      title="Contenidos Aleatorios"
+      component={RandomContents}
+      renderBackButton={backButton}
+      {...navbarPropStyles}
+    />
+
   </Scene>,
 );
 
