@@ -55,8 +55,6 @@ class Tasks extends Component {
     const { device, user: { tasks }, neuronSelected } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
 
-    console.log(neuronSelected);
-
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
