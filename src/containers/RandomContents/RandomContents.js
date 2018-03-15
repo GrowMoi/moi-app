@@ -35,7 +35,7 @@ class Tasks extends Component {
     const recomendedContents = await loadRecomendedContents(1);
     const neurons = (recomendedContents.neurons || []);
     const randomNeuron = (neurons[Math.floor(Math.random() * neurons.length)] || {});
-    console.log(randomNeuron);
+
     await loadNeuronByIdAsync(randomNeuron.id || 1);
     this.setState({ loading: false });
   }
@@ -71,7 +71,6 @@ class Tasks extends Component {
                 <ContentPreview
                   closeButton
                   id={content.id}
-                  onPressCloseButton={id => console.log('CLOSE CONTENT', id)}
                   width={widthContentPreview}
                   onPress={e => this.onPressRowcontent(e, content)}
                   inverted={oddInverted}

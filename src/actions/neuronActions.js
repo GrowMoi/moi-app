@@ -19,7 +19,6 @@ const setCurrentRecomendedContents = content => ({
 
 const loadNeuronByIdAsync = id => async (dispatch) => {
   const res = await api.neuron.getNeuronById(id);
-  console.log(res.data);
   dispatch(setCurrentNeuron(res.data));
   dispatch(setHeaders(res.headers));
 
@@ -36,7 +35,7 @@ const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
 };
 
 const loadRecomendedContents = () => async (dispatch) => {
-  const res = await api.contents.getRecomendedContents(); 
+  const res = await api.contents.getRecomendedContents();
   dispatch(setCurrentRecomendedContents(res.data));
   dispatch(setHeaders(res.headers));
 
