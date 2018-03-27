@@ -23,7 +23,11 @@ import Item from '../../commons/components/Item/Item';
 import WoodFrame from '../../commons/components/WoodFrame';
 import { TextBody } from '../../commons/components/Typography';
 
+// Viñetas
 import vineta_1 from '../../../assets/videos/vineta_1.mp4';
+import vineta_2 from '../../../assets/videos/vineta_2.mp4';
+import vineta_3 from '../../../assets/videos/vineta_3.mp4';
+import vineta_4 from '../../../assets/videos/vineta_4.mp4';
 
 import userActions from '../../actions/userActions';
 
@@ -43,6 +47,7 @@ const FrameContainer = styled(View)`
 export default class Inventory extends Component {
   state = {
     modalVisible: false,
+    currentVineta: null,
   }
 
   updateItem = async ({ id, name }) => {
@@ -51,13 +56,25 @@ export default class Inventory extends Component {
     if(id) await updateAchievementsAsync(id);
   }
 
-  showVideo = (show = true) => {
-    this.setState({ modalVisible: show });
+  showVideo = (show = true, vineta = vineta_1) => {
+    this.setState({ modalVisible: show, currentVineta: vineta });
   }
 
   activeItem = item => {
     if(item.number === 1) {
       this.showVideo();
+      return;
+    }
+    else if(item.number === 6) {
+      this.showVideo(true, vineta_2);
+      return;
+    }
+    else if(item.number === 7) {
+      this.showVideo(true, vineta_3);
+      return;
+    }
+    else if(item.number === 8) {
+      this.showVideo(true, vineta_4);
       return;
     }
 
@@ -97,7 +114,7 @@ export default class Inventory extends Component {
   }
 
   render() {
-    const { modalVisible } = this.state;
+    const { modalVisible, currentVineta } = this.state;
     const { device: { dimensions: { width, height } }, achievements } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
@@ -128,7 +145,7 @@ export default class Inventory extends Component {
 
         <Video
           videoDimensions={videoDimensions}
-          source={vineta_1}
+          source={currentVineta}
           dismiss={() => this.showVideo(false)}
           visible={modalVisible}
           width={width}
