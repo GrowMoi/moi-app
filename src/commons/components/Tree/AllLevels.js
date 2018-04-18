@@ -6,6 +6,8 @@ import { getHeightAspectRatio } from '../../utils';
 import NeuronsLayer from './NeuronsLayer';
 import Branches from './allBranches';
 
+import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
+import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
 import arbolNivel5Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel5_gris.png';
 import arbolNivel6Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel6_gris.png';
 import arbolNivel7Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel7_gris.png';
@@ -40,6 +42,8 @@ const Levels = styled(View)`
 export default class AllLevels extends Component {
   render() {
     const { userTree: { tree, meta: { depth } } } = this.props;
+    const isLevel4 = depth === 4;
+    const isLevel3 = depth === 3;
     const isLevel5 = depth === 5;
     const isLevel6 = depth === 6;
     const isLevel7 = depth === 7;
@@ -61,6 +65,8 @@ export default class AllLevels extends Component {
       <Container>
         <Levels>
           {isLevel5 && <TreeBase source={arbolNivel5Gris} {...defaultProps}/>}
+          {isLevel4 && <TreeBase source={arbolNivel4Gris} {...defaultProps}/>}
+          {isLevel3 && <TreeBase source={arbolNivel4Gris} {...defaultProps}/>}
           {isLevel6 && <TreeBase source={arbolNivel6Gris} {...defaultProps}/>}
           {isLevel7 && <TreeBase source={arbolNivel7Gris} {...defaultProps}/>}
           {isLevel8 && <TreeBase source={arbolNivel8Gris} {...defaultProps}/>}

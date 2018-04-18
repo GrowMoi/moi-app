@@ -25,7 +25,7 @@ export default class ContentImage extends Component {
     return (
       <Container size={size}>
         <Img {...rest} onLoad={() => this.setState({ loading: false })}>
-          {this.state.loading && <Preloader />}
+          {this.state.loading && <Preloader notFullScreen />}
         </Img>
       </Container>
     );

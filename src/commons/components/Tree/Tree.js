@@ -86,9 +86,9 @@ export default class Tree extends Component {
       case 2:
         return { component: levels.tree2, zoomScale: 1 };
       case 3:
-        return { component: levels.tree3, zoomScale: 2 };
+        return { component: levels.allLevels, zoomScale: 2 };
       case 4:
-        return { component: levels.tree3, zoomScale: 3 };
+        return { component: levels.allLevels, zoomScale: 3 };
       case 5:
         return { component: levels.allLevels, zoomScale: 4 };
       case 6:
