@@ -10,7 +10,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
@@ -195,18 +195,21 @@ export default class SingleContentScene extends Component {
 
   readContent = async (neuronId, contentId) => {
     const { readContentAsync, loadNeuronByIdAsync } = this.props;
+    this.setState({loading: true});
     const res = await readContentAsync(neuronId, contentId);
 
     const { data } = res;
     if(data === undefined) return;
 
     if (data.test) {
-      Actions.quiz();
+      this.setState({loading: false});
+      Actions.quiz({type: ActionConst.RESET});
     } else {
       this.showAlert(
         'Contenido aprendido',
         async () => {
           await loadNeuronByIdAsync(neuronId);
+          this.setState({loading: false});
           Actions.pop();
         },
       );

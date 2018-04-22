@@ -30,6 +30,7 @@ import vineta_3 from '../../../assets/videos/vineta_3.mp4';
 import vineta_4 from '../../../assets/videos/vineta_4.mp4';
 
 import userActions from '../../actions/userActions';
+import Preloader from '../../commons/components/Preloader/Preloader';
 
 const FrameContainer = styled(View)`
   margin-top: ${Size.navbarHeight};
@@ -48,12 +49,17 @@ export default class Inventory extends Component {
   state = {
     modalVisible: false,
     currentVineta: null,
+    loading: false
   }
 
   updateItem = async ({ id, name }) => {
     const { updateAchievementsAsync } = this.props;
 
-    if(id) await updateAchievementsAsync(id);
+    if(id) {
+      this.setState({ loading: true });
+      await updateAchievementsAsync(id);
+      this.setState({ loading: false });
+    }
   }
 
   showVideo = (show = true, vineta = vineta_1) => {
@@ -114,7 +120,7 @@ export default class Inventory extends Component {
   }
 
   render() {
-    const { modalVisible, currentVineta } = this.state;
+    const { modalVisible, currentVineta, loading } = this.state;
     const { device: { dimensions: { width, height } }, achievements } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
@@ -131,6 +137,7 @@ export default class Inventory extends Component {
       <MoiBackground>
         <Navbar />
         <FrameContainer>
+          {loading && <Preloader/>}
           <LeaderFrame width={leaderFramePadding}>
             <WoodFrame width={woodFramePadding}>
               <FlatList
