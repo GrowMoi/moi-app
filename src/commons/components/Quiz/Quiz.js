@@ -24,6 +24,8 @@ export default class Quiz extends Component {
   }
 
   onQuizFinished = (answer) => {
+    if (!answer) return;
+
     const { answers } = this.state;
     const { onQuizComplete } = this.props;
 

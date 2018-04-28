@@ -10,6 +10,7 @@ import { Quiz, Question } from '../../commons/components/Quiz';
 import userActions from '../../actions/userActions';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import ComplementaryScene from './ComplementaryQuizScene';
+import Preloader from '../../commons/components/Preloader/Preloader';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -32,6 +33,7 @@ export default class QuizScene extends Component {
   state = {
     currentScene: 'intro',
     results: [],
+    loading: false,
   }
 
   quizFinished = async (answers) => {
@@ -41,9 +43,11 @@ export default class QuizScene extends Component {
       answer_id: answer.id,
       content_id: answer.content_id,
     }));
-
     const formatedAnswers = JSON.stringify(allAnswers);
+    this.setState({ loading: true });
     const res = await learnContentsAsync(quiz.id, formatedAnswers);
+    this.setState({ loading: false });
+
     const { data } = res;
     if (!data.result) return;
 
@@ -82,13 +86,14 @@ export default class QuizScene extends Component {
   }
 
   render() {
-    const { currentScene } = this.state;
+    const { currentScene, loading } = this.state;
     const { quiz } = this.props;
-
     return (
-      <Background>
-        {quiz && Object.keys(quiz).length && (
+
+      {quiz && Object.keys(quiz).length && (
+        <Background>
           <QuizSceneContainer>
+            {loading && <Preloader/>}
             {currentScene === 'intro' && this.renderIntroScene}
             {currentScene === 'quiz' &&
               <Quiz onQuizComplete={this.quizFinished}>
