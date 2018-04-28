@@ -90,8 +90,8 @@ export default class QuizScene extends Component {
     const { quiz } = this.props;
     return (
 
-      {quiz && Object.keys(quiz).length && (
-        <Background>
+      <Background>
+        {quiz && Object.keys(quiz).length && (
           <QuizSceneContainer>
             {loading && <Preloader/>}
             {currentScene === 'intro' && this.renderIntroScene}
