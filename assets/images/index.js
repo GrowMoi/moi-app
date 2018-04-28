@@ -270,4 +270,9 @@ export default [
   require('../videos/vineta_3.mp4'),
   require('../videos/vineta_4.mp4'),
 
+  //Sounds
+  require('../sounds/intro.mp3'),
+  require('../sounds/read_content.mp3'),
+  require('../sounds/test.mp3'),
+  require('../sounds/fondo.mp3'),
 ];
