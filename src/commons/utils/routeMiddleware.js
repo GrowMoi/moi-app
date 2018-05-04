@@ -1,8 +1,6 @@
 import { ActionConst } from 'react-native-router-flux';
 import { Sound, sounds } from '../components/SoundPlayer';
 
-const sound = new Sound();
-
 const previousScene = '';
 const conflictScenes = ['content', 'profile']
 
@@ -19,7 +17,7 @@ const routeMiddleware = args => store => next => action => {
     }
 
     if (!isDrawerScene(currentScene)) {
-      sound.play(sounds[currentScene]);
+      Sound.play(sounds[currentScene]);
     }
 
     previousScene = currentScene;

@@ -70,7 +70,7 @@ export default class ContentBox extends Component {
       <Container>
         <ContentScreen
           style={style}
-          resizeMode='contain'
+          resizeMode='stretch'
           width={(width - padding)}
           source={currentBox}
           {...rest}>

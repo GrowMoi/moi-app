@@ -4,7 +4,6 @@
     "name": "Moi",
     "version": "1.0.0",
     "slug": "moi-app",
-    "orientation": "portrait",
     "packagerOpts": {
       "assetExts": [
         "ttf",

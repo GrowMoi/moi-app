@@ -47,6 +47,7 @@ class Preloader extends Component {
           animationType='fade'
           transparent={true}
           visible={modalIsVisible}
+          supportedOrientations={['portrait', 'landscape']}
         >
           {loader}
         </Modal>

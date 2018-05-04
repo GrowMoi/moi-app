@@ -6,23 +6,33 @@ export default class Sound {
 
     constructor() { }
 
-    play = async (options) => {
+    static play = async (options) => {
         if (!options) return;
         const { source, volume = 1, repeat = false } = options;
 
-        await this.stop();
+        await Sound.stop();
 
         const { sound, status } = await Audio.Sound.create(source);
-
+        this.status = status;
         this.soundObject = sound;
         this.soundObject.setIsLoopingAsync(repeat);
         this.soundObject.setVolumeAsync(volume);
         this.soundObject.playAsync();
     }
 
-    stop = async () => {
+    static pause = async () => {
+        if (!this.soundObject) return;
+        let status = await this.soundObject.getStatusAsync();
+        if(status.isPlaying) {
+            await this.soundObject.pauseAsync();
+        } else {
+            this.soundObject.playAsync();
+        }
+    }
+
+    static stop = async () => {
         if (this.soundObject) {
-            await this.soundObject.stopAsync();
+            return await this.soundObject.stopAsync();
         }
     }
 

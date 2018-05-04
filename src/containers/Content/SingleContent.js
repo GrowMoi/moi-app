@@ -129,9 +129,12 @@ export default class SingleContentScene extends Component {
 
   loadContentAsync = async () => {
     const { loadContentByIdAsync, content_id, neuron_id } = this.props;
-    await loadContentByIdAsync(neuron_id, content_id);
-
-    this.setState({ loading: false });
+    try {
+      await loadContentByIdAsync(neuron_id, content_id);
+      this.toggleLoading();
+    } catch (error) {
+      this.showErrorMessage();
+    }
   }
 
   setModalVisible(visible, currentId = '') {
@@ -195,26 +198,41 @@ export default class SingleContentScene extends Component {
 
   readContent = async (neuronId, contentId) => {
     const { readContentAsync, loadNeuronByIdAsync } = this.props;
-    this.setState({loading: true});
-    const res = await readContentAsync(neuronId, contentId);
+    this.toggleLoading();
+    try {
+      const res = await readContentAsync(neuronId, contentId);
 
-    const { data } = res;
-    if(data === undefined) return;
+      const { data } = res;
+      if(data === undefined) return;
 
-    if (data.test) {
-      this.setState({loading: false});
-      Actions.quiz({type: ActionConst.RESET});
-    } else {
-      this.showAlert(
-        'Contenido aprendido',
-        async () => {
-          await loadNeuronByIdAsync(neuronId);
-          this.setState({loading: false});
-          Actions.pop();
-        },
-      );
+      if (data.test) {
+          this.toggleLoading();
+        Actions.quiz({type: ActionConst.RESET});
+      } else {
+        this.showAlert(
+          'Contenido aprendido',
+          async () => {
+            await loadNeuronByIdAsync(neuronId);
+              this.toggleLoading();
+            Actions.pop();
+          },
+        );
+      }
+    } catch (error) {
+      this.showErrorMessage();
     }
   };
+
+  showErrorMessage() {
+    this.toggleLoading();
+    this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde', () => Actions.pop());
+  }
+
+  toggleLoading() {
+    this.setState(prevState => ({
+      loading: !prevState.loading
+    }));
+  }
 
   render() {
     const { contentSelected: content, device } = this.props;

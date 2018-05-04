@@ -56,10 +56,25 @@ export default class Inventory extends Component {
     const { updateAchievementsAsync } = this.props;
 
     if(id) {
-      this.setState({ loading: true });
-      await updateAchievementsAsync(id);
-      this.setState({ loading: false });
+      try {
+        this.toggleLoading();
+        await updateAchievementsAsync(id);     
+        this.toggleLoading();
+      } catch(error) {  
+        this.showErrorMessage();
+      }
     }
+  }
+
+  showErrorMessage() {
+    this.toggleLoading();
+    this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde', () => Actions.pop());
+  }
+
+  toggleLoading() {
+    this.setState(prevState => ({
+      loading: !prevState.loading
+    }));
   }
 
   showVideo = (show = true, vineta = vineta_1) => {

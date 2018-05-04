@@ -34,7 +34,7 @@ export default class LeaderBoard extends Component {
   }
 
   fetchNextPage = async () => {
-    const { leaders: { meta } } = this.props;
+    const { leaders: { meta }, getLeaderboardAsync } = this.props;
 
     if(meta.total_pages > 1) {
       await getLeaderboardAsync();
