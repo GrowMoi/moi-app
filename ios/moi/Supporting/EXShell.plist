@@ -6,7 +6,11 @@
 	<true/>
 	<key>isShell</key>
 	<true/>
+	<key>isSplashScreenDisabled</key>
+	<true/>
 	<key>manifestUrl</key>
-	<string>exp://exp.host/@moi/moi-app</string>
+	<string>exp://exp.host/@mvinan/moi</string>
+	<key>releaseChannel</key>
+	<string>default</string>
 </dict>
 </plist>

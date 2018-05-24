@@ -1,13 +1,16 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 
+EXPO_CPP_HEADER_DIR = 'ExpoKit'
+
 target 'moi' do
   pod 'ExpoKit',
     :git => "http://github.com/expo/expo.git",
-    :tag => "ios/1.18.2",
+    :tag => "ios/2.5.10",
     :subspecs => [
       "Core",
-      "CPP"
+      "CPP",
+      "GL"
     ]
 
   pod 'React',
@@ -25,10 +28,19 @@ target 'moi' do
       "RCTVibration",
       "RCTWebSocket",
       "DevSupport",
-      "BatchedBridge"
+      "CxxBridge"
     ]
-  pod 'Yoga',
+  pod 'yoga',
     :path => "../node_modules/react-native/ReactCommon/yoga"
+  pod 'DoubleConversion',
+    :podspec => "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec",
+    :inhibit_warnings => true
+  pod 'Folly',
+    :podspec => "../node_modules/react-native/third-party-podspecs/Folly.podspec",
+    :inhibit_warnings => true
+  pod 'glog',
+    :podspec => "../node_modules/react-native/third-party-podspecs/glog.podspec",
+    :inhibit_warnings => true
 
 
   post_install do |installer|
@@ -41,6 +53,7 @@ target 'moi' do
       target.native_target.build_configurations.each do |config|
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'EX_DETACHED=1'
+        
         # needed for GoogleMaps 2.x
         config.build_settings['FRAMEWORK_SEARCH_PATHS'] ||= []
         config.build_settings['FRAMEWORK_SEARCH_PATHS'] << '${PODS_ROOT}/GoogleMaps/Base/Frameworks'
@@ -49,6 +62,11 @@ target 'moi' do
     end
 
 
+    if ['Amplitude-iOS','Analytics','AppAuth','Branch','CocoaLumberjack','FBSDKCoreKit','FBSDKLoginKit','FBSDKShareKit','GPUImage','JKBigInteger2'].include? target.pod_name
+      target.native_target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+      end
+    end
     # Build React Native with RCT_DEV enabled
     next unless target.pod_name == 'React'
     target.native_target.build_configurations.each do |config|

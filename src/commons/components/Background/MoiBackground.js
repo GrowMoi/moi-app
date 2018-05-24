@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Image } from 'react-native';
+import { ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 
@@ -8,7 +8,7 @@ import backgroundPortrait from '../../../../assets/images/background/background_
 import backgroundLandscape from '../../../../assets/images/background/background_tree_landscape.jpg';
 import { LANDSCAPE } from '../../../constants';
 
-const Background = styled(Image)`
+const Background = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => props.height};
   flex: 1;

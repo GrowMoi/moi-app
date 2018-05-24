@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import { Util, AppLoading, Font, Icon } from 'expo';
+import { AppLoading, Font, Icon, DangerZone } from 'expo';
 import { Text, Dimensions } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
@@ -61,7 +61,7 @@ export default class Scenes extends Component {
   }
 
   async getCurrentLocale() {
-    const currentLocale = await Util.getCurrentLocaleAsync();
+    const currentLocale = await DangerZone.Localization.getCurrentLocaleAsync();
     let locale;
     if (/^es/.test(currentLocale)) locale = 'es';
     else if (/^en/.test(currentLocale)) locale = 'en';
