@@ -54,6 +54,20 @@ const loginAsync = ({ login, authorization_key: authorizationKey }) => async (di
   return res;
 };
 
+const registerAsync = ({ username, email, age, school, country, city, authorization_key: authorizationKey }) => async (dispatch) => {
+  let res;
+  try {
+    res = await api.user.register({ username, email, age, school, country, city, authorization_key: authorizationKey });
+    const { data: { data: user }, headers } = res;
+    Actions.pop();
+    Alert.alert('Usuario Registrado correctamente');
+  } catch (error) {
+    Alert.alert('Ha ocurrido un error al registrarse.');
+  }
+
+  return res;
+};
+
 const validateToken = () => async (dispatch) => {
   let res;
   try {
@@ -240,6 +254,7 @@ const updateAchievementsAsync = id => async (dispatch) => {
 
 export default {
   loginAsync,
+  registerAsync,
   validateToken,
   logoutAsync,
   loadUserContentTasksAsync,

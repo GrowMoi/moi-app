@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 import {
   Image,
@@ -135,6 +135,10 @@ export default class Login extends Component {
     this.setState({ showingSelectionKey: false });
   }
 
+  goRegister = () => {
+    Actions.register({type: ActionConst.RESET});
+  }
+
   render() {
     const { device } = this.props;
     const { showingSelectionKey, authorization_key: key, login, validating } = this.state;
@@ -200,7 +204,7 @@ export default class Login extends Component {
                       <Button
                         style={{ width: 130, marginRight: Size.spaceMedium }}
                         title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
-                        onPress={!showingSelectionKey ? Actions.register : this.returnToUsername}
+                        onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
                       />
                     </Animatable.View>
 

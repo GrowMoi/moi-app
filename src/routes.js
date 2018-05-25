@@ -3,6 +3,7 @@ import { Actions, Scene } from 'react-native-router-flux';
 import Menu from './commons/components/Drawer';
 import TreeScene from './containers/Tree';
 import Login from './containers/Login/Login';
+import Register from './containers/Register/Register';
 import ContentListScene from './containers/Content/ContentList';
 import SingleContentScene from './containers/Content/SingleContent';
 import ProfileScene, { EditProfileScene, PublicProfileScene } from './containers/Profile';
@@ -28,13 +29,16 @@ const routes = Actions.create(
       key='login'
       component={Login}
       {...navbarPropStyles}
+      renderBackButton={() => (null)}
       renderLeftButton={null}
       renderRightButton={null}
     />
     <Scene
       key='register'
-      title='Registro'
-      component={Login}
+      component={Register}
+      {...navbarPropStyles}
+      renderLeftButton={null}
+      renderRightButton={null}
     />
     <Scene
       type='replace'

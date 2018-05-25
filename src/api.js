@@ -33,6 +33,11 @@ const api = {
       const res = await client.post(endpoint, { login, authorization_key });
       return res;
     },
+    async register({ username, email, age, school, country, city, authorization_key }) {
+      const endpoint = '/api/auth/user';
+      const res = await client.post(endpoint, { username, email, age, school, country, city, authorization_key });
+      return res;
+    },
     async validation() {
       const endpoint = '/api/auth/user/validate_token';
       const headers = client.defaults.headers.common;
