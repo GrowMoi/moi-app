@@ -16,10 +16,9 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
   lane :beta do
-    build_app(scheme: "moi")
-    upload_to_testflight
     # add actions here: https://docs.fastlane.tools/actions
+    build_app(scheme: "moi")
+    upload_to_testflight(changelog: "Add rocket emoji")
   end
 end
