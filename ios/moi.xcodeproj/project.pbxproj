@@ -39,6 +39,7 @@
 		B5DB047E1F3A684600E91581 /* shell-app-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "shell-app-manifest.json"; sourceTree = "<group>"; };
 		B5DB047F1F3A684600E91581 /* shell-app.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "shell-app.bundle"; sourceTree = "<group>"; };
 		C4A88D15726AD99E8A257BC7 /* libPods-moi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-moi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFBF327920B7E6B5009C799F /* moi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = moi.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +92,7 @@
 		B56386431DB9693800A0598C /* moi */ = {
 			isa = PBXGroup;
 			children = (
+				EFBF327920B7E6B5009C799F /* moi.entitlements */,
 				B56386471DB9693800A0598C /* AppDelegate.h */,
 				B56386481DB9693800A0598C /* AppDelegate.m */,
 				B56386501DB9693800A0598C /* Assets.xcassets */,
@@ -153,6 +155,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = SH8S5MHA9P;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
