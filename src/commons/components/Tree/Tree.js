@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import ViewTransformer from '@moi/react-native-view-transformer';
+import ViewTransformer from 'react-native-view-transformer-next';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
@@ -124,17 +124,20 @@ export default class Tree extends Component {
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        {/*<ViewTransformer
-          style={styles.treeView}
-          maxScale={zoomScale}
-        >*/}
+        <ViewTransformer maxScale={zoomScale}>
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           {level}
-        {/*</ViewTransformer>*/}
+        </ViewTransformer>
       </TreeContainer>
     );
   }
 }
+
+const Zoom = styled(ViewTransformer)`
+  overflow: visible;
+  position: relative;
+  flex: 1;
+`;
 
 Tree.propTypes = {
   device: PropTypes.any,

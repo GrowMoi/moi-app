@@ -132,10 +132,11 @@ export default class SingleContentScene extends Component {
     const { loadContentByIdAsync, content_id, neuron_id } = this.props;
     try {
       await loadContentByIdAsync(neuron_id, content_id);
-      this.toggleLoading();
     } catch (error) {
       this.showErrorMessage();
     }
+
+    this.toggleLoading(false);
   }
 
   setModalVisible(visible, currentId = '') {
@@ -200,6 +201,7 @@ export default class SingleContentScene extends Component {
   readContent = async (neuronId, contentId) => {
     const { readContentAsync, loadNeuronByIdAsync } = this.props;
     this.toggleLoading();
+
     try {
       const res = await readContentAsync(neuronId, contentId);
 
@@ -207,14 +209,12 @@ export default class SingleContentScene extends Component {
       if(data === undefined) return;
 
       if (data.test) {
-          this.toggleLoading();
         Actions.quiz({type: ActionConst.RESET});
       } else {
         this.showAlert(
           'Contenido aprendido',
           async () => {
             await loadNeuronByIdAsync(neuronId);
-              this.toggleLoading();
             Actions.pop();
           },
         );
@@ -225,13 +225,13 @@ export default class SingleContentScene extends Component {
   };
 
   showErrorMessage() {
-    this.toggleLoading();
+    this.toggleLoading(false);
     this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde', () => Actions.pop());
   }
 
-  toggleLoading() {
+  toggleLoading(display = true) {
     this.setState(prevState => ({
-      loading: !prevState.loading
+      loading: display
     }));
   }
 
@@ -345,7 +345,7 @@ export default class SingleContentScene extends Component {
           )}
         {!loading && <BottomBarWithButtons
           readButton={!(content.learnt || content.read)}
-          onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
+          onPressReadButton={async() => await this.readContent(content.neuron_id, content.id)}
           width={device.dimensions.width}
         />}
         {/* Action Sheets */}

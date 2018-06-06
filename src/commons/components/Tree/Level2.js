@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Level1 from './Level1';
 import Neuron from './Neuron';
@@ -39,7 +39,7 @@ const sideBranchHeight = 573;
 const sideBranchWidth = 397;
 const aspectSideBranch = sideBranchWidth / sideBranchHeight;
 
-const RightBranch = styled(Image)`
+const RightBranch = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspectSideBranch)};
   position: absolute;
@@ -48,7 +48,7 @@ const RightBranch = styled(Image)`
   overflow: visible;
 `;
 
-const LeftBranch = styled(Image)`
+const LeftBranch = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspectSideBranch)};
   position: absolute;
@@ -61,7 +61,7 @@ const simpleBranchHeight = 496;
 const simpleBranchWidth = 270;
 const aspectSimpleBranch = simpleBranchWidth / simpleBranchHeight;
 
-const LeftCenterBranch = styled(Image)`
+const LeftCenterBranch = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspectSimpleBranch)};
   position: absolute;
@@ -70,7 +70,7 @@ const LeftCenterBranch = styled(Image)`
   overflow: visible;
 `;
 
-const RightCenterBranch = styled(Image)`
+const RightCenterBranch = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspectSimpleBranch)};
   position: absolute;
