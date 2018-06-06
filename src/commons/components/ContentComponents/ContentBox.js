@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import { Size, Palette } from '../../styles';
 import { getHeightAspectRatio } from '../../utils';
 
@@ -22,7 +22,7 @@ const Container = styled(View)`
 
 const width = 622;
 const height = 991;
-const ContentScreen = styled(Image)`
+const ContentScreen = styled(ImageBackground)`
   flex: 1;
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};

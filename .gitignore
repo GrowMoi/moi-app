@@ -11,3 +11,5 @@ project.xcworkspace
 ios/moi/Supporting/EXBuildConstants.json
 ios/moi/Supporting/EXBuildConstants.plist
 ios/moi/Supporting/EXBuildConstants.plist.bak
+ios/*.ipa
+ios/*.app.dSYM.zip

@@ -124,13 +124,13 @@ export default class Tree extends Component {
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        <ViewTransformer
+        {/*<ViewTransformer
           style={styles.treeView}
           maxScale={zoomScale}
-        >
+        >*/}
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           {level}
-        </ViewTransformer>
+        {/*</ViewTransformer>*/}
       </TreeContainer>
     );
   }

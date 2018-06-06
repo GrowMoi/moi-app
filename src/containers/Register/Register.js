@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 import {
-    Image,
-    StatusBar,
-    KeyboardAvoidingView,
-    Keyboard,
-    View,
-    Alert,
-    TouchableWithoutFeedback,
+  Image,
+  StatusBar,
+  KeyboardAvoidingView,
+  Keyboard,
+  View,
+  Alert,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 import userActions from './../../actions/userActions';
@@ -79,11 +79,12 @@ const requiredFields = ['username', 'email', 'school'];
 let currentFields = [];
 
 @connect(store => ({
-    device: store.device,
+  device: store.device,
+  user: store.user.userData,
 }), {
-        registerAsync: userActions.registerAsync,
-        validateToken: userActions.validateToken,//no
-    })
+  registerAsync: userActions.registerAsync,
+  validateToken: userActions.validateToken,//no
+})
 export default class Register extends Component {
     state = {
         username: '',

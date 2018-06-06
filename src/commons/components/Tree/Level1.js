@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Image, View } from 'react-native';
+import { ImageBackground, View, Dimensions } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components/native';
 import Neuron from './Neuron';
@@ -12,7 +12,7 @@ const treeHeight = 371;
 const treeWidth = 213;
 const aspect = treeWidth / treeHeight;
 
-const TreeLevel = styled(Image)`
+const TreeLevel = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspect)};
   position: absolute;
@@ -25,6 +25,7 @@ const Container = styled(View)`
   position: relative;
   flex: 1;
   overflow: visible;
+  align-items: center;
 `;
 
 export default class Level1 extends Component {
@@ -40,6 +41,7 @@ export default class Level1 extends Component {
 
   onPressNeuron = () => {
     const { tree } = this.props.userTree;
+    console.log('Neuron press');
     Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
   }
 
@@ -68,8 +70,8 @@ export default class Level1 extends Component {
             id={tree.root.id}
             contentsLearned={contentsLearned}
             totalContents={totalContents}
-            size={{ max: 50, min: 30 }}
-            position={{ left: 5, top: -10 }}
+            size={{ max: 80, min: 50 }}
+            position={{ top: -25, left: -8 }}
           />
         </TreeLevel>
       </Container>

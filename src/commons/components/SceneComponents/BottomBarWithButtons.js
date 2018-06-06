@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
-import { Image, View, TouchableOpacity } from 'react-native';
+import { Image, ImageBackground, View, TouchableOpacity } from 'react-native';
 import { getHeightAspectRatio } from '../../utils';
 
 // Frames and Buttons
@@ -18,7 +18,7 @@ import searchButtonImg from '../../../../assets/images/buttons/search_button.png
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
-const Button = styled(Image)`
+const Button = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(wCommonBtn, hCommonBtn, props.width)};
   flex-direction: row;
@@ -31,7 +31,7 @@ const Button = styled(Image)`
 
 const blueFrameWidth = 174;
 const blueFrameHeight = 97;
-const ReadFrame = styled(Image)`
+const ReadFrame = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(blueFrameWidth, blueFrameHeight, props.width)};
   left: 0;
@@ -40,7 +40,7 @@ const ReadFrame = styled(Image)`
   overflow: visible;
 `;
 
-const BottomBar = styled(Image)`
+const BottomBar = styled(ImageBackground)`
   width: ${props => props.width};
   height: 30;
   flex-direction: row;

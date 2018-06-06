@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
 import Preloader from '../Preloader/Preloader';
 
@@ -10,7 +10,7 @@ const Container = styled(View)`
   overflow: hidden;
 `;
 
-const Img = styled(Image)`
+const Img = styled(ImageBackground)`
   flex: 1;
 `;
 

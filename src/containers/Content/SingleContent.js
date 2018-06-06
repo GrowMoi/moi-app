@@ -4,6 +4,7 @@ import {
   Alert,
   ScrollView,
   Image,
+  ImageBackground,
   Dimensions,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -73,7 +74,7 @@ const Divider = styled(View)`
   align-self: stretch;
 `;
 
-const VideoImg = styled(Image)`
+const VideoImg = styled(ImageBackground)`
   width: 130;
   height: 100;
   justify-content: center;
