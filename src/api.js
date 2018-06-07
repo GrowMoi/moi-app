@@ -107,8 +107,12 @@ const api = {
     },
     async readContent(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/read`;
-      const res = await client.post(endpoint, { neuron_id: neuronId, content_id: contentId });
-      return res;
+      try {
+        const res = await client.post(endpoint, { neuron_id: neuronId, content_id: contentId });
+        return res;
+      } catch (error) {
+        throw new Error(error);
+      }
     },
     async storeNotes(neuronId = 1, contentId = 1, notes) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/notes`;

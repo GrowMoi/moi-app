@@ -204,9 +204,7 @@ export default class SingleContentScene extends Component {
 
     try {
       const res = await readContentAsync(neuronId, contentId);
-
       const { data } = res;
-      if(data === undefined) return;
 
       if (data.test) {
         Actions.quiz({type: ActionConst.RESET});
@@ -220,19 +218,26 @@ export default class SingleContentScene extends Component {
         );
       }
     } catch (error) {
+      console.log('ERROR TO READ CONTENT', error.message);
       this.showErrorMessage();
     }
   };
 
   showErrorMessage() {
-    this.toggleLoading(false);
-    this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde', () => Actions.pop());
+    this.toggleLoading(
+      false,
+      () => {
+        setTimeout(() => {
+          this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde')
+        }, 200)
+      }
+    );
   }
 
-  toggleLoading(display = true) {
+  toggleLoading(display = true, cb) {
     this.setState(prevState => ({
       loading: display
-    }));
+    }), cb);
   }
 
   render() {
@@ -345,7 +350,7 @@ export default class SingleContentScene extends Component {
           )}
         {!loading && <BottomBarWithButtons
           readButton={!(content.learnt || content.read)}
-          onPressReadButton={async() => await this.readContent(content.neuron_id, content.id)}
+          onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
           width={device.dimensions.width}
         />}
         {/* Action Sheets */}

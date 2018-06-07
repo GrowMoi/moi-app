@@ -137,18 +137,18 @@ const storeAsFavoriteAsync = (neuronId, contentId) => async (dispatch) => {
 };
 
 const readContentAsync = (neuronId, contentId) => async (dispatch) => {
-  let res;
   try {
-    res = await api.contents.readContent(neuronId, contentId);
+    const res = await api.contents.readContent(neuronId, contentId);
     const { headers, data } = res;
 
-    dispatch(storeQuiz(data.test));
-    dispatch(setHeaders(headers));
+    await dispatch(storeQuiz(data.test));
+    await dispatch(setHeaders(headers));
+
+    return res;
   } catch (error) {
-    // console.log(error);
+    throw new Error(error);
   }
 
-  return res;
 };
 
 const learnContentsAsync = (testId, answers) => async (dispatch) => {
