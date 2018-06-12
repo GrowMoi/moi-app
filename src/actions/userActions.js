@@ -39,19 +39,20 @@ const setAchievements = achievements => ({
 });
 
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
-  let res;
   try {
-    res = await api.user.signIn({ login, authorization_key: authorizationKey });
+    const res = await api.user.signIn({ login, authorization_key: authorizationKey });
     const { data: { data: user }, headers } = res;
 
-    dispatch(userLogin(user));
     dispatch(setHeaders(headers));
+    dispatch(userLogin(user));
+
     Actions.moiDrawer();
+    return res;
   } catch (error) {
     dispatch(notAuthenticate());
+    throw new Error(error);
   }
 
-  return res;
 };
 
 const registerAsync = ({ username, email, age, school, country, city, authorization_key: authorizationKey }) => async (dispatch) => {
@@ -59,6 +60,9 @@ const registerAsync = ({ username, email, age, school, country, city, authorizat
   try {
     res = await api.user.register({ username, email, age, school, country, city, authorization_key: authorizationKey });
     const { data: { data: user }, headers } = res;
+
+    await dispatch(setHeaders(headers));
+
     Actions.pop();
     Alert.alert('Usuario Registrado correctamente');
   } catch (error) {
@@ -74,8 +78,8 @@ const validateToken = () => async (dispatch) => {
     dispatch({ type: actionTypes.VALIDATE_TOKEN });
     res = await api.user.validation();
     const { data: { data: user }, headers } = res;
+    await dispatch(setHeaders(headers));
     dispatch(userLogin(user));
-    dispatch(setHeaders(headers));
   } catch (error) {
     dispatch(notAuthenticate());
   }
@@ -88,6 +92,7 @@ const logoutAsync = () => async (dispatch) => {
   try {
     res = await api.user.signOut();
     dispatch({ type: actionTypes.LOGOUT });
+    dispatch(setHeaders(headers));
     Actions.login();
   } catch (error) {
     // console.log('SING OUT', error);
@@ -101,8 +106,8 @@ const loadUserContentTasksAsync = page => async (dispatch) => {
   try {
     res = await api.user.contentTasks(page);
     const { data, headers } = res;
+    await dispatch(setHeaders(headers));
     dispatch(loadContentTasks(data));
-    dispatch(setHeaders(headers));
   } catch (error) {
     // console.log(error);
   }
@@ -115,7 +120,8 @@ const storeTaskAsync = (neuronId, contentId) => async (dispatch) => {
   try {
     res = await api.contents.storeTask(neuronId, contentId);
     const { headers } = res;
-    dispatch(setHeaders(headers));
+
+    await dispatch(setHeaders(headers));
   } catch (error) {
     // console.log(error);
   }
@@ -127,7 +133,8 @@ const storeAsFavoriteAsync = (neuronId, contentId) => async (dispatch) => {
   try {
     res = await api.contents.storeAsFavorite(neuronId, contentId);
     const { headers } = res;
-    dispatch(setHeaders(headers));
+
+    await dispatch(setHeaders(headers));
     Alert.alert('Favorito', 'Listo, Este contenido fue agregado como favorito.');
   } catch (error) {
     // console.log(error);
@@ -141,8 +148,8 @@ const readContentAsync = (neuronId, contentId) => async (dispatch) => {
     const res = await api.contents.readContent(neuronId, contentId);
     const { headers, data } = res;
 
-    await dispatch(storeQuiz(data.test));
     await dispatch(setHeaders(headers));
+    await dispatch(storeQuiz(data.test));
 
     return res;
   } catch (error) {
@@ -157,9 +164,10 @@ const learnContentsAsync = (testId, answers) => async (dispatch) => {
     res = await api.learn.learn(testId, answers);
     const { headers } = res;
 
-    dispatch(setHeaders(headers));
+    await dispatch(setHeaders(headers));
   } catch (error) {
     // console.log(error);
+    throw new Error(error);
   }
 
   return res;
@@ -183,8 +191,8 @@ const loadAllFavorites = page => async (dispatch) => {
   try {
     res = await api.user.getFavorites(page);
     const { headers, data } = res;
+    await dispatch(setHeaders(headers));
     dispatch(loadUserFavorites(data));
-    dispatch(setHeaders(headers));
   } catch (error) {
     // console.log(error)
   }
@@ -198,8 +206,8 @@ const getUserProfileAsync = id => async (dispatch) => {
     res = await api.user.getProfile(id);
     const { headers, data } = res;
 
+    await dispatch(setHeaders(headers));
     dispatch(getProfile(data));
-    dispatch(setHeaders(headers));
   } catch (error) {
     // console.log(error)
   }
@@ -212,7 +220,7 @@ const updateUserAccountAsync = (dataToChange, id) => async (dispatch) => {
   try {
     res = await api.user.updateUserAccount(dataToChange);
     const { headers } = res;
-    dispatch(setHeaders(headers));
+    await dispatch(setHeaders(headers));
 
     dispatch(getUserProfileAsync(id));
   } catch (error) {
@@ -227,8 +235,8 @@ const getAchievementsAsync = () => async (dispatch) => {
     res = await api.user.getAchievements();
     const { data: { achievements }, headers } = res;
 
+    await dispatch(setHeaders(headers));
     dispatch(setAchievements(achievements));
-    dispatch(setHeaders(headers));
   } catch (error) {
     // console.log(error)
   }
@@ -242,7 +250,7 @@ const updateAchievementsAsync = id => async (dispatch) => {
     res = await api.user.updateAchievements(id);
     const { headers } = res;
 
-    dispatch(setHeaders(headers));
+    await dispatch(setHeaders(headers));
     dispatch(getAchievementsAsync());
   } catch (error) {
     // console.log(error);

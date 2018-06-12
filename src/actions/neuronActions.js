@@ -19,8 +19,9 @@ const setCurrentRecomendedContents = content => ({
 
 const loadNeuronByIdAsync = id => async (dispatch) => {
   const res = await api.neuron.getNeuronById(id);
+
+  dispatch(setHeaders(res.headers));
   dispatch(setCurrentNeuron(res.data));
-  // dispatch(setHeaders(res.headers));
 
   return res;
 };
@@ -29,7 +30,7 @@ const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
   const res = await api.contents.getContentById(neuronId, contentId);
 
   dispatch(setCurrentContent(res.data));
-  // dispatch(setHeaders(res.headers));
+  dispatch(setHeaders(res.headers));
 
   return res;
 };
@@ -38,8 +39,9 @@ const loadRecomendedContents = () => async (dispatch) => {
   let res;
   try {
     res = await api.contents.getRecomendedContents();
+
+    dispatch(setHeaders(res.headers));
     dispatch(setCurrentRecomendedContents(res.data));
-    // dispatch(setHeaders(res.headers));
   } catch (error) {
     // console.log(error);
   }

@@ -107,20 +107,25 @@ export default class Login extends Component {
     const { login, authorization_key } = this.state;
     const { loginAsync } = this.props;
 
+    console.log('SUBMIT');
+
     this.setState({ validating: true });
-    await loginAsync({ login, authorization_key });
 
-    const { user: { authenticate } } = this.props
+    try {
+      await loginAsync({ login, authorization_key });
+    } catch (error) {
+      const { user: { authenticate } } = this.props
+      if(!authenticate) {
+        const animationTime = 800;
+        this.formContainer.shake(animationTime);
+        this.setState({ validating: false });
 
-    if(!authenticate) {
-      const animationDuraction = 800;
-      this.formContainer.shake(animationDuraction);
-      this.setState({ validating: false });
+        setTimeout(() => {
+          Alert.alert('Credenciales Incorrectas');
+        }, animationTime / 2);
+      };
+    }
 
-      setTimeout(() => {
-        Alert.alert('Credenciales Incorrectas');
-      }, animationDuraction / 2);
-    };
   }
 
   showSelectionKey = () => {

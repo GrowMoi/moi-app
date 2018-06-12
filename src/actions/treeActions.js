@@ -2,6 +2,7 @@ import api from '../api';
 import * as actionTypes from './actionTypes';
 import allLevels from '../mocks/allLevels';
 import env from '../../environment';
+import { setHeaders } from './headerActions';
 
 const loadUserTree = tree => ({
   type: actionTypes.LOAD_USER_TREE,
@@ -20,6 +21,7 @@ const loadTreeAsync = (username, isPublic = false) => async (dispatch, getState)
     res = await api.trees.getTree(currentUsername);
 
     if (!isPublic) {
+      dispatch(setHeaders(res.headers));
       dispatch(loadUserTree(res.data));
     }
   } catch (error) {

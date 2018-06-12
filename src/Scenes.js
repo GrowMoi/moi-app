@@ -34,9 +34,9 @@ export default class Scenes extends Component {
     appIsReady: false,
   }
 
-  componentWillMount() {
-    this.setOrientation();
-    this.preLoadingAssets();
+  async componentWillMount() {
+    await this.setOrientation();
+    await this.preLoadingAssets();
     Dimensions.addEventListener('change', this.setOrientation);
   }
 
@@ -54,9 +54,10 @@ export default class Scenes extends Component {
 
   async preLoadingAssets() {
     const locale = await this.getCurrentLocale();
-    await cacheImages(allImages);
+    const cacheImgs = await cacheImages(allImages);
     await Font.loadAsync(allFonts);
 
+    await Promise.all(cacheImgs);
     this.setState({ assetsLoaded: true, locale });
   }
 
@@ -71,7 +72,7 @@ export default class Scenes extends Component {
   }
 
   validateAuth = async () => {
-    await store.dispatch(userActions.validateToken());
+    // await store.dispatch(userActions.validateToken());
     this.setState({ appIsReady: true });
   }
 
