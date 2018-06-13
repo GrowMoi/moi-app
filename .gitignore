@@ -13,3 +13,5 @@ ios/moi/Supporting/EXBuildConstants.plist
 ios/moi/Supporting/EXBuildConstants.plist.bak
 ios/*.ipa
 ios/*.app.dSYM.zip
+.env
+.env.*
