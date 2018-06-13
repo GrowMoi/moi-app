@@ -77,6 +77,7 @@ const validateToken = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.VALIDATE_TOKEN });
     res = await api.user.validation();
+
     const { data: { data: user }, headers } = res;
     await dispatch(setHeaders(headers));
     dispatch(userLogin(user));

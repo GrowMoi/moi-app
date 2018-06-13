@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as constants from './constants';
+import { AsyncStorage } from 'react-native';
 
 export const client = axios.create({
   baseURL: constants.URL_BASE,
@@ -40,9 +41,33 @@ const api = {
     },
     async validation() {
       const endpoint = '/api/auth/user/validate_token';
-      const headers = client.defaults.headers.common;
-      const res = await client.get(endpoint, headers);
-      return res;
+      let headers = client.defaults.headers.common;
+
+      const AUTH_HEADERS = ['access-token', 'token-type', 'client', 'expiry', 'uid'];
+
+      // Verify if in the keys exist an access token.
+      const hasAccessTokenStored = await AsyncStorage.getItem('access-token');
+      if(hasAccessTokenStored) {
+        const storeHeaders = await AsyncStorage.multiGet(AUTH_HEADERS);
+        storeHeaders.forEach(([key, value]) => {
+          headers = {
+            ...headers,
+            [key]: value,
+          }
+        })
+      } else {
+        // Remove keys and nothing more to do.
+        await AsyncStorage.multiRemove(AUTH_HEADERS);
+        throw new Error('Not have access token stored');
+      }
+
+      try {
+        const res = await client.get(endpoint, headers);
+        return res;
+      } catch (error) {
+
+        throw new Error(error.message);
+      }
     },
     async signOut() {
       const endpoint = '/api/auth/user/sign_out';

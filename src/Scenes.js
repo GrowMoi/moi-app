@@ -72,7 +72,7 @@ export default class Scenes extends Component {
   }
 
   validateAuth = async () => {
-    // await store.dispatch(userActions.validateToken());
+    await store.dispatch(userActions.validateToken());
     this.setState({ appIsReady: true });
   }
 

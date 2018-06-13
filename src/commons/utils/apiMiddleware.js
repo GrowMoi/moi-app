@@ -1,18 +1,26 @@
 import { AsyncStorage } from 'react-native';
+import * as actionTypes from '../../actions/actionTypes';
 
 const HEADERS = ['access-token', 'token-type', 'client', 'expiry', 'uid'];
 
 const tokenMiddleware = args => store => next => async (action) => {
   if (!action) { action = { type: '' }; }
-  const { customHeaders = [], validateAction = 'VALIDATE_TOKEN', logoutAction = 'LOGOUT', client } = args;
+  const { customHeaders = [], validateAction = actionTypes.VALIDATE_TOKEN, authNotValid = actionTypes.AUTH_NOTVALID, logoutAction = 'LOGOUT', client } = args;
 
   HEADERS = [...new Set([...HEADERS, ...customHeaders])];
 
   if (action.type === validateAction) {
     HEADERS.forEach(async token => {
       const tokenFromStorage = await AsyncStorage.getItem(token);
-      client.defaults.headers.common[token] = tokenFromStorage;
+
+      client.defaults.headers.common = {
+        ...client.defaults.headers.common,
+        [token]: tokenFromStorage
+      };
+
     });
+  } else if (action.type === authNotValid) {
+    await AsyncStorage.multiRemove(HEADERS);
   } else if (action.type === logoutAction) {
     HEADERS.forEach(async (token) => {
       await AsyncStorage.removeItem(token);
@@ -20,11 +28,9 @@ const tokenMiddleware = args => store => next => async (action) => {
   } else {
 
     const { headers } = action;
-    console.log('ACTION', action.type);
 
     if (headers) {
       if (headers['access-token']) {
-        console.log('HEADERS WITH ACCESS TOKEN', headers);
 
         const multiHeaders = HEADERS.map((token) => {
           client.defaults.headers.common[token] = headers[token];
