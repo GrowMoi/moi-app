@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View,
   Image,
+  ImageBackground,
   TouchableWithoutFeedback,
 } from 'react-native';
 import styled from 'styled-components/native';
@@ -13,7 +14,7 @@ import resources from './resources';
 
 const width = 108;
 const height = 107;
-const Container = styled(Image)`
+const Container = styled(ImageBackground)`
   justify-content: center;
   align-items: center;
   margin-horizontal: 5;

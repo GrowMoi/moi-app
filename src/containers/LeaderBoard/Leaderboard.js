@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { FormattedTime } from 'react-intl';
+import uuid from 'uuid/v4';
 import { View, FlatList, Text, Image, StyleSheet } from 'react-native';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
@@ -41,7 +42,7 @@ export default class LeaderBoard extends Component {
     }
   }
 
-  _keyExtractor = (item, index) => item.id;
+  _keyExtractor = (item, index) => uuid();
   _renderItem = ({ item }) => {
     const { leaders: { meta } } = this.props;
     return (

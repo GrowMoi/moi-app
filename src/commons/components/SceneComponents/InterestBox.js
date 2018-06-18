@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from 'react-native';
+import { ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
 import { getHeightAspectRatio } from '../../utils';
 import { Palette } from '../../styles';
@@ -8,7 +8,7 @@ import interestBox from '../../../../assets/images/settings/box_interests.png';
 
 const width = 540;
 const height = 340;
-const Background = styled(Image)`
+const Background = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};
   padding-horizontal: 10;

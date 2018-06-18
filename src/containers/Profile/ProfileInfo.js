@@ -118,7 +118,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData }) => {
         </PersonalInfo>
 
         {profile.tree_image && (
-          <TreeImage source={{ uri: profile.tree_image }} resizeMode='cover' />
+          <TreeImage source={{ uri: profile.tree_image }} resizeMode='contain' />
         )}
 
         {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} />}

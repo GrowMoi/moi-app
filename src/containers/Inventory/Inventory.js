@@ -58,9 +58,9 @@ export default class Inventory extends Component {
     if(id) {
       try {
         this.toggleLoading();
-        await updateAchievementsAsync(id);     
+        await updateAchievementsAsync(id);
         this.toggleLoading();
-      } catch(error) {  
+      } catch(error) {
         this.showErrorMessage();
       }
     }
@@ -136,7 +136,7 @@ export default class Inventory extends Component {
 
   render() {
     const { modalVisible, currentVineta, loading } = this.state;
-    const { device: { dimensions: { width, height } }, achievements } = this.props;
+    const { device: { dimensions: { width, height } }, achievements = [] } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
 
@@ -147,7 +147,6 @@ export default class Inventory extends Component {
         height: 720
     };
 
-    if(!(achievements || []).length) return <TextBody>No tienes logros ganados</TextBody>;
     return (
       <MoiBackground>
         <Navbar />
@@ -157,6 +156,9 @@ export default class Inventory extends Component {
             <WoodFrame width={woodFramePadding}>
               <FlatList
                 data={achievements}
+                ListEmptyComponent={
+                  <TextBody center>No tienes logros ganados aún</TextBody>
+                }
                 renderItem={this._renderItem}
                 keyExtractor={this._keyExtractor}
                 numColumns={2}

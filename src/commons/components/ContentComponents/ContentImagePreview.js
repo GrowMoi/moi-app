@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, ImageBackground, TouchableOpacity } from 'react-native';
 import { TextBody } from '../Typography';
 import { Palette } from '../../styles';
 import { getHeightAspectRatio } from '../../utils';
@@ -15,7 +15,7 @@ const StyledButton = styled(TouchableOpacity)`
   margin-vertical: 5;
 `;
 
-const StyledImage = styled(Image)`
+const StyledImage = styled(ImageBackground)`
   flex: 1;
   justify-content: flex-end;
   align-items: flex-start;

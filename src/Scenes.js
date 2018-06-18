@@ -75,9 +75,8 @@ export default class Scenes extends Component {
 
     try {
       await store.dispatch(userActions.validateToken());
-      console.log('Success');
     } catch (error) {
-      console.log('Error');
+      console.log('AUTH NOT VALID');
     }
 
     this.setState({ appIsReady: true });
