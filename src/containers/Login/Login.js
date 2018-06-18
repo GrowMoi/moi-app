@@ -107,8 +107,6 @@ export default class Login extends Component {
     const { login, authorization_key } = this.state;
     const { loginAsync } = this.props;
 
-    console.log('SUBMIT');
-
     this.setState({ validating: true });
 
     try {

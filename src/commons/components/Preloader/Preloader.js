@@ -28,8 +28,7 @@ class Preloader extends Component {
   }
 
   render() {
-    const { modalIsVisible } = this.props;
-    const { size, notFullScreen } = this.props;
+    const { modalIsVisible, size, notFullScreen } = this.props;
 
     const loader = (
       <PreloaderContainer>

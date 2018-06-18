@@ -6,8 +6,6 @@
 	<true/>
 	<key>isShell</key>
 	<true/>
-	<key>isSplashScreenDisabled</key>
-	<true/>
 	<key>manifestUrl</key>
 	<string>exp://exp.host/@mvinan/moi</string>
 	<key>releaseChannel</key>

@@ -121,10 +121,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData }) => {
           <TreeImage source={{ uri: profile.tree_image }} resizeMode='cover' />
         )}
 
-        {Object.keys(tabsData).length && (
-          <Tabs data={tabsData} />
-        )}
-
+        {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} />}
       </ScrollView>
     </Container>
   );

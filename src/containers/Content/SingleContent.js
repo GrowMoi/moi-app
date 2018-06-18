@@ -34,6 +34,7 @@ import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
 // Redux
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
+// import treeActions from '../../actions/treeActions';
 
 const { width } = Dimensions.get('window');
 
@@ -114,6 +115,7 @@ const styles = StyleSheet.create({
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
   storeNotesAsync: userActions.storeNotesAsync,
   storeAsFavoriteAsync: userActions.storeAsFavoriteAsync,
+  // loadTreeAsync: treeActions.loadTreeAsync,
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -212,8 +214,14 @@ export default class SingleContentScene extends Component {
         this.showAlert(
           'Contenido aprendido',
           async () => {
-            await loadNeuronByIdAsync(neuronId);
-            Actions.pop();
+
+            try {
+              await loadNeuronByIdAsync(neuronId);
+              Actions.pop();
+
+            } catch (error) {
+             console.log(error);
+            }
           },
         );
       }

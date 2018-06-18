@@ -41,7 +41,6 @@ export default class Level1 extends Component {
 
   onPressNeuron = () => {
     const { tree } = this.props.userTree;
-    console.log('Neuron press');
     Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
   }
 

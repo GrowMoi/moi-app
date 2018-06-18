@@ -73,19 +73,19 @@ const registerAsync = ({ username, email, age, school, country, city, authorizat
 };
 
 const validateToken = () => async (dispatch) => {
-  let res;
   try {
     dispatch({ type: actionTypes.VALIDATE_TOKEN });
-    res = await api.user.validation();
+    const res = await api.user.validation();
 
     const { data: { data: user }, headers } = res;
     await dispatch(setHeaders(headers));
     dispatch(userLogin(user));
+
+    return res;
   } catch (error) {
     dispatch(notAuthenticate());
+    throw new Error(error);
   }
-
-  return res;
 };
 
 const logoutAsync = () => async (dispatch) => {
@@ -188,17 +188,18 @@ const storeNotesAsync = (neuronId, contentId, notes) => async (dispatch) => {
 
 
 const loadAllFavorites = page => async (dispatch) => {
-  let res;
   try {
-    res = await api.user.getFavorites(page);
+    const res = await api.user.getFavorites(page);
     const { headers, data } = res;
+
     await dispatch(setHeaders(headers));
-    dispatch(loadUserFavorites(data));
+    await dispatch(loadUserFavorites(data));
+
+    return data;
   } catch (error) {
     // console.log(error)
+    throw new Error(error);
   }
-
-  return res;
 };
 
 const getUserProfileAsync = id => async (dispatch) => {

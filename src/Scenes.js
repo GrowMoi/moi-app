@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
 import { AppLoading, Font, Icon, DangerZone } from 'expo';
-import { Text, Dimensions } from 'react-native';
+import { Text, Dimensions, AsyncStorage } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -72,7 +72,14 @@ export default class Scenes extends Component {
   }
 
   validateAuth = async () => {
-    await store.dispatch(userActions.validateToken());
+
+    try {
+      await store.dispatch(userActions.validateToken());
+      console.log('Success');
+    } catch (error) {
+      console.log('Error');
+    }
+
     this.setState({ appIsReady: true });
   }
 

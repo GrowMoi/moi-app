@@ -2,7 +2,7 @@ export default [
   {
     source: require('../../../assets/images/settings/animal_button.png'),
     selected: require('../../../assets/images/settings/animal_selected.png'),
-    key: 'animal',
+    key: 'animals',
     name: 'Animal',
   },
   {

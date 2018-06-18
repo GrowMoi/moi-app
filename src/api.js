@@ -163,8 +163,13 @@ const api = {
   trees: {
     async getTree(username) {
       const endpoint = '/api/tree';
-      const res = await client.get(endpoint, { params: { username } });
-      return res;
+
+      try {
+        const res = await client.get(endpoint, { params: { username } });
+        return res;
+      } catch (error) {
+        throw new Error(error);
+      }
     },
   },
 
