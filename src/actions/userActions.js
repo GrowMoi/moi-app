@@ -64,17 +64,24 @@ const loginAsync = ({ login, authorization_key: authorizationKey }) => async (di
 
 };
 
-const registerAsync = ({ username, email, age, school, country, city, authorization_key: authorizationKey }) => async (dispatch) => {
+const registerAsync = ({ username, email, age, school, country, city, authorization_key: authorizationKey, onPressAlert }) => async (dispatch) => {
   try {
     const res = await api.user.register({ username, email, age, school, country, city, authorization_key: authorizationKey });
     const { data: { data: user }, headers } = res;
 
     await dispatch(setHeaders(headers));
 
-    Alert.alert('Usuario Registrado correctamente');
-    return res;
+    Alert.alert(
+      `Bienvenido ${username} a Moi`,
+      'Te haz registrado con exito!',
+      [
+        { text: 'Ok, Vamos a aprender!', onPress: () => onPressAlert && onPressAlert() }
+      ],
+      { cancelable: false },
+    );
+    return user;
   } catch (error) {
-    Alert.alert('Ha ocurrido un error al registrarse.');
+    Alert.alert('Ups!, Lo sentimos ha ocurrido un error al registrarse, intentalo más tarde');
     throw new Error(error);
   }
 

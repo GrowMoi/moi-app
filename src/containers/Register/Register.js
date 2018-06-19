@@ -22,6 +22,7 @@ import { Size } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
+import Preloader from '../../commons/components/Preloader/Preloader';
 
 // Login Images
 import loginImages from '../Login/loginImages';
@@ -99,6 +100,7 @@ export default class Register extends Component {
         currentSelected: '',
         validating: false,
         validForm: false,
+        loading: false,
     }
 
     handleFormContainer = ref => this.formContainer = ref;
@@ -167,17 +169,30 @@ export default class Register extends Component {
 
         this.setState({ validating: true });
 
-        // FIXME: fix register flow.
         try {
-          await registerAsync({ username, email, age, school, country, city, authorization_key });
+          await registerAsync({
+            username,
+            email,
+            age,
+            school,
+            country,
+            city,
+            authorization_key,
+            onPressAlert: async () => {
+              this.setState({ loading: true });
 
-          try {
-            await loginAsync({ username, authorization_key });
-          } catch (error) {
+              try {
+                await loginAsync({ login: username, authorization_key });
+              } catch (error) {
+                console.log('Error to login after to register', error.message);
+                Alert.alert(error.message);
+              }
 
-          }
+              this.setState({ loading: false });
+            }
+          });
         } catch (error) {
-          // console.log(error)
+          console.log('Error to register', error.message)
         }
 
         this.setState({ validating: false });
@@ -201,7 +216,7 @@ export default class Register extends Component {
 
     render() {
         const { device } = this.props;
-        const { showingSelectionKey, authorization_key: key, validating, validForm } = this.state;
+        const { showingSelectionKey, authorization_key: key, validating, validForm, loading } = this.state;
 
         const { username, email, age, school, country, city } = this.state;
 
@@ -217,7 +232,7 @@ export default class Register extends Component {
                             source={backgroundTree}
                             width={width}
                         />
-                        <FormContainer
+                        {!loading && <FormContainer
                             behavior="padding"
                             width={width - Size.spaceXLarge}
                             keyboardVerticalOffset={Size.spaceLarge}
@@ -319,7 +334,8 @@ export default class Register extends Component {
 
                                 </Form>
                             </Animatable.View>
-                        </FormContainer>
+                        </FormContainer>}
+                        {loading && <Preloader />}
                     </RegisterContainer>
                 </MoiBackground>
             </TouchableWithoutFeedback>
