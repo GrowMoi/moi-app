@@ -3,21 +3,29 @@
     "sdkVersion": "27.0.0",
     "slug": "moi",
     "name": "Moi",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "cover"
+    },
     "packagerOpts": {
       "assetExts": [
         "ttf",
         "otf"
       ]
     },
+    "assetBundlePatterns": [
+      "assets/images/***/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.growmoisociallearning.moiapp",
       "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json"
+      "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json",
+      "buildNumber": "7"
     },
     "android": {
       "package": "com.growmoisociallearning.moiapp"
     },
-    "version": "0.1.0",
+    "version": "0.1.6",
     "isDetached": true,
     "detach": {
       "scheme": "exp7b71e38c6d4c49f7a48f85925ea68e4b",

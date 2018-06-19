@@ -83,6 +83,7 @@ let currentFields = [];
   user: store.user.userData,
 }), {
   registerAsync: userActions.registerAsync,
+  loginAsync: userActions.loginAsync,
   validateToken: userActions.validateToken,//no
 })
 export default class Register extends Component {
@@ -162,10 +163,21 @@ export default class Register extends Component {
             return;
         }
 
-        const { registerAsync } = this.props;
+        const { registerAsync, loginAsync } = this.props;
 
         this.setState({ validating: true });
-        await registerAsync({ username, email, age, school, country, city, authorization_key });
+        try {
+          await registerAsync({ username, email, age, school, country, city, authorization_key });
+
+          try {
+            await loginAsync({ username, authorization_key });
+          } catch (error) {
+
+          }
+        } catch (error) {
+          // console.log(error)
+        }
+
         this.setState({ validating: false });
     }
 

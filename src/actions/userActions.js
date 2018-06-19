@@ -56,20 +56,19 @@ const loginAsync = ({ login, authorization_key: authorizationKey }) => async (di
 };
 
 const registerAsync = ({ username, email, age, school, country, city, authorization_key: authorizationKey }) => async (dispatch) => {
-  let res;
   try {
-    res = await api.user.register({ username, email, age, school, country, city, authorization_key: authorizationKey });
+    const res = await api.user.register({ username, email, age, school, country, city, authorization_key: authorizationKey });
     const { data: { data: user }, headers } = res;
 
     await dispatch(setHeaders(headers));
 
-    Actions.pop();
     Alert.alert('Usuario Registrado correctamente');
+    return res;
   } catch (error) {
     Alert.alert('Ha ocurrido un error al registrarse.');
+    throw new Error(error);
   }
 
-  return res;
 };
 
 const validateToken = () => async (dispatch) => {

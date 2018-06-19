@@ -102,6 +102,8 @@ PODS:
   - lottie-ios (2.1.5)
   - React (0.55.2):
     - React/Core (= 0.55.2)
+  - react-native-youtube (1.1.0):
+    - React
   - React/ART (0.55.2):
     - React/Core
   - React/Core (0.55.2):
@@ -160,6 +162,7 @@ DEPENDENCIES:
   - ExpoKit/GL (from `http://github.com/expo/expo.git`, tag `ios/2.5.10`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - react-native-youtube (from `../node_modules/react-native-youtube`)
   - React/ART (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -215,6 +218,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-youtube:
+    :path: "../node_modules/react-native-youtube"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -254,8 +259,9 @@ SPEC CHECKSUMS:
   JKBigInteger2: e91672035c42328c48b7dd015b66812ddf40ca9b
   lottie-ios: 836cdbba92f62f3c6a00e37a4ce485321fe317cf
   React: 977e1cdf18a3047a35d321b34ffb678d79d19076
+  react-native-youtube: 7ab01f1320b037d605e6c6ac9d59cc2b92091799
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 1b509c7157771df17352a3c3be92e12e21886a05
+PODFILE CHECKSUM: 0c210311abb16778845f7e78970ec9d2b9211bcc
 
 COCOAPODS: 1.5.2
