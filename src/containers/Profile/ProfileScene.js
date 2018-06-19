@@ -19,14 +19,21 @@ import userActions from './../../actions/userActions';
   user: store.user.userData,
   tree: store.tree.userTree,
   profile: store.user.profile,
-}))
+}), {
+  signOutAsync: userActions.signOutAsync,
+})
 export default class ProfileScene extends Component {
   editProfile = () => {
     Actions.editProfile();
   }
 
+  signOut = async () => {
+    const { signOutAsync } = this.props;
+    await signOutAsync();
+  }
+
   render() {
-    const { user, tree: { meta: { depth: level } }, profile } = this.props;
+    const { tree: { meta: { depth: level } }, profile } = this.props;
 
     const tabsData = [
       { label: 'Favoritos', content: <FavoritesTab /> },
@@ -45,6 +52,7 @@ export default class ProfileScene extends Component {
           data={profileInfo}
           tabsData={tabsData}
           onClickEdit={this.editProfile}
+          onClickSignOut={this.signOut}
         />
         <BottomBar />
       </Moibackground>

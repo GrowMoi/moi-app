@@ -80,6 +80,7 @@ const AnimatableContainerLoginKeys = Animatable.createAnimatableComponent(Contai
 }), {
   loginAsync: userActions.loginAsync,
   validateToken: userActions.validateToken,
+  signOutAsync: userActions.signOutAsync,
 })
 export default class Login extends Component {
   state = {

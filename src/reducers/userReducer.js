@@ -24,7 +24,9 @@ const userData = (state = initialState.userData, action = {}) => {
         authenticate: true,
       };
     case actionTypes.AUTH_NOTVALID:
-      return state;
+      return initialState.userData;
+    case actionTypes.LOGOUT:
+      return initialState.userData;
     default:
       return state;
   }

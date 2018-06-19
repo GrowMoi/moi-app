@@ -38,6 +38,15 @@ const setAchievements = achievements => ({
   payload: achievements,
 });
 
+const signOut = () => ({
+  type: actionTypes.LOGOUT,
+})
+
+const signOutAsync = () => async (dispatch) => {
+  await dispatch(signOut());
+  Actions.login();
+}
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   try {
     const res = await api.user.signIn({ login, authorization_key: authorizationKey });
@@ -72,11 +81,12 @@ const registerAsync = ({ username, email, age, school, country, city, authorizat
 };
 
 const validateToken = () => async (dispatch) => {
-  try {
-    dispatch({ type: actionTypes.VALIDATE_TOKEN });
-    const res = await api.user.validation();
+  dispatch({ type: actionTypes.VALIDATE_TOKEN });
 
+  try {
+    const res = await api.user.validation();
     const { data: { data: user }, headers } = res;
+
     await dispatch(setHeaders(headers));
     dispatch(userLogin(user));
 
@@ -277,4 +287,5 @@ export default {
   updateUserAccountAsync,
   getAchievementsAsync,
   updateAchievementsAsync,
+  signOutAsync,
 };

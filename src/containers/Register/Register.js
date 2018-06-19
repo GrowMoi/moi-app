@@ -166,6 +166,8 @@ export default class Register extends Component {
         const { registerAsync, loginAsync } = this.props;
 
         this.setState({ validating: true });
+
+        // FIXME: fix register flow.
         try {
           await registerAsync({ username, email, age, school, country, city, authorization_key });
 

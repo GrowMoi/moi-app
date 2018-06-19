@@ -5,9 +5,18 @@ const HEADERS = ['access-token', 'token-type', 'client', 'expiry', 'uid'];
 
 const tokenMiddleware = args => store => next => async (action) => {
   if (!action) { action = { type: '' }; }
-  const { customHeaders = [], validateAction = actionTypes.VALIDATE_TOKEN, authNotValid = actionTypes.AUTH_NOTVALID, logoutAction = 'LOGOUT', client } = args;
+  const { customHeaders = [], validateAction = actionTypes.VALIDATE_TOKEN, authNotValid = actionTypes.AUTH_NOTVALID, logoutAction = actionTypes.LOGOUT, client } = args;
 
   HEADERS = [...new Set([...HEADERS, ...customHeaders])];
+
+  // Clean All - remove axios client, headers and async storage from the app.
+  const cleanAll = async () => {
+    HEADERS.forEach((token) => {
+      delete client.defaults.headers.common[token];
+    });
+
+    await AsyncStorage.multiRemove(HEADERS);
+  };
 
   if (action.type === validateAction) {
     HEADERS.forEach(async token => {
@@ -20,11 +29,9 @@ const tokenMiddleware = args => store => next => async (action) => {
 
     });
   } else if (action.type === authNotValid) {
-    await AsyncStorage.multiRemove(HEADERS);
+    await cleanAll();
   } else if (action.type === logoutAction) {
-    HEADERS.forEach(async (token) => {
-      await AsyncStorage.removeItem(token);
-    });
+    await cleanAll();
   } else {
 
     const { headers } = action;

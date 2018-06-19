@@ -7,6 +7,7 @@ export const AUTH_VALID = 'AUTH_VALID';
 export const AUTH_NOTVALID = 'AUTH_NOTVALID';
 export const VALIDATE_TOKEN = 'VALIDATE_TOKEN';
 export const LOGOUT = 'LOGOUT';
+export const SIGNOUT = 'SIGNOUT';
 export const LOGIN = 'LOGIN';
 export const SESSION_TIMEOUT = 'SESSION_TIMEOUT';
 export const SET_HEADERS = 'SET_HEADERS';
