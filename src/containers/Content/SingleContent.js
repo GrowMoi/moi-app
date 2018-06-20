@@ -8,6 +8,7 @@ import {
   Dimensions,
   StyleSheet,
   TouchableWithoutFeedback,
+  TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -116,6 +117,8 @@ const styles = StyleSheet.create({
   storeNotesAsync: userActions.storeNotesAsync,
   storeAsFavoriteAsync: userActions.storeAsFavoriteAsync,
   // loadTreeAsync: treeActions.loadTreeAsync,
+  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
+  playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -142,10 +145,18 @@ export default class SingleContentScene extends Component {
   }
 
   setModalVisible(visible, currentId = '') {
+    const { stopCurrentBackgroundAudio, playCurrentBackgroundAudio } = this.props;
+
     this.setState({
       videoModalVisible: visible,
       currentVideoId: currentId,
     });
+
+    if(visible) {
+      stopCurrentBackgroundAudio();
+    } else {
+      playCurrentBackgroundAudio();
+    }
   }
 
   toggleActionSheets = () => {
@@ -330,21 +341,20 @@ export default class SingleContentScene extends Component {
                 <Section notBottomSpace>
                   <Header inverted bolder>Recomendados</Header>
                   <VideoContainer>
-                    {content.videos &&
-                      content.videos.length > 0 &&
+                    {content.videos.length &&
                       content.videos.map((video, i) => {
                         const videoId = youtube.extractIdFromUrl(video.url);
 
                         if (videoId) {
                           return (
-                            <TouchableWithoutFeedback key={i} onPress={() => this.setModalVisible(!this.state.videoModalVisible, videoId)}>
+                            <TouchableOpacity key={i} onPress={() => this.setModalVisible(!this.state.videoModalVisible, videoId)}>
                               <VideoImg
                                 source={{ uri: `https:${video.thumbnail}` }}
                                 resizeMode="cover"
                                 >
                                   <PlayIcon name='play-circle' size={40} />
                                 </VideoImg>
-                              </TouchableWithoutFeedback>
+                              </TouchableOpacity>
                             );
                           }
                         })

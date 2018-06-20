@@ -17,6 +17,22 @@ const setCurrentRecomendedContents = content => ({
   payload: content,
 });
 
+const stopAudio = () => ({
+  type: actionTypes.STOP_CURRENT_AUDIO,
+})
+
+const playAudio = () => ({
+  type: actionTypes.PLAY_CURRENT_AUDIO,
+})
+
+const stopCurrentBackgroundAudio = () => async (dispatch) => {
+  dispatch(stopAudio());
+}
+
+const playCurrentBackgroundAudio = () => async (dispatch) => {
+  dispatch(playAudio());
+}
+
 const loadNeuronByIdAsync = id => async (dispatch) => {
   const res = await api.neuron.getNeuronById(id);
 
@@ -53,4 +69,6 @@ export default {
   loadNeuronByIdAsync,
   loadContentByIdAsync,
   loadRecomendedContents,
+  stopCurrentBackgroundAudio,
+  playCurrentBackgroundAudio,
 };

@@ -75,7 +75,7 @@ const registerAsync = ({ username, email, age, school, country, city, authorizat
       `Bienvenido ${username} a Moi`,
       'Te haz registrado con exito!',
       [
-        { text: 'Ok, Vamos a aprender!', onPress: () => onPressAlert && onPressAlert() }
+        { text: 'Vamos a aprender!', onPress: () => onPressAlert && onPressAlert() }
       ],
       { cancelable: false },
     );
