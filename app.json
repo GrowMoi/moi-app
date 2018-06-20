@@ -20,12 +20,12 @@
       "bundleIdentifier": "com.growmoisociallearning.moiapp",
       "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
       "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json",
-      "buildNumber": "7"
+      "buildNumber": "1"
     },
     "android": {
       "package": "com.growmoisociallearning.moiapp"
     },
-    "version": "0.1.6",
+    "version": "0.2.0",
     "isDetached": true,
     "detach": {
       "scheme": "exp7b71e38c6d4c49f7a48f85925ea68e4b",
