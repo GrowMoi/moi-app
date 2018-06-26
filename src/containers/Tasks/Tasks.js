@@ -38,7 +38,7 @@ class Tasks extends Component {
   onPressRowcontent = (e, content) => {
     const { neuronSelected } = this.props;
     const { id, neuron_id, title } = content;
-    
+
     Actions.singleContent({
       content_id: id,
       title: neuronSelected.title,
@@ -60,7 +60,7 @@ class Tasks extends Component {
       <ContentBox>
         <ScrollView contentContainerStyle={containerStyles}>
           {!!tasks &&
-            tasks.meta.total_items > 0 &&
+            (((tasks || {}).meta || {}).total_items || 0) > 0 &&
             tasks.content_tasks.content_tasks.map((content, i) => {
               const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
               const oddInverted = i % 2 === 1;
