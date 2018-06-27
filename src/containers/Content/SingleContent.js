@@ -3,14 +3,15 @@ import {
   View,
   Alert,
   ScrollView,
-  Image,
   ImageBackground,
   Dimensions,
   StyleSheet,
-  TouchableWithoutFeedback,
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
+import {
+  WebBrowser,
+} from 'expo';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -259,6 +260,12 @@ export default class SingleContentScene extends Component {
     }), cb);
   }
 
+  handleOpenLinks = (url) => {
+    if(url) {
+      WebBrowser.openBrowserAsync(url);
+    }
+  }
+
   render() {
     const { contentSelected: content, device } = this.props;
 
@@ -323,7 +330,9 @@ export default class SingleContentScene extends Component {
                   <Header inverted bolder>Links</Header>
                   {content.links.map((link, i) => (
                     <TextLeftBorder key={i}>
-                      <TextBody inverted>{link}</TextBody>
+                      <TouchableOpacity onPress={() => this.handleOpenLinks(link)}>
+                        <TextBody inverted>{link}</TextBody>
+                      </TouchableOpacity>
                     </TextLeftBorder>
                   ))}
                 </Section>
