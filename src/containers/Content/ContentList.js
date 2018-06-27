@@ -3,11 +3,12 @@ import styled from 'styled-components/native';
 import {
   ScrollView,
   View,
-  FlatList
+  FlatList,
+  Alert,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 import uuid from 'uuid/v4';
 
@@ -46,15 +47,41 @@ export default class ContentListScene extends Component {
     loading: true,
   }
 
-  componentDidMount() {
-    this.getCurrentContents();
+  async componentDidMount() {
+    await this.getCurrentContents();
+    this.setState({ loading: false });
+
+    // Show alert if neuron not have content.
+    setTimeout(() => {
+      this.showContentAlert();
+    }, 1000)
+  }
+
+  showContentAlert() {
+    const { neuronSelected } = this.props;
+
+    let contents;
+    if(neuronSelected !== undefined) {
+      contents = (neuronSelected.contents || []).filter(c => !c.read);
+    }
+    const contentsExist = (contents || []).length > 0;
+    if(!contentsExist) {
+      Alert.alert('Neurona Completa!', 'Felicidades, Haz aprendido todos los contenidos en esta neurona',[
+        {text: 'Regresar al Arbol', onPress: () => {
+            Actions.moiDrawer({ type: 'reset' });
+        }},
+      ]);
+    }
   }
 
   getCurrentContents = async () => {
     const { loadNeuronByIdAsync, neuron_id } = this.props;
-    await loadNeuronByIdAsync(neuron_id);
 
-    this.setState({ loading: false });
+    try {
+      await loadNeuronByIdAsync(neuron_id);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   onPressRowcontent = (e, content) => {
