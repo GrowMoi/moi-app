@@ -83,17 +83,33 @@ export default class SideMenu extends Component {
   }
 
   render() {
-    const { device, userTree, user, profile, data } = this.props;
+    const { device, userTree, user, profile, data, onPressOption } = this.props;
     const { orientation } = device.dimensions;
     const portraitOrientation = orientation === PORTRAIT;
 
     const treeIsLoaded = 'tree' in userTree;
 
     const options = [
-      { label: 'Inventario', onPress: () => Actions.refresh({ key: 'inventory' }) },
-      { label: 'Configuración', onPress: () => Actions.refresh({ key: 'settings' }) },
-      { label: 'Leader Board', onPress: () => Actions.refresh({ key: 'leaderboard' }) },
-      { label: 'Buscar Amigos', onPress: () => Actions.refresh({ key: 'searchFriends' }) },
+      { label: 'Inventario', onPress: () => {
+          if(onPressOption) onPressOption();
+          Actions.refresh({ key: 'inventory' })
+        }
+      },
+      { label: 'Configuración', onPress: () => {
+          if(onPressOption) onPressOption();
+          Actions.refresh({ key: 'settings' })
+        }
+      },
+      { label: 'Leader Board', onPress: () => {
+          if(onPressOption) onPressOption();
+          Actions.refresh({ key: 'leaderboard' })
+        }
+      },
+      { label: 'Buscar Amigos', onPress: () => {
+          if(onPressOption) onPressOption();
+          Actions.refresh({ key: 'searchFriends' })
+        }
+      },
     ];
 
     return (
@@ -117,7 +133,10 @@ export default class SideMenu extends Component {
           <Options options={options}/>
 
           <TreContainer>
-            <TouchableOpacity onPress={() => Actions.refresh({ key: 'tree' })}>
+            <TouchableOpacity onPress={() => {
+              if(onPressOption) onPressOption();
+              Actions.refresh({ key: 'tree' })
+            }}>
               <Maceta width={DRAWER_OFFSET - 2} source={macetaMenu} resizeMode='contain' />
             </TouchableOpacity>
           </TreContainer>
