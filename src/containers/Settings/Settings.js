@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 
@@ -13,8 +13,11 @@ import { Size } from '../../commons/styles';
 import HeaderLevels from './HeaderLevels';
 import RowLevel from './RowLevel';
 import preferencesActions from '../../actions/contentPreferencesActions';
+import userActions from '../../actions/userActions';
 import SettingsSection from './SettingsSection';
 import InterestButton from './InterestButton';
+import Preloader from '../../commons/components/Preloader/Preloader';
+import Button from '../../commons/components/Buttons/Button';
 
 
 const StyledContentBox = styled(ContentBox)`
@@ -31,38 +34,67 @@ const labelPreferences = {
 @connect(store => ({
   device: store.device,
   userData: store.user.userData,
+  settings: store.user.settings,
 }), {
-  updatePreferencesAsync: preferencesActions.setCurrentPreferencesAsync,
+  setCurrentSettings: userActions.setCurrentSettings,
+  updateSettingsAsync: userActions.updateSettingsAsync,
 })
 export default class Settings extends Component {
+  state = {
+    updating: false,
+  }
+
+  componentDidMount() {
+    const { userData: { profile: { content_preferences } }, setCurrentSettings } = this.props;
+
+    setCurrentSettings(content_preferences);
+  }
+
   setSettingValue = async (kind, level) => {
-    const { updatePreferencesAsync } = this.props;
-    await updatePreferencesAsync(kind, level);
+    const { setCurrentSettings, settings } = this.props;
+
+    const currentChange = { kind, level };
+
+    const whatSettingsChange = (settings || []).map((setting) => {
+      if(setting['kind'] === currentChange.kind) {
+        if(setting['level'] !== currentChange.level) {
+          return { ...setting, ...currentChange, toUpdate: true };
+        }
+      }
+
+      return setting;
+    });
+
+    setCurrentSettings(whatSettingsChange);
+  }
+
+  saveSettings = async () => {
+    const { settings, updateSettingsAsync } = this.props;
+    this.setState({ updating: true });
+
+    try {
+      await updateSettingsAsync(settings);
+
+      Alert.alert('Preferencias', 'Tus preferencias se han actualizado con exito', [{
+        text: 'Aceptar', onPress: () => {
+          this.setState({ updating: false });
+        }
+      }]);
+    } catch (error) {
+
+      Alert.alert('Error', 'Lametamos el problema, no se pudieron guardar las preferencias', [{
+        text: 'Aceptar', onPress: () => {
+          this.setState({ updating: false });
+        }
+      }]);
+      throw new Error(error);
+    }
   }
 
   render() {
-    const { device, userData: { profile: { content_preferences } } } = this.props;
+    const { device, settings } = this.props;
 
-    const containerStyles = {
-      width: (device.dimensions.width - Size.spaceLarge),
-      paddingHorizontal: Size.spaceSmall,
-    };
-
-    const rows = content_preferences.map((row, i) => (
-      <RowLevel
-        key={i}
-        title={labelPreferences[row.kind]}
-        onValueChange={(kind, level) => this.setSettingValue(kind, level)}
-        {...row}
-      />
-    ));
-
-    const sliderSection = (
-      <SettingsSection title='Levels'>
-        <HeaderLevels />
-        {rows}
-      </SettingsSection>
-    );
+    const containerStyles = { flex: 1 };
 
     // const interestSection = (
     //   <SettingsSection title='Interest'>
@@ -72,17 +104,26 @@ export default class Settings extends Component {
     //   </SettingsSection>
     // );
 
-    const contentBox = (
-      <StyledContentBox>
-        <ScrollView contentContainerStyle={containerStyles}>
-          {sliderSection}
-        </ScrollView>
-      </StyledContentBox>
-    );
-
     return (
       <MoiBackground>
-        {contentBox}
+        <StyledContentBox>
+          <ScrollView contentContainerStyle={containerStyles}>
+            <SettingsSection title='Levels'>
+              <HeaderLevels />
+              {(settings || []).map((row, i) => (
+                <RowLevel
+                  key={i}
+                  title={labelPreferences[row.kind]}
+                  onValueChange={this.setSettingValue}
+                  {...row}
+                />
+              ))}
+            </SettingsSection>
+          </ScrollView>
+
+          <Button style={{ width: '80%' }} title='Guardar Preferencias' onPress={this.saveSettings}/>
+          {this.state.updating && <Preloader />}
+        </StyledContentBox>
         <Navbar />
         <BottomBar width={device.dimensions.width} />
       </MoiBackground>

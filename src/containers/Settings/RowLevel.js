@@ -32,18 +32,26 @@ const DescriptionContainer = styled(View)`
   width: 125;
 `;
 
-const RowLevel = ({ title, onValueChange, kind, level }) => (
-  <Row source={rowBox} resizeMode='contain'>
-    <RowContainer>
-      <DescriptionContainer>
-        <Description ellipsizeMode='tail' numberOfLines={1} color={colors.cream.css()}>{title}</Description>
-      </DescriptionContainer>
-      <SliderContainer>
-        <SliderLevels value={level} onSlidingComplete={currentLevel => onValueChange(kind, currentLevel)} />
-      </SliderContainer>
-    </RowContainer>
-  </Row>
-);
+const RowLevel = ({ title, onValueChange, kind, level }) => {
+
+  const levelToShow = level - 1;
+  return (
+    <Row source={rowBox} resizeMode='contain'>
+      <RowContainer>
+        <DescriptionContainer>
+          <Description ellipsizeMode='tail' numberOfLines={1} color={colors.cream.css()}>{title}</Description>
+        </DescriptionContainer>
+        <SliderContainer>
+          <SliderLevels value={levelToShow} onSlidingComplete={currentLevel => {
+
+            const levelToPush = currentLevel + 1;
+            onValueChange(kind, levelToPush);
+          }} />
+        </SliderContainer>
+      </RowContainer>
+    </Row>
+  );
+};
 
 RowLevel.propTypes = {
   title: PropTypes.string,

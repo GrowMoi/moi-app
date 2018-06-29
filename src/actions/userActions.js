@@ -42,6 +42,11 @@ const signOut = () => ({
   type: actionTypes.LOGOUT,
 })
 
+const setSettings = settings => ({
+  type: actionTypes.SET_SETTINGS,
+  payload: settings,
+})
+
 const signOutAsync = () => async (dispatch) => {
   await dispatch(signOut());
   Actions.login();
@@ -278,6 +283,43 @@ const updateAchievementsAsync = id => async (dispatch) => {
   return res;
 };
 
+const updateSettingsAsync = settings => async (dispatch) => {
+  /**
+   * We need add {toUpdate: true} property to the format of the object to update:
+   * eg. { toUpdate: true, kind: 'que-es', level: 1 }
+   */
+
+  const settingsToUpdate = (settings || [])
+    .filter((setting) => (setting || {}).toUpdate);
+
+  if(settingsToUpdate.length > 0) {
+    const updateSettings = settingsToUpdate.map(async(setting) => {
+      const settingUpdated = await api.preferences.update(setting.kind, setting.level);
+      dispatch(setHeaders(settingUpdated.headers));
+
+      return settingUpdated;
+    })
+
+    try {
+      await Promise.all(updateSettings);
+      const nomalizeSettings = (settings || []).map(setting => {
+        if(setting.toUpdate) delete setting.toUpdate;
+        return setting;
+      });
+
+      setCurrentSettings(nomalizeSettings);
+      return { success: true };
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
+}
+
+const setCurrentSettings = (settings = []) => (dispatch) => {
+  dispatch(setSettings(settings));
+}
+
 export default {
   loginAsync,
   registerAsync,
@@ -295,4 +337,6 @@ export default {
   getAchievementsAsync,
   updateAchievementsAsync,
   signOutAsync,
+  setCurrentSettings,
+  updateSettingsAsync,
 };
