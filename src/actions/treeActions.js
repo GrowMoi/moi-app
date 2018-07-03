@@ -16,19 +16,18 @@ const loadTreeAsync = (username, isPublic = false) => async (dispatch, getState)
   }
 
   const currentUsername = username || getState().user.userData.profile.username;
-  let res;
   try {
-    res = await api.trees.getTree(currentUsername);
+    const res = await api.trees.getTree(currentUsername);
 
     if (!isPublic) {
       dispatch(setHeaders(res.headers));
       dispatch(loadUserTree(res.data));
     }
-  } catch (error) {
-    // console.log(error);
-  }
 
-  return res;
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 export default {

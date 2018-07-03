@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import { FormattedTime } from 'react-intl';
 import uuid from 'uuid/v4';
-import { View, FlatList, Text, Image, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet, Alert } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
-import { Palette, Size } from '../../commons/styles';
+import { Size } from '../../commons/styles';
 import LeaderRow from '../../commons/components/LeaderRow/LeaderRow';
 import leaderboardActions from '../../actions/leaderboardActions';
-import { normalize } from '../../commons/utils';
+import { normalize, object } from '../../commons/utils';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
+
+// Actions
+import profilesActions from '../../actions/profileActions';
+import treeActions from '../../actions/treeActions';
 
 const FrameContainer = styled(View)`
   flex: 1;
@@ -27,8 +31,14 @@ const FrameContainer = styled(View)`
   device: state.device,
 }), {
   getLeaderboardAsync: leaderboardActions.getLeadersAsync,
+  getPublicProfileAsync: profilesActions.loadProfileAsync,
+  loadTreeAsync: treeActions.loadTreeAsync,
 })
-export default class LeaderBoard extends Component {
+export default class LeaderBoard extends PureComponent {
+  state = {
+    isLoadingProfile: false,
+  }
+
   async componentDidMount() {
     const { getLeaderboardAsync } = this.props;
     await getLeaderboardAsync();
@@ -36,10 +46,40 @@ export default class LeaderBoard extends Component {
 
   fetchNextPage = async () => {
     const { leaders: { meta }, getLeaderboardAsync } = this.props;
+  }
 
-    if(meta.total_pages > 1) {
-      await getLeaderboardAsync();
+  onPressProfile = async (item) => {
+    const { getPublicProfileAsync, loadTreeAsync } = this.props;
+
+    const { username } = item;
+
+    if(!username || username === undefined) return;
+    if(username === 'unknow') {
+      Alert.alert('Error', 'El perfil de este usuario es desconocido, intenta con otro por favor.')
+      return;
     }
+
+    this.setState({ isLoadingProfile: true });
+
+    try {
+      const profile = await getPublicProfileAsync(username);
+
+      const treeIsPublic = true;
+      const tree = await loadTreeAsync(username, treeIsPublic);
+
+      this.setState({ isLoadingProfile: false });
+
+      if(!object.isEmpty(tree) && !object.isEmpty(profile)) {
+        Actions.publicProfile({
+          profile: profile.data,
+          level: tree.data.meta.depth,
+        });
+      }
+    } catch (error) {
+      this.setState({ isLoadingProfile: false });
+      throw new Error(error);
+    }
+
   }
 
   _keyExtractor = (item, index) => uuid();
@@ -50,6 +90,7 @@ export default class LeaderBoard extends Component {
         playerName={normalize.normalizeAllCapLetter(item.username)}
         grade={`${item.contents_learnt} / ${meta.total_contents}`}
         seconds={`${new Date(item.time_elapsed).getSeconds()}s`}
+        onPress={() => this.onPressProfile(item)}
       />
     )
   }
@@ -64,21 +105,26 @@ export default class LeaderBoard extends Component {
       }
     })
 
-    if(!(dataLeaders.leaders || []).length) return <Preloader notFullScreen />;
     return (
       <MoiBackground>
         <Navbar />
         <FrameContainer>
-          <LeaderFrame width={(width - 35)}>
-            <FlatList
-              contentContainerStyle={styles.contentContainer}
-              onEndReached={this.fetchNextPage}
-              onEndReachedThreshold={0}
-              data={dataLeaders.leaders}
-              renderItem={this._renderItem}
-              keyExtractor={this._keyExtractor}
-            />
+        <LeaderFrame width={(width - 35)}>
+            {(dataLeaders.leaders || []).length > 0 && (
+              <FlatList
+                contentContainerStyle={styles.contentContainer}
+                onEndReached={this.fetchNextPage}
+                onEndReachedThreshold={0}
+                data={dataLeaders.leaders}
+                renderItem={this._renderItem}
+                keyExtractor={this._keyExtractor}
+              />
+            )}
+            {!(dataLeaders.leaders || []).length > 0 && (
+              <Preloader notFullScreen/>
+            )}
           </LeaderFrame>
+          {this.state.isLoadingProfile && <Preloader />}
         </FrameContainer>
         <BottomBar />
       </MoiBackground>

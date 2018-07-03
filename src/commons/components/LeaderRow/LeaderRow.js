@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { Palette } from '../../styles';
 import { Header, TextBody } from '../Typography';
 import MoIcon from '../MoIcon/MoIcon';
 
-const Container = styled(View)`
+const Container = styled(TouchableOpacity)`
   flex: 1;
   height: 40;
   background-color: ${Palette.white.alpha(0.4).css()};
@@ -40,9 +40,9 @@ const Seconds = styled(TextBody)`
   width: 35;
 `;
 
-const LeaderRow = ({ playerName, grade, seconds }) => {
+const LeaderRow = ({ playerName, grade, seconds, onPress = () => null }) => {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Icon name='profile' size={30}/>
       <PlayerName numberOfLines={1} inverted heavy>{playerName}</PlayerName>
       <Grade inverted bolder>{grade}</Grade>

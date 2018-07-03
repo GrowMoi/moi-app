@@ -100,7 +100,7 @@ export default class SideMenu extends Component {
           Actions.refresh({ key: 'settings' })
         }
       },
-      { label: 'Leader Board', onPress: () => {
+      { label: 'Leaderboard', onPress: () => {
           if(onPressOption) onPressOption();
           Actions.refresh({ key: 'leaderboard' })
         }

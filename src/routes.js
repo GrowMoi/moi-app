@@ -60,7 +60,7 @@ const routes = Actions.create(
           {...navbarPropStyles} />
         <Scene
           key='leaderboard'
-          title='Leader Board'
+          title='Leaderboard'
           component={LeaderBoard}
           {...navbarPropStyles} />
         <Scene
