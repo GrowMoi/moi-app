@@ -65,15 +65,28 @@ class FavoritesTab extends PureComponent {
       this.setState(prevState => ({ dataLoaded: true, dataSource: prevState.dataSource.concat(content_tasks), page: nextPage }));
 
     } catch (error) {
-      console.log(error);
       this.setState({ dataLoaded: true });
     }
 
-    // const { favorites: { content_tasks: { content_tasks } } } = this.props;
+  }
 
-    // if (content_tasks.length > 0) {
-    //   this.setState({ dataLoaded: true, dataSource: dataSource.concat(content_tasks), page: nextPage });
-    // } else if (!content_tasks.length) this.setState({ noMoreData: true });
+  getMoreFavorites = async() => {
+    const { loadAllFavorites } = this.props;
+    const { page } = this.state;
+    const nextPage = page + 1;
+
+    try {
+      await loadAllFavorites(nextPage);
+
+      const { favorites: { content_tasks: { content_tasks } } } = this.props;
+      this.setState(prevState => ({ dataLoaded: true, dataSource: prevState.dataSource.concat(content_tasks), page: nextPage }));
+
+
+    } catch (error) {
+      this.setState({ dataLoaded: true });
+      console.log(error);
+    }
+
   }
 
   _renderItem = (info) => {
@@ -101,32 +114,27 @@ class FavoritesTab extends PureComponent {
     const loading = !dataLoaded;
     const hasItems = dataLoaded && (((data || {}).meta || {}).total_items > 0);
 
-    console.log('FAVORITES', data);
-
     return (
       <Container>
-        <TabContainer>
-          <FlatList
-            contentContainerStyle={styles.contentContainer}
-            data={dataSource}
-            ListEmptyComponent={
-              dataLoaded ? (
-                <NotDataToDisplay>
-                  <MaterialIcons name='stars' size={35} color="#4f5325" />
-                  <TextBody>No tienes favoritos</TextBody>
-                </NotDataToDisplay>
-              ) : (
-                <Preloader />
-              )
-            }
-            onEndReached={this.getFavorites}
-            // ListFooterComponent={!noMoreData && <Preloader notFullScreen />}
-            renderItem={this._renderItem}
-            onEndReachedThreshold={0}
-            keyExtractor={this._keyExtractor}
-            numColumns={2}
-          />
-        </TabContainer>
+        {loading && <Preloader />}
+        {!loading && (hasItems ? (
+          <TabContainer>
+            <FlatList
+              contentContainerStyle={styles.contentContainer}
+              data={dataSource}
+              onEndReached={this.getMoreFavorites}
+              renderItem={this._renderItem}
+              onEndReachedThreshold={0.4}
+              keyExtractor={this._keyExtractor}
+              numColumns={2}
+            />
+          </TabContainer>
+        ):(
+          <NotDataToDisplay>
+            <MaterialIcons name='stars' size={35} color="#4f5325" />
+            <TextBody>No tienes favoritos</TextBody>
+          </NotDataToDisplay>
+        ))}
       </Container>
     );
   }

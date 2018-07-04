@@ -32,13 +32,15 @@ export default class ProfileScene extends Component {
     await signOutAsync();
   }
 
-  render() {
-    const { tree: { meta: { depth: level } }, profile } = this.props;
-
-    const tabsData = [
+  get tabs() {
+    return [
       { label: 'Favoritos', content: <FavoritesTab /> },
       { label: 'Ultimos 4', content: <LastContentsLearnt /> },
     ];
+  }
+
+  render() {
+    const { tree: { meta: { depth: level } }, profile } = this.props;
 
     const profileInfo = {
       profile,
@@ -50,7 +52,7 @@ export default class ProfileScene extends Component {
         <Navbar />
         <ProfileInfo
           data={profileInfo}
-          tabsData={tabsData}
+          tabsData={this.tabs}
           onClickEdit={this.editProfile}
           onClickSignOut={this.signOut}
         />

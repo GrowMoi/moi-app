@@ -23,7 +23,7 @@ const storeQuiz = quiz => ({
   payload: quiz,
 });
 
-const loadUserFavorites = favorites => ({
+const setUserFavorites = favorites => ({
   type: actionTypes.LOAD_USER_FAVORITES,
   payload: favorites,
 });
@@ -151,18 +151,19 @@ const storeTaskAsync = (neuronId, contentId) => async (dispatch) => {
 };
 
 const storeAsFavoriteAsync = (neuronId, contentId) => async (dispatch) => {
-  let res;
   try {
-    res = await api.contents.storeAsFavorite(neuronId, contentId);
+    const res = await api.contents.storeAsFavorite(neuronId, contentId);
     const { headers } = res;
 
-    await dispatch(setHeaders(headers));
-    Alert.alert('Favorito', 'Listo, Este contenido fue agregado como favorito.');
+    dispatch(setHeaders(headers));
+    Alert.alert('Favorito', 'Este contenido fue agregado como favorito.');
+
+    return res;
   } catch (error) {
     // console.log(error);
     Alert.alert('Favorito', 'Ups!, No pudimos agregar este contenido como favorito, intentalo más tarde.');
+    throw new Error(error);
   }
-  return res;
 };
 
 const readContentAsync = (neuronId, contentId) => async (dispatch) => {
@@ -214,7 +215,7 @@ const loadAllFavorites = page => async (dispatch) => {
     const { headers, data } = res;
 
     await dispatch(setHeaders(headers));
-    await dispatch(loadUserFavorites(data));
+    await dispatch(setUserFavorites(data));
 
     return data;
   } catch (error) {
@@ -331,6 +332,7 @@ export default {
   learnContentsAsync,
   storeNotesAsync,
   loadAllFavorites,
+  setUserFavorites,
   storeAsFavoriteAsync,
   getUserProfileAsync,
   updateUserAccountAsync,

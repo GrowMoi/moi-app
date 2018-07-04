@@ -204,8 +204,13 @@ export default class SingleContentScene extends Component {
   storeAsFavorite = async (neuronId, contentId) => {
     const { storeAsFavoriteAsync } = this.props;
 
-    const res = await storeAsFavoriteAsync(neuronId, contentId);
-    if (res.status === 200) this.setState({ favorite: res.data.favorite });
+    try {
+      const res = await storeAsFavoriteAsync(neuronId, contentId);
+      this.setState({ favorite: res.data.favorite, actionSheetsVisible: false });
+
+    } catch (error) {
+      throw new Error(error);
+    }
   };
 
   redirectTo = (route) => {
