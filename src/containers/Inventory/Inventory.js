@@ -146,7 +146,6 @@ export default class Inventory extends Component {
     };
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
-    console.log(sortedAchievements);
 
     return (
       <MoiBackground>
