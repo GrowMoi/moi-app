@@ -160,6 +160,7 @@ export default class Inventory extends Component {
                 renderItem={this._renderItem}
                 keyExtractor={this._keyExtractor}
                 numColumns={2}
+                columnWrapperStyle={{ justifyContent: 'center' }}
               />
             </WoodFrame>
           </LeaderFrame>

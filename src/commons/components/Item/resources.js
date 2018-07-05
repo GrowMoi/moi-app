@@ -41,7 +41,11 @@ const items = {
 
 export default {
   getItem: (type = 1) => {
-    return items[type];
+    if(items[type]) {
+      return items[type]
+    }
+
+    return {};
   },
 
   getBox: () => {

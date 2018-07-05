@@ -48,12 +48,14 @@ class Item extends Component {
 
   render() {
     const { type = 1, width = 90, active } = this.props;
+
     const paddingForItem = 30;
     const renderTypeItem = resources.getItem(type);
     const box = resources.getBox();
 
     return (
       <Container source={box} resizeMode='contain' width={width}>
+      {Object.keys(renderTypeItem).length > 0 &&
         <TouchableWithoutFeedback onPress={this.onPressItem}>
           <ItemImageAnimated
             ref={this.handleViewRef}
@@ -62,6 +64,7 @@ class Item extends Component {
             width={(width - paddingForItem)}
           />
         </TouchableWithoutFeedback>
+      }
       </Container>
     )
   }
