@@ -16,7 +16,7 @@ import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { Palette, Size } from '../../commons/styles';
 import LeaderRow from '../../commons/components/LeaderRow/LeaderRow';
-import { normalize } from '../../commons/utils';
+import { object } from '../../commons/utils';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
 import Item from '../../commons/components/Item/Item';
@@ -145,6 +145,9 @@ export default class Inventory extends Component {
         height: 720
     };
 
+    const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
+    console.log(sortedAchievements);
+
     return (
       <MoiBackground>
         <Navbar />
@@ -153,7 +156,7 @@ export default class Inventory extends Component {
           <LeaderFrame width={leaderFramePadding}>
             <WoodFrame width={woodFramePadding}>
               <FlatList
-                data={achievements}
+                data={sortedAchievements}
                 ListEmptyComponent={
                   <TextBody center>No tienes logros ganados aún</TextBody>
                 }

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
-import PropTypes from 'prop-types';
+import { object } from '../../utils';
 
 import { getHeightAspectRatio } from '../../utils';
 import resources from './resources';
@@ -53,9 +53,9 @@ class Item extends Component {
     const renderTypeItem = resources.getItem(type);
     const box = resources.getBox();
 
+    if(object.isEmpty(renderTypeItem)) return null;
     return (
       <Container source={box} resizeMode='contain' width={width}>
-      {Object.keys(renderTypeItem).length > 0 &&
         <TouchableWithoutFeedback onPress={this.onPressItem}>
           <ItemImageAnimated
             ref={this.handleViewRef}
@@ -64,7 +64,6 @@ class Item extends Component {
             width={(width - paddingForItem)}
           />
         </TouchableWithoutFeedback>
-      }
       </Container>
     )
   }

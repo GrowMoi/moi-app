@@ -6,6 +6,21 @@ const isEmpty = (obj = {}) => {
   throw new Error(`This type is not a valid object`);
 }
 
+const sortObjectsByKey = (array = [], key = '', order = 'ASC') => {
+  return array.sort((a, b) => {
+    if (a[key] > b[key]) {
+      return order === 'DESC' ? -1 : 1;
+    }
+    if (a[key] < b[key]) {
+      return order === 'DESC' ? 1 : -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+}
+
+
 export default {
   isEmpty,
+  sortObjectsByKey,
 };
