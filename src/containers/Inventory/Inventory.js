@@ -54,12 +54,12 @@ export default class Inventory extends Component {
 
   updateItem = async ({ id, name }) => {
     const { updateAchievementsAsync } = this.props;
+    this.showLoading();
 
     if(id) {
       try {
-        this.toggleLoading();
         await updateAchievementsAsync(id);
-        this.toggleLoading();
+        this.showLoading(false);
       } catch(error) {
         this.showErrorMessage();
       }
@@ -67,14 +67,12 @@ export default class Inventory extends Component {
   }
 
   showErrorMessage() {
-    this.toggleLoading();
+    this.showLoading(false);
     this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde', () => Actions.pop());
   }
 
-  toggleLoading() {
-    this.setState(prevState => ({
-      loading: !prevState.loading
-    }));
+  showLoading(isVisible = true) {
+    this.setState({ loading: isVisible });
   }
 
   showVideo = (show = true, vineta = vineta_1) => {

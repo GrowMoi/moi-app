@@ -1,6 +1,7 @@
 import api from '../api';
 import { setHeaders } from './headerActions';
 import * as actionTypes from './actionTypes';
+import { Sound, sounds } from '../commons/components/SoundPlayer';
 
 const setCurrentNeuron = neuron => ({
   type: actionTypes.LOAD_NEURON_SELECTED,
@@ -19,18 +20,30 @@ const setCurrentRecomendedContents = content => ({
 
 const stopAudio = () => ({
   type: actionTypes.STOP_CURRENT_AUDIO,
-})
+});
 
 const playAudio = () => ({
   type: actionTypes.PLAY_CURRENT_AUDIO,
-})
+});
 
-const stopCurrentBackgroundAudio = () => async (dispatch) => {
-  dispatch(stopAudio());
-}
+const setCurrentAudioBg = (audio) => ({
+  type: actionTypes.SET_CURRENT_AUDIO,
+  payload: audio,
+});
 
-const playCurrentBackgroundAudio = () => async (dispatch) => {
-  dispatch(playAudio());
+const removeCurrentAudioBg = () => ({
+  type: actionTypes.REMOVE_CURRENT_AUDIO,
+});
+
+const stopCurrentBackgroundAudio = () => async (dispatch) => dispatch(stopAudio());
+const playCurrentBackgroundAudio = () => async (dispatch) => dispatch(playAudio());
+const setCurrentBackgroundAudio = (audio) => (dispatch) => {
+  if(sounds.playIn[audio.soundName].includes(audio.scene) !==  sounds.playIn[audio.soundName].includes(audio.previousScene)) {
+    dispatch(setCurrentAudioBg(audio));
+   }
+};
+const removeCurrentBackgroundAudio = () => dispatch => {
+  dispatch(removeCurrentAudioBg());
 }
 
 const loadNeuronByIdAsync = id => async (dispatch) => {
@@ -71,4 +84,6 @@ export default {
   loadRecomendedContents,
   stopCurrentBackgroundAudio,
   playCurrentBackgroundAudio,
+  setCurrentBackgroundAudio,
+  removeCurrentBackgroundAudio,
 };

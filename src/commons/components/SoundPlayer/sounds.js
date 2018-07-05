@@ -107,4 +107,25 @@ export default sounds = {
       },
       soundName: 'content',
     },
+
+    // The bg audio play in these scenes
+    playIn: {
+      content: [
+        'settings',
+        'leaderboard',
+        'searchFriends',
+        'inventory',
+        'content',
+        'singleContent',
+        'tasks',
+        'search',
+        'profile',
+        'editProfile',
+        'publicProfile',
+        'randomContents',
+      ],
+      test: ['quiz'],
+      fondo: ['tree'],
+      intro: ['login']
+    }
 }
