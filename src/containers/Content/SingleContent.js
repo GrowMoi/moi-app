@@ -130,12 +130,13 @@ export default class SingleContentScene extends Component {
     favorite: false,
   }
 
-  componentDidMount() {
-    this.loadContentAsync();
+  async componentDidMount() {
+    await this.loadContentAsync();
   }
 
   loadContentAsync = async () => {
     const { loadContentByIdAsync, content_id, neuron_id } = this.props;
+
     try {
       await loadContentByIdAsync(neuron_id, content_id);
     } catch (error) {
@@ -235,7 +236,6 @@ export default class SingleContentScene extends Component {
             try {
               await loadNeuronByIdAsync(neuronId);
               Actions.pop();
-
             } catch (error) {
              console.log(error);
             }
@@ -333,7 +333,7 @@ export default class SingleContentScene extends Component {
 
                 <Section>
                   <Header inverted bolder>Links</Header>
-                  {content.links.map((link, i) => (
+                  {((content || {}).links || []).map((link, i) => (
                     <TextLeftBorder key={i}>
                       <TouchableOpacity onPress={() => this.handleOpenLinks(link)}>
                         <TextBody inverted>{link}</TextBody>

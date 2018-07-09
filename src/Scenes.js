@@ -7,6 +7,7 @@ import { Text, Dimensions, AsyncStorage } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
+import ModalHost from 'expo/src/modal/ModalHost';
 
 import routes from './routes';
 import messages from './messages';
@@ -87,14 +88,16 @@ export default class Scenes extends Component {
 
     if (appIsReady && assetsLoaded) {
       return (
-        <Provider store={store}>
-          <IntlProvider
-            locale={locale}
-            messages={flattenMessages(messages[locale])}
-            textComponent={Text}>
-            <RouterWithRedux scenes={routes}/>
-          </IntlProvider>
-        </Provider>
+        <ModalHost>
+          <Provider store={store}>
+            <IntlProvider
+              locale={locale}
+              messages={flattenMessages(messages[locale])}
+              textComponent={Text}>
+              <RouterWithRedux scenes={routes}/>
+            </IntlProvider>
+          </Provider>
+        </ModalHost>
       );
     }
 

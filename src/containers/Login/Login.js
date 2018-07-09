@@ -26,6 +26,7 @@ import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 // Login Images
 import loginImages from './loginImages';
 import LoginImage from './LoginImage';
+import Preloader from '../../commons/components/Preloader/Preloader';
 
 const LoginContainer = styled(View)`
   flex: 1;

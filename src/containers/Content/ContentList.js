@@ -21,11 +21,11 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 import { normalize } from '../../commons/utils';
 import { Size } from '../../commons/styles';
 import { Header } from '../../commons/components/Typography';
+import ContentListBox from './ContentListBox';
 
 // Actions
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
-import EmptyState from '../../commons/components/EmptyState';
 
 const Container = styled(View)`
   flex: 1;
@@ -37,10 +37,10 @@ const ContentPreviewAnimatable = Animatable.createAnimatableComponent(ContentPre
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   device: store.device,
+  route: store.route,
 }),
 {
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
-  readContentAsync: userActions.readContentAsync,
 })
 export default class ContentListScene extends Component {
   state = {
@@ -50,28 +50,6 @@ export default class ContentListScene extends Component {
   async componentDidMount() {
     await this.getCurrentContents();
     this.setState({ loading: false });
-
-    // Show alert if neuron not have content.
-    setTimeout(() => {
-      this.showContentAlert();
-    }, 1000)
-  }
-
-  showContentAlert() {
-    const { neuronSelected } = this.props;
-
-    let contents;
-    if(neuronSelected !== undefined) {
-      contents = (neuronSelected.contents || []).filter(c => !c.read);
-    }
-    const contentsExist = (contents || []).length > 0;
-    if(!contentsExist) {
-      Alert.alert('Neurona Completa!', 'Felicidades, Haz aprendido todos los contenidos en esta neurona',[
-        {text: 'Regresar al Arbol', onPress: () => {
-            Actions.moiDrawer({ type: 'reset' });
-        }},
-      ]);
-    }
   }
 
   getCurrentContents = async () => {
@@ -84,72 +62,30 @@ export default class ContentListScene extends Component {
     }
   }
 
-  onPressRowcontent = (e, content) => {
-    const { neuronSelected, neuron_id } = this.props;
-
-    Actions.singleContent({
-      content_id: content.id,
-      neuron_id,
-      title: neuronSelected.title,
-    });
-  }
-
   render() {
     const { loading } = this.state;
-    const { neuronSelected, device } = this.props;
-    const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
+    const { neuronSelected, device, neuron_id } = this.props;
 
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
 
-    let contents;
-    if(neuronSelected !== undefined) {
-      contents = (neuronSelected.contents || []).filter(c => !c.read);
-    }
-    const contentsExist = (contents || []).length > 0;
-
     return (
       <MoiBackground>
         {!loading ? (
-          <ContentBox>
-            {contentsExist && (
-              <ScrollView contentContainerStyle={containerStyles}>
-                {(contents || []).map((content, i) => {
-                  const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
-                  const oddInverted = i % 2 === 1;
-
-                  const MILLISECONDS = 100;
-                  const delay = MILLISECONDS * i;
-
-                  return (
-                    <ContentPreview
-                      animationDelay={delay}
-                      key={`${uuid()}-${content.id}`}
-                      width={widthContentPreview}
-                      onPress={e => this.onPressRowcontent(e, content)}
-                      inverted={oddInverted}
-                      title={content.title}
-                      subtitle={normalizeKind}
-                      source={{ uri: content.media[0] }}
-                    />
-                  );
-                })}
-              </ScrollView>
-            )}
-
-            {!contentsExist &&
-              <EmptyState text='Ya haz aprendido todos los contenidos en esta neurona' />
-            }
-          </ContentBox>
+          <ContentListBox
+            containerStyles={containerStyles}
+            neuronSelected={neuronSelected}
+            neuronId={neuron_id}
+          />
         ) : (
           <Preloader />
         )}
 
-        <Navbar/>
+        <Navbar />
         <BottomBarWithButtons
-          readButton={ false }
+          readButton={false}
           width={device.dimensions.width}
         />
       </MoiBackground>
