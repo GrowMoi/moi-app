@@ -43,7 +43,11 @@ export default class ContentListBox extends Component {
     const existContentsToRead = (readedContents || []).length > 0;
 
     if(!existContentsToRead) {
-      Alert.alert('Confirmación', 'Ya no quedan contenidos por aprender');
+      Alert.alert('Confirmación', 'Ya no quedan contenidos por aprender', [{
+        text: 'Ok', onPress: () => {
+          Actions.moiDrawer({ type: 'reset' });
+        }
+      }]);
     }
   }
 
