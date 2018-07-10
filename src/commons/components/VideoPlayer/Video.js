@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Modal } from 'react-native';
-import { Video as ExpoVideo } from 'expo';
+import { Video as ExpoVideo, ScreenOrientation } from 'expo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components/native';
 import { getHeightAspectRatio } from '../../utils';
@@ -23,7 +23,6 @@ const CloseIcon = styled(Ionicons)`
 `;
 
 class Video extends Component {
-
   componentWillUpdate(nextProps) {
     const { visible } = nextProps;
     Sound.pause();
@@ -37,7 +36,7 @@ class Video extends Component {
           <Modal {...modalProps}
             animationType={animationType}
             visible={visible}
-            supportedOrientations={['portrait', 'landscape']}
+            supportedOrientations={['landscape']}
           >
             <Overlay>
               <CloseIcon
@@ -52,7 +51,9 @@ class Video extends Component {
                 rate={1.0}
                 volume={1.0}
                 isMuted={false}
-                resizeMode={ExpoVideo.RESIZE_MODE_STRETCH}
+                isPortrait={false}
+                resizeMode={ExpoVideo.RESIZE_MODE_CONTAIN}
+                switchToLandscape={()=>ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE)}
                 shouldPlay
                 style={{
                   width,
