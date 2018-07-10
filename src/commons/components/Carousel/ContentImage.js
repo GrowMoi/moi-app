@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, ImageBackground } from 'react-native';
+import { View, TouchableWithoutFeedback, ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
 import Preloader from '../Preloader/Preloader';
 
-const Container = styled(View)`
+const Container = styled(TouchableWithoutFeedback)`
   width: ${props => props.size.width};
   height: ${props => props.size.height};
   overflow: hidden;
@@ -19,11 +19,16 @@ export default class ContentImage extends Component {
     loading: true,
   }
 
+  onPress = (imageProps) => {
+    const { onPressImage } = this.props;
+    if(onPressImage) onPressImage(imageProps);
+  }
+
   render() {
-    const { size, ...rest } = this.props;
+    const { size, onPressImage, ...rest } = this.props;
 
     return (
-      <Container size={size}>
+      <Container size={size} onPress={() => !this.state.loading && this.onPress({ ...rest, size })}>
         <Img {...rest} onLoad={() => this.setState({ loading: false })} onError={() => this.setState({ loading: false })}>
           {this.state.loading && <Preloader notFullScreen/>}
         </Img>
