@@ -38,7 +38,6 @@ const FrameContainer = styled(View)`
 `;
 
 @connect(state => ({
-  leaders: state.leaderboard.leaders,
   device: state.device,
   achievements: state.user.achievements,
 }), {

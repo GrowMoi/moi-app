@@ -4,7 +4,7 @@ import { Sound, sounds } from '../components/SoundPlayer';
 import neuronActions from '../../actions/neuronActions';
 
 let previousScene = '';
-const conflictScenes = ['content', 'profile']
+const conflictScenes = ['content', 'profile'];
 
 const isDrawerScene = (currentScene) => {
   return currentScene === 'moiDrawer';
@@ -16,6 +16,11 @@ const routeMiddleware = args => store => next => async(action) => {
 
     if (conflictScenes.indexOf(previousScene) !== -1 && isDrawerScene(currentScene)) {
       currentScene = 'tree';
+    }
+
+    const previousAudio = store.getState().tree.audio;
+    if(previousScene === 'profile' && previousAudio.soundName === 'content' && previousAudio.scene !== 'profile') {
+      currentScene = previousAudio.scene;
     }
 
     if(!isDrawerScene(currentScene)) {
@@ -31,20 +36,18 @@ const routeMiddleware = args => store => next => async(action) => {
           await Sound.play(currentAudio.payload);
         }
       }
+      previousScene = currentScene;
     }
-
-    previousScene = currentScene;
   }
 
   if(action.type === actionTypes.STOP_CURRENT_AUDIO) {
     Sound.stop();
   }
   else if(action.type === actionTypes.PLAY_CURRENT_AUDIO) {
-    const storedScene = ((store.getState().routes || {}).scene || {}).name;
-
-    if(storedScene) {
-      Sound.play(sounds[storedScene].payload);
-    }
+    const currentAudio = store.getState().tree.audio;
+      if (currentAudio) {
+          await Sound.play(currentAudio.payload);
+      }
   }
 
   return next(action);
