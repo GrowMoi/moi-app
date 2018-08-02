@@ -13,6 +13,9 @@ export const colors = {
   cream: chroma('#f4ef95'),
   creamButton: chroma('#fff9bb'),
   lightGreen: chroma('#c7b75d'),
+  greenList: chroma('#99b461'),
+  greenSubList: chroma('#809554'),
+  greenListItem: chroma('#73ba4b'),
 };
 
 const palette = {
@@ -21,11 +24,15 @@ const palette = {
   accent: colors.orange,
   primaryText: colors.dark,
   invertedText: colors.white.alpha(0.9).css(),
+  invertedBlack: colors.black.alpha(0.2).css(),
   dark: colors.dark,
   black: colors.black,
   neutral: colors.gray,
   white: colors.white,
   menuBackground: colors.darkGreen,
+  tasksList: colors.greenList,
+  tasksSubList: colors.greenSubList,
+  borderListItem: colors.greenListItem,
 };
 
 export default palette;

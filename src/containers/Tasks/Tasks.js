@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+// import { View, FlatList } from 'react-native';
+// import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import { ContentBox, ContentPreview } from '../../commons/components/ContentComponents';
-import { Size } from '../../commons/styles';
-import { normalize } from '../../commons/utils';
+// import { Size } from '../../commons/styles';
+// import { normalize } from '../../commons/utils';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import userActions from '../../actions/userActions';
+import TasksContainer from './TasksContainer';
 
 @connect(store => ({
-  neuronSelected: store.neuron.neuronSelected,
   device: store.device,
-  user: store.user,
 }), {
   loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
 })
@@ -35,62 +34,19 @@ class Tasks extends Component {
     this.setState({ loading: false });
   }
 
-  onPressRowcontent = (e, content) => {
-    const { neuronSelected } = this.props;
-    const { id, neuron_id, title } = content;
-
-    Actions.singleContent({
-      content_id: id,
-      title: neuronSelected.title,
-      neuron_id,
-    });
-  }
-
   render() {
     const { loading } = this.state;
-    const { device, user: { tasks } } = this.props;
-    const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
+    const { device } = this.props;
+    // const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
 
-    const containerStyles = {
-      width: (device.dimensions.width - Size.spaceMediumLarge),
-      paddingHorizontal: Size.spaceSmall,
-    };
+    // const containerStyles = {
+    //   width: (device.dimensions.width - Size.spaceMediumLarge),
+    //   paddingHorizontal: Size.spaceSmall,
+    // };
 
     const contentBox = !loading && (
       <ContentBox>
-        <ScrollView contentContainerStyle={containerStyles}>
-          {!!tasks &&
-            (((tasks || {}).meta || {}).total_items || 0) > 0 &&
-            tasks.content_tasks.content_tasks.map((content, i) => {
-              const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
-              const oddInverted = i % 2 === 1;
-              const MILLISECONDS = 100;
-              const delay = MILLISECONDS * i;
-
-              /*
-               * temporarily the variable will be declared as false,
-               * until the feature (close item) will be implemented.
-              */
-              const hasCloseButton = false;
-
-              return (
-                <ContentPreview
-                  animationDelay={delay}
-                  closeButton={hasCloseButton}
-                  id={content.id}
-                  onPressCloseButton={id => console.log('CLOSE CONTENT', id)}
-                  width={widthContentPreview}
-                  onPress={e => this.onPressRowcontent(e, content)}
-                  inverted={oddInverted}
-                  key={content.id}
-                  title={content.title}
-                  subtitle={normalizeKind}
-                  source={{ uri: content.media[0] }}
-                />
-              );
-            })
-          }
-        </ScrollView>
+        <TasksContainer />
       </ContentBox>
     );
 
@@ -106,9 +62,7 @@ class Tasks extends Component {
 }
 
 Tasks.propTypes = {
-  neuronSelected: PropTypes.object,
   device: PropTypes.object,
-  user: PropTypes.object,
   neuron_id: PropTypes.number,
 };
 
