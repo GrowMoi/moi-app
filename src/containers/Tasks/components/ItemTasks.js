@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Feather } from '@expo/vector-icons';
 import { Palette } from './../../../commons/styles';
 import { Header } from './../../../commons/components/Typography';
 
@@ -8,7 +8,7 @@ function ItemTasks(props) {
   return(
     <TouchableOpacity onPress={props.onPress && props.onPress} style={styles.container}>
       <View style={styles.subContainer}>
-        <Ionicons style={styles.icon} name={props.icon} size={25}  />
+        <Feather style={styles.icon} name={props.icon} size={25}  />
         <Header>{props.title}</Header>
       </View>
     </TouchableOpacity>

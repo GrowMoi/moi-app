@@ -6,7 +6,7 @@ import { Header as Headers } from './../../../commons/components/Typography';
 function Header(props) {
   return(
     <View style={styles.container}>
-      <Headers>Mis Tareas</Headers>
+      <Headers>{props.title}</Headers>
     </View>
   );
 }

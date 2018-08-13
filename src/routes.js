@@ -18,6 +18,7 @@ import SearchFriends from './containers/Search/SearchFriends';
 import Inventory from './containers/Inventory/Inventory';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
+// import Test from './commons/components/Test';
 
 const backButton = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.pop()}/>;
 const backButtonQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.moiDrawer()}/>;
@@ -25,6 +26,10 @@ const backButtonQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={(
 
 const routes = Actions.create(
   <Scene key="root">
+    {/* <Scene
+      key='test'
+      component={Test}
+    /> */}
     <Scene
       key='login'
       component={Login}

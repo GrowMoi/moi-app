@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import ItemTasks from './ItemTasks';
-import SubItem from './SubItem';
+import SubItemRow from './SubItemRow';
 import { TextBody } from '../../../commons/components/Typography';
 import { Palette } from './../../../commons/styles';
 import uuid from 'uuid/v4';
 
-export default class TaskTabContainer extends Component {
+export default class NotificationTabContainer extends Component {
   state = {
     open: false,
   }
@@ -18,7 +18,7 @@ export default class TaskTabContainer extends Component {
   _keyExtractor = (item, index) => uuid();
 
   render() {
-    const { title, icon, data } = this.props;
+    const { title, icon, data, onClose = () => null } = this.props;
     const { open } = this.state;
 
     return(
@@ -27,19 +27,18 @@ export default class TaskTabContainer extends Component {
         {open && (
           <View style={styles.subItemContainer}>
               <FlatList
-                data={data}
-                numColumns={2}
+                data={data.notifications}
                 keyExtractor={this._keyExtractor}
                 renderItem={({ item }) => {
-                  return <SubItem
+                  return <SubItemRow
                     title={item.title}
-                    source={item.media[0]}
-                    clickItem={() => this.props.onClickItem(item)}
+                    clickClose={() => onClose(item)}
+                    description={item.description}
                   />
                 }
                   }
                 ListEmptyComponent={
-                  <TextBody style={styles.emptyText} center>{`No tienes nada guardado en ${(title || '').toLowerCase()} aún.`}</TextBody>
+                  <TextBody style={styles.emptyText} center>{`No tienes ${(title || '').toLowerCase()}.`}</TextBody>
                 }
               />
           </View>

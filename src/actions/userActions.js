@@ -52,6 +52,16 @@ const signOutAsync = () => async (dispatch) => {
   Actions.login();
 }
 
+const setNotifications = (notifications) => ({
+  type: actionTypes.SET_NOTIFICATIONS,
+  payload: notifications,
+})
+
+const setNotes = (notes) => ({
+  type: actionTypes.SET_USER_NOTES,
+  payload: notes,
+})
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   try {
     const res = await api.user.signIn({ login, authorization_key: authorizationKey });
@@ -321,6 +331,31 @@ const setCurrentSettings = (settings = []) => (dispatch) => {
   dispatch(setSettings(settings));
 }
 
+const getNotificationsAsync = (page = 1) => async (dispatch) => {
+  try {
+    const res = await api.notifications.getNotifications(page);
+
+    await dispatch(setHeaders(res.headers));
+    dispatch(setNotifications(res.data));
+    return res.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const getStoreNotesAsync = (page = 1) => async dispatch => {
+  try {
+    const res = await api.user.getNotes(page);
+
+    await dispatch(setHeaders(res.headers));
+    dispatch(setNotes(res.data));
+    return res.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+
 export default {
   loginAsync,
   registerAsync,
@@ -331,6 +366,7 @@ export default {
   readContentAsync,
   learnContentsAsync,
   storeNotesAsync,
+  setNotes,
   loadAllFavorites,
   setUserFavorites,
   storeAsFavoriteAsync,
@@ -341,4 +377,6 @@ export default {
   signOutAsync,
   setCurrentSettings,
   updateSettingsAsync,
+  getNotificationsAsync,
+  getStoreNotesAsync,
 };

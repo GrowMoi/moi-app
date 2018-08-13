@@ -104,6 +104,11 @@ const api = {
       const res = await client.put(endpoint, { id });
       return res;
     },
+    async getNotes(page) {
+      const endpoint = '/api/users/content_notes';
+      const res = await client.get(endpoint, { params: { page } });
+      return res;
+    },
   },
 
   leaderboard: {
@@ -188,6 +193,14 @@ const api = {
       return res;
     },
   },
+
+  notifications: {
+    async getNotifications(page = 1) {
+      const endpoint = '/api/notifications';
+      const res = await client.get(endpoint);
+      return res;
+    }
+  }
 };
 
 export default api;

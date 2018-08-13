@@ -95,6 +95,7 @@ apply from: 'expo.gradle'
 
 
 dependencies {
+    compile project(':lottie-react-native')
     compile project(':react-native-youtube')
   compile fileTree(dir: 'libs', include: ['*.jar'])
 

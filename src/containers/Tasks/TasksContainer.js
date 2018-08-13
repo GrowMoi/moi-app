@@ -1,26 +1,54 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import Header from './components/Header';
-import TaskTabContainer from './components/TaskTabContainer';
 import { connect } from 'react-redux';
 import userActions from '../../actions/userActions';
 import { Actions } from 'react-native-router-flux';
+import Preloader from '../../commons/components/Preloader/Preloader';
 
+// Own Components
+import TaskTabContainer from './components/TaskTabContainer';
+import NotificationTabContainer from './components/NotificationTabContainer';
+import NotesTabContainer from './components/NotesTabContainer';
+import FavoritesTabContainer from './components/FavoritesTabContainer';
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   user: store.user,
 }), {
   loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
+  getNotificationsAsync: userActions.getNotificationsAsync,
+  getUserNotesAsync: userActions.getStoreNotesAsync,
 })
-
 class TasksContainer extends Component {
-  componentDidMount() {
-    this.getCurrentTasks();
+  state = {
+    loading: false,
   }
 
-  getCurrentTasks = async () => {
-    const { loadUserContentTasksAsync } = this.props;
-    await loadUserContentTasksAsync(1);
+  componentDidMount() {
+    this.getData();
+  }
+
+  // getCurrentTasks = async () => {
+  //   const { loadUserContentTasksAsync } = this.props;
+  //   await loadUserContentTasksAsync(1);
+  // }
+
+  // getNotificationsUser = async () => {
+  //   const { getNotifications } = this.props;
+  //   await getNotifications();
+  // }
+
+  getData = async () => {
+    const { loadUserContentTasksAsync, getNotificationsAsync, getUserNotesAsync } = this.props;
+    this.setState({ loading: true });
+
+    try {
+      await loadUserContentTasksAsync();
+      await getUserNotesAsync();
+      await getNotificationsAsync();
+    } catch (error) {
+      console.log(error);
+    }
 
     this.setState({ loading: false });
   }
@@ -37,19 +65,40 @@ class TasksContainer extends Component {
   }
 
   render(){
-    const { user: { tasks } } = this.props;
+    const { user: { tasks, notifications, notes } } = this.props;
+    const { loading } = this.state;
+
     return(
       <View style={styles.container}>
-        <Header />
+        <Header title='Mis Tareas' />
         <ScrollView>
-          <View style={styles.scrollContainer}>
+          {!loading && <View style={styles.scrollContainer}>
             <TaskTabContainer
               data={((tasks.content_tasks || {}).content_tasks || [])}
               title='Tareas'
-              icon='md-create'
+              icon='list'
               onClickItem={item => this.onPressItem(item)}
             />
-          </View>
+            <FavoritesTabContainer
+              data={((notes.content_notes || {}).content_notes || [])}
+              title='Favoritos'
+              icon='star'
+              onClickItem={item => this.onPressItem(item)}
+            />
+            <NotesTabContainer
+              data={((notes.content_notes || {}).content_notes || [])}
+              title='Notas'
+              icon='edit-2'
+              onClickItem={item => this.onPressItem(item)}
+            />
+            <NotificationTabContainer
+              data={notifications}
+              title='Notificaciones'
+              icon='bell'
+              onClose
+            />
+          </View>}
+          {loading && <Preloader />}
         </ScrollView>
       </View>
     )

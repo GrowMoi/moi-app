@@ -13,6 +13,8 @@ const initialState = {
   quiz: null,
   achievements: [],
   settings: [],
+  notifications: {},
+  notes: {},
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -87,6 +89,24 @@ const settings = (state = initialState.settings, action) => {
   }
 }
 
+const notifications = (state = initialState.notifications, action) => {
+  switch (action.type) {
+    case actionTypes.SET_NOTIFICATIONS:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+const notes = (state = initialState.notes, action) => {
+  switch (action.type) {
+    case actionTypes.SET_USER_NOTES:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const user = combineReducers({
   userData,
   tasks,
@@ -95,6 +115,8 @@ const user = combineReducers({
   profile,
   achievements,
   settings,
+  notifications,
+  notes,
 });
 
 export default user;
