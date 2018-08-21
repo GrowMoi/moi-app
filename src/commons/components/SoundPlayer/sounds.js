@@ -11,6 +11,13 @@ export default sounds = {
       },
       soundName: 'intro',
     },
+    register: {
+      payload: {
+        source: intro,
+        repeat: true,
+      },
+      soundName: 'intro',
+    },
     tree: {
       payload: {
         source: fondo,
@@ -126,6 +133,6 @@ export default sounds = {
       ],
       test: ['quiz'],
       fondo: ['tree'],
-      intro: ['login']
+      intro: ['login', 'register']
     }
 }

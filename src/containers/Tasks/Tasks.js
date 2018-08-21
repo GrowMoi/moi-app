@@ -15,27 +15,9 @@ import TasksContainer from './TasksContainer';
 
 @connect(store => ({
   device: store.device,
-}), {
-  loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
-})
+}))
 class Tasks extends Component {
-  state = {
-    loading: true,
-  }
-
-  componentDidMount() {
-    this.getCurrentTasks();
-  }
-
-  getCurrentTasks = async () => {
-    const { loadUserContentTasksAsync } = this.props;
-    await loadUserContentTasksAsync(1);
-
-    this.setState({ loading: false });
-  }
-
   render() {
-    const { loading } = this.state;
     const { device } = this.props;
     // const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
 
@@ -44,7 +26,7 @@ class Tasks extends Component {
     //   paddingHorizontal: Size.spaceSmall,
     // };
 
-    const contentBox = !loading && (
+    const contentBox = (
       <ContentBox>
         <TasksContainer />
       </ContentBox>
@@ -53,7 +35,6 @@ class Tasks extends Component {
     return (
       <MoiBackground>
         {contentBox}
-        {loading && <Preloader />}
         <Navbar />
         <BottomBarWithButtons width={device.dimensions.width} />
       </MoiBackground>

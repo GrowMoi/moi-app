@@ -197,7 +197,7 @@ const api = {
   notifications: {
     async getNotifications(page = 1) {
       const endpoint = '/api/notifications';
-      const res = await client.get(endpoint);
+      const res = await client.get(endpoint, { params: { page } });
       return res;
     }
   }

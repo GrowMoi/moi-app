@@ -28,16 +28,6 @@ class TasksContainer extends Component {
     this.getData();
   }
 
-  // getCurrentTasks = async () => {
-  //   const { loadUserContentTasksAsync } = this.props;
-  //   await loadUserContentTasksAsync(1);
-  // }
-
-  // getNotificationsUser = async () => {
-  //   const { getNotifications } = this.props;
-  //   await getNotifications();
-  // }
-
   getData = async () => {
     const { loadUserContentTasksAsync, getNotificationsAsync, getUserNotesAsync } = this.props;
     this.setState({ loading: true });

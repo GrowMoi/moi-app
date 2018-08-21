@@ -135,13 +135,15 @@ const logoutAsync = () => async (dispatch) => {
 
 const loadUserContentTasksAsync = page => async (dispatch) => {
   let res;
+
+  console.log('LOAD USER CONTENT TASKS');
   try {
     res = await api.user.contentTasks(page);
     const { data, headers } = res;
     await dispatch(setHeaders(headers));
     dispatch(loadContentTasks(data));
   } catch (error) {
-    // console.log(error);
+    console.log(error);
   }
 
   return res;
@@ -332,6 +334,8 @@ const setCurrentSettings = (settings = []) => (dispatch) => {
 }
 
 const getNotificationsAsync = (page = 1) => async (dispatch) => {
+  console.log('NOTIFICATIONS');
+
   try {
     const res = await api.notifications.getNotifications(page);
 

@@ -16,3 +16,4 @@ ios/*.app.dSYM.zip
 .env
 .env.*
 ios/build/
+android/build/

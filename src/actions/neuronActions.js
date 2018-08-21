@@ -56,12 +56,17 @@ const loadNeuronByIdAsync = id => async (dispatch) => {
 };
 
 const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
-  const res = await api.contents.getContentById(neuronId, contentId);
 
-  dispatch(setCurrentContent(res.data));
-  dispatch(setHeaders(res.headers));
+  try {
+    const res = await api.contents.getContentById(neuronId, contentId);
 
-  return res;
+    dispatch(setHeaders(res.headers));
+    dispatch(setCurrentContent(res.data));
+
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 const loadRecomendedContents = () => async (dispatch) => {
@@ -73,6 +78,7 @@ const loadRecomendedContents = () => async (dispatch) => {
     dispatch(setCurrentRecomendedContents(res.data));
   } catch (error) {
     // console.log(error);
+    throw new Error(error);
   }
 
   return res;

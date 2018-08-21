@@ -17,8 +17,13 @@ export default class NotificationTabContainer extends Component {
 
   _keyExtractor = (item, index) => uuid();
 
+  onCloseNotification = (item) => {
+    const { onClose } = this.props;
+    if(onClose) onClose(item);
+  }
+
   render() {
-    const { title, icon, data, onClose = () => null } = this.props;
+    const { title, icon, data } = this.props;
     const { open } = this.state;
 
     return(
@@ -32,7 +37,7 @@ export default class NotificationTabContainer extends Component {
                 renderItem={({ item }) => {
                   return <SubItemRow
                     title={item.title}
-                    clickClose={() => onClose(item)}
+                    clickClose={() => this.onCloseNotification(item)}
                     description={item.description}
                   />
                 }

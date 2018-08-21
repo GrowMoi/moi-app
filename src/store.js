@@ -12,7 +12,7 @@ import routeMiddleware from './commons/utils/routeMiddleware';
 const options = { client };
 
 // create store...
-const middleware = [apiMiddleware(options), thunk, routeMiddleware()];
+const middleware = [thunk, apiMiddleware(options), routeMiddleware()];
 
 // eslint-disable-next-line
 const store = createStore(

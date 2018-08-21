@@ -5,16 +5,22 @@ const HEADERS = ['access-token', 'token-type', 'client', 'expiry', 'uid'];
 
 const tokenMiddleware = args => store => next => async (action) => {
   if (!action) { action = { type: '' }; }
-  const { customHeaders = [], validateAction = actionTypes.VALIDATE_TOKEN, authNotValid = actionTypes.AUTH_NOTVALID, logoutAction = actionTypes.LOGOUT, client } = args;
+  const {
+    customHeaders = [],
+    validateAction = actionTypes.VALIDATE_TOKEN,
+    authNotValid = actionTypes.AUTH_NOTVALID,
+    logoutAction = actionTypes.LOGOUT,
+    client
+  } = args;
 
-  HEADERS = [...new Set([...HEADERS, ...customHeaders])];
+  HEADERS = [...new Set([...HEADERS, ...customHeaders])]; // ["access-token", "token-type", "client", "expiry", "uid"]
+  client.defaults.headers.common['Content-type'] = 'application/json';
 
   // Clean All - remove axios client, headers and async storage from the app.
   const cleanAll = async () => {
     HEADERS.forEach((token) => {
       delete client.defaults.headers.common[token];
     });
-
     await AsyncStorage.multiRemove(HEADERS);
   };
 
@@ -35,19 +41,18 @@ const tokenMiddleware = args => store => next => async (action) => {
   } else {
 
     const { headers } = action;
-
-    if (headers) {
+    if (Object.keys((headers || [])).length > 0) {
       if (headers['access-token']) {
-
-        const multiHeaders = HEADERS.map((token) => {
-          client.defaults.headers.common[token] = headers[token];
-          return [token, headers[token]]
+        const multiHeaders = HEADERS.map((key) => {
+          client.defaults.headers.common[key] = headers[key];
+          return [key, headers[key]]
         });
 
         await AsyncStorage.multiSet(multiHeaders);
       }
     }
   }
+
   return next(action);
 };
 
