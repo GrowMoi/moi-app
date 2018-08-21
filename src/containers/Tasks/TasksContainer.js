@@ -18,6 +18,7 @@ import FavoritesTabContainer from './components/FavoritesTabContainer';
   loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
   getNotificationsAsync: userActions.getNotificationsAsync,
   getUserNotesAsync: userActions.getStoreNotesAsync,
+  loadAllFavorites: userActions.loadAllFavorites,
 })
 class TasksContainer extends Component {
   state = {
@@ -29,13 +30,22 @@ class TasksContainer extends Component {
   }
 
   getData = async () => {
-    const { loadUserContentTasksAsync, getNotificationsAsync, getUserNotesAsync } = this.props;
+    const {
+      loadUserContentTasksAsync,
+      getNotificationsAsync,
+      getUserNotesAsync,
+      loadAllFavorites,
+    } = this.props;
+
     this.setState({ loading: true });
 
     try {
-      await loadUserContentTasksAsync();
-      await getUserNotesAsync();
-      await getNotificationsAsync();
+      await Promise.all([
+        loadUserContentTasksAsync(),
+        getUserNotesAsync(),
+        getNotificationsAsync(),
+        loadAllFavorites(),
+      ])
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +65,7 @@ class TasksContainer extends Component {
   }
 
   render(){
-    const { user: { tasks, notifications, notes } } = this.props;
+    const { user: { tasks, notifications, notes, favorites } } = this.props;
     const { loading } = this.state;
 
     return(
@@ -70,7 +80,7 @@ class TasksContainer extends Component {
               onClickItem={item => this.onPressItem(item)}
             />
             <FavoritesTabContainer
-              data={((notes.content_notes || {}).content_notes || [])}
+              data={((favorites.content_tasks || {}).content_tasks || [])}
               title='Favoritos'
               icon='star'
               onClickItem={item => this.onPressItem(item)}
@@ -79,13 +89,11 @@ class TasksContainer extends Component {
               data={((notes.content_notes || {}).content_notes || [])}
               title='Notas'
               icon='edit-2'
-              onClickItem={item => this.onPressItem(item)}
             />
             <NotificationTabContainer
               data={notifications}
               title='Notificaciones'
               icon='bell'
-              onClose
             />
           </View>}
           {loading && <Preloader />}

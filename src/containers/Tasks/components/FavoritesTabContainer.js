@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import ItemTasks from './ItemTasks';
-import SubItemRow from './SubItemRow';
+import SubItem from './SubItem';
 import { TextBody } from '../../../commons/components/Typography';
 import { Palette } from './../../../commons/styles';
 import uuid from 'uuid/v4';
@@ -30,9 +30,10 @@ export default class FavoritesTabContainer extends Component {
                 data={data}
                 keyExtractor={this._keyExtractor}
                 renderItem={({ item }) => {
-                  return <SubItemRow
+                  return <SubItem
                     title={item.title}
-                    description={item.description}
+                    source={item.media[0]}
+                    clickItem={() => this.props.onClickItem(item)}
                   />
                 }
                   }

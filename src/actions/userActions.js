@@ -227,7 +227,7 @@ const loadAllFavorites = page => async (dispatch) => {
     const { headers, data } = res;
 
     await dispatch(setHeaders(headers));
-    await dispatch(setUserFavorites(data));
+    dispatch(setUserFavorites(data));
 
     return data;
   } catch (error) {
