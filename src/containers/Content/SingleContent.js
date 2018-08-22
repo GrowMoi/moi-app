@@ -32,6 +32,7 @@ import NoteInput from '../../commons/components/NoteInput/NoteInput';
 import { YoutubePlayer } from '../../commons/components/VideoPlayer';
 import { youtube } from '../../commons/utils';
 import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
+import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
 
 // Redux
 import neuronActions from '../../actions/neuronActions';
@@ -128,6 +129,7 @@ export default class SingleContentScene extends Component {
     currentVideoId: '',
     actionSheetsVisible: false,
     favorite: false,
+    reading: false,
   }
 
   async componentDidMount() {
@@ -220,32 +222,37 @@ export default class SingleContentScene extends Component {
 
   readContent = async (neuronId, contentId) => {
     const { readContentAsync, loadNeuronByIdAsync } = this.props;
-    this.toggleLoading();
+    const { reading } = this.state;
 
-    try {
-      const res = await readContentAsync(neuronId, contentId);
-      const { data } = res;
+    if(!reading) {
+      this.setState({ loading: true, reading: true });
 
-      if (data.test) {
-        Actions.quiz({type: ActionConst.RESET});
-      } else {
-        this.showAlert(
-          'Contenido aprendido',
-          async () => {
+      try {
+        const res = await readContentAsync(neuronId, contentId);
+        const { data } = res;
+        this.readingAnim.play();
 
+        setTimeout(async () => {
+          await this.setState({ loading: false, reading: false });
+          if (data.test) {
+            Actions.quiz({type: ActionConst.RESET});
+          } else {
             try {
               await loadNeuronByIdAsync(neuronId);
               Actions.pop();
             } catch (error) {
-             console.log(error);
+              console.log(error);
             }
-          },
-        );
+          }
+        }, 2000);
+
+      } catch (error) {
+        console.log('ERROR TO READ CONTENT', error.message);
+        this.showErrorMessage();
+        this.setState({ reading: false });
       }
-    } catch (error) {
-      console.log('ERROR TO READ CONTENT', error.message);
-      this.showErrorMessage();
     }
+
   };
 
   showErrorMessage() {
@@ -280,6 +287,7 @@ export default class SingleContentScene extends Component {
       currentVideoId,
       actionSheetsVisible,
       favorite,
+      reading,
     } = this.state;
 
     const options = [
@@ -298,7 +306,7 @@ export default class SingleContentScene extends Component {
 
     return (
       <MoiBackground>
-        {loading && <Preloader />}
+        {(loading && !reading) && <Preloader />}
         {!loading && (
           <ContentBox>
             <KeyboardAvoidingView keyboardVerticalOffset={50} behavior="padding">
@@ -355,8 +363,8 @@ export default class SingleContentScene extends Component {
                 <Section notBottomSpace>
                   <Header inverted bolder>Recomendados</Header>
                   <VideoContainer>
-                    {content.videos.length &&
-                      content.videos.map((video, i) => {
+                    {((content || {}).videos || []).length &&
+                      ((content || {}).videos || []).map((video, i) => {
                         const videoId = youtube.extractIdFromUrl(video.url);
 
                         if (videoId) {
@@ -385,6 +393,9 @@ export default class SingleContentScene extends Component {
           onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
           width={device.dimensions.width}
         />}
+        {/* Animation */}
+        {reading && <ReadingAnimation ref={ref => this.readingAnim = ref} />}
+
         {/* Action Sheets */}
         <ActionSheet
           hasCancelOption
