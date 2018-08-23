@@ -230,10 +230,10 @@ export default class SingleContentScene extends Component {
       try {
         const res = await readContentAsync(neuronId, contentId);
         const { data } = res;
-        this.readingAnim.play();
 
-        setTimeout(async () => {
+        this.readingAnim.play(async () => {
           await this.setState({ loading: false, reading: false });
+
           if (data.test) {
             Actions.quiz({type: ActionConst.RESET});
           } else {
@@ -244,7 +244,8 @@ export default class SingleContentScene extends Component {
               console.log(error);
             }
           }
-        }, 2000);
+        });
+
 
       } catch (error) {
         console.log('ERROR TO READ CONTENT', error.message);

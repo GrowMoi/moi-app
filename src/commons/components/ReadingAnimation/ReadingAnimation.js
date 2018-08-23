@@ -7,20 +7,22 @@ class ReadingAnimation extends React.Component {
     progress: new Animated.Value(0),
   }
 
-  play = () => {
-    this.anim.play();
+  play = (cb = () => null) => {
+    Animated.timing(this.state.progress, {
+      toValue: 1,
+      duration: 2000,
+      easing: Easing.linear,
+    }).start(() => {
+      cb();
+    });
   }
 
-  // componentDidMount() {
-  //   Animated.timing(this.state.progress, {
-  //     toValue: 1,
-  //     duration: 2000,
-  //     easing: Easing.linear,
-  //   }).start();
-  // }
+  reset = () => {
+    this.anim.reset();
+  }
 
   componentWillUnmount() {
-    this.anim.reset();
+    this.reset();
   }
 
   render() {
