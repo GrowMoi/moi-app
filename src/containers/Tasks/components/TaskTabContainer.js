@@ -26,22 +26,22 @@ export default class TaskTabContainer extends Component {
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />
         {open && (
           <View style={styles.subItemContainer}>
-              <FlatList
-                data={data}
-                numColumns={2}
-                keyExtractor={this._keyExtractor}
-                renderItem={({ item }) => {
-                  return <SubItem
-                    title={item.title}
-                    source={item.media[0]}
-                    clickItem={() => this.props.onClickItem(item)}
-                  />
+            <FlatList
+              data={data}
+              numColumns={2}
+              keyExtractor={this._keyExtractor}
+              renderItem={({ item }) => {
+                return <SubItem
+                  title={item.title}
+                  source={item.media[0]}
+                  clickItem={() => this.props.onClickItem(item)}
+                />
+              }
                 }
-                  }
-                ListEmptyComponent={
-                  <TextBody style={styles.emptyText} center>{`No tienes nada guardado en ${(title || '').toLowerCase()} aún.`}</TextBody>
-                }
-              />
+              ListEmptyComponent={
+                <TextBody style={styles.emptyText} center>{`No tienes nada guardado en ${(title || '').toLowerCase()} aún.`}</TextBody>
+              }
+            />
           </View>
         )}
       </View>

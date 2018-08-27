@@ -20,7 +20,7 @@
       "bundleIdentifier": "com.growmoisociallearning.moiapp",
       "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
       "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json",
-      "buildNumber": "7"
+      "buildNumber": "8"
     },
     "android": {
       "package": "com.growmoisociallearning.moiapp"

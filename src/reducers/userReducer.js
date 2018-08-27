@@ -8,7 +8,7 @@ const initialState = {
     authenticate: false,
   },
   data: {},
-  favorites: null,
+  favorites: {},
   tasks: {},
   quiz: null,
   achievements: [],
