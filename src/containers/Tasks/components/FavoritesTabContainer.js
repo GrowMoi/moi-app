@@ -29,6 +29,7 @@ export default class FavoritesTabContainer extends Component {
               <FlatList
                 data={data}
                 keyExtractor={this._keyExtractor}
+                numColumns={2}
                 renderItem={({ item }) => {
                   return <SubItem
                     title={item.title}

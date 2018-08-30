@@ -18,7 +18,7 @@ export default class NotesTabContainer extends Component {
   _keyExtractor = (item, index) => uuid();
 
   render() {
-    const { title, icon, data = [] } = this.props;
+    const { title, icon, data = [], onClickItem = () => null } = this.props;
     const { open } = this.state;
 
     return(
@@ -31,8 +31,9 @@ export default class NotesTabContainer extends Component {
                 keyExtractor={this._keyExtractor}
                 renderItem={({ item }) => {
                   return <SubItemRow
-                    title={item.title}
+                    title={item.note}
                     description={item.description}
+                    onPress={() => onClickItem(item)}
                   />
                 }
                   }

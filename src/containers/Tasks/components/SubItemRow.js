@@ -6,6 +6,24 @@ import { TextBody, Title } from './../../../commons/components/Typography';
 
 const SubItemRow = (props) => {
 
+  const content = (
+    <View style={styles.rowContainer}>
+      <View style={styles.titleContainer}>
+        <Title>{props.title}</Title>
+        <TextBody ellipsizeMode='tail' numberOfLines={2} t>{props.description}</TextBody>
+      </View>
+    </View>
+  );
+
+  let item = content;
+  if(props.onPress) {
+    item = (
+      <TouchableOpacity onPress={props.onPress}>
+        {content}
+      </TouchableOpacity>
+    )
+  }
+
   return(
     <View style={styles.container}>
       {props.clickClose && (
@@ -13,12 +31,7 @@ const SubItemRow = (props) => {
           <Ionicons name="md-close" size={10} color='black' />
         </TouchableOpacity>
       )}
-      <View style={styles.rowContainer}>
-        <View style={styles.titleContainer}>
-          <Title>{props.title}</Title>
-          <TextBody ellipsizeMode='tail' numberOfLines={2} t>{props.description}</TextBody>
-        </View>
-      </View>
+      {item}
     </View>
   )
 }

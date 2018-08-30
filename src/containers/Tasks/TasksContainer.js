@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import Header from './components/Header';
 import { connect } from 'react-redux';
-import userActions from '../../actions/userActions';
 import { Actions } from 'react-native-router-flux';
 import Preloader from '../../commons/components/Preloader/Preloader';
+
+// Actions
+import userActions from '../../actions/userActions';
+import tutorActions from '../../actions/tutorActions';
 
 // Own Components
 import TaskTabContainer from './components/TaskTabContainer';
@@ -14,11 +17,13 @@ import FavoritesTabContainer from './components/FavoritesTabContainer';
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   user: store.user,
+  tutor: store.tutor,
 }), {
   loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
   getNotificationsAsync: userActions.getNotificationsAsync,
   getUserNotesAsync: userActions.getStoreNotesAsync,
   loadAllFavorites: userActions.loadAllFavorites,
+  getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
 })
 class TasksContainer extends Component {
   state = {
@@ -35,6 +40,7 @@ class TasksContainer extends Component {
       getNotificationsAsync,
       getUserNotesAsync,
       loadAllFavorites,
+      getTutorRecomendationAsync,
     } = this.props;
 
     this.setState({ loading: true });
@@ -45,7 +51,8 @@ class TasksContainer extends Component {
         getUserNotesAsync(),
         getNotificationsAsync(),
         loadAllFavorites(),
-      ])
+        getTutorRecomendationAsync(),
+      ]);
     } catch (error) {
       console.log(error);
     }
@@ -64,9 +71,23 @@ class TasksContainer extends Component {
     });
   }
 
+  onPressNote = (note) => {
+    Actions.singleContent({
+      content_id: note.content_id,
+      title: '',
+      neuron_id: note.neuron_id,
+    });
+  }
+
   render(){
-    const { user: { tasks, notifications, notes, favorites } } = this.props;
+    const {
+      user: { tasks, notifications, notes, favorites },
+      tutor: { recomendations },
+    } = this.props;
+
     const { loading } = this.state;
+
+    console.log(notes);
 
     return(
       <View style={styles.container}>
@@ -85,10 +106,17 @@ class TasksContainer extends Component {
               icon='star'
               onClickItem={item => this.onPressItem(item)}
             />
+            <FavoritesTabContainer
+              data={(recomendations.contents || [])}
+              title='Recomendaciones'
+              icon='thumbs-up'
+              onClickItem={item => this.onPressItem(item)}
+            />
             <NotesTabContainer
               data={((notes.content_notes || {}).content_notes || [])}
               title='Notas'
               icon='edit-2'
+              onClickItem={note => this.onPressNote(note)}
             />
             <NotificationTabContainer
               data={notifications}

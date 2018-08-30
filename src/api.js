@@ -200,6 +200,14 @@ const api = {
       const res = await client.get(endpoint, { params: { page } });
       return res;
     }
+  },
+
+  tutors: {
+    async getRecomendations(page = 1, data_format = 'contents') {
+      const endpoint = '/api/tutors/recommendations';
+      const res = await client.get(endpoint, { params: { page, data_format } })
+      return res;
+    }
   }
 };
 
