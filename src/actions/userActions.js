@@ -168,12 +168,9 @@ const storeAsFavoriteAsync = (neuronId, contentId) => async (dispatch) => {
     const { headers } = res;
 
     dispatch(setHeaders(headers));
-    Alert.alert('Favorito', 'Este contenido fue agregado como favorito.');
-
     return res;
   } catch (error) {
     // console.log(error);
-    Alert.alert('Favorito', 'Ups!, No pudimos agregar este contenido como favorito, intentalo más tarde.');
     throw new Error(error);
   }
 };

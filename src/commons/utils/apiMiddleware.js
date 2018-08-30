@@ -45,7 +45,7 @@ const tokenMiddleware = args => store => next => async (action) => {
       if (headers['access-token']) {
         const multiHeaders = HEADERS.map((key) => {
           client.defaults.headers.common[key] = headers[key];
-          return [key, headers[key]]
+          return [key, headers[key]];
         });
 
         await AsyncStorage.multiSet(multiHeaders);

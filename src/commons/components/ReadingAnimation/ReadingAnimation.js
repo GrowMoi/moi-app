@@ -27,10 +27,10 @@ class ReadingAnimation extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, position: 'absolute', top: 0, right: 0, height: '100%', width: '100%' }}>
+      <View style={{ flex: 1, position: 'absolute', top: 10, left: -35, height: '100%', width: '100%' }}>
         <LottieView
           ref={ref => { this.anim = ref }}
-          source={require('../../../../assets/animations/confusion.json')}
+          source={require('../../../../assets/animations/articulation.json')}
           resizeMode='cover'
           progress={this.state.progress}
           loop

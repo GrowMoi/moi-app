@@ -209,9 +209,9 @@ export default class SingleContentScene extends Component {
 
     try {
       const res = await storeAsFavoriteAsync(neuronId, contentId);
-      this.setState({ favorite: res.data.favorite, actionSheetsVisible: false });
-
+      this.setState((prevState) => ({ favorite: res.data.favorite, actionSheetsVisible: false }));
     } catch (error) {
+      this.showAlert('Error al guardar como favorito');
       throw new Error(error);
     }
   };
