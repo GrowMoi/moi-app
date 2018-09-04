@@ -12,8 +12,6 @@ const getTutorRecomendationsAsync = (page, dataFormat) => async(dispatch) => {
     const res = await api.tutors.getRecomendations(page, dataFormat);
     const { headers, data } = res;
 
-    console.log(data);
-
     dispatch(setHeaders(headers));
     dispatch(setRecomendations(data));
 

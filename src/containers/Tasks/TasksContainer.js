@@ -20,10 +20,10 @@ import FavoritesTabContainer from './components/FavoritesTabContainer';
   tutor: store.tutor,
 }), {
   loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
-  getNotificationsAsync: userActions.getNotificationsAsync,
   getUserNotesAsync: userActions.getStoreNotesAsync,
   loadAllFavorites: userActions.loadAllFavorites,
   getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
+  loadMoreNotifications: userActions.loadMoreNotificationsAsync,
 })
 class TasksContainer extends Component {
   state = {
@@ -37,7 +37,6 @@ class TasksContainer extends Component {
   getData = async () => {
     const {
       loadUserContentTasksAsync,
-      getNotificationsAsync,
       getUserNotesAsync,
       loadAllFavorites,
       getTutorRecomendationAsync,
@@ -49,7 +48,6 @@ class TasksContainer extends Component {
       await Promise.all([
         loadUserContentTasksAsync(),
         getUserNotesAsync(),
-        getNotificationsAsync(),
         loadAllFavorites(),
         getTutorRecomendationAsync(),
       ]);
@@ -87,8 +85,6 @@ class TasksContainer extends Component {
 
     const { loading } = this.state;
 
-    console.log(notes);
-
     return(
       <View style={styles.container}>
         <Header title='Mis Tareas' />
@@ -119,7 +115,6 @@ class TasksContainer extends Component {
               onClickItem={note => this.onPressNote(note)}
             />
             <NotificationTabContainer
-              data={notifications}
               title='Notificaciones'
               icon='bell'
             />

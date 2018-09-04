@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { object } from '../commons/utils';
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
@@ -13,7 +14,11 @@ const initialState = {
   quiz: null,
   achievements: [],
   settings: [],
-  notifications: {},
+  notifications: {
+    notifications: [],
+    meta: {},
+    page: 1,
+  },
   notes: {},
 };
 
@@ -92,7 +97,25 @@ const settings = (state = initialState.settings, action) => {
 const notifications = (state = initialState.notifications, action) => {
   switch (action.type) {
     case actionTypes.SET_NOTIFICATIONS:
-      return action.payload;
+
+      const notifications = [...state.notifications, ...action.payload.notifications];
+      const cleanNotifications = object.removeDuplicates(notifications, 'id');
+
+      return {
+        meta: action.payload.meta,
+        notifications: cleanNotifications,
+        page: action.payload.page,
+      };
+
+    case actionTypes.DELETE_NOTIFICATIONS:
+      const id = action.payload;
+      const deletedNotification = state.notifications.filter(item => item.id !== id);
+
+      return {
+        ...state,
+        notifications: deletedNotification,
+      };
+
     default:
       return state;
   }

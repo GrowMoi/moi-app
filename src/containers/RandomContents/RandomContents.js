@@ -43,8 +43,6 @@ class Tasks extends Component {
   onPressRowcontent = (e, content) => {
     const { neuronSelected } = this.props;
 
-    console.log(neuronSelected);
-
     Actions.singleContent({
       content_id: content.id,
       title: neuronSelected.title,

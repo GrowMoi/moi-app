@@ -1,14 +1,40 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import ItemTasks from './ItemTasks';
 import SubItemRow from './SubItemRow';
 import { TextBody } from '../../../commons/components/Typography';
 import { Palette } from './../../../commons/styles';
 import uuid from 'uuid/v4';
+import { connect } from 'react-redux';
 
-export default class NotificationTabContainer extends Component {
+// Actions
+import userActions from '../../../actions/userActions';
+
+@connect(state => ({
+  data: state.user.notifications,
+}), {
+  getNotificationsAsync: userActions.getNotificationsAsync,
+  loadMoreNotificationsAsync: userActions.loadMoreNotificationsAsync,
+  readNotificationAsync: userActions.readNotificationAsync,
+  deleteNotification: userActions.deleteNotification,
+})
+class NotificationTabContainer extends PureComponent {
   state = {
     open: false,
+    isLoading: false,
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData = async () => {
+    const { getNotificationsAsync } = this.props;
+    try {
+      await getNotificationsAsync();
+    } catch (error) {
+      // console.log(error);
+    }
   }
 
   openContainer = () => {
@@ -17,9 +43,27 @@ export default class NotificationTabContainer extends Component {
 
   _keyExtractor = (item, index) => uuid();
 
-  onCloseNotification = (item) => {
-    const { onClose } = this.props;
-    if(onClose) onClose(item);
+  onCloseNotification = async (item) => {
+    const { readNotificationAsync, deleteNotification } = this.props;
+
+    try {
+      const { data = {} } = await readNotificationAsync(item.id);
+      if(data.deleted) {
+        deleteNotification(item.id);
+      }
+
+    } catch (error) {
+     console.log(error);
+    }
+  }
+
+  handleLoadMore = async () => {
+    const { loadMoreNotificationsAsync } = this.props;
+    try {
+      await loadMoreNotificationsAsync();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
@@ -34,6 +78,8 @@ export default class NotificationTabContainer extends Component {
               <FlatList
                 data={data.notifications}
                 keyExtractor={this._keyExtractor}
+                onEndReached={this.handleLoadMore}
+                onEndReachedThreshold={0}
                 renderItem={({ item }) => {
                   return <SubItemRow
                     title={item.title}
@@ -78,3 +124,6 @@ const styles = StyleSheet.create(
     },
   }
 )
+
+
+export default NotificationTabContainer;

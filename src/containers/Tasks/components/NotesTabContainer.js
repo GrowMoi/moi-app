@@ -17,6 +17,11 @@ export default class NotesTabContainer extends Component {
 
   _keyExtractor = (item, index) => uuid();
 
+  handleLoadMore = () => {
+    const { onLoadMore } = this.props;
+    if(onLoadMore) onLoadMore();
+  }
+
   render() {
     const { title, icon, data = [], onClickItem = () => null } = this.props;
     const { open } = this.state;
@@ -28,6 +33,8 @@ export default class NotesTabContainer extends Component {
           <View style={styles.subItemContainer}>
               <FlatList
                 data={data}
+                onEndReached={this.handleLoadMore}
+                onEndReachedThreshold={0}
                 keyExtractor={this._keyExtractor}
                 renderItem={({ item }) => {
                   return <SubItemRow

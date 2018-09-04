@@ -15,6 +15,11 @@ export default class TaskTabContainer extends Component {
     this.setState(prevState => ({ open: !prevState.open }));
   }
 
+  handleLoadMore = () => {
+    const { onLoadMore } = this.props;
+    if(onLoadMore) onLoadMore();
+  }
+
   _keyExtractor = (item, index) => uuid();
 
   render() {
@@ -29,6 +34,8 @@ export default class TaskTabContainer extends Component {
             <FlatList
               data={data}
               numColumns={2}
+              onEndReached={this.handleLoadMore}
+              onEndReachedThreshold={0}
               keyExtractor={this._keyExtractor}
               renderItem={({ item }) => {
                 return <SubItem

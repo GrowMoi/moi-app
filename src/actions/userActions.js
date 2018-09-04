@@ -331,13 +331,11 @@ const setCurrentSettings = (settings = []) => (dispatch) => {
 }
 
 const getNotificationsAsync = (page = 1) => async (dispatch) => {
-  console.log('NOTIFICATIONS');
-
   try {
     const res = await api.notifications.getNotifications(page);
 
     await dispatch(setHeaders(res.headers));
-    dispatch(setNotifications(res.data));
+    dispatch(setNotifications({ ...res.data, page }));
     return res.data;
   } catch (error) {
     throw new Error(error);
@@ -354,6 +352,34 @@ const getStoreNotesAsync = (page = 1) => async dispatch => {
   } catch (error) {
     throw new Error(error);
   }
+}
+
+const loadMoreNotificationsAsync = () => async (dispatch, getState) => {
+
+  const notificationsState = getState().user.notifications;
+  const currentPage = (notificationsState || {}).page;
+  const pageToGet = currentPage + 1;
+  const maxPage = (notificationsState.meta || {}).total_pages || 1;
+
+  if(pageToGet <= maxPage) {
+    const res = await dispatch(getNotificationsAsync(pageToGet));
+    dispatch(setHeaders(res.headers));
+  }
+}
+
+const readNotificationAsync = (id) => async (dispatch) => {
+  try {
+    const res = await api.notifications.readNotificationById(id);
+
+    dispatch(setHeaders(res.headers));
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const deleteNotification = (id) => (dispatch) => {
+  dispatch({ type: actionTypes.DELETE_NOTIFICATIONS, payload: id });
 }
 
 
@@ -380,4 +406,7 @@ export default {
   updateSettingsAsync,
   getNotificationsAsync,
   getStoreNotesAsync,
+  loadMoreNotificationsAsync,
+  readNotificationAsync,
+  deleteNotification,
 };
