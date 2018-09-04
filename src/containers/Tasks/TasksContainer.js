@@ -14,6 +14,7 @@ import TaskTabContainer from './components/TaskTabContainer';
 import NotificationTabContainer from './components/NotificationTabContainer';
 import NotesTabContainer from './components/NotesTabContainer';
 import FavoritesTabContainer from './components/FavoritesTabContainer';
+import RecomendationsTabContainer from './components/RecomendationsTabContainer';
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   user: store.user,
@@ -81,7 +82,7 @@ class TasksContainer extends Component {
 
   render(){
     const {
-      user: { tasks, notes, favorites },
+      user: { tasks, favorites },
       tutor: { recomendations },
     } = this.props;
 
@@ -104,7 +105,7 @@ class TasksContainer extends Component {
               icon='star'
               onClickItem={item => this.onPressItem(item)}
             />
-            <FavoritesTabContainer
+            <RecomendationsTabContainer
               data={(recomendations.contents || [])}
               title='Recomendaciones'
               icon='thumbs-up'

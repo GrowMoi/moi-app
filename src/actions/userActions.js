@@ -217,21 +217,39 @@ const storeNotesAsync = (neuronId, contentId, notes) => async (dispatch) => {
   return res;
 };
 
-
-const loadAllFavorites = page => async (dispatch) => {
+// Favorites
+const loadAllFavorites = (page = 1) => async (dispatch) => {
   try {
     const res = await api.user.getFavorites(page);
     const { headers, data } = res;
 
     await dispatch(setHeaders(headers));
-    dispatch(setUserFavorites(data));
+    dispatch(setUserFavorites({ ...data, page }));
 
-    return data;
+    return res;
   } catch (error) {
     // console.log(error)
     throw new Error(error);
   }
 };
+
+const getMoreFavoritesAsync = () => async (dispatch, getState) => {
+  const favoriteState = getState().user.favorites;
+  const currentPage = (favoriteState || {}).page;
+
+  const itemsToGet = 4;
+  const totalItems = (favoriteState.meta || {}).total_items || 0;
+  const maxPage = Math.round((totalItems/itemsToGet));
+
+  const pageToGet = currentPage + 1;
+
+  if(pageToGet <= maxPage) {
+    const res = await dispatch(loadAllFavorites(pageToGet));
+    dispatch(setHeaders(res.headers));
+  }
+}
+
+// <-- End Favorites
 
 const getUserProfileAsync = id => async (dispatch) => {
   let res;
@@ -330,18 +348,6 @@ const setCurrentSettings = (settings = []) => (dispatch) => {
   dispatch(setSettings(settings));
 }
 
-const getNotificationsAsync = (page = 1) => async (dispatch) => {
-  try {
-    const res = await api.notifications.getNotifications(page);
-
-    await dispatch(setHeaders(res.headers));
-    dispatch(setNotifications({ ...res.data, page }));
-    return res.data;
-  } catch (error) {
-    throw new Error(error);
-  }
-}
-
 // Notes
 
 const getStoreNotesAsync = (page = 1) => async dispatch => {
@@ -373,6 +379,18 @@ const getMoreStoreNotesAsync = () => async (dispatch, getState) => {
 }
 
 // Notifications
+
+const getNotificationsAsync = (page = 1) => async (dispatch) => {
+  try {
+    const res = await api.notifications.getNotifications(page);
+
+    await dispatch(setHeaders(res.headers));
+    dispatch(setNotifications({ ...res.data, page }));
+    return res.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
 
 const loadMoreNotificationsAsync = () => async (dispatch, getState) => {
 
@@ -417,6 +435,7 @@ export default {
   loadAllFavorites,
   setUserFavorites,
   storeAsFavoriteAsync,
+  getMoreFavoritesAsync,
   getUserProfileAsync,
   updateUserAccountAsync,
   getAchievementsAsync,

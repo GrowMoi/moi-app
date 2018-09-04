@@ -65,7 +65,22 @@ const quiz = (state = initialState.quiz, action = {}) => {
 const favorites = (state = initialState.favorites, action) => {
   switch (action.type) {
     case actionTypes.LOAD_USER_FAVORITES:
-      return action.payload;
+      const favorites = [
+        ...(((state || {}).content_tasks || {}).content_tasks || []),
+        ...(((action.payload || {}).content_tasks || {}).content_tasks || []),
+      ];
+
+      const cleanFavorites = object.removeDuplicates(favorites, 'id');
+      const newFavoritesState = {
+        meta: action.payload.meta,
+        content_tasks: {
+          ...((action.payload || {}).content_tasks || {}),
+          content_tasks: cleanFavorites,
+        },
+        page: action.payload.page,
+      };
+
+      return newFavoritesState;
     default:
       return state;
   }

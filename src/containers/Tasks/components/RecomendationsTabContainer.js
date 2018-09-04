@@ -3,19 +3,10 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import ItemTasks from './ItemTasks';
 import SubItem from './SubItem';
 import { TextBody } from '../../../commons/components/Typography';
-import { Palette } from './../../../commons/styles';
+import { Palette } from '../../../commons/styles';
 import uuid from 'uuid/v4';
-import { connect } from 'react-redux';
 
-// Actions
-import userActions from '../../../actions/userActions';
-
-@connect(state => ({
-  data: state.user.favorites,
-}), {
-  getMoreFavoritesAsync: userActions.getMoreFavoritesAsync,
-})
-export default class FavoritesTabContainer extends Component {
+export default class RecomendationsTabContainer extends Component {
   state = {
     open: false,
   }
@@ -25,16 +16,6 @@ export default class FavoritesTabContainer extends Component {
   }
 
   _keyExtractor = (item, index) => uuid();
-
-  loadMore = async () => {
-    const { getMoreFavoritesAsync } = this.props;
-
-    try {
-      await getMoreFavoritesAsync();
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   render() {
     const { title, icon, data = [] } = this.props;
@@ -46,10 +27,8 @@ export default class FavoritesTabContainer extends Component {
         {open && (
           <View style={styles.subItemContainer}>
               <FlatList
-                data={((data.content_tasks || {}).content_tasks || [])}
+                data={data}
                 keyExtractor={this._keyExtractor}
-                onEndReachedThreshold={0}
-                onEndReached={this.loadMore}
                 numColumns={2}
                 renderItem={({ item }) => {
                   return <SubItem
