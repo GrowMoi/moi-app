@@ -25,7 +25,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   componentDidMount() {
-    this.getData();
+    // this.getData();
   }
 
   getData = async () => {

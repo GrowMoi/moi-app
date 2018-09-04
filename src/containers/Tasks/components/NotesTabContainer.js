@@ -5,7 +5,16 @@ import SubItemRow from './SubItemRow';
 import { TextBody } from '../../../commons/components/Typography';
 import { Palette } from './../../../commons/styles';
 import uuid from 'uuid/v4';
+import { connect } from 'react-redux';
 
+// Actions
+import userActions from '../../../actions/userActions';
+
+@connect(state => ({
+  data: state.user.notes,
+}), {
+  getMoreStoreNotesAsync: userActions.getMoreStoreNotesAsync,
+})
 export default class NotesTabContainer extends Component {
   state = {
     open: false,
@@ -17,13 +26,18 @@ export default class NotesTabContainer extends Component {
 
   _keyExtractor = (item, index) => uuid();
 
-  handleLoadMore = () => {
-    const { onLoadMore } = this.props;
-    if(onLoadMore) onLoadMore();
+  handleLoadMore = async () => {
+    const { getMoreStoreNotesAsync } = this.props;
+
+    try {
+      await getMoreStoreNotesAsync();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
-    const { title, icon, data = [], onClickItem = () => null } = this.props;
+    const { title, icon, data = {}, onClickItem = () => null } = this.props;
     const { open } = this.state;
 
     return(
@@ -32,7 +46,7 @@ export default class NotesTabContainer extends Component {
         {open && (
           <View style={styles.subItemContainer}>
               <FlatList
-                data={data}
+                data={(data.content_notes || {}).content_notes || []}
                 onEndReached={this.handleLoadMore}
                 onEndReachedThreshold={0}
                 keyExtractor={this._keyExtractor}

@@ -19,7 +19,11 @@ const initialState = {
     meta: {},
     page: 1,
   },
-  notes: {},
+  notes: {
+    content_notes: {},
+    meta: {},
+    page: 1,
+  },
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -124,7 +128,21 @@ const notifications = (state = initialState.notifications, action) => {
 const notes = (state = initialState.notes, action) => {
   switch (action.type) {
     case actionTypes.SET_USER_NOTES:
-      return action.payload;
+      const notes = [
+        ...((state.content_notes).content_notes || []),
+        ...(((action.payload || {}).content_notes || {}).content_notes || []),
+      ];
+
+      const cleanNotes = object.removeDuplicates(notes, 'id');
+      const newState = {
+        ...action.payload,
+        content_notes: {
+          ...action.payload.content_notes,
+          content_notes: cleanNotes,
+        }
+      }
+
+      return newState;
     default:
       return state;
   }

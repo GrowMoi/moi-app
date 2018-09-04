@@ -23,7 +23,7 @@ import FavoritesTabContainer from './components/FavoritesTabContainer';
   getUserNotesAsync: userActions.getStoreNotesAsync,
   loadAllFavorites: userActions.loadAllFavorites,
   getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
-  loadMoreNotifications: userActions.loadMoreNotificationsAsync,
+  getNotificationsAsync: userActions.getNotificationsAsync,
 })
 class TasksContainer extends Component {
   state = {
@@ -40,6 +40,7 @@ class TasksContainer extends Component {
       getUserNotesAsync,
       loadAllFavorites,
       getTutorRecomendationAsync,
+      getNotificationsAsync,
     } = this.props;
 
     this.setState({ loading: true });
@@ -50,6 +51,7 @@ class TasksContainer extends Component {
         getUserNotesAsync(),
         loadAllFavorites(),
         getTutorRecomendationAsync(),
+        getNotificationsAsync(),
       ]);
     } catch (error) {
       console.log(error);
@@ -79,7 +81,7 @@ class TasksContainer extends Component {
 
   render(){
     const {
-      user: { tasks, notifications, notes, favorites },
+      user: { tasks, notes, favorites },
       tutor: { recomendations },
     } = this.props;
 
@@ -109,7 +111,6 @@ class TasksContainer extends Component {
               onClickItem={item => this.onPressItem(item)}
             />
             <NotesTabContainer
-              data={((notes.content_notes || {}).content_notes || [])}
               title='Notas'
               icon='edit-2'
               onClickItem={note => this.onPressNote(note)}

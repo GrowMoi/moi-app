@@ -342,17 +342,37 @@ const getNotificationsAsync = (page = 1) => async (dispatch) => {
   }
 }
 
+// Notes
+
 const getStoreNotesAsync = (page = 1) => async dispatch => {
   try {
     const res = await api.user.getNotes(page);
-
     await dispatch(setHeaders(res.headers));
-    dispatch(setNotes(res.data));
+    dispatch(setNotes({...res.data, page }));
+
     return res.data;
   } catch (error) {
     throw new Error(error);
   }
 }
+
+const getMoreStoreNotesAsync = () => async (dispatch, getState) => {
+  const notesState = getState().user.notes;
+  const currentPage = (notesState || {}).page;
+
+  const itemsToGet = 2;
+  const totalItems = (notesState.meta || {}).total_items || 0;
+  const maxPage = Math.round((totalItems/itemsToGet));
+
+  const pageToGet = currentPage + 1;
+
+  if(pageToGet <= maxPage) {
+    const res = await dispatch(getStoreNotesAsync(pageToGet));
+    dispatch(setHeaders(res.headers));
+  }
+}
+
+// Notifications
 
 const loadMoreNotificationsAsync = () => async (dispatch, getState) => {
 
@@ -406,6 +426,7 @@ export default {
   updateSettingsAsync,
   getNotificationsAsync,
   getStoreNotesAsync,
+  getMoreStoreNotesAsync,
   loadMoreNotificationsAsync,
   readNotificationAsync,
   deleteNotification,
