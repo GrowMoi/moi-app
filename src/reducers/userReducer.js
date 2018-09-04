@@ -47,7 +47,22 @@ const userData = (state = initialState.userData, action = {}) => {
 const tasks = (state = initialState.tasks, action = {}) => {
   switch (action.type) {
     case actionTypes.GET_USER_CONTENT_TASKS:
-      return action.payload;
+      const tasks = [
+        ...(((state || {}).content_tasks || {}).content_tasks || []),
+        ...(((action.payload || {}).content_tasks || {}).content_tasks || []),
+      ];
+
+      const cleanTasks = object.removeDuplicates(tasks, 'id');
+      const newTasksState = {
+        meta: action.payload.meta,
+        content_tasks: {
+          ...((action.payload || {}).content_tasks || {}),
+          content_tasks: cleanTasks,
+        },
+        page: action.payload.page,
+      };
+
+      return newTasksState;
     default:
       return state;
   }

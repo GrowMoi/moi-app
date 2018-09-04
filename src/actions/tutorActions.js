@@ -13,12 +13,16 @@ const getTutorRecomendationsAsync = (page, dataFormat) => async(dispatch) => {
     const { headers, data } = res;
 
     dispatch(setHeaders(headers));
-    dispatch(setRecomendations(data));
+    dispatch(setRecomendations({ ...data, page }));
 
     return data;
   } catch (error) {
     throw new Error(error);
   }
+}
+
+const getMoreRecomendationsAsync = (page) => async(dispatch, getstate) => {
+
 }
 
 export default {

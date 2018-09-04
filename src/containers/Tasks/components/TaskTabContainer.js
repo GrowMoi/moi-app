@@ -5,7 +5,16 @@ import SubItem from './SubItem';
 import { TextBody } from '../../../commons/components/Typography';
 import { Palette } from './../../../commons/styles';
 import uuid from 'uuid/v4';
+import { connect } from 'react-redux';
 
+// Actions
+import userActions from '../../../actions/userActions';
+
+@connect(state => ({
+  data: state.user.tasks,
+}), {
+  getMoreTasksAsync: userActions.getMoreUserContentTaskAsync,
+})
 export default class TaskTabContainer extends Component {
   state = {
     open: false,
@@ -15,9 +24,14 @@ export default class TaskTabContainer extends Component {
     this.setState(prevState => ({ open: !prevState.open }));
   }
 
-  handleLoadMore = () => {
-    const { onLoadMore } = this.props;
-    if(onLoadMore) onLoadMore();
+  handleLoadMore = async () => {
+    const { getMoreTasksAsync } = this.props;
+
+    try {
+      await getMoreTasksAsync();
+    } catch (error) {
+      console.log('error');
+    }
   }
 
   _keyExtractor = (item, index) => uuid();
@@ -32,7 +46,7 @@ export default class TaskTabContainer extends Component {
         {open && (
           <View style={styles.subItemContainer}>
             <FlatList
-              data={data}
+              data={((data.content_tasks || {}).content_tasks || [])}
               numColumns={2}
               onEndReached={this.handleLoadMore}
               onEndReachedThreshold={0}

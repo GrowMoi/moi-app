@@ -94,7 +94,7 @@ class TasksContainer extends Component {
         <ScrollView>
           {!loading && <View style={styles.scrollContainer}>
             <TaskTabContainer
-              data={((tasks.content_tasks || {}).content_tasks || [])}
+              // data={((tasks.content_tasks || {}).content_tasks || [])}
               title='Tareas'
               icon='list'
               onClickItem={item => this.onPressItem(item)}

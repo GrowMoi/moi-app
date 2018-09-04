@@ -133,21 +133,37 @@ const logoutAsync = () => async (dispatch) => {
   return res;
 };
 
-const loadUserContentTasksAsync = page => async (dispatch) => {
+// TASKS
+const loadUserContentTasksAsync = (page = 1) => async (dispatch) => {
   let res;
 
-  console.log('LOAD USER CONTENT TASKS');
   try {
     res = await api.user.contentTasks(page);
     const { data, headers } = res;
     await dispatch(setHeaders(headers));
-    dispatch(loadContentTasks(data));
+    dispatch(loadContentTasks({ ...data, page }));
   } catch (error) {
     console.log(error);
   }
 
   return res;
 };
+
+const getMoreUserContentTaskAsync = page => async (dispatch, getState) => {
+  const tasksState = getState().user.tasks;
+  const currentPage = (tasksState || {}).page;
+
+  const itemsToGet = 4;
+  const totalItems = (tasksState.meta || {}).total_items || 0;
+  const maxPage = Math.round((totalItems/itemsToGet));
+
+  const pageToGet = currentPage + 1;
+
+  if(pageToGet <= maxPage) {
+    const res = await dispatch(loadUserContentTasksAsync(pageToGet));
+    dispatch(setHeaders(res.headers));
+  }
+}
 
 const storeTaskAsync = (neuronId, contentId) => async (dispatch) => {
   let res;
@@ -162,18 +178,7 @@ const storeTaskAsync = (neuronId, contentId) => async (dispatch) => {
   return res;
 };
 
-const storeAsFavoriteAsync = (neuronId, contentId) => async (dispatch) => {
-  try {
-    const res = await api.contents.storeAsFavorite(neuronId, contentId);
-    const { headers } = res;
-
-    dispatch(setHeaders(headers));
-    return res;
-  } catch (error) {
-    // console.log(error);
-    throw new Error(error);
-  }
-};
+// <--- END TASKS
 
 const readContentAsync = (neuronId, contentId) => async (dispatch) => {
   try {
@@ -229,6 +234,19 @@ const loadAllFavorites = (page = 1) => async (dispatch) => {
     return res;
   } catch (error) {
     // console.log(error)
+    throw new Error(error);
+  }
+};
+
+const storeAsFavoriteAsync = (neuronId, contentId) => async (dispatch) => {
+  try {
+    const res = await api.contents.storeAsFavorite(neuronId, contentId);
+    const { headers } = res;
+
+    dispatch(setHeaders(headers));
+    return res;
+  } catch (error) {
+    // console.log(error);
     throw new Error(error);
   }
 };
@@ -427,6 +445,7 @@ export default {
   validateToken,
   logoutAsync,
   loadUserContentTasksAsync,
+  getMoreUserContentTaskAsync,
   storeTaskAsync,
   readContentAsync,
   learnContentsAsync,

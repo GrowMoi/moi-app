@@ -5,7 +5,16 @@ import SubItem from './SubItem';
 import { TextBody } from '../../../commons/components/Typography';
 import { Palette } from '../../../commons/styles';
 import uuid from 'uuid/v4';
+import { connect } from 'react-redux';
 
+// Actions
+import userActions from '../../../actions/userActions';
+
+@connect(state => ({
+  data: state.tutor.recomendations,
+}), {
+
+})
 export default class RecomendationsTabContainer extends Component {
   state = {
     open: false,
