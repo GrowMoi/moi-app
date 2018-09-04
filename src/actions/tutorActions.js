@@ -7,7 +7,7 @@ const setRecomendations = (recomendations) => ({
   payload: recomendations,
 });
 
-const getTutorRecomendationsAsync = (page, dataFormat) => async(dispatch) => {
+const getTutorRecomendationsAsync = (page = 1, dataFormat) => async(dispatch) => {
   try {
     const res = await api.tutors.getRecomendations(page, dataFormat);
     const { headers, data } = res;
@@ -15,16 +15,26 @@ const getTutorRecomendationsAsync = (page, dataFormat) => async(dispatch) => {
     dispatch(setHeaders(headers));
     dispatch(setRecomendations({ ...data, page }));
 
-    return data;
+    return res;
   } catch (error) {
     throw new Error(error);
   }
 }
 
-const getMoreRecomendationsAsync = (page) => async(dispatch, getstate) => {
+const getMoreRecomendationsAsync = () => async(dispatch, getState) => {
+  const recomendationsState = getState().tutor.recomendations;
 
+  const currentPage = (recomendationsState || {}).page;
+  const pageToGet = currentPage + 1;
+  const maxPage = (recomendationsState.meta || {}).total_pages || 1;
+
+  if(pageToGet <= maxPage) {
+    const res = await dispatch(getTutorRecomendationsAsync(pageToGet));
+    dispatch(setHeaders(res.headers));
+  }
 }
 
 export default {
   getTutorRecomendationsAsync,
+  getMoreRecomendationsAsync,
 }

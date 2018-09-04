@@ -8,12 +8,12 @@ import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
 
 // Actions
-import userActions from '../../../actions/userActions';
+import tutorActions from '../../../actions/tutorActions';
 
 @connect(state => ({
   data: state.tutor.recomendations,
 }), {
-
+  getMoreRecomendationsAsync: tutorActions.getMoreRecomendationsAsync,
 })
 export default class RecomendationsTabContainer extends Component {
   state = {
@@ -25,10 +25,20 @@ export default class RecomendationsTabContainer extends Component {
   }
 
   _keyExtractor = (item, index) => uuid();
+  handleMoreData = async () => {
+    const { getMoreRecomendationsAsync } = this.props;
+    try {
+      await getMoreRecomendationsAsync();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   render() {
     const { title, icon, data = [] } = this.props;
     const { open } = this.state;
+
+    console.log('DATA', data);
 
     return(
       <View style={styles.tasks}>
@@ -36,7 +46,9 @@ export default class RecomendationsTabContainer extends Component {
         {open && (
           <View style={styles.subItemContainer}>
               <FlatList
-                data={data}
+                data={data.contents}
+                onEndReached={this.handleMoreData}
+                onEndReachedThreshold={0}
                 keyExtractor={this._keyExtractor}
                 numColumns={2}
                 renderItem={({ item }) => {

@@ -17,8 +17,6 @@ import FavoritesTabContainer from './components/FavoritesTabContainer';
 import RecomendationsTabContainer from './components/RecomendationsTabContainer';
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
-  user: store.user,
-  tutor: store.tutor,
 }), {
   loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
   getUserNotesAsync: userActions.getStoreNotesAsync,
@@ -81,11 +79,6 @@ class TasksContainer extends Component {
   }
 
   render(){
-    const {
-      user: { tasks, favorites },
-      tutor: { recomendations },
-    } = this.props;
-
     const { loading } = this.state;
 
     return(
@@ -94,19 +87,16 @@ class TasksContainer extends Component {
         <ScrollView>
           {!loading && <View style={styles.scrollContainer}>
             <TaskTabContainer
-              // data={((tasks.content_tasks || {}).content_tasks || [])}
               title='Tareas'
               icon='list'
               onClickItem={item => this.onPressItem(item)}
             />
             <FavoritesTabContainer
-              data={((favorites.content_tasks || {}).content_tasks || [])}
               title='Favoritos'
               icon='star'
               onClickItem={item => this.onPressItem(item)}
             />
             <RecomendationsTabContainer
-              data={(recomendations.contents || [])}
               title='Recomendaciones'
               icon='thumbs-up'
               onClickItem={item => this.onPressItem(item)}
