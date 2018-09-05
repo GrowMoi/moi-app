@@ -1,19 +1,33 @@
 import React from 'react';
 import LottieView from 'lottie-react-native';
 import { View, Animated, Easing } from 'react-native';
+import { math } from '../../utils';
+
+import articulation from '../../../../assets/animations/articulation.json';
+import confusion from '../../../../assets/animations/confusion.json';
+import estimate from '../../../../assets/animations/estimate.json';
+import inattentive from '../../../../assets/animations/inattentive.json';
+import mnemonics from '../../../../assets/animations/mnemonics.json';
+import phonological from '../../../../assets/animations/phonological.json';
 
 class ReadingAnimation extends React.Component {
   state = {
     progress: new Animated.Value(0),
+    animationN: 0,
   }
 
-  play = (cb = () => null) => {
-    Animated.timing(this.state.progress, {
+  animatedTiming = () => {
+    return Animated.timing(this.state.progress, {
       toValue: 1,
-      duration: 2000,
+      duration: 4000,
       easing: Easing.linear,
-    }).start(() => {
-      cb();
+    });
+  }
+
+  componentDidMount() {
+    const { onFinishAnimation } = this.props;
+    this.animatedTiming().start(() => {
+      if(onFinishAnimation && typeof onFinishAnimation === 'function') onFinishAnimation();
     });
   }
 
@@ -21,22 +35,52 @@ class ReadingAnimation extends React.Component {
     this.anim.reset();
   }
 
+  componentWillMount() {
+    const randomN = math.getRandomInt(0, 5);
+    this.setState({ animationN: randomN });
+  }
+
   componentWillUnmount() {
-    this.reset();
+    this.animatedTiming().stop();
+  }
+
+  randomAnim = (animationN) => {
+    switch(animationN) {
+      case 0:
+        return articulation;
+      case 1:
+        return confusion;
+      case 2:
+        return estimate;
+      case 3:
+        return inattentive;
+      case 4:
+        return mnemonics;
+      case 5:
+        return phonological;
+      default:
+        return articulation;
+    }
   }
 
   render() {
+    const { animationN } = this.state;
+    const animSource = this.randomAnim(animationN);
+
     return (
-      <View style={{ flex: 1, position: 'absolute', top: 10, left: -35, height: '100%', width: '100%' }}>
+      <View style={{ flex: 1, position: 'absolute', top: 15, left:0, height: '100%', width: '100%' }}>
         <LottieView
           ref={ref => { this.anim = ref }}
-          source={require('../../../../assets/animations/articulation.json')}
+          source={animSource}
           resizeMode='cover'
           progress={this.state.progress}
           loop
           style={{
+            flex: 1,
+            position: 'absolute',
+            width: '100%',
             height: '100%',
-            width: '100%'
+            transform: [{scale: 1.3}]
           }}
         />
       </View>

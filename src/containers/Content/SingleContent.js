@@ -130,6 +130,9 @@ export default class SingleContentScene extends Component {
     actionSheetsVisible: false,
     favorite: false,
     reading: false,
+    animationFinished: false,
+    hasTest: false,
+    isShowingContent: true,
   }
 
   async componentDidMount() {
@@ -220,6 +223,24 @@ export default class SingleContentScene extends Component {
     Actions.refresh(route);
   }
 
+  afterFinishAnimation = async (neuronId) => {
+    const { loadNeuronByIdAsync } = this.props;
+    const { hasTest } = this.state;
+
+    this.setState({ reading: false, isShowingContent: false });
+
+    if (hasTest) {
+      Actions.quiz({ type: ActionConst.RESET });
+    } else {
+      try {
+        await loadNeuronByIdAsync(neuronId);
+        Actions.pop();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
   readContent = async (neuronId, contentId) => {
     const { readContentAsync, loadNeuronByIdAsync } = this.props;
     const { reading } = this.state;
@@ -231,26 +252,13 @@ export default class SingleContentScene extends Component {
         const res = await readContentAsync(neuronId, contentId);
         const { data } = res;
 
-        this.readingAnim.play(async () => {
-          await this.setState({ loading: false, reading: false });
-
-          if (data.test) {
-            Actions.quiz({type: ActionConst.RESET});
-          } else {
-            try {
-              await loadNeuronByIdAsync(neuronId);
-              Actions.pop();
-            } catch (error) {
-              console.log(error);
-            }
-          }
+        await this.setState({
+          hasTest: (data || {}).test || false,
         });
-
 
       } catch (error) {
         console.log('ERROR TO READ CONTENT', error.message);
         this.showErrorMessage();
-        this.setState({ reading: false });
       }
     }
 
@@ -289,6 +297,7 @@ export default class SingleContentScene extends Component {
       actionSheetsVisible,
       favorite,
       reading,
+      isShowingContent,
     } = this.state;
 
     const options = [
@@ -308,7 +317,7 @@ export default class SingleContentScene extends Component {
     return (
       <MoiBackground>
         {(loading && !reading) && <Preloader />}
-        {!loading && (
+        {!loading && isShowingContent && (
           <ContentBox>
             <KeyboardAvoidingView keyboardVerticalOffset={50} behavior="padding">
               <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -395,7 +404,14 @@ export default class SingleContentScene extends Component {
           width={device.dimensions.width}
         />}
         {/* Animation */}
-        {reading && <ReadingAnimation ref={ref => this.readingAnim = ref} />}
+        {reading && (
+          <ReadingAnimation
+            ref={ref => this.readingAnim = ref}
+            onFinishAnimation={() => {
+              this.afterFinishAnimation(content.neuron_id);
+            }}
+          />
+        )}
 
         {/* Action Sheets */}
         <ActionSheet
