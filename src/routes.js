@@ -32,16 +32,6 @@ const routes = Actions.create(
       key='test'
       component={Test}
     /> */}
-
-     <Scene
-        key='tutorQuiz'
-        component={QuizTutorScene}
-        title='Tutor Test'
-        {...navbarPropStyles}
-        renderBackButton={backButtonTutorQuiz}
-        renderRightButton={null}
-      />
-
     <Scene
       key='login'
       component={Login}
@@ -151,6 +141,14 @@ const routes = Actions.create(
       title='Test'
       {...navbarPropStyles}
       renderBackButton={backButtonQuiz}
+      renderRightButton={null}
+    />
+    <Scene
+      key='tutorQuiz'
+      component={QuizTutorScene}
+      title='Tutor Test'
+      {...navbarPropStyles}
+      renderBackButton={backButtonTutorQuiz}
       renderRightButton={null}
     />
     <Scene

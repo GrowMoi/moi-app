@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { TouchableWithoutFeedback, View } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';

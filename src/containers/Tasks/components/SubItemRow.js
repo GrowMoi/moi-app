@@ -2,14 +2,14 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Palette } from './../../../commons/styles';
 import { Ionicons } from '@expo/vector-icons';
-import { TextBody, Title } from './../../../commons/components/Typography';
+import { TextBody, Title, Header } from './../../../commons/components/Typography';
 
 const SubItemRow = (props) => {
 
   const content = (
     <View style={styles.rowContainer}>
       <View style={styles.titleContainer}>
-        <Title>{props.title}</Title>
+        <Header>{props.title}</Header>
         <TextBody ellipsizeMode='tail' numberOfLines={2} t>{props.description}</TextBody>
       </View>
     </View>
@@ -82,6 +82,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+    alignSelf: 'stretch',
+    width: '100%',
   },
   title: {
     fontSize: 10,

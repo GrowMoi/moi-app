@@ -16,6 +16,7 @@ export const colors = {
   greenList: chroma('#99b461'),
   greenSubList: chroma('#809554'),
   greenListItem: chroma('#73ba4b'),
+  greenGlow: chroma('#cadb2a'),
 };
 
 const palette = {
@@ -33,6 +34,7 @@ const palette = {
   tasksList: colors.greenList,
   tasksSubList: colors.greenSubList,
   borderListItem: colors.greenListItem,
+  colors: colors,
 };
 
 export default palette;
