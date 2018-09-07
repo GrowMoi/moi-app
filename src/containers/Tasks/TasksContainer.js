@@ -4,12 +4,14 @@ import Header from './components/Header';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Preloader from '../../commons/components/Preloader/Preloader';
+import Alert from '../../commons/components/Alert/Alert';
+import TutorQuizAlert from '../../commons/components/Alert/TutorQuizAlert';
 
 // Actions
 import userActions from '../../actions/userActions';
 import tutorActions from '../../actions/tutorActions';
 
-// Own Components
+// Components
 import TaskTabContainer from './components/TaskTabContainer';
 import NotificationTabContainer from './components/NotificationTabContainer';
 import NotesTabContainer from './components/NotesTabContainer';
@@ -79,7 +81,7 @@ class TasksContainer extends Component {
   }
 
   onPressNotification = (item) => {
-    // Actions.tutorQuiz();
+
   }
 
   render(){
@@ -118,6 +120,9 @@ class TasksContainer extends Component {
           </View>}
           {loading && <Preloader />}
         </ScrollView>
+        <Alert>
+
+        </Alert>
       </View>
     )
   }

@@ -31,7 +31,14 @@ const Buttons = styled(View)`
   padding-horizontal: 20;
 `;
 
-export const TutorQuizAlert = ({ onNext = () => null, onCancel = () => null, message = '' }) => {
+export const TutorQuizAlert = ({
+  onNext = () => null,
+  onCancel = () => null,
+  message = '',
+  nextText = 'Ir a la prueba',
+  cancelText='Cancelar',
+}) => {
+
   return (
     <Container>
       <Profile width={80} />
@@ -40,8 +47,8 @@ export const TutorQuizAlert = ({ onNext = () => null, onCancel = () => null, mes
       </ContentBox>
 
       <Buttons>
-        <Button style={{ width: '45%' }} title='Ir a la prueba' onPress={onNext} />
-        <Button style={{ width: '45%' }} title='Cancelar' onPress={onCancel}/>
+        <Button style={{ width: '45%' }} title={nextText} onPress={onNext} />
+        <Button style={{ width: '45%' }} title={cancelText} onPress={onCancel}/>
       </Buttons>
     </Container>
   )
