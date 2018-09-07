@@ -278,4 +278,7 @@ export default [
   require('../sounds/read_content.mp3'),
   require('../sounds/test.mp3'),
   require('../sounds/fondo.mp3'),
+
+  // MISCELANEOUS
+  require('../images/miscelaneous/button_close.png'),
 ];

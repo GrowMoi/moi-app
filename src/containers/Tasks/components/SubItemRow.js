@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Palette } from './../../../commons/styles';
 import { Ionicons } from '@expo/vector-icons';
 import { TextBody, Title, Header } from './../../../commons/components/Typography';
+import close from '../../../../assets/images/miscelaneous/button_close.png';
 
 const SubItemRow = (props) => {
 
@@ -28,7 +29,8 @@ const SubItemRow = (props) => {
     <View style={styles.container}>
       {props.clickClose && (
         <TouchableOpacity style={styles.onIcon} onPress={props.clickClose} >
-          <Ionicons name="md-close" size={10} color='black' />
+          {/* <Ionicons name="md-close" size={10} color='black' /> */}
+          <Image style={styles.closeImage} source={close} resizeMode='contain' />
         </TouchableOpacity>
       )}
       {item}
@@ -61,20 +63,23 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   onIcon: {
-    backgroundColor: Palette.tasksList,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    width: 15,
-    height: 15,
+    backgroundColor: 'transparent',
+    // borderBottomLeftRadius: 10,
+    // borderBottomRightRadius: 10,
+    // borderTopLeftRadius: 10,
+    // borderTopRightRadius: 10,
+    width: 20,
+    height: 20,
     zIndex: 999,
     position: 'absolute',
-    top: -1,
-    right: -1,
+    top: 2,
+    right: 3,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  closeImage: {
+    width: 20,
   },
   titleContainer: {
     flex: 1,

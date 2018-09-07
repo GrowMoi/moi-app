@@ -17,6 +17,7 @@ export const colors = {
   greenSubList: chroma('#809554'),
   greenListItem: chroma('#73ba4b'),
   greenGlow: chroma('#cadb2a'),
+  greenFrame: chroma('#02b174'),
 };
 
 const palette = {

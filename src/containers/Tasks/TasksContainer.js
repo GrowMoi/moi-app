@@ -6,6 +6,7 @@ import { Actions, ActionConst } from 'react-native-router-flux';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Alert from '../../commons/components/Alert/Alert';
 import TutorQuizAlert from '../../commons/components/Alert/TutorQuizAlert';
+import GenericAlert from '../../commons/components/Alert/GenericAlert';
 
 // Actions
 import userActions from '../../actions/userActions';
@@ -84,10 +85,7 @@ class TasksContainer extends Component {
   }
 
   onPressNotification = (item) => {
-    console.log('ITEM', item);
-    if(item.type === 'tutor_quiz') {
-      this.setState({ isAlertOpen: true, itemSelected: item });
-    }
+    this.setState({ isAlertOpen: true, itemSelected: item });
   }
 
   goToTutorQuiz = () => {
@@ -112,11 +110,35 @@ class TasksContainer extends Component {
     this.setState({ isAlertOpen: false });
   }
 
-  render(){
-    const { loading, isAlertOpen, itemSelected } = this.state;
+  correspondingAlert = () => {
+    const { itemSelected } = this.state;
 
-    const tutorMessage = `El tutor ${(itemSelected.tutor || {}).name || ''} ha creado un test para ti`;
-    const tutorDescription = itemSelected.description;
+    if(itemSelected.type === 'tutor_quiz') {
+      const tutorMessage = `El tutor ${(itemSelected.tutor || {}).name || ''} ha creado un test para ti`;
+      const tutorDescription = itemSelected.description;
+
+      return (
+        <TutorQuizAlert
+          message={tutorMessage}
+          description={tutorDescription}
+          onNext={this.goToTutorQuiz}
+          onCancel={this.closeAlert}
+        />
+      )
+    } else if (itemSelected.type === 'generic') {
+      return (
+        <GenericAlert
+          message={itemSelected.title}
+          description={itemSelected.description}
+          onCancel={this.closeAlert}
+          cancelText='Ok'
+        />
+      )
+    }
+  }
+
+  render(){
+    const { loading, isAlertOpen } = this.state;
 
     return(
       <View style={styles.container}>
@@ -153,12 +175,7 @@ class TasksContainer extends Component {
         </ScrollView>
 
         <Alert open={isAlertOpen}>
-          <TutorQuizAlert
-            message={tutorMessage}
-            description={tutorDescription}
-            onNext={this.goToTutorQuiz}
-            onCancel={this.closeAlert}
-          />
+          {this.correspondingAlert()}
         </Alert>
       </View>
     )
