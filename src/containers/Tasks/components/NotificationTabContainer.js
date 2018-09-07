@@ -70,6 +70,8 @@ class NotificationTabContainer extends PureComponent {
     const { title, icon, data } = this.props;
     const { open } = this.state;
 
+    console.log('NOTIFICATION', data);
+
     return(
       <View style={styles.tasks}>
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />

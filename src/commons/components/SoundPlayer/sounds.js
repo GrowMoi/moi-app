@@ -108,6 +108,12 @@ export default sounds = {
       },
       soundName: 'test',
     },
+    tutorQuiz: {
+      payload: {
+        source: test,
+      },
+      soundName: 'test',
+    },
     randomContents: {
       payload: {
         source: content,
@@ -131,7 +137,7 @@ export default sounds = {
         'publicProfile',
         'randomContents',
       ],
-      test: ['quiz'],
+      test: ['quiz', 'tutorQuiz'],
       fondo: ['tree'],
       intro: ['login', 'register']
     }

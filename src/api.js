@@ -213,6 +213,28 @@ const api = {
       const res = await client.get(endpoint, { params: { page, data_format } })
       return res;
     }
+  },
+
+  players: {
+    async getQuizForPlayer(quizId, playerId) {
+      const endpoint = `/api/quizzes/${quizId}/players/${playerId}`;
+      const res = await client.get(endpoint, { params: { quiz_id: quizId, player_id: playerId } });
+      return res;
+    },
+
+    async evaluateQuiz(quizId, playerId, answers) {
+      const endpoint = `/api/quizzes/${quizId}/players/${playerId}/answer`;
+
+      const res = await client.post(
+        endpoint,
+        {
+          quiz_id: quizId,
+          player_id: playerId,
+          answers: JSON.stringify(answers),
+        }
+      );
+      return res;
+    },
   }
 };
 

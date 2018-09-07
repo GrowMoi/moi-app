@@ -78,6 +78,10 @@ class TasksContainer extends Component {
     });
   }
 
+  onPressNotification = (item) => {
+    // Actions.tutorQuiz();
+  }
+
   render(){
     const { loading } = this.state;
 
@@ -109,6 +113,7 @@ class TasksContainer extends Component {
             <NotificationTabContainer
               title='Notificaciones'
               icon='bell'
+              onClickItem={(item) => this.onPressNotification(item)}
             />
           </View>}
           {loading && <Preloader />}

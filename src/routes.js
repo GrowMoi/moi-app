@@ -11,6 +11,7 @@ import Tasks from './containers/Tasks/Tasks';
 import RandomContents from './containers/RandomContents/RandomContents';
 import Settings from './containers/Settings/Settings';
 import QuizScene from './containers/Quiz/Quiz';
+import QuizTutorScene from './containers/Quiz/QuizTutorScene';
 import BackButton from './commons/components/SceneComponents/BackButton';
 import LeaderBoard from './containers/LeaderBoard/Leaderboard';
 import Search from './containers/Search/Search';
@@ -22,6 +23,7 @@ import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
 
 const backButton = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.pop()}/>;
 const backButtonQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.moiDrawer()}/>;
+const backButtonTutorQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.pop()}/>;
 // const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
 
 const routes = Actions.create(
@@ -30,6 +32,16 @@ const routes = Actions.create(
       key='test'
       component={Test}
     /> */}
+
+     <Scene
+        key='tutorQuiz'
+        component={QuizTutorScene}
+        title='Tutor Test'
+        {...navbarPropStyles}
+        renderBackButton={backButtonTutorQuiz}
+        renderRightButton={null}
+      />
+
     <Scene
       key='login'
       component={Login}
@@ -141,7 +153,6 @@ const routes = Actions.create(
       renderBackButton={backButtonQuiz}
       renderRightButton={null}
     />
-
     <Scene
       key="randomContents"
       title="Contenidos Aleatorios"

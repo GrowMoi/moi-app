@@ -438,6 +438,30 @@ const deleteNotification = (id) => (dispatch) => {
   dispatch({ type: actionTypes.DELETE_NOTIFICATIONS, payload: id });
 }
 
+const loadExternalQuizAsync = (quizId, playerId) => async (dispatch) => {
+  try {
+    const res = await api.players.getQuizForPlayer(quizId, playerId);
+    const { data, headers } = res;
+
+    dispatch({ type: actionTypes.STORE_EXTERNAL_QUIZ, payload: data });
+    dispatch(setHeaders(headers));
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const evaluateQuizAsync = (quizId, playerId, answers) => async (dispatch) => {
+  try {
+    const res = await api.players.evaluateQuiz(quizId, playerId, answers);
+    const { headers } = res;
+
+    dispatch(setHeaders(headers));
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export default {
   loginAsync,
@@ -468,4 +492,6 @@ export default {
   loadMoreNotificationsAsync,
   readNotificationAsync,
   deleteNotification,
+  loadExternalQuizAsync,
+  evaluateQuizAsync,
 };

@@ -38,8 +38,6 @@ export default class RecomendationsTabContainer extends Component {
     const { title, icon, data = [] } = this.props;
     const { open } = this.state;
 
-    console.log('DATA', data);
-
     return(
       <View style={styles.tasks}>
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />

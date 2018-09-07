@@ -12,6 +12,7 @@ const initialState = {
   favorites: {},
   tasks: {},
   quiz: null,
+  externalQuiz: null,
   achievements: [],
   settings: [],
   notifications: {
@@ -71,6 +72,15 @@ const tasks = (state = initialState.tasks, action = {}) => {
 const quiz = (state = initialState.quiz, action = {}) => {
   switch (action.type) {
     case actionTypes.STORE_QUIZ:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const externalQuiz = (state = initialState.externalQuiz, action = {}) => {
+  switch (action.type) {
+    case actionTypes.STORE_EXTERNAL_QUIZ:
       return action.payload;
     default:
       return state;
@@ -182,6 +192,7 @@ const user = combineReducers({
   userData,
   tasks,
   quiz,
+  externalQuiz,
   favorites,
   profile,
   achievements,
