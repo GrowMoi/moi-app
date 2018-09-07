@@ -42,9 +42,11 @@ export default class QuizTutorScene extends Component {
   }
 
   getQuizData = async () => {
-    const { getExternalQuizAsync } = this.props;
-    await getExternalQuizAsync(66, 74);
+    const { getExternalQuizAsync, quizId, playerId } = this.props;
 
+    if(quizId && playerId) {
+      await getExternalQuizAsync(quizId, playerId);
+    }
     this.setState({ loading: false });
   }
 

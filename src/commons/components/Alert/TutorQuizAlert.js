@@ -5,12 +5,16 @@ import styled from 'styled-components/native'
 // Components
 import { Palette } from '../../styles';
 import Profile from '../Profile/Profile';
-import { Title } from '../Typography';
+import { Title, TextBody } from '../Typography';
 import Button from '../Buttons/Button';
 
 const Container = styled(View)`
   width: 300;
   align-items: center;
+`;
+
+const Description = styled(View)`
+  margin-top: 20;
 `;
 
 const ContentBox = styled(View)`
@@ -37,6 +41,7 @@ export const TutorQuizAlert = ({
   message = '',
   nextText = 'Ir a la prueba',
   cancelText='Cancelar',
+  description='',
 }) => {
 
   return (
@@ -44,6 +49,9 @@ export const TutorQuizAlert = ({
       <Profile width={80} />
       <ContentBox>
         <Title center book color='white'>{message}</Title>
+        <Description>
+          {description && <TextBody inverted center>{description}</TextBody>}
+        </Description>
       </ContentBox>
 
       <Buttons>

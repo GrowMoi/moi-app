@@ -30,18 +30,8 @@ export default class Alert extends Component {
     isVisible: false,
   }
 
-  dismiss = () => {
-    const { onPressClose } = this.props;
-    if(onPressClose) onPressClose();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    if(nextProps.open) this.setState({ isVisible: nextProps.open });
-  }
-
   render() {
-    const { onPressClose, open, children } = this.props;
+    const { open, children } = this.props;
 
     return (
       <Container>
@@ -53,14 +43,6 @@ export default class Alert extends Component {
           hardwareAccelerated
         >
           <Overlay>
-            {onPressClose && (
-              <CloseIcon
-                name='md-close'
-                color='white'
-                size={35}
-                onPress={this.dismiss}
-              />)
-            }
             {children}
           </Overlay>
         </Modal>

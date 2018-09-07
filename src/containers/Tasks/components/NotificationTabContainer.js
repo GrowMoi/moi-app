@@ -67,7 +67,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   render() {
-    const { title, icon, data } = this.props;
+    const { title, icon, data, onClickItem = () => null } = this.props;
     const { open } = this.state;
 
     console.log('NOTIFICATION', data);
@@ -86,6 +86,7 @@ class NotificationTabContainer extends PureComponent {
                   return <SubItemRow
                     title={item.title}
                     clickClose={() => this.onCloseNotification(item)}
+                    onPress={() => onClickItem(item)}
                     description={item.description}
                   />
                 }

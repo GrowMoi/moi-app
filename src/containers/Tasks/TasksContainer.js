@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import Header from './components/Header';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Alert from '../../commons/components/Alert/Alert';
 import TutorQuizAlert from '../../commons/components/Alert/TutorQuizAlert';
@@ -29,6 +29,9 @@ import RecomendationsTabContainer from './components/RecomendationsTabContainer'
 class TasksContainer extends Component {
   state = {
     loading: false,
+    isAlertOpen: false,
+    alertType: false,
+    itemSelected: {},
   }
 
   componentDidMount() {
@@ -81,11 +84,39 @@ class TasksContainer extends Component {
   }
 
   onPressNotification = (item) => {
+    console.log('ITEM', item);
+    if(item.type === 'tutor_quiz') {
+      this.setState({ isAlertOpen: true, itemSelected: item });
+    }
+  }
 
+  goToTutorQuiz = () => {
+    const { itemSelected } = this.state;
+    this.setState({ isAlertOpen: false });
+
+    var url = itemSelected.description.match(/(https?:\/\/[^\s]+)/g);
+
+    if (url && url[0]) {
+      var data = url[0].match(/quiz\/(\d*)\/player\/(\d*)/);
+
+      if (data && (data || []).length) {
+        Actions.tutorQuiz({
+          quizId: parseInt(data[1]),
+          playerId: parseInt(data[2]),
+        });
+      }
+    }
+  }
+
+  closeAlert = () => {
+    this.setState({ isAlertOpen: false });
   }
 
   render(){
-    const { loading } = this.state;
+    const { loading, isAlertOpen, itemSelected } = this.state;
+
+    const tutorMessage = `El tutor ${(itemSelected.tutor || {}).name || ''} ha creado un test para ti`;
+    const tutorDescription = itemSelected.description;
 
     return(
       <View style={styles.container}>
@@ -120,8 +151,14 @@ class TasksContainer extends Component {
           </View>}
           {loading && <Preloader />}
         </ScrollView>
-        <Alert>
 
+        <Alert open={isAlertOpen}>
+          <TutorQuizAlert
+            message={tutorMessage}
+            description={tutorDescription}
+            onNext={this.goToTutorQuiz}
+            onCancel={this.closeAlert}
+          />
         </Alert>
       </View>
     )
