@@ -134,6 +134,15 @@ class TasksContainer extends Component {
           cancelText='Ok'
         />
       )
+    } else {
+      return (
+        <GenericAlert
+          message={itemSelected.title}
+          description={itemSelected.description}
+          onCancel={this.closeAlert}
+          cancelText='Ok'
+        />
+      )
     }
   }
 
