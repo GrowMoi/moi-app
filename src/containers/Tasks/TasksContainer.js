@@ -18,6 +18,8 @@ import NotificationTabContainer from './components/NotificationTabContainer';
 import NotesTabContainer from './components/NotesTabContainer';
 import FavoritesTabContainer from './components/FavoritesTabContainer';
 import RecomendationsTabContainer from './components/RecomendationsTabContainer';
+import TutorGenericAlert from '../../commons/components/Alert/TutorGenericAlert';
+
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
 }), {
@@ -134,7 +136,20 @@ class TasksContainer extends Component {
           cancelText='Ok'
         />
       )
-    } else {
+    } else if (itemSelected.type === 'tutor_generic') {
+
+      return (
+        <TutorGenericAlert
+          message={itemSelected.title}
+          description={itemSelected.description}
+          onCancel={this.closeAlert}
+          video={itemSelected.videos[0]}
+          media={itemSelected.media[0]}
+          cancelText='Ok'
+        />
+      )
+    }
+    else {
       return (
         <GenericAlert
           message={itemSelected.title}
