@@ -23,16 +23,19 @@ export default class BackButton extends Component {
   onPressButton = () => {
     const { onPress } = this.props
     if(onPress) {
-      this.backButton.pulse(300)
-        .then(endState => onPres())
+      this.backButton.pulse(250)
+        .then(endState => onPress())
     }
   }
 
   render() {
+    const { reverse } = this.props;
+    const reverseStyles = reverse ? { transform: [{ rotate: '180deg' }, { rotateX: '180deg' }] } : {};
+
     return (
-      <TouchableWithoutFeedback onPress={this.onPressButton} {...this.props}>
+      <TouchableWithoutFeedback {...this.props} onPress={this.onPressButton}>
         <ButtonContainerAnimated ref={this.handleViewRef}>
-          <BackImage source={backArrow} resizeMode='contain' />
+          <BackImage style={{ ...reverseStyles }} source={backArrow} resizeMode='contain' />
         </ButtonContainerAnimated>
       </TouchableWithoutFeedback>
     );

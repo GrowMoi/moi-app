@@ -281,4 +281,5 @@ export default [
 
   // MISCELANEOUS
   require('../images/miscelaneous/button_close.png'),
+  require('../images/buttons/wood_texture.png'),
 ];

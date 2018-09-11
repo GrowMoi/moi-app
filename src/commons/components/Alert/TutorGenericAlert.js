@@ -31,6 +31,7 @@ const ContentBox = styled(ScrollView)`
   padding-vertical: 20;
   border-radius: 5;
   margin-bottom: 10;
+  max-height: 450;
 `;
 
 const Buttons = styled(View)`
