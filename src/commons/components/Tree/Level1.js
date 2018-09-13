@@ -7,6 +7,8 @@ import Neuron from './Neuron';
 import treeLevel1Gray from '../../../../assets/images/tree/nivel_1/nivel_1_descubierta.png';
 import treeLevel1Color from '../../../../assets/images/tree/nivel_1/nivel_1_color.png';
 import { FLORECIDA } from '../../../constants';
+import WoodLabel from '../WoodLabel/WoodLabel';
+import { neuron } from '../../utils';
 
 const treeHeight = 371;
 const treeWidth = 213;
@@ -39,12 +41,21 @@ export default class Level1 extends Component {
     children: PropTypes.any,
   }
 
-  onPressNeuron = () => {
+  state = {
+    showLabel: false,
+  }
+
+  onPressPlayContent = () => {
     const { tree } = this.props.userTree;
     Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
   }
 
+  onPressNeuron = () => {
+    this.setState(prevState => ({ showLabel: !prevState.showLabel }));
+  }
+
   render() {
+    const { showLabel } = this.state;
     const { width, userTree, children } = this.props;
     const { tree } = userTree;
 
@@ -53,6 +64,16 @@ export default class Level1 extends Component {
 
     const treeColor = tree.root.state === FLORECIDA ? treeLevel1Color : treeLevel1Gray;
     const neuronColor = tree.root.state === FLORECIDA && 'yellow';
+    const NEURON_MIN_SIZE = 50;
+    const NEURON_MAX_SIZE = 80;
+    const neuronSize = neuron.calculateSize({
+      contentsLearned,
+      totalContents,
+      size: {
+        min: NEURON_MIN_SIZE,
+        max: NEURON_MAX_SIZE
+      }
+    });
 
     return (
       <Container>
@@ -62,6 +83,13 @@ export default class Level1 extends Component {
           source={treeColor}
           resizeMode='contain'
         >
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          {showLabel &&
+            <WoodLabel
+              style={{ position: 'absolute', top: -(neuronSize) - 20 }}
+              text={tree.root.title}
+              onPress={this.onPressPlayContent}
+            />}
           <Neuron
             onPress={this.onPressNeuron}
             color={neuronColor}
@@ -72,6 +100,7 @@ export default class Level1 extends Component {
             size={{ max: 80, min: 50 }}
             position={{ top: -25, left: -8 }}
           />
+        </View>
         </TreeLevel>
       </Container>
     );

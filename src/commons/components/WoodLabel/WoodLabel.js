@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { View, ImageBackground, Image } from 'react-native'
+import React, { PureComponent } from 'react'
+import { View, ImageBackground, Image, Text } from 'react-native'
 import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 
@@ -14,9 +14,9 @@ const Container = styled(View)`
 const Box = styled(ImageBackground)`
   background-color: #dbc788;
   position: relative;
-  min-width: 100;
+  min-width: 120;
   max-width: 200;
-  min-height: 40;
+  min-height: ${props => props.height || 40};
   justify-content: center;
   align-items: center;
   padding-horizontal: 20;
@@ -36,39 +36,50 @@ const PlayContent = styled(Image)`
   width: 30;
 `
 
+const TextLabel = styled(Header)`
+
+`;
+
 const LabelContainer = Animatable.createAnimatableComponent(Container);
 
+const DownArrow = styled(View)`
+  border-right-width: 5;
+  border-right-color: transparent;
+  border-bottom-width: 8;
+  border-bottom-color: transparent;
+  border-top-width: 8;
+  border-top-color: #633427;
+  border-left-width: 5;
+  border-left-color: transparent;
+  position: absolute;
+  bottom: -18;
+`;
 
-class WoodLabel extends Component {
+class WoodLabel extends PureComponent {
   storeRef = ref => this.woodContainer = ref
-  state = {
-    showing: false,
+
+  componentDidMount() {
+    this.woodContainer.bounceInUp(400);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ showing: nextProps.appear });
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    if(nextState.showing) {
-      this.woodContainer.fadeInLeft(250);
-    }
+  componentWillUnmount() {
+    this.woodContainer.bounceInDown(200);
   }
 
   render() {
-    const { showing } = this.state;
-    const { text = '', onPress = () => null, style } = this.props;
+    const { text = '', onPress = () => null, style, size } = this.props;
 
     return (
-      <LabelContainer ref={this.storeRef} style={{ ...style }}>
-        {showing && (
-          <Box source={woodBg} resizeMode='cover'>
-            <TextContainer>
-              <Header bold numberOfLines={2}>{text}</Header>
-              <BackButton reverse onPress={onPress}/>
-            </TextContainer>
-          </Box>
-        )}
+      <LabelContainer ref={this.storeRef} style={style}>
+        <Box height={size} source={woodBg} resizeMode='cover'>
+          <TextContainer>
+            <TextLabel
+              adjustsFontSizeToFit
+              numberOfLines={2}>{text}</TextLabel>
+            <BackButton reverse onPress={onPress}/>
+          </TextContainer>
+          <DownArrow />
+        </Box>
       </LabelContainer>
     );
   }

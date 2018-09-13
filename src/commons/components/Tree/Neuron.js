@@ -13,6 +13,7 @@ import neuronaFucsia from '../../../../assets/images/neurona/neurona_color_fucsi
 import neuronaNaranja from '../../../../assets/images/neurona/neurona_color_naranja.png';
 import neuronaAmarilla from '../../../../assets/images/neurona/neurona_color_amarillo.png';
 import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_color_naranja_oscuro.png';
+import WoodLabel from '../WoodLabel/WoodLabel';
 
 export const NeuronContainer = styled(View)`
   justify-content: center;
@@ -41,9 +42,16 @@ const NeuronImage = styled(Animated.Image)`
   position: absolute;
   `;
 
+const Label = styled(WoodLabel)`
+  position: absolute;
+`;
+
 export default class Neuron extends Component {
   handleRefNeuron = ref => this._neuron = ref;
   animatedValue = new Animated.Value(1);
+  state = {
+    showingLabel: false,
+  }
 
   onPressNeuron = (e) => {
     const { onPress } = this.props;
@@ -111,7 +119,9 @@ export default class Neuron extends Component {
       size,
       contentsLearned,
       totalContents,
+      name,
     } = this.props;
+    const { showingLabel } = this.state;
     const { max: maxSize } = size;
     const animatedStyle = { transform: [{ scale: this.animatedValue }] };
     const neuronSize = this.calculateSize(contentsLearned, totalContents);
@@ -141,20 +151,30 @@ export default class Neuron extends Component {
     }
 
     return (
-      <NeuronAnimatable {...neuronProps}>
-        <TouchableWithoutFeedback
-          onPressOut={this.onPressOut}
-          onPressIn={this.onPressIn}
-          onPress={this.onPressNeuron}
-        >
-          <NeuronImage
-            size={neuronSize}
-            style={[animatedStyle, style]}
-            source={this.neuronColor}
-            resizeMode='contain'
-          />
-        </TouchableWithoutFeedback>
-      </NeuronAnimatable>
+      // <View >
+      //   {showingLabel && (
+      //     <Label
+      //       onPress={this.onPressNeuron}
+      //       text={name}
+      //       size={neuronSize}
+      //       style={{ top: -(neuronSize) - 10 }}
+      //     />)
+      //   }
+        <NeuronAnimatable {...neuronProps}>
+          <TouchableWithoutFeedback
+            onPressOut={this.onPressOut}
+            onPressIn={this.onPressIn}
+            onPress={this.onPressNeuron}
+          >
+            <NeuronImage
+              size={neuronSize}
+              style={[animatedStyle, style]}
+              source={this.neuronColor}
+              resizeMode='contain'
+            />
+          </TouchableWithoutFeedback>
+        </NeuronAnimatable>
+      // </View>
     );
   }
 }
