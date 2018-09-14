@@ -5,7 +5,6 @@ import * as Animatable from 'react-native-animatable';
 
 import { Header } from '../Typography';
 import woodBg from '../../../../assets/images/buttons/wood_texture.png';
-import playButton from '../../../../assets/images/buttons/back_arrow.png';
 import BackButton from '../SceneComponents/BackButton';
 
 const Container = styled(View)`
@@ -59,28 +58,28 @@ class WoodLabel extends PureComponent {
   storeRef = ref => this.woodContainer = ref
 
   componentDidMount() {
-    this.woodContainer.bounceInUp(400);
+    // this.woodContainer.bounceInUp(400);
   }
 
   componentWillUnmount() {
-    this.woodContainer.bounceInDown(200);
+    // this.woodContainer.bounceInDown(200);
   }
 
   render() {
     const { text = '', onPress = () => null, style, size } = this.props;
 
     return (
-      <LabelContainer ref={this.storeRef} style={style}>
+      <Container ref={this.storeRef} style={style}>
         <Box height={size} source={woodBg} resizeMode='cover'>
           <TextContainer>
             <TextLabel
-              adjustsFontSizeToFit
-              numberOfLines={2}>{text}</TextLabel>
+              allowFontScaling
+              numberOfLines={1}>{text}</TextLabel>
             <BackButton reverse onPress={onPress}/>
           </TextContainer>
           <DownArrow />
         </Box>
-      </LabelContainer>
+      </Container>
     );
   }
 

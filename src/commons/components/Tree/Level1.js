@@ -9,6 +9,8 @@ import treeLevel1Color from '../../../../assets/images/tree/nivel_1/nivel_1_colo
 import { FLORECIDA } from '../../../constants';
 import WoodLabel from '../WoodLabel/WoodLabel';
 import { neuron } from '../../utils';
+import { connect } from 'react-redux';
+import neuronActions from '../../../actions/neuronActions';
 
 const treeHeight = 371;
 const treeWidth = 213;
@@ -30,6 +32,11 @@ const Container = styled(View)`
   align-items: center;
 `;
 
+@connect(state => ({
+  label: state.neuron.currentlyPressed
+}), {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+})
 export default class Level1 extends Component {
   static defaultProps = {
     width: 50,
@@ -41,23 +48,24 @@ export default class Level1 extends Component {
     children: PropTypes.any,
   }
 
-  state = {
-    showLabel: false,
-  }
-
-  onPressPlayContent = () => {
+  playContent = () => {
     const { tree } = this.props.userTree;
     Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
   }
 
-  onPressNeuron = () => {
-    this.setState(prevState => ({ showLabel: !prevState.showLabel }));
+  onPressNeuron = (measure, data) => {
+    const { setNeuronLabelInfo, label } = this.props;
+
+    if(data.id === label.id) {
+      setNeuronLabelInfo({});
+      return;
+    }
+    setNeuronLabelInfo({ ...measure, ...data });
   }
 
   render() {
-    const { showLabel } = this.state;
-    const { width, userTree, children } = this.props;
-    const { tree } = userTree;
+    const { width, userTree, children, label } = this.props;
+    const { tree, meta } = userTree;
 
     const contentsLearned = tree.root.learnt_contents || 0;
     const totalContents = tree.root.total_approved_contents || 0;
@@ -77,6 +85,18 @@ export default class Level1 extends Component {
 
     return (
       <Container>
+        {(meta || {}).depth === 1 && (
+          <WoodLabel
+            text={label.title}
+            onPress={this.playContent}
+            style={{
+              position: 'absolute',
+              width: 200,
+              top: label.pageY,
+              left: label.pageX,
+              transform: [{translate: [-75, '-50%', 1] }]
+            }}
+          />)}
         {children}
         <TreeLevel
           width={width}
@@ -84,14 +104,8 @@ export default class Level1 extends Component {
           resizeMode='contain'
         >
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-          {showLabel &&
-            <WoodLabel
-              style={{ position: 'absolute', top: -(neuronSize) - 20 }}
-              text={tree.root.title}
-              onPress={this.onPressPlayContent}
-            />}
           <Neuron
-            onPress={this.onPressNeuron}
+            onPress={(measure) => this.onPressNeuron(measure, tree.root)}
             color={neuronColor}
             name={tree.root.title}
             id={tree.root.id}

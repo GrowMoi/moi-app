@@ -84,6 +84,10 @@ const loadRecomendedContents = () => async (dispatch) => {
   return res;
 };
 
+const setNeuronLabelInfo = (neuronInfo = {}) => dispatch => {
+  dispatch({ type: actionTypes.SET_NEURON_INFO, payload: neuronInfo });
+}
+
 export default {
   loadNeuronByIdAsync,
   loadContentByIdAsync,
@@ -92,4 +96,5 @@ export default {
   playCurrentBackgroundAudio,
   setCurrentBackgroundAudio,
   removeCurrentBackgroundAudio,
+  setNeuronLabelInfo,
 };

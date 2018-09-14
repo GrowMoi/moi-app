@@ -75,7 +75,7 @@ export default class Tree extends Component {
 
     const levels = {
       tree1: <Level1 { ...levelData } />,
-      tree2: <Level2 { ...levelData } />,
+      tree2: <Level2 onPressN={(measure) => console.log(measure)} { ...levelData } />,
       tree3: <Level3 { ...levelData } />,
       allLevels: <AllLevels { ...levelData } />,
     };
@@ -124,10 +124,10 @@ export default class Tree extends Component {
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        <ViewTransformer maxScale={zoomScale}>
+        <Zoom maxScale={zoomScale}>
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           {level}
-        </ViewTransformer>
+        </Zoom>
       </TreeContainer>
     );
   }

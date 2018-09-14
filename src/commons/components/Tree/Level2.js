@@ -7,6 +7,7 @@ import Level1 from './Level1';
 import Neuron from './Neuron';
 import { FLORECIDA } from '../../../constants';
 import secondLevelConfig from './neuronConfigs/level2.config';
+import WoodLabel from '../WoodLabel/WoodLabel';
 
 // branch images descubiertas
 import descubiertaRight from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_right.png';
@@ -19,6 +20,10 @@ import colorRight from '../../../../assets/images/tree/nivel_2/nivel_2_color_rig
 import colorRightCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_right_center.png';
 import colorLeftCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_left_center.png';
 import colorLeft from '../../../../assets/images/tree/nivel_2/nivel_2_color_left.png';
+
+// Redux
+import { connect } from 'react-redux';
+import neuronActions from '../../../actions/neuronActions';
 
 const Container = styled(View)`
   flex: 1;
@@ -126,13 +131,32 @@ const levelConfig = {
   },
 };
 
+@connect(state => ({
+  label: state.neuron.currentlyPressed,
+}), {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+})
 export default class Level2 extends Component {
   state = {
     loading: true,
   }
 
-  onPressNeuron = (e, data) => {
-    Actions.content({ title: data.title, neuron_id: data.id });
+  onPressNeuron = (measure, data) => {
+    const { setNeuronLabelInfo, label } = this.props;
+
+    // Actions.content({ title: data.title, neuron_id: data.id });
+
+    if(data.id === label.id) {
+      setNeuronLabelInfo({});
+      return;
+    }
+
+    setNeuronLabelInfo({ ...measure, ...data });
+  }
+
+  playContent = () => {
+    const { label } = this.props;
+    Actions.content({ title: label.title, neuron_id: label.id });
   }
 
   renderTreeBranch = (branchDirection, neuronData, index) => {
@@ -142,7 +166,7 @@ export default class Level2 extends Component {
     const StyledComponent = tree.branch.styles;
 
     const neuronPrivateProps = neuronData && {
-      onPress: e => this.onPressNeuron(e, neuronData),
+      onPress: (measure) => this.onPressNeuron(measure, neuronData),
       id: neuronData.id,
       name: neuronData.title,
       contentsLearned: neuronData.learnt_contents,
@@ -181,7 +205,7 @@ export default class Level2 extends Component {
   }
 
   render() {
-    const { userTree } = this.props;
+    const { userTree, label } = this.props;
 
     return (
       <Container>
@@ -196,6 +220,17 @@ export default class Level2 extends Component {
             </BranchContainer>
           </Level1>
         )}
+        <WoodLabel
+          text={label.title}
+          onPress={this.playContent}
+          style={{
+            position: 'absolute',
+            width: 200,
+            top: label.pageY,
+            left: label.pageX,
+            transform: [{translate: [-75, '-50%', 1] }]
+          }}
+        />
       </Container>
     );
   }
