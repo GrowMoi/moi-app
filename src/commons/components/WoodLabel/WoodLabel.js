@@ -20,7 +20,8 @@ const Box = styled(ImageBackground)`
   align-items: center;
   padding-horizontal: 20;
   padding-vertical: 10;
-  border-radius: 5;
+  border-radius: 10;
+  overflow: hidden;
   border-left-width: 3;
   border-left-color: #633427;
   border-bottom-width: 3;
@@ -77,7 +78,6 @@ class WoodLabel extends PureComponent {
               numberOfLines={1}>{text}</TextLabel>
             <BackButton reverse onPress={onPress}/>
           </TextContainer>
-          <DownArrow />
         </Box>
       </Container>
     );

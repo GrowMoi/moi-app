@@ -6,8 +6,8 @@ const initialState = {
   contentSelected: {},
   recomendedContents: {},
   currentlyPressed: {
-    pageX: '-100%',
-    pageY: '-100%',
+    pageX: null,
+    pageY: null,
   },
 };
 

@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import { getHeightAspectRatio } from '../../utils';
 import NeuronsLayer from './NeuronsLayer';
+import neuronActions from '../../../actions/neuronActions';
 import Branches from './allBranches';
+import WoodLabel from '../WoodLabel/WoodLabel';
 
 import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
 import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
@@ -39,9 +43,19 @@ const Levels = styled(View)`
   overflow: visible;
 `;
 
+@connect(state => ({
+  label: state.neuron.currentlyPressed,
+}), {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+})
 export default class AllLevels extends Component {
+  playContent = () => {
+    const { label } = this.props;
+    Actions.content({ title: label.title, neuron_id: label.id });
+  }
+
   render() {
-    const { userTree: { tree, meta: { depth } } } = this.props;
+    const { userTree: { tree, meta: { depth } }, label } = this.props;
     const isLevel4 = depth === 4;
     const isLevel3 = depth === 3;
     const isLevel5 = depth === 5;
@@ -84,6 +98,20 @@ export default class AllLevels extends Component {
             treeDimensions={treeDimensions}
             width={CURRENT_TREE_WIDTH}
           />
+          {label.pageX && label.pageY &&
+            <WoodLabel
+              text={label.title}
+              onPress={this.playContent}
+              style={{
+                position: 'absolute',
+                width: 150,
+                height: 57,
+                top: label.pageY,
+                left: label.pageX,
+                transform: [{translate: [-67, -57, 1] }]
+              }}
+            />
+          }
         </Levels>
       </Container>
     );

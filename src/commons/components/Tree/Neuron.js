@@ -19,7 +19,6 @@ import neuronaFucsia from '../../../../assets/images/neurona/neurona_color_fucsi
 import neuronaNaranja from '../../../../assets/images/neurona/neurona_color_naranja.png';
 import neuronaAmarilla from '../../../../assets/images/neurona/neurona_color_amarillo.png';
 import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_color_naranja_oscuro.png';
-import WoodLabel from '../WoodLabel/WoodLabel';
 
 export const NeuronContainer = styled(View)`
   justify-content: center;
@@ -47,10 +46,6 @@ const NeuronImage = styled(Animated.Image)`
   height: ${props => Math.round(props.size / aspect)};
   position: absolute;
   `;
-
-const Label = styled(WoodLabel)`
-  position: absolute;
-`;
 
 export default class Neuron extends Component {
   handleRefNeuron = ref => this._neuron = ref;

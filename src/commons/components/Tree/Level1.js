@@ -86,17 +86,20 @@ export default class Level1 extends Component {
     return (
       <Container>
         {(meta || {}).depth === 1 && (
-          <WoodLabel
-            text={label.title}
-            onPress={this.playContent}
-            style={{
-              position: 'absolute',
-              width: 200,
-              top: label.pageY,
-              left: label.pageX,
-              transform: [{translate: [-75, '-50%', 1] }]
-            }}
-          />)}
+          (label.pageX && label.pageY) && (
+            <WoodLabel
+              text={label.title}
+              onPress={this.playContent}
+              style={{
+                position: 'absolute',
+                width: 200,
+                top: label.pageY,
+                left: label.pageX,
+                transform: [{translate: [-75, '-50%', 1] }]
+              }}
+            />
+            )
+          )}
         {children}
         <TreeLevel
           width={width}

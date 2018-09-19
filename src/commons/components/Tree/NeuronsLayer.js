@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components/native';
 import { View } from 'react-native';
-import Neuron, { NeuronContainer } from './Neuron';
+import { connect } from 'react-redux';
+import Neuron from './Neuron';
+import RecursiveNeuron from './RecursiveNeuron';
 import { getHeightAspectRatio } from '../../utils';
 
 import { FLORECIDA } from '../../../constants';
 import levelsConfig from './neuronConfigs/levels.config';
+import neuronActions from '../../../actions/neuronActions';
 
 const Container = styled(View)`
   width: ${({ width }) => width};
@@ -17,81 +20,33 @@ const Container = styled(View)`
   overflow: visible;
 `;
 
-const onPressNeuron = (e, _data) => {
-  Actions.content({ title: _data.title, neuron_id: _data.id });
+const onPressNeuron = (measure, _data) => {
+  // Actions.content({ title: _data.title, neuron_id: _data.id });
 };
 
-const RecursiveNeuron = ({
-  neuron,
-  level = 2,
-  maxLevel,
-  configs,
-  index = 0,
-  size = {},
-  parentIndex = 0,
-  parentLevel = 2,
-  path = '',
-}) => {
-  let children;
+const playContent = () => {
 
-  const maximunGrowSize = size.max || 30;
-  const minimunSize = size.min || 20;
+}
 
-  const neuronProps = {
-    id: neuron.id,
-    name: neuron.title,
-    contentsLearned: neuron.learnt_contents,
-    totalContents: neuron.total_approved_contents,
-    color: configs.neuron.color,
-    size: { max: maximunGrowSize, min: minimunSize },
-    onPress: e => onPressNeuron(e, neuron),
-  };
-
-  let newPath;
-  if (path) {
-    newPath = `${path}.${level}.${index}`;
-  } else {
-    newPath = `${level}.${index}`;
-  }
-
-  // console.log(newPath);
-
-  const neuronPosition = newPath in configs ? configs[newPath].position : {};
-
-  if (neuron.children && neuron.children.length) {
-    children = neuron.children.map((child, childIndex) => {
-      if (level === maxLevel) return null;
-      return (
-        <RecursiveNeuron
-          key={`neuron-${child.parent_id}-${child.id}-${child.title}`}
-          neuron={child}
-          level={level + 1}
-          maxLevel={maxLevel}
-          configs={configs}
-          size={size}
-          parentIndex={index}
-          index={childIndex}
-          parentLevel={level}
-          path={newPath}
-        />
-      );
-    });
-  }
-
-  return (
-    <NeuronContainer
-      key={`neuron-${neuron.id}-${newPath}-${neuron.title}`}
-      pos={neuronPosition}
-    >
-      <Neuron {...neuronProps} />
-      {children}
-    </NeuronContainer>
-  );
-};
-
+@connect(state => ({
+  label: state.neuron.currentlyPressed,
+}), {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+})
 export default class NeuronsLayer extends Component {
   size = { max: 15, min: 8 }
   branches = [];
+
+  onPressNeuron = ({ measure, neuron }) => {
+    const { setNeuronLabelInfo, label } = this.props;
+
+    if(neuron.id === label.id) {
+      setNeuronLabelInfo({});
+      return;
+    }
+
+    setNeuronLabelInfo({ ...measure, ...neuron });
+  }
 
   get renderLevelOne() {
     const { data } = this.props;
@@ -108,7 +63,7 @@ export default class NeuronsLayer extends Component {
       totalContents,
       position: { bottom: 10, left: 147 },
       size: this.size,
-      onPress: e => onPressNeuron(e, data.root),
+      onPress: measure => this.onPressNeuron({ measure, neuron: data.root }),
     };
 
     return (

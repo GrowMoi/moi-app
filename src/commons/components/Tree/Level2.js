@@ -220,6 +220,7 @@ export default class Level2 extends Component {
             </BranchContainer>
           </Level1>
         )}
+        {label.pageX && label.pageY &&
         <WoodLabel
           text={label.title}
           onPress={this.playContent}
@@ -230,7 +231,7 @@ export default class Level2 extends Component {
             left: label.pageX,
             transform: [{translate: [-75, '-50%', 1] }]
           }}
-        />
+        />}
       </Container>
     );
   }
