@@ -92,10 +92,9 @@ export default class Level1 extends Component {
               onPress={this.playContent}
               style={{
                 position: 'absolute',
-                width: 200,
                 top: label.pageY,
                 left: label.pageX,
-                transform: [{translate: [-75, '-50%', 1] }]
+                transform: [{translate: ['-50%', '-30%', 1] }]
               }}
             />
             )

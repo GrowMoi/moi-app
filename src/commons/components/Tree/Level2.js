@@ -229,7 +229,7 @@ export default class Level2 extends Component {
             width: 200,
             top: label.pageY,
             left: label.pageX,
-            transform: [{translate: [-75, '-50%', 1] }]
+            transform: [{translate: [-70, '-30%', 1] }]
           }}
         />}
       </Container>

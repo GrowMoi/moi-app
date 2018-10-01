@@ -55,7 +55,7 @@ export default class AllLevels extends Component {
   }
 
   render() {
-    const { userTree: { tree, meta: { depth } }, label } = this.props;
+    const { userTree: { tree, meta: { depth } }, label, zoomScale } = this.props;
     const isLevel4 = depth === 4;
     const isLevel3 = depth === 3;
     const isLevel5 = depth === 5;
@@ -102,13 +102,11 @@ export default class AllLevels extends Component {
             <WoodLabel
               text={label.title}
               onPress={this.playContent}
+              zoomScale={zoomScale}
               style={{
                 position: 'absolute',
-                width: 150,
-                height: 57,
                 top: label.pageY,
                 left: label.pageX,
-                transform: [{translate: [-67, -57, 1] }]
               }}
             />
           }

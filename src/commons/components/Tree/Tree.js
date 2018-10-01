@@ -75,9 +75,9 @@ export default class Tree extends Component {
 
     const levels = {
       tree1: <Level1 { ...levelData } />,
-      tree2: <Level2 onPressN={(measure) => console.log(measure)} { ...levelData } />,
+      tree2: <Level2 { ...levelData } />,
       tree3: <Level3 { ...levelData } />,
-      allLevels: <AllLevels { ...levelData } />,
+      allLevels: <AllLevels { ...levelData } zoomScale={4}/>,
     };
 
     switch (level) {
