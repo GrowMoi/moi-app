@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ImageBackground, View, Dimensions } from 'react-native';
+import { ImageBackground, View, TouchableWithoutFeedback } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components/native';
 import Neuron from './Neuron';
@@ -25,7 +25,10 @@ const TreeLevel = styled(ImageBackground)`
   overflow: visible;
 `;
 
-const Container = styled(View)`
+const Container = styled(TouchableWithoutFeedback)`
+`;
+
+const LevelContainer = styled(View)`
   position: relative;
   flex: 1;
   overflow: visible;
@@ -46,6 +49,11 @@ export default class Level1 extends Component {
     width: PropTypes.number,
     userTree: PropTypes.object,
     children: PropTypes.any,
+  }
+
+  hideWoodLabel = () => {
+    const { setNeuronLabelInfo } = this.props;
+    setNeuronLabelInfo({});
   }
 
   playContent = () => {
@@ -84,40 +92,42 @@ export default class Level1 extends Component {
     });
 
     return (
-      <Container>
-        {(meta || {}).depth === 1 && (
-          (label.pageX && label.pageY) && (
-            <WoodLabel
-              text={label.title}
-              onPress={this.playContent}
-              style={{
-                position: 'absolute',
-                top: label.pageY,
-                left: label.pageX,
-                transform: [{translate: ['-50%', '-30%', 1] }]
-              }}
+      <Container onPress={this.hideWoodLabel}>
+        <LevelContainer>
+          {(meta || {}).depth === 1 && (
+            (label.pageX && label.pageY) && (
+              <WoodLabel
+                text={label.title}
+                onPress={this.playContent}
+                style={{
+                  position: 'absolute',
+                  top: label.pageY,
+                  left: label.pageX,
+                  transform: [{translate: ['-50%', '-30%', 1] }]
+                }}
+              />
+              )
+            )}
+          {children}
+          <TreeLevel
+            width={width}
+            source={treeColor}
+            resizeMode='contain'
+          >
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Neuron
+              onPress={(measure) => this.onPressNeuron(measure, tree.root)}
+              color={neuronColor}
+              name={tree.root.title}
+              id={tree.root.id}
+              contentsLearned={contentsLearned}
+              totalContents={totalContents}
+              size={{ max: 80, min: 50 }}
+              position={{ top: -25, left: -8 }}
             />
-            )
-          )}
-        {children}
-        <TreeLevel
-          width={width}
-          source={treeColor}
-          resizeMode='contain'
-        >
-        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-          <Neuron
-            onPress={(measure) => this.onPressNeuron(measure, tree.root)}
-            color={neuronColor}
-            name={tree.root.title}
-            id={tree.root.id}
-            contentsLearned={contentsLearned}
-            totalContents={totalContents}
-            size={{ max: 80, min: 50 }}
-            position={{ top: -25, left: -8 }}
-          />
-        </View>
-        </TreeLevel>
+          </View>
+          </TreeLevel>
+        </LevelContainer>
       </Container>
     );
   }

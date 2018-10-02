@@ -25,7 +25,7 @@
     "android": {
       "package": "com.growmoisociallearning.moiapp"
     },
-    "version": "0.2.8",
+    "version": "0.3.1",
     "isDetached": true,
     "detach": {
       "scheme": "exp7b71e38c6d4c49f7a48f85925ea68e4b",

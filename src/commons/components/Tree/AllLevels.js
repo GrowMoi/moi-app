@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -19,7 +19,7 @@ import arbolNivel8Gris from '../../../../assets/images/tree/arbol_adulto/gris/ar
 import arbolNivel9Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel9_gris.png';
 import arbolColorNivel2 from '../../../../assets/images/tree/arbol_adulto/nivel_2/arbol_nivel2_color.png';
 
-const Container = styled(View)`
+const Container = styled(TouchableWithoutFeedback)`
   flex: 1;
   position: relative;
 `;
@@ -54,8 +54,17 @@ export default class AllLevels extends Component {
     Actions.content({ title: label.title, neuron_id: label.id });
   }
 
+  hideWoodLabel = () => {
+    const { setNeuronLabelInfo } = this.props;
+    setNeuronLabelInfo({});
+  }
+
   render() {
-    const { userTree: { tree, meta: { depth } }, label, zoomScale } = this.props;
+    const {
+      userTree: { tree, meta: { depth } },
+      label,
+      zoomScale,
+    } = this.props;
     const isLevel4 = depth === 4;
     const isLevel3 = depth === 3;
     const isLevel5 = depth === 5;
@@ -76,7 +85,7 @@ export default class AllLevels extends Component {
     };
 
     return (
-      <Container>
+      <Container onPress={this.hideWoodLabel}>
         <Levels>
           {isLevel5 && <TreeBase source={arbolNivel5Gris} {...defaultProps}/>}
           {isLevel4 && <TreeBase source={arbolNivel4Gris} {...defaultProps}/>}
@@ -101,7 +110,10 @@ export default class AllLevels extends Component {
           {label.pageX && label.pageY &&
             <WoodLabel
               text={label.title}
-              onPress={this.playContent}
+              onPress={() => {
+                this.hideWoodLabel();
+                this.playContent();
+              }}
               zoomScale={zoomScale}
               style={{
                 position: 'absolute',

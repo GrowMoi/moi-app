@@ -56,19 +56,6 @@ const TextLabel = styled(Header)`
 
 const LabelContainer = Animatable.createAnimatableComponent(Container);
 
-const DownArrow = styled(View)`
-  border-right-width: 5;
-  border-right-color: transparent;
-  border-bottom-width: 8;
-  border-bottom-color: transparent;
-  border-top-width: 8;
-  border-top-color: #633427;
-  border-left-width: 5;
-  border-left-color: transparent;
-  position: absolute;
-  bottom: -18;
-`;
-
 class WoodLabel extends PureComponent {
   storeRef = ref => this.woodContainer = ref
 
@@ -116,7 +103,6 @@ class WoodLabel extends PureComponent {
   render() {
     const { text = '', onPress = () => null, style, zoomScale } = this.props;
 
-    console.log(zoomScale);
     const zoomScaleStyles = zoomScale === 4 ? {
       height: this.labelSize.height,
       width: this.labelSize.width,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, ImageBackground } from 'react-native';
+import { View, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Level1 from './Level1';
 import Neuron from './Neuron';
@@ -25,7 +25,12 @@ import colorLeft from '../../../../assets/images/tree/nivel_2/nivel_2_color_left
 import { connect } from 'react-redux';
 import neuronActions from '../../../actions/neuronActions';
 
-const Container = styled(View)`
+const Container = styled(TouchableWithoutFeedback)`
+  flex: 1;
+  position: relative;
+`;
+
+const LevelContainer = styled(View)`
   flex: 1;
   position: relative;
 `;
@@ -141,6 +146,11 @@ export default class Level2 extends Component {
     loading: true,
   }
 
+  hideWoodLabel = () => {
+    const { setNeuronLabelInfo } = this.props;
+    setNeuronLabelInfo({});
+  }
+
   onPressNeuron = (measure, data) => {
     const { setNeuronLabelInfo, label } = this.props;
 
@@ -208,30 +218,35 @@ export default class Level2 extends Component {
     const { userTree, label } = this.props;
 
     return (
-      <Container>
-        {!!userTree.tree && (
-          <Level1 userTree={userTree}>
-            <BranchContainer>
-              {userTree.tree.root.children.length > 0 && (
-                userTree.tree.root.children.map((child, i) => (
-                  this.currentBranch(child, i)
-                ))
-              )}
-            </BranchContainer>
-          </Level1>
-        )}
-        {label.pageX && label.pageY &&
-        <WoodLabel
-          text={label.title}
-          onPress={this.playContent}
-          style={{
-            position: 'absolute',
-            width: 200,
-            top: label.pageY,
-            left: label.pageX,
-            transform: [{translate: [-70, '-30%', 1] }]
-          }}
-        />}
+      <Container onPress={this.hideWoodLabel}>
+        <LevelContainer>
+          {!!userTree.tree && (
+            <Level1 userTree={userTree}>
+              <BranchContainer>
+                {userTree.tree.root.children.length > 0 && (
+                  userTree.tree.root.children.map((child, i) => (
+                    this.currentBranch(child, i)
+                  ))
+                )}
+              </BranchContainer>
+            </Level1>
+          )}
+          {label.pageX && label.pageY &&
+          <WoodLabel
+            text={label.title}
+            onPress={() => {
+              this.hideWoodLabel();
+              this.playContent();
+            }}
+            style={{
+              position: 'absolute',
+              width: 200,
+              top: label.pageY,
+              left: label.pageX,
+              transform: [{translate: [-70, '-30%', 1] }]
+            }}
+          />}
+        </LevelContainer>
       </Container>
     );
   }
