@@ -88,11 +88,11 @@ class WoodLabel extends PureComponent {
         return { fontHeight: 40, width: 200 };
       case 4:
         return {
-          height: 5,
+          height: 15,
           width: 80,
           paddingHorizontal: 1,
           paddingVertical: 7,
-          fontHeight: 10,
+          fontHeight: 15,
           fontPositionTop: -6,
         };
       default:
