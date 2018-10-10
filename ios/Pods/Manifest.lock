@@ -180,7 +180,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.1)
   - JKBigInteger2 (0.0.5)
   - lottie-ios (2.5.0)
-  - lottie-react-native (2.5.6):
+  - lottie-react-native (2.5.9):
     - lottie-ios
     - React
   - React (0.55.4):
