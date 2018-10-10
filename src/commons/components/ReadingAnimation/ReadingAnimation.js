@@ -72,7 +72,7 @@ class ReadingAnimation extends React.Component {
         <LottieView
           ref={ref => { this.anim = ref }}
           source={animSource}
-          resizeMode='cover'
+          resizeMode='contain'
           progress={this.state.progress}
           loop
           style={{
