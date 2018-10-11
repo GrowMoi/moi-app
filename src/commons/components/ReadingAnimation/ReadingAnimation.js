@@ -4,6 +4,7 @@ import { View, Animated, Easing } from 'react-native';
 import { math } from '../../utils';
 
 import articulation from '../../../../assets/animations/articulation.json';
+import moi_articulation from '../../../../assets/animations/moi-articulation.json';
 import confusion from '../../../../assets/animations/confusion.json';
 import estimate from '../../../../assets/animations/estimate.json';
 import inattentive from '../../../../assets/animations/inattentive.json';
@@ -65,13 +66,12 @@ class ReadingAnimation extends React.Component {
 
   render() {
     const { animationN } = this.state;
-    const animSource = this.randomAnim(animationN);
 
     return (
       <View style={{ flex: 1, position: 'absolute', top: 15, left:0, height: '100%', width: '100%' }}>
         <LottieView
           ref={ref => { this.anim = ref }}
-          source={animSource}
+          source={moi_articulation}
           resizeMode='contain'
           progress={this.state.progress}
           loop

@@ -13,12 +13,12 @@ import { connect } from 'react-redux';
   route: store.route,
 }))
 export default class ContentListBox extends Component {
-  componentDidMount() {
-    const { neuronSelected } = this.props;
+  // componentDidMount() {
+  //   const { neuronSelected } = this.props;
 
-    const contents = (neuronSelected || {}).contents || [];
-    this.verifyContentsToRead(contents);
-  }
+  //   const contents = (neuronSelected || {}).contents || [];
+  //   this.verifyContentsToRead(contents);
+  // }
 
   onPressRowcontent = (content) => {
     const { neuronSelected, neuronId } = this.props;
@@ -31,7 +31,7 @@ export default class ContentListBox extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
+    console.log('RECEIVE PROPS');
     const contentsToRead = (nextProps.neuronSelected || {}).contents || [];
     if(contentsToRead) {
       this.verifyContentsToRead(contentsToRead);
@@ -52,19 +52,20 @@ export default class ContentListBox extends Component {
   }
 
   filterReadedContents = (contents = []) => {
-   return contents.filter(d => !d.read);
+   return contents.filter(d => (!d.read || d.learnt));
   }
 
   render() {
     const { containerStyles, device, neuronSelected } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
+    console.log(neuronSelected.contents);
 
     const contents = this.filterReadedContents((neuronSelected || {}).contents);
     const existContentsToRead = (contents || []).length > 0;
 
     return (
       <ContentBox>
-        {existContentsToRead && (
+        {/* {existContentsToRead && ( */}
           <ScrollView contentContainerStyle={containerStyles}>
             {(contents || []).map((content, i) => {
 
@@ -76,6 +77,7 @@ export default class ContentListBox extends Component {
 
               return (
                 <ContentPreview
+                  learnt={content.learnt}
                   animationDelay={delay}
                   key={`${uuid()}-${content.id}`}
                   width={widthContentPreview}
@@ -88,11 +90,11 @@ export default class ContentListBox extends Component {
               );
             })}
           </ScrollView>
-        )}
+        {/* )} */}
 
-        {!existContentsToRead &&
+        {/* {!existContentsToRead &&
           <EmptyState text='Ya haz aprendido todos los contenidos en esta neurona' />
-        }
+        } */}
       </ContentBox>
     )
   }

@@ -35,35 +35,12 @@ const Container = styled(View)`
 const ContentPreviewAnimatable = Animatable.createAnimatableComponent(ContentPreview);
 
 @connect(store => ({
-  neuronSelected: store.neuron.neuronSelected,
+  // neuronSelected: store.neuron.neuronSelected,
   device: store.device,
   route: store.route,
-}),
-{
-  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
-})
+}))
 export default class ContentListScene extends Component {
-  state = {
-    loading: true,
-  }
-
-  async componentDidMount() {
-    await this.getCurrentContents();
-    this.setState({ loading: false });
-  }
-
-  getCurrentContents = async () => {
-    const { loadNeuronByIdAsync, neuron_id } = this.props;
-
-    try {
-      await loadNeuronByIdAsync(neuron_id);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
   render() {
-    const { loading } = this.state;
     const { neuronSelected, device, neuron_id } = this.props;
 
     const containerStyles = {
@@ -73,15 +50,11 @@ export default class ContentListScene extends Component {
 
     return (
       <MoiBackground>
-        {!loading ? (
-          <ContentListBox
-            containerStyles={containerStyles}
-            neuronSelected={neuronSelected}
-            neuronId={neuron_id}
-          />
-        ) : (
-          <Preloader />
-        )}
+        <ContentListBox
+          containerStyles={containerStyles}
+          // neuronSelected={neuronSelected}
+          neuronId={neuron_id}
+        />
 
         <Navbar />
         <BottomBarWithButtons

@@ -9,6 +9,7 @@ import NeuronsLayer from './NeuronsLayer';
 import neuronActions from '../../../actions/neuronActions';
 import Branches from './allBranches';
 import WoodLabel from '../WoodLabel/WoodLabel';
+import Preloader from '../Preloader/Preloader';
 
 import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
 import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
@@ -47,11 +48,31 @@ const Levels = styled(View)`
   label: state.neuron.currentlyPressed,
 }), {
   setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
 })
 export default class AllLevels extends Component {
-  playContent = () => {
+  state = {
+    loading: false,
+  }
+
+  playContent = async () => {
     const { label } = this.props;
+
+    await this.getCurrentContents(label.id);
     Actions.content({ title: label.title, neuron_id: label.id });
+  }
+
+  getCurrentContents = async (neuronId) => {
+    const { loadNeuronByIdAsync } = this.props;
+    this.setState({ loading: true });
+    try {
+      await loadNeuronByIdAsync(neuronId);
+      this.setState({ loading: false });
+
+    } catch (error) {
+      this.setState({ loading: false });
+      console.log(error.message);
+    }
   }
 
   hideWoodLabel = () => {
@@ -65,6 +86,8 @@ export default class AllLevels extends Component {
       label,
       zoomScale,
     } = this.props;
+    const { loading } = this.state;
+
     const isLevel4 = depth === 4;
     const isLevel3 = depth === 3;
     const isLevel5 = depth === 5;
@@ -122,6 +145,7 @@ export default class AllLevels extends Component {
               }}
             />
           }
+          {loading && (<Preloader />)}
         </Levels>
       </Container>
     );

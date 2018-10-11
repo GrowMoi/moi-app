@@ -82,14 +82,14 @@ const routes = Actions.create(
           component={Inventory}
           {...navbarPropStyles}
         />
+        <Scene
+          key='content'
+          component={ContentListScene}
+          // renderBackButton={backButton}
+          {...navbarPropStyles}
+          title='Contenido' />
       </Scene>
     </Scene>
-    <Scene
-      key='content'
-      component={ContentListScene}
-      renderBackButton={backButton}
-      {...navbarPropStyles}
-      title='Contenido' />
     <Scene
       key='singleContent'
       component={SingleContentScene}
