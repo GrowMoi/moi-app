@@ -29,11 +29,11 @@ class Preloader extends Component {
   }
 
   render() {
-    const { size, notFullScreen } = this.props;
+    const { size, notFullScreen, style } = this.props;
     const { modalIsVisible } = this.state;
 
     const loader = (
-      <PreloaderContainer>
+      <PreloaderContainer style={style}>
         <Loader
           size={size}
           source={loadingGif}
@@ -43,7 +43,7 @@ class Preloader extends Component {
 
     if(notFullScreen) return loader;
     return (
-      <PreloaderContainer>
+      <PreloaderContainer style={style}>
         <Modal
           animationType='fade'
           transparent={true}

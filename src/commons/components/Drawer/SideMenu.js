@@ -135,7 +135,7 @@ export default class SideMenu extends Component {
           <TreContainer>
             <TouchableOpacity onPress={() => {
               if(onPressOption) onPressOption();
-              Actions.refresh({ key: 'tree' })
+              Actions.refresh({ key: 'tree', type: 'reset' });
             }}>
               <Maceta width={DRAWER_OFFSET - 2} source={macetaMenu} resizeMode='contain' />
             </TouchableOpacity>

@@ -48,7 +48,7 @@ const routes = Actions.create(
       renderRightButton={null}
     />
     <Scene
-      type='replace'
+      type='reset'
       key='moiDrawer'
       title='Tree'
       component={Menu}

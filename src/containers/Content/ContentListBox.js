@@ -13,12 +13,6 @@ import { connect } from 'react-redux';
   route: store.route,
 }))
 export default class ContentListBox extends Component {
-  // componentDidMount() {
-  //   const { neuronSelected } = this.props;
-
-  //   const contents = (neuronSelected || {}).contents || [];
-  //   this.verifyContentsToRead(contents);
-  // }
 
   onPressRowcontent = (content) => {
     const { neuronSelected, neuronId } = this.props;
@@ -30,27 +24,6 @@ export default class ContentListBox extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('RECEIVE PROPS');
-    const contentsToRead = (nextProps.neuronSelected || {}).contents || [];
-    if(contentsToRead) {
-      this.verifyContentsToRead(contentsToRead);
-    }
-  }
-
-  verifyContentsToRead(contents = []) {
-    const readedContents = this.filterReadedContents(contents);
-    const existContentsToRead = (readedContents || []).length > 0;
-
-    if(!existContentsToRead) {
-      Alert.alert('Confirmación', 'Ya no quedan contenidos por aprender', [{
-        text: 'Ok', onPress: () => {
-          Actions.moiDrawer({ type: 'reset' });
-        }
-      }]);
-    }
-  }
-
   filterReadedContents = (contents = []) => {
    return contents.filter(d => (!d.read || d.learnt));
   }
@@ -58,14 +31,13 @@ export default class ContentListBox extends Component {
   render() {
     const { containerStyles, device, neuronSelected } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
-    console.log(neuronSelected.contents);
 
     const contents = this.filterReadedContents((neuronSelected || {}).contents);
     const existContentsToRead = (contents || []).length > 0;
 
     return (
       <ContentBox>
-        {/* {existContentsToRead && ( */}
+        {existContentsToRead && (
           <ScrollView contentContainerStyle={containerStyles}>
             {(contents || []).map((content, i) => {
 
@@ -90,11 +62,11 @@ export default class ContentListBox extends Component {
               );
             })}
           </ScrollView>
-        {/* )} */}
+        )}
 
-        {/* {!existContentsToRead &&
-          <EmptyState text='Ya haz aprendido todos los contenidos en esta neurona' />
-        } */}
+        {!existContentsToRead &&
+          <EmptyState text='Ya haz leido todos los contenidos en esta neurona' />
+        }
       </ContentBox>
     )
   }

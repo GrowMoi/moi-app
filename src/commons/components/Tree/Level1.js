@@ -11,6 +11,7 @@ import WoodLabel from '../WoodLabel/WoodLabel';
 import { neuron } from '../../utils';
 import { connect } from 'react-redux';
 import neuronActions from '../../../actions/neuronActions';
+import Preloader from '../Preloader/Preloader';
 
 const treeHeight = 371;
 const treeWidth = 213;
@@ -39,8 +40,13 @@ const LevelContainer = styled(View)`
   label: state.neuron.currentlyPressed
 }), {
   setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
 })
 export default class Level1 extends Component {
+  state = {
+    loading: false,
+  }
+
   static defaultProps = {
     width: 50,
   }
@@ -56,9 +62,24 @@ export default class Level1 extends Component {
     setNeuronLabelInfo({});
   }
 
-  playContent = () => {
-    const { tree } = this.props.userTree;
+  playContent = async () => {
+    const { tree } = this.props;
+
+    await this.getCurrentContents(tree.root.id);
     Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
+  }
+
+  getCurrentContents = async (neuronId) => {
+    const { loadNeuronByIdAsync } = this.props;
+    this.setState({ loading: true });
+    try {
+      await loadNeuronByIdAsync(neuronId);
+      this.setState({ loading: false });
+
+    } catch (error) {
+      this.setState({ loading: false });
+      console.log(error.message);
+    }
   }
 
   onPressNeuron = (measure, data) => {
@@ -72,6 +93,7 @@ export default class Level1 extends Component {
   }
 
   render() {
+    const { loading } = this.state;
     const { width, userTree, children, label } = this.props;
     const { tree, meta } = userTree;
 
@@ -127,6 +149,7 @@ export default class Level1 extends Component {
             />
           </View>
           </TreeLevel>
+          {loading && (<Preloader />)}
         </LevelContainer>
       </Container>
     );

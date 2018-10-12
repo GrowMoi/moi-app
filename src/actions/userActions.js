@@ -49,7 +49,7 @@ const setSettings = settings => ({
 
 const signOutAsync = () => async (dispatch) => {
   await dispatch(signOut());
-  Actions.login();
+  Actions.login({ type: 'reset' });
 }
 
 const setNotifications = (notifications) => ({

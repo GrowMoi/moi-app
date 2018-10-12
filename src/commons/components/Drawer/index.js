@@ -8,7 +8,6 @@ import SideMenu from './SideMenu';
 
 @connect(store => ({
   device: store.device,
-  profile: store.user.profile
 }))
 export default class Menu extends Component {
   state = {
@@ -16,7 +15,7 @@ export default class Menu extends Component {
   }
 
   render() {
-    const { device, profile } = this.props;
+    const { device } = this.props;
     const { orientation } = device.dimensions;
     const state = this.props.navigationState;
     const children = state.children;
