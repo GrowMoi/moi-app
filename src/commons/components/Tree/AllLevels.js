@@ -46,6 +46,7 @@ const Levels = styled(View)`
 
 @connect(state => ({
   label: state.neuron.currentlyPressed,
+  device: state.device,
 }), {
   setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
@@ -53,6 +54,12 @@ const Levels = styled(View)`
 export default class AllLevels extends Component {
   state = {
     loading: false,
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.device.dimensions.orientation !== this.props.device.dimensions.orientation) {
+      this.props.setNeuronLabelInfo({});
+    }
   }
 
   playContent = async () => {

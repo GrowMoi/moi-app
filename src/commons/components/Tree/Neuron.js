@@ -58,6 +58,7 @@ export default class Neuron extends Component {
   onPressNeuron = (e) => {
     e.persist();
 
+    this.measure();
     const { onPress } = this.props;
     if (onPress) {
       setTimeout(() => {
@@ -116,9 +117,9 @@ export default class Neuron extends Component {
     }
   }
 
-  onLayout = (e) => {
-    this.measure();
-  }
+  // onLayout = (e) => {
+  //   this.measure();
+  // }
 
   measure() {
     UIManager.measure(findNodeHandle(this.view), (x, y, width, height, pageX, pageY) => {
@@ -171,7 +172,7 @@ export default class Neuron extends Component {
 
     return (
       <NeuronAnimatable
-        onLayout={this.onLayout}
+        // onLayout={this.onLayout}
         ref={ref => this.view = ref}
         {...neuronProps}
       >

@@ -37,7 +37,8 @@ const LevelContainer = styled(View)`
 `;
 
 @connect(state => ({
-  label: state.neuron.currentlyPressed
+  label: state.neuron.currentlyPressed,
+  device: state.device,
 }), {
   setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
@@ -90,6 +91,12 @@ export default class Level1 extends Component {
       return;
     }
     setNeuronLabelInfo({ ...measure, ...data });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.device.dimensions.orientation !== this.props.device.dimensions.orientation) {
+      this.props.setNeuronLabelInfo({});
+    }
   }
 
   render() {
