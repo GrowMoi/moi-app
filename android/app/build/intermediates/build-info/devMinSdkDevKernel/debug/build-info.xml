@@ -2,31 +2,71 @@
 <instant-run
     abi="arm64-v8a,armeabi-v7a,armeabi"
     api-level="25"
-    build-mode="COLD"
+    build-mode="FULL"
     density="xxhdpi"
     format="10"
     plugin-version="3.1.4"
-    timestamp="1539415626149"
+    timestamp="1539578794112"
     token="6828769914672261914"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="12058" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="237" />
     <task
         name="verifier"
-        duration="0" />
+        duration="150" />
+
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/dep/dependencies.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/instant-run-apk/devMinSdkDevKernel/debug/app-devMinSdk-devKernel-debug.apk"
+        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1539414930920"
+        timestamp="1539578794112"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_3.apk"
+            type="SPLIT" />
         <artifact
             location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_2.apk"
             type="SPLIT" />
@@ -55,18 +95,11 @@
             location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/split-apk/devMinSdkDevKernel/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/instant-run-apk/devMinSdkDevKernel/debug/app-devMinSdk-devKernel-debug.apk"
             type="SPLIT_MAIN" />
     </build>
-    <build
-        build-mode="COLD"
-        timestamp="1539415626149"
-        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

@@ -12,6 +12,7 @@ import {
   WebView,
   Platform,
   YouTube,
+  log,
 } from 'react-native';
 import {
   WebBrowser,
@@ -376,19 +377,12 @@ export default class SingleContentScene extends Component {
 
                 <Section notBottomSpace>
                   <Header inverted bolder>Recomendados</Header>
-                  <WebView
-                    /*style={{ flex: 1, height: 300, width: 300}}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    source={{uri: 'https://www.youtube.com/embed/VSDS830OmIg?rel=0&autoplay=0&showinfo=0&controls=0' }}
-                  *//>
 
                   <VideoContainer>
                     {((content || {}).videos || []).length > 0 &&
                       ((content || {}).videos || []).map((video, i) => {
                         const videoId = youtube.extractIdFromUrl(video.url);
                         const videoUrl = 'https://www.youtube.com/embed/' + videoId + '?rel=0&autoplay=0&showinfo=0&controls=0';
-                        log("URL VIDEO: " + videoUrl);
                         if (videoId) {
                           return (
                             <WebView

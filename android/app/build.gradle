@@ -99,6 +99,8 @@ apply from: 'expo.gradle'
 
 
 dependencies {
+    compile project(':react-native-youtube')
+    compile project(':lottie-react-native')
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
   implementation 'com.android.support:multidex:1.0.1'
