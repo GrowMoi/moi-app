@@ -24,6 +24,7 @@
   <uses-permission android:name="android.permission.USE_FINGERPRINT" />
   <uses-permission android:name="android.permission.VIBRATE" />
   <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
   <!-- These require runtime permissions on M -->
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -36,11 +37,14 @@
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+  <uses-permission android:name="android.permission.READ_SMS" />
   <!-- END OPTIONAL PERMISSIONS -->
 
   <!-- ADD TEST PERMISSIONS HERE -->
 
   <uses-feature android:glEsVersion="0x00020000" android:required="false" />
+  <uses-feature android:name="android.software.leanback" android:required="false" />
+  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
   <application
     android:name=".MainApplication"
@@ -55,14 +59,7 @@
       android:launchMode="singleTask"
       android:screenOrientation="portrait"
       android:theme="@android:style/Theme.Translucent.NoTitleBar">
-      <intent-filter>
-        <data android:scheme="exp7b71e38c6d4c49f7a48f85925ea68e4b"/>
-
-        <action android:name="android.intent.action.VIEW"/>
-
-        <category android:name="android.intent.category.DEFAULT"/>
-        <category android:name="android.intent.category.BROWSABLE"/>
-      </intent-filter>
+      <!-- ADD SHELL SCHEME HERE -->
     </activity>
 
     <activity
@@ -78,20 +75,30 @@
       android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
       android:theme="@style/Theme.Exponent.Splash"
       android:windowSoftInputMode="adjustResize">
-      <!-- ADD DETACH SCHEME HERE -->
+      <intent-filter>
+        <data android:scheme="expe1d3413d6d34426fa93c22dc0b382003"/>
+
+        <action android:name="android.intent.action.VIEW"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+      </intent-filter>
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+      <!-- ADD DETACH APP SPECIFIC INTENT FILTERS -->
     </activity>
 
     <activity
       android:name=".experience.ShellAppActivity"
+      android:launchMode="singleTask"
       android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
       android:theme="@style/Theme.Exponent.Splash"
       android:windowSoftInputMode="adjustResize">
       <!-- ADD SHELL INTENT FILTERS HERE -->
+      <!-- ADD SHELL APP SPECIFIC INTENT FILTERS -->
     </activity>
 
     <activity
@@ -102,15 +109,28 @@
       android:theme="@style/Theme.Exponent.Light">
     </activity>
 
+    <activity
+      android:name=".experience.TvActivity"
+      android:label="@string/app_name"
+      android:theme="@style/Theme.Exponent.Light"
+      android:screenOrientation="landscape">
+     <intent-filter>
+       <action android:name="android.intent.action.MAIN" />
+       <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+     </intent-filter>
+   </activity>
+
+
+
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
     <!-- ADD DEV SETTINGS HERE -->
+    <activity android:name="abi30_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
+    <activity android:name="abi29_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
+    <activity android:name="abi28_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
     <activity android:name="abi27_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
     <activity android:name="abi26_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
     <activity android:name="abi25_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
     <activity android:name="abi24_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <activity android:name="abi23_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <activity android:name="abi22_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <activity android:name="abi21_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
 
     <activity
       android:name=".ExponentDevActivity"
@@ -141,6 +161,22 @@
     <activity
       android:name=".oauth.OAuthResultActivity">
     </activity>
+
+    <!-- START OF STRIPE SCHEMES -->
+    <activity
+        android:exported="true"
+        android:launchMode="singleTask"
+        android:name="expo.modules.payments.stripe.RedirectUriReceiver"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="expo.modules.payments.stripe.f8014576-f7d0-42bd-8537-4a1c25b924b2" />
+        </intent-filter>
+    </activity>
+    <!-- Versioned Activity for Stripe -->
+    <!-- END OF STRIPE SCHEMES -->
 
     <activity
       android:name=".chrometabs.ChromeTabsManagerActivity">
@@ -235,7 +271,23 @@
       android:exported="false">
     </service>
 
-    <!-- ADD FCM CONFIG HERE -->
+    <!-- FCM -->
+    <service
+      android:name=".fcm.ExpoFcmMessagingService">
+      <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+      </intent-filter>
+    </service>
+    <meta-data
+      android:name="com.google.firebase.messaging.default_notification_icon"
+      android:resource="@drawable/shell_notification_icon" />
+    <meta-data
+      android:name="com.google.firebase.messaging.default_notification_color"
+      android:resource="@color/colorAccent" />
+    <service
+      android:name=".fcm.FcmRegistrationIntentService"
+      android:exported="false">
+    </service>
 
     <!-- ImagePicker native module -->
     <activity
@@ -262,6 +314,8 @@
 
     <!-- The Facebook SDK runs FacebookInitProvider on startup and crashes if there isn't an ID here -->
     <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="fb0"/>
+
+    <meta-data android:name="standaloneStripeScheme" android:value="f8014576-f7d0-42bd-8537-4a1c25b924b2" />
   </application>
 
 </manifest>

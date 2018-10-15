@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_background_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bsh-cT-K4l" userLabel="Background Image View">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_background_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bsh-cT-K4l" userLabel="Background Image View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
@@ -27,12 +26,8 @@
                         <constraint firstAttribute="width" constant="128" id="gAL-Wy-loA"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash Icon" translatesAutoresizingMaskIntoConstraints="NO" id="jvE-aw-QbJ">
-                    <rect key="frame" x="119" y="297" width="137" height="73"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Bsh-cT-K4l" secondAttribute="trailing" id="4Bz-Vy-RfD"/>
                 <constraint firstItem="Bsh-cT-K4l" firstAttribute="top" secondItem="OfY-5Y-tS4" secondAttribute="top" id="5FF-OI-m4s"/>
@@ -47,11 +42,10 @@
                 <constraint firstItem="g6l-cP-5Ll" firstAttribute="centerX" secondItem="OfY-5Y-tS4" secondAttribute="centerX" id="hV2-Y5-obV"/>
                 <constraint firstAttribute="bottom" secondItem="Bsh-cT-K4l" secondAttribute="bottom" id="xDi-Tc-3P0"/>
             </constraints>
-            <point key="canvasLocation" x="200.5" y="452.5"/>
+            <point key="canvasLocation" x="201" y="453"/>
         </view>
     </objects>
     <resources>
-        <image name="Splash Icon" width="321" height="308"/>
         <image name="launch_background_image.png" width="64" height="64"/>
         <image name="launch_icon.png" width="64" height="64"/>
     </resources>

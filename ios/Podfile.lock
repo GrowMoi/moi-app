@@ -18,8 +18,8 @@ PODS:
   - CocoaLumberjack/Default (3.2.1)
   - CocoaLumberjack/Extensions (3.2.1):
     - CocoaLumberjack/Default
-  - Crashlytics (3.10.8):
-    - Fabric (~> 1.7.12)
+  - Crashlytics (3.10.9):
+    - Fabric (~> 1.7.13)
   - DoubleConversion (1.1.5)
   - EXAdsAdMob (1.0.0):
     - EXCore
@@ -28,7 +28,7 @@ PODS:
     - EXCore
   - EXBarCodeScannerInterface (1.0.0):
     - EXCore
-  - EXCamera (1.1.0):
+  - EXCamera (1.1.1):
     - EXBarCodeScannerInterface
     - EXCore
     - EXFaceDetectorInterface
@@ -128,7 +128,7 @@ PODS:
     - EXCore
   - EXSMS (1.0.2):
     - EXCore
-  - Fabric (1.7.12)
+  - Fabric (1.7.13)
   - FBAudienceNetwork (4.99.0)
   - FBSDKCoreKit (4.37.0):
     - Bolts (~> 1.7)
@@ -180,13 +180,8 @@ PODS:
     - GoogleSymbolUtilities (~> 1.1)
   - JKBigInteger2 (0.0.5)
   - lottie-ios (2.5.0)
-  - lottie-react-native (2.5.9):
-    - lottie-ios
-    - React
   - React (0.55.4):
     - React/Core (= 0.55.4)
-  - react-native-youtube (1.1.0):
-    - React
   - React/ART (0.55.4):
     - React/Core
   - React/Core (0.55.4):
@@ -270,8 +265,6 @@ DEPENDENCIES:
   - EXSMS (from `../node_modules/expo-sms/ios`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - lottie-react-native (from `../node_modules/lottie-react-native`)
-  - react-native-youtube (from `../node_modules/react-native-youtube`)
   - React/ART (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -383,12 +376,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
-  lottie-react-native:
-    :path: "../node_modules/lottie-react-native"
   React:
     :path: "../node_modules/react-native"
-  react-native-youtube:
-    :path: "../node_modules/react-native-youtube"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -405,7 +394,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   Branch: 0d98d22745a9b68bcb4fa6dc1c6a92b64d4fdd7b
   CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
-  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
+  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
   EXAdsAdMob: e3487aceb377e0412f8665a48f3b72fc5f3d7723
   EXBarCodeScanner: bae21e0fd0176f1defef73dc5686102ae7c3dd65
@@ -437,7 +426,7 @@ SPEC CHECKSUMS:
   EXSensors: 06a11a8c6c08d62fa20ae64e61cd602be2bf36a2
   EXSensorsInterface: eca1381ec807ec2439e2f1607f3fa4297deaaf20
   EXSMS: 3fa7cd245d744abc70a918c6d991e09c63ba46e3
-  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
+  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   FBAudienceNetwork: 80275c0a28574ff5ce820abdc251d05e07e6ae7a
   FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
   FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
@@ -455,12 +444,10 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   JKBigInteger2: e91672035c42328c48b7dd015b66812ddf40ca9b
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
-  lottie-react-native: db4bd75685428c4ad0ec2f913145abff3d38b640
   React: aa2040dbb6f317b95314968021bd2888816e03d5
-  react-native-youtube: 7ab01f1320b037d605e6c6ac9d59cc2b92091799
   Stripe: 76c203e21555089b708e6cbe972a3e3baf1ab4d8
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 59995ff40017e7f2a362e6517a3d626f3a750d41
+PODFILE CHECKSUM: 1fd129b39c4eaa6d0ebfde85598b671e246a7b7a
 
 COCOAPODS: 1.5.3
