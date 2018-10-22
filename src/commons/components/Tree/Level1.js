@@ -64,7 +64,8 @@ export default class Level1 extends Component {
   }
 
   playContent = async () => {
-    const { tree } = this.props;
+    const { userTree } = this.props;
+    const { tree } = userTree;
 
     await this.getCurrentContents(tree.root.id);
     Actions.content({ title: tree.root.title, neuron_id: tree.root.id });
@@ -127,7 +128,10 @@ export default class Level1 extends Component {
             (label.pageX && label.pageY) && (
               <WoodLabel
                 text={label.title}
-                onPress={this.playContent}
+                onPress={() => {
+                  this.hideWoodLabel();
+                  this.playContent();
+                }}
                 style={{
                   position: 'absolute',
                   top: label.pageY,
