@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import api from '../api';
 import * as actionTypes from './actionTypes';
 import { setHeaders } from './headerActions';
+import neuronActions from './neuronActions'
 
 const notAuthenticate = () => ({
   type: actionTypes.AUTH_NOTVALID,
@@ -49,6 +50,8 @@ const setSettings = settings => ({
 
 const signOutAsync = () => async (dispatch) => {
   await dispatch(signOut());
+  await dispatch(neuronActions.setNeuronLabelInfo({}));
+
   Actions.login({ type: 'reset' });
 }
 
