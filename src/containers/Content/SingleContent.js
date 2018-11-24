@@ -386,6 +386,7 @@ export default class SingleContentScene extends Component {
                         if (videoId) {
                           return (
                             <WebView
+                              key={`${videoId}`}
                               style={{ flex: 1, height: 300, width: 300}}
                               javaScriptEnabled={true}
                               domStorageEnabled={true}
@@ -440,7 +441,7 @@ export default class SingleContentScene extends Component {
         />
 
         <Navbar/>
-      </MoiBackground>      
+      </MoiBackground>
     );
   }
 }
