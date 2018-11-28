@@ -45,7 +45,7 @@ class Video extends Component {
   }
 
   render() {
-    const { source, animationType , visible , dismiss, videoDimensions, width, modalProps, videoProps } = this.props;
+    const { source, animationType , visible , dismiss, videoDimensions, width, modalProps, videoProps, onPlaybackStatusUpdate, showCloseIcon } = this.props;
 
     return (
           <Modal {...modalProps}
@@ -54,12 +54,12 @@ class Video extends Component {
             supportedOrientations={['landscape']}
           >
             <Overlay>
-              <CloseIcon
+              {showCloseIcon && <CloseIcon
                 name='md-close'
                 color='white'
                 size={35}
                 onPress={dismiss}
-              />
+              />}
               <ExpoVideo
                 {...videoProps}
                 source={source}
@@ -68,6 +68,7 @@ class Video extends Component {
                 isMuted={false}
                 isPortrait={false}
                 resizeMode={ExpoVideo.RESIZE_MODE_CONTAIN}
+                onPlaybackStatusUpdate={onPlaybackStatusUpdate}
                 switchToLandscape={()=>ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE)}
                 shouldPlay
                 style={{
@@ -85,6 +86,7 @@ class Video extends Component {
 Video.defaultProps = {
   animationType: 'fade',
   visible: false,
+  showCloseIcon: true,
 }
 
 export default Video;

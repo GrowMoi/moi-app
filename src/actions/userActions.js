@@ -1,5 +1,5 @@
 import { Actions } from 'react-native-router-flux';
-import { Alert } from 'react-native';
+import { Alert, AsyncStorage } from 'react-native';
 import api from '../api';
 import * as actionTypes from './actionTypes';
 import { setHeaders } from './headerActions';
@@ -51,6 +51,7 @@ const setSettings = settings => ({
 const signOutAsync = () => async (dispatch) => {
   await dispatch(signOut());
   await dispatch(neuronActions.setNeuronLabelInfo({}));
+  await AsyncStorage.clear();
 
   Actions.login({ type: 'reset' });
 }

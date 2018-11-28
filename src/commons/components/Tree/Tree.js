@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, AsyncStorage } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
+import { Video } from '../../../commons/components/VideoPlayer';
+import vineta_1 from '../../../../assets/videos/vineta_1.mp4';
 
 // Levels
 import Level1 from './Level1';
@@ -50,6 +52,7 @@ export default class Tree extends Component {
     hasUserTree: false,
     level: null,
     zoomScale: 1,
+    modalVisible: false,
   }
 
   initialActions = async () => {
@@ -66,6 +69,27 @@ export default class Tree extends Component {
     await this.initialActions();
     this.getTreeLevel();
     this.setState({ loading: false });
+    this.handleVideoFirstLogin();
+  }
+
+  handleVideoFirstLogin = async () => {
+    const { userTree } = this.props;
+
+    if(!userTree.tree) return;
+
+    const videoShown = await AsyncStorage.getItem('videoShown');
+    if(!videoShown && userTree.tree.root.learnt_contents === 0) this.showVideo();
+  }
+
+  showVideo = (show = true) => {
+    this.setState({ modalVisible: show});
+  }
+
+  onPlaybackStatusUpdate = async (playbackStatus) => {
+      if(playbackStatus.didJustFinish) {
+          await AsyncStorage.setItem('videoShown', "true");
+          this.showVideo(false);
+      }
   }
 
   selectCurrentLevel = (userTree) => {
@@ -121,6 +145,13 @@ export default class Tree extends Component {
   render() {
     const { loading, level, zoomScale, hasUserTree } = this.state;
 
+    const { device: { dimensions: { width } } } = this.props;
+
+    const videoDimensions = {
+      width: 1280,
+      height: 720
+    };
+
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
@@ -128,6 +159,15 @@ export default class Tree extends Component {
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           {level}
         </Zoom>
+        <Video
+            videoDimensions={videoDimensions}
+            source={vineta_1}
+            dismiss={() => this.showVideo(false)}
+            visible={this.state.modalVisible}
+            width={width}
+            onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
+            showCloseIcon={false}
+        />
       </TreeContainer>
     );
   }
