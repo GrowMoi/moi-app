@@ -33,11 +33,11 @@ const CloseIcon = styled(Ionicons)`
 class Video extends Component {
 
   componentWillUpdate(nextProps) {
-    const { visible, stopCurrentBackgroundAudio, playCurrentBackgroundAudio } = nextProps;
+    const { visible, stopCurrentBackgroundAudio, playCurrentBackgroundAudio } = this.props;
 
-    if(visible) {
+    if(!visible && nextProps.visible) {
         stopCurrentBackgroundAudio();
-    } else {
+    } else if(visible && !nextProps.visible) {
         playCurrentBackgroundAudio();
     }
 
