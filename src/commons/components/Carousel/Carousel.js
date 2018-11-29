@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { Entypo } from '@expo/vector-icons';
 import Modal from 'expo/src/modal/Modal';
-import { View, ActivityIndicator, Image } from 'react-native';
+import { View, ActivityIndicator, Image, WebView } from 'react-native';
 import ViewTransformer from 'react-native-view-transformer-next';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
 import ContentImage from './ContentImage';
-import { Palette } from '../../styles';
+import { Palette, Size } from '../../styles';
 import { colors } from '../../styles/palette';
+import { youtube } from '../../../commons/utils'
 
 const ContainerSwiper = styled(View)`
   width: ${props => props.size.width};
@@ -39,6 +40,13 @@ const Zoom = styled(ViewTransformer)`
   width: 100%;
 `;
 
+const VideoContainer = styled(View)`
+  flex: 1;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-vertical: ${Size.spaceSmall};
+`;
+
 export default class Carousel extends Component {
   state = {
     fullScreenImage: false,
@@ -57,6 +65,7 @@ export default class Carousel extends Component {
     const {
       size,
       images,
+      videos,
       ...rest
     } = this.props;
 
@@ -70,6 +79,23 @@ export default class Carousel extends Component {
           nextButton={<Entypo name='chevron-right' size={35} color={colors.lightGray.css()} />}
           prevButton={<Entypo name='chevron-left' size={35} color={colors.lightGray.css()} />}
         >
+          {(videos || []).length > 0 &&
+            (videos || []).map((video, i) => {
+              const videoId = youtube.extractIdFromUrl(video.url);
+              const videoUrl = 'https://www.youtube.com/embed/' + videoId + '?rel=0&autoplay=0&showinfo=0&controls=0';
+              if (videoId) {
+                return (
+                  <WebView
+                    key={`${videoId}`}
+                    style={{ flex: 1, height: 300, width: 300}}
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                    source={{uri: videoUrl }}
+                  />
+                  );
+                }
+              })
+            }
           {images.length > 0 && images.map((image, i) => (
             <ContentImage
               key={i}

@@ -337,6 +337,7 @@ export default class SingleContentScene extends Component {
                   autoplay
                   size={{ height: 200, width: (width - Size.spaceXLarge) }}
                   images={content.media}
+                  videos={content.videos}
                 />
 
                 <ActionsHeader>
@@ -434,11 +435,11 @@ export default class SingleContentScene extends Component {
           dismiss={this.dismissActionSheets}
         />
         {/* Modal */}
-        <YoutubePlayer
+        {/* <YoutubePlayer
           videoId={currentVideoId}
           visible={videoModalVisible}
           onPressClose={() => this.setModalVisible(false)}
-        />
+        /> */}
 
         <Navbar/>
       </MoiBackground>
