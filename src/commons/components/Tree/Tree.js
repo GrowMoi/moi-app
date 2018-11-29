@@ -143,7 +143,7 @@ export default class Tree extends Component {
   }
 
   render() {
-    const { loading, level, zoomScale, hasUserTree } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible } = this.state;
 
     const { device: { dimensions: { width } } } = this.props;
 
@@ -155,19 +155,19 @@ export default class Tree extends Component {
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        <Zoom maxScale={zoomScale}>
+        {!modalVisible && <Zoom maxScale={zoomScale}>
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           {level}
-        </Zoom>
-        <Video
-            videoDimensions={videoDimensions}
-            source={vineta_1}
-            dismiss={() => this.showVideo(false)}
-            visible={this.state.modalVisible}
-            width={width}
-            onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
-            showCloseIcon={false}
-        />
+        </Zoom>}
+        {modalVisible && <Video
+          videoDimensions={videoDimensions}
+          source={vineta_1}
+          dismiss={() => this.showVideo(false)}
+          visible={modalVisible}
+          width={width}
+          onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
+          showCloseIcon={false}
+        />}
       </TreeContainer>
     );
   }
