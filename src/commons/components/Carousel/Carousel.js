@@ -70,6 +70,21 @@ export default class Carousel extends Component {
     } = this.props;
 
     const { fullScreenImage, expandedImage } = this.state;
+    const videosFormatted = (videos || []).map(video => ({
+      thumbnail: video.thumbnail || '',
+      url: video.url || '',
+      type: 'video',
+    }))
+
+    const imagesFormatted = (images || []).map(imageUrl => ({
+      url: imageUrl,
+      type: 'image',
+    }))
+
+
+    const media = [...videosFormatted, ...imagesFormatted];
+
+    console.log('MEDIA', media);
 
     return (
       <ContainerSwiper size={size}>
