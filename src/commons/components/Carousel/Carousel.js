@@ -6,6 +6,7 @@ import { View, ActivityIndicator, Image, WebView } from 'react-native';
 import ViewTransformer from 'react-native-view-transformer-next';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import PropTypes from 'prop-types';
+import uuid from 'uuid/v4'
 import Swiper from 'react-native-swiper';
 import ContentImage from './ContentImage';
 import { Palette, Size } from '../../styles';
@@ -47,18 +48,49 @@ const VideoContainer = styled(View)`
   margin-vertical: ${Size.spaceSmall};
 `;
 
+const makeHTLM = (url = '') => {
+  const id = youtube.extractIdFromUrl(url);
+
+  return (`
+    <style>
+      .video {
+        position: relative;
+        padding-bottom: 56.25%;
+      }
+      iframe {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <div class='video'>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/${id}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  `);
+}
+
+const Video = styled(View)`
+  height: 220;
+  width: 100%;
+`;
+
 export default class Carousel extends Component {
   state = {
     fullScreenImage: false,
     expandedImage: {},
+    type: '',
   }
 
-  openImage = attrs => {
-    this.setState({ fullScreenImage: true, expandedImage: attrs });
+  openImage = ({attrs, type}) => {
+    this.setState({ fullScreenImage: true, expandedImage: attrs, type });
   }
 
   dismiss = () => {
-    this.setState({ fullScreenImage: false, expandedImage: {} });
+    this.setState({ fullScreenImage: false, expandedImage: {}, type: '' });
   }
 
   render() {
@@ -69,7 +101,7 @@ export default class Carousel extends Component {
       ...rest
     } = this.props;
 
-    const { fullScreenImage, expandedImage } = this.state;
+    const { fullScreenImage, expandedImage, type } = this.state;
     const videosFormatted = (videos || []).map(video => ({
       thumbnail: video.thumbnail || '',
       url: video.url || '',
@@ -84,8 +116,6 @@ export default class Carousel extends Component {
 
     const media = [...videosFormatted, ...imagesFormatted];
 
-    console.log('MEDIA', media);
-
     return (
       <ContainerSwiper size={size}>
         <Swiper
@@ -94,31 +124,15 @@ export default class Carousel extends Component {
           nextButton={<Entypo name='chevron-right' size={35} color={colors.lightGray.css()} />}
           prevButton={<Entypo name='chevron-left' size={35} color={colors.lightGray.css()} />}
         >
-          {(videos || []).length > 0 &&
-            (videos || []).map((video, i) => {
-              const videoId = youtube.extractIdFromUrl(video.url);
-              const videoUrl = 'https://www.youtube.com/embed/' + videoId + '?rel=0&autoplay=0&showinfo=0&controls=0';
-              if (videoId) {
-                return (
-                  <WebView
-                    key={`${videoId}`}
-                    style={{ flex: 1, height: 300, width: 300}}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    source={{uri: videoUrl }}
-                  />
-                  );
-                }
-              })
-            }
-          {images.length > 0 && images.map((image, i) => (
-            <ContentImage
-              key={i}
-              onPressImage={this.openImage}
+          {(media || []).map(d => {
+            return <ContentImage
+              key={uuid()}
+              onPressImage={(attrs) => this.openImage({ attrs, type: d.type })}
               size={size}
-              source={{ uri: image }}
+              data={d}
+              source={{ uri: d.type === 'video' ? `https:${d.thumbnail}` : d.url }}
             />
-          ))}
+          })}
         </Swiper>
 
         <Modal
@@ -134,13 +148,22 @@ export default class Carousel extends Component {
               size={35}
               onPress={this.dismiss}
             />
-            <Zoom maxScale={4}>
+            {type === 'image' && <Zoom maxScale={4}>
               <Image
                 source={{...expandedImage.source}}
                 resizeMode='contain'
                 style={{ width: '100%', height: '100%' }}
               />
-            </Zoom>
+            </Zoom>}
+            {type === 'video' && (
+              <Video>
+                <WebView
+                  scrollEnabled={false}
+                  style={{ backgroundColor: 'transparent' }}
+                  source={{ html: makeHTLM(expandedImage.data.url) }}
+                />
+              </Video>
+            )}
           </Overlay>
         </Modal>
       </ContainerSwiper>
