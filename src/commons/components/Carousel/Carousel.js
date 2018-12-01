@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import { Entypo } from '@expo/vector-icons';
 import Modal from 'expo/src/modal/Modal';
@@ -11,7 +12,10 @@ import Swiper from 'react-native-swiper';
 import ContentImage from './ContentImage';
 import { Palette, Size } from '../../styles';
 import { colors } from '../../styles/palette';
-import { youtube } from '../../../commons/utils'
+import { youtube } from '../../../commons/utils';
+
+// Actions
+import neuronActions from '../../../actions/neuronActions';
 
 const ContainerSwiper = styled(View)`
   width: ${props => props.size.width};
@@ -78,6 +82,11 @@ const Video = styled(View)`
   width: 100%;
 `;
 
+@connect(store => ({}),
+{
+  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
+  playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
+})
 export default class Carousel extends Component {
   state = {
     fullScreenImage: false,
@@ -86,10 +95,18 @@ export default class Carousel extends Component {
   }
 
   openImage = ({attrs, type}) => {
+    const { stopCurrentBackgroundAudio } = this.props;
+    if(type === 'video') {
+      stopCurrentBackgroundAudio();
+    }
     this.setState({ fullScreenImage: true, expandedImage: attrs, type });
   }
 
   dismiss = () => {
+    const { playCurrentBackgroundAudio } = this.props;
+    if(this.state.type === 'video') {
+      playCurrentBackgroundAudio();
+    }
     this.setState({ fullScreenImage: false, expandedImage: {}, type: '' });
   }
 
