@@ -36,6 +36,7 @@ export default class ContentImage extends Component {
           {this.state.loading && <Preloader notFullScreen/>}
           {data.type === 'video' && (
             <FontAwesome
+              onPress={() => !this.state.loading && this.onPress({ ...rest, data, size })}
               name="play-circle"
               size={40}
               color={'rgba(255, 255, 255, 0.4)'}

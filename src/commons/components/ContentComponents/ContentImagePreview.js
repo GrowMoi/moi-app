@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { View, ImageBackground, TouchableOpacity } from 'react-native';
 import { TextBody } from '../Typography';
 import { Palette } from '../../styles';
@@ -9,10 +9,12 @@ const width = 130;
 const height = 100;
 
 const StyledButton = styled(TouchableOpacity)`
-  flex: 1;
-  height: ${props => getHeightAspectRatio(width, height, props.width)};
+  height: ${props => /%/.test(props.width) ? props.height : getHeightAspectRatio(width, height, props.width) };
   margin-horizontal: 5;
   margin-vertical: 5;
+  ${props => /%/.test(props.width) && css`
+    width: ${props.width};
+  `};
 `;
 
 const StyledImage = styled(ImageBackground)`
@@ -31,9 +33,9 @@ const TitleContainer = styled(View)`
   background-color: ${Palette.black.alpha(0.5).css()};
 `;
 
-const ContentImagePreview = ({ width = 130, data, touchProps, imageProps }) => {
+const ContentImagePreview = ({ width = 130, height = 100, data, touchProps, imageProps }) => {
   return (
-    <StyledButton width={width} {...touchProps}>
+    <StyledButton height={height} width={width} {...touchProps}>
       <StyledImage {...imageProps} source={data.media.length ? { uri: data.media[0] } : null } resizeMode='cover' >
         <TitleContainer>
           <TextBody numberOfLines={1} inverted>{data.title}</TextBody>

@@ -58,12 +58,16 @@ const loadNeuronByIdAsync = id => async (dispatch) => {
 const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
 
   try {
-    const res = await api.contents.getContentById(neuronId, contentId);
+    const response = await api.contents.getContentById(neuronId, contentId);
+    const { data:{ kind } } = response;
 
-    dispatch(setHeaders(res.headers));
-    dispatch(setCurrentContent(res.data));
+    const responseRecomended = await api.contents.getRecommendedContentsOfMaxContent(neuronId, kind)
+    const content = { ...response.data, recommended_contents: responseRecomended.data.contents }
 
-    return res;
+    dispatch(setHeaders(response.headers));
+    dispatch(setCurrentContent(content));
+
+    return response;
   } catch (error) {
     throw new Error(error);
   }
