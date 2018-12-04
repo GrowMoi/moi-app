@@ -296,6 +296,14 @@ export default class SingleContentScene extends Component {
     }
   }
 
+  goToSingleContent = (contentId, neuronId, title) => {
+    Actions.singleContent({
+      content_id: contentId,
+      neuron_id: neuronId,
+      title,
+    })
+  }
+
   render() {
     const { contentSelected: content, device } = this.props;
 
@@ -389,6 +397,9 @@ export default class SingleContentScene extends Component {
                           data={rContent}
                           key={uuid()}
                           width={'46%'}
+                          touchProps={{
+                            onPress:() => this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title),
+                          }}
                         />
                       )
                     })}
