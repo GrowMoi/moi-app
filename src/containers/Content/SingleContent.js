@@ -22,6 +22,7 @@ import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import uuid from 'uuid/v4'
 
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -36,6 +37,7 @@ import ActionsHeader from './ActionsContentMax';
 import NoteInput from '../../commons/components/NoteInput/NoteInput';
 import { YoutubePlayer } from '../../commons/components/VideoPlayer';
 import { youtube } from '../../commons/utils';
+import ContentImagePreview from '../../commons/components/ContentComponents/ContentImagePreview'
 import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
 import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
 
@@ -84,7 +86,7 @@ const Divider = styled(View)`
 `;
 
 const VideoImg = styled(ImageBackground)`
-  width: 130;
+  width: 45%;
   height: 100;
   justify-content: center;
   align-items: center;
@@ -93,6 +95,8 @@ const VideoImg = styled(ImageBackground)`
 `;
 const VideoContainer = styled(View)`
   flex: 1;
+  width: 100%;
+  position: relative;
   flex-flow: row wrap;
   justify-content: space-around;
   margin-vertical: ${Size.spaceSmall};
@@ -298,7 +302,6 @@ export default class SingleContentScene extends Component {
     const {
       loading,
       videoModalVisible,
-      currentVideoId,
       actionSheetsVisible,
       favorite,
       reading,
@@ -380,7 +383,15 @@ export default class SingleContentScene extends Component {
                   <Header inverted bolder>Recomendados</Header>
 
                   <VideoContainer>
-
+                    {((content || {}).recommended_contents || []).map(rContent => {
+                      return (
+                        <ContentImagePreview
+                          data={rContent}
+                          key={uuid()}
+                          width={'46%'}
+                        />
+                      )
+                    })}
                   </VideoContainer>
                 </Section>
 

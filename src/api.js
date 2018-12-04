@@ -155,6 +155,17 @@ const api = {
       const res = await client.get(endpoint);
       return res;
     },
+
+    async getRecommendedContentsOfMaxContent(neuronId = 1, kind) {
+      const endpoint = `/api/neurons/${neuronId}/recommended_contents/${kind}`
+
+      try {
+        const res = await client.get(endpoint);
+        return res
+      } catch (error) {
+        throw new Error(error)
+      }
+    }
   },
 
   preferences: {
