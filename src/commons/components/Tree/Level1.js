@@ -124,7 +124,7 @@ export default class Level1 extends Component {
     return (
       <Container onPress={this.hideWoodLabel}>
         <LevelContainer>
-          {(meta || {}).depth === 1 && (
+          {/* {(meta || {}).depth === 1 && (
             (label.pageX && label.pageY) && (
               <WoodLabel
                 text={label.title}
@@ -140,7 +140,7 @@ export default class Level1 extends Component {
                 }}
               />
               )
-            )}
+            )} */}
           {children}
           <TreeLevel
             width={width}

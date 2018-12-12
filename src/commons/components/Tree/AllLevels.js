@@ -137,7 +137,7 @@ export default class AllLevels extends Component {
             treeDimensions={treeDimensions}
             width={CURRENT_TREE_WIDTH}
           />
-          {label.pageX && label.pageY &&
+          {/* {label.pageX && label.pageY &&
             <WoodLabel
               text={label.title}
               onPress={() => {
@@ -151,7 +151,7 @@ export default class AllLevels extends Component {
                 left: label.pageX,
               }}
             />
-          }
+          } */}
           {loading && (<Preloader />)}
         </Levels>
       </Container>

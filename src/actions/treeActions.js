@@ -30,6 +30,12 @@ const loadTreeAsync = (username, isPublic = false) => async (dispatch, getState)
   }
 };
 
+const setCurrentScale = (info) => {
+
+}
+
+
 export default {
   loadTreeAsync,
+  setCurrentScale,
 };

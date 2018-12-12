@@ -9,6 +9,7 @@ import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
 import { Video } from '../../../commons/components/VideoPlayer';
 import vineta_1 from '../../../../assets/videos/vineta_1.mp4';
+import LabelsLayer from './LabelsLayer'
 
 // Levels
 import Level1 from './Level1';
@@ -92,6 +93,10 @@ export default class Tree extends Component {
       }
   }
 
+  onViewTransformed = (transformData) => {
+
+  }
+
   selectCurrentLevel = (userTree) => {
     const level = userTree.meta.depth;
 
@@ -155,10 +160,15 @@ export default class Tree extends Component {
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        {!modalVisible && <Zoom maxScale={zoomScale}>
+        {!modalVisible &&
+        <Zoom
+          maxScale={zoomScale}
+          onViewTransformed={this.onViewTransformed}
+        >
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           {level}
         </Zoom>}
+        {!modalVisible && <LabelsLayer />}
         {modalVisible && <Video
           videoDimensions={videoDimensions}
           source={vineta_1}

@@ -254,7 +254,7 @@ export default class Level2 extends Component {
               </BranchContainer>
             </Level1>
           )}
-          {label.pageX && label.pageY &&
+          {/* {label.pageX && label.pageY &&
           <WoodLabel
             text={label.title}
             onPress={() => {
@@ -268,7 +268,7 @@ export default class Level2 extends Component {
               left: label.pageX,
               transform: [{translate: [-70, '-30%', 1] }]
             }}
-          />}
+          />} */}
           {loading && <Preloader style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />}
         </LevelContainer>
       </Container>
