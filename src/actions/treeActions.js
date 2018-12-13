@@ -30,12 +30,16 @@ const loadTreeAsync = (username, isPublic = false) => async (dispatch, getState)
   }
 };
 
-const setCurrentScale = (info) => {
-
+const setZoomScaleTree = (zoomScale = {}) => dispatch => {
+  dispatch({ type: actionTypes.SET_ZOOM_SCALE_TREE, payload: zoomScale });
 }
 
+const setZoomTreeInfo = (zoomTreeInfo = {}) => dispatch => {
+  dispatch({ type: actionTypes.SET_ZOOM_TREE_INFO, payload: zoomTreeInfo });//maybe cambiar nombre por ???
+}
 
 export default {
   loadTreeAsync,
-  setCurrentScale,
+  setZoomScaleTree,
+  setZoomTreeInfo,
 };

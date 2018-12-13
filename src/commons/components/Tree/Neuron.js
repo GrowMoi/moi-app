@@ -59,7 +59,6 @@ export default class Neuron extends Component {
     const { onPress } = this.props;
 
     this.measure(() => {
-      console.log(this.state.measure)
       if(onPress) onPress(this.state.measure);
     });
   }

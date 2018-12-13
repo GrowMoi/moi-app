@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import { getHeightAspectRatio } from '../../utils';
 import NeuronsLayer from './NeuronsLayer';
 import neuronActions from '../../../actions/neuronActions';
 import Branches from './allBranches';
-import WoodLabel from '../WoodLabel/WoodLabel';
-import Preloader from '../Preloader/Preloader';
 
 import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
 import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
@@ -49,36 +46,12 @@ const Levels = styled(View)`
   device: state.device,
 }), {
   setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
 })
 export default class AllLevels extends Component {
-  state = {
-    loading: false,
-  }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.device.dimensions.orientation !== this.props.device.dimensions.orientation) {
       this.props.setNeuronLabelInfo({});
-    }
-  }
-
-  playContent = async () => {
-    const { label } = this.props;
-
-    await this.getCurrentContents(label.id);
-    Actions.content({ title: label.title, neuron_id: label.id });
-  }
-
-  getCurrentContents = async (neuronId) => {
-    const { loadNeuronByIdAsync } = this.props;
-    this.setState({ loading: true });
-    try {
-      await loadNeuronByIdAsync(neuronId);
-      this.setState({ loading: false });
-
-    } catch (error) {
-      this.setState({ loading: false });
-      console.log(error.message);
     }
   }
 
@@ -90,10 +63,7 @@ export default class AllLevels extends Component {
   render() {
     const {
       userTree: { tree, meta: { depth } },
-      label,
-      zoomScale,
     } = this.props;
-    const { loading } = this.state;
 
     const isLevel4 = depth === 4;
     const isLevel3 = depth === 3;
@@ -137,22 +107,6 @@ export default class AllLevels extends Component {
             treeDimensions={treeDimensions}
             width={CURRENT_TREE_WIDTH}
           />
-          {/* {label.pageX && label.pageY &&
-            <WoodLabel
-              text={label.title}
-              onPress={() => {
-                this.hideWoodLabel();
-                this.playContent();
-              }}
-              zoomScale={zoomScale}
-              style={{
-                position: 'absolute',
-                top: label.pageY,
-                left: label.pageX,
-              }}
-            />
-          } */}
-          {loading && (<Preloader />)}
         </Levels>
       </Container>
     );

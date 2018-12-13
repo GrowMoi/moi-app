@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { View, ImageBackground, TouchableWithoutFeedback } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import Level1 from './Level1';
 import Neuron from './Neuron';
 import { FLORECIDA } from '../../../constants';
 import secondLevelConfig from './neuronConfigs/level2.config';
-import WoodLabel from '../WoodLabel/WoodLabel';
-import Preloader from '../Preloader/Preloader';
 
 // branch images descubiertas
 import descubiertaRight from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_right.png';
@@ -140,33 +137,9 @@ const levelConfig = {
 @connect(state => ({
   label: state.neuron.currentlyPressed,
 }), {
-  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo
 })
 export default class Level2 extends Component {
-  state = {
-    loading: false,
-  }
-
-  playContent = async () => {
-    const { label } = this.props;
-
-    await this.getCurrentContents(label.id);
-    Actions.content({ title: label.title, neuron_id: label.id });
-  }
-
-  getCurrentContents = async (neuronId) => {
-    const { loadNeuronByIdAsync } = this.props;
-    this.setState({ loading: true });
-    try {
-      await loadNeuronByIdAsync(neuronId);
-      this.setState({ loading: false });
-
-    } catch (error) {
-      this.setState({ loading: false });
-      console.log(error.message);
-    }
-  }
 
   hideWoodLabel = () => {
     const { setNeuronLabelInfo } = this.props;
@@ -185,11 +158,6 @@ export default class Level2 extends Component {
 
     setNeuronLabelInfo({ ...measure, ...data });
   }
-
-  // playContent = () => {
-  //   const { label } = this.props;
-  //   Actions.content({ title: label.title, neuron_id: label.id });
-  // }
 
   renderTreeBranch = (branchDirection, neuronData, index) => {
     const currentNeuron = secondLevelConfig[branchDirection];
@@ -237,8 +205,7 @@ export default class Level2 extends Component {
   }
 
   render() {
-    const { userTree, label } = this.props;
-    const { loading } = this.state;
+    const { userTree } = this.props;
 
     return (
       <Container onPress={this.hideWoodLabel}>
@@ -254,22 +221,6 @@ export default class Level2 extends Component {
               </BranchContainer>
             </Level1>
           )}
-          {/* {label.pageX && label.pageY &&
-          <WoodLabel
-            text={label.title}
-            onPress={() => {
-              this.hideWoodLabel();
-              this.playContent();
-            }}
-            style={{
-              position: 'absolute',
-              width: 200,
-              top: label.pageY,
-              left: label.pageX,
-              transform: [{translate: [-70, '-30%', 1] }]
-            }}
-          />} */}
-          {loading && <Preloader style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />}
         </LevelContainer>
       </Container>
     );
