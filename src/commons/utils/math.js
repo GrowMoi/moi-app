@@ -1,6 +1,6 @@
 const math = {
   getRandomInt: (min = 0, max = 1) => {
-    return Math.floor( Math.random() * (max - min) ) + min
+    return Math.round( Math.random() * (max - min) ) + min
   },
 
   getRandomArbitrary: (min = 0, max = 1) => {

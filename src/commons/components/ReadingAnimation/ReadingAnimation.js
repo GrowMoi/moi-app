@@ -37,7 +37,7 @@ class ReadingAnimation extends React.Component {
   }
 
   componentWillMount() {
-    const randomN = math.getRandomInt(0, 5);
+    const randomN = math.getRandomInt(0, 1);
     this.setState({ animationN: randomN });
   }
 
@@ -51,14 +51,6 @@ class ReadingAnimation extends React.Component {
         return articulation;
       case 1:
         return confusion;
-      case 2:
-        return estimate;
-      case 3:
-        return inattentive;
-      case 4:
-        return mnemonics;
-      case 5:
-        return phonological;
       default:
         return articulation;
     }

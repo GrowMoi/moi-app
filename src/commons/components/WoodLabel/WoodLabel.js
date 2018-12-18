@@ -33,6 +33,7 @@ const Box = styled(ImageBackground)`
 
 const TextContainer = styled(View)`
   flex-direction: row;
+  padding-horizontal: 10%;
 `;
 
 const PlayContent = styled(Image)`
@@ -40,7 +41,7 @@ const PlayContent = styled(Image)`
 `
 
 const TextLabel = styled(Header)`
-
+  font-weight: 900;
 `;
 
 const LabelContainer = Animatable.createAnimatableComponent(Container);

@@ -10,22 +10,40 @@ import Tree from '../../commons/components/Tree';
 
 const ContentScreen = styled(View)`
   flex: 1;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  margin-top: 40;
 `;
+
+const BottomBar = styled(TreeBottom)`
+  position: relative;
+  z-index: 0;
+`
+
+const Background = styled(MoiBackground)`
+  position: relative;
+`
+
+const TopNavbar = styled(Navbar)`
+  position: relative;
+  z-index: 2;
+`
 
 export default class TreeScene extends Component {
   render() {
     return (
-      <MoiBackground>
+      <Background>
         <ContentScreen>
           <Tree />
         </ContentScreen>
-        <Navbar/>
-        <TreeBottom />
-      </MoiBackground>
+        <TopNavbar/>
+        <BottomBar />
+      </Background>
     );
   }
 }
 
-Tree.propTypes = {
+TreeScene.propTypes = {
   title: PropTypes.string,
 };
