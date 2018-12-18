@@ -56,15 +56,11 @@ export default class Neuron extends Component {
   }
 
   onPressNeuron = (e) => {
-    e.persist();
-
-    this.measure();
     const { onPress } = this.props;
-    if (onPress) {
-      setTimeout(() => {
-        onPress(this.state.measure);
-      }, 250);
-    }
+
+    this.measure(() => {
+      if(onPress) onPress(this.state.measure);
+    });
   }
 
   onPressIn = () => {
@@ -121,13 +117,16 @@ export default class Neuron extends Component {
   //   this.measure();
   // }
 
-  measure() {
+  measure = (cb = () => null) => {
     UIManager.measure(findNodeHandle(this.view), (x, y, width, height, pageX, pageY) => {
-      this.setState({
-        measure: {
-          x, y, width, height, pageX, pageY,
-        },
-      })
+      this.setState(
+        () => ({
+          measure: {
+            x, y, width, height, pageX, pageY,
+          },
+        }),
+        () => { cb() }
+      )
     })
   }
 

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { View, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 
@@ -11,39 +11,29 @@ const Container = styled(View)`
 `;
 
 const Box = styled(ImageBackground)`
-  background-color: #dbc788;
   position: relative;
   width: ${props => {
     if(props.width) {
       return props.width;
     }
-    return 180;
+    return 100;
   }};
   min-height: ${props => props.height || 40};
   justify-content: center;
   align-items: center;
-  padding-horizontal: ${props => {
-    if(props.paddingHorizontal) {
-      return props.paddingHorizontal;
-    }
-    return 20;
-  }};
+
   padding-vertical: ${props => {
     if(props.paddingVertical) {
       return props.paddingVertical
     }
     return 10;
   }};
-  border-radius: 10;
   overflow: hidden;
-  border-left-width: 3;
-  border-left-color: #633427;
-  border-bottom-width: 3;
-  border-bottom-color: #633427;
 `;
 
 const TextContainer = styled(View)`
   flex-direction: row;
+  padding-horizontal: 10%;
 `;
 
 const PlayContent = styled(Image)`
@@ -51,7 +41,7 @@ const PlayContent = styled(Image)`
 `
 
 const TextLabel = styled(Header)`
-
+  font-weight: 900;
 `;
 
 const LabelContainer = Animatable.createAnimatableComponent(Container);
@@ -68,55 +58,90 @@ class WoodLabel extends PureComponent {
   }
 
   get fontSize() {
-    const { zoomScale } = this.props;
+    const { zoomScale, zoomInfo } = this.props;
 
     switch(zoomScale) {
-      case 1, 2, 3:
-        return null;
+      case 1:
+        return 16;
+      case 2:
+        return 14;
+      case 3:
+        return 10 + ((zoomInfo.scale -1) * 7);
       case 4:
-        return 10;
+        return 9 * zoomInfo.scale;
       default:
         return null;
     }
   }
 
   get labelSize() {
-    const { zoomScale } = this.props;
+    const { zoomScale, zoomInfo } = this.props;
 
     switch (zoomScale) {
-      case 1, 2, 3:
+      case 1, 2:
         return { fontHeight: 40, width: 200 };
+      case 3:
+        return {
+          height: 21 * zoomInfo.scale,
+          width: 80 + ((zoomInfo.scale -1) * 30),
+          paddingHorizontal: 1,
+          paddingVertical: 10 * zoomInfo.scale,
+          fontHeight: 15 * zoomInfo.scale,
+          fontPositionTop: 0,
+        };
       case 4:
         return {
-          height: 15,
-          width: 80,
+          height: (22 * zoomInfo.scale),
+          width: 80 + ((zoomInfo.scale -1) * 30),
           paddingHorizontal: 1,
-          paddingVertical: 7,
-          fontHeight: 15,
-          fontPositionTop: -6,
+          paddingVertical: 10 * zoomInfo.scale,
+          fontHeight: 15 * zoomInfo.scale,
+          fontPositionTop: 0,
         };
       default:
         return  {};
     }
   }
 
-  render() {
-    const { text = '', onPress = () => null, style, zoomScale } = this.props;
+  get zoomScaleStyles() {
+    const {zoomScale, zoomInfo } = this.props;
 
-    const zoomScaleStyles = zoomScale === 4 ? {
-      height: this.labelSize.height,
-      width: this.labelSize.width,
-      transform: [{translate: [-35, -13, 1]}],
-    } : {};
+     switch(zoomScale) {
+      case 1:
+        return {
+          transform: [{translate: [-54, -33, 1]}],
+          width: null,
+        };
+      case 2:
+        return {};
+      case 3:
+        return {
+          height: this.labelSize.height,
+          width: this.labelSize.width,
+          transform: [{translate: [-40 -  (15 * (zoomInfo.scale -1)), -30 - (20 * (zoomInfo.scale -1)), 1]}],
+        };
+      case 4:
+        return  {
+          height: this.labelSize.height,
+          width: this.labelSize.width,
+          transform: [{translate: [-40 -  (15 * (zoomInfo.scale -1)), -30 - (20 * (zoomInfo.scale -1)), 1]}],
+        };
+      default:
+        return null;
+    }
+  }
+
+  render() {
+    const { text = '', onPress = () => null, style, zoomScale, zoomInfo } = this.props;
 
     return (
-      <Container ref={this.storeRef} style={{...zoomScaleStyles, ...style}}>
+      <Container ref={this.storeRef} style={{...this.zoomScaleStyles, ...style}}>
         <TouchableOpacity onPress={onPress}>
           <Box
-            height={zoomScaleStyles.height}
-            width={zoomScaleStyles.width}
+            height={this.zoomScaleStyles.height}
+            width={this.zoomScaleStyles.width}
               source={woodBg}
-              resizeMode='cover'
+              resizeMode='contain'
               paddingHorizontal={this.labelSize.paddingHorizontal}
               paddingVertical={this.labelSize.paddingVertical}
             >
