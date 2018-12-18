@@ -17,3 +17,4 @@ ios/*.app.dSYM.zip
 .env.*
 ios/build/
 android/build/
+*.patch
