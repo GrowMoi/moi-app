@@ -118,13 +118,13 @@ class WoodLabel extends PureComponent {
         return {
           height: this.labelSize.height,
           width: this.labelSize.width,
-          transform: [{translate: [-40 -  (15 * (zoomInfo.scale -1)), -30 - (20 * (zoomInfo.scale -1)), 1]}],
+          transform: [{translate: [-40 -  (15 * (zoomInfo.scale -1)), -70 - (20 * (zoomInfo.scale -1)), 1]}],
         };
       case 4:
         return  {
           height: this.labelSize.height,
           width: this.labelSize.width,
-          transform: [{translate: [-40 -  (15 * (zoomInfo.scale -1)), -30 - (20 * (zoomInfo.scale -1)), 1]}],
+          transform: [{translate: [-40 -  (15 * (zoomInfo.scale -1)), -70 - (20 * (zoomInfo.scale -1)), 1]}],
         };
       default:
         return null;
