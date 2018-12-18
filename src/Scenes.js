@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import { Util, AppLoading, Font, Icon } from 'expo';
-import { Text, Dimensions } from 'react-native';
+import { AppLoading, Font, Icon, DangerZone } from 'expo';
+import { Text, Dimensions, AsyncStorage } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
+import ModalHost from 'expo/src/modal/ModalHost';
 
 import routes from './routes';
 import messages from './messages';
@@ -34,9 +35,9 @@ export default class Scenes extends Component {
     appIsReady: false,
   }
 
-  componentWillMount() {
-    this.setOrientation();
-    this.preLoadingAssets();
+  async componentWillMount() {
+    await this.setOrientation();
+    await this.preLoadingAssets();
     Dimensions.addEventListener('change', this.setOrientation);
   }
 
@@ -54,14 +55,15 @@ export default class Scenes extends Component {
 
   async preLoadingAssets() {
     const locale = await this.getCurrentLocale();
-    await cacheImages(allImages);
+    const cacheImgs = await cacheImages(allImages);
     await Font.loadAsync(allFonts);
 
+    await Promise.all(cacheImgs);
     this.setState({ assetsLoaded: true, locale });
   }
 
   async getCurrentLocale() {
-    const currentLocale = await Util.getCurrentLocaleAsync();
+    const currentLocale = await DangerZone.Localization.getCurrentLocaleAsync();
     let locale;
     if (/^es/.test(currentLocale)) locale = 'es';
     else if (/^en/.test(currentLocale)) locale = 'en';
@@ -71,7 +73,13 @@ export default class Scenes extends Component {
   }
 
   validateAuth = async () => {
-    await store.dispatch(userActions.validateToken());
+
+    try {
+      await store.dispatch(userActions.validateToken());
+    } catch (error) {
+      console.log('AUTH NOT VALID', error.message);
+    }
+
     this.setState({ appIsReady: true });
   }
 
@@ -80,14 +88,16 @@ export default class Scenes extends Component {
 
     if (appIsReady && assetsLoaded) {
       return (
-        <Provider store={store}>
-          <IntlProvider
-            locale={locale}
-            messages={flattenMessages(messages[locale])}
-            textComponent={Text}>
-            <RouterWithRedux scenes={routes}/>
-          </IntlProvider>
-        </Provider>
+        <ModalHost>
+          <Provider store={store}>
+            <IntlProvider
+              locale={locale}
+              messages={flattenMessages(messages[locale])}
+              textComponent={Text}>
+              <RouterWithRedux scenes={routes}/>
+            </IntlProvider>
+          </Provider>
+        </ModalHost>
       );
     }
 

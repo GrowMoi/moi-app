@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
-import { Palette, Size } from '../../styles';
 import { getHeightAspectRatio } from '../../utils';
 import leaderFrame from '../../../../assets/images/frames/leaderboard_frame.png';
 
 const widthFrame = 375;
 const heightFrame = 667;
 
-const StyledLeaderFrame = styled(Image)`
+const StyledLeaderFrame = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(widthFrame, heightFrame, props.width)};
   padding-horizontal: 20;

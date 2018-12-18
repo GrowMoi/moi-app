@@ -96,7 +96,10 @@ export default [
   require('./tree/arbol_adulto/gris/arbol_nivel3_gris.png'),
   require('./tree/arbol_adulto/gris/arbol_nivel4_gris.png'),
   require('./tree/arbol_adulto/gris/arbol_nivel5_gris.png'),
-  require('./tree/arbol_adulto/gris/arbol-nivel6_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol_nivel6_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol_nivel7_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol_nivel8_gris.png'),
+  require('./tree/arbol_adulto/gris/arbol_nivel9_gris.png'),
 
   // Big tree level 2
   require('./tree/arbol_adulto/nivel_2/arbol_nivel2_color.png'),
@@ -275,4 +278,9 @@ export default [
   require('../sounds/read_content.mp3'),
   require('../sounds/test.mp3'),
   require('../sounds/fondo.mp3'),
+
+  // MISCELANEOUS
+  require('../images/miscelaneous/button_close.png'),
+  require('../images/buttons/wood_texture.png'),
+  require('../images/miscelaneous/check.png'),
 ];

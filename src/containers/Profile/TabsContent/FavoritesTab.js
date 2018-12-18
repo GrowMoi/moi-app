@@ -28,6 +28,7 @@ const NotDataToDisplay = styled(View)`
   flex: 1;
   align-items: center;
   justify-content: center;
+  height: 250;
 `;
 
 const styles = StyleSheet.create({
@@ -54,16 +55,38 @@ class FavoritesTab extends PureComponent {
 
   getFavorites = async () => {
     const { loadAllFavorites } = this.props;
-    const { page, dataSource } = this.state;
-
+    const { page } = this.state;
     const nextPage = page + 1;
-    await loadAllFavorites(nextPage);
 
-    const { favorites: { content_tasks: { content_tasks } } } = this.props;
+    try {
+      await loadAllFavorites(nextPage);
 
-    if (content_tasks.length) {
-      this.setState({ dataLoaded: true, dataSource: dataSource.concat(content_tasks), page: nextPage });
-    } else if (!content_tasks.length) this.setState({ noMoreData: true });
+      const { favorites: { content_tasks: { content_tasks } } } = this.props;
+      this.setState(prevState => ({ dataLoaded: true, dataSource: prevState.dataSource.concat(content_tasks), page: nextPage }));
+
+    } catch (error) {
+      this.setState({ dataLoaded: true });
+    }
+
+  }
+
+  getMoreFavorites = async() => {
+    const { loadAllFavorites } = this.props;
+    const { page } = this.state;
+    const nextPage = page + 1;
+
+    try {
+      await loadAllFavorites(nextPage);
+
+      const { favorites: { content_tasks: { content_tasks } } } = this.props;
+      this.setState(prevState => ({ dataLoaded: true, dataSource: prevState.dataSource.concat(content_tasks), page: nextPage }));
+
+
+    } catch (error) {
+      this.setState({ dataLoaded: true });
+      console.log(error);
+    }
+
   }
 
   _renderItem = (info) => {
@@ -99,15 +122,14 @@ class FavoritesTab extends PureComponent {
             <FlatList
               contentContainerStyle={styles.contentContainer}
               data={dataSource}
-              onEndReached={this.getFavorites}
-              ListFooterComponent={!noMoreData && <Preloader />}
+              onEndReached={this.getMoreFavorites}
               renderItem={this._renderItem}
-              onEndReachedThreshold={0}
+              onEndReachedThreshold={0.4}
               keyExtractor={this._keyExtractor}
               numColumns={2}
             />
           </TabContainer>
-        ) : (
+        ):(
           <NotDataToDisplay>
             <MaterialIcons name='stars' size={35} color="#4f5325" />
             <TextBody>No tienes favoritos</TextBody>

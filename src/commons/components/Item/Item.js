@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import {
   View,
   Image,
+  ImageBackground,
   TouchableWithoutFeedback,
 } from 'react-native';
 import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
-import PropTypes from 'prop-types';
+import { object } from '../../utils';
 
 import { getHeightAspectRatio } from '../../utils';
 import resources from './resources';
 
 const width = 108;
 const height = 107;
-const Container = styled(Image)`
+const Container = styled(ImageBackground)`
   justify-content: center;
   align-items: center;
   margin-horizontal: 5;
@@ -47,10 +48,12 @@ class Item extends Component {
 
   render() {
     const { type = 1, width = 90, active } = this.props;
+
     const paddingForItem = 30;
     const renderTypeItem = resources.getItem(type);
     const box = resources.getBox();
 
+    if(object.isEmpty(renderTypeItem)) return null;
     return (
       <Container source={box} resizeMode='contain' width={width}>
         <TouchableWithoutFeedback onPress={this.onPressItem}>

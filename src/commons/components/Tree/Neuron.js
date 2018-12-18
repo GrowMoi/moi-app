@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableWithoutFeedback, Animated, View } from 'react-native';
+import {
+  TouchableWithoutFeedback,
+  Animated,
+  View,
+  UIManager,
+  findNodeHandle,
+} from 'react-native';
 import styled, { css } from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 
@@ -44,14 +50,17 @@ const NeuronImage = styled(Animated.Image)`
 export default class Neuron extends Component {
   handleRefNeuron = ref => this._neuron = ref;
   animatedValue = new Animated.Value(1);
+  state = {
+    showingLabel: false,
+    measure: {},
+  }
 
   onPressNeuron = (e) => {
     const { onPress } = this.props;
-    if (onPress) {
-      setTimeout(() => {
-        onPress(e);
-      }, 250);
-    }
+
+    this.measure(() => {
+      if(onPress) onPress(this.state.measure);
+    });
   }
 
   onPressIn = () => {
@@ -104,6 +113,24 @@ export default class Neuron extends Component {
     }
   }
 
+  // onLayout = (e) => {
+  //   this.measure();
+  // }
+
+  measure = (cb = () => null) => {
+    UIManager.measure(findNodeHandle(this.view), (x, y, width, height, pageX, pageY) => {
+      this.setState(
+        () => ({
+          measure: {
+            x, y, width, height, pageX, pageY,
+          },
+        }),
+        () => { cb() }
+      )
+    })
+  }
+
+
   render() {
     const {
       position,
@@ -111,7 +138,9 @@ export default class Neuron extends Component {
       size,
       contentsLearned,
       totalContents,
+      name,
     } = this.props;
+    const { showingLabel } = this.state;
     const { max: maxSize } = size;
     const animatedStyle = { transform: [{ scale: this.animatedValue }] };
     const neuronSize = this.calculateSize(contentsLearned, totalContents);
@@ -141,7 +170,11 @@ export default class Neuron extends Component {
     }
 
     return (
-      <NeuronAnimatable {...neuronProps}>
+      <NeuronAnimatable
+        // onLayout={this.onLayout}
+        ref={ref => this.view = ref}
+        {...neuronProps}
+      >
         <TouchableWithoutFeedback
           onPressOut={this.onPressOut}
           onPressIn={this.onPressIn}

@@ -7,6 +7,7 @@ import { Field, reduxForm } from 'redux-form';
 import { FontAwesome } from '@expo/vector-icons';
 import ReduxFormInput from '../../commons/components/Input/ReduxFormInput';
 import { Line } from '../../commons/components/SceneComponents';
+import Button from '../../commons/components/Buttons/Button';
 
 const Container = styled(View)`
   align-self: stretch;
@@ -14,6 +15,7 @@ const Container = styled(View)`
 
 const InputContainer = styled(View)`
   flex-direction: row;
+  height: 50;
 `;
 
 const Icon = styled(FontAwesome)`
@@ -23,6 +25,10 @@ const Icon = styled(FontAwesome)`
   top: 7;
   z-index: 1;
 `;
+
+const FormInput = styled(ReduxFormInput)`
+  height: 50;
+`
 
 class SearchInput extends Component {
   state = {
@@ -39,17 +45,16 @@ class SearchInput extends Component {
     return (
       <Container>
         <InputContainer>
-          <ReduxFormInput
+          <FormInput
             placeholder='Buscar...'
             name='query'
             leftIcon='md-search'
             leftIconColor='white'
-            rightIcon='md-refresh'
-            onPressRightIcon={() => onSubmit(query)}
             input={{
               onChange: this.onChangeText,
             }}
           />
+          <Button onPress={() => onSubmit(query)} title='Buscar'/>
         </InputContainer>
         <Line />
       </Container>

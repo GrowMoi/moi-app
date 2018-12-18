@@ -8,9 +8,8 @@ export const setLeaders = (leaders, meta) => ({
 });
 
 const getLeadersAsync = userId => async (dispatch, getState) => {
-  let res;
   try {
-    res = await api.leaderboard.getLeaderboard(userId);
+    const res = await api.leaderboard.getLeaderboard(userId);
     const { headers, data } = res;
     const { leaderboard: { leaders } } = getState();
 
@@ -18,13 +17,12 @@ const getLeadersAsync = userId => async (dispatch, getState) => {
     let pageLeaders = data.leaders;
     if (hasNewLeaders && leaders.length) pageLeaders = leaders.concat(data.leaders);
 
-    dispatch(setLeaders(pageLeaders, data.meta));
     dispatch(setHeaders(headers));
+    dispatch(setLeaders(pageLeaders, data.meta));
   } catch (error) {
     // console.log(error);
+    throw new Error(error);
   }
-
-  return res;
 };
 
 export default {

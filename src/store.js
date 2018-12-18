@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 // other imports...
 import thunk from 'redux-thunk';
@@ -16,10 +15,7 @@ const options = { client };
 const middleware = [thunk, apiMiddleware(options), routeMiddleware()];
 
 // eslint-disable-next-line
-const store = __DEV__ ? createStore(
-  reducers,
-  composeWithDevTools(applyMiddleware(...middleware)),
-) : createStore(
+const store = createStore(
   reducers,
   compose(applyMiddleware(...middleware)),
 );

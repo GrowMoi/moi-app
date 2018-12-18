@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Modal from 'expo/src/modal/Modal';
 import PropTypes from 'prop-types';
-import { View, Image, Modal } from 'react-native';
+import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
 import { Palette } from '../../styles'
@@ -28,11 +29,11 @@ class Preloader extends Component {
   }
 
   render() {
-    const { modalIsVisible } = this.props;
-    const { size, notFullScreen } = this.props;
+    const { size, notFullScreen, style } = this.props;
+    const { modalIsVisible } = this.state;
 
     const loader = (
-      <PreloaderContainer>
+      <PreloaderContainer style={style}>
         <Loader
           size={size}
           source={loadingGif}
@@ -42,7 +43,7 @@ class Preloader extends Component {
 
     if(notFullScreen) return loader;
     return (
-      <PreloaderContainer>
+      <PreloaderContainer style={style}>
         <Modal
           animationType='fade'
           transparent={true}

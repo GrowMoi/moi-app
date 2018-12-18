@@ -42,13 +42,13 @@ class UserPreview extends Component {
   handleAnimatableContainer = ref => this.container = ref;
 
   onPress = () => {
-    const { onPress } = this.props;
+    const { onPress, name } = this.props;
 
     if(onPress) {
       this.container.pulse(400)
         .then(endState => {
           if(endState.finished) {
-            onPress();
+            onPress(name);
           }
         })
     }

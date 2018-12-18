@@ -18,8 +18,8 @@ const getContentsAsync = (page, query) => async (dispatch) => {
     res = await api.search.getContents(page, query);
     const { headers, data } = res;
 
-    dispatch(setContents(data.search.contents));
     dispatch(setHeaders(headers));
+    dispatch(setContents(data.search.contents));
   } catch (error) {
     // console.log(error);
   }
@@ -33,8 +33,8 @@ const getUsersAsync = (page, query) => async (dispatch) => {
     res = await api.search.getUsers(page, query);
     const { headers, data } = res;
 
-    dispatch(setUsersResult(data.search_users.users));
     dispatch(setHeaders(headers));
+    dispatch(setUsersResult(data.search_users.users));
   } catch (error) {
     // console.log(error)
   }

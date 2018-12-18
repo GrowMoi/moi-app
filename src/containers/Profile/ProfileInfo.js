@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData }) => {
+const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut }) => {
   if(data === undefined) return null;
 
   const { profile, level } = data;
@@ -118,13 +118,14 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData }) => {
         </PersonalInfo>
 
         {profile.tree_image && (
-          <TreeImage source={{ uri: profile.tree_image }} resizeMode='cover' />
+          <TreeImage source={{ uri: profile.tree_image }} resizeMode='contain' />
         )}
 
-        {Object.keys(tabsData).length && (
-          <Tabs data={tabsData} />
-        )}
+        {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} />}
 
+        {!isShared &&
+          <Button style={{ marginTop: 20, marginBottom: 20 }} onPress={onClickSignOut && onClickSignOut} title='Cerrar mi sesión' rightIcon='md-log-out' />
+        }
       </ScrollView>
     </Container>
   );

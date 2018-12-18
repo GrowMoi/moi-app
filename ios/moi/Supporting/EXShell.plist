@@ -7,6 +7,8 @@
 	<key>isShell</key>
 	<true/>
 	<key>manifestUrl</key>
-	<string>exp://exp.host/@moi/moi-app</string>
+	<string>exp://exp.host/@eyetive/moi</string>
+	<key>releaseChannel</key>
+	<string>default</string>
 </dict>
 </plist>

@@ -3,6 +3,7 @@ import { Actions, Scene } from 'react-native-router-flux';
 import Menu from './commons/components/Drawer';
 import TreeScene from './containers/Tree';
 import Login from './containers/Login/Login';
+import Register from './containers/Register/Register';
 import ContentListScene from './containers/Content/ContentList';
 import SingleContentScene from './containers/Content/SingleContent';
 import ProfileScene, { EditProfileScene, PublicProfileScene } from './containers/Profile';
@@ -10,6 +11,7 @@ import Tasks from './containers/Tasks/Tasks';
 import RandomContents from './containers/RandomContents/RandomContents';
 import Settings from './containers/Settings/Settings';
 import QuizScene from './containers/Quiz/Quiz';
+import QuizTutorScene from './containers/Quiz/QuizTutorScene';
 import BackButton from './commons/components/SceneComponents/BackButton';
 import LeaderBoard from './containers/LeaderBoard/Leaderboard';
 import Search from './containers/Search/Search';
@@ -17,27 +19,36 @@ import SearchFriends from './containers/Search/SearchFriends';
 import Inventory from './containers/Inventory/Inventory';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
+// import Test from './commons/components/Test';
 
 const backButton = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.pop()}/>;
 const backButtonQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.moiDrawer()}/>;
+const backButtonTutorQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.pop()}/>;
 // const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
 
 const routes = Actions.create(
   <Scene key="root">
+    {/* <Scene
+      key='test'
+      component={Test}
+    /> */}
     <Scene
       key='login'
       component={Login}
       {...navbarPropStyles}
+      renderBackButton={() => (null)}
       renderLeftButton={null}
       renderRightButton={null}
     />
     <Scene
       key='register'
-      title='Registro'
-      component={Login}
+      component={Register}
+      {...navbarPropStyles}
+      renderLeftButton={null}
+      renderRightButton={null}
     />
     <Scene
-      type='replace'
+      type='reset'
       key='moiDrawer'
       title='Tree'
       component={Menu}
@@ -56,7 +67,7 @@ const routes = Actions.create(
           {...navbarPropStyles} />
         <Scene
           key='leaderboard'
-          title='Leader Board'
+          title='Leaderboard'
           component={LeaderBoard}
           {...navbarPropStyles} />
         <Scene
@@ -71,14 +82,14 @@ const routes = Actions.create(
           component={Inventory}
           {...navbarPropStyles}
         />
+        <Scene
+          key='content'
+          component={ContentListScene}
+          // renderBackButton={backButton}
+          {...navbarPropStyles}
+          title='Contenido' />
       </Scene>
     </Scene>
-    <Scene
-      key='content'
-      component={ContentListScene}
-      renderBackButton={backButton}
-      {...navbarPropStyles}
-      title='Contenido' />
     <Scene
       key='singleContent'
       component={SingleContentScene}
@@ -132,7 +143,14 @@ const routes = Actions.create(
       renderBackButton={backButtonQuiz}
       renderRightButton={null}
     />
-
+    <Scene
+      key='tutorQuiz'
+      component={QuizTutorScene}
+      title='Tutor Test'
+      {...navbarPropStyles}
+      renderBackButton={backButtonTutorQuiz}
+      renderRightButton={null}
+    />
     <Scene
       key="randomContents"
       title="Contenidos Aleatorios"

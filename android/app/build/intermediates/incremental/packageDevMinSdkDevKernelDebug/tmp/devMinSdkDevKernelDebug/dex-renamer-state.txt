@@ -1,0 +1,13 @@
+#Sat Oct 13 00:58:20 ECT 2018
+path.3=classes.dex
+path.2=classes.dex
+path.1=classes.dex
+path.0=classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+base.3=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/11
+base.2=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/14
+base.1=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/12
+base.0=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/13

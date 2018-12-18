@@ -46,7 +46,7 @@ const RightIcon = styled(Ionicons)`
 const LeftIcon = styled(Ionicons)`
   position: absolute;
   left: 10;
-  top: 6;
+  top: 20%;
   background-color: transparent;
   z-index: 1;
 `

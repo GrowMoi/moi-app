@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 import {
   Image,
@@ -26,6 +26,7 @@ import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 // Login Images
 import loginImages from './loginImages';
 import LoginImage from './LoginImage';
+import Preloader from '../../commons/components/Preloader/Preloader';
 
 const LoginContainer = styled(View)`
   flex: 1;
@@ -80,6 +81,7 @@ const AnimatableContainerLoginKeys = Animatable.createAnimatableComponent(Contai
 }), {
   loginAsync: userActions.loginAsync,
   validateToken: userActions.validateToken,
+  signOutAsync: userActions.signOutAsync,
 })
 export default class Login extends Component {
   state = {
@@ -108,19 +110,22 @@ export default class Login extends Component {
     const { loginAsync } = this.props;
 
     this.setState({ validating: true });
-    await loginAsync({ login, authorization_key });
 
-    const { user: { authenticate } } = this.props
+    try {
+      await loginAsync({ login, authorization_key });
+    } catch (error) {
+      const { user: { authenticate } } = this.props
+      if(!authenticate) {
+        const animationTime = 800;
+        this.formContainer.shake(animationTime);
+        this.setState({ validating: false });
 
-    if(!authenticate) {
-      const animationDuraction = 800;
-      this.formContainer.shake(animationDuraction);
-      this.setState({ validating: false });
+        setTimeout(() => {
+          Alert.alert('Credenciales Incorrectas');
+        }, animationTime / 2);
+      };
+    }
 
-      setTimeout(() => {
-        Alert.alert('Credenciales Incorrectas');
-      }, animationDuraction / 2);
-    };
   }
 
   showSelectionKey = () => {
@@ -133,6 +138,10 @@ export default class Login extends Component {
 
   returnToUsername = () => {
     this.setState({ showingSelectionKey: false });
+  }
+
+  goRegister = () => {
+    Actions.register({type: ActionConst.RESET});
   }
 
   render() {
@@ -200,7 +209,7 @@ export default class Login extends Component {
                       <Button
                         style={{ width: 130, marginRight: Size.spaceMedium }}
                         title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
-                        onPress={!showingSelectionKey ? Actions.register : this.returnToUsername}
+                        onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
                       />
                     </Animatable.View>
 

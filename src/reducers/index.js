@@ -7,6 +7,7 @@ import tree from './treeReducer';
 import user from './userReducer';
 import leaderboard from './leaderboardReducer';
 import search from './searchReducer';
+import tutor from './tutorReducer';
 // ... other reducers
 
 export default combineReducers({
@@ -18,5 +19,6 @@ export default combineReducers({
   form,
   leaderboard,
   search,
+  tutor,
   // ... other reducers
 });

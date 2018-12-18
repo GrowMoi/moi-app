@@ -5,7 +5,7 @@ import { getHeightAspectRatio } from '../../commons/utils';
 import iconTest from '../../../assets/images/quiz/icon_test.png';
 import { Palette } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
-import { Title } from '../../commons/components/Typography';
+import { Title, TextBody, Header } from '../../commons/components/Typography';
 
 const IntroScene = styled(View)`
   flex: 1;
@@ -22,7 +22,7 @@ const IconTest = styled(Image)`
 
 const MessageContainer = styled(View)`
   align-items: center;
-  width: 250;
+  width: 90%;
   margin-vertical: 10;
 `;
 
@@ -47,7 +47,7 @@ const ContainerButton = Container.extend`
 `;
 
 
-const ComplementaryScene = ({ title = '', text = '', onNext }) => {
+const ComplementaryScene = ({ title = '', text = '', caption = '',  onNext, onNextText = 'Siguiente' }) => {
   const onNextClick = () => {
     if (onNext) onNext();
   };
@@ -63,10 +63,16 @@ const ComplementaryScene = ({ title = '', text = '', onNext }) => {
         <MessageBox>
           <Title center heavy color={Palette.menuBackground}>{text}</Title>
         </MessageBox>
+
+       {caption && (
+          <Container>
+            <Header>{caption}</Header>
+          </Container>
+        )}
       </MessageContainer>
 
       <ContainerButton>
-        <Button onPress={onNextClick} title='Siguiente' />
+        <Button onPress={onNextClick} title={onNextText} />
       </ContainerButton>
     </IntroScene>
   );

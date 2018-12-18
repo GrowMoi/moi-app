@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
-import { Image, View, TouchableOpacity } from 'react-native';
+import { Image, ImageBackground, View, TouchableOpacity } from 'react-native';
 import { getHeightAspectRatio } from '../../utils';
 
 // Frames and Buttons
@@ -18,7 +18,7 @@ import searchButtonImg from '../../../../assets/images/buttons/search_button.png
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
-const Button = styled(Image)`
+const Button = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(wCommonBtn, hCommonBtn, props.width)};
   flex-direction: row;
@@ -31,7 +31,7 @@ const Button = styled(Image)`
 
 const blueFrameWidth = 174;
 const blueFrameHeight = 97;
-const ReadFrame = styled(Image)`
+const ReadFrame = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(blueFrameWidth, blueFrameHeight, props.width)};
   left: 0;
@@ -40,9 +40,11 @@ const ReadFrame = styled(Image)`
   overflow: visible;
 `;
 
-const BottomBar = styled(Image)`
+const bottomBarWidth = 788;
+const bottomBarHeight = 65;
+const BottomBar = styled(ImageBackground)`
   width: ${props => props.width};
-  height: 30;
+  height: ${props => getHeightAspectRatio(bottomBarWidth, bottomBarHeight, props.width)};
   flex-direction: row;
   overflow: visible;
 `;
@@ -66,22 +68,18 @@ const taskHeightBtn = 371;
 const TaskButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
-  bottom: 1;
-  left: 20;
 `;
 
 const SearchButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
   bottom: 0;
-  left: 20;
 `;
 
 const RandomButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
   bottom: 0;
-  left: 20;
 `;
 
 const lightGreenBtnWidth = 108;
@@ -116,7 +114,7 @@ const BottomBarWithButtons = (props) => {
     };
 
     return (
-      <TouchableOpacity onPress={cb}>
+      <TouchableOpacity style={{ zIndex: 3 }} onPress={cb}>
         <NewButton
           { ...privateProps }
           { ...customProps }
@@ -125,12 +123,16 @@ const BottomBarWithButtons = (props) => {
     );
   };
 
+  const minWidth = 320;
+  const deviceIsBig = props.width > minWidth;
+
   const elementProps = {
-    task: { width: 48, source: taskButtonImg },
-    random: { width: 50, source: randomButtonImg },
-    search: { width: 50, source: searchButtonImg },
+    task: { width: 48, source: taskButtonImg, left: deviceIsBig ? 28 : 20, bottom: -2 },
+    random: { width: 50, source: randomButtonImg, left: deviceIsBig ? 28 : 20 },
+    search: { width: 50, source: searchButtonImg, left: deviceIsBig ? 28 : 20 },
     read: { width: 55, source: blueButtonImg },
   };
+
 
   return (
     <BottomBar
@@ -140,15 +142,15 @@ const BottomBarWithButtons = (props) => {
 
       <Container>
         <ButtonsContainer>
-          <Button zIndex={2} width={80} source={btnInf1} resizeMode='contain' left={18} bottom={7}>
+          <Button zIndex={2} width={deviceIsBig ? 98 : 80} source={btnInf1} resizeMode='contain' left={18} bottom={7}>
             {renderButton(TaskButton, elementProps.task, pressTaskButton)}
           </Button>
 
-          <Button zIndex={1} width={80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
+          <Button zIndex={1} width={deviceIsBig ? 92 : 80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
             {renderButton(SearchButton, elementProps.search, pressSearchButton)}
           </Button>
 
-          <Button zIndex={0} width={81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
+          <Button zIndex={0} width={deviceIsBig ? 96 : 81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
             {renderButton(RandomButton, elementProps.random, goToRandomContent)}
           </Button>
         </ButtonsContainer>

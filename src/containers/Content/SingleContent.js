@@ -3,17 +3,26 @@ import {
   View,
   Alert,
   ScrollView,
-  Image,
+  ImageBackground,
   Dimensions,
   StyleSheet,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   KeyboardAvoidingView,
+  Text,
+  WebView,
+  Platform,
+  YouTube,
+  log,
 } from 'react-native';
+import {
+  WebBrowser,
+} from 'expo';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import uuid from 'uuid/v4'
 
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -28,11 +37,14 @@ import ActionsHeader from './ActionsContentMax';
 import NoteInput from '../../commons/components/NoteInput/NoteInput';
 import { YoutubePlayer } from '../../commons/components/VideoPlayer';
 import { youtube } from '../../commons/utils';
+import ContentImagePreview from '../../commons/components/ContentComponents/ContentImagePreview'
 import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
+import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
 
 // Redux
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
+// import treeActions from '../../actions/treeActions';
 
 const { width } = Dimensions.get('window');
 
@@ -73,8 +85,8 @@ const Divider = styled(View)`
   align-self: stretch;
 `;
 
-const VideoImg = styled(Image)`
-  width: 130;
+const VideoImg = styled(ImageBackground)`
+  width: 45%;
   height: 100;
   justify-content: center;
   align-items: center;
@@ -83,6 +95,8 @@ const VideoImg = styled(Image)`
 `;
 const VideoContainer = styled(View)`
   flex: 1;
+  width: 100%;
+  position: relative;
   flex-flow: row wrap;
   justify-content: space-around;
   margin-vertical: ${Size.spaceSmall};
@@ -113,6 +127,9 @@ const styles = StyleSheet.create({
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
   storeNotesAsync: userActions.storeNotesAsync,
   storeAsFavoriteAsync: userActions.storeAsFavoriteAsync,
+  // loadTreeAsync: treeActions.loadTreeAsync,
+  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
+  playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -121,27 +138,41 @@ export default class SingleContentScene extends Component {
     currentVideoId: '',
     actionSheetsVisible: false,
     favorite: false,
+    reading: false,
+    animationFinished: false,
+    hasTest: false,
+    isShowingContent: true,
   }
 
-  componentDidMount() {
-    this.loadContentAsync();
+  async componentDidMount() {
+    await this.loadContentAsync();
   }
 
   loadContentAsync = async () => {
     const { loadContentByIdAsync, content_id, neuron_id } = this.props;
+
     try {
       await loadContentByIdAsync(neuron_id, content_id);
-      this.toggleLoading();
     } catch (error) {
       this.showErrorMessage();
     }
+
+    this.toggleLoading(false);
   }
 
   setModalVisible(visible, currentId = '') {
+    const { stopCurrentBackgroundAudio, playCurrentBackgroundAudio } = this.props;
+
     this.setState({
       videoModalVisible: visible,
       currentVideoId: currentId,
     });
+
+    if(visible) {
+      stopCurrentBackgroundAudio();
+    } else {
+      playCurrentBackgroundAudio();
+    }
   }
 
   toggleActionSheets = () => {
@@ -188,50 +219,89 @@ export default class SingleContentScene extends Component {
   storeAsFavorite = async (neuronId, contentId) => {
     const { storeAsFavoriteAsync } = this.props;
 
-    const res = await storeAsFavoriteAsync(neuronId, contentId);
-    if (res.status === 200) this.setState({ favorite: res.data.favorite });
+    try {
+      const res = await storeAsFavoriteAsync(neuronId, contentId);
+      this.setState((prevState) => ({ favorite: res.data.favorite, actionSheetsVisible: false }));
+    } catch (error) {
+      this.showAlert('Error al guardar como favorito');
+      throw new Error(error);
+    }
   };
 
   redirectTo = (route) => {
     Actions.refresh(route);
   }
 
+  afterFinishAnimation = async (neuronId) => {
+    const { loadNeuronByIdAsync } = this.props;
+    const { hasTest } = this.state;
+
+    this.setState({ reading: false, isShowingContent: false });
+
+    if (hasTest) {
+      Actions.quiz({ type: ActionConst.RESET });
+    } else {
+      try {
+        await loadNeuronByIdAsync(neuronId);
+        Actions.pop();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
   readContent = async (neuronId, contentId) => {
     const { readContentAsync, loadNeuronByIdAsync } = this.props;
-    this.toggleLoading();
-    try {
-      const res = await readContentAsync(neuronId, contentId);
+    const { reading } = this.state;
 
-      const { data } = res;
-      if(data === undefined) return;
+    if(!reading) {
+      this.setState({ loading: true, reading: true });
 
-      if (data.test) {
-          this.toggleLoading();
-        Actions.quiz({type: ActionConst.RESET});
-      } else {
-        this.showAlert(
-          'Contenido aprendido',
-          async () => {
-            await loadNeuronByIdAsync(neuronId);
-              this.toggleLoading();
-            Actions.pop();
-          },
-        );
+      try {
+        const res = await readContentAsync(neuronId, contentId);
+        const { data } = res;
+
+        await this.setState({
+          hasTest: (data || {}).test || false,
+        });
+
+      } catch (error) {
+        console.log('ERROR TO READ CONTENT', error.message);
+        this.showErrorMessage();
       }
-    } catch (error) {
-      this.showErrorMessage();
     }
+
   };
 
   showErrorMessage() {
-    this.toggleLoading();
-    this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde', () => Actions.pop());
+    this.toggleLoading(
+      false,
+      () => {
+        setTimeout(() => {
+          this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde')
+        }, 200)
+      }
+    );
   }
 
-  toggleLoading() {
+  toggleLoading(display = true, cb) {
     this.setState(prevState => ({
-      loading: !prevState.loading
-    }));
+      loading: display
+    }), cb);
+  }
+
+  handleOpenLinks = (url) => {
+    if(url) {
+      WebBrowser.openBrowserAsync(url);
+    }
+  }
+
+  goToSingleContent = (contentId, neuronId, title) => {
+    Actions.singleContent({
+      content_id: contentId,
+      neuron_id: neuronId,
+      title,
+    })
   }
 
   render() {
@@ -240,9 +310,10 @@ export default class SingleContentScene extends Component {
     const {
       loading,
       videoModalVisible,
-      currentVideoId,
       actionSheetsVisible,
       favorite,
+      reading,
+      isShowingContent,
     } = this.state;
 
     const options = [
@@ -261,8 +332,8 @@ export default class SingleContentScene extends Component {
 
     return (
       <MoiBackground>
-        {loading && <Preloader />}
-        {!loading && (
+        {(loading && !reading) && <Preloader />}
+        {!loading && isShowingContent && (
           <ContentBox>
             <KeyboardAvoidingView keyboardVerticalOffset={50} behavior="padding">
               <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -277,6 +348,7 @@ export default class SingleContentScene extends Component {
                   autoplay
                   size={{ height: 200, width: (width - Size.spaceXLarge) }}
                   images={content.media}
+                  videos={content.videos}
                 />
 
                 <ActionsHeader>
@@ -296,9 +368,11 @@ export default class SingleContentScene extends Component {
 
                 <Section>
                   <Header inverted bolder>Links</Header>
-                  {content.links.map((link, i) => (
+                  {((content || {}).links || []).map((link, i) => (
                     <TextLeftBorder key={i}>
-                      <TextBody inverted>{link}</TextBody>
+                      <TouchableOpacity onPress={() => this.handleOpenLinks(link)}>
+                        <TextBody inverted>{link}</TextBody>
+                      </TouchableOpacity>
                     </TextLeftBorder>
                   ))}
                 </Section>
@@ -315,28 +389,22 @@ export default class SingleContentScene extends Component {
 
                 <Section notBottomSpace>
                   <Header inverted bolder>Recomendados</Header>
-                  <VideoContainer>
-                    {content.videos &&
-                      content.videos.length > 0 &&
-                      content.videos.map((video, i) => {
-                        const videoId = youtube.extractIdFromUrl(video.url);
 
-                        if (videoId) {
-                          return (
-                            <TouchableWithoutFeedback key={i} onPress={() => this.setModalVisible(!this.state.videoModalVisible, videoId)}>
-                              <VideoImg
-                                source={{ uri: `https:${video.thumbnail}` }}
-                                resizeMode="cover"
-                                >
-                                  <PlayIcon name='play-circle' size={40} />
-                                </VideoImg>
-                              </TouchableWithoutFeedback>
-                            );
-                          }
-                        })
-                      }
-                    </VideoContainer>
-                  </Section>
+                  <VideoContainer>
+                    {((content || {}).recommended_contents || []).map(rContent => {
+                      return (
+                        <ContentImagePreview
+                          data={rContent}
+                          key={uuid()}
+                          width={'46%'}
+                          touchProps={{
+                            onPress:() => this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title),
+                          }}
+                        />
+                      )
+                    })}
+                  </VideoContainer>
+                </Section>
 
                 </ScrollView>
               </KeyboardAvoidingView>
@@ -347,6 +415,16 @@ export default class SingleContentScene extends Component {
           onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
           width={device.dimensions.width}
         />}
+        {/* Animation */}
+        {reading && (
+          <ReadingAnimation
+            ref={ref => this.readingAnim = ref}
+            onFinishAnimation={() => {
+              this.afterFinishAnimation(content.neuron_id);
+            }}
+          />
+        )}
+
         {/* Action Sheets */}
         <ActionSheet
           hasCancelOption
@@ -355,11 +433,11 @@ export default class SingleContentScene extends Component {
           dismiss={this.dismissActionSheets}
         />
         {/* Modal */}
-        <YoutubePlayer
+        {/* <YoutubePlayer
           videoId={currentVideoId}
           visible={videoModalVisible}
           onPressClose={() => this.setModalVisible(false)}
-        />
+        /> */}
 
         <Navbar/>
       </MoiBackground>

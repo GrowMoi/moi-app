@@ -3,11 +3,12 @@ import styled from 'styled-components/native';
 import {
   ScrollView,
   View,
-  FlatList
+  FlatList,
+  Alert,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 import uuid from 'uuid/v4';
 
@@ -20,11 +21,11 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 import { normalize } from '../../commons/utils';
 import { Size } from '../../commons/styles';
 import { Header } from '../../commons/components/Typography';
+import ContentListBox from './ContentListBox';
 
 // Actions
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
-import EmptyState from '../../commons/components/EmptyState';
 
 const Container = styled(View)`
   flex: 1;
@@ -34,95 +35,30 @@ const Container = styled(View)`
 const ContentPreviewAnimatable = Animatable.createAnimatableComponent(ContentPreview);
 
 @connect(store => ({
-  neuronSelected: store.neuron.neuronSelected,
+  // neuronSelected: store.neuron.neuronSelected,
   device: store.device,
-}),
-{
-  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
-  readContentAsync: userActions.readContentAsync,
-})
+  route: store.route,
+}))
 export default class ContentListScene extends Component {
-  state = {
-    loading: true,
-  }
-
-  componentDidMount() {
-    this.getCurrentContents();
-  }
-
-  getCurrentContents = async () => {
-    const { loadNeuronByIdAsync, neuron_id } = this.props;
-    await loadNeuronByIdAsync(neuron_id);
-
-    this.setState({ loading: false });
-  }
-
-  onPressRowcontent = (e, content) => {
-    const { neuronSelected, neuron_id } = this.props;
-
-    Actions.singleContent({
-      content_id: content.id,
-      neuron_id,
-      title: neuronSelected.title,
-    });
-  }
-
   render() {
-    const { loading } = this.state;
-    const { neuronSelected, device } = this.props;
-    const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
+    const { neuronSelected, device, neuron_id } = this.props;
 
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
 
-    let contents;
-    if(neuronSelected !== undefined) {
-      contents = (neuronSelected.contents || []).filter(c => !c.read);
-    }
-    const contentsExist = (contents || []).length > 0;
-
     return (
       <MoiBackground>
-        {!loading ? (
-          <ContentBox>
-            {contentsExist && (
-              <ScrollView contentContainerStyle={containerStyles}>
-                {(contents || []).map((content, i) => {
-                  const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
-                  const oddInverted = i % 2 === 1;
+        <ContentListBox
+          containerStyles={containerStyles}
+          // neuronSelected={neuronSelected}
+          neuronId={neuron_id}
+        />
 
-                  const MILLISECONDS = 100;
-                  const delay = MILLISECONDS * i;
-
-                  return (
-                    <ContentPreview
-                      animationDelay={delay}
-                      key={`${uuid()}-${content.id}`}
-                      width={widthContentPreview}
-                      onPress={e => this.onPressRowcontent(e, content)}
-                      inverted={oddInverted}
-                      title={content.title}
-                      subtitle={normalizeKind}
-                      source={{ uri: content.media[0] }}
-                    />
-                  );
-                })}
-              </ScrollView>
-            )}
-
-            {!contentsExist &&
-              <EmptyState text='Ya haz aprendido todos los contenidos en esta neurona' />
-            }
-          </ContentBox>
-        ) : (
-          <Preloader />
-        )}
-
-        <Navbar/>
+        <Navbar />
         <BottomBarWithButtons
-          readButton={ false }
+          readButton={false}
           width={device.dimensions.width}
         />
       </MoiBackground>

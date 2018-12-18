@@ -8,6 +8,7 @@ import { Size } from '../../commons/styles';
 
 const SectionContent = styled(View)`
   margin-bottom: ${Size.spaceMedium};
+  flex: 1;
 `;
 
 const StyledLine = styled(Line)`
@@ -17,6 +18,7 @@ const StyledLine = styled(Line)`
 
 const StyledSettingsSection = styled(View)`
   margin-top: ${Size.spaceMedium};
+  flex: 1;
 `;
 
 const SettingsSection = ({ children, title }) => (

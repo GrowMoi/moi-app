@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { View, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import Level1 from './Level1';
 import Neuron from './Neuron';
 import { FLORECIDA } from '../../../constants';
@@ -20,7 +19,16 @@ import colorRightCenter from '../../../../assets/images/tree/nivel_2/nivel_2_col
 import colorLeftCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_left_center.png';
 import colorLeft from '../../../../assets/images/tree/nivel_2/nivel_2_color_left.png';
 
-const Container = styled(View)`
+// Redux
+import { connect } from 'react-redux';
+import neuronActions from '../../../actions/neuronActions';
+
+const Container = styled(TouchableWithoutFeedback)`
+  flex: 1;
+  position: relative;
+`;
+
+const LevelContainer = styled(View)`
   flex: 1;
   position: relative;
 `;
@@ -39,7 +47,7 @@ const sideBranchHeight = 573;
 const sideBranchWidth = 397;
 const aspectSideBranch = sideBranchWidth / sideBranchHeight;
 
-const RightBranch = styled(Image)`
+const RightBranch = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspectSideBranch)};
   position: absolute;
@@ -48,7 +56,7 @@ const RightBranch = styled(Image)`
   overflow: visible;
 `;
 
-const LeftBranch = styled(Image)`
+const LeftBranch = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspectSideBranch)};
   position: absolute;
@@ -61,7 +69,7 @@ const simpleBranchHeight = 496;
 const simpleBranchWidth = 270;
 const aspectSimpleBranch = simpleBranchWidth / simpleBranchHeight;
 
-const LeftCenterBranch = styled(Image)`
+const LeftCenterBranch = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspectSimpleBranch)};
   position: absolute;
@@ -70,7 +78,7 @@ const LeftCenterBranch = styled(Image)`
   overflow: visible;
 `;
 
-const RightCenterBranch = styled(Image)`
+const RightCenterBranch = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => Math.round(props.width / aspectSimpleBranch)};
   position: absolute;
@@ -126,13 +134,29 @@ const levelConfig = {
   },
 };
 
+@connect(state => ({
+  label: state.neuron.currentlyPressed,
+}), {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo
+})
 export default class Level2 extends Component {
-  state = {
-    loading: true,
+
+  hideWoodLabel = () => {
+    const { setNeuronLabelInfo } = this.props;
+    setNeuronLabelInfo({});
   }
 
-  onPressNeuron = (e, data) => {
-    Actions.content({ title: data.title, neuron_id: data.id });
+  onPressNeuron = (measure, data) => {
+    const { setNeuronLabelInfo, label } = this.props;
+
+    // Actions.content({ title: data.title, neuron_id: data.id });
+
+    if(data.id === label.id) {
+      setNeuronLabelInfo({});
+      return;
+    }
+
+    setNeuronLabelInfo({ ...measure, ...data });
   }
 
   renderTreeBranch = (branchDirection, neuronData, index) => {
@@ -142,7 +166,7 @@ export default class Level2 extends Component {
     const StyledComponent = tree.branch.styles;
 
     const neuronPrivateProps = neuronData && {
-      onPress: e => this.onPressNeuron(e, neuronData),
+      onPress: (measure) => this.onPressNeuron(measure, neuronData),
       id: neuronData.id,
       name: neuronData.title,
       contentsLearned: neuronData.learnt_contents,
@@ -184,18 +208,20 @@ export default class Level2 extends Component {
     const { userTree } = this.props;
 
     return (
-      <Container>
-        {!!userTree.tree && (
-          <Level1 userTree={userTree}>
-            <BranchContainer>
-              {userTree.tree.root.children.length > 0 && (
-                userTree.tree.root.children.map((child, i) => (
-                  this.currentBranch(child, i)
-                ))
-              )}
-            </BranchContainer>
-          </Level1>
-        )}
+      <Container onPress={this.hideWoodLabel}>
+        <LevelContainer>
+          {!!userTree.tree && (
+            <Level1 userTree={userTree}>
+              <BranchContainer>
+                {userTree.tree.root.children.length > 0 && (
+                  userTree.tree.root.children.map((child, i) => (
+                    this.currentBranch(child, i)
+                  ))
+                )}
+              </BranchContainer>
+            </Level1>
+          )}
+        </LevelContainer>
       </Container>
     );
   }

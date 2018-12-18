@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
+import { connect } from 'react-redux';
 import { getHeightAspectRatio } from '../../utils';
 import NeuronsLayer from './NeuronsLayer';
+import neuronActions from '../../../actions/neuronActions';
 import Branches from './allBranches';
 
 import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
 import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
 import arbolNivel5Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel5_gris.png';
-import arbolNivel6Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel6_gris.png';
-import arbolNivel7Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel7_gris.png';
-import arbolNivel8Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel8_gris.png';
-import arbolNivel9Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol-nivel9_gris.png';
+import arbolNivel6Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel6_gris.png';
+import arbolNivel7Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel7_gris.png';
+import arbolNivel8Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel8_gris.png';
+import arbolNivel9Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel9_gris.png';
 import arbolColorNivel2 from '../../../../assets/images/tree/arbol_adulto/nivel_2/arbol_nivel2_color.png';
 
-const Container = styled(View)`
+const Container = styled(TouchableWithoutFeedback)`
   flex: 1;
   position: relative;
 `;
@@ -39,9 +41,30 @@ const Levels = styled(View)`
   overflow: visible;
 `;
 
+@connect(state => ({
+  label: state.neuron.currentlyPressed,
+  device: state.device,
+}), {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+})
 export default class AllLevels extends Component {
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.device.dimensions.orientation !== this.props.device.dimensions.orientation) {
+      this.props.setNeuronLabelInfo({});
+    }
+  }
+
+  hideWoodLabel = () => {
+    const { setNeuronLabelInfo } = this.props;
+    setNeuronLabelInfo({});
+  }
+
   render() {
-    const { userTree: { tree, meta: { depth } } } = this.props;
+    const {
+      userTree: { tree, meta: { depth } },
+    } = this.props;
+
     const isLevel4 = depth === 4;
     const isLevel3 = depth === 3;
     const isLevel5 = depth === 5;
@@ -62,7 +85,7 @@ export default class AllLevels extends Component {
     };
 
     return (
-      <Container>
+      <Container onPress={this.hideWoodLabel}>
         <Levels>
           {isLevel5 && <TreeBase source={arbolNivel5Gris} {...defaultProps}/>}
           {isLevel4 && <TreeBase source={arbolNivel4Gris} {...defaultProps}/>}

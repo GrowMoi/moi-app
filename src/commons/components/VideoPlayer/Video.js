@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, Modal } from 'react-native';
-import { Video as ExpoVideo } from 'expo';
+import { Video as ExpoVideo, ScreenOrientation } from 'expo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components/native';
 import { getHeightAspectRatio } from '../../utils';
 import { Palette } from '../../styles';
-import { Sound } from '../SoundPlayer';
+
+// Actions
+import neuronActions from '../../../actions/neuronActions';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -22,37 +25,51 @@ const CloseIcon = styled(Ionicons)`
   background-color: transparent;
 `;
 
+@connect(store => ({}),
+{
+  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
+  playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
+})
 class Video extends Component {
 
   componentWillUpdate(nextProps) {
-    const { visible } = nextProps;
-    Sound.pause();
+    const { visible, stopCurrentBackgroundAudio, playCurrentBackgroundAudio } = this.props;
+
+    if(!visible && nextProps.visible) {
+        stopCurrentBackgroundAudio();
+    } else if(visible && !nextProps.visible) {
+        playCurrentBackgroundAudio();
+    }
+
     return true;
   }
 
   render() {
-    const { source, animationType , visible , dismiss, videoDimensions, width, modalProps, videoProps } = this.props;
+    const { source, animationType , visible , dismiss, videoDimensions, width, modalProps, videoProps, onPlaybackStatusUpdate, showCloseIcon } = this.props;
 
     return (
           <Modal {...modalProps}
             animationType={animationType}
             visible={visible}
-            supportedOrientations={['portrait', 'landscape']}
+            supportedOrientations={['landscape']}
           >
             <Overlay>
-              <CloseIcon
+              {showCloseIcon && <CloseIcon
                 name='md-close'
                 color='white'
                 size={35}
                 onPress={dismiss}
-              />
+              />}
               <ExpoVideo
                 {...videoProps}
                 source={source}
                 rate={1.0}
                 volume={1.0}
                 isMuted={false}
-                resizeMode={ExpoVideo.RESIZE_MODE_STRETCH}
+                isPortrait={false}
+                resizeMode={ExpoVideo.RESIZE_MODE_CONTAIN}
+                onPlaybackStatusUpdate={onPlaybackStatusUpdate}
+                switchToLandscape={()=>ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE)}
                 shouldPlay
                 style={{
                   width,
@@ -69,6 +86,7 @@ class Video extends Component {
 Video.defaultProps = {
   animationType: 'fade',
   visible: false,
+  showCloseIcon: true,
 }
 
 export default Video;

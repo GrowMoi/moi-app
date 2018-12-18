@@ -1,26 +1,42 @@
 {
   "expo": {
-    "sdkVersion": "19.0.0",
+    "version": "0.4.2",
+    "sdkVersion": "30.0.0",
+    "slug": "moi",
     "name": "Moi",
-    "version": "1.0.0",
-    "slug": "moi-app",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "cover"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "packagerOpts": {
       "assetExts": [
         "ttf",
         "otf"
       ]
     },
+    "assetBundlePatterns": [
+      "assets/images/***/*"
+    ],
     "ios": {
-      "bundleIdentifier": "com.growmoi.moi"
+      "bundleIdentifier": "com.growmoisociallearning.moiapp",
+      "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json",
+      "buildNumber": "1"
     },
     "android": {
-      "package": "com.growmoi.moi"
+      "package": "com.growmoisociallearning.moiapp",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
     "isDetached": true,
     "detach": {
-      "scheme": "exp38ad664a8eed498684a294850b285443",
-      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v1.18.2-sdk19.0.0-3fabbbb7-61b3-4a1e-9932-12d0aa6af276.tar.gz",
-      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v1.18.4-sdk19.0.0-3fb414c9-8696-4966-a0ac-9ca424242424.tar.gz"
-    }
+      "scheme": "exp7b71e38c6d4c49f7a48f85925ea68e4b",
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.8.4-sdk30.0.0-3de13133-1adc-4ba1-8569-a84011e570b4.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.8.1-sdk30.0.0-271c32ab-0715-4dfb-8270-ecead3679bb4.tar.gz"
+    },
+    "scheme": "expe1d3413d6d34426fa93c22dc0b382003"
   }
 }

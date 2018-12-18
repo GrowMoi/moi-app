@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 import { TextBody, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
+import learntCheck from '../../../../assets/images/miscelaneous/check.png';
 
 const RowContainer = styled(View)`
   flex-direction: row;
@@ -63,6 +64,24 @@ const CloseAction = styled(TouchableOpacity)`
   justify-content: center;
 `;
 
+const LearntImage = styled(Image)`
+  position: absolute;
+  top: -10;
+  right: -5;
+  width: 50;
+  height: 50;
+`
+
+const LearntOverlay = styled(View)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 10;
+`
+
 export default class ContentPreview extends Component {
   static propTypes = {
     inverted: PropTypes.bool,
@@ -78,6 +97,7 @@ export default class ContentPreview extends Component {
     width: PropTypes.number,
     closeButton: PropTypes.bool,
     onPressCloseButton: PropTypes.func,
+    learnt: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -122,7 +142,7 @@ export default class ContentPreview extends Component {
   }
 
   render() {
-    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false } = this.props;
+    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false, learnt = false } = this.props;
     const closeAction = closeButton && (
       <CloseAction onPress={() => onPressCloseButton && onPressCloseButton(id)}>
         <Ionicons name='md-close' size={15} color={Palette.white.css()}/>
@@ -135,6 +155,11 @@ export default class ContentPreview extends Component {
           <RowContainer id={id} inverted={inverted}>
             {closeAction}
             {this.rowContent()}
+            {learnt && (
+              <LearntOverlay>
+                <LearntImage source={learntCheck} resizeMode='contain' />
+              </LearntOverlay>
+            )}
           </RowContainer>
         </Animatable.View>
       </TouchableWithoutFeedback>

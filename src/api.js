@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as constants from './constants';
+import { AsyncStorage } from 'react-native';
 
 export const client = axios.create({
   baseURL: constants.URL_BASE,
@@ -33,11 +34,40 @@ const api = {
       const res = await client.post(endpoint, { login, authorization_key });
       return res;
     },
+    async register({ username, email, age, school, country, city, authorization_key }) {
+      const endpoint = '/api/auth/user';
+      const res = await client.post(endpoint, { username, email, age, school, country, city, authorization_key });
+      return res;
+    },
     async validation() {
       const endpoint = '/api/auth/user/validate_token';
-      const headers = client.defaults.headers.common;
-      const res = await client.get(endpoint, headers);
-      return res;
+      let headers = client.defaults.headers.common;
+
+      const AUTH_HEADERS = ['access-token', 'token-type', 'client', 'expiry', 'uid'];
+
+      // Verify if in the keys exist an access token.
+      const hasAccessTokenStored = await AsyncStorage.getItem('access-token');
+      if(hasAccessTokenStored) {
+        const storeHeaders = await AsyncStorage.multiGet(AUTH_HEADERS);
+        storeHeaders.forEach(([key, value]) => {
+          headers = {
+            ...headers,
+            [key]: value,
+          }
+        })
+      } else {
+        // Remove keys and nothing more to do.
+        await AsyncStorage.multiRemove(AUTH_HEADERS);
+        throw new Error('Not have access token stored');
+      }
+
+      try {
+        const res = await client.get(endpoint, headers);
+        return res;
+      } catch (error) {
+
+        throw new Error(error.message);
+      }
     },
     async signOut() {
       const endpoint = '/api/auth/user/sign_out';
@@ -74,6 +104,11 @@ const api = {
       const res = await client.put(endpoint, { id });
       return res;
     },
+    async getNotes(page) {
+      const endpoint = '/api/users/content_notes';
+      const res = await client.get(endpoint, { params: { page } });
+      return res;
+    },
   },
 
   leaderboard: {
@@ -102,8 +137,12 @@ const api = {
     },
     async readContent(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/read`;
-      const res = await client.post(endpoint, { neuron_id: neuronId, content_id: contentId });
-      return res;
+      try {
+        const res = await client.post(endpoint, { neuron_id: neuronId, content_id: contentId });
+        return res;
+      } catch (error) {
+        throw new Error(error);
+      }
     },
     async storeNotes(neuronId = 1, contentId = 1, notes) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/notes`;
@@ -116,6 +155,17 @@ const api = {
       const res = await client.get(endpoint);
       return res;
     },
+
+    async getRecommendedContentsOfMaxContent(neuronId = 1, kind) {
+      const endpoint = `/api/neurons/${neuronId}/recommended_contents/${kind}`
+
+      try {
+        const res = await client.get(endpoint);
+        return res
+      } catch (error) {
+        throw new Error(error)
+      }
+    }
   },
 
   preferences: {
@@ -129,8 +179,13 @@ const api = {
   trees: {
     async getTree(username) {
       const endpoint = '/api/tree';
-      const res = await client.get(endpoint, { params: { username } });
-      return res;
+
+      try {
+        const res = await client.get(endpoint, { params: { username } });
+        return res;
+      } catch (error) {
+        throw new Error(error);
+      }
     },
   },
 
@@ -149,6 +204,49 @@ const api = {
       return res;
     },
   },
+
+  notifications: {
+    async getNotifications(page = 1) {
+      const endpoint = '/api/notifications';
+      const res = await client.get(endpoint, { params: { page } });
+      return res;
+    },
+    async readNotificationById(id) {
+      const endpoint = `/api/notifications/${id}/read_notifications`;
+      const res = await client.post(endpoint, { id });
+      return res;
+    }
+  },
+
+  tutors: {
+    async getRecomendations(page = 1, data_format = 'contents') {
+      const endpoint = '/api/tutors/recommendations';
+      const res = await client.get(endpoint, { params: { page, data_format } })
+      return res;
+    }
+  },
+
+  players: {
+    async getQuizForPlayer(quizId, playerId) {
+      const endpoint = `/api/quizzes/${quizId}/players/${playerId}`;
+      const res = await client.get(endpoint, { params: { quiz_id: quizId, player_id: playerId } });
+      return res;
+    },
+
+    async evaluateQuiz(quizId, playerId, answers) {
+      const endpoint = `/api/quizzes/${quizId}/players/${playerId}/answer`;
+
+      const res = await client.post(
+        endpoint,
+        {
+          quiz_id: quizId,
+          player_id: playerId,
+          answers: JSON.stringify(answers),
+        }
+      );
+      return res;
+    },
+  }
 };
 
 export default api;

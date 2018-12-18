@@ -16,7 +16,7 @@ import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { Palette, Size } from '../../commons/styles';
 import LeaderRow from '../../commons/components/LeaderRow/LeaderRow';
-import { normalize } from '../../commons/utils';
+import { object } from '../../commons/utils';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
 import Item from '../../commons/components/Item/Item';
@@ -38,7 +38,6 @@ const FrameContainer = styled(View)`
 `;
 
 @connect(state => ({
-  leaders: state.leaderboard.leaders,
   device: state.device,
   achievements: state.user.achievements,
 }), {
@@ -54,27 +53,25 @@ export default class Inventory extends Component {
 
   updateItem = async ({ id, name }) => {
     const { updateAchievementsAsync } = this.props;
+    this.showLoading();
 
     if(id) {
       try {
-        this.toggleLoading();
-        await updateAchievementsAsync(id);     
-        this.toggleLoading();
-      } catch(error) {  
+        await updateAchievementsAsync(id);
+        this.showLoading(false);
+      } catch(error) {
         this.showErrorMessage();
       }
     }
   }
 
   showErrorMessage() {
-    this.toggleLoading();
+    this.showLoading(false);
     this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde', () => Actions.pop());
   }
 
-  toggleLoading() {
-    this.setState(prevState => ({
-      loading: !prevState.loading
-    }));
+  showLoading(isVisible = true) {
+    this.setState({ loading: isVisible });
   }
 
   showVideo = (show = true, vineta = vineta_1) => {
@@ -136,7 +133,7 @@ export default class Inventory extends Component {
 
   render() {
     const { modalVisible, currentVineta, loading } = this.state;
-    const { device: { dimensions: { width, height } }, achievements } = this.props;
+    const { device: { dimensions: { width, height } }, achievements = [] } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
 
@@ -147,7 +144,8 @@ export default class Inventory extends Component {
         height: 720
     };
 
-    if(!(achievements || []).length) return <TextBody>No tienes logros ganados</TextBody>;
+    const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
+
     return (
       <MoiBackground>
         <Navbar />
@@ -156,10 +154,14 @@ export default class Inventory extends Component {
           <LeaderFrame width={leaderFramePadding}>
             <WoodFrame width={woodFramePadding}>
               <FlatList
-                data={achievements}
+                data={sortedAchievements}
+                ListEmptyComponent={
+                  <TextBody center>No tienes logros ganados aún</TextBody>
+                }
                 renderItem={this._renderItem}
                 keyExtractor={this._keyExtractor}
                 numColumns={2}
+                columnWrapperStyle={{ justifyContent: 'center' }}
               />
             </WoodFrame>
           </LeaderFrame>

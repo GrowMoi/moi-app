@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, AsyncStorage } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import ViewTransformer from 'react-native-view-transformer';
+import ViewTransformer from 'react-native-view-transformer-next';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
+import { Video } from '../../../commons/components/VideoPlayer';
+import vineta_1 from '../../../../assets/videos/vineta_1.mp4';
+import LabelsLayer from './LabelsLayer'
 
 // Levels
 import Level1 from './Level1';
@@ -14,6 +17,7 @@ import Level2 from './Level2';
 import Level3 from './Level3';
 import AllLevels from './AllLevels';
 import userActions from '../../../actions/userActions';
+import neuronActions from '../../../actions/neuronActions';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -43,6 +47,9 @@ const MacetaContainer = styled(View)`
   loadTreeAsync: treeActions.loadTreeAsync,
   getUserProfileAsync: userActions.getUserProfileAsync,
   getAchievementsAsync: userActions.getAchievementsAsync,
+  setZoomTreeInfo: treeActions.setZoomTreeInfo,
+  setZoomScale: treeActions.setZoomScaleTree,
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
 })
 export default class Tree extends Component {
   state = {
@@ -50,6 +57,13 @@ export default class Tree extends Component {
     hasUserTree: false,
     level: null,
     zoomScale: 1,
+    modalVisible: false,
+  }
+
+  constructor(props) {
+    super(props);
+    this.onViewTransformed = this.onViewTransformed.bind(this);
+    this.onTransformGestureReleased = this.onTransformGestureReleased.bind(this);
   }
 
   initialActions = async () => {
@@ -66,6 +80,38 @@ export default class Tree extends Component {
     await this.initialActions();
     this.getTreeLevel();
     this.setState({ loading: false });
+    this.handleVideoFirstLogin();
+  }
+
+  handleVideoFirstLogin = async () => {
+    const { userTree } = this.props;
+
+    if(!userTree.tree) return;
+
+    const videoShown = await AsyncStorage.getItem('videoShown');
+    if(!videoShown && userTree.tree.root.learnt_contents === 0) this.showVideo();
+  }
+
+  showVideo = (show = true) => {
+    this.setState({ modalVisible: show});
+  }
+
+  onPlaybackStatusUpdate = async (playbackStatus) => {
+      if(playbackStatus.didJustFinish) {
+          await AsyncStorage.setItem('videoShown', "true");
+          this.showVideo(false);
+      }
+  }
+
+  onViewTransformed (zoomInfo) {
+    const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
+    setZoomTreeInfo(zoomInfo);
+    setNeuronLabelInfo({});
+  }
+
+  onTransformGestureReleased(zoomInfo) {
+    const { setZoomTreeInfo } = this.props;
+    setZoomTreeInfo(zoomInfo);
   }
 
   selectCurrentLevel = (userTree) => {
@@ -77,7 +123,7 @@ export default class Tree extends Component {
       tree1: <Level1 { ...levelData } />,
       tree2: <Level2 { ...levelData } />,
       tree3: <Level3 { ...levelData } />,
-      allLevels: <AllLevels { ...levelData } />,
+      allLevels: <AllLevels { ...levelData } zoomScale={4}/>,
     };
 
     switch (level) {
@@ -86,7 +132,7 @@ export default class Tree extends Component {
       case 2:
         return { component: levels.tree2, zoomScale: 1 };
       case 3:
-        return { component: levels.allLevels, zoomScale: 2 };
+        return { component: levels.allLevels, zoomScale: 3 };
       case 4:
         return { component: levels.allLevels, zoomScale: 3 };
       case 5:
@@ -105,7 +151,7 @@ export default class Tree extends Component {
   }
 
   getTreeLevel = () => {
-    const { userTree } = this.props;
+    const { userTree, setZoomScale } = this.props;
 
     if (userTree.meta) {
       const currentLevel = this.selectCurrentLevel(userTree);
@@ -115,26 +161,53 @@ export default class Tree extends Component {
         level: currentLevel.component,
         zoomScale: currentLevel.zoomScale,
       });
+
+      setZoomScale(currentLevel.zoomScale);
     }
   }
 
   render() {
-    const { loading, level, zoomScale, hasUserTree } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible } = this.state;
+
+    const { device: { dimensions: { width } } } = this.props;
+
+    const videoDimensions = {
+      width: 1280,
+      height: 720
+    };
 
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        <ViewTransformer
-          style={styles.treeView}
+        {!modalVisible &&
+        <Zoom
           maxScale={zoomScale}
+          onViewTransformed={this.onViewTransformed}
+          onTransformGestureReleased={this.onTransformGestureReleased}
         >
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           {level}
-        </ViewTransformer>
+        </Zoom>}
+        {!modalVisible && <LabelsLayer />}
+        {modalVisible && <Video
+          videoDimensions={videoDimensions}
+          source={vineta_1}
+          dismiss={() => this.showVideo(false)}
+          visible={modalVisible}
+          width={width}
+          onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
+          showCloseIcon={false}
+        />}
       </TreeContainer>
     );
   }
 }
+
+const Zoom = styled(ViewTransformer)`
+  overflow: visible;
+  position: relative;
+  flex: 1;
+`;
 
 Tree.propTypes = {
   device: PropTypes.any,
