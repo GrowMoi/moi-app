@@ -246,6 +246,24 @@ const api = {
       );
       return res;
     },
+
+    async getFinalTest() {
+      const endpoint = `/api/users/final_test`;
+      const res = await client.post(endpoint, {});
+      return res;
+    },
+
+    async evaluateFinalTest(finalTestId, answers) {
+      const endpoint = `/api/users/final_test/${finalTestId}/answer`;
+      const res = await client.post(
+        endpoint,
+        {
+          id: finalTestId,
+          answers: answers,
+        }
+      );
+      return res;
+    },
   }
 };
 

@@ -37,6 +37,10 @@ const items = {
     source: require('../../../../assets/images/items/inventario9.png'),
     inactive: require('../../../../assets/images/items/inventario9_inactive.png'),
   },
+  10: {
+    source: require('../../../../assets/images/items/inventario6.png'),
+    inactive: require('../../../../assets/images/items/inventario6_inactive.png'),
+  },
 }
 
 export default {

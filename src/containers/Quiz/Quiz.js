@@ -11,6 +11,8 @@ import userActions from '../../actions/userActions';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import ComplementaryScene from './ComplementaryQuizScene';
 import Preloader from '../../commons/components/Preloader/Preloader';
+import { Video } from '../../commons/components/VideoPlayer';
+import creditos from '../../../assets/videos/creditos.mp4';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -26,18 +28,40 @@ const QuizSceneContainer = styled(View)`
 
 @connect(store => ({
   quiz: store.user.quiz,
+  device: store.device,
 }), {
   learnContentsAsync: userActions.learnContentsAsync,
+  evaluateFinalTestAsync: userActions.evaluateFinalTestAsync,
+  saveResultFinalTest: userActions.saveResultFinalTest,
 })
 export default class QuizScene extends Component {
   state = {
     currentScene: 'intro',
     results: [],
     loading: false,
+    modalVisible: false,
+    resultFinalTest: null,
+  }
+
+  showVideo = (show = true) => {
+    this.setState({ modalVisible: show});
+  }
+
+  saveResultFinalTest = () => {
+    const { saveResultFinalTest } = this.props;
+    saveResultFinalTest(this.state.resultFinalTest);
+  }
+
+  onPlaybackStatusUpdate = async (playbackStatus) => {
+      if(playbackStatus.didJustFinish) {
+        this.showVideo(false);
+        this.saveResultFinalTest();
+        Actions.inventory({ type: 'reset' });
+      }
   }
 
   quizFinished = async (answers) => {
-    const { quiz, learnContentsAsync } = this.props;
+    const { quiz, learnContentsAsync, evaluateFinalTestAsync } = this.props;
 
     const allAnswers = answers.map(answer => ({
       answer_id: answer.id,
@@ -45,15 +69,33 @@ export default class QuizScene extends Component {
     }));
     const formatedAnswers = JSON.stringify(allAnswers);
     this.setState({ loading: true });
-    const res = await learnContentsAsync(quiz.id, formatedAnswers);
+    const isFinalTest = quiz.questions.length === 21;
+    const evaluateQuiz = isFinalTest ? evaluateFinalTestAsync : learnContentsAsync;
+    const res = await evaluateQuiz(quiz.id, formatedAnswers);
     this.setState({ loading: false });
 
     const { data } = res;
     if (!data.result) return;
 
+    if (isFinalTest) {
+      this.validateResultFinalTest(data);
+      return;
+    }
+
     const allResults = data.result;
 
     this.setState({ results: allResults, currentScene: 'results' });
+  }
+
+  validateResultFinalTest = (data) => {
+     const correctResults = data.result.filter(response => response.correct);
+
+     const percentajeCorrects = (correctResults.length * 100) / 21;
+     if(percentajeCorrects > 70) {
+      this.setState({resultFinalTest: data});
+      this.showVideo(true);
+     }
+
   }
 
   jumpToScene = (key) => {
@@ -86,8 +128,14 @@ export default class QuizScene extends Component {
   }
 
   render() {
-    const { currentScene, loading } = this.state;
-    const { quiz } = this.props;
+    const { currentScene, loading, modalVisible } = this.state;
+    const { quiz, device: { dimensions: { width } } } = this.props;
+
+    const videoDimensions = {
+      width: 1280,
+      height: 720
+    };
+
     return (
 
       <Background>
@@ -113,6 +161,15 @@ export default class QuizScene extends Component {
         )}
         <Navbar/>
         <BottomBar />
+        {modalVisible && <Video
+          videoDimensions={videoDimensions}
+          source={creditos}
+          dismiss={() => this.showVideo(false)}
+          visible={modalVisible}
+          width={width}
+          onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
+          showCloseIcon={false}
+        />}
       </Background>
     );
   }
