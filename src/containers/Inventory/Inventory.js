@@ -32,7 +32,7 @@ import vineta_4 from '../../../assets/videos/vineta_4.mp4';
 
 import userActions from '../../actions/userActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
-import Degree from '../Degree/Degree';
+import Certificate from '../Certificate/Certificate';
 
 const FrameContainer = styled(View)`
   margin-top: ${Size.navbarHeight};
@@ -194,7 +194,8 @@ export default class Inventory extends Component {
           visible={modalVisible}
           width={width}
         />
-        {finalTestResult && <Degree/>}
+        {/* {finalTestResult && <Certificate/>} */}
+        <Certificate/>
         <BottomBar />
       </MoiBackground>
     );

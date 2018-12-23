@@ -47,7 +47,7 @@ export default class QuizPicker extends Component {
 
           return (
             <Answer selected={selected} key={`${option.id}`} onPress={() => this.onPressOption(option)}>
-              <TextBody color={selected ? colors.lightGreen : 'black'}>{option.text.substring(0, 120)}</TextBody>
+              <TextBody color={selected ? colors.lightGreen : 'black'}>{option.text.substring(0, 100)}</TextBody>
             </Answer>
           );
         })}

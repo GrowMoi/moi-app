@@ -283,4 +283,11 @@ export default [
   require('../images/miscelaneous/button_close.png'),
   require('../images/buttons/wood_texture.png'),
   require('../images/miscelaneous/check.png'),
+
+  // Certificate
+  require('../images/certificate/marco_exterior_H.png'),
+  require('../images/certificate/boton_salir_H.png'),
+  require('../images/certificate/fondo.png'),
+  require('../images/certificate/title.png'),
+
 ];
