@@ -15,6 +15,7 @@ import title from '../../../assets/images/certificate/title.png';
 
 // Actions
 import userActions from '../../actions/userActions';
+import ChartLearnedContent from './ChartLearnedContent';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -56,8 +57,7 @@ const BackgroundCertificate = styled(ImageBackground)`
 `;
 
 const TitleImage = styled(Image)`
-  width: ${props => props.width};
-  height: 40;
+  height: 50;
 `;
 
 const ContainerInfoUser = styled(View)`
@@ -185,7 +185,7 @@ class Certificate extends Component {
               <Background style={style} width={width} height={height} source={marcoExterior} resizeMode='stretch'>
                 <BackgroundCertificate width={width} height={height} source={fondo} resizeMode='stretch' style={styles.container}>
 
-                <View style={styles.row1}>
+                <View style={[styles.row1, {justifyContent: 'center'}]}>
                   <TitleImage source={title} width={width} resizeMode='contain'/>
                 </View>
 
@@ -229,18 +229,19 @@ class Certificate extends Component {
                 </View>
 
                 <View style={[styles.row3, {backgroundColor:"#fff"}]}>
-                  <View style={{flex: 1, backgroundColor:"#fafafa"}}></View>
-                  <View style={{flex: 4, backgroundColor:"#ffa", justifyContent: 'center'}}>
-                    <Text style={{width:'100%', textAlign: 'center'}}>170 contenidos aprendidos</Text>
-                    <Text style={{width:'100%', textAlign: 'center'}}>58% recimiento del arbol</Text>
+                  <View style={{flex: 1.5}}>
+                      <ChartLearnedContent/>
                   </View>
-                  <View style={{flex: 2}}>
-                    <Text>100% ultimo test</Text>
-                    <View style={{flex: 1, flexDirection: 'row'}}>
-                      <Text >00:27</Text>
-                      <Text>tiempo de lectura promedio</Text>
+                  <View style={{flex: 4, justifyContent: 'center'}}>
+                    <Text style={{width:'100%', textAlign: 'center', color: '#219fd1', fontSize:24, fontWeight: '400'}}>170 contenidos aprendidos</Text>
+                    <Text style={{width:'100%', textAlign: 'center', color: '#219fd1', fontWeight: '100'}}>58% recimiento del arbol</Text>
+                  </View>
+                  <View style={{flex: 2, justifyContent: 'center'}}>
+                    <Text style={{color: '#219fd1'}}>100% ultimo test</Text>
+                    <View style={{flexDirection: 'row'}}>
+                      <Text style={{color: '#219fd1'}}>00:27</Text>
+                      <Text style={{color: '#219fd1'}}>tiempo de lectura promedio</Text>
                     </View>
-
                   </View>
                 </View>
                 </BackgroundCertificate>
