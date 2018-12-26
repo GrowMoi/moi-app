@@ -43,6 +43,13 @@ export default class QuizScene extends Component {
     resultFinalTest: null,
   }
 
+  componentDidMount() {
+    const { quiz } = this.props;
+    if(quiz.questions.length === 21) {
+      this.jumpToScene('quiz');
+    }
+  }
+
   showVideo = (show = true) => {
     this.setState({ modalVisible: show});
   }
@@ -94,6 +101,8 @@ export default class QuizScene extends Component {
      if(percentajeCorrects > 70) {
       this.setState({resultFinalTest: data});
       this.showVideo(true);
+     } else {
+      Actions.inventory({ type: 'reset' });
      }
 
   }
