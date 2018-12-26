@@ -1,6 +1,6 @@
-import React, { Component, PixelRatio } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Modal, Text, ImageBackground, TouchableHighlight, Image, StyleSheet } from 'react-native';
+import { View, Modal, Text, ImageBackground, TouchableHighlight, Image, StyleSheet, PixelRatio } from 'react-native';
 import { takeSnapshotAsync } from 'expo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components/native';
@@ -118,48 +118,23 @@ class Certificate extends Component {
 
   async removeResultFinalTest() {
     console.log("eliminar el final test");
-    const { saveResultFinalTest } = this.props;
-    // this.setState({showModal: false});
+    const { device: { dimensions: { width, height } }, saveResultFinalTest, uploadCertificateAsync, saveCertificateAsync } = this.props;
 
-    // const targetPixelCount = 1080; // If you want full HD pictures
-    // const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
-    // // pixels * pixelratio = targetPixelCount, so pixels = targetPixelCount / pixelRatio
-    // const pixels = targetPixelCount / pixelRatio;
-    const { device: { dimensions: { width, height } }, uploadCertificateAsync, saveCertificateAsync } = this.props;
+    const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
 
-    const resultUpload = await takeSnapshotAsync(this.certificateView, {
+    const resultScreenShot = await takeSnapshotAsync(this.certificateView, {
       result: 'base64',
-      height: height,
-      width: width,
+      height: height / pixelRatio,
+      width: width / pixelRatio,
       quality: 1,
       format: 'png',
     });
 
-    // function uploadFile(file) {
-    //     var uploadUrl = 'https://api.cloudinary.com/v1_1/'+cloudName+'/upload';
-    //     var formData = new FormData();
-    //     formData.append('upload_preset', unsignedUploadPreset);
-    //     formData.append('tags', 'browser_upload');
-    //     formData.append('file', file);
+    const uploadedRes = await uploadCertificateAsync('data:image/png;base64,' + resultScreenShot.replace(/(?:\r\n|\r|\n)/g, ''));
 
-    //     return $http({
-    //       url: uploadUrl,
-    //       method: 'POST',
-    //       data: formData,
-    //       headers: { 'Content-Type': undefined,
-    //                 'If-Modified-Since': undefined}
-    //     });
-    //   }
+		console.log("​Certificate -> removeResultFinalTest -> uploadedRes", uploadedRes.secure_url)
 
-
-    // const uploadedRes = await uploadCertificateAsync('data:image/png;base64,' + result);
-		// console.log("​Certificate -> removeResultFinalTest -> result", result)
-		// console.log("​Certificate -> removeResultFinalTest -> uploadedRes", uploadedRes)
-    // console.log("​Certificate -> removeResultFinalTest -> result", result)
-
-    const urlCertificateImage = 'http://res.cloudinary.com/moi-images/image/upload/v1545584511/Social-Moi/tnuz4k6qmrg57b4ufrlz.png';
-
-    const certificateResponse = await saveCertificateAsync(urlCertificateImage);
+    const certificateResponse = await saveCertificateAsync(uploadedRes.secure_url);
 
     saveResultFinalTest(null);
     this.setState({showModal: false});
@@ -176,8 +151,9 @@ class Certificate extends Component {
     // const { animationType, modalProps, device, style, profile } = this.props;
     const { width, height, orientation } = device.dimensions;
 
+    // let finalTestResult = {"result":[{"correct":true,"content_id":295,"question":"asdaf"},{"correct":true,"content_id":128,"question":"asad"},{"correct":true,"content_id":275,"question":"asdf"},{"correct":true,"content_id":216,"question":"asd"},{"correct":true,"content_id":245,"question":"sadf"},{"correct":true,"content_id":325,"question":"asdf"},{"correct":true,"content_id":370,"question":"sdf Esta tb falta"},{"correct":true,"content_id":91,"question":"a"},{"correct":true,"content_id":135,"question":"asdfasd"},{"correct":true,"content_id":342,"question":"asdf"},{"correct":true,"content_id":364,"question":"asdf"},{"correct":true,"content_id":130,"question":"qwerqwe"},{"correct":true,"content_id":226,"question":"asdf"},{"correct":true,"content_id":337,"question":"ad"},{"correct":true,"content_id":77,"question":"como funciona nivel 3?"},{"correct":true,"content_id":175,"question":"sda"},{"correct":true,"content_id":293,"question":"asdf"},{"correct":true,"content_id":125,"question":"asdfasd"},{"correct":true,"content_id":335,"question":"adfadf"},{"correct":true,"content_id":228,"question":"asdf"},{"correct":false,"content_id":305,"question":"asdf"}],"time":"00 :40","contents_learnt_by_branch":[{"id":3,"title":"Aprender","parent_id":1,"total_contents_learnt":36},{"id":10,"title":"Artes","parent_id":1,"total_contents_learnt":46},{"id":8,"title":"Lenguaje","parent_id":1,"total_contents_learnt":34},{"id":9,"title":"Naturaleza","parent_id":1,"total_contents_learnt":42}],"current_learnt_contents":170,"total_approved_contents":310};
+
     const showModal = !!finalTestResult;
-    // const showModal = this.state.showModal;
 
     const styles = StyleSheet.create({
       container: {
