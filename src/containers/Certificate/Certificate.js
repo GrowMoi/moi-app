@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PixelRatio } from 'react';
 import { connect } from 'react-redux';
 import { View, Modal, Text, ImageBackground, TouchableHighlight, Image, StyleSheet } from 'react-native';
-// import { Video as ExpoVideo, ScreenOrientation } from 'expo';
+import { takeSnapshotAsync } from 'expo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components/native';
+// import { captureScreen } from "react-native-view-shot";
 // import { getHeightAspectRatio } from '../../utils';
 // import { Palette } from '../../styles';
 import marcoExterior from '../../../assets/images/certificate/marco_exterior_H.png';
@@ -98,36 +99,85 @@ const InnerTextBox = styled(View)`
 
 @connect(store => ({
   device: store.device,
+  profile: store.user.profile,
   finalTestResult: store.user.finalTestResult,
 }),
 {
   saveResultFinalTest: userActions.saveResultFinalTest,
+  uploadCertificateAsync: userActions.uploadCertificateAsync,
+  saveCertificateAsync: userActions.saveCertificateAsync,
 })
 class Certificate extends Component {
 
-  state = {
-    showModal: true
-  }
+  certificateView = null;
 
   constructor(props) {
     super(props);
     this.removeResultFinalTest = this.removeResultFinalTest.bind(this);
   }
 
-  removeResultFinalTest() {
+  async removeResultFinalTest() {
     console.log("eliminar el final test");
-    // const { saveResultFinalTest } = this.props;
-    // saveResultFinalTest(null);
+    const { saveResultFinalTest } = this.props;
+    // this.setState({showModal: false});
+
+    // const targetPixelCount = 1080; // If you want full HD pictures
+    // const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
+    // // pixels * pixelratio = targetPixelCount, so pixels = targetPixelCount / pixelRatio
+    // const pixels = targetPixelCount / pixelRatio;
+    const { device: { dimensions: { width, height } }, uploadCertificateAsync, saveCertificateAsync } = this.props;
+
+    const resultUpload = await takeSnapshotAsync(this.certificateView, {
+      result: 'base64',
+      height: height,
+      width: width,
+      quality: 1,
+      format: 'png',
+    });
+
+    // function uploadFile(file) {
+    //     var uploadUrl = 'https://api.cloudinary.com/v1_1/'+cloudName+'/upload';
+    //     var formData = new FormData();
+    //     formData.append('upload_preset', unsignedUploadPreset);
+    //     formData.append('tags', 'browser_upload');
+    //     formData.append('file', file);
+
+    //     return $http({
+    //       url: uploadUrl,
+    //       method: 'POST',
+    //       data: formData,
+    //       headers: { 'Content-Type': undefined,
+    //                 'If-Modified-Since': undefined}
+    //     });
+    //   }
+
+
+    // const uploadedRes = await uploadCertificateAsync('data:image/png;base64,' + result);
+		// console.log("​Certificate -> removeResultFinalTest -> result", result)
+		// console.log("​Certificate -> removeResultFinalTest -> uploadedRes", uploadedRes)
+    // console.log("​Certificate -> removeResultFinalTest -> result", result)
+
+    const urlCertificateImage = 'http://res.cloudinary.com/moi-images/image/upload/v1545584511/Social-Moi/tnuz4k6qmrg57b4ufrlz.png';
+
+    const certificateResponse = await saveCertificateAsync(urlCertificateImage);
+
+    saveResultFinalTest(null);
     this.setState({showModal: false});
   }
 
-  render() {
-    const { animationType, modalProps,  finalTestResult, device, style } = this.props;
-    const { width, height, orientation } = device.dimensions;
-		// console.log("​Certificate -> render -> finalTestResult", finalTestResult.time)
+  getPercentajeCorrectAnswers(data) {
+    const correctResults = data.result.filter(response => response.correct);
+    const percentajeCorrects = (correctResults.length * 100) / 21;
+    return percentajeCorrects;
+  }
 
-    // const showModal = !!finalTestResult;
-    const showModal = this.state.showModal;
+  render() {
+    const { animationType, modalProps,  finalTestResult, device, style, profile } = this.props;
+    // const { animationType, modalProps, device, style, profile } = this.props;
+    const { width, height, orientation } = device.dimensions;
+
+    const showModal = !!finalTestResult;
+    // const showModal = this.state.showModal;
 
     const styles = StyleSheet.create({
       container: {
@@ -163,6 +213,10 @@ class Certificate extends Component {
       }
     });
 
+    // if(!finalTestResult) {
+    //   return null;
+    // }
+
     return (
           <Modal {...modalProps}
             animationType={animationType}
@@ -170,7 +224,7 @@ class Certificate extends Component {
             transparent={true}
             supportedOrientations={['landscape']}
           >
-            <Overlay>
+            <Overlay ref={view =>  { this.certificateView = view; }}>
               <CloseContainer
                 style={style}
                 onPress={this.removeResultFinalTest} >
@@ -192,20 +246,20 @@ class Certificate extends Component {
                 <View style={[styles.row2, {paddingLeft:"12%", paddingRight:"12%"}]}>
                   <View style={{flex: 1}}>
                     <TextBox>
-                        <Text>Agoso</Text>
+                        <Text>{profile.username}</Text>
                       </TextBox>
                        <TextBox style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row', flex: 1}}>
                         <InnerTextBox>
-                          <Text>12</Text>
+                          <Text>{profile.age}</Text>
                           <Text>Edad</Text>
                         </InnerTextBox>
                         <InnerTextBox >
-                          <Text>asd</Text>
+                          <Text>{profile.country}</Text>
                           <Text>Pais</Text>
                         </InnerTextBox>
                       </TextBox>
                       <TextBox>
-                        <Text>Nombre</Text>
+                        <Text>{profile.school}</Text>
                         <Text>Escuela</Text>
                        </TextBox>
                   </View>
@@ -220,7 +274,7 @@ class Certificate extends Component {
                         >
                           <Image
                             style={{width: "100%", height: "100%", marginTop: -4}}
-                            source={ { uri: "http://res.cloudinary.com/meruba/image/upload/v1545451247/tree_r0vxhm.png"}}
+                            source={ { uri: profile.tree_image}}
                             resizeMode='stretch'
                           />
                         </Background>
@@ -230,16 +284,16 @@ class Certificate extends Component {
 
                 <View style={[styles.row3, {backgroundColor:"#fff"}]}>
                   <View style={{flex: 1.5}}>
-                      <ChartLearnedContent/>
+                      <ChartLearnedContent learnContensByBrach={finalTestResult.contents_learnt_by_branch} learnContens={finalTestResult.current_learnt_contents}/>
                   </View>
                   <View style={{flex: 4, justifyContent: 'center'}}>
-                    <Text style={{width:'100%', textAlign: 'center', color: '#219fd1', fontSize:24, fontWeight: '400'}}>170 contenidos aprendidos</Text>
-                    <Text style={{width:'100%', textAlign: 'center', color: '#219fd1', fontWeight: '100'}}>58% recimiento del arbol</Text>
+                    <Text style={{width:'100%', textAlign: 'center', color: '#219fd1', fontSize:24, fontWeight: '400'}}>{finalTestResult.current_learnt_contents} contenidos aprendidos</Text>
+                    <Text style={{width:'100%', textAlign: 'center', color: '#219fd1', fontWeight: '100'}}>{((finalTestResult.current_learnt_contents * 100) / finalTestResult.total_approved_contents).toFixed(1)}% crecimiento del arbol</Text>
                   </View>
                   <View style={{flex: 2, justifyContent: 'center'}}>
-                    <Text style={{color: '#219fd1'}}>100% ultimo test</Text>
+                    <Text style={{color: '#219fd1'}}>{this.getPercentajeCorrectAnswers(finalTestResult).toFixed(1)}% último test</Text>
                     <View style={{flexDirection: 'row'}}>
-                      <Text style={{color: '#219fd1'}}>00:27</Text>
+                      <Text style={{color: '#219fd1'}}>{finalTestResult.time}</Text>
                       <Text style={{color: '#219fd1'}}>tiempo de lectura promedio</Text>
                     </View>
                   </View>

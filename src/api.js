@@ -6,6 +6,10 @@ export const client = axios.create({
   baseURL: constants.URL_BASE,
 });
 
+export const cloudinaryClient = axios.create({
+  baseURL: constants.CLOUDINARY_BASE,
+});
+
 const api = {
   neuron: {
     async getNeuronById(id = 1) {
@@ -261,6 +265,42 @@ const api = {
           id: finalTestId,
           answers: answers,
         }
+      );
+      return res;
+    },
+
+    async saveCertificate(certificateURL) {
+      const endpoint = '/api/users/certificates';
+      const res = await client.post(
+        endpoint,
+        {
+          media_url: certificateURL
+        }
+      );
+      return res;
+    },
+  },
+
+  cloudinary: {
+    async uploadCertificate(base64Image) {
+      const endpoint = '/v1_1/moi-images/upload';
+
+      // const formData = new FormData();
+      // formData.append('upload_preset', 'nmk8efc6');
+      // formData.append('tags', 'browser_upload');
+      // formData.append('file', base64Image);
+
+      const res = await cloudinaryClient.post(
+        endpoint,
+        JSON.stringify(
+        {
+          upload_preset: 'nmk8efc6',
+          tags: 'browser_upload',
+          file: base64Image
+        }),
+        {
+          'content-type': 'application/json'
+        },
       );
       return res;
     },

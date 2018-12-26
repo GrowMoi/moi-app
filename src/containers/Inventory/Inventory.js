@@ -194,8 +194,8 @@ export default class Inventory extends Component {
           visible={modalVisible}
           width={width}
         />
-        {/* {finalTestResult && <Certificate/>} */}
-        <Certificate/>
+        {finalTestResult && <Certificate/>}
+        {/* <Certificate/> */}
         <BottomBar />
       </MoiBackground>
     );
