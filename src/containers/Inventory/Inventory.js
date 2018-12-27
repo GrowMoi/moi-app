@@ -84,8 +84,10 @@ export default class Inventory extends Component {
 
   goFinalQuiz = async () => {
     const { loadFinalTestAsync } = this.props;
+    this.showLoading();
     await loadFinalTestAsync();
     Actions.quiz();
+    this.showLoading(false);
   }
 
   activeItem = item => {
@@ -195,7 +197,6 @@ export default class Inventory extends Component {
           width={width}
         />
         {finalTestResult && <Certificate/>}
-        {/* <Certificate/> */}
         <BottomBar />
       </MoiBackground>
     );
