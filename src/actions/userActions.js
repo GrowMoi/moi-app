@@ -48,6 +48,11 @@ const setSettings = settings => ({
   payload: settings,
 })
 
+const storeFinalTestResult = finalTestResult => ({
+  type: actionTypes.STORE_FINAL_TEST_RESULT,
+  payload: finalTestResult,
+})
+
 const signOutAsync = () => async (dispatch) => {
   await dispatch(signOut());
   await dispatch(neuronActions.setNeuronLabelInfo({}));
@@ -467,6 +472,57 @@ const evaluateQuizAsync = (quizId, playerId, answers) => async (dispatch) => {
   }
 };
 
+const loadFinalTestAsync = () => async (dispatch) => {
+  try {
+    const res = await api.players.getFinalTest();
+    const { data, headers } = res;
+
+    dispatch(storeQuiz(data.questions));
+    dispatch(setHeaders(headers));
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const evaluateFinalTestAsync = (finalTestId, answers) => async (dispatch) => {
+  try {
+    const res = await api.players.evaluateFinalTest(finalTestId, answers);
+    const { headers } = res;
+
+    dispatch(setHeaders(headers));
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const saveResultFinalTest = (finalTestResult) => async (dispatch) => {
+  dispatch(storeFinalTestResult(finalTestResult));
+}
+
+const saveCertificateAsync = (certificateURL) => async (dispatch) => {
+  try {
+    const res = await api.players.saveCertificate(certificateURL);
+    const { headers } = res;
+
+    dispatch(setHeaders(headers));
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const uploadCertificateAsync = (base64Image) => async (dispatch) => {
+  try{
+    const res = await api.cloudinary.uploadCertificate(base64Image);
+    return res;
+  } catch (error) {
+		console.log("​}catch -> error", error)
+    throw new Error(error);
+  }
+}
+
 export default {
   loginAsync,
   registerAsync,
@@ -498,4 +554,9 @@ export default {
   deleteNotification,
   loadExternalQuizAsync,
   evaluateQuizAsync,
+  loadFinalTestAsync,
+  evaluateFinalTestAsync,
+  saveResultFinalTest,
+  saveCertificateAsync,
+  uploadCertificateAsync,
 };

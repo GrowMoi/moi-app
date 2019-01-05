@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import { FormattedTime } from 'react-intl';
 import {
   View,
@@ -31,6 +32,7 @@ import vineta_4 from '../../../assets/videos/vineta_4.mp4';
 
 import userActions from '../../actions/userActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
+import Certificate from '../Certificate/Certificate';
 
 const FrameContainer = styled(View)`
   margin-top: ${Size.navbarHeight};
@@ -40,9 +42,11 @@ const FrameContainer = styled(View)`
 @connect(state => ({
   device: state.device,
   achievements: state.user.achievements,
+  finalTestResult: state.user.finalTestResult,
 }), {
   getAchievementsAsync: userActions.getAchievementsAsync,
   updateAchievementsAsync: userActions.updateAchievementsAsync,
+  loadFinalTestAsync: userActions.loadFinalTestAsync,
 })
 export default class Inventory extends Component {
   state = {
@@ -78,6 +82,14 @@ export default class Inventory extends Component {
     this.setState({ modalVisible: show, currentVineta: vineta });
   }
 
+  goFinalQuiz = async () => {
+    const { loadFinalTestAsync } = this.props;
+    this.showLoading();
+    await loadFinalTestAsync();
+    Actions.quiz();
+    this.showLoading(false);
+  }
+
   activeItem = item => {
     if(item.number === 1) {
       this.showVideo();
@@ -93,6 +105,16 @@ export default class Inventory extends Component {
     }
     else if(item.number === 8) {
       this.showVideo(true, vineta_4);
+      return;
+    } else if(item.number === 10) {
+      Alert.alert(
+        `${item.name} `,
+        'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente',
+        [
+          {text: `OK`, onPress: () => this.goFinalQuiz() },
+          {text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        ],
+      )
       return;
     }
 
@@ -133,7 +155,7 @@ export default class Inventory extends Component {
 
   render() {
     const { modalVisible, currentVineta, loading } = this.state;
-    const { device: { dimensions: { width, height } }, achievements = [] } = this.props;
+    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
 
@@ -174,6 +196,7 @@ export default class Inventory extends Component {
           visible={modalVisible}
           width={width}
         />
+        {finalTestResult && <Certificate/>}
         <BottomBar />
       </MoiBackground>
     );
