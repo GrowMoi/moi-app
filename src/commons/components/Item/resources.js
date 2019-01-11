@@ -18,24 +18,28 @@ const items = {
     inactive: require('../../../../assets/images/items/inventario4_inactive.png'),
   },
   5: {
-    source: require('../../../../assets/images/items/inventario5.png'),
-    inactive: require('../../../../assets/images/items/inventario5_inactive.png'),
+    source: require('../../../../assets/images/items/inventario9.png'),
+    inactive: require('../../../../assets/images/items/inventario9_inactive.png'),
   },
   6: {
-    source: require('../../../../assets/images/items/inventario6.png'),
-    inactive: require('../../../../assets/images/items/inventario6_inactive.png'),
+    source: require('../../../../assets/images/items/inventario8.png'),
+    inactive: require('../../../../assets/images/items/inventario8_inactive.png'),
   },
   7: {
     source: require('../../../../assets/images/items/inventario7.png'),
     inactive: require('../../../../assets/images/items/inventario7_inactive.png'),
   },
   8: {
-    source: require('../../../../assets/images/items/inventario8.png'),
-    inactive: require('../../../../assets/images/items/inventario8_inactive.png'),
+    source: require('../../../../assets/images/items/inventario5.png'),
+    inactive: require('../../../../assets/images/items/inventario5_inactive.png'),
   },
   9: {
-    source: require('../../../../assets/images/items/inventario9.png'),
-    inactive: require('../../../../assets/images/items/inventario9_inactive.png'),
+    source: require('../../../../assets/images/items/inventario6.png'),
+    inactive: require('../../../../assets/images/items/inventario6_inactive.png'),
+  },
+  10: {
+    source: require('../../../../assets/images/items/inventario10.png'),
+    inactive: require('../../../../assets/images/items/inventario10_inactive.png'),
   },
   10: {
     source: require('../../../../assets/images/items/inventario6.png'),

@@ -96,15 +96,15 @@ export default class Inventory extends Component {
       return;
     }
     else if(item.number === 6) {
-      this.showVideo(true, vineta_2);
+      this.showVideo(true, vineta_4);
       return;
     }
     else if(item.number === 7) {
       this.showVideo(true, vineta_3);
       return;
     }
-    else if(item.number === 8) {
-      this.showVideo(true, vineta_4);
+    else if(item.number === 9) {
+      this.showVideo(true, vineta_2);
       return;
     } else if(item.number === 10) {
       Alert.alert(
