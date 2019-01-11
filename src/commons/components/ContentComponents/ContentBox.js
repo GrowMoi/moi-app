@@ -59,11 +59,11 @@ export default class ContentBox extends Component {
 
     let currentBox = regular_box;
     const currentAchievement = (this.currentAchievement || {}).number;
-    if(currentAchievement === 2) currentBox = orange_box;
+    if(currentAchievement === 2) currentBox = yellow_box;
     else if(currentAchievement === 3) currentBox = fushia_box;
     else if(currentAchievement === 4) currentBox = blue_box;
-    else if(currentAchievement === 5) currentBox = lila_box;
-    else if(currentAchievement === 9) currentBox = green_box;
+    else if(currentAchievement === 5) currentBox = green_box;
+    else if(currentAchievement === 8) currentBox = lila_box;
 
     const padding = 20;
     return (
