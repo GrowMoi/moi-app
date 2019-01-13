@@ -15,12 +15,24 @@ import blueButtonImg from '../../../../assets/images/buttons/lightgreen_button.p
 import taskButtonImg from '../../../../assets/images/buttons/task_button.png';
 import randomButtonImg from '../../../../assets/images/buttons/random_button.png';
 import searchButtonImg from '../../../../assets/images/buttons/search_button.png';
+import Badge from '../Badge/Badge';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
 const Button = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(wCommonBtn, hCommonBtn, props.width)};
+  flex-direction: row;
+  bottom: ${props => props.bottom || 0};
+  left: ${props => props.left || 0};
+  position: relative;
+  overflow: visible;
+  z-index: ${props => props.zIndex || 0};
+`;
+
+const ContainerButton = styled(View)`
+  width: ${props => props.width};
+
   flex-direction: row;
   bottom: ${props => props.bottom || 0};
   left: ${props => props.left || 0};
@@ -123,6 +135,15 @@ const BottomBarWithButtons = (props) => {
     );
   };
 
+  const renderBadge = () => {
+    return (
+      <View style={{ position: 'absolute', zIndex: 8, top: 1, right: 12 }}>
+        <Badge value={3}
+          size={16}></Badge>
+      </View>
+    );
+  }
+
   const minWidth = 320;
   const deviceIsBig = props.width > minWidth;
 
@@ -142,9 +163,12 @@ const BottomBarWithButtons = (props) => {
 
       <Container>
         <ButtonsContainer>
-          <Button zIndex={2} width={deviceIsBig ? 98 : 80} source={btnInf1} resizeMode='contain' left={18} bottom={7}>
-            {renderButton(TaskButton, elementProps.task, pressTaskButton)}
-          </Button>
+          <ContainerButton zIndex={2} width={deviceIsBig ? 98 : 80} left={18} bottom={7}>
+            {renderBadge()}
+            <Button width={deviceIsBig ? 98 : 80} source={btnInf1} resizeMode='contain'>
+              {renderButton(TaskButton, elementProps.task, pressTaskButton)}
+            </Button>
+          </ContainerButton>
 
           <Button zIndex={1} width={deviceIsBig ? 92 : 80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
             {renderButton(SearchButton, elementProps.search, pressSearchButton)}
