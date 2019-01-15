@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
 import { Image, ImageBackground, View, TouchableOpacity } from 'react-native';
@@ -16,6 +17,8 @@ import taskButtonImg from '../../../../assets/images/buttons/task_button.png';
 import randomButtonImg from '../../../../assets/images/buttons/random_button.png';
 import searchButtonImg from '../../../../assets/images/buttons/search_button.png';
 import Badge from '../Badge/Badge';
+import userActions from '../../../actions/userActions';
+import tutorActions from '../../../actions/tutorActions';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
@@ -103,24 +106,39 @@ const BlueButton = styled(Image)`
   bottom: 3;
 `;
 
-const BottomBarWithButtons = (props) => {
-  const pressTaskButton = () => {
+@connect(store => ({
+  notifications: store.user.notifications,
+  details: store.tutor.details,
+
+}), {
+    getNotificationsAsync: userActions.getNotificationsAsync,
+    getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
+  })
+class BottomBarWithButtons extends Component {
+
+  async componentWillMount() {
+    const { getNotificationsAsync, getTutorDetailsAsync } = this.props;
+    await getNotificationsAsync();
+    await getTutorDetailsAsync();
+  }
+
+  pressTaskButton = () => {
     Actions.tasks();
   };
 
-  const pressSearchButton = () => {
+  pressSearchButton = () => {
     Actions.search();
   };
 
-  const goToRandomContent = () => {
+  goToRandomContent = () => {
     Actions.randomContents();
   };
 
-  const readContent = () => {
-    if (props.onPressReadButton) props.onPressReadButton();
+  readContent = () => {
+    if (this.props.onPressReadButton) this.props.onPressReadButton();
   };
 
-  const renderButton = (NewButton, customProps, cb) => {
+  renderButton = (NewButton, customProps, cb) => {
     const privateProps = {
       resizeMode: 'contain',
     };
@@ -128,67 +146,74 @@ const BottomBarWithButtons = (props) => {
     return (
       <TouchableOpacity style={{ zIndex: 3 }} onPress={cb}>
         <NewButton
-          { ...privateProps }
-          { ...customProps }
+          {...privateProps}
+          {...customProps}
         />
       </TouchableOpacity>
     );
   };
 
-  const renderBadge = () => {
+  renderBadge = () => {
+    const { notifications: { meta: { total_count = 0}}, details: { recommendation_contents_pending = 0 } } = this.props;
+
+    const counterNotifications = total_count + recommendation_contents_pending;
+
+    if(counterNotifications == 0) return null;
+
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: 1, right: 12 }}>
-        <Badge value={3}
+        <Badge value={counterNotifications}
           size={16}></Badge>
       </View>
     );
   }
 
-  const minWidth = 320;
-  const deviceIsBig = props.width > minWidth;
+  render() {
+    const minWidth = 320;
+    const deviceIsBig = this.props.width > minWidth;
 
-  const elementProps = {
-    task: { width: 48, source: taskButtonImg, left: deviceIsBig ? 28 : 20, bottom: -2 },
-    random: { width: 50, source: randomButtonImg, left: deviceIsBig ? 28 : 20 },
-    search: { width: 50, source: searchButtonImg, left: deviceIsBig ? 28 : 20 },
-    read: { width: 55, source: blueButtonImg },
-  };
+    const elementProps = {
+      task: { width: 48, source: taskButtonImg, left: deviceIsBig ? 28 : 20, bottom: -2 },
+      random: { width: 50, source: randomButtonImg, left: deviceIsBig ? 28 : 20 },
+      search: { width: 50, source: searchButtonImg, left: deviceIsBig ? 28 : 20 },
+      read: { width: 55, source: blueButtonImg },
+    };
 
+    return (
+      <BottomBar
+        width={this.props.width}
+        source={bottomBarWithoutButtons}
+        resizeMode='contain'>
 
-  return (
-    <BottomBar
-      width={props.width}
-      source={bottomBarWithoutButtons}
-      resizeMode='contain'>
+        <Container>
+          <ButtonsContainer>
+            <ContainerButton zIndex={2} width={deviceIsBig ? 98 : 80} left={18} bottom={7}>
+              {this.renderBadge()}
+              <Button width={deviceIsBig ? 98 : 80} source={btnInf1} resizeMode='contain'>
+                {this.renderButton(TaskButton, elementProps.task, this.pressTaskButton)}
+              </Button>
+            </ContainerButton>
 
-      <Container>
-        <ButtonsContainer>
-          <ContainerButton zIndex={2} width={deviceIsBig ? 98 : 80} left={18} bottom={7}>
-            {renderBadge()}
-            <Button width={deviceIsBig ? 98 : 80} source={btnInf1} resizeMode='contain'>
-              {renderButton(TaskButton, elementProps.task, pressTaskButton)}
+            <Button zIndex={1} width={deviceIsBig ? 92 : 80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
+              {this.renderButton(SearchButton, elementProps.search, this.pressSearchButton)}
             </Button>
-          </ContainerButton>
 
-          <Button zIndex={1} width={deviceIsBig ? 92 : 80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
-            {renderButton(SearchButton, elementProps.search, pressSearchButton)}
-          </Button>
+            <Button zIndex={0} width={deviceIsBig ? 96 : 81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
+              {this.renderButton(RandomButton, elementProps.random, this.goToRandomContent)}
+            </Button>
+          </ButtonsContainer>
+        </Container>
 
-          <Button zIndex={0} width={deviceIsBig ? 96 : 81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
-            {renderButton(RandomButton, elementProps.random, goToRandomContent)}
-          </Button>
-        </ButtonsContainer>
-      </Container>
+        {this.props.readButton &&
+          <ReadFrame width={70} source={btnInfBlue} resizeMode='contain'>
+            {this.renderButton(BlueButton, elementProps.read, this.readContent)}
+          </ReadFrame>
+        }
 
-      {props.readButton &&
-        <ReadFrame width={70} source={btnInfBlue} resizeMode='contain'>
-          {renderButton(BlueButton, elementProps.read, readContent)}
-        </ReadFrame>
-      }
-
-    </BottomBar>
-  );
-};
+      </BottomBar>
+    );
+  };
+}
 
 BottomBarWithButtons.defaultProps = {
   width: 320,

@@ -8,6 +8,7 @@ const initialState = {
     contents: [],
     page: 1,
   },
+  details: {},
 }
 
 const recomendations = (state = initialState.recomendations, action = {}) => {
@@ -30,8 +31,18 @@ const recomendations = (state = initialState.recomendations, action = {}) => {
   }
 }
 
+const details = (state = initialState.details, action = {}) => {
+  switch (action.type) {
+    case actionTypes.TUTOR_GET_DETAILS:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const tutor = combineReducers({
   recomendations,
+  details,
 });
 
 export default tutor;

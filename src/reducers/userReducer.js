@@ -164,9 +164,12 @@ const notifications = (state = initialState.notifications, action) => {
     case actionTypes.DELETE_NOTIFICATIONS:
       const id = action.payload;
       const deletedNotification = state.notifications.filter(item => item.id !== id);
+      let updatedMeta = state.meta;
+      updatedMeta.total_count--;
 
       return {
         ...state,
+        meta: updatedMeta,
         notifications: deletedNotification,
       };
 
