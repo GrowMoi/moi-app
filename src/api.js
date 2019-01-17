@@ -227,6 +227,11 @@ const api = {
       const endpoint = '/api/tutors/recommendations';
       const res = await client.get(endpoint, { params: { page, data_format } })
       return res;
+    },
+    async getDetails() {
+      const endpoint = '/api/tutors/details';
+      const res = await client.get(endpoint)
+      return res;
     }
   },
 

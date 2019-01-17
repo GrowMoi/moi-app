@@ -7,6 +7,11 @@ const setRecomendations = (recomendations) => ({
   payload: recomendations,
 });
 
+const setDetails = (details) => ({
+  type: actionTypes.TUTOR_GET_DETAILS,
+  payload: details,
+});
+
 const getTutorRecomendationsAsync = (page = 1, dataFormat) => async(dispatch) => {
   try {
     const res = await api.tutors.getRecomendations(page, dataFormat);
@@ -16,6 +21,20 @@ const getTutorRecomendationsAsync = (page = 1, dataFormat) => async(dispatch) =>
     dispatch(setRecomendations({ ...data, page }));
 
     return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const getTutorDetailsAsync = () => async(dispatch) => {
+  try {
+    const res = await api.tutors.getDetails();
+    const { headers, data } = res;
+
+    dispatch(setHeaders(headers));
+    dispatch(setDetails(data.details));
+
+    return data.details;
   } catch (error) {
     throw new Error(error);
   }
@@ -37,4 +56,5 @@ const getMoreRecomendationsAsync = () => async(dispatch, getState) => {
 export default {
   getTutorRecomendationsAsync,
   getMoreRecomendationsAsync,
+  getTutorDetailsAsync,
 }

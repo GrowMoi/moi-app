@@ -9,8 +9,8 @@ const halfSize = 2;
 const Circle = styled(View)`
   border-radius: ${props => props.size / halfSize};
   background-color: ${props => props.badgeColor && props.badgeColor};
-  padding-horizontal: 2;
-  padding-vertical: 2;
+  padding-horizontal: ${props => props.padding || 2};
+  padding-vertical: ${props => props.padding || 2};
   min-width: ${props => props.size};
   min-height: ${props => props.size};
   justify-content: center;
@@ -25,8 +25,10 @@ const Counter = styled(Text)`
 `;
 
 const Badge = ({ size, value, badgeColor, numberColor }) => (
-  <Circle size={size} badgeColor={badgeColor}>
-    <Counter size={size} numberColor={numberColor}>{value}</Counter>
+  <Circle size={size} badgeColor={'white'} padding={1}>
+    <Circle size={size-1} badgeColor={badgeColor}>
+      <Counter size={size} numberColor={numberColor}>{value}</Counter>
+    </Circle>
   </Circle>
 );
 
