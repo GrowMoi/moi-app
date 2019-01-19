@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { ScrollView, Alert } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import uuid from 'uuid/v4';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
 import { normalize } from '../../commons/utils';
 import EmptyState from '../../commons/components/EmptyState';
 import { connect } from 'react-redux';
+import Alert from '../../commons/components/Alert/Alert';
+import GenericAlert from '../../commons/components/Alert/GenericAlert';
 
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
@@ -13,6 +15,26 @@ import { connect } from 'react-redux';
   route: store.route,
 }))
 export default class ContentListBox extends Component {
+
+  state = {
+    isAlertOpen: true
+  }
+
+  constructor(props) {
+    super(props);
+    this.backToTree = this.backToTree.bind(this);
+  }
+
+  componentWillUpdate() {
+    if(!this.state.isAlertOpen) {
+      this.setState({ isAlertOpen: true });
+    }
+  }
+
+  backToTree() {
+    this.setState({ isAlertOpen: false });
+    Actions.tree();
+  }
 
   onPressRowcontent = (content) => {
     const { neuronSelected, neuronId } = this.props;
@@ -64,9 +86,14 @@ export default class ContentListBox extends Component {
           </ScrollView>
         )}
 
-        {!existContentsToRead &&
-          <EmptyState text='Ya haz leido todos los contenidos en esta neurona' />
-        }
+        {!existContentsToRead && <Alert open={this.state.isAlertOpen}>
+          <GenericAlert
+            message='No hay contenidos!'
+            description='Ya haz leido todos los contenidos en esta neurona.'
+            onCancel={this.backToTree}
+            cancelText='Ok'
+          />
+        </Alert>}
       </ContentBox>
     )
   }
