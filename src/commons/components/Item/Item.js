@@ -34,9 +34,22 @@ const ItemImageAnimated = Animatable.createAnimatableComponent(ItemImage);
 class Item extends Component {
   handleViewRef = ref => this.item = ref;
 
-  onPressItem = () => {
+  getItemSource = (item, active, disabled) => {
+    if (disabled) {
+      return item.disabled;
+    } else {
+      return active ? item.source : item.inactive;
+    }
+  }
+
+  onPressItem = (disabled = false) => {
     const { onPress } = this.props;
+
     if(onPress) {
+      if (disabled) {
+        onPress();
+        return;
+      }
       this.item.bounceIn(800)
         .then(endState => {
           if(endState.finished) {
@@ -47,19 +60,21 @@ class Item extends Component {
   }
 
   render() {
-    const { type = 1, width = 90, active } = this.props;
+    const { type = 1, width = 90, active, disabled } = this.props;
 
     const paddingForItem = 30;
     const renderTypeItem = resources.getItem(type);
-    const box = resources.getBox();
-
+    const box = resources.getBox(disabled);
     if(object.isEmpty(renderTypeItem)) return null;
+
+    const source = this.getItemSource(renderTypeItem, active, disabled);
+
     return (
       <Container source={box} resizeMode='contain' width={width}>
-        <TouchableWithoutFeedback onPress={this.onPressItem}>
+        <TouchableWithoutFeedback onPress={() => this.onPressItem(disabled)}>
           <ItemImageAnimated
             ref={this.handleViewRef}
-            source={active ? renderTypeItem.source : renderTypeItem.inactive}
+            source={source}
             resizeMode='contain'
             width={(width - paddingForItem)}
           />
