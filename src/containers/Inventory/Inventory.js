@@ -23,6 +23,8 @@ import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
 import Item from '../../commons/components/Item/Item';
 import WoodFrame from '../../commons/components/WoodFrame';
 import { TextBody } from '../../commons/components/Typography';
+import AlertComponent from '../../commons/components/Alert/Alert';
+import GenericAlert from '../../commons/components/Alert/GenericAlert';
 
 // Viñetas
 import vineta_1 from '../../../assets/videos/vineta_1.mp4';
@@ -52,6 +54,8 @@ export default class Inventory extends Component {
   state = {
     modalVisible: false,
     currentVineta: null,
+    isAlertOpen: false,
+    itemSelected: {},
     loading: false
   }
 
@@ -90,7 +94,16 @@ export default class Inventory extends Component {
     this.showLoading(false);
   }
 
+  closeAlert = () => {
+    this.setState({ isAlertOpen: false });
+  }
+
   activeItem = item => {
+    if (item.disabled) {
+      this.setState({ isAlertOpen: true, itemSelected: item });
+      return
+    }
+
     if(item.number === 1) {
       this.showVideo();
       return;
@@ -142,19 +155,92 @@ export default class Inventory extends Component {
     )
   }
 
+  addDisabledAchievements = (currentAchievements = []) => {
+    const disabledAchievements = [
+      {
+        disabled: true,
+        description: 'Aprende tus primeros 4 contenidos para ganar este item',
+        name: 'Contenidos Aprendidos',
+        number: 1
+      },
+      {
+        disabled: true,
+        description: 'Aprende 20 contenidos de color amarillo para ganar este item',
+        name: 'Contenidos color Amarillo',
+        number: 2
+      },
+      {
+        disabled: true,
+        description: 'Aprende 20 contenidos de color rojo para ganar este item',
+        name: 'Contenidos color Rojo',
+        number: 3
+      },
+      {
+        disabled: true,
+        description: 'Aprende 20 contenidos de color azul',
+        name: 'Contenidos color Azul',
+        number: 4
+      },
+      {
+        disabled: true,
+        description: 'Aprende 20 contenidos de color verde para ganar este item',
+        name: 'Contenidos color verde',
+        number: 5
+      },
+      {
+        disabled: true,
+        description: 'Despliega 50 pruebas para ganar este item',
+        name: 'Despliega 50 pruebas',
+        number: 6
+      },
+      {
+        disabled: true,
+        description: 'Aprende un contenido en cada fruto para ganar este item',
+        name: 'Contenidos de cada fruto',
+        number: 7
+      },
+      {
+        disabled: true,
+        description: 'Aprende todos los contenidos para ganar este item',
+        name: 'Aprende todos los contenidos',
+        number: 8
+      },
+      {
+        disabled: true,
+        description: 'Completa 4 pruebas sin errores (16 preguntas sin errores) para ganar este item',
+        name: 'Completa 4 pruebas',
+        number: 9
+      },
+      {
+        disabled: true,
+        description: 'Alcanzar el nivel 9 para ganar este item',
+        name: 'Final del juego',
+        number: 10
+      }
+    ];
+
+    return disabledAchievements.map(disabledAchievement => {
+      const itemExists = currentAchievements.find(currentAchievement => {
+        return currentAchievement.number === disabledAchievement.number
+      });
+      return itemExists ? itemExists : disabledAchievement;
+    })
+  }
+
   _keyExtractor = (item, index) => uuid();
   _renderItem = ({ item }) => {
     return (
       <Item
         type={item.number}
         active={item.active}
+        disabled={item.disabled}
         onPress={() => this.activeItem(item)}
       />
     )
   }
 
   render() {
-    const { modalVisible, currentVineta, loading } = this.state;
+    const { modalVisible, currentVineta, loading, isAlertOpen, itemSelected } = this.state;
     const { device: { dimensions: { width, height } }, achievements = [], finalTestResult } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
@@ -167,6 +253,7 @@ export default class Inventory extends Component {
     };
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
+    const allAchievements = this.addDisabledAchievements(sortedAchievements);
 
     return (
       <MoiBackground>
@@ -176,7 +263,7 @@ export default class Inventory extends Component {
           <LeaderFrame width={leaderFramePadding}>
             <WoodFrame width={woodFramePadding}>
               <FlatList
-                data={sortedAchievements}
+                data={allAchievements}
                 ListEmptyComponent={
                   <TextBody center>No tienes logros ganados aún</TextBody>
                 }
@@ -196,6 +283,16 @@ export default class Inventory extends Component {
           visible={modalVisible}
           width={width}
         />
+
+        <AlertComponent open={isAlertOpen}>
+          <GenericAlert
+            message={itemSelected.name}
+            description={itemSelected.description}
+            onCancel={this.closeAlert}
+            cancelText='Ok'
+          />
+        </AlertComponent>
+
         {finalTestResult && <Certificate/>}
         <BottomBar />
       </MoiBackground>
