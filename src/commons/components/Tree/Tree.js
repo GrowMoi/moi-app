@@ -65,14 +65,6 @@ export default class Tree extends Component {
     modalVisible: false,
   }
 
-  constructor(props) {
-    super(props);
-    this.onViewTransformed = this.onViewTransformed.bind(this);
-    this.onTransformGestureReleased = this.onTransformGestureReleased.bind(this);
-    this.getImageFromRctImage = this.getImageFromRctImage.bind(this);
-    this.uploadTreeImage = this.uploadTreeImage.bind(this);
-  }
-
   initialActions = async () => {
     const { loadTreeAsync, getUserProfileAsync, getAchievementsAsync, user } = this.props;
 
@@ -95,7 +87,7 @@ export default class Tree extends Component {
     const newUserTree = newProps.userTree;
 
     if(Object.keys(userTree).length !== 0 && userTree !== newUserTree) {
-      setTimeout(() => { this.takeScreenShotTree() }, 1000);
+      setTimeout(() => { this.takeScreenShotTree() }, 2000);
     }
   }
 
@@ -119,13 +111,13 @@ export default class Tree extends Component {
     }
   }
 
-  onViewTransformed(zoomInfo) {
+  onViewTransformed = (zoomInfo) => {
     const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
     setZoomTreeInfo(zoomInfo);
     setNeuronLabelInfo({});
   }
 
-  onTransformGestureReleased(zoomInfo) {
+  onTransformGestureReleased = (zoomInfo) => {
     const { setZoomTreeInfo } = this.props;
     setZoomTreeInfo(zoomInfo);
   }
@@ -212,11 +204,14 @@ export default class Tree extends Component {
     ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, () => { });
   }
 
-  getImageFromRctImage(rctImageUri) {
-    ImageStore.getBase64ForTag(rctImageUri, this.uploadTreeImage, () => { });
+  getImageFromRctImage = (rctImageUri) => {
+    ImageStore.getBase64ForTag(rctImageUri, (image) => {
+      ImageStore.removeImageForTag(rctImageUri);
+      this.uploadTreeImage(image);
+      }, () => { });
   }
 
-  async uploadTreeImage(image) {
+  uploadTreeImage = async (image) => {
     const { uploadTreeImageAsync, getUserProfileAsync, user } = this.props;
     await uploadTreeImageAsync(this.normalizeBase64Image(image));
     await getUserProfileAsync(user.profile.id);
