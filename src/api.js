@@ -193,6 +193,19 @@ const api = {
     },
   },
 
+  tree_image: {
+    async uploadTreeImage(image) {
+      const endpoint = '/api/users/tree_image';
+
+      try {
+        const res = await client.put(endpoint, { image: image });
+        return res;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+  },
+
   learn: {
     async learn(testId = 1, answers = '') {
       const endpoint = '/api/learn';

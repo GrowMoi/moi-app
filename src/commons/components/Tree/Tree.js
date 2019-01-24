@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, AsyncStorage } from 'react-native';
+import { View, StyleSheet, AsyncStorage, PixelRatio, ImageEditor, ImageStore } from 'react-native';
+import { takeSnapshotAsync } from 'expo';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
@@ -50,8 +51,12 @@ const MacetaContainer = styled(View)`
   setZoomTreeInfo: treeActions.setZoomTreeInfo,
   setZoomScale: treeActions.setZoomScaleTree,
   setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-})
+  uploadTreeImageAsync: userActions.uploadTreeImageAsync,
+  })
 export default class Tree extends Component {
+
+  treeView = null;
+
   state = {
     loading: true,
     hasUserTree: false,
@@ -64,6 +69,8 @@ export default class Tree extends Component {
     super(props);
     this.onViewTransformed = this.onViewTransformed.bind(this);
     this.onTransformGestureReleased = this.onTransformGestureReleased.bind(this);
+    this.getImageFromRctImage = this.getImageFromRctImage.bind(this);
+    this.uploadTreeImage = this.uploadTreeImage.bind(this);
   }
 
   initialActions = async () => {
@@ -83,6 +90,15 @@ export default class Tree extends Component {
     this.handleVideoFirstLogin();
   }
 
+  componentWillReceiveProps(newProps) {
+    const { userTree } = this.props;
+    const newUserTree = newProps.userTree;
+
+    if(Object.keys(userTree).length !== 0 && userTree !== newUserTree) {
+      setTimeout(() => { this.takeScreenShotTree() }, 1000);
+    }
+  }
+
   handleVideoFirstLogin = async () => {
     const { userTree } = this.props;
 
@@ -93,17 +109,17 @@ export default class Tree extends Component {
   }
 
   showVideo = (show = true) => {
-    this.setState({ modalVisible: show});
+    this.setState({ modalVisible: show });
   }
 
   onPlaybackStatusUpdate = async (playbackStatus) => {
-      if(playbackStatus.didJustFinish) {
-          await AsyncStorage.setItem('videoShown', "true");
-          this.showVideo(false);
-      }
+    if (playbackStatus.didJustFinish) {
+      await AsyncStorage.setItem('videoShown', "true");
+      this.showVideo(false);
+    }
   }
 
-  onViewTransformed (zoomInfo) {
+  onViewTransformed(zoomInfo) {
     const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
     setZoomTreeInfo(zoomInfo);
     setNeuronLabelInfo({});
@@ -166,6 +182,51 @@ export default class Tree extends Component {
     }
   }
 
+  async takeScreenShotTree() {
+    const { device: { dimensions: { width, height, orientation } } } = this.props;
+
+    const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
+
+    const resultScreenShot = await takeSnapshotAsync(this.treeView, {
+      result: 'base64',
+      height: height / pixelRatio,
+      width: width / pixelRatio,
+      quality: 1,
+      format: 'png',
+    });
+
+    if(orientation === 'LANDSCAPE') {
+      this.uploadTreeImage(resultScreenShot);
+      return;
+    }
+
+    this.cropImage(this.normalizeBase64Image(resultScreenShot), width, height);
+  }
+
+  async cropImage(image, width, height) {
+    let cropData = {
+      offset: { x: 0, y: height/2 },
+      size: { width: width, height: height/2 }
+    }
+
+    ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, () => { });
+  }
+
+  getImageFromRctImage(rctImageUri) {
+    ImageStore.getBase64ForTag(rctImageUri, this.uploadTreeImage, () => { });
+  }
+
+  async uploadTreeImage(image) {
+    const { uploadTreeImageAsync, getUserProfileAsync, user } = this.props;
+    await uploadTreeImageAsync(this.normalizeBase64Image(image));
+    await getUserProfileAsync(user.profile.id);
+    console.log("upload ok");
+  }
+
+  normalizeBase64Image(base64Image) {
+    return 'data:image/png;base64,' + base64Image.replace(/(?:\r\n|\r|\n)/g, '')
+  }
+
   render() {
     const { loading, level, zoomScale, hasUserTree, modalVisible } = this.state;
 
@@ -184,6 +245,7 @@ export default class Tree extends Component {
           maxScale={zoomScale}
           onViewTransformed={this.onViewTransformed}
           onTransformGestureReleased={this.onTransformGestureReleased}
+          ref={view => { this.treeView = view; }}
         >
           <MacetaContainer><Maceta width={200}/></MacetaContainer>
           {level}
