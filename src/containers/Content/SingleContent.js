@@ -201,8 +201,10 @@ export default class SingleContentScene extends Component {
     const { data: { exist } } = res;
     if (exist) {
       this.showAlert('Este contenido ya se encuentra almacenado en tus tareas');
+      this.setState({actionSheetsVisible: false})
     } else {
       this.showAlert('Este contenido fué almacenado correctamente');
+      this.setState({actionSheetsVisible: false})
     }
   }
 
@@ -317,7 +319,10 @@ export default class SingleContentScene extends Component {
     } = this.state;
 
     const options = [
-      { label: 'Compartir', icon: 'md-share' },
+      { label: 'Compartir', 
+        icon: 'md-share',
+        fn: () => this.setState({actionSheetsVisible: false}) 
+      },
       {
         label: 'Guardar',
         icon: 'md-download',
