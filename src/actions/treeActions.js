@@ -35,7 +35,7 @@ const setZoomScaleTree = (zoomScale = {}) => dispatch => {
 }
 
 const setZoomTreeInfo = (zoomTreeInfo = {}) => dispatch => {
-  dispatch({ type: actionTypes.SET_ZOOM_TREE_INFO, payload: zoomTreeInfo });//maybe cambiar nombre por ???
+  dispatch({ type: actionTypes.SET_ZOOM_TREE_INFO, payload: zoomTreeInfo });
 }
 
 export default {

@@ -518,7 +518,17 @@ const uploadCertificateAsync = (base64Image) => async (dispatch) => {
     const res = await api.cloudinary.uploadCertificate(base64Image);
     return res;
   } catch (error) {
-		console.log("​}catch -> error", error)
+		console.log("​error", error)
+    throw new Error(error);
+  }
+}
+
+const uploadTreeImageAsync = (base64Image) => async (dispatch) => {
+  try{
+    const res = await api.tree_image.uploadTreeImage(base64Image);
+    return res;
+  } catch (error) {
+		console.log("​error", error)
     throw new Error(error);
   }
 }
@@ -559,4 +569,5 @@ export default {
   saveResultFinalTest,
   saveCertificateAsync,
   uploadCertificateAsync,
+  uploadTreeImageAsync,
 };
