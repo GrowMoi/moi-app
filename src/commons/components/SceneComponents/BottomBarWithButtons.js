@@ -163,7 +163,7 @@ class BottomBarWithButtons extends Component {
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: 1, right: 12 }}>
         <Badge value={counterNotifications}
-          size={16}></Badge>
+          size={16} />
       </View>
     );
   }
