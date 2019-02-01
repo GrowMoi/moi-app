@@ -104,16 +104,19 @@ class WoodLabel extends PureComponent {
   }
 
   get zoomScaleStyles() {
-    const {zoomScale, zoomInfo } = this.props;
+    const { zoomScale, zoomInfo, translate } = this.props;
 
      switch(zoomScale) {
       case 1:
         return {
-          transform: [{translate: [-54, -33, 1]}],
+          transform: [{translate: [-54, -30, 1]}],
           width: null,
         };
       case 2:
-        return {};
+        return  {
+          transform: [{translate: [-54, -38, 1]}],
+          width: null,
+        };
       case 3:
         return {
           height: this.labelSize.height,
