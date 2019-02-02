@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { View, Image } from 'react-native';
+import { View, ScrollView, Image } from 'react-native';
 import QuizPicker from './QuizPicker';
 import { Header } from '../Typography';
 import Button from '../Buttons/Button';
 
 const Container = styled(View)`
-  flex: 1;
   width: 240px
-  justify-content: center;
-  align-items: flex-start;
-  align-self: center;
 `;
 
-const QuizPickerContainer = styled(View)`
-  align-self: stretch;
+const QuizPickerContainer = styled(ScrollView)`
+  height: 280px;
 `;
 
 const Thumbnail = styled(Image)`

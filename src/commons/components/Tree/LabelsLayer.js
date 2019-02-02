@@ -7,6 +7,7 @@ import neuronActions from '../../../actions/neuronActions'
 import Preloader from '../Preloader/Preloader';
 @connect(state => ({
   label: state.neuron.currentlyPressed,
+  tree: state.tree.userTree,
   device: state.device,
   zoomInfo: state.tree.zoomInfo,
   zoomScale: state.tree.zoomScale,
@@ -46,8 +47,12 @@ export default class LabelsLayer extends Component {
   }
 
   render() {
-    const { label, zoomScale, zoomInfo } = this.props;
+    const { label, zoomScale, zoomInfo, tree: { meta: { depth } } } = this.props;
     const { loading } = this.state;
+
+    const zoomValue = depth === 2 ? depth : zoomScale;
+    let topPosition = zoomScale === 1 ? label.pageY - (label.height / 2) : label.pageY;
+    topPosition = depth === 2 && label.height < 60 ? topPosition - 17 : topPosition;
 
     return (
       <View style={{ flex: 1, position: 'absolute', top: 0, left: 0 }}>
@@ -58,11 +63,11 @@ export default class LabelsLayer extends Component {
               this.hideWoodLabel();
               this.playContent();
             }}
-            zoomScale={zoomScale}
+            zoomScale={zoomValue}
             zoomInfo={zoomInfo}
             style={{
               position: 'absolute',
-              top: label.pageY,
+              top: topPosition,
               left: label.pageX + (label.width / 2),
             }}
           />
