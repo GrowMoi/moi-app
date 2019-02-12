@@ -13,6 +13,7 @@ import ComplementaryScene from './ComplementaryQuizScene';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { Video } from '../../commons/components/VideoPlayer';
 import creditos from '../../../assets/videos/creditos.mp4';
+import NewAchievementsModal from '../../commons/components/Quiz/NewAchievements';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -41,6 +42,8 @@ export default class QuizScene extends Component {
     loading: false,
     modalVisible: false,
     resultFinalTest: null,
+    showModalNewAchievements: false,
+    achievements: [],
   }
 
   componentDidMount() {
@@ -89,9 +92,13 @@ export default class QuizScene extends Component {
       return;
     }
 
-    const allResults = data.result;
+    const { achievements, result } = data;
 
-    this.setState({ results: allResults, currentScene: 'results' });
+    if(achievements.length > 0) {
+      this.showModalNewAchievements(achievements);
+    }
+
+    this.setState({ results: result, currentScene: 'results' });
   }
 
   validateResultFinalTest = (data) => {
@@ -136,8 +143,16 @@ export default class QuizScene extends Component {
     );
   }
 
+  showModalNewAchievements = (achievements) => {
+    this.setState({ showModalNewAchievements: true, achievements: achievements });
+  }
+
+  hideModalNewAchievements = () => {
+    this.setState({ showModalNewAchievements: false });
+  }
+
   render() {
-    const { currentScene, loading, modalVisible } = this.state;
+    const { currentScene, loading, modalVisible, showModalNewAchievements, achievements } = this.state;
     const { quiz, device: { dimensions: { width } } } = this.props;
 
     const videoDimensions = {
@@ -179,6 +194,7 @@ export default class QuizScene extends Component {
           onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
           showCloseIcon={false}
         />}
+         {showModalNewAchievements && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements}/>}
       </Background>
     );
   }
