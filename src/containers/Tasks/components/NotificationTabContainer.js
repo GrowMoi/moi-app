@@ -6,6 +6,7 @@ import { TextBody } from '../../../commons/components/Typography';
 import { Palette } from './../../../commons/styles';
 import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
+import Badge from '../../../commons/components/Badge/Badge';
 
 // Actions
 import userActions from '../../../actions/userActions';
@@ -66,12 +67,24 @@ class NotificationTabContainer extends PureComponent {
     }
   }
 
+  renderBadge = ({ meta: { total_count = 0 } }) => {
+    if(total_count == 0) return null;
+
+    return (
+      <View style={{ position: 'absolute', zIndex: 8, top: -8, right: 0 }}>
+        <Badge value={total_count}
+          size={18} />
+      </View>
+    );
+  }
+
   render() {
     const { title, icon, data, onClickItem = () => null } = this.props;
     const { open } = this.state;
 
     return(
       <View style={styles.tasks}>
+        {this.renderBadge(data)}
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />
         {open && (
           <View style={styles.subItemContainer}>
