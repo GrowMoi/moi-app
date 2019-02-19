@@ -95,7 +95,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
     <Container>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <HeaderProfile>
-          <Profile width={40}/>
+          <Profile width={40} userImageUri={profile.image}/>
           <NameContainer>
             <Title style={{ flex: 1 }} numberOfLines={1} heavy>{userName}</Title>
             {!isShared &&

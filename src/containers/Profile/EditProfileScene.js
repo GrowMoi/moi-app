@@ -93,7 +93,7 @@ export default class EditProfileScene extends Component {
           <ContentBox>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
               <HeaderProfile>
-                <Profile />
+                <Profile userImageUri={profile.image}/>
                 <NameContainer>
                   <Title numberOfLines={2} style={{ flex: 1 }} heavy>{userName}</Title>
                   {/* <TextBody>Cambiar Photo</TextBody> */}

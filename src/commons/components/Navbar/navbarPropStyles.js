@@ -1,12 +1,35 @@
 import React from 'react';
 import { Icon } from 'expo';
-import { Platform, Dimensions } from 'react-native';
+import { Platform, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Font } from '../../styles';
 import MoIcon from '../MoIcon/MoIcon';
+import store from '../../../store';
 
 const toggleDrawer = () => Actions.refresh({ key: 'moiDrawer', open: value => !value });
-const ProfileButton = () => <MoIcon name="profile" size={30} onPress={() => Actions.profile()} />; //eslint-disable-line
+
+const ProfileButton = () => {
+  const user = store.getState().user || {};
+  const userData = user.userData || {};
+  const profile = userData.profile || {};
+
+  if (profile.image) {
+    return (
+      <TouchableOpacity onPress={() => Actions.profile()}>
+        <Image
+          style={{
+            width: 30,
+            height: 30,
+            borderRadius: 15,
+          }}
+          source={{uri: profile.image}}
+        />
+      </TouchableOpacity>
+    )
+  } else {
+    return (<MoIcon name="profile" size={30} onPress={() => Actions.profile()} />)
+  }
+}; //eslint-disable-line
 const HamburgerButton = () => <Icon.Ionicons color="#FFF" name="md-menu" size={30} onPress={toggleDrawer} />; //eslint-disable-line
 
 const { width } = Dimensions.get('window');
