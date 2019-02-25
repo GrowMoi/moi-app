@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 import Modal from 'expo/src/modal/Modal';
 import { Palette } from '../../styles';
@@ -31,20 +31,22 @@ export default class Alert extends Component {
   }
 
   render() {
-    const { open, children } = this.props;
+    const { open, children, style, touchableProps = {}, animationType='slide' } = this.props;
 
     return (
-      <Container>
+      <Container style={style}>
         <Modal
           visible={open}
           transparent
           supportedOrientations={['portrait']}
-          animationType='slide'
+          animationType={animationType}
           hardwareAccelerated
         >
+        <TouchableWithoutFeedback {...touchableProps}>
           <Overlay>
             {children}
           </Overlay>
+        </TouchableWithoutFeedback>
         </Modal>
       </Container>
     );

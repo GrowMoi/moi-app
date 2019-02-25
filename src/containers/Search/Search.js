@@ -2,10 +2,13 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   FlatList,
+  Keyboard,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
+import UserInactivity from 'react-native-user-inactivity'
+import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 
 import EmptyState from '../../commons/components/EmptyState';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -22,6 +25,7 @@ import { TextBody } from '../../commons/components/Typography';
 @connect(store => ({
   device: store.device,
   search: store.search,
+  scene: store.routes.scene,
 }), {
   getContentsAsync: searchActions.getContentsAsync,
 })
@@ -31,6 +35,7 @@ export default class Search extends PureComponent {
     page: 0,
     dataSource: [],
     searching: false,
+    isOpenPassiveMessage: false,
   }
 
   onPressRowContent = (item) => {
@@ -77,8 +82,8 @@ export default class Search extends PureComponent {
   }
 
   render() {
-    const { loading, dataSource, searching } = this.state;
-    const { device } = this.props;
+    const { loading, dataSource, searching, isOpenPassiveMessage } = this.state;
+    const { device, scene } = this.props;
 
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
@@ -108,12 +113,32 @@ export default class Search extends PureComponent {
     )
 
     return (
-      <MoiBackground>
-        {contentBox}
-        {loading && <Preloader />}
-        <Navbar />
-        <BottomBarWithButtons width={device.dimensions.width} />
-      </MoiBackground>
+      <UserInactivity
+        timeForInactivity={6000}
+        onAction={(isActive) => {
+          if(!isActive && scene.name === 'search') {
+            Keyboard.dismiss()
+            this.setState({ isOpenPassiveMessage: !isActive })
+          }
+        }}
+      >
+        <MoiBackground>
+          {contentBox}
+          {loading && <Preloader />}
+          <Navbar />
+          <BottomBarWithButtons width={device.dimensions.width} />
+
+          <PassiveMessageAlert
+            isOpenPassiveMessage={isOpenPassiveMessage}
+            touchableProps={{
+              onPress: () => {
+                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
+              }
+            }}
+            message='Escribe lo que quieres conocer y presiona el botón buscar'
+          />
+        </MoiBackground>
+      </UserInactivity>
     )
   }
 };
