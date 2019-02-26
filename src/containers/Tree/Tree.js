@@ -43,15 +43,26 @@ export default class TreeScene extends Component {
     isOpenPassiveMessage: false,
   }
 
+  currentScene = '';
+  prevScene = '';
+
   render() {
     const { isOpenPassiveMessage } = this.state
     const { scene } = this.props
+    const backScenes = ['profile'];
+
+    if(scene.name !== 'moiDrawer') {
+      this.prevScene = this.currentScene;
+      this.currentScene = scene.name;
+    } else if (backScenes.indexOf(this.currentScene) !== -1){
+      this.currentScene = this.prevScene;
+    }
 
     return (
       <UserInactivity
         timeForInactivity={6000}
         onAction={(isActive) => {
-          if(!isActive && scene.name === 'tree') {
+          if(!isActive && this.currentScene === 'tree') {
             Keyboard.dismiss()
             this.setState({ isOpenPassiveMessage: !isActive })
           }

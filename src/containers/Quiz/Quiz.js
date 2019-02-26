@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, Keyboard } from 'react-native';
 import styled from 'styled-components/native';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBar } from '../../commons/components/SceneComponents';
@@ -14,6 +14,8 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 import { Video } from '../../commons/components/VideoPlayer';
 import creditos from '../../../assets/videos/creditos.mp4';
 import NewAchievementsModal from '../../commons/components/Quiz/NewAchievements';
+import UserInactivity from 'react-native-user-inactivity';
+import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -30,6 +32,7 @@ const QuizSceneContainer = styled(View)`
 @connect(store => ({
   quiz: store.user.quiz,
   device: store.device,
+  scene: store.routes.scene,
 }), {
   learnContentsAsync: userActions.learnContentsAsync,
   evaluateFinalTestAsync: userActions.evaluateFinalTestAsync,
@@ -44,6 +47,7 @@ export default class QuizScene extends Component {
     resultFinalTest: null,
     showModalNewAchievements: false,
     achievements: [],
+    isOpenPassiveMessage: false,
   }
 
   componentDidMount() {
@@ -152,8 +156,8 @@ export default class QuizScene extends Component {
   }
 
   render() {
-    const { currentScene, loading, modalVisible, showModalNewAchievements, achievements } = this.state;
-    const { quiz, device: { dimensions: { width } } } = this.props;
+    const { currentScene, loading, modalVisible, showModalNewAchievements, achievements, isOpenPassiveMessage } = this.state;
+    const { quiz, device: { dimensions: { width } }, scene } = this.props;
 
     const videoDimensions = {
       width: 1280,
@@ -161,41 +165,59 @@ export default class QuizScene extends Component {
     };
 
     return (
-
-      <Background>
-        {quiz && Object.keys(quiz).length && (
-          <QuizSceneContainer>
-            {loading && <Preloader/>}
-            {currentScene === 'intro' && this.renderIntroScene}
-            {currentScene === 'quiz' &&
-              <Quiz onQuizComplete={this.quizFinished}>
-                {quiz.questions.map(question => (
-                  <Question
-                    key={`question-${question.content_id}`}
-                    contentId={question.content_id}
-                    title={question.title}
-                    options={question.possible_answers}
-                    buttonTitle='Siguiente'
-                    mediaUrl={question.media_url}
-                  />
-                ))}
-              </Quiz>}
-            {currentScene === 'results' && this.renderFinalScene}
-          </QuizSceneContainer>
-        )}
-        <Navbar/>
-        <BottomBar />
-        {modalVisible && <Video
-          videoDimensions={videoDimensions}
-          source={creditos}
-          dismiss={() => this.showVideo(false)}
-          visible={modalVisible}
-          width={width}
-          onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
-          showCloseIcon={false}
-        />}
-         {showModalNewAchievements && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements}/>}
-      </Background>
+      <UserInactivity
+        timeForInactivity={6000}
+        onAction={(isActive) => {
+          if (!isActive && scene.name === 'quiz' && !showModalNewAchievements && !loading) {
+            Keyboard.dismiss()
+            this.setState({ isOpenPassiveMessage: !isActive })
+          }
+        }}
+      >
+        <Background>
+          {quiz && Object.keys(quiz).length && (
+            <QuizSceneContainer>
+              {loading && <Preloader />}
+              {currentScene === 'intro' && this.renderIntroScene}
+              {currentScene === 'quiz' &&
+                <Quiz onQuizComplete={this.quizFinished}>
+                  {quiz.questions.map(question => (
+                    <Question
+                      key={`question-${question.content_id}`}
+                      contentId={question.content_id}
+                      title={question.title}
+                      options={question.possible_answers}
+                      buttonTitle='Siguiente'
+                      mediaUrl={question.media_url}
+                    />
+                  ))}
+                </Quiz>}
+              {currentScene === 'results' && this.renderFinalScene}
+            </QuizSceneContainer>
+          )}
+          <Navbar />
+          <BottomBar />
+          {modalVisible && <Video
+            videoDimensions={videoDimensions}
+            source={creditos}
+            dismiss={() => this.showVideo(false)}
+            visible={modalVisible}
+            width={width}
+            onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
+            showCloseIcon={false}
+          />}
+          {showModalNewAchievements && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
+          <PassiveMessageAlert
+            isOpenPassiveMessage={isOpenPassiveMessage}
+            touchableProps={{
+              onPress: () => {
+                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
+              }
+            }}
+            message='Elige una alternativa y presiona la flecha para continuar'
+          />
+        </Background>
+      </UserInactivity>
     );
   }
 }

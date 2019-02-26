@@ -469,7 +469,7 @@ export default class SingleContentScene extends Component {
                 this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
               }
             }}
-            message='Cuando termines de leer la eplicación, presiona el botón
+            message='Cuando termines de leer la explicación, presiona el botón
             celeste para enviar la pregunta al test'
           />
         </MoiBackground>

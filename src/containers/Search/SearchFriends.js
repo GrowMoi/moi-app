@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   FlatList,
   Alert,
+  Keyboard,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -45,6 +46,9 @@ export default class SearchFriends extends PureComponent {
     searching: false,
     isOpenPassiveMessage: false,
   }
+
+  currentScene = '';
+  prevScene = '';
 
   changeFriendState = (data, itemToActivate, resetAll = false) => {
     const friendIsLoading = false;
@@ -154,11 +158,20 @@ export default class SearchFriends extends PureComponent {
       </ContentBox>
     )
 
+    const backScenes = ['profile', 'tasks', 'search', 'randomContents'];
+
+    if(scene.name !== 'moiDrawer') {
+      this.prevScene = this.currentScene;
+      this.currentScene = scene.name;
+    } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
+      this.currentScene = this.prevScene;
+    }
+
     return (
       <UserInactivity
         timeForInactivity={6000}
         onAction={(isActive) => {
-          if(!isActive && scene.name === 'searchFriends') {
+          if(!isActive && this.currentScene === 'searchFriends') {
             Keyboard.dismiss()
             this.setState({ isOpenPassiveMessage: !isActive })
           }
