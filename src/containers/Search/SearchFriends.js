@@ -161,7 +161,9 @@ export default class SearchFriends extends PureComponent {
     const backScenes = ['profile', 'tasks', 'search', 'randomContents'];
 
     if(scene.name !== 'moiDrawer') {
-      this.prevScene = this.currentScene;
+      if(scene.name === 'searchFriends') {
+        this.prevScene = scene.name;
+      }
       this.currentScene = scene.name;
     } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
       this.currentScene = this.prevScene;

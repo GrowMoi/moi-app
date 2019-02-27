@@ -261,7 +261,9 @@ export default class Inventory extends Component {
     const backScenes = ['profile', 'quiz'];
 
     if(scene.name !== 'moiDrawer') {
-      this.prevScene = this.currentScene;
+      if(scene.name === 'inventory') {
+        this.prevScene = scene.name;
+      }
       this.currentScene = scene.name;
     } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
       this.currentScene = this.prevScene;
