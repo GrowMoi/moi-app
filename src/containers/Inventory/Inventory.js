@@ -2,21 +2,18 @@ import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { FormattedTime } from 'react-intl';
 import {
   View,
   FlatList,
-  Image,
   Alert,
-  Modal
+  Keyboard
 } from 'react-native';
 import uuid from 'uuid/v4';
 
 import { Video } from '../../commons/components/VideoPlayer';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
-import { Palette, Size } from '../../commons/styles';
-import LeaderRow from '../../commons/components/LeaderRow/LeaderRow';
+import { Size } from '../../commons/styles';
 import { object } from '../../commons/utils';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
@@ -35,6 +32,8 @@ import vineta_4 from '../../../assets/videos/vineta_4.mp4';
 import userActions from '../../actions/userActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Certificate from '../Certificate/Certificate';
+import UserInactivity from 'react-native-user-inactivity';
+import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 
 const FrameContainer = styled(View)`
   margin-top: ${Size.navbarHeight};
@@ -45,6 +44,7 @@ const FrameContainer = styled(View)`
   device: state.device,
   achievements: state.user.achievements,
   finalTestResult: state.user.finalTestResult,
+  scene: state.routes.scene,
 }), {
   getAchievementsAsync: userActions.getAchievementsAsync,
   updateAchievementsAsync: userActions.updateAchievementsAsync,
@@ -56,8 +56,12 @@ export default class Inventory extends Component {
     currentVineta: null,
     isAlertOpen: false,
     itemSelected: {},
-    loading: false
+    loading: false,
+    isOpenPassiveMessage: false,
   }
+
+  currentScene = '';
+  prevScene = '';
 
   updateItem = async ({ id, name }) => {
     const { updateAchievementsAsync } = this.props;
@@ -240,8 +244,8 @@ export default class Inventory extends Component {
   }
 
   render() {
-    const { modalVisible, currentVineta, loading, isAlertOpen, itemSelected } = this.state;
-    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult } = this.props;
+    const { modalVisible, currentVineta, loading, isAlertOpen, itemSelected, isOpenPassiveMessage } = this.state;
+    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
     const frameLeaderPadding = 40;
     const frameWoodPadding = 130;
 
@@ -254,48 +258,77 @@ export default class Inventory extends Component {
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
     const allAchievements = this.addDisabledAchievements(sortedAchievements);
+    const backScenes = ['profile', 'quiz'];
+
+    if(scene.name !== 'moiDrawer') {
+      if(scene.name === 'inventory') {
+        this.prevScene = scene.name;
+      }
+      this.currentScene = scene.name;
+    } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
+      this.currentScene = this.prevScene;
+    }
 
     return (
-      <MoiBackground>
-        <Navbar />
-        <FrameContainer>
-          {loading && <Preloader/>}
-          <LeaderFrame width={leaderFramePadding}>
-            <WoodFrame width={woodFramePadding}>
-              <FlatList
-                data={allAchievements}
-                ListEmptyComponent={
-                  <TextBody center>No tienes logros ganados aún</TextBody>
-                }
-                renderItem={this._renderItem}
-                keyExtractor={this._keyExtractor}
-                numColumns={2}
-                columnWrapperStyle={{ justifyContent: 'center' }}
-              />
-            </WoodFrame>
-          </LeaderFrame>
-        </FrameContainer>
+       <UserInactivity
+        timeForInactivity={6000}
+        onAction={(isActive) => {
+          if(!isActive && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen) {
+            Keyboard.dismiss()
+            this.setState({ isOpenPassiveMessage: !isActive })
+          }
+        }}
+        >
+        <MoiBackground>
+          <Navbar />
+          <FrameContainer>
+            {loading && <Preloader/>}
+            <LeaderFrame width={leaderFramePadding}>
+              <WoodFrame width={woodFramePadding}>
+                <FlatList
+                  data={allAchievements}
+                  ListEmptyComponent={
+                    <TextBody center>No tienes logros ganados aún</TextBody>
+                  }
+                  renderItem={this._renderItem}
+                  keyExtractor={this._keyExtractor}
+                  numColumns={2}
+                  columnWrapperStyle={{ justifyContent: 'center' }}
+                />
+              </WoodFrame>
+            </LeaderFrame>
+          </FrameContainer>
 
-        <Video
-          videoDimensions={videoDimensions}
-          source={currentVineta}
-          dismiss={() => this.showVideo(false)}
-          visible={modalVisible}
-          width={width}
-        />
-
-        <AlertComponent open={isAlertOpen}>
-          <GenericAlert
-            message={itemSelected.name}
-            description={itemSelected.description}
-            onCancel={this.closeAlert}
-            cancelText='Ok'
+          <Video
+            videoDimensions={videoDimensions}
+            source={currentVineta}
+            dismiss={() => this.showVideo(false)}
+            visible={modalVisible}
+            width={width}
           />
-        </AlertComponent>
 
-        {finalTestResult && <Certificate/>}
-        <BottomBar />
-      </MoiBackground>
+          <AlertComponent open={isAlertOpen}>
+            <GenericAlert
+              message={itemSelected.name}
+              description={itemSelected.description}
+              onCancel={this.closeAlert}
+              cancelText='Ok'
+            />
+          </AlertComponent>
+
+          {finalTestResult && <Certificate/>}
+          <BottomBar />
+           <PassiveMessageAlert
+            isOpenPassiveMessage={isOpenPassiveMessage}
+            touchableProps={{
+              onPress: () => {
+                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
+              }
+            }}
+            message='"Selecciona uno de los objetos que ganaste para activarlo. Cada uno tiene un efecto diferente'
+          />
+        </MoiBackground>
+      </UserInactivity>
     );
   }
 }

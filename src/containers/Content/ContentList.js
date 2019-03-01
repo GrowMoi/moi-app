@@ -5,12 +5,15 @@ import {
   View,
   FlatList,
   Alert,
+  Keyboard,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 import uuid from 'uuid/v4';
+import UserInactivity from 'react-native-user-inactivity'
+import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 
 // Common Components
 import Navbar from '../../commons/components/Navbar/Navbar';
@@ -37,11 +40,16 @@ const ContentPreviewAnimatable = Animatable.createAnimatableComponent(ContentPre
 @connect(store => ({
   // neuronSelected: store.neuron.neuronSelected,
   device: store.device,
-  route: store.route,
+  scene: store.routes.scene,
 }))
 export default class ContentListScene extends Component {
+  state = {
+    isOpenPassiveMessage: false,
+  }
+
   render() {
-    const { neuronSelected, device, neuron_id } = this.props;
+    const { isOpenPassiveMessage } = this.state
+    const { neuronSelected, device, neuron_id, scene } = this.props;
 
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
@@ -49,19 +57,40 @@ export default class ContentListScene extends Component {
     };
 
     return (
-      <MoiBackground>
-        <ContentListBox
-          containerStyles={containerStyles}
-          // neuronSelected={neuronSelected}
-          neuronId={neuron_id}
-        />
+      <UserInactivity
+        timeForInactivity={6000}
+        onAction={(isActive) => {
+          if(!isActive && (scene.name === 'content')) {
+            Keyboard.dismiss()
+            this.setState({ isOpenPassiveMessage: !isActive })
+          }
+        }}
+      >
+        <MoiBackground>
+          <ContentListBox
+            containerStyles={containerStyles}
+            // neuronSelected={neuronSelected}
+            neuronId={neuron_id}
+          />
 
-        <Navbar />
-        <BottomBarWithButtons
-          readButton={false}
-          width={device.dimensions.width}
-        />
-      </MoiBackground>
+          <Navbar />
+          <BottomBarWithButtons
+            readButton={false}
+            width={device.dimensions.width}
+          />
+
+
+          <PassiveMessageAlert
+            isOpenPassiveMessage={isOpenPassiveMessage}
+            touchableProps={{
+              onPress: () => {
+                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
+              }
+            }}
+            message='Elige el contenido que más te interese y preciona sobre el'
+          />
+        </MoiBackground>
+      </UserInactivity>
     );
   }
 }

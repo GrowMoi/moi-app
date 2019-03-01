@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { View, FlatList } from 'react-native';
+import { Keyboard } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -12,13 +12,21 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import userActions from '../../actions/userActions';
 import TasksContainer from './TasksContainer';
+import UserInactivity from 'react-native-user-inactivity'
+import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 
 @connect(store => ({
   device: store.device,
+  scene: store.routes.scene,
 }))
 class Tasks extends Component {
+  state = {
+    isOpenPassiveMessage: false,
+  }
+
   render() {
-    const { device } = this.props;
+    const { device, scene } = this.props;
+    const { isOpenPassiveMessage } = this.state
     // const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
 
     // const containerStyles = {
@@ -33,11 +41,31 @@ class Tasks extends Component {
     );
 
     return (
-      <MoiBackground>
-        {contentBox}
-        <Navbar />
-        <BottomBarWithButtons width={device.dimensions.width} />
-      </MoiBackground>
+      <UserInactivity
+        timeForInactivity={6000}
+        onAction={(isActive) => {
+          if(!isActive && scene.name === 'tasks') {
+            Keyboard.dismiss()
+            this.setState({ isOpenPassiveMessage: !isActive })
+          }
+        }}
+      >
+        <MoiBackground>
+          {contentBox}
+          <Navbar />
+          <BottomBarWithButtons width={device.dimensions.width} />
+
+          <PassiveMessageAlert
+              isOpenPassiveMessage={isOpenPassiveMessage}
+              touchableProps={{
+                onPress: () => {
+                  this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
+                }
+              }}
+              message='Revisa y completa tus tareas para recibir distintas recompensas'
+            />
+        </MoiBackground>
+      </UserInactivity>
     );
   }
 }

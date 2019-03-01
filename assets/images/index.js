@@ -283,6 +283,7 @@ export default [
   require('../images/miscelaneous/button_close.png'),
   require('../images/buttons/wood_texture.png'),
   require('../images/miscelaneous/check.png'),
+  require('../images/miscelaneous/yellow_pattern.png'),
 
   // Certificate
   require('../images/certificate/marco_exterior_H.png'),
@@ -290,4 +291,8 @@ export default [
   require('../images/certificate/fondo.png'),
   require('../images/certificate/title.png'),
 
+   // Nubes
+  require('../images/nubes/nube1L.png'),
+  require('../images/nubes/nube2L.png'),
+  require('../images/nubes/nube3L.png'),
 ];

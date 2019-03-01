@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
@@ -13,6 +13,7 @@ import {
   Alert,
   TouchableWithoutFeedback,
 } from 'react-native';
+import UserInactivity from 'react-native-user-inactivity';
 
 import userActions from './../../actions/userActions';
 import { WoodTitle } from '../../commons/components/SceneComponents';
@@ -26,7 +27,7 @@ import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 // Login Images
 import loginImages from './loginImages';
 import LoginImage from './LoginImage';
-import Preloader from '../../commons/components/Preloader/Preloader';
+import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 
 const LoginContainer = styled(View)`
   flex: 1;
@@ -83,7 +84,7 @@ const AnimatableContainerLoginKeys = Animatable.createAnimatableComponent(Contai
   validateToken: userActions.validateToken,
   signOutAsync: userActions.signOutAsync,
 })
-export default class Login extends Component {
+export default class Login extends PureComponent {
   state = {
     login: '',
     authorization_key: '',
@@ -91,6 +92,7 @@ export default class Login extends Component {
     showingUsername: true,
     currentSelected: '',
     validating: false,
+    isOpenPassiveMessage: false,
   }
   handleFormContainer = ref => this.formContainer = ref;
 
@@ -148,88 +150,110 @@ export default class Login extends Component {
     const { device } = this.props;
     const { showingSelectionKey, authorization_key: key, login, validating } = this.state;
     const { width } = device.dimensions;
+    const { isOpenPassiveMessage } = this.state;
 
     return (
-      <TouchableWithoutFeedback
-        onPress={() => Keyboard.dismiss()}
+      <UserInactivity
+        timeForInactivity={6000}
+        onAction={(isActive) => {
+          if(!isActive) {
+            Keyboard.dismiss()
+            this.setState({ isOpenPassiveMessage: !isActive })
+          }
+        }}
       >
-        <MoiBackground>
-          <LoginContainer>
-            <BackgroundTree
-              source={backgroundTree}
-              width={width}
-            />
-            <FormContainer
-              behavior="padding"
-              width={width - Size.spaceXLarge}
-              keyboardVerticalOffset={Size.spaceLarge}
-            >
-              <Animatable.View ref={this.handleFormContainer}>
-                <StatusBar hidden/>
+        <TouchableWithoutFeedback
+          onPress={() => Keyboard.dismiss()}
+        >
+          <MoiBackground>
+            <LoginContainer>
+              <BackgroundTree
+                source={backgroundTree}
+                width={width}
+              />
+              <FormContainer
+                behavior="padding"
+                width={width - Size.spaceXLarge}
+                keyboardVerticalOffset={Size.spaceLarge}
+              >
+                <Animatable.View ref={this.handleFormContainer}>
+                  <StatusBar hidden/>
 
-                <Animatable.View animation="bounceInDown" easing="ease-in">
-                  <WoodTitle title='Login' />
-                </Animatable.View>
+                  <Animatable.View animation="bounceInDown" easing="ease-in">
+                    <WoodTitle title='Login' />
+                  </Animatable.View>
 
-                <Form>
-                  <InputsContainer>
-                    {!showingSelectionKey &&
-                      <Animatable.View animation="fadeIn" delay={300}>
-                        <Input
-                          placeholder='nombre de usuario'
-                          keyboardType='email-address'
-                          autoCorrect={false}
-                          value={login}
-                          onChangeText={text => this.onChangeInput('login', text)}
+                  <Form>
+                    <InputsContainer>
+                      {!showingSelectionKey &&
+                        <Animatable.View animation="fadeIn" delay={300}>
+                          <Input
+                            placeholder='nombre de usuario'
+                            keyboardType='email-address'
+                            autoCorrect={false}
+                            value={login}
+                            onChangeText={text => this.onChangeInput('login', text)}
+                          />
+                        </Animatable.View>
+                      }
+                      {showingSelectionKey &&
+                        <AnimatableContainerLoginKeys animation="fadeIn">
+                          {loginImages.map((image) => {
+                            const selected = image.key === key;
+                            return (
+                              <LoginImage
+                                selected={selected}
+                                selectedImage={image.selected}
+                                key={image.key}
+                                keyName={image.key}
+                                source={image.source}
+                                name={image.name}
+                                onPress={this.onPressLoginImage}
+                              />
+                            );
+                          })}
+                        </AnimatableContainerLoginKeys>
+                      }
+                    </InputsContainer>
+
+                    <ButtonsContainer>
+                      <Animatable.View animation="bounceInLeft" easing="ease-in">
+                        <Button
+                          style={{ width: 130, marginRight: Size.spaceMedium }}
+                          title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
+                          onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
                         />
                       </Animatable.View>
-                    }
-                    {showingSelectionKey &&
-                      <AnimatableContainerLoginKeys animation="fadeIn">
-                        {loginImages.map((image) => {
-                          const selected = image.key === key;
-                          return (
-                            <LoginImage
-                              selected={selected}
-                              selectedImage={image.selected}
-                              key={image.key}
-                              keyName={image.key}
-                              source={image.source}
-                              name={image.name}
-                              onPress={this.onPressLoginImage}
-                            />
-                          );
-                        })}
-                      </AnimatableContainerLoginKeys>
-                    }
-                  </InputsContainer>
 
-                  <ButtonsContainer>
-                    <Animatable.View animation="bounceInLeft" easing="ease-in">
-                      <Button
-                        style={{ width: 130, marginRight: Size.spaceMedium }}
-                        title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
-                        onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
-                      />
-                    </Animatable.View>
+                      <Animatable.View animation="bounceInRight" easing="ease-in">
+                        <Button
+                          loading={validating}
+                          style={{ width: 130 }}
+                          title={!showingSelectionKey ? 'Siguiente' : 'Login'}
+                          disabled={!((login.trim()).length > 0)}
+                          onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
+                        />
+                      </Animatable.View>
+                    </ButtonsContainer>
 
-                    <Animatable.View animation="bounceInRight" easing="ease-in">
-                      <Button
-                        loading={validating}
-                        style={{ width: 130 }}
-                        title={!showingSelectionKey ? 'Siguiente' : 'Login'}
-                        disabled={!((login.trim()).length > 0)}
-                        onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
-                      />
-                    </Animatable.View>
-                  </ButtonsContainer>
+                  </Form>
+                </Animatable.View>
+              </FormContainer>
+            </LoginContainer>
 
-                </Form>
-              </Animatable.View>
-            </FormContainer>
-          </LoginContainer>
-        </MoiBackground>
-      </TouchableWithoutFeedback>
+            <PassiveMessageAlert
+              isOpenPassiveMessage={isOpenPassiveMessage}
+              touchableProps={{
+                onPress: () => {
+                  this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
+                }
+              }}
+              message='Hola! Ingresa tu nombre de usuario y presiona siguiente. Si no tienes uno, da clic en Registrarse'
+            />
+
+          </MoiBackground>
+        </TouchableWithoutFeedback>
+      </UserInactivity>
     );
   }
 }

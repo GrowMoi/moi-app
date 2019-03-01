@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import {
   FlatList,
   Alert,
+  Keyboard,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
+import UserInactivity from 'react-native-user-inactivity'
+import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 
 // Components
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -29,6 +32,7 @@ import treeActions from '../../actions/treeActions';
 @connect(store => ({
   device: store.device,
   search: store.search,
+  scene: store.routes.scene,
 }), {
   getUsersAsync: searchActions.getUsersAsync,
   getPublicProfileAsync: profilesActions.loadProfileAsync,
@@ -40,7 +44,11 @@ export default class SearchFriends extends PureComponent {
     page: 0,
     dataSource: [],
     searching: false,
+    isOpenPassiveMessage: false,
   }
+
+  currentScene = '';
+  prevScene = '';
 
   changeFriendState = (data, itemToActivate, resetAll = false) => {
     const friendIsLoading = false;
@@ -120,14 +128,13 @@ export default class SearchFriends extends PureComponent {
   }
 
   render() {
-    const { loading, dataSource, searching } = this.state;
-    const { device } = this.props;
+    const { loading, dataSource, searching, isOpenPassiveMessage } = this.state;
+    const { device, scene } = this.props;
 
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
     };
-
 
     let results;
     if(dataSource.length) {
@@ -151,16 +158,47 @@ export default class SearchFriends extends PureComponent {
       </ContentBox>
     )
 
+    const backScenes = ['profile', 'tasks', 'search', 'randomContents'];
+
+    if(scene.name !== 'moiDrawer') {
+      if(scene.name === 'searchFriends') {
+        this.prevScene = scene.name;
+      }
+      this.currentScene = scene.name;
+    } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
+      this.currentScene = this.prevScene;
+    }
+
     return (
-      <MoiBackground>
-        {contentBox}
-        {loading && <Preloader />}
-        <Navbar />
-        <BottomBarWithButtons
-          readButton={false}
-          width={device.dimensions.width}
-        />
-      </MoiBackground>
+      <UserInactivity
+        timeForInactivity={6000}
+        onAction={(isActive) => {
+          if(!isActive && this.currentScene === 'searchFriends') {
+            Keyboard.dismiss()
+            this.setState({ isOpenPassiveMessage: !isActive })
+          }
+        }}
+      >
+        <MoiBackground>
+          {contentBox}
+          {loading && <Preloader />}
+          <Navbar />
+          <BottomBarWithButtons
+            readButton={false}
+            width={device.dimensions.width}
+          />
+
+          <PassiveMessageAlert
+            isOpenPassiveMessage={isOpenPassiveMessage}
+            touchableProps={{
+              onPress: () => {
+                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
+              }
+            }}
+            message='Busca a tus amigos por su nombre. Podrás conocer su árbol y su progreso en Moi'
+          />
+        </MoiBackground>
+      </UserInactivity>
     )
   }
 };
