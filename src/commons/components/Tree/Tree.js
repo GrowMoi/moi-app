@@ -19,6 +19,7 @@ import Level3 from './Level3';
 import AllLevels from './AllLevels';
 import userActions from '../../../actions/userActions';
 import neuronActions from '../../../actions/neuronActions';
+import { AnimatedNubes } from './AnimatedNubes';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -225,7 +226,7 @@ export default class Tree extends Component {
   render() {
     const { loading, level, zoomScale, hasUserTree, modalVisible } = this.state;
 
-    const { device: { dimensions: { width } } } = this.props;
+    const { device: { dimensions: { width, height } } } = this.props;
 
     const videoDimensions = {
       width: 1280,
@@ -235,6 +236,7 @@ export default class Tree extends Component {
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
+        <AnimatedNubes deviceWidth={width} deviceHeight={height}/>
         {!modalVisible &&
         <Zoom
           maxScale={zoomScale}

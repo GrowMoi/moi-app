@@ -291,4 +291,8 @@ export default [
   require('../images/certificate/fondo.png'),
   require('../images/certificate/title.png'),
 
+   // Nubes
+  require('../images/nubes/nube1L.png'),
+  require('../images/nubes/nube2L.png'),
+  require('../images/nubes/nube3L.png'),
 ];
