@@ -2,6 +2,10 @@ import intro from "../../../../assets/sounds/intro.mp3";
 import content from "../../../../assets/sounds/read_content.mp3";
 import fondo from "../../../../assets/sounds/fondo.mp3";
 import test from "../../../../assets/sounds/test.mp3";
+import profile from "../../../../assets/sounds/profile.mp3";
+import next from "../../../../assets/sounds/next.mp3";
+import learn_content from "../../../../assets/sounds/learn_content.mp3";
+import select_option from "../../../../assets/sounds/select_option.mp3";
 
 export default sounds = {
     login: {
@@ -140,5 +144,12 @@ export default sounds = {
       test: ['quiz', 'tutorQuiz'],
       fondo: ['tree'],
       intro: ['login', 'register']
-    }
+    },
+
+  buttons: {
+    profile: profile,
+    next: next,
+    learnContent: learn_content,
+    selectOption: select_option,
+  }
 }

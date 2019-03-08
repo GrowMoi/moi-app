@@ -19,6 +19,7 @@ import searchButtonImg from '../../../../assets/images/buttons/search_button.png
 import Badge from '../Badge/Badge';
 import userActions from '../../../actions/userActions';
 import tutorActions from '../../../actions/tutorActions';
+import withSound from '../../utils/withSound';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
@@ -138,27 +139,42 @@ class BottomBarWithButtons extends Component {
     if (this.props.onPressReadButton) this.props.onPressReadButton();
   };
 
-  renderButton = (NewButton, customProps, cb) => {
+  renderNewButton = (NewButton, customProps) => {
     const privateProps = {
       resizeMode: 'contain',
     };
 
     return (
+      <NewButton
+        {...privateProps}
+        {...customProps}
+      />
+    );
+  };
+
+  renderButton = (NewButton, customProps, cb) => {
+    return (
       <TouchableOpacity style={{ zIndex: 3 }} onPress={cb}>
-        <NewButton
-          {...privateProps}
-          {...customProps}
-        />
+        {this.renderNewButton(NewButton, customProps)}
       </TouchableOpacity>
     );
   };
 
+  renderButtonWithSound = (NewButton, customProps, cb) => {
+    const TouchableOpacityWithSound = withSound(TouchableOpacity);
+    return (
+      <TouchableOpacityWithSound style={{ zIndex: 3 }} onPress={cb} soundName="learnContent">
+        {this.renderNewButton(NewButton, customProps)}
+      </TouchableOpacityWithSound>
+    );
+  };
+
   renderBadge = () => {
-    const { notifications: { meta: { total_count = 0}}, details: { recommendation_contents_pending = 0 } } = this.props;
+    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 } } = this.props;
 
     const counterNotifications = total_count + recommendation_contents_pending;
 
-    if(counterNotifications == 0) return null;
+    if (counterNotifications == 0) return null;
 
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: 1, right: 12 }}>
@@ -206,7 +222,7 @@ class BottomBarWithButtons extends Component {
 
         {this.props.readButton &&
           <ReadFrame width={70} source={btnInfBlue} resizeMode='contain'>
-            {this.renderButton(BlueButton, elementProps.read, this.readContent)}
+            {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent)}
           </ReadFrame>
         }
 

@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { Image, TouchableOpacity, View } from 'react-native';
 import MoImages from './IconImages';
 import Badge from '../Badge/Badge';
+import withSound from '../../utils/withSound';
 
 const aspectRatio = (17 / 20);
 const aspectRatioBadge = 2.2;
@@ -45,6 +46,18 @@ export default class MoIcon extends Component {
     };
   }
 
+  renderIconWithSound = (iconImage, onPress) => {
+    const TouchableOpacityWithSound = withSound(TouchableOpacity);
+
+    return (
+      <TouchableOpacityWithSound
+        soundName="profile"
+        onPress={onPress}>
+        {iconImage}
+      </TouchableOpacityWithSound>
+    );
+  }
+
   render() {
     const {
       name,
@@ -78,11 +91,7 @@ export default class MoIcon extends Component {
     );
 
     if (onPress) {
-      return (
-        <TouchableOpacity onPress={onPress}>
-          {iconImage}
-        </TouchableOpacity>
-      );
+      return this.renderIconWithSound(iconImage, onPress);
     }
 
     return iconImage;

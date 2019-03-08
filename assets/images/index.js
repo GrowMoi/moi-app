@@ -278,6 +278,10 @@ export default [
   require('../sounds/read_content.mp3'),
   require('../sounds/test.mp3'),
   require('../sounds/fondo.mp3'),
+  require('../sounds/profile.mp3'),
+  require('../sounds/next.mp3'),
+  require('../sounds/learn_content.mp3'),
+  require('../sounds/select_option.mp3'),
 
   // MISCELANEOUS
   require('../images/miscelaneous/button_close.png'),
