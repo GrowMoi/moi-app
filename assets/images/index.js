@@ -287,6 +287,8 @@ export default [
   require('../sounds/btn_search.mp3'),
   require('../sounds/btn_recomendation.mp3'),
   require('../sounds/btn_show_tasks.mp3'),
+  require('../sounds/tree_actions.mp3'),
+  require('../sounds/recompensa.mp3'),
 
   // MISCELANEOUS
   require('../images/miscelaneous/button_close.png'),

@@ -51,8 +51,11 @@ export default class QuizScene extends Component {
     isOpenPassiveMessage: false,
   }
 
+  soundQuizFinishedPlayed;
+
   componentDidMount() {
     const { quiz } = this.props;
+    this.soundQuizFinishedPlayed = false;
     if(quiz.questions.length === 21) {
       this.jumpToScene('quiz');
     }
@@ -139,7 +142,11 @@ export default class QuizScene extends Component {
     const correctResults = results.filter(response => response.correct);
     const message = `Respondiste ${correctResults.length} de ${results.length} preguntas correctamente`;
 
-    Sound.playOverBackgroundSound('recompensa');
+    if(!this.soundQuizFinishedPlayed) {
+      Sound.playOverBackgroundSound('recompensa');
+      this.soundQuizFinishedPlayed = true;
+    }
+
 
     return (
       <ComplementaryScene

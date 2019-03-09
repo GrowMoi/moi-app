@@ -4,6 +4,7 @@ import sounds from './sounds';
 export default class Sound {
 
   soundObject;
+  soundActionsObject;
   processing = false;
 
   constructor() { }
@@ -23,15 +24,22 @@ export default class Sound {
     this.processing = false;
   }
 
-  static playOverBackgroundSound = async soundName => {
+  static playOverBackgroundSound = async (soundName, repeatSound = false) => {
     const { sound } = await Audio.Sound.create(sounds.actions[soundName]);
-    sound.setOnPlaybackStatusUpdate((status) => {
-      if (status.didJustFinish) {
+    this.soundActionsObject = sound;
+    this.soundActionsObject.setIsLoopingAsync(repeatSound);
+    this.soundActionsObject.setOnPlaybackStatusUpdate((status) => {
+      if (status.didJustFinish && !repeatSound) {
         this.soundObject.replayAsync();
       }
     });
     await this.soundObject.pauseAsync();
-    await sound.playAsync();
+    await this.soundActionsObject.playAsync();
+  }
+
+  static stopOverBackgroundSound = async () => {
+    await this.soundActionsObject.stopAsync();
+    await this.soundObject.replayAsync();
   }
 
   static pause = async () => {

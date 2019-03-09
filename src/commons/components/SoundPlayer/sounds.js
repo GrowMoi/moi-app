@@ -13,6 +13,7 @@ import friends from "../../../../assets/sounds/btn_amigos.mp3";
 import search from "../../../../assets/sounds/btn_search.mp3";
 import recomendation from "../../../../assets/sounds/btn_recomendation.mp3";
 import show_tasks from "../../../../assets/sounds/btn_show_tasks.mp3";
+import tree_actions from "../../../../assets/sounds/tree_actions.mp3";
 
 export default sounds = {
     login: {
@@ -167,6 +168,7 @@ export default sounds = {
     random: recomendation,
   },
   actions: {
-    recompensa: recompensa
+    recompensa: recompensa,
+    treeActions: tree_actions,
   }
 }
