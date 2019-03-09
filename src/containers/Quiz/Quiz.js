@@ -16,6 +16,7 @@ import creditos from '../../../assets/videos/creditos.mp4';
 import NewAchievementsModal from '../../commons/components/Quiz/NewAchievements';
 import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
+import { Sound } from '../../commons/components/SoundPlayer';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -137,6 +138,8 @@ export default class QuizScene extends Component {
 
     const correctResults = results.filter(response => response.correct);
     const message = `Respondiste ${correctResults.length} de ${results.length} preguntas correctamente`;
+
+    Sound.playOverBackgroundSound('recompensa');
 
     return (
       <ComplementaryScene

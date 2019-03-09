@@ -152,18 +152,10 @@ class BottomBarWithButtons extends Component {
     );
   };
 
-  renderButton = (NewButton, customProps, cb) => {
-    return (
-      <TouchableOpacity style={{ zIndex: 3 }} onPress={cb}>
-        {this.renderNewButton(NewButton, customProps)}
-      </TouchableOpacity>
-    );
-  };
-
-  renderButtonWithSound = (NewButton, customProps, cb) => {
+  renderButtonWithSound = (NewButton, customProps, cb, soundName) => {
     const TouchableOpacityWithSound = withSound(TouchableOpacity);
     return (
-      <TouchableOpacityWithSound style={{ zIndex: 3 }} onPress={cb} soundName="learnContent">
+      <TouchableOpacityWithSound style={{ zIndex: 3 }} onPress={cb} soundName={soundName}>
         {this.renderNewButton(NewButton, customProps)}
       </TouchableOpacityWithSound>
     );
@@ -206,23 +198,23 @@ class BottomBarWithButtons extends Component {
             <ContainerButton zIndex={2} width={deviceIsBig ? 98 : 80} left={18} bottom={7}>
               {this.renderBadge()}
               <Button width={deviceIsBig ? 98 : 80} source={btnInf1} resizeMode='contain'>
-                {this.renderButton(TaskButton, elementProps.task, this.pressTaskButton)}
+                {this.renderButtonWithSound(TaskButton, elementProps.task, this.pressTaskButton, 'tasks')}
               </Button>
             </ContainerButton>
 
             <Button zIndex={1} width={deviceIsBig ? 92 : 80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
-              {this.renderButton(SearchButton, elementProps.search, this.pressSearchButton)}
+              {this.renderButtonWithSound(SearchButton, elementProps.search, this.pressSearchButton, 'search')}
             </Button>
 
             <Button zIndex={0} width={deviceIsBig ? 96 : 81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
-              {this.renderButton(RandomButton, elementProps.random, this.goToRandomContent)}
+              {this.renderButtonWithSound(RandomButton, elementProps.random, this.goToRandomContent, 'random')}
             </Button>
           </ButtonsContainer>
         </Container>
 
         {this.props.readButton &&
           <ReadFrame width={70} source={btnInfBlue} resizeMode='contain'>
-            {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent)}
+            {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent, 'learnContent')}
           </ReadFrame>
         }
 

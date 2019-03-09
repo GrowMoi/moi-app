@@ -19,11 +19,20 @@ import SearchFriends from './containers/Search/SearchFriends';
 import Inventory from './containers/Inventory/Inventory';
 // import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles from './commons/components/Navbar/navbarPropStyles';
+import withSound from './commons/utils/withSound';
 // import Test from './commons/components/Test';
 
-const backButton = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.pop()}/>;
-const backButtonQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.moiDrawer()}/>;
-const backButtonTutorQuiz = () => <BackButton style={{ left: -5, top: 3 }} onPress={() => Actions.pop()}/>;
+const backButtonWithSound = (action) => {
+  const BackButtonWithSound = withSound(BackButton);
+
+  return (
+    <BackButtonWithSound style={{ left: -5, top: 3 }} onPress={() => action()} soundName="next" />
+  );
+}
+
+const backButton = () => backButtonWithSound(Actions.pop);
+const backButtonQuiz = () => backButtonWithSound(Actions.moiDrawer);
+const backButtonTutorQuiz = () =>  backButtonWithSound(Actions.pop);
 // const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
 
 const routes = Actions.create(
