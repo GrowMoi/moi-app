@@ -5,6 +5,7 @@ import { View, ScrollView, Image } from 'react-native';
 import QuizPicker from './QuizPicker';
 import { Header } from '../Typography';
 import Button from '../Buttons/Button';
+import withSound from '../../utils/withSound';
 
 const Container = styled(View)`
   width: 240px
@@ -42,13 +43,22 @@ export default class Question extends Component {
     this.setState({ selectedAnswer: answer });
   }
 
+  renderButtonWithSound = () => {
+    const { buttonTitle = '' } = this.props;
+    const ButtonWithSound = withSound(Button);
+
+    return (
+      <ButtonWithSound onPress={this.submitAnswer} title={buttonTitle} soundName="next" />
+    );
+  }
+
   render() {
-    const { title = '', options, buttonTitle = '', contentId, mediaUrl } = this.props;
+    const { title = '', options, contentId, mediaUrl } = this.props;
 
     return (
       <Container>
         <Header bolder inverted>{title}</Header>
-        {mediaUrl && <Thumbnail source={{uri: mediaUrl }} />}
+        {mediaUrl && <Thumbnail source={{ uri: mediaUrl }} />}
         <QuizPickerContainer>
           {options &&
             <QuizPicker
@@ -59,7 +69,7 @@ export default class Question extends Component {
           }
         </QuizPickerContainer>
         <ButtonContainer>
-          <Button onPress={this.submitAnswer} title={buttonTitle} />
+          {this.renderButtonWithSound()}
         </ButtonContainer>
       </Container>
     );

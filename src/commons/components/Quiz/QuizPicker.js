@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { View, TouchableOpacity } from 'react-native';
 import { TextBody } from '../Typography';
 import palette, { colors } from '../../styles/palette';
+import withSound from '../../utils/withSound';
 
 const ContainerAnswers = styled(View)`
   align-self: stretch;
@@ -36,26 +37,28 @@ export default class QuizPicker extends Component {
     if (selectedValue) selectedValue(currentOption);
   }
 
-  render() {
+  renderAnswerWithSound = (option) => {
     const { selectedValue } = this.state;
+    const selected = option.id === selectedValue.id;
+    const AnswerWithSound = withSound(Answer);
+
+    return (
+      <AnswerWithSound selected={selected} key={`${option.id}`} onPress={() => this.onPressOption(option)} soundName="selectOption">
+        <TextBody color={selected ? colors.lightGreen : 'black'}>{option.text}</TextBody>
+      </AnswerWithSound>
+    );
+  }
+
+  render() {
     const { options } = this.props;
 
     return (
       <ContainerAnswers>
-        {options && options.map((option) => {
-          const selected = option.id === selectedValue.id;
-
-          return (
-            <Answer selected={selected} key={`${option.id}`} onPress={() => this.onPressOption(option)}>
-              <TextBody color={selected ? colors.lightGreen : 'black'}>{option.text}</TextBody>
-            </Answer>
-          );
-        })}
+        {options && options.map((option) => this.renderAnswerWithSound(option))}
       </ContainerAnswers>
     );
   }
 }
-
 
 QuizPicker.propTypes = {
   selectedValue: PropTypes.func,

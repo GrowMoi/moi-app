@@ -20,6 +20,7 @@ import AllLevels from './AllLevels';
 import userActions from '../../../actions/userActions';
 import neuronActions from '../../../actions/neuronActions';
 import { AnimatedNubes } from './AnimatedNubes';
+import { Sound } from '../SoundPlayer';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -112,15 +113,28 @@ export default class Tree extends Component {
     }
   }
 
+  canPlaySound = true;
+  contTreeUpdates = 0;
+
   onViewTransformed = (zoomInfo) => {
     const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
     setZoomTreeInfo(zoomInfo);
     setNeuronLabelInfo({});
+    this.contTreeUpdates++;
+    if(this.canPlaySound && this.contTreeUpdates > 3) {
+      Sound.playOverBackgroundSound('treeActions', true);
+      this.canPlaySound = false;
+    }
   }
 
   onTransformGestureReleased = (zoomInfo) => {
     const { setZoomTreeInfo } = this.props;
     setZoomTreeInfo(zoomInfo);
+    setTimeout(() => {
+      Sound.stopOverBackgroundSound();
+      this.canPlaySound = true;
+      this.contTreeUpdates = 0;
+    }, 1000);
   }
 
   selectCurrentLevel = (userTree) => {

@@ -8,6 +8,7 @@ import EmptyState from '../../commons/components/EmptyState';
 import { connect } from 'react-redux';
 import Alert from '../../commons/components/Alert/Alert';
 import GenericAlert from '../../commons/components/Alert/GenericAlert';
+import withSound from '../../commons/utils/withSound';
 
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
@@ -26,7 +27,7 @@ export default class ContentListBox extends Component {
   }
 
   componentWillUpdate() {
-    if(!this.state.isAlertOpen) {
+    if (!this.state.isAlertOpen) {
       this.setState({ isAlertOpen: true });
     }
   }
@@ -47,12 +48,33 @@ export default class ContentListBox extends Component {
   }
 
   filterReadedContents = (contents = []) => {
-   return contents.filter(d => (!d.read || d.learnt));
+    return contents.filter(d => (!d.read || d.learnt));
+  }
+
+  renderContentPreviewWithSound = (content, delay, oddInverted, widthContentPreview) => {
+    const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
+    const ContentPreviewWithSound = withSound(ContentPreview);
+
+    return (
+      <ContentPreviewWithSound
+        soundName="selectOption"
+        learnt={content.learnt}
+        animationDelay={delay}
+        key={`${uuid()}-${content.id}`}
+        width={widthContentPreview}
+        onPress={e => this.onPressRowcontent(content)}
+        inverted={oddInverted}
+        title={content.title || ''}
+        subtitle={normalizeKind}
+        source={{ uri: content.media[0] }}
+      />
+    );
   }
 
   render() {
     const { containerStyles, device, neuronSelected } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
+    const MILLISECONDS = 100;
 
     const contents = this.filterReadedContents((neuronSelected || {}).contents);
     const existContentsToRead = (contents || []).length > 0;
@@ -62,26 +84,9 @@ export default class ContentListBox extends Component {
         {existContentsToRead && (
           <ScrollView contentContainerStyle={containerStyles}>
             {(contents || []).map((content, i) => {
-
-              const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
               const oddInverted = i % 2 === 1;
-
-              const MILLISECONDS = 100;
               const delay = MILLISECONDS * i;
-
-              return (
-                <ContentPreview
-                  learnt={content.learnt}
-                  animationDelay={delay}
-                  key={`${uuid()}-${content.id}`}
-                  width={widthContentPreview}
-                  onPress={e => this.onPressRowcontent(content)}
-                  inverted={oddInverted}
-                  title={content.title || ''}
-                  subtitle={normalizeKind}
-                  source={{ uri: content.media[0] }}
-                />
-              );
+              return this.renderContentPreviewWithSound(content, delay, oddInverted, widthContentPreview);
             })}
           </ScrollView>
         )}

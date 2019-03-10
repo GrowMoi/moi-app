@@ -19,6 +19,7 @@ import searchButtonImg from '../../../../assets/images/buttons/search_button.png
 import Badge from '../Badge/Badge';
 import userActions from '../../../actions/userActions';
 import tutorActions from '../../../actions/tutorActions';
+import withSound from '../../utils/withSound';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
@@ -138,27 +139,34 @@ class BottomBarWithButtons extends Component {
     if (this.props.onPressReadButton) this.props.onPressReadButton();
   };
 
-  renderButton = (NewButton, customProps, cb) => {
+  renderNewButton = (NewButton, customProps) => {
     const privateProps = {
       resizeMode: 'contain',
     };
 
     return (
-      <TouchableOpacity style={{ zIndex: 3 }} onPress={cb}>
-        <NewButton
-          {...privateProps}
-          {...customProps}
-        />
-      </TouchableOpacity>
+      <NewButton
+        {...privateProps}
+        {...customProps}
+      />
+    );
+  };
+
+  renderButtonWithSound = (NewButton, customProps, cb, soundName) => {
+    const TouchableOpacityWithSound = withSound(TouchableOpacity);
+    return (
+      <TouchableOpacityWithSound style={{ zIndex: 3 }} onPress={cb} soundName={soundName}>
+        {this.renderNewButton(NewButton, customProps)}
+      </TouchableOpacityWithSound>
     );
   };
 
   renderBadge = () => {
-    const { notifications: { meta: { total_count = 0}}, details: { recommendation_contents_pending = 0 } } = this.props;
+    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 } } = this.props;
 
     const counterNotifications = total_count + recommendation_contents_pending;
 
-    if(counterNotifications == 0) return null;
+    if (counterNotifications == 0) return null;
 
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: 1, right: 12 }}>
@@ -190,23 +198,23 @@ class BottomBarWithButtons extends Component {
             <ContainerButton zIndex={2} width={deviceIsBig ? 98 : 80} left={18} bottom={7}>
               {this.renderBadge()}
               <Button width={deviceIsBig ? 98 : 80} source={btnInf1} resizeMode='contain'>
-                {this.renderButton(TaskButton, elementProps.task, this.pressTaskButton)}
+                {this.renderButtonWithSound(TaskButton, elementProps.task, this.pressTaskButton, 'tasks')}
               </Button>
             </ContainerButton>
 
             <Button zIndex={1} width={deviceIsBig ? 92 : 80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
-              {this.renderButton(SearchButton, elementProps.search, this.pressSearchButton)}
+              {this.renderButtonWithSound(SearchButton, elementProps.search, this.pressSearchButton, 'search')}
             </Button>
 
             <Button zIndex={0} width={deviceIsBig ? 96 : 81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
-              {this.renderButton(RandomButton, elementProps.random, this.goToRandomContent)}
+              {this.renderButtonWithSound(RandomButton, elementProps.random, this.goToRandomContent, 'random')}
             </Button>
           </ButtonsContainer>
         </Container>
 
         {this.props.readButton &&
           <ReadFrame width={70} source={btnInfBlue} resizeMode='contain'>
-            {this.renderButton(BlueButton, elementProps.read, this.readContent)}
+            {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent, 'learnContent')}
           </ReadFrame>
         }
 

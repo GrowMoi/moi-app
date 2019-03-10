@@ -4,6 +4,7 @@ import { View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { Header } from '../Typography';
 import { Size } from '../../styles';
+import withSound from '../../utils/withSound';
 
 const ContainerOptions = styled(View)`
   flex: 1;
@@ -16,21 +17,29 @@ const Item = styled(TouchableOpacity)`
 `;
 
 export default class Options extends Component {
+
+  renderItemWithSound = (option, i) => {
+    const ItemWithSound = withSound(Item);
+
+    return (
+      <ItemWithSound
+      key={i}
+      soundName={option.id}
+      onPress={() => {
+        if(option.onPress){
+          option.onPress(option, i)
+        }
+      }}>
+        <Header bolder small inverted>{option.label}</Header>
+      </ItemWithSound>
+    );
+  }
+
   render() {
     const { options } = this.props;
     return (
       <ContainerOptions>
-        {options.length > 0 && options.map((option, i) => {
-          return (
-            <Item key={i} onPress={() => {
-              if(option.onPress){
-                option.onPress(option, i)
-              }
-            }}>
-              <Header bolder small inverted>{option.label}</Header>
-            </Item>
-          );
-        })}
+        {options.length > 0 && options.map((option, i) => this.renderItemWithSound(option, i))}
       </ContainerOptions>
     );
   }
