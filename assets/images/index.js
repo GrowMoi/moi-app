@@ -1,6 +1,6 @@
 export default [
   require('./background/background_tree_landscape.jpg'),
-  require('./background/background_tree_portrait.jpg'),
+  require('./background/background_tree_portrait.png'),
   require('./background/fondo_arbol.png'),
   require('./macetaMenu/maceta_menu.png'),
   require('./tabBar/tabBar.png'),

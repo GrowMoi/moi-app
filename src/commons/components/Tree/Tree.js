@@ -113,18 +113,27 @@ export default class Tree extends Component {
     }
   }
 
+  prevZoomInfo= null;
   canPlaySound = true;
-  contTreeUpdates = 0;
 
-  onViewTransformed = (zoomInfo) => {
+  onViewTransformed = zoomInfo => {
     const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
+    if(this.prevZoomInfo === null) {
+      this.prevZoomInfo = zoomInfo;
+    }
+
     setZoomTreeInfo(zoomInfo);
     setNeuronLabelInfo({});
-    this.contTreeUpdates++;
-    if(this.canPlaySound && this.contTreeUpdates > 3) {
+    if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
+    if(this.canPlaySound) {
       Sound.playOverBackgroundSound('treeActions', true);
       this.canPlaySound = false;
     }
+    this.prevZoomInfo = zoomInfo;
+  }
+
+  isSameZoomInfo(previousZoomInfo, newZoomInfo) {
+    return previousZoomInfo.scale === newZoomInfo.scale && previousZoomInfo.translateX === newZoomInfo.translateX && previousZoomInfo.translateY === newZoomInfo.translateY;
   }
 
   onTransformGestureReleased = (zoomInfo) => {
@@ -133,7 +142,6 @@ export default class Tree extends Component {
     setTimeout(() => {
       Sound.stopOverBackgroundSound();
       this.canPlaySound = true;
-      this.contTreeUpdates = 0;
     }, 1000);
   }
 
