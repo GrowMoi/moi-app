@@ -12,8 +12,8 @@ const RowContainer = styled(View)`
   flex-direction: row;
   align-self: stretch;
   background-color: ${(props) => {
-    if (props.inverted) return '#b9cc91';
-    return '#9fbc65';
+    if (props.inverted) return Palette.white.alpha(0.2).css();
+    return 'transparent';
   }};
   border-radius: 10;
   shadow-color: ${Palette.dark};
@@ -23,17 +23,11 @@ const RowContainer = styled(View)`
   margin-bottom: ${Size.spaceSmall};
   padding-horizontal: ${Size.spaceSmall};
   padding-vertical: ${Size.spaceSmall};
-  border-color: transparent;
-  border-right-color: ${(props) => {
+  border-color: ${(props) => {
     if (props.inverted) return 'transparent';
-    return Palette.white.alpha(0.4).css();
+    return Palette.white.alpha(0.2).css();
   }};
-  border-top-color: ${Palette.white.alpha(0.4).css()};
-  border-left-color: ${(props) => {
-    if (props.inverted) return Palette.white.alpha(0.4).css();
-    return 'transparent';
-  }};
-  border-width: 2;
+  border-width: 1;
 `;
 
 const imageWidth = 150;

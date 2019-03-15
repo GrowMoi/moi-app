@@ -4,7 +4,7 @@ import { ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 
-import backgroundPortrait from '../../../../assets/images/background/background_tree_portrait.jpg';
+import backgroundPortrait from '../../../../assets/images/background/background_tree_portrait.png';
 import backgroundLandscape from '../../../../assets/images/background/background_tree_landscape.jpg';
 import { LANDSCAPE } from '../../../constants';
 
