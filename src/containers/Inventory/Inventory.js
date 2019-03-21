@@ -34,6 +34,8 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 import Certificate from '../Certificate/Certificate';
 import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
+import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
+import ListCertificates from '../Certificate/ListCertificates';
 
 const FrameContainer = styled(View)`
   margin-top: ${Size.navbarHeight};
@@ -46,10 +48,10 @@ const FrameContainer = styled(View)`
   finalTestResult: state.user.finalTestResult,
   scene: state.routes.scene,
 }), {
-  getAchievementsAsync: userActions.getAchievementsAsync,
-  updateAchievementsAsync: userActions.updateAchievementsAsync,
-  loadFinalTestAsync: userActions.loadFinalTestAsync,
-})
+    getAchievementsAsync: userActions.getAchievementsAsync,
+    updateAchievementsAsync: userActions.updateAchievementsAsync,
+    loadFinalTestAsync: userActions.loadFinalTestAsync,
+  })
 export default class Inventory extends Component {
   state = {
     modalVisible: false,
@@ -67,11 +69,11 @@ export default class Inventory extends Component {
     const { updateAchievementsAsync } = this.props;
     this.showLoading();
 
-    if(id) {
+    if (id) {
       try {
         await updateAchievementsAsync(id);
         this.showLoading(false);
-      } catch(error) {
+      } catch (error) {
         this.showErrorMessage();
       }
     }
@@ -108,28 +110,28 @@ export default class Inventory extends Component {
       return
     }
 
-    if(item.number === 1) {
+    if (item.number === 1) {
       this.showVideo();
       return;
     }
-    else if(item.number === 6) {
+    else if (item.number === 6) {
       this.showVideo(true, vineta_4);
       return;
     }
-    else if(item.number === 7) {
+    else if (item.number === 7) {
       this.showVideo(true, vineta_3);
       return;
     }
-    else if(item.number === 9) {
+    else if (item.number === 9) {
       this.showVideo(true, vineta_2);
       return;
-    } else if(item.number === 10) {
+    } else if (item.number === 10) {
       Alert.alert(
         `${item.name} `,
         'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente',
         [
-          {text: `OK`, onPress: () => this.goFinalQuiz() },
-          {text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+          { text: `OK`, onPress: () => this.goFinalQuiz() },
+          { text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
         ],
       )
       return;
@@ -137,7 +139,7 @@ export default class Inventory extends Component {
 
     let currentStatus = {};
 
-    if(item.active) {
+    if (item.active) {
       currentStatus = {
         status: 'Habilitado',
         textButton: 'Desactivar',
@@ -153,8 +155,8 @@ export default class Inventory extends Component {
       `${item.name} `,
       `${item.description} (Item ${currentStatus.status})`,
       [
-        {text: `${currentStatus.textButton}`, onPress: () => this.updateItem(item) },
-        {text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        { text: `${currentStatus.textButton}`, onPress: () => this.updateItem(item) },
+        { text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
       ],
     )
   }
@@ -243,25 +245,36 @@ export default class Inventory extends Component {
     )
   }
 
-  render() {
-    const { modalVisible, currentVineta, loading, isAlertOpen, itemSelected, isOpenPassiveMessage } = this.state;
-    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
-    const frameLeaderPadding = 40;
+  renderTabs() {
+    const { device: { dimensions: { width, height } } } = this.props;
+
     const frameWoodPadding = 130;
+    const frameLeaderPadding = 40;
 
     const leaderFramePadding = (width - frameLeaderPadding);
     const woodFramePadding = (width - frameWoodPadding);
-    const videoDimensions = {
-        width: 1280,
-        height: 720
-    };
+
+    const ContentCertificate = <ListCertificates/>;
+
+    const tabsData = [
+      { label: 'Items', content: this.renderItems() },
+      { label: 'Certificados', content: ContentCertificate },
+    ];
+
+    return (
+      <VerticalTabs data={tabsData} width={leaderFramePadding - 65} />
+    )
+  }
+
+  renderItems() {
+    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
     const allAchievements = this.addDisabledAchievements(sortedAchievements);
     const backScenes = ['profile', 'quiz'];
 
-    if(scene.name !== 'moiDrawer') {
-      if(scene.name === 'inventory') {
+    if (scene.name !== 'moiDrawer') {
+      if (scene.name === 'inventory') {
         this.prevScene = scene.name;
       }
       this.currentScene = scene.name;
@@ -270,32 +283,58 @@ export default class Inventory extends Component {
     }
 
     return (
-       <UserInactivity
+      <FlatList
+        data={allAchievements}
+        ListEmptyComponent={
+          <TextBody center>No tienes logros ganados aún</TextBody>
+        }
+        renderItem={this._renderItem}
+        keyExtractor={this._keyExtractor}
+        numColumns={2}
+        columnWrapperStyle={{ justifyContent: 'center' }}
+      />
+    );
+  }
+
+  render() {
+    const { modalVisible, currentVineta, loading, isAlertOpen, itemSelected, isOpenPassiveMessage } = this.state;
+    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
+    const frameLeaderPadding = 40;
+    const frameWoodPadding = 130;
+
+    const leaderFramePadding = (width - frameLeaderPadding);
+    const videoDimensions = {
+      width: 1280,
+      height: 720
+    };
+
+    const backScenes = ['profile', 'quiz'];
+
+    if (scene.name !== 'moiDrawer') {
+      if (scene.name === 'inventory') {
+        this.prevScene = scene.name;
+      }
+      this.currentScene = scene.name;
+    } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
+      this.currentScene = this.prevScene;
+    }
+
+    return (
+      <UserInactivity
         timeForInactivity={6000}
         onAction={(isActive) => {
-          if(!isActive && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen) {
+          if (!isActive && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen) {
             Keyboard.dismiss()
             this.setState({ isOpenPassiveMessage: !isActive })
           }
         }}
-        >
+      >
         <MoiBackground>
           <Navbar />
           <FrameContainer>
-            {loading && <Preloader/>}
+            {loading && <Preloader />}
             <LeaderFrame width={leaderFramePadding}>
-              <WoodFrame width={woodFramePadding}>
-                <FlatList
-                  data={allAchievements}
-                  ListEmptyComponent={
-                    <TextBody center>No tienes logros ganados aún</TextBody>
-                  }
-                  renderItem={this._renderItem}
-                  keyExtractor={this._keyExtractor}
-                  numColumns={2}
-                  columnWrapperStyle={{ justifyContent: 'center' }}
-                />
-              </WoodFrame>
+              {this.renderTabs()}
             </LeaderFrame>
           </FrameContainer>
 
@@ -315,10 +354,9 @@ export default class Inventory extends Component {
               cancelText='Ok'
             />
           </AlertComponent>
-
-          {finalTestResult && <Certificate/>}
+          {finalTestResult && <Certificate />}
           <BottomBar />
-           <PassiveMessageAlert
+          <PassiveMessageAlert
             isOpenPassiveMessage={isOpenPassiveMessage}
             touchableProps={{
               onPress: () => {
