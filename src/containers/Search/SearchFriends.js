@@ -28,6 +28,7 @@ import EmptyState from '../../commons/components/EmptyState';
 import searchActions from '../../actions/searchActions';
 import profilesActions from '../../actions/profileActions';
 import treeActions from '../../actions/treeActions';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 @connect(store => ({
   device: store.device,
@@ -171,7 +172,7 @@ export default class SearchFriends extends PureComponent {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if(!isActive && this.currentScene === 'searchFriends') {
             Keyboard.dismiss()

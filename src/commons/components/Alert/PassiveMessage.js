@@ -116,7 +116,7 @@ export default class PassiveMessage extends Component {
             <Background colors={['#f8c570', '#d5a305']} />
             <Pattern source={yellow_pattern} resizeMode='cover'/>
             <TextContainer>
-              <Header style={{ color: 'white', fontWeight: "900" }}>{children}</Header>
+              <Header style={{ color: 'white', fontWeight: "900" }} small>{children}</Header>
             </TextContainer>
             <Shining/>
             <Shadow />

@@ -14,6 +14,7 @@ import userActions from '../../actions/userActions';
 import TasksContainer from './TasksContainer';
 import UserInactivity from 'react-native-user-inactivity'
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 @connect(store => ({
   device: store.device,
@@ -42,7 +43,7 @@ class Tasks extends Component {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if(!isActive && scene.name === 'tasks') {
             Keyboard.dismiss()

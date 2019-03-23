@@ -36,6 +36,7 @@ import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 const FrameContainer = styled(View)`
   margin-top: ${Size.navbarHeight};
@@ -321,7 +322,7 @@ export default class Inventory extends Component {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if (!isActive && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen) {
             Keyboard.dismiss()

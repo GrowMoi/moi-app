@@ -47,6 +47,7 @@ import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAl
 // Redux
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 // import treeActions from '../../actions/treeActions';
 
 const { width } = Dimensions.get('window');
@@ -344,7 +345,7 @@ export default class SingleContentScene extends Component {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if(!isActive && scene.name === 'singleContent') {
             Keyboard.dismiss()

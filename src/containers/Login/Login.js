@@ -28,6 +28,7 @@ import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 import loginImages from './loginImages';
 import LoginImage from './LoginImage';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 const LoginContainer = styled(View)`
   flex: 1;
@@ -154,7 +155,7 @@ export default class Login extends PureComponent {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if(!isActive) {
             Keyboard.dismiss()

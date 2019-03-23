@@ -16,6 +16,7 @@ import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAl
 
 // Redux Actions
 import userActions from './../../actions/userActions';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 @connect(store => ({
   user: store.user.userData,
@@ -57,7 +58,7 @@ export default class ProfileScene extends Component {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if(!isActive && scene.name === 'profile') {
             Keyboard.dismiss()
