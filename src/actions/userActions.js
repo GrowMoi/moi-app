@@ -523,6 +523,18 @@ const uploadCertificateAsync = (base64Image) => async (dispatch) => {
   }
 }
 
+const getLatestCertificatesAsync = () => async (dispatch) => {
+  try{
+    const res = await api.players.getLatestCertificates();
+  const { headers, data } = res;
+    dispatch(setHeaders(headers));
+    return data;
+  } catch (error) {
+		console.log("​error", error)
+    throw new Error(error);
+  }
+}
+
 const uploadTreeImageAsync = (base64Image) => async (dispatch) => {
   try{
     const res = await api.tree_image.uploadTreeImage(base64Image);
@@ -570,4 +582,5 @@ export default {
   saveCertificateAsync,
   uploadCertificateAsync,
   uploadTreeImageAsync,
+  getLatestCertificatesAsync,
 };

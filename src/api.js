@@ -297,6 +297,13 @@ const api = {
       );
       return res;
     },
+    async getLatestCertificates() {
+      const endpoint = '/api/users/certificates?page=1';
+      const res = await client.get(
+        endpoint
+      );
+      return res;
+    },
   },
 
   cloudinary: {

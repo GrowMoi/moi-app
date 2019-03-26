@@ -21,6 +21,7 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import searchActions from '../../actions/searchActions';
 import { TextBody } from '../../commons/components/Typography';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 @connect(store => ({
   device: store.device,
@@ -114,7 +115,7 @@ export default class Search extends PureComponent {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if(!isActive && scene.name === 'search') {
             Keyboard.dismiss()

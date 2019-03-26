@@ -9,8 +9,8 @@ import uuid from 'uuid/v4';
 
 import Preloader from '../../../commons/components/Preloader/Preloader';
 import { TextBody } from '../../../commons/components/Typography';
-import { ContentImagePreview } from '../../../commons/components/ContentComponents';
 import userActions from '../../../actions/userActions';
+import SubItem from '../../Tasks/components/SubItem';
 
 const Container = styled(View)`
   flex: 1;
@@ -92,15 +92,16 @@ class FavoritesTab extends PureComponent {
   _renderItem = (info) => {
     const { device: { dimensions } } = this.props;
     const widthImagePreview = dimensions.width > 320 ? 150 : 130;
+    const item = info.item;
+    const onPress = () => Actions.singleContent({ content_id: item.id, neuron_id: item.neuron_id, title: 'Favorito' });
 
-    const onPress = () => Actions.singleContent({ content_id: info.item.id, neuron_id: info.item.neuron_id, title: 'Favorito' });
     return (
-      <ContentImagePreview
-        touchProps={{
-          onPress,
-        }}
-        data={info.item}
-        width={widthImagePreview}
+      <SubItem
+        title={item.title}
+        source={item.media[0]}
+        clickItem={onPress}
+        style={{width: '47%', height: 100, marginLeft: 6}}
+        fontSize={13}
       />
     );
   }

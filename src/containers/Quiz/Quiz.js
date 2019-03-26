@@ -17,6 +17,7 @@ import NewAchievementsModal from '../../commons/components/Quiz/NewAchievements'
 import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import { Sound } from '../../commons/components/SoundPlayer';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -176,7 +177,7 @@ export default class QuizScene extends Component {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if (!isActive && scene.name === 'quiz' && !showModalNewAchievements && !loading) {
             Keyboard.dismiss()

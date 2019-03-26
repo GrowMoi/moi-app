@@ -8,7 +8,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { View, FlatList, StyleSheet } from 'react-native';
 import Preloader from '../../../commons/components/Preloader/Preloader';
 import { TextBody } from '../../../commons/components/Typography';
-import { ContentImagePreview } from '../../../commons/components/ContentComponents';
+import SubItem from '../../Tasks/components/SubItem';
 
 const Container = styled(View)`
   flex: 1;
@@ -20,6 +20,7 @@ const TabContainer = styled(View)`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 13
 `;
 
 const NotDataToDisplay = styled(View)`
@@ -61,12 +62,12 @@ class LastContentsLearnt extends Component {
     });
 
     return (
-      <ContentImagePreview
-        touchProps={{
-          onPress,
-        }}
-        data={item}
-        width={widthImagePreview}
+      <SubItem
+        title={item.title}
+        source={item.media[0]}
+        clickItem={onPress}
+        style={{width: '47%', height: 100, marginLeft: 6}}
+        fontSize={13}
       />
     );
   }

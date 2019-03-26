@@ -13,6 +13,7 @@ import TreeBottom from './components/TreeBottom';
 import Tree from '../../commons/components/Tree';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import { connect } from 'react-redux';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 const ContentScreen = styled(View)`
   flex: 1;
@@ -62,7 +63,7 @@ export default class TreeScene extends Component {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if(!isActive && this.currentScene === 'tree') {
             Keyboard.dismiss()

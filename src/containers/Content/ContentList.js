@@ -29,6 +29,7 @@ import ContentListBox from './ContentListBox';
 // Actions
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
+import { TIME_FOR_INACTIVITY } from '../../constants';
 
 const Container = styled(View)`
   flex: 1;
@@ -58,7 +59,7 @@ export default class ContentListScene extends Component {
 
     return (
       <UserInactivity
-        timeForInactivity={6000}
+        timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
           if(!isActive && (scene.name === 'content')) {
             Keyboard.dismiss()

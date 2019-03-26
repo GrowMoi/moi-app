@@ -13,8 +13,11 @@ const SubItem = (props) => {
     if(props.clickClose) props.clickClose();
   }
 
+  const propsStyle = props.style ? props.style : {};
+  const titleStile = props.fontSize ? [styles.title, {fontSize: props.fontSize}] : styles.title ;
+
   return(
-    <View style={styles.container}>
+    <View style={[styles.container, propsStyle]}>
       {props.clickClose && (
         <TouchableHighlight style={styles.onIcon} onPress={clickClose} >
           <Ionicons name="md-close" size={10} color='black' />
@@ -26,7 +29,7 @@ const SubItem = (props) => {
           style={styles.background}
         >
           <View style={styles.titleContainer}>
-            <TextBody numberOfLines={1} ellipsizeMode='tail' style={styles.title}>{props.title}</TextBody>
+            <TextBody numberOfLines={1} ellipsizeMode='tail' style={titleStile}>{props.title}</TextBody>
           </View>
         </ImageBackground>
       </TouchableHighlight>
