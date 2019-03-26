@@ -29,7 +29,10 @@
     "android": {
       "package": "com.growmoisociallearning.moiapp",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
-      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json",
+      "permissions": [
+        "CAMERA"
+      ]
     },
     "isDetached": true,
     "detach": {

@@ -113,6 +113,11 @@ const api = {
       const res = await client.get(endpoint, { params: { page } });
       return res;
     },
+    async updateUserProfileImage(imageBase64) {
+      const endpoint = '/api/users/user_image';
+      const res = await client.put(endpoint, { image: imageBase64 });
+      return res;
+    }
   },
 
   leaderboard: {
