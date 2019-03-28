@@ -10,14 +10,14 @@ const heightFrame = 806;
 
 const StyledWoodFrame = styled(ImageBackground)`
   width: ${props => props.width};
-  height: ${props => getHeightAspectRatio(widthFrame, heightFrame, props.width)};
+  height: ${props => props.height ? props.height : getHeightAspectRatio(widthFrame, heightFrame, props.width)};
   padding-horizontal: 20;
   padding-vertical: 30;
   border-radius: 10;
 `;
 
-const WoodFrame = ({ width = widthFrame, ...rest }) => (
-  <StyledWoodFrame width={width} source={woodFrame} resizeMode='contain' {...rest} />
+const WoodFrame = ({ width = widthFrame, height, ...rest }) => (
+  <StyledWoodFrame width={width} height={height} source={woodFrame} resizeMode='stretch' {...rest} />
 )
 
 export default WoodFrame;

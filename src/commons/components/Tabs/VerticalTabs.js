@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { getHeightAspectRatio } from '../../utils';
 import WoodFrame from '../WoodFrame';
@@ -16,9 +16,15 @@ const TabContent = styled(View)`
 `;
 
 const TabLabel = styled(View)`
-  position: absolute;
-  top: -25;
-  right: -42;
+  ${props => props.horizontalTabs ? css`
+    flex-direction: row;
+    padding-left: 22;
+    margin-bottom: -1;
+  ` : css`
+    position: absolute;
+    top: -25;
+    right: -42;
+  `}
 `;
 
 const Content = styled(View)`
@@ -53,23 +59,12 @@ export default class VerticalTabs extends Component {
     this.setState({ currentTab: label });
   }
 
-  render() {
+  renderTabsLabel() {
     const { currentTab } = this.state;
-    const { data, width } = this.props;
+    const { data, horizontalTabs = false } = this.props;
 
-    return (<TabsContainer width={width}>
-      <TabContent>
-        {data.length && data.map((d, i) => {
-          if (d.label === currentTab) {
-            return (
-              <WoodFrame width={width - 20} key={`${d.label}-${i}-content`}>
-                {d.content}
-              </WoodFrame>
-            );
-          }
-        })}
-      </TabContent>
-      <TabLabel>
+    return (
+      <TabLabel horizontalTabs={horizontalTabs}>
         {data.length && data.map((d, i) => {
           const isSelected = currentTab === d.label;
           const heightLabel = 100;
@@ -79,18 +74,42 @@ export default class VerticalTabs extends Component {
               key={`${d.label}-${i}`}
               selected={isSelected}
               onPress={() => this.onPressLabel(d.label)}
-              style={{
+              style={!horizontalTabs ? {
                 transform: [{ rotate: '90deg' }],
                 height: 30,
                 width: heightLabel,
                 marginTop: heightLabel / 1.5,
-              }}
+              } : {
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }}
             >
               <TextBody inverted={isSelected} color={'#262625'} center>{d.label}</TextBody>
             </LabelText>
           );
         })}
       </TabLabel>
+    );
+  }
+
+  render() {
+    const { currentTab } = this.state;
+    const { data, width, horizontalTabs = false } = this.props;
+
+    return (<TabsContainer width={width}>
+      {horizontalTabs && this.renderTabsLabel()}
+      <TabContent>
+        {data.length && data.map((d, i) => {
+          if (d.label === currentTab) {
+            return (
+              <WoodFrame width={horizontalTabs ? width : width - 20} height={horizontalTabs ? 495 : null} key={`${d.label}-${i}-content`}>
+                {d.content}
+              </WoodFrame>
+            );
+          }
+        })}
+      </TabContent>
+      {!horizontalTabs && this.renderTabsLabel()}
     </TabsContainer>
     );
   }

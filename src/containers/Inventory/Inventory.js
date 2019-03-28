@@ -263,7 +263,7 @@ export default class Inventory extends Component {
     ];
 
     return (
-      <VerticalTabs data={tabsData} width={leaderFramePadding - 65} />
+      <VerticalTabs data={tabsData} width={leaderFramePadding - 65} horizontalTabs />
     )
   }
 
