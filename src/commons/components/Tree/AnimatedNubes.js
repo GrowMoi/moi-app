@@ -17,10 +17,10 @@ const positionNube = [{
 }];
 
 export class AnimatedNubes extends Component {
-  getRandomTopPostion() {
+  getRandomTopPostion = () => {
     const { deviceHeight } = this.props;
     const minValue = 0;
-    const maxValue = 10;
+    const maxValue = 30;
 
     const randomPercentage = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
     return (deviceHeight * randomPercentage) / 100;
@@ -81,17 +81,12 @@ export class AnimatedNubes extends Component {
             <AnimatedImage
               key={i}
               source={nube.source}
-              style={{
-                position: 'relative',
-                top: nube.verticalPosition,
-                justifyContent: nube.horizontalPosition.flexPosition,
-                alignItems: nube.horizontalPosition.flexPosition
-              }}
-              propertyToAnimate={nube.horizontalPosition.position}
               minValue={animationValues.minValue}
               maxValue={animationValues.maxValue}
-              timeRange={[5000, 15000]}
+              timeRange={[15000, 30000]}
               delayStart={nube.delayStart}
+              verticalPosition={this.getRandomTopPostion}
+              horizontalPosition={this.getNubePosition}
               infiniteLoop
             />
         )}
