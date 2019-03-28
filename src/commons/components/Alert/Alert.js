@@ -14,7 +14,7 @@ const Overlay = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${Palette.black.alpha(0.7).css()};
+  background-color: ${props => props.noOverlay ? 'transparent' : Palette.black.alpha(0.7).css()};
 `;
 
 const CloseIcon = styled(Ionicons)`
@@ -31,7 +31,7 @@ export default class Alert extends Component {
   }
 
   render() {
-    const { open, children, style, touchableProps = {}, animationType='slide' } = this.props;
+    const { open, children, style, touchableProps = {}, animationType='slide', noOverlay=false } = this.props;
 
     return (
       <Container style={style}>
@@ -43,7 +43,7 @@ export default class Alert extends Component {
           hardwareAccelerated
         >
         <TouchableWithoutFeedback {...touchableProps}>
-          <Overlay>
+          <Overlay noOverlay={noOverlay}>
             {children}
           </Overlay>
         </TouchableWithoutFeedback>

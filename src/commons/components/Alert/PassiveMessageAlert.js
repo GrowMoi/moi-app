@@ -15,8 +15,9 @@ export default class PassiveMessageAlert extends Component {
       <MoiPassiveMessageModal
         animationType="fade"
         open={isOpenPassiveMessage}
-        touchableProps={touchableProps}>
-        <PassiveMessage>{message}</PassiveMessage>
+        touchableProps={touchableProps}
+        noOverlay>
+        <PassiveMessage position="bottomRight">{message}</PassiveMessage>
       </MoiPassiveMessageModal>
     )
   }

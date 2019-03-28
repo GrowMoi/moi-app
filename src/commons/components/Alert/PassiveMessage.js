@@ -8,8 +8,8 @@ import * as Animatable from 'react-native-animatable';
 
 const Container = styled(View)`
   flex: 1;
-  width: 100%;
-  min-height: 80px;
+  width: 50%;
+  min-height: 50px;
   overflow: hidden;
   position: absolute;
   ${props => {
@@ -96,8 +96,8 @@ const Pattern = styled(Image)`
   height: 100%;
 `
 const TextContainer = styled(View)`
-  padding-horizontal: 20;
-  padding-vertical: 20;
+  padding-horizontal: 8;
+  padding-vertical: 8;
 `
 
 const AnimatableView = styled(View)`
@@ -116,7 +116,7 @@ export default class PassiveMessage extends Component {
             <Background colors={['#f8c570', '#d5a305']} />
             <Pattern source={yellow_pattern} resizeMode='cover'/>
             <TextContainer>
-              <Header style={{ color: 'white', fontWeight: "900" }} small>{children}</Header>
+              <Header style={{ color: 'white'}} superSmall>{children}</Header>
             </TextContainer>
             <Shining/>
             <Shadow />
