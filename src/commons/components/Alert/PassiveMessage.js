@@ -111,7 +111,7 @@ export default class PassiveMessage extends Component {
 
     return (
       <Container position={position} style={this.props.style}>
-        <AnimatableContent animation="jello" easing="ease-in-out">
+        <AnimatableContent animation="fadeInDownBig" easing="ease-in-out">
           <Content>
             <Background colors={['#f8c570', '#d5a305']} />
             <Pattern source={yellow_pattern} resizeMode='cover'/>
