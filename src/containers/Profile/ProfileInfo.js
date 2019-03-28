@@ -14,7 +14,7 @@ import { ContentBox } from '../../commons/components/ContentComponents';
 import { Line } from '../../commons/components/SceneComponents';
 import { TextBody, Title, Header } from '../../commons/components/Typography';
 import { normalizeAllCapLetter } from '../../commons/utils/normalize';
-import { Size } from '../../commons/styles';
+import { Size, Palette } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
 import Tabs from '../../commons/components/Tabs';
 import Profile from '../../commons/components/Profile/Profile';
@@ -49,12 +49,12 @@ const TreeImage = styled(Image)`
   margin-bottom: ${Size.spaceSmall};
   padding-horizontal: ${Size.spaceSmall};
   padding-vertical: ${Size.spaceSmall};
-  background-color: #90b653;
+  background-color: ${Palette.white.alpha(0.2).css()};
   height: 180;
 `;
 
 const PersonalInfo = styled(View)`
-  background-color: #90b653;
+  background-color: ${Palette.white.alpha(0.2).css()};
   border-radius: 5px;
   border-color: #87a749;
   border-width: 1px;
@@ -121,7 +121,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
           <TreeImage source={{ uri: profile.tree_image }} resizeMode='contain' />
         )}
 
-        {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} />}
+        {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} transparent/>}
 
         {!isShared &&
           <Button style={{ marginTop: 20, marginBottom: 20 }} onPress={onClickSignOut && onClickSignOut} title='Cerrar mi sesión' rightIcon='md-log-out' />

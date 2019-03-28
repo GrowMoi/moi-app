@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { TextBody } from '../Typography';
-import { Size } from '../../styles';
+import { Size, Palette } from '../../styles';
 
 const TabContainer = styled(View)`
   height: 295;
@@ -26,7 +26,7 @@ const TabContents = styled(View)`
 
 const Content = styled(View)`
   flex: 1;
-  background-color: #90b653;
+  background-color: ${props => props.transparent ? Palette.white.alpha(0.2).css() : '#90b653'};
   border-color: black;
   border-width: 1;
 `;
@@ -49,7 +49,7 @@ export default class Tabs extends Component {
   }
 
   render() {
-    const { data = [] } = this.props;
+    const { data = [], transparent=false } = this.props;
     const { currentTab } = this.state;
     return (
       <TabContainer>
@@ -72,7 +72,7 @@ export default class Tabs extends Component {
           {data.length && data.map((d, i) => {
             if (d.label === currentTab) {
               return (
-                <Content key={`${d.label}-${i}-content`}>
+                <Content key={`${d.label}-${i}-content`} transparent={transparent}>
                   {d.content}
                 </Content>
               );
