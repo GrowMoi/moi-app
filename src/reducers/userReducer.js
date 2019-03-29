@@ -201,6 +201,15 @@ const notes = (state = initialState.notes, action) => {
   }
 }
 
+const reloadRandomContents = (state = false, action) => {
+  switch (action.type) {
+    case actionTypes.SET_RELOAD_RANDOM_CONTENTS:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const user = combineReducers({
   userData,
   tasks,
@@ -213,6 +222,7 @@ const user = combineReducers({
   notifications,
   notes,
   finalTestResult,
+  reloadRandomContents,
 });
 
 export default user;
