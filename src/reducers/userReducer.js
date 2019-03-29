@@ -130,7 +130,7 @@ const profile = (state = initialState.data, action) => {
   }
 };
 
-const achievements = (state = initialState.data, action) => {
+const achievements = (state = initialState.achievements, action) => {
   switch (action.type) {
     case actionTypes.GET_USER_ACHIEVEMENTS:
       return action.payload;
