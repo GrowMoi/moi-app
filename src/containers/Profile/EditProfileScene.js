@@ -13,6 +13,9 @@ import { Line } from '../../commons/components/SceneComponents';
 import Button from '../../commons/components/Buttons/Button';
 import { normalizeAllCapLetter } from '../../commons/utils/normalize';
 import Form from './Form';
+import PhotoPicker from '../../commons/components/Photo/PhotoPicker';
+import Palette from '../../commons/styles/palette';
+import api from '../../api';
 
 const { width } = Dimensions.get('window');
 
@@ -60,11 +63,26 @@ const StyledButton = styled(Button)`
 }), {
   logoutAsync: userActions.logoutAsync,
   updateUserAccountAsync: userActions.updateUserAccountAsync,
+  getUserProfileAsync: userActions.getUserProfileAsync
 })
 export default class EditProfileScene extends Component {
   logout = () => {
     const { logoutAsync } = this.props;
     logoutAsync();
+  }
+
+  _onPickerImage = async (result, mutation) => {
+    const { getUserProfileAsync, user } = this.props;
+
+    try {
+      if (result.base64) {
+        const imageBase64 = `data:image/jpeg;base64,${result.base64}`
+        await api.user.updateUserProfileImage(imageBase64);
+        await getUserProfileAsync(user.profile.id);
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   submit = async (values = {}) => {
@@ -93,10 +111,15 @@ export default class EditProfileScene extends Component {
           <ContentBox>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
               <HeaderProfile>
-                <Profile />
+                <Profile userImageUri={profile.image}/>
                 <NameContainer>
                   <Title numberOfLines={2} style={{ flex: 1 }} heavy>{userName}</Title>
-                  {/* <TextBody>Cambiar Photo</TextBody> */}
+                  <PhotoPicker cancelLabel={'Cancelar'}
+                      onPickerImage={(result) => this._onPickerImage(result)}
+                      pickPhotoLabel={'Seleccionar Imagen'}
+                      takePhotoLabel={'Tomar Foto'}>
+                    <TextBody color={Palette.accent.css()}>Cambiar foto de perfil</TextBody>
+                  </PhotoPicker>
                 </NameContainer>
               </HeaderProfile>
 
