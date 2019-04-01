@@ -3,7 +3,12 @@ import { Animated, Image } from 'react-native';
 
 export class AnimatedImage extends Component {
   state = {
-    animationValue: new Animated.Value(0)
+    animationValue: new Animated.Value(0),
+    verticalPosition: 0,
+    horizontalPosition: {
+      position: 'left',
+      flexPosition: 'flex-start'
+    }
   }
 
   animation;
@@ -32,9 +37,14 @@ export class AnimatedImage extends Component {
   }
 
   initAnimation(infiniteLoop) {
+    const { minValue, verticalPosition,  horizontalPosition } = this.props;
     this.animation.start(() => {
       if (infiniteLoop) {
-        this.setState({ animationValue: new Animated.Value(this.props.minValue || 0) });
+        this.setState({
+          animationValue: new Animated.Value(minValue || 0),
+          verticalPosition: verticalPosition(),
+          horizontalPosition: horizontalPosition(),
+          });
         this.animation = this.createAnimation();
         this.initAnimation(true);
       }
@@ -51,14 +61,17 @@ export class AnimatedImage extends Component {
   }
 
   render() {
-    const { style, source, propertyToAnimate } = this.props;
-    const { animationValue } = this.state;
+    const { source } = this.props;
+    const { animationValue, verticalPosition, horizontalPosition } = this.state;
 
     return (
       <Animated.View
         style={{
-          ...style,
-          [propertyToAnimate]: animationValue,
+          position: 'absolute',
+          top: verticalPosition,
+          justifyContent: horizontalPosition.flexPosition,
+          alignItems: horizontalPosition.flexPosition,
+          [horizontalPosition.position]: animationValue,
         }}
       >
         <Image source={source} />

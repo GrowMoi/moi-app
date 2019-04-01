@@ -71,6 +71,11 @@ const setNotes = (notes) => ({
   payload: notes,
 })
 
+const reloadRandomContents = (reload) => ({
+  type: actionTypes.SET_RELOAD_RANDOM_CONTENTS,
+  payload: reload,
+})
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   try {
     const res = await api.user.signIn({ login, authorization_key: authorizationKey });
@@ -545,6 +550,10 @@ const uploadTreeImageAsync = (base64Image) => async (dispatch) => {
   }
 }
 
+const setReloadRandomContents = (reload = true) => (dispatch) => {
+  dispatch(reloadRandomContents(reload))
+}
+
 export default {
   loginAsync,
   registerAsync,
@@ -583,4 +592,5 @@ export default {
   uploadCertificateAsync,
   uploadTreeImageAsync,
   getLatestCertificatesAsync,
+  setReloadRandomContents,
 };

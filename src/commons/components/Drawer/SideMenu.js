@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -18,9 +19,18 @@ import { DRAWER_OFFSET, PORTRAIT } from '../../../constants';
 import macetaMenu from '../../../../assets/images/macetaMenu/maceta_menu.png';
 import { normalizeAllCapLetter } from '../../utils';
 
-const SideMenuContainer = styled(View)`
+import regular_box from '../../../../assets/images/background/regular_box.png';
+import yellow_box from '../../../../assets/images/background/amarillo_box.png';
+import orange_box from '../../../../assets/images/background/naranja_box.png';
+import fushia_box from '../../../../assets/images/background/fuccia_box.png';
+import blue_box from '../../../../assets/images/background/azul_box.png';
+import lila_box from '../../../../assets/images/background/lila_box.png';
+import green_box from '../../../../assets/images/background/verde_box.png';
+
+const SideMenuContainer = styled(ImageBackground)`
   flex: 1;
-  padding-top: ${Size.spaceSmall};
+  margin-top: ${-Size.spaceSmall};
+  padding-top: ${Size.spaceMedium};
   background-color: ${Palette.menuBackground};
 `;
 
@@ -74,12 +84,20 @@ const styles = StyleSheet.create({
   userTree: store.tree.userTree,
   user: store.user.userData,
   profile: store.user.profile,
+  achievements: store.user.achievements,
 }))
 export default class SideMenu extends Component {
   static propTypes = {
     device: PropTypes.any,
     userTree: PropTypes.any,
     user: PropTypes.object,
+  }
+
+   get currentAchievement() {
+    const { achievements } = this.props;
+
+    const [achievement] = (achievements || []).filter(item => item.active);
+    return achievement;
   }
 
   render() {
@@ -124,8 +142,19 @@ export default class SideMenu extends Component {
       },
     ];
 
+    let currentBox = regular_box;
+    const currentAchievement = (this.currentAchievement || {}).number;
+    if(currentAchievement === 2) currentBox = yellow_box;
+    else if(currentAchievement === 3) currentBox = fushia_box;
+    else if(currentAchievement === 4) currentBox = blue_box;
+    else if(currentAchievement === 5) currentBox = green_box;
+    else if(currentAchievement === 8) currentBox = lila_box;
+
     return (
-      <SideMenuContainer>
+      <SideMenuContainer
+        resizeMode='cover'
+        source={currentBox}
+      >
         <SideBarMenuHeader>
           <MoIcon name='treeIcon' size={28} />
           <SideBarTitleContainer>

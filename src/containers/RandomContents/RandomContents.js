@@ -11,15 +11,17 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import neuronActions from '../../actions/neuronActions';
+import userActions from '../../actions/userActions';
 
 
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   device: store.device,
-  user: store.user,
+  reloadRandomContents: store.user.reloadRandomContents,
 }), {
   loadRecomendedContents: neuronActions.loadRecomendedContents,
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+  setReloadRandomContents: userActions.setReloadRandomContents,
 })
 class Tasks extends Component {
   state = {
@@ -30,29 +32,36 @@ class Tasks extends Component {
     this.getRandomContents();
   }
 
+  async componentWillReceiveProps(newProps) {
+    if(newProps.reloadRandomContents && !this.state.loading) {
+      this.setState({ loading: true });
+      await this.getRandomContents();
+      this.props.setReloadRandomContents(false);
+    }
+  }
+
   getRandomContents = async () => {
     const { loadRecomendedContents, loadNeuronByIdAsync } = this.props;
     const { data } = await loadRecomendedContents(1);
     const neurons = (data.neurons || []);
     const randomNeuron = (neurons[Math.floor(Math.random() * neurons.length)] || {});
+    Actions.refresh({title: randomNeuron.title});
 
     await loadNeuronByIdAsync(randomNeuron.id || 1);
     this.setState({ loading: false });
   }
 
   onPressRowcontent = (e, content) => {
-    const { neuronSelected } = this.props;
-
     Actions.singleContent({
       content_id: content.id,
-      title: neuronSelected.title,
+      title: content.title,
       neuron_id: content.neuron_id,
     });
   }
 
   render() {
     const { loading } = this.state;
-    const { device, user: { tasks }, neuronSelected } = this.props;
+    const { device, neuronSelected } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
 
     const containerStyles = {

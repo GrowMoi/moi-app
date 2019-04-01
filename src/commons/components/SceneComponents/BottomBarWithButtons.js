@@ -110,9 +110,10 @@ const BlueButton = styled(Image)`
 @connect(store => ({
   notifications: store.user.notifications,
   details: store.tutor.details,
-
+  scene: store.routes.scene,
 }), {
     getNotificationsAsync: userActions.getNotificationsAsync,
+    setReloadRandomContents: userActions.setReloadRandomContents,
     getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
   })
 class BottomBarWithButtons extends Component {
@@ -132,7 +133,12 @@ class BottomBarWithButtons extends Component {
   };
 
   goToRandomContent = () => {
-    Actions.randomContents();
+    const { scene, setReloadRandomContents } = this.props;
+    if(scene.name === 'randomContents') {
+      setReloadRandomContents();
+    } else {
+      Actions.randomContents();
+    }
   };
 
   readContent = () => {

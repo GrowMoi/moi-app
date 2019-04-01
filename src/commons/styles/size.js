@@ -7,6 +7,7 @@ export default {
 
   fontHeader: 20,
   fontHeaderSmall: 15,
+  fontHeaderSuperSmall: 12,
 
   spaceXSmall: 5,
   spaceSmall: 10,

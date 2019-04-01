@@ -13,10 +13,11 @@ export default class PassiveMessageAlert extends Component {
     const { isOpenPassiveMessage = false, touchableProps = {}, message } = this.props
     return (
       <MoiPassiveMessageModal
-        animationType="fade"
+        animationType="none"
         open={isOpenPassiveMessage}
-        touchableProps={touchableProps}>
-        <PassiveMessage>{message}</PassiveMessage>
+        touchableProps={touchableProps}
+        noOverlay>
+        <PassiveMessage position="bottomRight">{message}</PassiveMessage>
       </MoiPassiveMessageModal>
     )
   }

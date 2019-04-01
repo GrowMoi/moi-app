@@ -14,6 +14,7 @@ import withSound from '../../commons/utils/withSound';
   neuronSelected: store.neuron.neuronSelected,
   device: store.device,
   route: store.route,
+  scene: store.routes.scene,
 }))
 export default class ContentListBox extends Component {
 
@@ -72,7 +73,7 @@ export default class ContentListBox extends Component {
   }
 
   render() {
-    const { containerStyles, device, neuronSelected } = this.props;
+    const { containerStyles, device, neuronSelected, scene } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
     const MILLISECONDS = 100;
 
@@ -91,7 +92,7 @@ export default class ContentListBox extends Component {
           </ScrollView>
         )}
 
-        {!existContentsToRead && <Alert open={this.state.isAlertOpen}>
+        {!existContentsToRead && scene.name !== 'randomContents' && <Alert open={this.state.isAlertOpen}>
           <GenericAlert
             message='No hay contenidos!'
             description='Ya haz leido todos los contenidos en esta neurona.'

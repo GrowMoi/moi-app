@@ -10,6 +10,8 @@ const StyledHeader = styled(Text)`
     }
     if(props.small){
       return Size.fontHeaderSmall;
+    } else if(props.superSmall) {
+      return Size.fontHeaderSuperSmall;
     }
     return Size.fontHeader;
   }};
