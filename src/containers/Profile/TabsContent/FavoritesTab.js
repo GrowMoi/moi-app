@@ -40,13 +40,11 @@ const styles = StyleSheet.create({
   device: store.device,
 }), {
   loadAllFavorites: userActions.loadAllFavorites,
+  getMoreFavoritesAsync: userActions.getMoreFavoritesAsync,
 })
 class FavoritesTab extends PureComponent {
   state = {
     dataLoaded: false,
-    dataSource: [],
-    page: 0,
-    noMoreData: false,
   }
 
   componentDidMount() {
@@ -55,38 +53,25 @@ class FavoritesTab extends PureComponent {
 
   getFavorites = async () => {
     const { loadAllFavorites } = this.props;
-    const { page } = this.state;
-    const nextPage = page + 1;
 
     try {
-      await loadAllFavorites(nextPage);
-
-      const { favorites: { content_tasks: { content_tasks } } } = this.props;
-      this.setState(prevState => ({ dataLoaded: true, dataSource: prevState.dataSource.concat(content_tasks), page: nextPage }));
-
+      await loadAllFavorites();
+      this.setState({ dataLoaded: true});
     } catch (error) {
       this.setState({ dataLoaded: true });
     }
-
   }
 
   getMoreFavorites = async() => {
-    const { loadAllFavorites } = this.props;
-    const { page } = this.state;
-    const nextPage = page + 1;
+    const { getMoreFavoritesAsync } = this.props;
 
     try {
-      await loadAllFavorites(nextPage);
-
-      const { favorites: { content_tasks: { content_tasks } } } = this.props;
-      this.setState(prevState => ({ dataLoaded: true, dataSource: prevState.dataSource.concat(content_tasks), page: nextPage }));
-
-
+      await getMoreFavoritesAsync();
+      this.setState({ dataLoaded: true});
     } catch (error) {
       this.setState({ dataLoaded: true });
       console.log(error);
     }
-
   }
 
   _renderItem = (info) => {
@@ -110,7 +95,7 @@ class FavoritesTab extends PureComponent {
 
   render() {
     const { favorites: data } = this.props;
-    const { dataLoaded, dataSource, noMoreData } = this.state;
+    const { dataLoaded } = this.state;
 
     const loading = !dataLoaded;
     const hasItems = dataLoaded && (((data || {}).meta || {}).total_items > 0);
@@ -122,7 +107,7 @@ class FavoritesTab extends PureComponent {
           <TabContainer>
             <FlatList
               contentContainerStyle={styles.contentContainer}
-              data={dataSource}
+              data={data.content_tasks.content_tasks}
               onEndReached={this.getMoreFavorites}
               renderItem={this._renderItem}
               onEndReachedThreshold={0.4}
