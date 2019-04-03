@@ -79,6 +79,14 @@ const Shadow = styled(View)`
   width: 100%;
 `
 
+const ShadowLeft = styled(View)`
+  position: absolute;
+  left: 0;
+  width: 5;
+  backgroundColor: #ce7903;
+  height: 100%;
+`
+
 const Content = styled(View)`
   position: relative;
   height: 100%;
@@ -98,7 +106,8 @@ const Pattern = styled(Image)`
   height: 100%;
 `
 const TextContainer = styled(View)`
-  padding-horizontal: 8;
+  padding-left: 13;
+  padding-right: 10;
   padding-vertical: 17;
 `
 
@@ -118,10 +127,11 @@ export default class PassiveMessage extends Component {
             <Background colors={['#f8c570', '#d5a305']} />
             <Pattern source={yellow_pattern} resizeMode='cover'/>
             <TextContainer>
-              <Header style={{ color: 'white'}} small bolder>{children}</Header>
+              <Header style={{ color: 'white', textAlign: 'justify'}} small bolder >{children}</Header>
             </TextContainer>
             <Shining/>
             <Shadow />
+            <ShadowLeft/>
           </Content>
         </AnimatableContent>
       </Container>
