@@ -8,10 +8,12 @@ import * as Animatable from 'react-native-animatable';
 
 const Container = styled(View)`
   flex: 1;
-  width: 50%;
+  width: 70%;
   min-height: 50px;
   overflow: hidden;
   position: absolute;
+  padding-bottom: 38px;
+  padding-top: 38px;
   ${props => {
     switch(props.position) {
       case 'bottom':
@@ -77,6 +79,14 @@ const Shadow = styled(View)`
   width: 100%;
 `
 
+const ShadowLeft = styled(View)`
+  position: absolute;
+  left: 0;
+  width: 5;
+  backgroundColor: #ce7903;
+  height: 100%;
+`
+
 const Content = styled(View)`
   position: relative;
   height: 100%;
@@ -96,8 +106,9 @@ const Pattern = styled(Image)`
   height: 100%;
 `
 const TextContainer = styled(View)`
-  padding-horizontal: 8;
-  padding-vertical: 8;
+  padding-left: 13;
+  padding-right: 10;
+  padding-vertical: 17;
 `
 
 const AnimatableView = styled(View)`
@@ -111,15 +122,16 @@ export default class PassiveMessage extends Component {
 
     return (
       <Container position={position} style={this.props.style}>
-        <AnimatableContent animation="fadeInDownBig" easing="ease-in-out">
+        <AnimatableContent animation="fadeIn" easing="ease-in-out">
           <Content>
             <Background colors={['#f8c570', '#d5a305']} />
             <Pattern source={yellow_pattern} resizeMode='cover'/>
             <TextContainer>
-              <Header style={{ color: 'white'}} superSmall>{children}</Header>
+              <Header style={{ color: 'white' }} small bolder >{children}</Header>
             </TextContainer>
             <Shining/>
             <Shadow />
+            <ShadowLeft/>
           </Content>
         </AnimatableContent>
       </Container>

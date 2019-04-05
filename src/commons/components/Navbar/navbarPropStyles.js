@@ -5,17 +5,18 @@ import { Actions } from 'react-native-router-flux';
 import { Font } from '../../styles';
 import MoIcon from '../MoIcon/MoIcon';
 import store from '../../../store';
+import withSound from '../../utils/withSound';
 
 const toggleDrawer = () => Actions.refresh({ key: 'moiDrawer', open: value => !value });
 
-const ProfileButton = () => {
-  const user = store.getState().user || {};
-  const userData = user.userData || {};
-  const profile = userData.profile || {};
+const renderProfileIconWithSound = (profile) => {
+    const TouchableOpacityWithSound = withSound(TouchableOpacity);
 
-  if (profile.image) {
     return (
-      <TouchableOpacity onPress={() => Actions.profile()}>
+      <TouchableOpacityWithSound
+        soundName="profile"
+        onPress={() => Actions.profile()}
+      >
         <Image
           style={{
             width: 30,
@@ -24,8 +25,17 @@ const ProfileButton = () => {
           }}
           source={{uri: profile.image}}
         />
-      </TouchableOpacity>
-    )
+      </TouchableOpacityWithSound>
+    );
+  }
+
+const ProfileButton = () => {
+  const user = store.getState().user || {};
+  const userData = user.userData || {};
+  const profile = userData.profile || {};
+
+  if (profile.image) {
+    return renderProfileIconWithSound(profile);
   } else {
     return (<MoIcon name="profile" size={30} onPress={() => Actions.profile()} />)
   }
