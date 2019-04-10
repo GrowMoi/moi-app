@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, AsyncStorage, PixelRatio, ImageEditor, ImageStore } from 'react-native';
+import { View, StyleSheet, AsyncStorage, PixelRatio, ImageEditor, ImageStore, Platform } from 'react-native';
 import { takeSnapshotAsync } from 'expo';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
@@ -288,6 +288,7 @@ export default class Tree extends Component {
         <AnimatedNubes deviceWidth={width} deviceHeight={height} />
         {!modalVisible &&
           <Zoom
+            flex={Platform.OS === 'android' ? 2 : 1}
             maxScale={zoomScale}
             onViewTransformed={this.onViewTransformed}
             onTransformGestureReleased={this.onTransformGestureReleased}
@@ -314,7 +315,7 @@ export default class Tree extends Component {
 const Zoom = styled(ViewTransformer)`
   overflow: visible;
   position: relative;
-  flex: 1;
+  flex: ${props => props.flex};
 `;
 
 Tree.propTypes = {
