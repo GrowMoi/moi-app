@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
-import { getHeightAspectRatio } from '../../utils';
-import WoodFrame from '../WoodFrame';
-
-const widthFrame = 335;
-const heightFrame = 648;
+import { ContentBox } from '../ContentComponents';
+import woodFrame from './../../../../assets/images/frames/wood_frame.png';
 
 const TabsContainer = styled(View)`
-height: ${props => getHeightAspectRatio(widthFrame, heightFrame, props.width)};
-`;
-
-const TabContent = styled(View)`
+  padding-top: 5;
+  height: 103%;
+  width: 89%;
 `;
 
 const TabLabel = styled(View)`
@@ -22,24 +18,31 @@ const TabLabel = styled(View)`
     margin-bottom: -1;
   ` : css`
     position: absolute;
-    top: -25;
-    right: -42;
+    top: -10;
+    right: -32;
   `}
-`;
-
-const Content = styled(View)`
-  flex: 1;
 `;
 
 const LabelText = styled(TouchableOpacity)`
   padding-top: 4;
   background-color: ${({ selected }) => (selected ? '#62692e' : '#828c3d')};
-  border-top-width: ${({ selected }) => (selected ? 1 : 3)};;
-  border-left-width: ${({ selected }) => (selected ? 1 : 3)};;
-  border-right-width: ${({ selected }) => (selected ? 1 : 3)};;
+  border-top-width: ${({ selected }) => (selected ? 1 : 3)};
+  border-left-width: ${({ selected }) => (selected ? 1 : 3)};
+  border-right-width: ${({ selected }) => (selected ? 1 : 3)};
   border-color: #102b1b;
   border-top-left-radius: 8;
   border-top-right-radius: 8;
+`;
+
+const StyledContentBox = styled(ContentBox)`
+  margin-top: 0;
+  padding-bottom: 30;
+  ${props => props.horizontalTabs ? css`
+    width: 99%;
+  ` : css`
+    margin-left: -30;
+    width: 90%;
+  `}
 `;
 
 export default class VerticalTabs extends Component {
@@ -94,21 +97,17 @@ export default class VerticalTabs extends Component {
 
   render() {
     const { currentTab } = this.state;
-    const { data, width, horizontalTabs = false } = this.props;
+    const { data, horizontalTabs = false } = this.props;
 
-    return (<TabsContainer width={width}>
+    return (<TabsContainer >
       {horizontalTabs && this.renderTabsLabel()}
-      <TabContent>
+      <StyledContentBox image={woodFrame} horizontalTabs={horizontalTabs}>
         {data.length && data.map((d, i) => {
           if (d.label === currentTab) {
-            return (
-              <WoodFrame width={horizontalTabs ? width : width - 20} height={horizontalTabs ? 495 : null} key={`${d.label}-${i}-content`}>
-                {d.content}
-              </WoodFrame>
-            );
+            return d.content
           }
         })}
-      </TabContent>
+        </StyledContentBox>
       {!horizontalTabs && this.renderTabsLabel()}
     </TabsContainer>
     );

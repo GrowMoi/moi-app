@@ -49,21 +49,25 @@ export default class ContentBox extends Component {
     return achievement;
   }
 
-  render() {
-    const { device: { dimensions: { width } } } = this.props;
-    const {
-      contentContainerStyle,
-      style,
-      ...rest
-    } = this.props;
-
-    let currentBox = regular_box;
+  getCurrentBox() {
+     let currentBox = regular_box;
     const currentAchievement = (this.currentAchievement || {}).number;
     if(currentAchievement === 2) currentBox = yellow_box;
     else if(currentAchievement === 3) currentBox = fushia_box;
     else if(currentAchievement === 4) currentBox = blue_box;
     else if(currentAchievement === 5) currentBox = green_box;
     else if(currentAchievement === 8) currentBox = lila_box;
+
+    return currentBox;
+  }
+
+  render() {
+    const { device: { dimensions: { width } }, image } = this.props;
+    const {
+      contentContainerStyle,
+      style,
+      ...rest
+    } = this.props;
 
     const padding = 20;
     return (
@@ -72,7 +76,7 @@ export default class ContentBox extends Component {
           style={style}
           resizeMode='stretch'
           width={(width - padding)}
-          source={currentBox}
+          source={image ? image : this.getCurrentBox()}
           {...rest}>
           {this.props.children}
         </ContentScreen>
