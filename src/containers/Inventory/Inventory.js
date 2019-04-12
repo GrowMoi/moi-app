@@ -254,7 +254,7 @@ export default class Inventory extends Component {
     ];
 
     return (
-      <VerticalTabs data={tabsData} />
+      <VerticalTabs data={tabsData} horizontalTabs />
     )
   }
 

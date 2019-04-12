@@ -288,7 +288,7 @@ export default class Tree extends Component {
         <AnimatedNubes deviceWidth={width} deviceHeight={height} />
         {!modalVisible &&
           <Zoom
-            flex={Platform.OS === 'android' ? 2 : 1}
+            flex={Platform.OS === 'android' ? 10 : 1}
             maxScale={zoomScale}
             onViewTransformed={this.onViewTransformed}
             onTransformGestureReleased={this.onTransformGestureReleased}
