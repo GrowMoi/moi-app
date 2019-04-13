@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut }) => {
+const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, enableScroll }) => {
   if(data === undefined) return null;
 
   const { profile, level } = data;
@@ -93,7 +93,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
 
   return (
     <Container>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <ScrollView contentContainerStyle={styles.scrollContainer} scrollEnabled={enableScroll}>
         <HeaderProfile>
           <Profile width={40} userImageUri={profile.image}/>
           <NameContainer>

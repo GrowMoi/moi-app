@@ -29,6 +29,7 @@ import { TIME_FOR_INACTIVITY } from '../../constants';
 export default class ProfileScene extends Component {
   state = {
     isOpenPassiveMessage: false,
+    enableScroll: true,
   }
 
   editProfile = () => {
@@ -42,9 +43,13 @@ export default class ProfileScene extends Component {
 
   get tabs() {
     return [
-      { label: 'Favoritos', content: <FavoritesTab /> },
+      { label: 'Favoritos', content: <FavoritesTab enableScroll={this.enableMainScroll(true)} disableScroll={this.enableMainScroll(false)}/> },
       { label: 'Ultimos 4', content: <LastContentsLearnt /> },
     ];
+  }
+
+  enableMainScroll = (scrollEnabled) => () => {
+    this.setState({enableScroll: scrollEnabled});
   }
 
   render() {
@@ -73,6 +78,7 @@ export default class ProfileScene extends Component {
             tabsData={this.tabs}
             onClickEdit={this.editProfile}
             onClickSignOut={this.signOut}
+            enableScroll={this.state.enableScroll}
           />
           <BottomBar />
 

@@ -93,15 +93,26 @@ class FavoritesTab extends PureComponent {
 
   _keyExtractor = item => uuid();
 
+
   render() {
-    const { favorites: data } = this.props;
+    const { favorites: data, enableScroll, disableScroll } = this.props;
     const { dataLoaded } = this.state;
 
     const loading = !dataLoaded;
     const hasItems = dataLoaded && (((data || {}).meta || {}).total_items > 0);
 
     return (
-      <Container>
+      <Container
+      onStartShouldSetResponderCapture={() => {
+        setTimeout(() => {
+          disableScroll();
+        }, 500);
+
+        setTimeout(() => {
+          enableScroll();
+        }, 1000);
+      }}
+      >
         {loading && <Preloader />}
         {!loading && (hasItems ? (
           <TabContainer>
