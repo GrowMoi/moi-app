@@ -81,11 +81,9 @@ class ListCertificates extends Component {
             key={index}
             resizeMode='cover'
             source={{ uri: item }} />
-          );
-            />
-          </TouchableOpacity>
+        </TouchableOpacity>
       </View>
-    )
+    );
   }
 
   openCertificate = image => {
