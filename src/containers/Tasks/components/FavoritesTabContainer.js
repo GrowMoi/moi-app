@@ -37,11 +37,21 @@ export default class FavoritesTabContainer extends Component {
   }
 
   render() {
-    const { title, icon, data = [] } = this.props;
+    const { title, icon, data = [], enableScroll, disableScroll } = this.props;
     const { open } = this.state;
 
     return(
-      <View style={styles.tasks}>
+      <View style={styles.tasks}
+        onStartShouldSetResponderCapture={() => {
+          setTimeout(() => {
+            disableScroll();
+          }, 500);
+
+          setTimeout(() => {
+            enableScroll();
+          }, 1000);
+        }}
+      >
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />
         {open && (
           <View style={styles.subItemContainer}>
