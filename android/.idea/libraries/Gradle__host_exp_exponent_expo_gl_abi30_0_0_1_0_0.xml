@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: host.exp.exponent:expo-gl-abi30_0_0-1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/expo-gl-abi30_0_0-1.0.0.aar/58648eec35e36c2e1a68690ed303b7ba/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/expo-gl-abi30_0_0-1.0.0.aar/58648eec35e36c2e1a68690ed303b7ba/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

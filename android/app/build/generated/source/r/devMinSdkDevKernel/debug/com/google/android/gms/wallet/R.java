@@ -70,12 +70,12 @@ public final class R {
         public static final int monochrome = 0x7f09010e;
         public static final int none = 0x7f090113;
         public static final int production = 0x7f09012a;
-        public static final int sandbox = 0x7f09014c;
-        public static final int selectionDetails = 0x7f090168;
-        public static final int slide = 0x7f090172;
-        public static final int strict_sandbox = 0x7f090183;
-        public static final int test = 0x7f09018b;
-        public static final int wrap_content = 0x7f0901c4;
+        public static final int sandbox = 0x7f09014d;
+        public static final int selectionDetails = 0x7f090169;
+        public static final int slide = 0x7f090173;
+        public static final int strict_sandbox = 0x7f090184;
+        public static final int test = 0x7f09018c;
+        public static final int wrap_content = 0x7f0901c5;
     }
     public static final class layout {
         public static final int wallet_test_layout = 0x7f0b0075;
