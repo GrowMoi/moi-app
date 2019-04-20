@@ -43,10 +43,7 @@ export default class FavoritesTabContainer extends Component {
     return(
       <View style={styles.tasks}
         onStartShouldSetResponderCapture={() => {
-          setTimeout(() => {
-            disableScroll();
-          }, 500);
-
+          disableScroll();
           setTimeout(() => {
             enableScroll();
           }, 1000);

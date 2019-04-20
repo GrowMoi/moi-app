@@ -163,16 +163,16 @@ class TasksContainer extends Component {
   }
 
   enableMainScroll = (scrollEnabled) => () => {
-    this.setState({enableScroll: scrollEnabled});
+    this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
   }
 
   render(){
-    const { loading, isAlertOpen, enableScroll } = this.state;
+    const { loading, isAlertOpen } = this.state;
 
     return(
       <View style={styles.container}>
         <Header title='Mis Tareas' />
-        <ScrollView scrollEnabled={enableScroll}>
+        <ScrollView ref={(e) => { this.scrollRef = e }}>
           {!loading && <View style={styles.scrollContainer}>
             <TaskTabContainer
               title='Tareas'

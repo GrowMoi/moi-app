@@ -29,8 +29,9 @@ import { TIME_FOR_INACTIVITY } from '../../constants';
 export default class ProfileScene extends Component {
   state = {
     isOpenPassiveMessage: false,
-    enableScroll: true,
   }
+
+  scrollRef = null;
 
   editProfile = () => {
     Actions.editProfile();
@@ -49,7 +50,7 @@ export default class ProfileScene extends Component {
   }
 
   enableMainScroll = (scrollEnabled) => () => {
-    this.setState({enableScroll: scrollEnabled});
+    this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
   }
 
   render() {
@@ -78,7 +79,7 @@ export default class ProfileScene extends Component {
             tabsData={this.tabs}
             onClickEdit={this.editProfile}
             onClickSignOut={this.signOut}
-            enableScroll={this.state.enableScroll}
+            onProfileInfoReady={(scrollRef) => {this.scrollRef = scrollRef}}
           />
           <BottomBar />
 
