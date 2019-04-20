@@ -13,12 +13,14 @@ const isDrawerScene = (currentScene) => {
 const routeMiddleware = args => store => next => async(action) => {
   if (action.type === ActionConst.FOCUS) {
     let currentScene = action.scene.name;
+    const previousAudio = store.getState().tree.audio;
+
+    if(currentScene === 'moiDrawer' && previousAudio && previousAudio.previousScene === 'tree') return;
 
     if (conflictScenes.indexOf(previousScene) !== -1 && isDrawerScene(currentScene)) {
       currentScene = 'tree';
     }
 
-    const previousAudio = store.getState().tree.audio;
     if(previousScene === 'profile' && previousAudio.soundName === 'content' && previousAudio.scene !== 'profile') {
       currentScene = previousAudio.scene;
     }
