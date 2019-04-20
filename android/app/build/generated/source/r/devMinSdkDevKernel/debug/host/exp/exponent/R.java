@@ -5479,6 +5479,22 @@ public final class R {
     public static final int amu_unknwown_folder=0x7f0e0011;
     public static final int amu_unsupported=0x7f0e0012;
     public static final int amu_visibility_ground_overlay=0x7f0e0013;
+    public static final int btn_amigos=0x7f0e0014;
+    public static final int btn_inventory=0x7f0e0015;
+    public static final int btn_learn_content=0x7f0e0016;
+    public static final int btn_next=0x7f0e0017;
+    public static final int btn_profile=0x7f0e0018;
+    public static final int btn_recomendation=0x7f0e0019;
+    public static final int btn_search=0x7f0e001a;
+    public static final int btn_select_option=0x7f0e001b;
+    public static final int btn_settings=0x7f0e001c;
+    public static final int btn_show_tasks=0x7f0e001d;
+    public static final int fondo=0x7f0e001e;
+    public static final int intro=0x7f0e001f;
+    public static final int read_content=0x7f0e0020;
+    public static final int recompensa=0x7f0e0021;
+    public static final int test=0x7f0e0022;
+    public static final int tree_actions=0x7f0e0023;
   }
   public static final class string {
     public static final int CreditCardFormCardNumberHint=0x7f0f0000;

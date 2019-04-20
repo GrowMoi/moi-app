@@ -40,6 +40,14 @@
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/b5c5e41b9c836339f8a847a9d5689715/res/drawable-v21/avd_show_password.xml"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_recomendation.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_recomendation.mp3"
+    },
+    {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_profile.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_profile.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable_messenger_button_blue_bg_selector.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.34.0.aar/edc384abb8dd4383afdac8082c0fba48/res/drawable/messenger_button_blue_bg_selector.xml"
     },
@@ -1256,6 +1264,10 @@
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d609904db85ce07643be935f073b8638/res/layout/notification_template_part_chronometer.xml"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_next.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_next.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/color_abc_background_cache_hint_selector_material_light.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e2101816fca7f0637df80d8ed8968435/res/color/abc_background_cache_hint_selector_material_light.xml"
     },
@@ -1576,6 +1588,10 @@
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/1234a86e68bd616e6de88ccd39c9ff04/res/color/common_google_signin_btn_text_light.xml"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_test.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/test.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable-ldpi-v4_exo_controls_pause.png.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-2.6.1.aar/2eaf037cf6c730c0d60a67e141677d5a/res/drawable-ldpi-v4/exo_controls_pause.png"
     },
@@ -1818,6 +1834,10 @@
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/layout_support_simple_spinner_dropdown_item.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e2101816fca7f0637df80d8ed8968435/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_inventory.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_inventory.mp3"
     },
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable-xhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -2072,6 +2092,10 @@
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/facebook-common-4.34.0.aar/57f0128a5e3f1194c1f736c2d62dfd2d/res/drawable-hdpi-v4/com_facebook_button_icon_blue.png"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_settings.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_settings.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/layout_abc_list_menu_item_layout.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e2101816fca7f0637df80d8ed8968435/res/layout/abc_list_menu_item_layout.xml"
     },
@@ -2268,6 +2292,10 @@
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/expoview-30.0.0.aar/77ff9728e50e9f2b0c65fdc104d2b35b/res/drawable/loading_status_bar_background.xml"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_fondo.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/fondo.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/layout_messenger_button_send_blue_small.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.34.0.aar/edc384abb8dd4383afdac8082c0fba48/res/layout/messenger_button_send_blue_small.xml"
     },
@@ -2298,6 +2326,10 @@
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/color_abc_hint_foreground_material_light.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e2101816fca7f0637df80d8ed8968435/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_show_tasks.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_show_tasks.mp3"
     },
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable-xxhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
@@ -2410,6 +2442,10 @@
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable-hdpi-v4_ic_jcb.png.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/stripe-android-6.0.0.aar/2eedad6e5b6afccdc78d43f272cb5f08/res/drawable-hdpi-v4/ic_jcb.png"
+    },
+    {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_recompensa.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/recompensa.mp3"
     },
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable_design_snackbar_background.xml.flat",
@@ -2672,6 +2708,10 @@
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.34.0.aar/edc384abb8dd4383afdac8082c0fba48/res/drawable-hdpi-v4/messenger_bubble_large_blue.png"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_intro.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/intro.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/color_abc_secondary_text_material_dark.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e2101816fca7f0637df80d8ed8968435/res/color/abc_secondary_text_material_dark.xml"
     },
@@ -2900,6 +2940,10 @@
         "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/drawable-mdpi/ic_logo_white_32dp.png"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_select_option.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_select_option.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/mipmap-xxhdpi-v26_dev_icon.png.flat",
         "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/mipmap-xxhdpi-v26/dev_icon.png"
     },
@@ -3024,6 +3068,10 @@
         "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/drawable-xxxhdpi/shell_notification_icon.png"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_tree_actions.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/tree_actions.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable-hdpi-v4_ic_cvc.png.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/stripe-android-6.0.0.aar/2eedad6e5b6afccdc78d43f272cb5f08/res/drawable-hdpi-v4/ic_cvc.png"
     },
@@ -3060,6 +3108,10 @@
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e2101816fca7f0637df80d8ed8968435/res/layout/abc_select_dialog_material.xml"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_search.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_search.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable-anydpi-v21_design_ic_visibility.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/b5c5e41b9c836339f8a847a9d5689715/res/drawable-anydpi-v21/design_ic_visibility.xml"
     },
@@ -3070,6 +3122,10 @@
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/anim_catalyst_slide_up.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/react-native-30.0.0.aar/428d53733c683e3c71487e9feab3e973/res/anim/catalyst_slide_up.xml"
+    },
+    {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_read_content.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/read_content.mp3"
     },
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable-xxhdpi-v4_exo_controls_pause.png.flat",
@@ -3412,6 +3468,10 @@
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/facebook-login-4.34.0.aar/9152b73b9b0a31bb70dcd6562b550a90/res/drawable/com_facebook_button_login_background.xml"
     },
     {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_learn_content.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_learn_content.mp3"
+    },
+    {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable_com_facebook_button_background.xml.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/facebook-common-4.34.0.aar/57f0128a5e3f1194c1f736c2d62dfd2d/res/drawable/com_facebook_button_background.xml"
     },
@@ -3690,6 +3750,10 @@
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable-xhdpi-v4_com_facebook_tooltip_blue_bottomnub.png.flat",
         "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/facebook-login-4.34.0.aar/9152b73b9b0a31bb70dcd6562b550a90/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
+    },
+    {
+        "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/raw_btn_amigos.mp3.flat",
+        "source": "/Users/luis/Projects/moi/moi-app/android/app/src/main/res/raw/btn_amigos.mp3"
     },
     {
         "merged": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable_com_facebook_button_login_silver_background.xml.flat",

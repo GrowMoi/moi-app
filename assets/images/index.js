@@ -273,23 +273,6 @@ export default [
   require('../videos/vineta_3.mp4'),
   require('../videos/vineta_4.mp4'),
 
-  //Sounds
-  require('../sounds/intro.mp3'),
-  require('../sounds/read_content.mp3'),
-  require('../sounds/test.mp3'),
-  require('../sounds/fondo.mp3'),
-  require('../sounds/btn_profile.mp3'),
-  require('../sounds/btn_next.mp3'),
-  require('../sounds/btn_learn_content.mp3'),
-  require('../sounds/btn_inventory.mp3'),
-  require('../sounds/btn_settings.mp3'),
-  require('../sounds/btn_amigos.mp3'),
-  require('../sounds/btn_search.mp3'),
-  require('../sounds/btn_recomendation.mp3'),
-  require('../sounds/btn_show_tasks.mp3'),
-  require('../sounds/tree_actions.mp3'),
-  require('../sounds/recompensa.mp3'),
-
   // MISCELANEOUS
   require('../images/miscelaneous/button_close.png'),
   require('../images/buttons/wood_texture.png'),

@@ -233,6 +233,11 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNSound (0.10.12):
+    - React/Core
+    - RNSound/Core (= 0.10.12)
+  - RNSound/Core (0.10.12):
+    - React/Core
   - Stripe (13.0.3)
   - yoga (0.55.4.React)
 
@@ -285,6 +290,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNSound (from `../node_modules/react-native-sound`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -389,6 +395,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-youtube:
     :path: "../node_modules/react-native-youtube"
+  RNSound:
+    :path: "../node_modules/react-native-sound"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -458,9 +466,10 @@ SPEC CHECKSUMS:
   lottie-react-native: db4bd75685428c4ad0ec2f913145abff3d38b640
   React: aa2040dbb6f317b95314968021bd2888816e03d5
   react-native-youtube: 7ab01f1320b037d605e6c6ac9d59cc2b92091799
+  RNSound: b360b3862d3118ed1c74bb9825696b5957686ac4
   Stripe: 76c203e21555089b708e6cbe972a3e3baf1ab4d8
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 770913d736bfdf453498a24b07e63552203120b7
+PODFILE CHECKSUM: 5015344eaf4cd1614f325fc88f0c152e639f1f58
 
 COCOAPODS: 1.5.3

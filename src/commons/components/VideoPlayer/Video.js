@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { View, Modal } from 'react-native';
 import { Video as ExpoVideo, ScreenOrientation } from 'expo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components/native';
 import { getHeightAspectRatio } from '../../utils';
 import { Palette } from '../../styles';
-
-// Actions
-import neuronActions from '../../../actions/neuronActions';
+import Sound from '../SoundPlayer/Sound';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -25,20 +22,15 @@ const CloseIcon = styled(Ionicons)`
   background-color: transparent;
 `;
 
-@connect(store => ({}),
-{
-  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
-  playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
-})
 class Video extends Component {
 
   componentWillUpdate(nextProps) {
-    const { visible, stopCurrentBackgroundAudio, playCurrentBackgroundAudio } = this.props;
+    const { visible } = this.props;
 
     if(!visible && nextProps.visible) {
-        stopCurrentBackgroundAudio();
+        Sound.pause();
     } else if(visible && !nextProps.visible) {
-        playCurrentBackgroundAudio();
+        Sound.play();
     }
 
     return true;

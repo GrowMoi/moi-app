@@ -484,6 +484,7 @@
     <orderEntry type="library" name="Gradle: host.exp:reactandroid-abi26_0_0-1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: host.exp.exponent:expo-file-system-abi29_0_0-1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/luis/Projects/moi/moi-app/node_modules/react-native-youtube/android/libs/YouTubeAndroidPlayerApi.jar:unspecified@jar" level="project" />
+    <orderEntry type="module" module-name="react-native-sound" />
     <orderEntry type="module" module-name="lottie-react-native" />
     <orderEntry type="module" module-name="react-native-youtube" />
   </component>

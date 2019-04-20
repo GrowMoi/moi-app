@@ -1,59 +1,67 @@
-import { Audio } from 'expo';
+import Sound from 'react-native-sound';
 import sounds from './sounds';
 
-export default class Sound {
+export default class MoiSound {
 
   soundObject;
   soundActionsObject;
   processing = false;
 
-  constructor() { }
+  constructor() {
+    Sound.setCategory('Playback');
+  }
 
   static play = async (options) => {
-    if (!options || this.processing) return;
 
-    this.processing = true;
-    await Sound.stop();
+    if(this.soundObject && !this.soundObject.isPlaying()) {
+      this.soundObject.play();
+      return;
+    }
+
+    if (!options || this.processing) return;
+    await MoiSound.stop();
+
     const { source, volume = 1, repeat = false } = options;
-    const { sound, status } = await Audio.Sound.create(source);
-    this.status = status;
-    this.soundObject = sound;
-    this.soundObject.setIsLoopingAsync(repeat);
-    this.soundObject.setVolumeAsync(volume);
-    this.soundObject.playAsync();
-    this.processing = false;
+    this.processing = true;
+
+    this.soundObject = new Sound(source + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+
+      if(error) return;
+
+      this.processing = false;
+      this.soundObject.setVolume(volume);
+      this.soundObject.setNumberOfLoops(repeat ? -1 : 0);
+      this.soundObject.play();
+    });
   }
 
   static playOverBackgroundSound = async (soundName, repeatSound = false) => {
-    const { sound } = await Audio.Sound.create(sounds.actions[soundName]);
-    this.soundActionsObject = sound;
-    this.soundActionsObject.setIsLoopingAsync(repeatSound);
-    this.soundActionsObject.setOnPlaybackStatusUpdate((status) => {
-      if (status.didJustFinish && !repeatSound) {
-        this.soundObject.replayAsync();
-      }
+    this.soundActionsObject = new Sound(sounds.actions[soundName] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+
+      if(error) return;
+
+      this.soundActionsObject.setNumberOfLoops(repeatSound ? -1 : 0);
+      this.soundActionsObject.play();
     });
-    await this.soundObject.pauseAsync();
-    await this.soundActionsObject.playAsync();
   }
 
   static stopOverBackgroundSound = async () => {
-    await this.soundActionsObject.stopAsync();
-    await this.soundObject.replayAsync();
+    this.soundActionsObject.stop();
   }
 
   static pause = async () => {
-    if (!this.soundObject) return;
-    let status = await this.soundObject.getStatusAsync();
-    if (status.isPlaying) {
-      await this.soundObject.pauseAsync();
+    let isPlaying = this.soundObject && this.soundObject.isPlaying();
+    if (isPlaying) {
+      await this.soundObject.pause();
     }
   }
 
   static stop = async () => {
-    if (this.soundObject) {
-      return await this.soundObject.stopAsync();
+    let isPlaying = this.soundObject && this.soundObject.isPlaying();
+    if (isPlaying) {
+      this.soundObject.pause();
+      this.soundObject.release();
+      this.soundObject = null;
     }
   }
-
 }
