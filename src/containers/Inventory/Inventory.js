@@ -326,13 +326,13 @@ export default class Inventory extends Component {
             {this.renderTabs()}
           </StyledContentBox>
 
-          <Video
+          {modalVisible && <Video
             videoDimensions={videoDimensions}
             source={currentVineta}
             dismiss={() => this.showVideo(false)}
             visible={modalVisible}
             width={width}
-          />
+          />}
 
           {isAlertOpen && <AlertComponent open={isAlertOpen}>
             <GenericAlert

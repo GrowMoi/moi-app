@@ -24,16 +24,12 @@ const CloseIcon = styled(Ionicons)`
 
 class Video extends Component {
 
-  componentWillUpdate(nextProps) {
-    const { visible } = this.props;
+  componentDidMount() {
+    Sound.pause();
+  }
 
-    if(!visible && nextProps.visible) {
-        Sound.pause();
-    } else if(visible && !nextProps.visible) {
-        Sound.play();
-    }
-
-    return true;
+  componentWillUnmount() {
+    Sound.play();
   }
 
   render() {
