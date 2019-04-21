@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Modal, Text, ImageBackground, TouchableHighlight, Image, StyleSheet, PixelRatio } from 'react-native';
+import { View, Modal, Text, ImageBackground, TouchableHighlight, Image, StyleSheet, PixelRatio, Platform } from 'react-native';
 import { takeSnapshotAsync } from 'expo';
 import styled from 'styled-components/native';
+import Orientation from 'react-native-orientation';
 import ChartLearnedContent from './ChartLearnedContent';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import marcoExterior from '../../../assets/images/certificate/marco_exterior_H.png';
@@ -90,6 +91,7 @@ const InnerTextBox = styled(View)`
 class Certificate extends Component {
 
   certificateView = null;
+  currentOrientation;
 
   state = {
     loading: false,
@@ -98,6 +100,21 @@ class Certificate extends Component {
   constructor(props) {
     super(props);
     this.removeResultFinalTest = this.removeResultFinalTest.bind(this);
+  }
+
+  componentWillMount() {
+    if(Platform.OS === 'ios') return;
+
+    this.currentOrientation = Orientation.getInitialOrientation();
+    Orientation.lockToLandscape();
+  }
+
+  componentWillUnmount() {
+    if(Platform.OS === 'ios') return;
+
+    if(this.currentOrientation === 'PORTRAIT') {
+      Orientation.lockToPortrait();
+    }
   }
 
   showLoading(isVisible = true) {
