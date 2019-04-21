@@ -209,7 +209,7 @@ export default class Tree extends Component {
       format: 'png',
     });
 
-    if (orientation === 'LANDSCAPE') {
+    if (orientation === 'LANDSCAPE' || Platform.OS === 'android') {
       this.uploadTreeImage(resultScreenShot);
       return;
     }
@@ -250,7 +250,7 @@ export default class Tree extends Component {
       size: { width: width, height: heightImage.height }
     }
 
-    ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, () => { });
+    ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, (error) => {console.log('error ===> ', error) });
   }
 
   getImageFromRctImage = (rctImageUri) => {
