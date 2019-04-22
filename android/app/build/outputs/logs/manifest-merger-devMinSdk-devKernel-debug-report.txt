@@ -4,6 +4,7 @@ ADDED from /Users/luis/Projects/moi/moi-app/android/app/src/main/AndroidManifest
 INJECTED from /Users/luis/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:2:1-321:12
 INJECTED from /Users/luis/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:2:1-321:12
 INJECTED from /Users/luis/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:2:1-321:12
+MERGED from [:react-native-orientation] /Users/luis/Projects/moi/moi-app/node_modules/react-native-orientation/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-sound] /Users/luis/Projects/moi/moi-app/node_modules/react-native-sound/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-12:12
 MERGED from [:react-native-youtube] /Users/luis/Projects/moi/moi-app/node_modules/react-native-youtube/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:lottie-react-native] /Users/luis/Projects/moi/moi-app/node_modules/lottie-react-native/src/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
@@ -1026,6 +1027,8 @@ uses-sdk
 INJECTED from /Users/luis/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/luis/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/luis/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-orientation] /Users/luis/Projects/moi/moi-app/node_modules/react-native-orientation/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-orientation] /Users/luis/Projects/moi/moi-app/node_modules/react-native-orientation/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-sound] /Users/luis/Projects/moi/moi-app/node_modules/react-native-sound/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:8:5-10:41
 MERGED from [:react-native-sound] /Users/luis/Projects/moi/moi-app/node_modules/react-native-sound/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:8:5-10:41
 MERGED from [:react-native-youtube] /Users/luis/Projects/moi/moi-app/node_modules/react-native-youtube/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41

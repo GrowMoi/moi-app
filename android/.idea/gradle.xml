@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/../node_modules/lottie-react-native/src/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-orientation/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-sound/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-youtube/android" />
           </set>

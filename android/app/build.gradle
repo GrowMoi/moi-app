@@ -99,6 +99,7 @@ apply from: 'expo.gradle'
 
 
 dependencies {
+    compile project(':react-native-orientation')
     compile project(':react-native-sound')
     compile project(':react-native-youtube')
     compile project(':lottie-react-native')
