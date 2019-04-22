@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Modal } from 'react-native';
+import { View, Modal, Platform } from 'react-native';
 import { Video as ExpoVideo, ScreenOrientation } from 'expo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components/native';
+import Orientation from 'react-native-orientation';
 import { getHeightAspectRatio } from '../../utils';
 import { Palette } from '../../styles';
 import Sound from '../SoundPlayer/Sound';
@@ -24,12 +25,24 @@ const CloseIcon = styled(Ionicons)`
 
 class Video extends Component {
 
+  componentWillMount() {
+    if(Platform.OS === 'ios') return;
+
+    this.currentOrientation = Orientation.getInitialOrientation();
+    Orientation.lockToLandscape();
+  }
+
   componentDidMount() {
     Sound.pause();
   }
 
   componentWillUnmount() {
     Sound.play();
+    if(Platform.OS === 'ios') return;
+
+    if(this.currentOrientation === 'PORTRAIT') {
+      Orientation.lockToPortrait();
+    }
   }
 
   render() {
