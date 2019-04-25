@@ -138,7 +138,7 @@ class WoodLabel extends PureComponent {
     const { text = '', onPress = () => null, style, zoomScale, zoomInfo } = this.props;
 
     return (
-      <Container ref={this.storeRef} style={{...this.zoomScaleStyles, ...style}}>
+      <Container ref={this.storeRef} style={{...this.zoomScaleStyles, ...style, height: this.zoomScaleStyles.heigh, width: this.zoomScaleStyles.width}}>
         <TouchableOpacity onPress={onPress}>
           <Box
             height={this.zoomScaleStyles.height}

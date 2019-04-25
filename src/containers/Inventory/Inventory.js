@@ -3,12 +3,10 @@ import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import {
-  View,
   FlatList,
   Alert,
   Keyboard
 } from 'react-native';
-import uuid from 'uuid/v4';
 
 import { Video } from '../../commons/components/VideoPlayer';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -16,9 +14,7 @@ import Navbar from '../../commons/components/Navbar/Navbar';
 import { Size } from '../../commons/styles';
 import { object } from '../../commons/utils';
 import { BottomBar } from '../../commons/components/SceneComponents';
-import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
 import Item from '../../commons/components/Item/Item';
-import WoodFrame from '../../commons/components/WoodFrame';
 import { TextBody } from '../../commons/components/Typography';
 import AlertComponent from '../../commons/components/Alert/Alert';
 import GenericAlert from '../../commons/components/Alert/GenericAlert';
@@ -37,10 +33,13 @@ import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAl
 import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
 import { TIME_FOR_INACTIVITY } from '../../constants';
+import { ContentBox } from '../../commons/components/ContentComponents';
+import leaderFrame from '../../../assets/images/frames/leaderboard_frame.png';
 
-const FrameContainer = styled(View)`
-  margin-top: ${Size.navbarHeight};
-  align-items: center;
+const StyledContentBox = styled(ContentBox)`
+  margin-bottom: ${Size.spaceMedium};
+  padding-left: 10;
+  padding-right: 12;
 `;
 
 @connect(state => ({
@@ -234,7 +233,7 @@ export default class Inventory extends Component {
     })
   }
 
-  _keyExtractor = (item, index) => uuid();
+  _keyExtractor = (item, index) => index.toString();
   _renderItem = ({ item }) => {
     return (
       <Item
@@ -247,15 +246,7 @@ export default class Inventory extends Component {
   }
 
   renderTabs() {
-    const { device: { dimensions: { width, height } } } = this.props;
-
-    const frameWoodPadding = 130;
-    const frameLeaderPadding = 40;
-
-    const leaderFramePadding = (width - frameLeaderPadding);
-    const woodFramePadding = (width - frameWoodPadding);
-
-    const ContentCertificate = <ListCertificates/>;
+    const ContentCertificate = <ListCertificates key={1}/>;
 
     const tabsData = [
       { label: 'Items', content: this.renderItems() },
@@ -263,7 +254,7 @@ export default class Inventory extends Component {
     ];
 
     return (
-      <VerticalTabs data={tabsData} width={leaderFramePadding - 65} horizontalTabs />
+      <VerticalTabs data={tabsData} horizontalTabs />
     )
   }
 
@@ -293,6 +284,7 @@ export default class Inventory extends Component {
         keyExtractor={this._keyExtractor}
         numColumns={2}
         columnWrapperStyle={{ justifyContent: 'center' }}
+        key={0}
       />
     );
   }
@@ -300,10 +292,7 @@ export default class Inventory extends Component {
   render() {
     const { modalVisible, currentVineta, loading, isAlertOpen, itemSelected, isOpenPassiveMessage } = this.state;
     const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
-    const frameLeaderPadding = 40;
-    const frameWoodPadding = 130;
 
-    const leaderFramePadding = (width - frameLeaderPadding);
     const videoDimensions = {
       width: 1280,
       height: 720
@@ -332,29 +321,27 @@ export default class Inventory extends Component {
       >
         <MoiBackground>
           <Navbar />
-          <FrameContainer>
-            {loading && <Preloader />}
-            <LeaderFrame width={leaderFramePadding}>
-              {this.renderTabs()}
-            </LeaderFrame>
-          </FrameContainer>
+          {loading && <Preloader />}
+          <StyledContentBox image={leaderFrame}>
+            {this.renderTabs()}
+          </StyledContentBox>
 
-          <Video
+          {modalVisible && <Video
             videoDimensions={videoDimensions}
             source={currentVineta}
             dismiss={() => this.showVideo(false)}
             visible={modalVisible}
             width={width}
-          />
+          />}
 
-          <AlertComponent open={isAlertOpen}>
+          {isAlertOpen && <AlertComponent open={isAlertOpen}>
             <GenericAlert
               message={itemSelected.name}
               description={itemSelected.description}
               onCancel={this.closeAlert}
               cancelText='Ok'
             />
-          </AlertComponent>
+          </AlertComponent>}
           {finalTestResult && <Certificate />}
           <BottomBar />
           <PassiveMessageAlert

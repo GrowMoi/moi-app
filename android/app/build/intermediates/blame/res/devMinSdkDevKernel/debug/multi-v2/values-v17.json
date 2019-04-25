@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/incremental/mergeDevMinSdkDevKernelDebugResources/merged.dir/values-v17/values-v17.xml",
+            "outputFile": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/incremental/mergeDevMinSdkDevKernelDebugResources/merged.dir/values-v17/values-v17.xml",
             "map": [
                 {
-                    "source": "/Users/macbook/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/22fbb2c786a9641646ca83c6f882b56b/res/values-v17/values-v17.xml",
+                    "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e2101816fca7f0637df80d8ed8968435/res/values-v17/values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,26,29,32,35,39,42,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

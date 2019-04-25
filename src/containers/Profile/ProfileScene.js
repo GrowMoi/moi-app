@@ -31,6 +31,8 @@ export default class ProfileScene extends Component {
     isOpenPassiveMessage: false,
   }
 
+  scrollRef = null;
+
   editProfile = () => {
     Actions.editProfile();
   }
@@ -42,9 +44,13 @@ export default class ProfileScene extends Component {
 
   get tabs() {
     return [
-      { label: 'Favoritos', content: <FavoritesTab /> },
+      { label: 'Favoritos', content: <FavoritesTab enableScroll={this.enableMainScroll(true)} disableScroll={this.enableMainScroll(false)}/> },
       { label: 'Ultimos 4', content: <LastContentsLearnt /> },
     ];
+  }
+
+  enableMainScroll = (scrollEnabled) => () => {
+    this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
   }
 
   render() {
@@ -73,6 +79,7 @@ export default class ProfileScene extends Component {
             tabsData={this.tabs}
             onClickEdit={this.editProfile}
             onClickSignOut={this.signOut}
+            onProfileInfoReady={(scrollRef) => {this.scrollRef = scrollRef}}
           />
           <BottomBar />
 

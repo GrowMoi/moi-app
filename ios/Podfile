@@ -104,6 +104,10 @@ target 'moi' do
 
   pod 'react-native-youtube', :path => '../node_modules/react-native-youtube'
 
+  pod 'RNSound', :path => '../node_modules/react-native-sound'
+
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
   post_install do |installer|
     installer.pods_project.main_group.tab_width = '2';
     installer.pods_project.main_group.indent_width = '2';

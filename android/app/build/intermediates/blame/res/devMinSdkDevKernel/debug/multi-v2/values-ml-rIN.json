@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/incremental/mergeDevMinSdkDevKernelDebugResources/merged.dir/values-ml-rIN/values-ml-rIN.xml",
+            "outputFile": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/incremental/mergeDevMinSdkDevKernelDebugResources/merged.dir/values-ml-rIN/values-ml-rIN.xml",
             "map": [
                 {
-                    "source": "/Users/macbook/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-2.6.1.aar/af3e3e23cc6e67d4a91e85e7880c82df/res/values-ml-rIN/values-ml-rIN.xml",
+                    "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-2.6.1.aar/2eaf037cf6c730c0d60a67e141677d5a/res/values-ml-rIN/values-ml-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",

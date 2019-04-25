@@ -64,11 +64,12 @@ const ComplementaryScene = ({ title = '', text = '', caption = '',  onNext, onNe
           <Title center heavy color={Palette.menuBackground}>{text}</Title>
         </MessageBox>
 
-       {caption && (
+        {caption ?
           <Container>
             <Header>{caption}</Header>
           </Container>
-        )}
+          : null
+        }
       </MessageContainer>
 
       <ContainerButton>

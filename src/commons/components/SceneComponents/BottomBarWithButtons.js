@@ -84,18 +84,21 @@ const taskHeightBtn = 371;
 const TaskButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
+  margin-left: ${props => props.marginLeft};
 `;
 
 const SearchButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
   bottom: 0;
+  margin-left: ${props => props.marginLeft};
 `;
 
 const RandomButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
   bottom: 0;
+  margin-left: ${props => props.marginLeft};
 `;
 
 const lightGreenBtnWidth = 108;
@@ -187,9 +190,9 @@ class BottomBarWithButtons extends Component {
     const deviceIsBig = this.props.width > minWidth;
 
     const elementProps = {
-      task: { width: 48, source: taskButtonImg, left: deviceIsBig ? 28 : 20, bottom: -2 },
-      random: { width: 50, source: randomButtonImg, left: deviceIsBig ? 28 : 20 },
-      search: { width: 50, source: searchButtonImg, left: deviceIsBig ? 28 : 20 },
+      task: { width: 48, source: taskButtonImg, marginLeft: deviceIsBig ? 28 : 20, bottom: -2 },
+      random: { width: 50, source: randomButtonImg, marginLeft: deviceIsBig ? 28 : 20 },
+      search: { width: 50, source: searchButtonImg, marginLeft: deviceIsBig ? 28 : 20 },
       read: { width: 55, source: blueButtonImg },
     };
 

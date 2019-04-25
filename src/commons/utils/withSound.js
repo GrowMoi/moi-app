@@ -1,6 +1,7 @@
 import React from 'react';
 import { Audio } from 'expo';
 import { sounds } from '../components/SoundPlayer';
+import Sound from '../components/SoundPlayer/Sound';
 
 const withSound = (WrapperComponent) => {
   const SoundOnPress = ({
@@ -8,11 +9,8 @@ const withSound = (WrapperComponent) => {
     onPress,
     ...rest
   }) => {
-    const playSound = async () => {
-      try {
-        const { sound } = await Audio.Sound.create(sounds.buttons[soundName]);
-        sound.playAsync();
-      } catch (error) { }
+    const playSound = () => {
+      Sound.playOverBackgroundSound(soundName);
     }
 
     return (

@@ -35,6 +35,7 @@ class TasksContainer extends Component {
     isAlertOpen: false,
     alertType: false,
     itemSelected: {},
+    enableScroll: true,
   }
 
   componentDidMount() {
@@ -161,13 +162,17 @@ class TasksContainer extends Component {
     }
   }
 
+  enableMainScroll = (scrollEnabled) => () => {
+    this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
+  }
+
   render(){
     const { loading, isAlertOpen } = this.state;
 
     return(
       <View style={styles.container}>
         <Header title='Mis Tareas' />
-        <ScrollView>
+        <ScrollView ref={(e) => { this.scrollRef = e }}>
           {!loading && <View style={styles.scrollContainer}>
             <TaskTabContainer
               title='Tareas'
@@ -178,6 +183,8 @@ class TasksContainer extends Component {
               title='Favoritos'
               icon='star'
               onClickItem={item => this.onPressItem(item)}
+              enableScroll={this.enableMainScroll(true)}
+              disableScroll={this.enableMainScroll(false)}
             />
             <RecomendationsTabContainer
               title='Recomendaciones'
