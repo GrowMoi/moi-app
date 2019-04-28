@@ -22,9 +22,12 @@ export default class ContentListBox extends Component {
     isAlertOpen: true
   }
 
+  previousScene;
+
   constructor(props) {
     super(props);
     this.backToTree = this.backToTree.bind(this);
+    this.previousScene = null;
   }
 
   componentWillUpdate() {
@@ -50,6 +53,14 @@ export default class ContentListBox extends Component {
 
   filterReadedContents = (contents = []) => {
     return contents.filter(d => (!d.read || d.learnt));
+  }
+
+  get isContetScene() {
+    const { scene } = this.props;
+    const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'moiDrawer';
+    this.previousScene = scene.name;
+    return isContent;
+
   }
 
   renderContentPreviewWithSound = (content, delay, oddInverted, widthContentPreview) => {
@@ -80,6 +91,8 @@ export default class ContentListBox extends Component {
     const contents = this.filterReadedContents((neuronSelected || {}).contents);
     const existContentsToRead = (contents || []).length > 0;
 
+    const isContetScene = this.isContetScene;
+
     return (
       <ContentBox>
         {existContentsToRead && (
@@ -92,7 +105,7 @@ export default class ContentListBox extends Component {
           </ScrollView>
         )}
 
-        {!existContentsToRead && scene.name !== 'randomContents' && <Alert open={this.state.isAlertOpen}>
+        {!existContentsToRead && isContetScene && <Alert open={this.state.isAlertOpen}>
           <GenericAlert
             message='No hay contenidos!'
             description='Ya haz leido todos los contenidos en esta neurona.'

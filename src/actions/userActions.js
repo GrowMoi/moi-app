@@ -76,6 +76,16 @@ const reloadRandomContents = (reload) => ({
   payload: reload,
 })
 
+const storeEvents = events => ({
+  type: actionTypes.STORE_EVENTS,
+  payload: events,
+});
+
+const storeEventsWeek = events => ({
+  type: actionTypes.STORE_EVENTS_WEEK,
+  payload: events,
+});
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   try {
     const res = await api.user.signIn({ login, authorization_key: authorizationKey });
@@ -554,6 +564,53 @@ const setReloadRandomContents = (reload = true) => (dispatch) => {
   dispatch(reloadRandomContents(reload))
 }
 
+const getEventsTodayAsync = () => async (dispatch) => {
+  try {
+    const res = await api.events.getEventsToday();
+    const { headers, data } = res;
+    dispatch(setHeaders(headers));
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const getEventsWeekAsync = () => async (dispatch) => {
+  try {
+    const res = await api.events.getEventsWeek();
+    const { headers, data } = res;
+    await dispatch(setHeaders(headers));
+    await dispatch(storeEventsWeek(data));
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const takeEventAsync = (eventId) => async (dispatch) => {
+  try {
+    const res = await api.events.takeEvent(eventId);
+    const { headers, data } = res;
+    dispatch(setHeaders(headers));
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+
+const getEventInProgressAsync = () => async (dispatch) => {
+  try {
+    const res = await api.events.getEventInProgress();
+    const { headers, data } = res;
+    await dispatch(setHeaders(headers));
+    await dispatch(storeEvents(data.contents));
+    return data.contents;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 export default {
   loginAsync,
   registerAsync,
@@ -593,4 +650,8 @@ export default {
   uploadTreeImageAsync,
   getLatestCertificatesAsync,
   setReloadRandomContents,
+  getEventsTodayAsync,
+  takeEventAsync,
+  getEventInProgressAsync,
+  getEventsWeekAsync,
 };

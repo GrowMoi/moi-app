@@ -18,17 +18,22 @@ import NotificationTabContainer from './components/NotificationTabContainer';
 import NotesTabContainer from './components/NotesTabContainer';
 import FavoritesTabContainer from './components/FavoritesTabContainer';
 import RecomendationsTabContainer from './components/RecomendationsTabContainer';
+import EventTabContainer from './components/EventTabContainer';
 import TutorGenericAlert from '../../commons/components/Alert/TutorGenericAlert';
+import EventModal from '../Events/EventModal';
 
 @connect(store => ({
+  device: store.device,
   neuronSelected: store.neuron.neuronSelected,
 }), {
-  loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
-  getUserNotesAsync: userActions.getStoreNotesAsync,
-  loadAllFavorites: userActions.loadAllFavorites,
-  getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
-  getNotificationsAsync: userActions.getNotificationsAsync,
-})
+    loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
+    getUserNotesAsync: userActions.getStoreNotesAsync,
+    loadAllFavorites: userActions.loadAllFavorites,
+    getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
+    getNotificationsAsync: userActions.getNotificationsAsync,
+    getEventInProgressAsync: userActions.getEventInProgressAsync,
+    getEventsWeekAsync: userActions.getEventsWeekAsync,
+  })
 class TasksContainer extends Component {
   state = {
     loading: false,
@@ -49,6 +54,8 @@ class TasksContainer extends Component {
       loadAllFavorites,
       getTutorRecomendationAsync,
       getNotificationsAsync,
+      getEventInProgressAsync,
+      getEventsWeekAsync,
     } = this.props;
 
     this.setState({ loading: true });
@@ -60,6 +67,8 @@ class TasksContainer extends Component {
         loadAllFavorites(),
         getTutorRecomendationAsync(),
         getNotificationsAsync(),
+        getEventInProgressAsync(),
+        getEventsWeekAsync(),
       ]);
     } catch (error) {
       console.log(error);
@@ -88,6 +97,13 @@ class TasksContainer extends Component {
   }
 
   onPressNotification = (item) => {
+    const isEvent = Array.isArray(item);
+
+    if (isEvent) {
+      this.setState({ isEventModalOpen: true, itemSelected: item });
+      return;
+    }
+
     this.setState({ isAlertOpen: true, itemSelected: item });
   }
 
@@ -116,7 +132,7 @@ class TasksContainer extends Component {
   correspondingAlert = () => {
     const { itemSelected } = this.state;
 
-    if(itemSelected.type === 'tutor_quiz') {
+    if (itemSelected.type === 'tutor_quiz') {
       const tutorMessage = `El tutor ${(itemSelected.tutor || {}).name || ''} ha creado un test para ti`;
       const tutorDescription = itemSelected.description;
 
@@ -167,9 +183,10 @@ class TasksContainer extends Component {
   }
 
   render(){
-    const { loading, isAlertOpen } = this.state;
+    const { device: { dimensions: { width } } } = this.props;
+    const { loading, isAlertOpen, isEventModalOpen, itemSelected } = this.state;
 
-    return(
+    return (
       <View style={styles.container}>
         <Header title='Mis Tareas' />
         <ScrollView ref={(e) => { this.scrollRef = e }}>
@@ -201,13 +218,27 @@ class TasksContainer extends Component {
               icon='bell'
               onClickItem={(item) => this.onPressNotification(item)}
             />
+            <EventTabContainer
+              title='Eventos'
+              icon='calendar'
+              onClickItem={(item) => this.onPressNotification(item)}
+              enableScroll={this.enableMainScroll(true)}
+              disableScroll={this.enableMainScroll(false)}
+            />
           </View>}
           {loading && <Preloader />}
         </ScrollView>
 
-        <Alert open={isAlertOpen}>
+        {isEventModalOpen &&
+          <EventModal
+            width={width}
+            events={itemSelected}
+            onCloseButtonPress={() => { this.setState({ isEventModalOpen: false }) }} />
+        }
+
+        {isAlertOpen && <Alert open={isAlertOpen}>
           {this.correspondingAlert()}
-        </Alert>
+        </Alert>}
       </View>
     )
   }

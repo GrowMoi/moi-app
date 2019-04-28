@@ -31,6 +31,7 @@ export default [
   require('./buttons/task_button.png'),
   require('./buttons/search_button.png'),
   require('./buttons/random_button.png'),
+  require('./buttons/boton_unete.png'),
 
   // Neurons
   require('./neurona/neurona_descubierta.png'),

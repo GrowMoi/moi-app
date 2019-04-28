@@ -26,6 +26,8 @@ const initialState = {
     meta: {},
     page: 1,
   },
+  events: [],
+  eventsWeek: [],
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -210,6 +212,25 @@ const reloadRandomContents = (state = false, action) => {
   }
 }
 
+const events = (state = initialState.events, action) => {
+  switch (action.type) {
+    case actionTypes.STORE_EVENTS:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+const eventsWeek = (state = initialState.eventsWeek, action) => {
+  switch (action.type) {
+    case actionTypes.STORE_EVENTS_WEEK:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+
 const user = combineReducers({
   userData,
   tasks,
@@ -223,6 +244,8 @@ const user = combineReducers({
   notes,
   finalTestResult,
   reloadRandomContents,
+  events,
+  eventsWeek,
 });
 
 export default user;
