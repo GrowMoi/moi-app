@@ -2,6 +2,8 @@ export default [
   require('./background/background_tree_landscape.jpg'),
   require('./background/background_tree_portrait.png'),
   require('./background/fondo_arbol.png'),
+  require('./background/background-profile.png'),
+  require('./background/background_tree_drawer.png'),
   require('./macetaMenu/maceta_menu.png'),
   require('./tabBar/tabBar.png'),
   require('./tree/static_tree.png'),
@@ -31,6 +33,7 @@ export default [
   require('./buttons/task_button.png'),
   require('./buttons/search_button.png'),
   require('./buttons/random_button.png'),
+  require('./buttons/boton_unete.png'),
 
   // Neurons
   require('./neurona/neurona_descubierta.png'),

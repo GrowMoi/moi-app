@@ -51,7 +51,7 @@ const api = {
 
       // Verify if in the keys exist an access token.
       const hasAccessTokenStored = await AsyncStorage.getItem('access-token');
-      if(hasAccessTokenStored) {
+      if (hasAccessTokenStored) {
         const storeHeaders = await AsyncStorage.multiGet(AUTH_HEADERS);
         storeHeaders.forEach(([key, value]) => {
           headers = {
@@ -306,6 +306,39 @@ const api = {
       const endpoint = '/api/users/certificates?page=1';
       const res = await client.get(
         endpoint
+      );
+      return res;
+    },
+  },
+
+  events: {
+    async getEventsToday() {
+      const endpoint = '/api/events/today';
+      const res = await client.get(
+        endpoint
+      );
+      return res;
+    },
+
+     async getEventsWeek() {
+      const endpoint = '/api/events/week';
+      const res = await client.get(
+        endpoint
+      );
+      return res;
+    },
+
+    async takeEvent(eventId) {
+      const endpoint = `/api/users/events/${eventId}/take`;
+      const res = await client.post(endpoint, { id: eventId });
+      return res;
+    },
+
+    async getEventInProgress() {
+      const endpoint = '/api/users/event_in_progress';
+      const res = await client.get(
+        endpoint,
+        {}
       );
       return res;
     },

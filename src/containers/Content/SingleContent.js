@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
   storeNotesAsync: userActions.storeNotesAsync,
   storeAsFavoriteAsync: userActions.storeAsFavoriteAsync,
+  getEventInProgressAsync: userActions.getEventInProgressAsync,
   // loadTreeAsync: treeActions.loadTreeAsync,
   stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
   playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
@@ -241,7 +242,7 @@ export default class SingleContentScene extends Component {
   }
 
   afterFinishAnimation = async (neuronId) => {
-    const { loadNeuronByIdAsync } = this.props;
+    const { loadNeuronByIdAsync, fromEvent, getEventInProgressAsync } = this.props;
     const { hasTest } = this.state;
 
     this.setState({ reading: false, isShowingContent: false });
@@ -251,6 +252,7 @@ export default class SingleContentScene extends Component {
     } else {
       try {
         await loadNeuronByIdAsync(neuronId);
+        if(fromEvent) await getEventInProgressAsync();
         Actions.pop();
       } catch (error) {
         console.log(error);
@@ -314,7 +316,7 @@ export default class SingleContentScene extends Component {
 
 
   render() {
-    const { contentSelected: content, device, scene } = this.props;
+    const { contentSelected: content, device, scene, fromEvent } = this.props;
 
     const {
       loading,
@@ -433,7 +435,7 @@ export default class SingleContentScene extends Component {
               </ContentBox>
             )}
           {!loading && <BottomBarWithButtons
-            readButton={!(content.learnt || content.read)}
+            readButton={!(content.learnt || content.read) || fromEvent}
             onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
             width={device.dimensions.width}
           />}
@@ -484,4 +486,5 @@ SingleContentScene.propTypes = {
   contentSelected: PropTypes.object,
   device: PropTypes.object,
   storeTaskAsync: PropTypes.func,
+  fromEvent: PropTypes.bool,
 };

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   View,
-  Image,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
@@ -13,10 +12,10 @@ import { connect } from 'react-redux';
 import styled, { css } from 'styled-components/native';
 import Options from './Options';
 import MoIcon from '../MoIcon/MoIcon';
+import TreeScreenShot from '../TreeScreenShot/TreeScreenShot';
 import { Title, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 import { DRAWER_OFFSET, PORTRAIT } from '../../../constants';
-import macetaMenu from '../../../../assets/images/macetaMenu/maceta_menu.png';
 import { normalizeAllCapLetter } from '../../utils';
 
 import regular_box from '../../../../assets/images/background/regular_box.png';
@@ -26,6 +25,7 @@ import fushia_box from '../../../../assets/images/background/fuccia_box.png';
 import blue_box from '../../../../assets/images/background/azul_box.png';
 import lila_box from '../../../../assets/images/background/lila_box.png';
 import green_box from '../../../../assets/images/background/verde_box.png';
+import treeBackgroundDrawer from '../../../../assets/images/background/background_tree_drawer.png';
 
 const SideMenuContainer = styled(ImageBackground)`
   flex: 1;
@@ -48,16 +48,9 @@ const SideBarMenuHeader = styled(View)`
   flex-direction: row;
 `;
 
-
-const Maceta = styled(Image)`
-  ${props => props.width && css`
-    width: ${props.width};
-  `};
-`;
-
 const TreContainer = styled(View)`
   align-self: center;
-  bottom: -20;
+  bottom: 0;
 `;
 
 const UserNameContainer = styled(View)`
@@ -178,7 +171,7 @@ export default class SideMenu extends Component {
               if(onPressOption) onPressOption();
               Actions.refresh({ key: 'tree', type: 'reset' });
             }}>
-              <Maceta width={DRAWER_OFFSET - 2} source={macetaMenu} resizeMode='contain' />
+              <TreeScreenShot width={DRAWER_OFFSET - 2} height={200} treeBackground={treeBackgroundDrawer} profileImage={profile.tree_image} style={{margin: 10}} />
             </TouchableOpacity>
           </TreContainer>
         </ScrollView>

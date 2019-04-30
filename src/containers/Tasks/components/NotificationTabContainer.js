@@ -13,12 +13,13 @@ import userActions from '../../../actions/userActions';
 
 @connect(state => ({
   data: state.user.notifications,
+  events: state.user.eventsWeek,
 }), {
-  getNotificationsAsync: userActions.getNotificationsAsync,
-  loadMoreNotificationsAsync: userActions.loadMoreNotificationsAsync,
-  readNotificationAsync: userActions.readNotificationAsync,
-  deleteNotification: userActions.deleteNotification,
-})
+    getNotificationsAsync: userActions.getNotificationsAsync,
+    loadMoreNotificationsAsync: userActions.loadMoreNotificationsAsync,
+    readNotificationAsync: userActions.readNotificationAsync,
+    deleteNotification: userActions.deleteNotification,
+  })
 class NotificationTabContainer extends PureComponent {
   state = {
     open: false,
@@ -49,12 +50,12 @@ class NotificationTabContainer extends PureComponent {
 
     try {
       const { data = {} } = await readNotificationAsync(item.id);
-      if(data.deleted) {
+      if (data.deleted) {
         deleteNotification(item.id);
       }
 
     } catch (error) {
-     console.log(error);
+      console.log(error);
     }
   }
 
@@ -68,7 +69,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   renderBadge = ({ meta: { total_count = 0 } }) => {
-    if(total_count == 0) return null;
+    if (total_count == 0) return null;
 
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: -8, right: 0 }}>
@@ -78,34 +79,54 @@ class NotificationTabContainer extends PureComponent {
     );
   }
 
+  isEvent = item => {
+    return Array.isArray(item);
+  }
+
+  _renderItem = ({ item }) => {
+    const { onClickItem = () => null } = this.props;
+
+    const isEvent = this.isEvent(item);
+    const title = isEvent ? `Eventos` : item.title;
+    const description = isEvent ? `(${item[0]})` : item.description;
+
+    return (
+      <SubItemRow
+        title={title}
+        clickClose={isEvent ? null : () => this.onCloseNotification(item)}
+        onPress={() => onClickItem(isEvent ? item[1] : item)}
+        description={description}
+      />
+    );
+  }
+
+  get events() {
+    const { events } = this.props;
+    let arrayEventts = Object.entries(events);
+
+    return arrayEventts.filter(item => item[1].length > 0)
+  }
+
   render() {
-    const { title, icon, data, onClickItem = () => null } = this.props;
+    const { title, icon, data } = this.props;
     const { open } = this.state;
 
-    return(
+    return (
       <View style={styles.tasks}>
         {this.renderBadge(data)}
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />
         {open && (
           <View style={styles.subItemContainer}>
-              <FlatList
-                data={data.notifications}
-                keyExtractor={this._keyExtractor}
-                onEndReached={this.handleLoadMore}
-                onEndReachedThreshold={0}
-                renderItem={({ item }) => {
-                  return <SubItemRow
-                    title={item.title}
-                    clickClose={() => this.onCloseNotification(item)}
-                    onPress={() => onClickItem(item)}
-                    description={item.description}
-                  />
-                }
-                  }
-                ListEmptyComponent={
-                  <TextBody style={styles.emptyText} center>{`No tienes ${(title || '').toLowerCase()}.`}</TextBody>
-                }
-              />
+            <FlatList
+              data={[...data.notifications, ...this.events]}
+              keyExtractor={this._keyExtractor}
+              onEndReached={this.handleLoadMore}
+              onEndReachedThreshold={0}
+              renderItem={this._renderItem}
+              ListEmptyComponent={
+                <TextBody style={styles.emptyText} center>{`No tienes ${(title || '').toLowerCase()}.`}</TextBody>
+              }
+            />
           </View>
         )}
       </View>

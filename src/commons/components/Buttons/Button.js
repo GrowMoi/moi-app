@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { TouchableWithoutFeedback, View } from 'react-native';
+import { TouchableWithoutFeedback, View, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
 import { Size } from '../../styles';
@@ -10,9 +10,9 @@ import { Header } from '../Typography';
 import Spinner from '../MoIcon/Spinner';
 
 const StyledButton = styled(View)`
-  padding-horizontal: ${Size.spaceSmall};
-  padding-vertical: ${Size.spaceSmall};
-  background-color: ${props => (!props.disabled ? colors.creamButton : colors.darkGreen)};
+  padding-horizontal: ${props => props.containsImage ? 0 : Size.spaceSmall};
+  padding-vertical: ${props => props.containsImage ? 0 : Size.spaceSmall};
+  background-color: ${props => props.containsImage ? 'transparent' : (!props.disabled ? colors.creamButton : colors.darkGreen)};
   border-radius: 3px;
   justify-content: center;
   align-items: center;
@@ -53,24 +53,31 @@ class Button extends Component {
   }
 
   render() {
-    const { title, onPress, style, disabled, leftIcon, rightIcon, loading, ...rest } = this.props;
+    const { title, onPress, style, disabled, leftIcon, rightIcon, loading, image, ...rest } = this.props;
 
     let currentText
     if (loading) currentText = <Spinner />;
-    else currentText = <Header small heavy>{ title }</Header>;
+    else currentText = <Header small heavy>{title}</Header>;
+
+    currentText = image ?
+      <ImageBackground style={{width: 'auto', height: 'auto', paddingHorizontal: Size.spaceSmall, paddingVertical: Size.spaceSmall}} source={image} resizeMode='stretch'>
+        {currentText}
+      </ImageBackground>
+      :
+      currentText;
 
     const CreamButton = (
-      <AnimatableComponent ref={this.handleButtonRef} disabled={disabled} style={ {...style, transform: [{ scale: 1 }]} } >
-        {leftIcon && <LeftIcon name={leftIcon} size={20} color="#4b4a21" />}
+      <AnimatableComponent ref={this.handleButtonRef} disabled={disabled} style={{ ...style, transform: [{ scale: 1 }] }} containsImage={!!image} >
+        {!image && leftIcon && <LeftIcon name={leftIcon} size={20} color="#4b4a21" />}
 
         {currentText}
 
-        {rightIcon && <RightIcon name={rightIcon} size={20} color="#4b4a21" />}
+        {!image && rightIcon && <RightIcon name={rightIcon} size={20} color="#4b4a21" />}
       </AnimatableComponent>
     );
 
     return (
-      <TouchableWithoutFeedback onPress={this.onPressButton} { ...rest } disabled={loading ? true : disabled}>
+      <TouchableWithoutFeedback onPress={this.onPressButton} {...rest} disabled={loading ? true : disabled}>
         {CreamButton}
       </TouchableWithoutFeedback>
     );

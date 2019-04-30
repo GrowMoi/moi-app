@@ -21,6 +21,7 @@ import userActions from '../../../actions/userActions';
 import neuronActions from '../../../actions/neuronActions';
 import { AnimatedNubes } from './AnimatedNubes';
 import { Sound } from '../SoundPlayer';
+import EventModal from '../../../containers/Events/EventModal';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -54,6 +55,7 @@ const MacetaContainer = styled(View)`
     setZoomScale: treeActions.setZoomScaleTree,
     setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
     uploadTreeImageAsync: userActions.uploadTreeImageAsync,
+    getEventsTodayAsync: userActions.getEventsTodayAsync,
   })
 export default class Tree extends Component {
 
@@ -65,6 +67,7 @@ export default class Tree extends Component {
     level: null,
     zoomScale: 1,
     modalVisible: false,
+    events: [],
   }
 
   initialActions = async () => {
@@ -82,6 +85,7 @@ export default class Tree extends Component {
     this.getTreeLevel();
     this.setState({ loading: false });
     this.handleVideoFirstLogin();
+    this.handleEvents();
   }
 
   componentWillReceiveProps(newProps) {
@@ -91,6 +95,11 @@ export default class Tree extends Component {
     if (Object.keys(userTree).length !== 0 && userTree !== newUserTree) {
       setTimeout(() => { this.takeScreenShotTree() }, 2000);
     }
+  }
+
+  async handleEvents() {
+    const events = await this.props.getEventsTodayAsync();
+    this.setState({ events: events });
   }
 
   handleVideoFirstLogin = async () => {
@@ -272,8 +281,7 @@ export default class Tree extends Component {
   }
 
   render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible } = this.state;
-    // console.log("TCL: render -> level", level)
+    const { loading, level, zoomScale, hasUserTree, modalVisible, events } = this.state;
 
     const { device: { dimensions: { width, height } } } = this.props;
 
@@ -285,6 +293,7 @@ export default class Tree extends Component {
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
+        {events && events.length > 0 && !modalVisible && <EventModal width={width} events={events} onCloseButtonPress={() => {this.setState({events: []})}}/>}
         <AnimatedNubes deviceWidth={width} deviceHeight={height} />
         {!modalVisible &&
           <Zoom

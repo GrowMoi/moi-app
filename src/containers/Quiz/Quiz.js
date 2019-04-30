@@ -18,6 +18,7 @@ import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import { Sound } from '../../commons/components/SoundPlayer';
 import { TIME_FOR_INACTIVITY } from '../../constants';
+import EventCompletedModal from '../../commons/components/Quiz/EventCompleted';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -48,6 +49,7 @@ export default class QuizScene extends Component {
     modalVisible: false,
     resultFinalTest: null,
     showModalNewAchievements: false,
+    showEventCompleted: false,
     achievements: [],
     isOpenPassiveMessage: false,
   }
@@ -101,10 +103,14 @@ export default class QuizScene extends Component {
       return;
     }
 
-    const { achievements, result } = data;
+    const { achievements, result, event = {} } = data;
 
     if(achievements.length > 0) {
       this.showModalNewAchievements(achievements);
+    }
+
+    if(event.completed) {
+      this.showEventCompletedModal(event.info.title);
     }
 
     this.setState({ results: result, currentScene: 'results' });
@@ -166,8 +172,16 @@ export default class QuizScene extends Component {
     this.setState({ showModalNewAchievements: false });
   }
 
+  showEventCompletedModal = (title) => {
+    this.setState({ showEventCompleted: true, eventTitle: title });
+  }
+
+  hideEventCompletedModal = () => {
+    this.setState({ showEventCompleted: false });
+  }
+
   render() {
-    const { currentScene, loading, modalVisible, showModalNewAchievements, achievements, isOpenPassiveMessage } = this.state;
+    const { currentScene, loading, modalVisible, showModalNewAchievements, achievements, isOpenPassiveMessage, eventTitle, showEventCompleted } = this.state;
     const { quiz, device: { dimensions: { width } }, scene } = this.props;
 
     const videoDimensions = {
@@ -218,6 +232,7 @@ export default class QuizScene extends Component {
             showCloseIcon={false}
           />}
           {showModalNewAchievements && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
+          {!showModalNewAchievements && showEventCompleted && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
           <PassiveMessageAlert
             isOpenPassiveMessage={isOpenPassiveMessage}
             touchableProps={{
