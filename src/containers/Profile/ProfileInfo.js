@@ -18,6 +18,8 @@ import { Size, Palette } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
 import Tabs from '../../commons/components/Tabs';
 import Profile from '../../commons/components/Profile/Profile';
+import TreeScreenShot from '../../commons/components/TreeScreenShot/TreeScreenShot';
+import treeBackgroundProfile from '../../../assets/images/background/background-profile.png';
 
 const { width } = Dimensions.get('window');
 
@@ -39,18 +41,6 @@ const NameContainer = styled(View)`
   justify-content: space-between;
   align-items: center;
   flex: 1;
-`;
-
-const TreeImage = styled(Image)`
-  border-radius: 5px;
-  border-color: #87a749;
-  border-width: 1px;
-  margin-top: ${Size.spaceSmall};
-  margin-bottom: ${Size.spaceSmall};
-  padding-horizontal: ${Size.spaceSmall};
-  padding-vertical: ${Size.spaceSmall};
-  background-color: ${Palette.white.alpha(0.2).css()};
-  height: 180;
 `;
 
 const PersonalInfo = styled(View)`
@@ -118,7 +108,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
         </PersonalInfo>
 
         {profile.tree_image && (
-          <TreeImage source={{ uri: profile.tree_image }} resizeMode='contain' />
+          <TreeScreenShot width={200} treeBackground={treeBackgroundProfile} profileImage={profile.tree_image} style={{marginVertical : 10}}/>
         )}
 
         {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} transparent/>}
