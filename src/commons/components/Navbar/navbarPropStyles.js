@@ -6,6 +6,17 @@ import { Font } from '../../styles';
 import MoIcon from '../MoIcon/MoIcon';
 import store from '../../../store';
 import withSound from '../../utils/withSound';
+import styled from 'styled-components';
+
+const IconContainer = styled(TouchableOpacity)`
+  width: 60px;
+  height: 38px;
+  margin-left: -15px;
+  justify-content: center;
+  align-items: center;
+  zIndex: 1;
+  background-color: transparent;
+`;
 
 const toggleDrawer = () => Actions.refresh({ key: 'moiDrawer', open: value => !value });
 
@@ -40,7 +51,11 @@ const ProfileButton = () => {
     return (<MoIcon name="profile" size={30} onPress={() => Actions.profile()} />)
   }
 }; //eslint-disable-line
-const HamburgerButton = () => <Icon.Ionicons color="#FFF" name="md-menu" size={30} onPress={toggleDrawer} />; //eslint-disable-line
+const HamburgerButton = () => (
+    <IconContainer onPress={toggleDrawer}>
+      <Icon.Ionicons color="#FFF" name="md-menu" size={30} />
+    </IconContainer>
+  ); //eslint-disable-line
 
 const { width } = Dimensions.get('window');
 
