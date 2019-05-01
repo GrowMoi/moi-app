@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
+  Image,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -26,6 +27,7 @@ import blue_box from '../../../../assets/images/background/azul_box.png';
 import lila_box from '../../../../assets/images/background/lila_box.png';
 import green_box from '../../../../assets/images/background/verde_box.png';
 import treeBackgroundDrawer from '../../../../assets/images/background/background_tree_drawer.png';
+import menuSideFrame from '../../../../assets/images/frames/menu-side-frame.png';
 
 const SideMenuContainer = styled(ImageBackground)`
   flex: 1;
@@ -70,7 +72,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
 
 @connect(store => ({
   device: store.device,
@@ -171,7 +172,7 @@ export default class SideMenu extends Component {
               if(onPressOption) onPressOption();
               Actions.refresh({ key: 'tree', type: 'reset' });
             }}>
-              <TreeScreenShot width={DRAWER_OFFSET - 2} height={200} treeBackground={treeBackgroundDrawer} profileImage={profile.tree_image} style={{margin: 10}} />
+              <TreeScreenShot width={DRAWER_OFFSET - 2} height={230} treeBackground={treeBackgroundDrawer} profileImage={profile.tree_image} style={{margin: 10}} frame={menuSideFrame} />
             </TouchableOpacity>
           </TreContainer>
         </ScrollView>

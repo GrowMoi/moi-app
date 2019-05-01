@@ -292,4 +292,7 @@ export default [
   require('../images/nubes/nube1L.png'),
   require('../images/nubes/nube2L.png'),
   require('../images/nubes/nube3L.png'),
+
+  //Side menu
+  require('./frames/menu-side-frame.png'),
 ];

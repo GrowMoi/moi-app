@@ -11,18 +11,26 @@ const TreeContainer = styled(ImageBackground)`
   align-items: center;
   width: auto;
   height: auto;
-  padding: 10px;
+`;
+
+const ImageContainer = styled(View)`
+  width: ${props => props.width};
+  height: ${props => props.height};
+  justify-content: center;
+  align-items: center;
 `;
 
 const ProfileImage = styled(Image)`
-  width: ${props => getHeightAspectRatio(widthProfile, heightProfile, props.width)};
+  width: ${props => props.width};
   height: ${props => props.height};
 `;
 
 export default class TreeScreenShot extends Component {
 
   render() {
-    const { width, height, profileImage, treeBackground, style } = this.props;
+    const { width, height, profileImage, treeBackground, style, frame } = this.props;
+
+    const heightTree = height ? frame ? height - 20 : height : 170;
 
     return (
       <View style={style}>
@@ -30,12 +38,19 @@ export default class TreeScreenShot extends Component {
           source={treeBackground}
           resizeMode='stretch'
         >
-          <ProfileImage
-            width={width}
+          <ImageContainer width={width}
+              height={heightTree}>
+            <ProfileImage
+              width={frame ? width - 50 : width -30}
+              height={heightTree}
+              source={{ uri: profileImage }}
+              resizeMode='contain'
+            />
+          </ImageContainer>
+          {frame && <ProfileImage style={{ position: 'absolute' }} width={width}
             height={height ? height : 170}
-            source={{ uri: profileImage }}
-            resizeMode='contain'
-          />
+            source={frame}
+            resizeMode='stretch' />}
         </TreeContainer>
       </View>
     );
