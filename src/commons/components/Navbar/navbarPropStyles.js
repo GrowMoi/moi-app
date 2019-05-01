@@ -3,10 +3,9 @@ import { Icon } from 'expo';
 import { Platform, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Font } from '../../styles';
-import MoIcon from '../MoIcon/MoIcon';
-import store from '../../../store';
 import withSound from '../../utils/withSound';
 import styled from 'styled-components';
+import ProfileImageButton from './ProfileImageButton';
 
 const IconContainer = styled(TouchableOpacity)`
   width: 60px;
@@ -40,17 +39,7 @@ const renderProfileIconWithSound = (profile) => {
     );
   }
 
-const ProfileButton = () => {
-  const user = store.getState().user || {};
-  const userData = user.userData || {};
-  const profile = userData.profile || {};
-
-  if (profile.image) {
-    return renderProfileIconWithSound(profile);
-  } else {
-    return (<MoIcon name="profile" size={30} onPress={() => Actions.profile()} />)
-  }
-}; //eslint-disable-line
+const ProfileButton = () => <ProfileImageButton />; //eslint-disable-line
 const HamburgerButton = () => (
     <IconContainer onPress={toggleDrawer}>
       <Icon.Ionicons color="#FFF" name="md-menu" size={30} />
