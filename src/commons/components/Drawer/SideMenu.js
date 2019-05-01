@@ -26,8 +26,8 @@ import fushia_box from '../../../../assets/images/background/fuccia_box.png';
 import blue_box from '../../../../assets/images/background/azul_box.png';
 import lila_box from '../../../../assets/images/background/lila_box.png';
 import green_box from '../../../../assets/images/background/verde_box.png';
-import treeBackgroundDrawer from '../../../../assets/images/background/background_tree_drawer.png';
-import menuSideFrame from '../../../../assets/images/frames/menu-side-frame.png';
+import treeBackgroundDrawer from '../../../../assets/images/sideMenu/background_tree_drawer.png';
+import menuSideFrame from '../../../../assets/images/sideMenu/menu-side-frame.png';
 
 const SideMenuContainer = styled(ImageBackground)`
   flex: 1;

@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, ImageBackground, Image } from 'react-native';
 import styled from 'styled-components/native';
-import { getHeightAspectRatio } from '../../utils';
+import treeDefault from '../../../../assets/images/sideMenu/tree_default.png';
 
-const heightProfile = 65;
-const widthProfile = 62;
 const TreeContainer = styled(ImageBackground)`
   justify-content: center;
   align-items: center;
@@ -17,12 +15,13 @@ const ImageContainer = styled(View)`
   width: ${props => props.width};
   height: ${props => props.height};
   justify-content: center;
-  align-items: center;
+  padding: 10px;
 `;
 
 const ProfileImage = styled(Image)`
   width: ${props => props.width};
   height: ${props => props.height};
+  border-width: 3px;
 `;
 
 export default class TreeScreenShot extends Component {
@@ -30,7 +29,8 @@ export default class TreeScreenShot extends Component {
   render() {
     const { width, height, profileImage, treeBackground, style, frame } = this.props;
 
-    const heightTree = height ? frame ? height - 20 : height : 170;
+    const heightTree = height ? frame ? height - 50 : height -80 : 180;
+    const treeImage = profileImage ? { uri: profileImage } : treeDefault;
 
     return (
       <View style={style}>
@@ -38,13 +38,12 @@ export default class TreeScreenShot extends Component {
           source={treeBackground}
           resizeMode='stretch'
         >
-          <ImageContainer width={width}
-              height={heightTree}>
-            <ProfileImage
-              width={frame ? width - 50 : width -30}
-              height={heightTree}
-              source={{ uri: profileImage }}
-              resizeMode='contain'
+          <ImageContainer width={width + 30}
+            height={heightTree}>
+            <Image
+            style={{flex:1, height: undefined, width: undefined, marginBottom: -15}}
+              source={treeImage}
+              resizeMode='cover'
             />
           </ImageContainer>
           {frame && <ProfileImage style={{ position: 'absolute' }} width={width}
