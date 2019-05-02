@@ -1,6 +1,5 @@
 import React from 'react';
-import { Audio } from 'expo';
-import { sounds } from '../components/SoundPlayer';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import Sound from '../components/SoundPlayer/Sound';
 
 const withSound = (WrapperComponent) => {
@@ -14,13 +13,15 @@ const withSound = (WrapperComponent) => {
     }
 
     return (
-      <WrapperComponent
-        onPress={() => {
-          playSound();
-          onPress();
-        }}
-        {...rest}
-      />
+      <TouchableWithoutFeedback
+        onPressIn={playSound}
+        onPress={onPress}
+      >
+        <View >
+          <WrapperComponent {...rest} />
+          <View style={{ position: 'absolute', width: '100%', height: '100%' }} />
+        </View>
+      </TouchableWithoutFeedback>
     );
   };
 
