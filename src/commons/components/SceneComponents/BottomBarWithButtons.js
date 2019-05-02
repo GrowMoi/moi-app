@@ -27,11 +27,12 @@ const Button = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(wCommonBtn, hCommonBtn, props.width)};
   flex-direction: row;
-  bottom: ${props => props.bottom || 0};
+  bottom: ${props => props.bottom || 1};
   left: ${props => props.left || 0};
   position: relative;
   overflow: visible;
   z-index: ${props => props.zIndex || 0};
+
 `;
 
 const ContainerButton = styled(View)`
@@ -46,18 +47,18 @@ const ContainerButton = styled(View)`
 `;
 
 const blueFrameWidth = 174;
-const blueFrameHeight = 97;
+const blueFrameHeight = 100;
 const ReadFrame = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(blueFrameWidth, blueFrameHeight, props.width)};
   left: 0;
-  bottom: 11;
+  bottom: ${props => props.bottom};
   position: relative;
   overflow: visible;
 `;
 
 const bottomBarWidth = 788;
-const bottomBarHeight = 65;
+const bottomBarHeight = 85;
 const BottomBar = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(bottomBarWidth, bottomBarHeight, props.width)};
@@ -77,6 +78,7 @@ const ButtonsContainer = styled(View)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
 `;
 
 const taskWidthBtn = 603;
@@ -90,24 +92,22 @@ const TaskButton = styled(Image)`
 const SearchButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
-  bottom: 0;
+
   margin-left: ${props => props.marginLeft};
 `;
 
 const RandomButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(taskWidthBtn, taskHeightBtn, props.width)}
-  bottom: 0;
   margin-left: ${props => props.marginLeft};
 `;
 
 const lightGreenBtnWidth = 108;
-const lightGreenBtnHeight = 88;
+const lightGreenBtnHeight = 98;
 const BlueButton = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(lightGreenBtnWidth, lightGreenBtnHeight, props.width)};
   left: 16;
-  bottom: 3;
 `;
 
 @connect(store => ({
@@ -150,7 +150,7 @@ class BottomBarWithButtons extends Component {
 
   renderNewButton = (NewButton, customProps) => {
     const privateProps = {
-      resizeMode: 'contain',
+      resizeMode: 'stretch',
     };
 
     return (
@@ -190,39 +190,39 @@ class BottomBarWithButtons extends Component {
     const deviceIsBig = this.props.width > minWidth;
 
     const elementProps = {
-      task: { width: 48, source: taskButtonImg, marginLeft: deviceIsBig ? 28 : 20, bottom: -2 },
-      random: { width: 50, source: randomButtonImg, marginLeft: deviceIsBig ? 28 : 20 },
-      search: { width: 50, source: searchButtonImg, marginLeft: deviceIsBig ? 28 : 20 },
-      read: { width: 55, source: blueButtonImg },
+      task: { width: deviceIsBig ? 63 : 57, source: taskButtonImg, marginLeft: deviceIsBig ? 33 : 28, bottom: -2 },
+      random: { width: deviceIsBig ? 65 : 55, source: randomButtonImg, marginLeft: deviceIsBig ? 38 : 32, bottom: -1 },
+      search: { width: deviceIsBig ? 63 : 56, source: searchButtonImg, marginLeft: 28, bottom: deviceIsBig ? 0 : -2 },
+      read: { width: deviceIsBig ? 72 : 65, source: blueButtonImg, marginLeft: deviceIsBig ? 10 : 7, bottom: deviceIsBig ? 2 : 2 },
     };
 
     return (
       <BottomBar
         width={this.props.width}
         source={bottomBarWithoutButtons}
-        resizeMode='contain'>
+        resizeMode='stretch'>
 
         <Container>
           <ButtonsContainer>
-            <ContainerButton zIndex={2} width={deviceIsBig ? 98 : 80} left={18} bottom={7}>
+            <ContainerButton zIndex={2} width={deviceIsBig ? 120 : 105} left={15} bottom={deviceIsBig ? 7 : 6.5}>
               {this.renderBadge()}
-              <Button width={deviceIsBig ? 98 : 80} source={btnInf1} resizeMode='contain'>
+              <Button width={deviceIsBig ? 120 : 105} source={btnInf1} resizeMode='stretch'>
                 {this.renderButtonWithSound(TaskButton, elementProps.task, this.pressTaskButton, 'tasks')}
               </Button>
             </ContainerButton>
 
-            <Button zIndex={1} width={deviceIsBig ? 92 : 80} source={btnInf2} resizeMode='contain' left={0} bottom={6.5}>
+            <Button zIndex={1} width={deviceIsBig ? 114 : 104} source={btnInf2} resizeMode='stretch' left={-5} bottom={deviceIsBig ? 7.5: 7}>
               {this.renderButtonWithSound(SearchButton, elementProps.search, this.pressSearchButton, 'search')}
             </Button>
 
-            <Button zIndex={0} width={deviceIsBig ? 96 : 81} source={btnInf3} resizeMode='contain' left={-18} bottom={6.8}>
+            <Button zIndex={0} width={deviceIsBig ? 125 : 105} source={btnInf3} resizeMode='stretch' left={-25} bottom={deviceIsBig ? 8: 7.5}>
               {this.renderButtonWithSound(RandomButton, elementProps.random, this.goToRandomContent, 'random')}
             </Button>
           </ButtonsContainer>
         </Container>
 
         {this.props.readButton &&
-          <ReadFrame width={70} source={btnInfBlue} resizeMode='contain'>
+          <ReadFrame width={deviceIsBig ? 101: 90} source={btnInfBlue} resizeMode='stretch' bottom={deviceIsBig ? 19 : 17}>
             {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent, 'learnContent')}
           </ReadFrame>
         }
