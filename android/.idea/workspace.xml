@@ -9954,8 +9954,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
