@@ -6,26 +6,32 @@ const withSound = (WrapperComponent) => {
   const SoundOnPress = ({
     soundName,
     onPress,
+    onPressIn,
     ...rest
   }) => {
+    let playSoundOnPress = true;
     const playSound = () => {
+      if (onPressIn) onPressIn();
       Sound.playOverBackgroundSound(soundName);
+      playSoundOnPress = false;
+    }
+
+    const onPressElement = () => {
+      if (playSoundOnPress) {
+        playSound();
+      }
+      onPress();
     }
 
     return (
-      <TouchableWithoutFeedback
+      <WrapperComponent
+        onPress={onPressElement}
         onPressIn={playSound}
-        onPress={onPress}
-      >
-        <View >
-          <WrapperComponent {...rest} />
-          <View style={{ position: 'absolute', width: '100%', height: '100%' }} />
-        </View>
-      </TouchableWithoutFeedback>
+        {...rest} />
     );
-  };
+  }
 
   return SoundOnPress;
-}
+};
 
 export default withSound;
