@@ -135,7 +135,7 @@ export default class Tree extends Component {
     setNeuronLabelInfo({});
     if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
     if (this.canPlaySound) {
-      Sound.playOverBackgroundSound('treeActions', true);
+      Sound.playOverBackgroundSound('treeActions', true, 1);
       this.canPlaySound = false;
     }
     this.prevZoomInfo = zoomInfo;

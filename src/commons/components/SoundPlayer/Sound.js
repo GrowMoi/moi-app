@@ -52,9 +52,10 @@ export default class MoiSound {
     });
   }
 
-  static playOverBackgroundSound = async (soundName, repeatSound = false) => {
+  static playOverBackgroundSound = async (soundName, repeatSound = false, currentTime) => {
     MoiSound.currentSound = MoiSound.loadedSounds[soundName];
     MoiSound.currentSound.setNumberOfLoops(repeatSound ? -1 : 0);
+    if(currentTime) MoiSound.currentSound.setCurrentTime(currentTime)
     MoiSound.currentSound.play();
   }
 
