@@ -5,6 +5,7 @@ import { takeSnapshotAsync } from 'expo';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
+import { Actions } from 'react-native-router-flux';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
@@ -81,6 +82,7 @@ export default class Tree extends Component {
   }
 
   async componentDidMount() {
+    this.setTitleView();
     await this.initialActions();
     this.getTreeLevel();
     this.setState({ loading: false });
@@ -95,6 +97,11 @@ export default class Tree extends Component {
     if (Object.keys(userTree).length !== 0 && userTree !== newUserTree) {
       setTimeout(() => { this.takeScreenShotTree() }, 2000);
     }
+  }
+
+  setTitleView() {
+    const { user } = this.props;
+    Actions.refresh({title: user.profile.username});
   }
 
   async handleEvents() {
