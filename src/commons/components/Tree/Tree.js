@@ -290,7 +290,7 @@ export default class Tree extends Component {
   render() {
     const { loading, level, zoomScale, hasUserTree, modalVisible, events } = this.state;
 
-    const { device: { dimensions: { width, height } } } = this.props;
+    const { device: { dimensions: { width, height, orientation } } } = this.props;
 
     const videoDimensions = {
       width: 1280,
@@ -301,7 +301,7 @@ export default class Tree extends Component {
     return (
       <TreeContainer>
         {events && events.length > 0 && !modalVisible && <EventModal width={width} events={events} onCloseButtonPress={() => {this.setState({events: []})}}/>}
-        <AnimatedNubes deviceWidth={width} deviceHeight={height} />
+        <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation}/>
         {!modalVisible &&
           <Zoom
             flex={Platform.OS === 'android' ? 10 : 1}
