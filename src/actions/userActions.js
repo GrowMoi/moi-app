@@ -86,6 +86,11 @@ const storeEventsWeek = events => ({
   payload: events,
 });
 
+const storeDrawerState = isOpen => ({
+  type: actionTypes.STORE_DRAWER_STATE,
+  payload: isOpen,
+});
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   try {
     const res = await api.user.signIn({ login, authorization_key: authorizationKey });
@@ -611,6 +616,10 @@ const getEventInProgressAsync = () => async (dispatch) => {
   }
 }
 
+const setDrawerState = isOpen => async (dispatch) => {
+  await dispatch(storeDrawerState(isOpen));
+}
+
 export default {
   loginAsync,
   registerAsync,
@@ -654,4 +663,5 @@ export default {
   takeEventAsync,
   getEventInProgressAsync,
   getEventsWeekAsync,
+  setDrawerState,
 };

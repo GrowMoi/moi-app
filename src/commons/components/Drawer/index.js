@@ -6,12 +6,28 @@ import { Actions, DefaultRenderer } from 'react-native-router-flux';
 import { LANDSCAPE, DRAWER_OFFSET } from '../../../constants';
 import SideMenu from './SideMenu';
 
+import userActions from '../../../actions/userActions';
+
 @connect(store => ({
   device: store.device,
+}), ({
+  setDrawerState: userActions.setDrawerState,
 }))
 export default class Menu extends Component {
   state = {
     sideMenu: 0,
+  }
+
+  onOpenDrawer = () => {
+    const { navigationState: state, setDrawerState} = this.props
+    Actions.refresh({ key: state.key, open: true });
+    setDrawerState(true);
+  }
+
+  onCloseDrawer = () => {
+    const { navigationState: state, setDrawerState} = this.props
+    Actions.refresh({ key: state.key, open: false });
+    setDrawerState(false);
   }
 
   render() {
@@ -29,8 +45,8 @@ export default class Menu extends Component {
       <Drawer
         ref={ref => this.drawer = ref} // eslint-disable-line
         open={state.open}
-        onOpen={() => Actions.refresh({ key: state.key, open: true })} // eslint-disable-line
-        onClose={() => Actions.refresh({ key: state.key, open: false })} // eslint-disable-line
+        onOpen={this.onOpenDrawer} // eslint-disable-line
+        onClose={this.onCloseDrawer} // eslint-disable-line
         type="static"
         content={<SideMenu onPressOption={() => {
           setTimeout(() => {

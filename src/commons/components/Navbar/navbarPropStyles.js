@@ -1,9 +1,8 @@
 import React from 'react';
 import { Icon } from 'expo';
-import { Platform, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { Platform, Dimensions, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Font } from '../../styles';
-import withSound from '../../utils/withSound';
 import styled from 'styled-components';
 import ProfileImageButton from './ProfileImageButton';
 
@@ -18,26 +17,6 @@ const IconContainer = styled(TouchableOpacity)`
 `;
 
 const toggleDrawer = () => Actions.refresh({ key: 'moiDrawer', open: value => !value });
-
-const renderProfileIconWithSound = (profile) => {
-    const TouchableOpacityWithSound = withSound(TouchableOpacity);
-
-    return (
-      <TouchableOpacityWithSound
-        soundName="profile"
-        onPress={() => Actions.profile()}
-      >
-        <Image
-          style={{
-            width: 30,
-            height: 30,
-            borderRadius: 15,
-          }}
-          source={{uri: profile.image}}
-        />
-      </TouchableOpacityWithSound>
-    );
-  }
 
 const ProfileButton = () => <ProfileImageButton />; //eslint-disable-line
 const HamburgerButton = () => (

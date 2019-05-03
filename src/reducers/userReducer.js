@@ -28,6 +28,7 @@ const initialState = {
   },
   events: [],
   eventsWeek: [],
+  drawerState: {},
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -230,6 +231,17 @@ const eventsWeek = (state = initialState.eventsWeek, action) => {
   }
 }
 
+const drawerState = (state = initialState.drawerState, action) => {
+  switch (action.type) {
+    case actionTypes.STORE_DRAWER_STATE:
+      return {
+        isOpen: action.payload
+      };
+    default:
+      return state;
+  }
+}
+
 
 const user = combineReducers({
   userData,
@@ -246,6 +258,7 @@ const user = combineReducers({
   reloadRandomContents,
   events,
   eventsWeek,
+  drawerState,
 });
 
 export default user;

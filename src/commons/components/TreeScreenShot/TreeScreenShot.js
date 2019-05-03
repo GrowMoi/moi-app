@@ -21,7 +21,6 @@ const ImageContainer = styled(View)`
 const ProfileImage = styled(Image)`
   width: ${props => props.width};
   height: ${props => props.height};
-  border-width: 3px;
 `;
 
 export default class TreeScreenShot extends Component {

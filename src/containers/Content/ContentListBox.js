@@ -77,7 +77,6 @@ export default class ContentListBox extends Component {
         onPress={e => this.onPressRowcontent(content)}
         inverted={oddInverted}
         title={content.title || ''}
-        subtitle={normalizeKind}
         source={{ uri: content.media[0] }}
       />
     );
