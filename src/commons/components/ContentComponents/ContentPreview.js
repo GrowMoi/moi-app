@@ -136,7 +136,7 @@ export default class ContentPreview extends Component {
   }
 
   render() {
-    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false, learnt = false } = this.props;
+    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false, learnt = false, onPressIn = ()=>{} } = this.props;
     const closeAction = closeButton && (
       <CloseAction onPress={() => onPressCloseButton && onPressCloseButton(id)}>
         <Ionicons name='md-close' size={15} color={Palette.white.css()}/>
@@ -144,7 +144,7 @@ export default class ContentPreview extends Component {
     );
 
     const content = (
-      <TouchableWithoutFeedback onPress={this.onPressRow}>
+      <TouchableWithoutFeedback onPress={this.onPressRow} onPressIn={onPressIn}>
         <Animatable.View ref={this.handleViewRef} style={{ alignSelf: 'stretch' }}>
           <RowContainer id={id} inverted={inverted}>
             {closeAction}
