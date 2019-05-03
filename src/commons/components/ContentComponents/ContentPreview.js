@@ -105,7 +105,7 @@ export default class ContentPreview extends Component {
 
     const content = (
       <Content key='row-description'>
-        <Header ellipsizeMode='tail' numberOfLines={2}>{title}</Header>
+        <Header ellipsizeMode='tail' numberOfLines={2} customSize={18}>{title}</Header>
         <TextBody small secondary>{subtitle}</TextBody>
         <TextBody small ellipsizeMode='tail' numberOfLines={4}>{description}</TextBody>
       </Content>
