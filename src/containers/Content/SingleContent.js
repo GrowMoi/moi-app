@@ -207,11 +207,13 @@ export default class SingleContentScene extends Component {
     const res = await storeTaskAsync(neuronId, contentId);
     const { data: { exist } } = res;
     if (exist) {
-      this.showAlert('Este contenido ya se encuentra almacenado en tus tareas');
-      this.setState({actionSheetsVisible: false})
+       this.showAlert('Este contenido ya se encuentra almacenado en tus tareas', () => {
+        this.setActionSheetVisible(false);
+      });
     } else {
-      this.showAlert('Este contenido fué almacenado correctamente');
-      this.setState({actionSheetsVisible: false})
+      this.showAlert('Este contenido fué almacenado correctamente', () => {
+        this.setActionSheetVisible(false);
+      });
     }
   }
 
