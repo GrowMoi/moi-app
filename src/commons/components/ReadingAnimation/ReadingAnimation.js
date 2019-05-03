@@ -57,14 +57,11 @@ class ReadingAnimation extends React.Component {
   }
 
   render() {
-    const { animationN } = this.state;
-    const source = this.randomAnim(animationN)
-
     return (
       <View style={{ flex: 1, position: 'absolute', top: 15, left:0, height: '100%', width: '100%' }}>
         <LottieView
           ref={ref => { this.anim = ref }}
-          source={source}
+          source={confusion}
           resizeMode='contain'
           progress={this.state.progress}
           loop
