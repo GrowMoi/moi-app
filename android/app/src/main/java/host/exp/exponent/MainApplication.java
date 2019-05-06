@@ -10,6 +10,7 @@ import expolib_v1.okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import cl.json.RNSharePackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
@@ -30,6 +31,7 @@ public class MainApplication extends ExpoApplication {
 
         // Needed for `react-native link`
         // new MainReactPackage(),
+            new RNSharePackage(),
             new OrientationPackage(),
             new RNSoundPackage(),
             new ReactNativeYouTube(),

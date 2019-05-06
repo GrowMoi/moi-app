@@ -355,7 +355,7 @@ export default class Tree extends Component {
             maxScale={zoomScale}
             onViewTransformed={this.onViewTransformed}
             onTransformGestureReleased={this.onTransformGestureReleased}
-            ref={view => { this.treeView = view; }}
+            ref={view => this.treeView = view }
           >
             <MacetaContainer><Maceta width={200} /></MacetaContainer>
             {level}

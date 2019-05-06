@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		A00B8FEB226990D700DA9CDC /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FDB226990D500DA9CDC /* intro.mp3 */; };
 		A00B8FEC226990D700DA9CDC /* btn_profile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FDC226990D500DA9CDC /* btn_profile.mp3 */; };

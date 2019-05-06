@@ -14,9 +14,11 @@ import {
   Keyboard,
   YouTube,
   log,
+  PixelRatio
 } from 'react-native';
 import {
   WebBrowser,
+  takeSnapshotAsync
 } from 'expo';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
@@ -43,6 +45,8 @@ import ContentImagePreview from '../../commons/components/ContentComponents/Cont
 import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
 import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
+import Share, {ShareSheet, Button} from 'react-native-share';
+import * as constants from '../../constants';
 
 // Redux
 import neuronActions from '../../actions/neuronActions';
@@ -239,6 +243,18 @@ export default class SingleContentScene extends Component {
     }
   };
 
+  shareContent = async (neuronId, contentId, contentTitle) => {
+    const screenShot = await this.takeScreenShotTree();
+    let shareImageBase64 = {
+        title: contentTitle,
+        message: `${constants.WEB_URL_BASE}/#/neuron/${neuronId}/content/${contentId}`,
+        url: screenShot,
+        subject: contentTitle //  for email
+    };
+    await Share.open(shareImageBase64);
+	this.dismissActionSheets();
+  }
+
   redirectTo = (route) => {
     Actions.refresh(route);
   }
@@ -316,6 +332,27 @@ export default class SingleContentScene extends Component {
     })
   }
 
+  async takeScreenShotTree() {
+    const { device: { dimensions: { width, height, orientation } } } = this.props;
+
+    const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
+
+    const resultScreenShot = await takeSnapshotAsync(this.contentView, {
+      result: 'base64',
+      height: height / pixelRatio,
+      width: width / pixelRatio,
+      quality: 1,
+      format: 'png',
+    });
+
+    return this.normalizeBase64Image(resultScreenShot);
+  }
+
+  normalizeBase64Image(base64Image) {
+    return 'data:image/png;base64,' + base64Image.replace(/(?:\r\n|\r|\n)/g, '')
+  }
+
+
 
   render() {
     const { contentSelected: content, device, scene, fromEvent } = this.props;
@@ -333,7 +370,7 @@ export default class SingleContentScene extends Component {
     const options = [
       { label: 'Compartir',
         icon: 'md-share',
-        fn: () => this.setState({actionSheetsVisible: false})
+        fn: () => this.shareContent(content.neuron_id, content.id, content.title),
       },
       {
         label: 'Guardar',
@@ -357,7 +394,7 @@ export default class SingleContentScene extends Component {
           }
         }}
       >
-        <MoiBackground>
+        <MoiBackground ref={view => this.contentView = view }>
           {(loading && !reading) && <Preloader />}
           {!loading && isShowingContent && (
             <ContentBox>
