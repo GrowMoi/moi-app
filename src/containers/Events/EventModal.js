@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableWithoutFeedback, Alert } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import Modal from 'expo/src/modal/Modal';
@@ -11,6 +11,7 @@ import ContentContainer from './ContentContainer';
 import CloseIcon from './CloseIcon';
 import EventInfo from './EventInfo';
 import userActions from '../../actions/userActions';
+import { Header } from '../../commons/components/Typography';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -108,6 +109,7 @@ export default class EventModal extends Component {
             <View style={{ width: this.modalSize.width, height: this.modalSize.height, padding: 5, paddingTop: 10, alignItems: 'center' }}>
               <CloseIcon onPress={this.onPress} />
               <ContentContainer style={{ width: this.modalSize.width - 25, height: this.modalSize.height - 10 }} colorsMargin={this.colorsModal.margin} colorsContent={this.colorsModal.content} horizontalGradient={false}>
+                {!selectedEvent && <Header bolder>Eventos</Header>}
                 {selectedEvent ? <EventInfo event={selectedEvent} onTakeEvent={this.takeEvent} /> : <ListEvents events={events} width={width} onSelectEvent={this.onSelectEvent} />}
               </ContentContainer>
             </View>

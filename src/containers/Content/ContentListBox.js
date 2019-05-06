@@ -9,17 +9,22 @@ import { connect } from 'react-redux';
 import Alert from '../../commons/components/Alert/Alert';
 import GenericAlert from '../../commons/components/Alert/GenericAlert';
 import withSound from '../../commons/utils/withSound';
+import userActions from '../../actions/userActions';
+import EventModal from '../Events/EventModal';
 
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
   device: store.device,
   route: store.route,
   scene: store.routes.scene,
-}))
+}), {
+    getEventsTodayAsync: userActions.getEventsTodayAsync,
+})
 export default class ContentListBox extends Component {
 
   state = {
-    isAlertOpen: true
+    isAlertOpen: true,
+    events: [],
   }
 
   previousScene;
@@ -28,6 +33,12 @@ export default class ContentListBox extends Component {
     super(props);
     this.backToTree = this.backToTree.bind(this);
     this.previousScene = null;
+  }
+
+  async componentDidMount() {
+      const { getEventsTodayAsync } = this.props;
+      const events = await getEventsTodayAsync();
+      this.setState({events: events})
   }
 
   componentWillUpdate() {
@@ -58,9 +69,12 @@ export default class ContentListBox extends Component {
   get isContetScene() {
     const { scene } = this.props;
     const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'moiDrawer';
-    this.previousScene = scene.name;
-    return isContent;
 
+    if(this.previousScene !== 'content') {
+        this.previousScene = scene.name;
+    }
+
+    return isContent;
   }
 
   renderContentPreviewWithSound = (content, delay, oddInverted, widthContentPreview) => {
@@ -83,14 +97,16 @@ export default class ContentListBox extends Component {
   }
 
   render() {
-    const { containerStyles, device, neuronSelected, scene } = this.props;
-    const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
+    const { containerStyles, device: { dimensions: { width } }, neuronSelected, scene } = this.props;
+    const { isAlertOpen, events } = this.state;
+    const widthContentPreview = width > 320 ? 110 : 100;
     const MILLISECONDS = 100;
 
     const contents = this.filterReadedContents((neuronSelected || {}).contents);
     const existContentsToRead = (contents || []).length > 0;
 
     const isContetScene = this.isContetScene;
+    const showEvents = events && events.length > 0;
 
     return (
       <ContentBox>
@@ -104,7 +120,9 @@ export default class ContentListBox extends Component {
           </ScrollView>
         )}
 
-        {!existContentsToRead && isContetScene && <Alert open={this.state.isAlertOpen}>
+        {showEvents && existContentsToRead && <EventModal width={width} events={events} onCloseButtonPress={() => {this.setState({events: []})}}/>}
+
+        {!existContentsToRead && isContetScene && <Alert open={isAlertOpen}>
           <GenericAlert
             message='No hay contenidos!'
             description='Ya haz leido todos los contenidos en esta neurona.'

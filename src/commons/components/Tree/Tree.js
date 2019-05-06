@@ -22,7 +22,6 @@ import userActions from '../../../actions/userActions';
 import neuronActions from '../../../actions/neuronActions';
 import { AnimatedNubes } from './AnimatedNubes';
 import { Sound } from '../SoundPlayer';
-import EventModal from '../../../containers/Events/EventModal';
 import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
 
@@ -59,7 +58,6 @@ const MacetaContainer = styled(View)`
     setZoomScale: treeActions.setZoomScaleTree,
     setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
     uploadTreeImageAsync: userActions.uploadTreeImageAsync,
-    getEventsTodayAsync: userActions.getEventsTodayAsync,
     removeQuizResult: userActions.removeQuizResult,
   })
 export default class Tree extends Component {
@@ -95,7 +93,6 @@ export default class Tree extends Component {
     this.getTreeLevel();
     this.setState({ loading: false });
     this.handleVideoFirstLogin();
-    this.handleEvents();
   }
 
   componentWillReceiveProps(newProps) {
@@ -110,11 +107,6 @@ export default class Tree extends Component {
   setTitleView() {
     const { user } = this.props;
     Actions.refresh({title: user.profile.username});
-  }
-
-  async handleEvents() {
-    const events = await this.props.getEventsTodayAsync();
-    this.setState({ events: events });
   }
 
   handleVideoFirstLogin = async () => {
@@ -335,16 +327,15 @@ export default class Tree extends Component {
   }
 
   render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible, events, showModalNewAchievements, showEventCompleted, eventTitle, achievements } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
 
     if(quizResult && (!showModalNewAchievements && !showEventCompleted)) {
       this.validateResultQuiz();
     }
 
-    const showEvents = events && events.length > 0;
-    const showAchievementsModal =  !showEvents && !modalVisible  && showModalNewAchievements;
-    const showEventCompletedModal = !showEvents && !modalVisible && !showModalNewAchievements && showEventCompleted;
+    const showAchievementsModal = !modalVisible  && showModalNewAchievements;
+    const showEventCompletedModal = !modalVisible && !showModalNewAchievements && showEventCompleted;
 
 
     const videoDimensions = {
@@ -356,7 +347,6 @@ export default class Tree extends Component {
     return (
       <TreeContainer>
         <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation}/>
-        {showEvents && !modalVisible && <EventModal width={width} events={events} onCloseButtonPress={() => {this.setState({events: []})}}/>}
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
