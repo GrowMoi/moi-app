@@ -13,12 +13,10 @@ import ComplementaryScene from './ComplementaryQuizScene';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { Video } from '../../commons/components/VideoPlayer';
 import creditos from '../../../assets/videos/creditos.mp4';
-import NewAchievementsModal from '../../commons/components/Quiz/NewAchievements';
 import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import { Sound } from '../../commons/components/SoundPlayer';
 import { TIME_FOR_INACTIVITY } from '../../constants';
-import EventCompletedModal from '../../commons/components/Quiz/EventCompleted';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -48,9 +46,6 @@ export default class QuizScene extends Component {
     loading: false,
     modalVisible: false,
     resultFinalTest: null,
-    showModalNewAchievements: false,
-    showEventCompleted: false,
-    achievements: [],
     isOpenPassiveMessage: false,
   }
 
@@ -103,15 +98,7 @@ export default class QuizScene extends Component {
       return;
     }
 
-    const { achievements, result, event = {} } = data;
-
-    if(achievements.length > 0) {
-      this.showModalNewAchievements(achievements);
-    }
-
-    if(event.completed) {
-      this.showEventCompletedModal(event.info.title);
-    }
+    const { result } = data;
 
     this.setState({ results: result, currentScene: 'results' });
   }
@@ -164,24 +151,8 @@ export default class QuizScene extends Component {
     );
   }
 
-  showModalNewAchievements = (achievements) => {
-    this.setState({ showModalNewAchievements: true, achievements: achievements });
-  }
-
-  hideModalNewAchievements = () => {
-    this.setState({ showModalNewAchievements: false });
-  }
-
-  showEventCompletedModal = (title) => {
-    this.setState({ showEventCompleted: true, eventTitle: title });
-  }
-
-  hideEventCompletedModal = () => {
-    this.setState({ showEventCompleted: false });
-  }
-
   render() {
-    const { currentScene, loading, modalVisible, showModalNewAchievements, achievements, isOpenPassiveMessage, eventTitle, showEventCompleted } = this.state;
+    const { currentScene, loading, modalVisible, isOpenPassiveMessage } = this.state;
     const { quiz, device: { dimensions: { width } }, scene } = this.props;
 
     const videoDimensions = {
@@ -193,7 +164,7 @@ export default class QuizScene extends Component {
       <UserInactivity
         timeForInactivity={TIME_FOR_INACTIVITY}
         onAction={(isActive) => {
-          if (!isActive && scene.name === 'quiz' && !showModalNewAchievements && !loading) {
+          if (!isActive && scene.name === 'quiz' &&  !loading) {
             Keyboard.dismiss()
             this.setState({ isOpenPassiveMessage: !isActive })
           }
@@ -231,8 +202,6 @@ export default class QuizScene extends Component {
             onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
             showCloseIcon={false}
           />}
-          {showModalNewAchievements && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
-          {!showModalNewAchievements && showEventCompleted && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
           <PassiveMessageAlert
             isOpenPassiveMessage={isOpenPassiveMessage}
             touchableProps={{

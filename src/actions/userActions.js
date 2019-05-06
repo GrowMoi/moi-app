@@ -91,6 +91,11 @@ const storeDrawerState = isOpen => ({
   payload: isOpen,
 });
 
+const storeQuizResult = quizResult => ({
+  type: actionTypes.STORE_QUIZ_RESULT,
+  payload: quizResult,
+});
+
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
   try {
     const res = await api.user.signIn({ login, authorization_key: authorizationKey });
@@ -228,15 +233,19 @@ const learnContentsAsync = (testId, answers) => async (dispatch) => {
   let res;
   try {
     res = await api.learn.learn(testId, answers);
-    const { headers } = res;
-
+    const { headers, data } = res;
     await dispatch(setHeaders(headers));
+    await dispatch(storeQuizResult(data))
   } catch (error) {
     // console.log(error);
     throw new Error(error);
   }
 
   return res;
+};
+
+const removeQuizResult = () => async (dispatch) => {
+    await dispatch(storeQuizResult(null))
 };
 
 const storeNotesAsync = (neuronId, contentId, notes) => async (dispatch) => {
@@ -664,4 +673,5 @@ export default {
   getEventInProgressAsync,
   getEventsWeekAsync,
   setDrawerState,
+  removeQuizResult,
 };

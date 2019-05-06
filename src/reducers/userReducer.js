@@ -29,6 +29,7 @@ const initialState = {
   events: [],
   eventsWeek: [],
   drawerState: {},
+  quizResult: null,
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -85,6 +86,15 @@ const quiz = (state = initialState.quiz, action = {}) => {
 const externalQuiz = (state = initialState.externalQuiz, action = {}) => {
   switch (action.type) {
     case actionTypes.STORE_EXTERNAL_QUIZ:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const quizResult = (state = initialState.quizResult,  action = {}) => {
+  switch (action.type) {
+    case actionTypes.STORE_QUIZ_RESULT:
       return action.payload;
     default:
       return state;
@@ -259,6 +269,7 @@ const user = combineReducers({
   events,
   eventsWeek,
   drawerState,
+  quizResult,
 });
 
 export default user;
