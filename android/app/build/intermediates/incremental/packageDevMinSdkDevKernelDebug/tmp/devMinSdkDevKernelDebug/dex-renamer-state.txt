@@ -1,4 +1,4 @@
-#Sun Apr 21 22:24:31 ECT 2019
+#Wed May 08 00:00:29 ECT 2019
 base.2=/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/6
 base.1=/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/7
 base.0=/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/0

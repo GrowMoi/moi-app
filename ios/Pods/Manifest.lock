@@ -235,8 +235,6 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNShare (1.1.3):
-    - React
   - RNSound (0.10.12):
     - React/Core
     - RNSound/Core (= 0.10.12)
@@ -295,7 +293,6 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
-  - RNShare (from `../node_modules/react-native-share`)
   - RNSound (from `../node_modules/react-native-sound`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -403,8 +400,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-orientation"
   react-native-youtube:
     :path: "../node_modules/react-native-youtube"
-  RNShare:
-    :path: "../node_modules/react-native-share"
   RNSound:
     :path: "../node_modules/react-native-sound"
   yoga:
@@ -477,11 +472,10 @@ SPEC CHECKSUMS:
   React: aa2040dbb6f317b95314968021bd2888816e03d5
   react-native-orientation: 3d9a0a8273d18260f7528414093a6a36491382b6
   react-native-youtube: 7ab01f1320b037d605e6c6ac9d59cc2b92091799
-  RNShare: d875e8e37f3e5e8eb7a103ae01e06490af1796f6
   RNSound: b360b3862d3118ed1c74bb9825696b5957686ac4
   Stripe: 76c203e21555089b708e6cbe972a3e3baf1ab4d8
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 5269550c376319e68f4c356d5db6b8fdbe9aaf45
+PODFILE CHECKSUM: 185d6847a74584c941c04a9b11971634e5d83ba4
 
 COCOAPODS: 1.5.3
