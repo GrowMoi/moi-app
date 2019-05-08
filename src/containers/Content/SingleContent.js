@@ -402,127 +402,129 @@ export default class SingleContentScene extends Component {
           }
         }}
       >
-        <MoiBackground ref={view => this.contentView = view }>
-          {(loading && !reading) && <Preloader />}
-          {!loading && isShowingContent && (
-            <ContentBox>
-              <KeyboardAvoidingView keyboardVerticalOffset={50} behavior="padding">
-                <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={{flex:1}} collapsable={false} ref={view => this.contentView = view }>
+            <MoiBackground>
+            {(loading && !reading) && <Preloader />}
+            {!loading && isShowingContent && (
+                <ContentBox>
+                <KeyboardAvoidingView keyboardVerticalOffset={50} behavior="padding">
+                    <ScrollView contentContainerStyle={styles.scrollContainer}>
 
-                  <HeaderContent>
-                    <Header bolder inverted>{content.title}</Header>
-                  </HeaderContent>
+                    <HeaderContent>
+                        <Header bolder inverted>{content.title}</Header>
+                    </HeaderContent>
 
-                  <Carousel
-                    showsPagination
-                    loop
-                    autoplay
-                    size={{ height: 200, width: (width - Size.spaceXLarge) }}
-                    images={content.media}
-                    videos={content.videos}
-                  />
+                    <Carousel
+                        showsPagination
+                        loop
+                        autoplay
+                        size={{ height: 200, width: (width - Size.spaceXLarge) }}
+                        images={content.media}
+                        videos={content.videos}
+                    />
 
-                  <ActionsHeader>
-                    {(content.favorite || favorite) && <MoiIcon name='fav' size={20} />}
-                    {/* <Icon onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} /> */}
-                    <Icon name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
-                  </ActionsHeader>
+                    <ActionsHeader>
+                        {(content.favorite || favorite) && <MoiIcon name='fav' size={20} />}
+                        {/* <Icon onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} /> */}
+                        <Icon name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
+                    </ActionsHeader>
 
-                  <Section>
-                    <TextBody inverted>{content.description}</TextBody>
-                    <Source>
-                      <TextBody bolder color={Palette.dark}>Fuente</TextBody>
-                      <Divider color={Palette.dark.alpha(0.2).css()} />
-                      <TextBody inverted>{content.source}</TextBody>
-                    </Source>
-                  </Section>
+                    <Section>
+                        <TextBody inverted>{content.description}</TextBody>
+                        <Source>
+                        <TextBody bolder color={Palette.dark}>Fuente</TextBody>
+                        <Divider color={Palette.dark.alpha(0.2).css()} />
+                        <TextBody inverted>{content.source}</TextBody>
+                        </Source>
+                    </Section>
 
-                  <Section>
-                    <Header inverted bolder>Links</Header>
-                    {((content || {}).links || []).map((link, i) => (
-                      <TextLeftBorder key={i}>
-                        <TouchableOpacity onPress={() => this.handleOpenLinks(link)}>
-                          <TextBody inverted>{link}</TextBody>
-                        </TouchableOpacity>
-                      </TextLeftBorder>
-                    ))}
-                  </Section>
+                    <Section>
+                        <Header inverted bolder>Links</Header>
+                        {((content || {}).links || []).map((link, i) => (
+                        <TextLeftBorder key={i}>
+                            <TouchableOpacity onPress={() => this.handleOpenLinks(link)}>
+                            <TextBody inverted>{link}</TextBody>
+                            </TouchableOpacity>
+                        </TextLeftBorder>
+                        ))}
+                    </Section>
 
-                  <Section>
-                    <Header inverted bolder>Notas</Header>
-                    <TextLeftBorder>
-                      <NoteInput
-                        text={content.user_notes}
-                        onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
-                      />
-                    </TextLeftBorder>
-                  </Section>
+                    <Section>
+                        <Header inverted bolder>Notas</Header>
+                        <TextLeftBorder>
+                        <NoteInput
+                            text={content.user_notes}
+                            onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
+                        />
+                        </TextLeftBorder>
+                    </Section>
 
-                  <Section notBottomSpace>
-                    <Header inverted bolder>Recomendados</Header>
+                    <Section notBottomSpace>
+                        <Header inverted bolder>Recomendados</Header>
 
-                    <VideoContainer>
-                      {((content || {}).recommended_contents || []).map(rContent => {
-                        return (
-                          <ContentImagePreview
-                            data={rContent}
-                            key={uuid()}
-                            width={'46%'}
-                            touchProps={{
-                              onPress:() => this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title),
-                            }}
-                          />
-                        )
-                      })}
-                    </VideoContainer>
-                  </Section>
+                        <VideoContainer>
+                        {((content || {}).recommended_contents || []).map(rContent => {
+                            return (
+                            <ContentImagePreview
+                                data={rContent}
+                                key={uuid()}
+                                width={'46%'}
+                                touchProps={{
+                                onPress:() => this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title),
+                                }}
+                            />
+                            )
+                        })}
+                        </VideoContainer>
+                    </Section>
 
-                  </ScrollView>
-                </KeyboardAvoidingView>
-              </ContentBox>
+                    </ScrollView>
+                    </KeyboardAvoidingView>
+                </ContentBox>
+                )}
+            {!loading && <BottomBarWithButtons
+                readButton={!(content.learnt || content.read) || fromEvent}
+                onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
+                width={device.dimensions.width}
+            />}
+            {/* Animation */}
+            {reading && (
+                <ReadingAnimation
+                ref={ref => this.readingAnim = ref}
+                onFinishAnimation={() => {
+                    this.afterFinishAnimation(content.neuron_id);
+                }}
+                />
             )}
-          {!loading && <BottomBarWithButtons
-            readButton={!(content.learnt || content.read) || fromEvent}
-            onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
-            width={device.dimensions.width}
-          />}
-          {/* Animation */}
-          {reading && (
-            <ReadingAnimation
-              ref={ref => this.readingAnim = ref}
-              onFinishAnimation={() => {
-                this.afterFinishAnimation(content.neuron_id);
-              }}
+
+            {/* Action Sheets */}
+            <ActionSheet
+                hasCancelOption
+                visible={actionSheetsVisible}
+                options={options}
+                dismiss={this.dismissActionSheets}
             />
-          )}
+            {/* Modal */}
+            {/* <YoutubePlayer
+                videoId={currentVideoId}
+                visible={videoModalVisible}
+                onPressClose={() => this.setModalVisible(false)}
+            /> */}
 
-          {/* Action Sheets */}
-          <ActionSheet
-            hasCancelOption
-            visible={actionSheetsVisible}
-            options={options}
-            dismiss={this.dismissActionSheets}
-          />
-          {/* Modal */}
-          {/* <YoutubePlayer
-            videoId={currentVideoId}
-            visible={videoModalVisible}
-            onPressClose={() => this.setModalVisible(false)}
-          /> */}
+            <Navbar/>
 
-          <Navbar/>
-
-          <PassiveMessageAlert
-            isOpenPassiveMessage={isOpenPassiveMessage}
-            touchableProps={{
-              onPress: () => {
-                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
-              }
-            }}
-            message='Cuando termines de leer la explicación, presiona el botón
-            celeste para enviar la pregunta al test'
-          />
-        </MoiBackground>
+            <PassiveMessageAlert
+                isOpenPassiveMessage={isOpenPassiveMessage}
+                touchableProps={{
+                onPress: () => {
+                    this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
+                }
+                }}
+                message='Cuando termines de leer la explicación, presiona el botón
+                celeste para enviar la pregunta al test'
+            />
+            </MoiBackground>
+        </View>
       </UserInactivity>
     );
   }
