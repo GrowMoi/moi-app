@@ -542,9 +542,9 @@ const saveCertificateAsync = (certificateURL) => async (dispatch) => {
   }
 }
 
-const uploadCertificateAsync = (base64Image) => async (dispatch) => {
+const uploadImageAsync = (base64Image) => async (dispatch) => {
   try{
-    const res = await api.cloudinary.uploadCertificate(base64Image);
+    const res = await api.cloudinary.uploadImage(base64Image);
     return res;
   } catch (error) {
 		console.log("​error", error)
@@ -625,6 +625,17 @@ const getEventInProgressAsync = () => async (dispatch) => {
   }
 }
 
+const generateShareDataAsync = (titulo, descripcion, uri, imagen_url) => async (dispatch) => {
+  try {
+    const res = await api.sharings.sharings(titulo, descripcion, uri, imagen_url);
+    const { headers, data } = res;
+    await dispatch(setHeaders(headers));
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 const setDrawerState = isOpen => async (dispatch) => {
   await dispatch(storeDrawerState(isOpen));
 }
@@ -664,7 +675,7 @@ export default {
   evaluateFinalTestAsync,
   saveResultFinalTest,
   saveCertificateAsync,
-  uploadCertificateAsync,
+  uploadImageAsync,
   uploadTreeImageAsync,
   getLatestCertificatesAsync,
   setReloadRandomContents,
@@ -674,4 +685,5 @@ export default {
   getEventsWeekAsync,
   setDrawerState,
   removeQuizResult,
+  generateShareDataAsync,
 };

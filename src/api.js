@@ -344,8 +344,24 @@ const api = {
     },
   },
 
+  sharings: {
+    async sharings(titulo, descripcion, uri, imagen_url) {
+      const endpoint = '/api/sharings';
+      const res = await client.post(
+        endpoint,
+        {
+          titulo,
+          descripcion,
+          uri,
+          imagen_url
+        },
+      );
+      return res;
+    },
+  },
+
   cloudinary: {
-    async uploadCertificate(base64Image) {
+    async uploadImage(base64Image) {
       const endpoint = '/v1_1/moi-images/upload';
 
       const res = await cloudinaryClient.post(

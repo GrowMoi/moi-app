@@ -85,7 +85,7 @@ const InnerTextBox = styled(View)`
 }),
   {
     saveResultFinalTest: userActions.saveResultFinalTest,
-    uploadCertificateAsync: userActions.uploadCertificateAsync,
+    uploadImageAsync: userActions.uploadImageAsync,
     saveCertificateAsync: userActions.saveCertificateAsync,
   })
 class Certificate extends Component {
@@ -122,7 +122,7 @@ class Certificate extends Component {
   }
 
   async removeResultFinalTest() {
-    const { device: { dimensions: { width, height } }, saveResultFinalTest, uploadCertificateAsync, saveCertificateAsync } = this.props;
+    const { device: { dimensions: { width, height } }, saveResultFinalTest, uploadImageAsync, saveCertificateAsync } = this.props;
     const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
 
     const resultScreenShot = await takeSnapshotAsync(this.certificateView, {
@@ -135,7 +135,7 @@ class Certificate extends Component {
 
     this.showLoading();
 
-    const uploadedRes = await uploadCertificateAsync(this.normalizeBase64Image(resultScreenShot));
+    const uploadedRes = await uploadImageAsync(this.normalizeBase64Image(resultScreenShot));
     await saveCertificateAsync(uploadedRes.secure_url);
 
     this.showLoading(false);

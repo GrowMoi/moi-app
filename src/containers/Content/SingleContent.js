@@ -14,7 +14,8 @@ import {
   Keyboard,
   YouTube,
   log,
-  PixelRatio
+  PixelRatio,
+  Share,
 } from 'react-native';
 import {
   WebBrowser,
@@ -45,7 +46,6 @@ import ContentImagePreview from '../../commons/components/ContentComponents/Cont
 import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
 import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
-import Share, {ShareSheet, Button} from 'react-native-share';
 import * as constants from '../../constants';
 
 // Redux
@@ -140,6 +140,8 @@ const styles = StyleSheet.create({
   // loadTreeAsync: treeActions.loadTreeAsync,
   stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
   playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
+  uploadImageAsync: userActions.uploadImageAsync,
+  generateShareDataAsync: userActions.generateShareDataAsync,
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -243,15 +245,21 @@ export default class SingleContentScene extends Component {
     }
   };
 
-  shareContent = async (neuronId, contentId, contentTitle) => {
+  shareContent = async (neuronId, contentId, contentTitle, descriptionContent) => {
+    const { uploadImageAsync, generateShareDataAsync } = this.props;
+
     const screenShot = await this.takeScreenShotTree();
-    let shareImageBase64 = {
+    const uploadRes = await uploadImageAsync(screenShot);
+    const contentUri = `${constants.WEB_URL_BASE}/#/neuron/${neuronId}/content/${contentId}`;
+    const { social_sharing: {public_url} } = await generateShareDataAsync(contentTitle, descriptionContent ? descriptionContent : 'desc', contentUri, uploadRes.secure_url);
+
+    const shareImageBase64 = {
         title: contentTitle,
-        message: `${constants.WEB_URL_BASE}/#/neuron/${neuronId}/content/${contentId}`,
-        url: screenShot,
-        subject: contentTitle //  for email
+        message: public_url,
+        url: public_url,
+        subject: contentTitle
     };
-    await Share.open(shareImageBase64);
+    await Share.share(shareImageBase64);
 	this.dismissActionSheets();
   }
 
@@ -370,7 +378,7 @@ export default class SingleContentScene extends Component {
     const options = [
       { label: 'Compartir',
         icon: 'md-share',
-        fn: () => this.shareContent(content.neuron_id, content.id, content.title),
+        fn: () => this.shareContent(content.neuron_id, content.id, content.title, content.description),
       },
       {
         label: 'Guardar',
