@@ -48,6 +48,11 @@ const setSettings = settings => ({
   payload: settings,
 })
 
+const setPassiveMessageSettings = passiveMessageSettings => ({
+  type: actionTypes.SET_PASSIVE_MESSAGE_SETTINGS,
+  payload: passiveMessageSettings,
+})
+
 const storeFinalTestResult = finalTestResult => ({
   type: actionTypes.STORE_FINAL_TEST_RESULT,
   payload: finalTestResult,
@@ -404,6 +409,11 @@ const setCurrentSettings = (settings = []) => (dispatch) => {
   dispatch(setSettings(settings));
 }
 
+const setCurrentPassiveMessageSettings = (passiveMessageSettings = {}) => async dispatch => {
+  await AsyncStorage.setItem('passiveMessage', `${passiveMessageSettings.show}`);
+  dispatch(setPassiveMessageSettings(passiveMessageSettings));
+}
+
 // Notes
 
 const getStoreNotesAsync = (page = 1) => async dispatch => {
@@ -662,6 +672,7 @@ export default {
   updateAchievementsAsync,
   signOutAsync,
   setCurrentSettings,
+  setCurrentPassiveMessageSettings,
   updateSettingsAsync,
   getNotificationsAsync,
   getStoreNotesAsync,

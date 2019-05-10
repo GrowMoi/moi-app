@@ -38,6 +38,7 @@ export default class Scenes extends Component {
   async componentWillMount() {
     await this.setOrientation();
     await this.preLoadingAssets();
+    await this.setPassiveMessageSettings();
     Dimensions.addEventListener('change', this.setOrientation);
   }
 
@@ -51,6 +52,11 @@ export default class Scenes extends Component {
 
   setOrientation = () => {
     store.dispatch(setDeviceDimensions());
+  }
+
+  setPassiveMessageSettings = async () => {
+    const passiveMessage = await AsyncStorage.getItem('passiveMessage');
+    store.dispatch(userActions.setCurrentPassiveMessageSettings({show: passiveMessage || true}));
   }
 
   async preLoadingAssets() {

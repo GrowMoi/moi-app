@@ -18,10 +18,14 @@ import SettingsSection from './SettingsSection';
 import InterestButton from './InterestButton';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Button from '../../commons/components/Buttons/Button';
+import { Line } from '../../commons/components/SceneComponents';
 
 
 const StyledContentBox = styled(ContentBox)`
   margin-bottom: ${Size.spaceMedium};
+`;
+
+const StyledLine = styled(Line)`
 `;
 
 const labelPreferences = {
@@ -35,19 +39,23 @@ const labelPreferences = {
   device: store.device,
   userData: store.user.userData,
   settings: store.user.settings,
+  passiveMessageSettings: store.user.passiveMessageSettings,
 }), {
   setCurrentSettings: userActions.setCurrentSettings,
   updateSettingsAsync: userActions.updateSettingsAsync,
+  setCurrentPassiveMessageSettings: userActions.setCurrentPassiveMessageSettings,
 })
 export default class Settings extends Component {
   state = {
     updating: false,
+    passiveMessage: false,
   }
 
   componentDidMount() {
-    const { userData: { profile: { content_preferences } }, setCurrentSettings } = this.props;
+    const { userData: { profile: { content_preferences } }, setCurrentSettings, passiveMessageSettings } = this.props;
 
     setCurrentSettings(content_preferences);
+    this.setState({passiveMessage: passiveMessageSettings.show})
   }
 
   setSettingValue = async (kind, level) => {
@@ -74,6 +82,7 @@ export default class Settings extends Component {
 
     try {
       await updateSettingsAsync(settings);
+      await this.setPassiveMessageSettings();
 
       Alert.alert('Preferencias', 'Tus preferencias se han actualizado con exito', [{
         text: 'Aceptar', onPress: () => {
@@ -91,8 +100,19 @@ export default class Settings extends Component {
     }
   }
 
+  toggleSwitch = () => {
+      this.setState(prevState => ({ passiveMessage: !prevState.passiveMessage }));
+  }
+
+  setPassiveMessageSettings = () => {
+      const { setCurrentPassiveMessageSettings, passiveMessageSettings } = this.props;
+      const { passiveMessage } = this.state;
+      setCurrentPassiveMessageSettings({...passiveMessageSettings, show: passiveMessage});
+  }
+
   render() {
     const { device, settings } = this.props;
+    const { passiveMessage } = this.state;
 
     const containerStyles = { flex: 1 };
 
@@ -118,7 +138,15 @@ export default class Settings extends Component {
                   {...row}
                 />
               ))}
+              <StyledLine size={2} style={{ marginTop: 20 }}/>
+              <RowLevel
+                  title={'Mensages pasivos'}
+                  toggleSwitch={this.toggleSwitch}
+                  toggle={passiveMessage}
+                />
+                <StyledLine size={2} />
             </SettingsSection>
+
           </ScrollView>
 
           <Button style={{ width: '80%' }} title='Guardar Preferencias' onPress={this.saveSettings}/>
