@@ -17,6 +17,7 @@ import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import { Sound } from '../../commons/components/SoundPlayer';
 import { TIME_FOR_INACTIVITY } from '../../constants';
+import LevelPassedTransition from './LevelPassedTransition';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -47,6 +48,7 @@ export default class QuizScene extends Component {
     modalVisible: false,
     resultFinalTest: null,
     isOpenPassiveMessage: false,
+    showLevelPassedAnimation: false,
   }
 
   soundQuizFinishedPlayed;
@@ -146,13 +148,14 @@ export default class QuizScene extends Component {
       <ComplementaryScene
         title='RESULTADO'
         text={message}
-        onNext={Actions.moiDrawer}
+        onNext={() => {this.setState({ showLevelPassedAnimation: true, currentScene: '' });}}
       />
     );
   }
 
+
   render() {
-    const { currentScene, loading, modalVisible, isOpenPassiveMessage } = this.state;
+    const { currentScene, loading, modalVisible, isOpenPassiveMessage, showLevelPassedAnimation } = this.state;
     const { quiz, device: { dimensions: { width } }, scene } = this.props;
 
     const videoDimensions = {
@@ -202,6 +205,7 @@ export default class QuizScene extends Component {
             onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
             showCloseIcon={false}
           />}
+          {showLevelPassedAnimation && <LevelPassedTransition/>}
           <PassiveMessageAlert
             isOpenPassiveMessage={isOpenPassiveMessage}
             touchableProps={{
