@@ -70,9 +70,7 @@ export default class ContentListBox extends Component {
     const { scene } = this.props;
     const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'moiDrawer';
 
-    if(this.previousScene !== 'content') {
-        this.previousScene = scene.name;
-    }
+    this.previousScene = scene.name;
 
     return isContent;
   }
