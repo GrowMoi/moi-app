@@ -8,15 +8,25 @@ export default class MoiSound {
   static soundActionsObject;
   static processing = false;
   static loadInitSetup = true;
+  static loadedSounds = {};
+  static currentSound = null;
 
-  static setup = function() {
+  static setup = function () {
     Sound.setCategory('Playback');
     AppState.addEventListener('change', MoiSound._handleAppStateChange);
   }
 
+  static loadSounds = () => {
+    for (const key in sounds.actions) {
+      MoiSound.loadedSounds[key] = new Sound(sounds.actions[key] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+      });
+    }
+  }
+
   static play = async (options) => {
-    if(MoiSound.loadInitSetup) {
+    if (MoiSound.loadInitSetup) {
       MoiSound.setup();
+      MoiSound.loadSounds();
       MoiSound.loadInitSetup = false;
     }
 
@@ -42,18 +52,15 @@ export default class MoiSound {
     });
   }
 
-  static playOverBackgroundSound = async (soundName, repeatSound = false) => {
-    this.soundActionsObject = new Sound(sounds.actions[soundName] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-
-      if (error) return;
-
-      this.soundActionsObject.setNumberOfLoops(repeatSound ? -1 : 0);
-      this.soundActionsObject.play();
-    });
+  static playOverBackgroundSound = async (soundName, repeatSound = false, currentTime) => {
+    MoiSound.currentSound = MoiSound.loadedSounds[soundName];
+    MoiSound.currentSound.setNumberOfLoops(repeatSound ? -1 : 0);
+    if(currentTime) MoiSound.currentSound.setCurrentTime(currentTime)
+    MoiSound.currentSound.play();
   }
 
   static stopOverBackgroundSound = async () => {
-    this.soundActionsObject.stop();
+    MoiSound.currentSound.stop();
   }
 
   static pause = async () => {
@@ -72,7 +79,7 @@ export default class MoiSound {
     }
   }
 
-  static _handleAppStateChange =  function(currentAppState) {
+  static _handleAppStateChange = function (currentAppState) {
     if (currentAppState === 'background') {
       MoiSound.pause();
     }

@@ -38,7 +38,7 @@ const routeMiddleware = args => store => next => async(action) => {
           await Sound.play(currentAudio.payload);
         }
       }
-      previousScene = currentScene;
+    //   previousScene = currentScene;
     }
   }
 

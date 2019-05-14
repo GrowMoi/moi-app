@@ -3,7 +3,6 @@ export default [
   require('./background/background_tree_portrait.png'),
   require('./background/fondo_arbol.png'),
   require('./background/background-profile.png'),
-  require('./background/background_tree_drawer.png'),
   require('./macetaMenu/maceta_menu.png'),
   require('./tabBar/tabBar.png'),
   require('./tree/static_tree.png'),
@@ -292,4 +291,9 @@ export default [
   require('../images/nubes/nube1L.png'),
   require('../images/nubes/nube2L.png'),
   require('../images/nubes/nube3L.png'),
+
+  //Side menu
+  require('./sideMenu/background_tree_drawer.png'),
+  require('./sideMenu/menu-side-frame.png'),
+  require('./sideMenu/tree_default.png'),
 ];

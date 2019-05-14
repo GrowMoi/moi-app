@@ -48,6 +48,11 @@ const setSettings = settings => ({
   payload: settings,
 })
 
+const setPassiveMessageSettings = passiveMessageSettings => ({
+  type: actionTypes.SET_PASSIVE_MESSAGE_SETTINGS,
+  payload: passiveMessageSettings,
+})
+
 const storeFinalTestResult = finalTestResult => ({
   type: actionTypes.STORE_FINAL_TEST_RESULT,
   payload: finalTestResult,
@@ -84,6 +89,16 @@ const storeEvents = events => ({
 const storeEventsWeek = events => ({
   type: actionTypes.STORE_EVENTS_WEEK,
   payload: events,
+});
+
+const storeDrawerState = isOpen => ({
+  type: actionTypes.STORE_DRAWER_STATE,
+  payload: isOpen,
+});
+
+const storeQuizResult = quizResult => ({
+  type: actionTypes.STORE_QUIZ_RESULT,
+  payload: quizResult,
 });
 
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
@@ -223,15 +238,19 @@ const learnContentsAsync = (testId, answers) => async (dispatch) => {
   let res;
   try {
     res = await api.learn.learn(testId, answers);
-    const { headers } = res;
-
+    const { headers, data } = res;
     await dispatch(setHeaders(headers));
+    await dispatch(storeQuizResult(data))
   } catch (error) {
     // console.log(error);
     throw new Error(error);
   }
 
   return res;
+};
+
+const removeQuizResult = () => async (dispatch) => {
+    await dispatch(storeQuizResult(null))
 };
 
 const storeNotesAsync = (neuronId, contentId, notes) => async (dispatch) => {
@@ -390,6 +409,11 @@ const setCurrentSettings = (settings = []) => (dispatch) => {
   dispatch(setSettings(settings));
 }
 
+const setCurrentPassiveMessageSettings = (passiveMessageSettings = {}) => async dispatch => {
+  await AsyncStorage.setItem('passiveMessage', `${passiveMessageSettings.show}`);
+  dispatch(setPassiveMessageSettings(passiveMessageSettings));
+}
+
 // Notes
 
 const getStoreNotesAsync = (page = 1) => async dispatch => {
@@ -528,9 +552,9 @@ const saveCertificateAsync = (certificateURL) => async (dispatch) => {
   }
 }
 
-const uploadCertificateAsync = (base64Image) => async (dispatch) => {
+const uploadImageAsync = (base64Image) => async (dispatch) => {
   try{
-    const res = await api.cloudinary.uploadCertificate(base64Image);
+    const res = await api.cloudinary.uploadImage(base64Image);
     return res;
   } catch (error) {
 		console.log("​error", error)
@@ -611,6 +635,21 @@ const getEventInProgressAsync = () => async (dispatch) => {
   }
 }
 
+const generateShareDataAsync = (titulo, descripcion, uri, imagen_url) => async (dispatch) => {
+  try {
+    const res = await api.sharings.sharings(titulo, descripcion, uri, imagen_url);
+    const { headers, data } = res;
+    await dispatch(setHeaders(headers));
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const setDrawerState = isOpen => async (dispatch) => {
+  await dispatch(storeDrawerState(isOpen));
+}
+
 export default {
   loginAsync,
   registerAsync,
@@ -633,6 +672,7 @@ export default {
   updateAchievementsAsync,
   signOutAsync,
   setCurrentSettings,
+  setCurrentPassiveMessageSettings,
   updateSettingsAsync,
   getNotificationsAsync,
   getStoreNotesAsync,
@@ -646,7 +686,7 @@ export default {
   evaluateFinalTestAsync,
   saveResultFinalTest,
   saveCertificateAsync,
-  uploadCertificateAsync,
+  uploadImageAsync,
   uploadTreeImageAsync,
   getLatestCertificatesAsync,
   setReloadRandomContents,
@@ -654,4 +694,7 @@ export default {
   takeEventAsync,
   getEventInProgressAsync,
   getEventsWeekAsync,
+  setDrawerState,
+  removeQuizResult,
+  generateShareDataAsync,
 };

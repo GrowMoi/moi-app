@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { AnimatedImage } from './AnimatedImage';
+import uuid from 'uuid/v4';
 
 import nube1L from '../../../../assets/images/nubes/nube1L.png';
 import nube2L from '../../../../assets/images/nubes/nube2L.png';
@@ -18,9 +19,10 @@ const positionNube = [{
 
 export class AnimatedNubes extends Component {
   getRandomTopPostion = () => {
-    const { deviceHeight } = this.props;
+    const { deviceHeight, orientation } = this.props;
+
     const minValue = 0;
-    const maxValue = 30;
+    const maxValue = orientation === 'LANDSCAPE' ? 15 : 30;
 
     const randomPercentage = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
     return (deviceHeight * randomPercentage) / 100;
@@ -65,6 +67,8 @@ export class AnimatedNubes extends Component {
   }
 
   render() {
+    const { orientation } = this.props;
+
     const constainerStyle = {
       position: "relative",
       flex: 1,
@@ -73,17 +77,18 @@ export class AnimatedNubes extends Component {
       flexDirection: 'column',
     };
     const animationValues = this.getAnimationValues();
+    const isLandscape = orientation === 'LANDSCAPE';
 
     return (
       <View style={constainerStyle}>
         {this.getNubesData().map(
           (nube, i) =>
             <AnimatedImage
-              key={i}
+              key={uuid()}
               source={nube.source}
               minValue={animationValues.minValue}
               maxValue={animationValues.maxValue}
-              timeRange={[15000, 30000]}
+              timeRange={isLandscape ? [25000, 40000] : [15000, 30000]}
               delayStart={nube.delayStart}
               verticalPosition={this.getRandomTopPostion}
               horizontalPosition={this.getNubePosition}

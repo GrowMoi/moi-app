@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady }) => {
+const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady = () => {} }) => {
   if(data === undefined) return null;
 
   const { profile, level } = data;

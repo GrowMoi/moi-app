@@ -16,6 +16,9 @@ const initialState = {
   finalTestResult: null,
   achievements: [],
   settings: [],
+  passiveMessageSettings: {
+      show: true,
+  },
   notifications: {
     notifications: [],
     meta: {},
@@ -28,6 +31,8 @@ const initialState = {
   },
   events: [],
   eventsWeek: [],
+  drawerState: {},
+  quizResult: null,
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -90,6 +95,15 @@ const externalQuiz = (state = initialState.externalQuiz, action = {}) => {
   }
 };
 
+const quizResult = (state = initialState.quizResult,  action = {}) => {
+  switch (action.type) {
+    case actionTypes.STORE_QUIZ_RESULT:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const finalTestResult = (state = initialState.finalTestResult, action = {}) => {
   switch (action.type) {
     case actionTypes.STORE_FINAL_TEST_RESULT:
@@ -144,6 +158,15 @@ const achievements = (state = initialState.achievements, action) => {
 const settings = (state = initialState.settings, action) => {
   switch (action.type) {
     case actionTypes.SET_SETTINGS:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+const passiveMessageSettings = (state = initialState.passiveMessageSettings, action) => {
+  switch (action.type) {
+    case actionTypes.SET_PASSIVE_MESSAGE_SETTINGS:
       return action.payload;
     default:
       return state;
@@ -230,6 +253,17 @@ const eventsWeek = (state = initialState.eventsWeek, action) => {
   }
 }
 
+const drawerState = (state = initialState.drawerState, action) => {
+  switch (action.type) {
+    case actionTypes.STORE_DRAWER_STATE:
+      return {
+        isOpen: action.payload
+      };
+    default:
+      return state;
+  }
+}
+
 
 const user = combineReducers({
   userData,
@@ -240,12 +274,15 @@ const user = combineReducers({
   profile,
   achievements,
   settings,
+  passiveMessageSettings,
   notifications,
   notes,
   finalTestResult,
   reloadRandomContents,
   events,
   eventsWeek,
+  drawerState,
+  quizResult,
 });
 
 export default user;

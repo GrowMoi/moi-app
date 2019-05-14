@@ -88,7 +88,7 @@ export default class LeaderBoard extends PureComponent {
     return (
       <LeaderRow
         playerName={normalize.normalizeAllCapLetter(item.username)}
-        grade={`${item.contents_learnt} / ${meta.total_contents}`}
+        grade={item.contents_learnt}
         seconds={`${new Date(item.time_elapsed).getSeconds()}s`}
         onPress={() => this.onPressProfile(item)}
       />

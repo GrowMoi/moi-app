@@ -5,6 +5,7 @@ import { takeSnapshotAsync } from 'expo';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
+import { Actions } from 'react-native-router-flux';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
@@ -21,7 +22,8 @@ import userActions from '../../../actions/userActions';
 import neuronActions from '../../../actions/neuronActions';
 import { AnimatedNubes } from './AnimatedNubes';
 import { Sound } from '../SoundPlayer';
-import EventModal from '../../../containers/Events/EventModal';
+import NewAchievementsModal from '../Quiz/NewAchievements';
+import EventCompletedModal from '../Quiz/EventCompleted';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -47,6 +49,7 @@ const MacetaContainer = styled(View)`
   device: store.device,
   userTree: store.tree.userTree,
   user: store.user.userData,
+  quizResult: store.user.quizResult,
 }), {
     loadTreeAsync: treeActions.loadTreeAsync,
     getUserProfileAsync: userActions.getUserProfileAsync,
@@ -55,7 +58,7 @@ const MacetaContainer = styled(View)`
     setZoomScale: treeActions.setZoomScaleTree,
     setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
     uploadTreeImageAsync: userActions.uploadTreeImageAsync,
-    getEventsTodayAsync: userActions.getEventsTodayAsync,
+    removeQuizResult: userActions.removeQuizResult,
   })
 export default class Tree extends Component {
 
@@ -68,6 +71,10 @@ export default class Tree extends Component {
     zoomScale: 1,
     modalVisible: false,
     events: [],
+    showModalNewAchievements: false,
+    showEventCompleted: false,
+    eventTitle: '',
+    achievements: null,
   }
 
   initialActions = async () => {
@@ -81,11 +88,11 @@ export default class Tree extends Component {
   }
 
   async componentDidMount() {
+    this.setTitleView();
     await this.initialActions();
     this.getTreeLevel();
     this.setState({ loading: false });
     this.handleVideoFirstLogin();
-    this.handleEvents();
   }
 
   componentWillReceiveProps(newProps) {
@@ -97,9 +104,9 @@ export default class Tree extends Component {
     }
   }
 
-  async handleEvents() {
-    const events = await this.props.getEventsTodayAsync();
-    this.setState({ events: events });
+  setTitleView() {
+    const { user } = this.props;
+    Actions.refresh({title: user.profile.username});
   }
 
   handleVideoFirstLogin = async () => {
@@ -135,7 +142,7 @@ export default class Tree extends Component {
     setNeuronLabelInfo({});
     if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
     if (this.canPlaySound) {
-      Sound.playOverBackgroundSound('treeActions', true);
+      Sound.playOverBackgroundSound('treeActions', true, 1);
       this.canPlaySound = false;
     }
     this.prevZoomInfo = zoomInfo;
@@ -280,10 +287,56 @@ export default class Tree extends Component {
     return 'data:image/png;base64,' + base64Image.replace(/(?:\r\n|\r|\n)/g, '')
   }
 
-  render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible, events } = this.state;
+  validateResultQuiz() {
+    const { quizResult: { achievements= [], event = {} } } = this.props;
+    if(achievements.length > 0) {
+      this.showModalNewAchievements(achievements);
+    }
 
-    const { device: { dimensions: { width, height } } } = this.props;
+    if(event.completed) {
+      this.showEventCompletedModal(event.info.title);
+    }
+
+    if(achievements.length === 0 && !event.completed) {
+        this.removeQuizResult();
+    }
+  }
+
+  showModalNewAchievements = (achievements) => {
+    this.setState({ showModalNewAchievements: true, achievements: achievements });
+  }
+
+  hideModalNewAchievements = () => {
+    if(!this.state.showEventCompleted) {
+        this.removeQuizResult();
+    }
+    this.setState({ showModalNewAchievements: false });
+  }
+
+  showEventCompletedModal = (title) => {
+    this.setState({ showEventCompleted: true, eventTitle: title });
+  }
+
+  hideEventCompletedModal = () => {
+    this.removeQuizResult();
+    this.setState({ showEventCompleted: false });
+  }
+
+  removeQuizResult() {
+      this.props.removeQuizResult();
+  }
+
+  render() {
+    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements } = this.state;
+    const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
+
+    if(quizResult && (!showModalNewAchievements && !showEventCompleted)) {
+      this.validateResultQuiz();
+    }
+
+    const showAchievementsModal = !modalVisible  && showModalNewAchievements;
+    const showEventCompletedModal = !modalVisible && !showModalNewAchievements && showEventCompleted;
+
 
     const videoDimensions = {
       width: 1280,
@@ -293,15 +346,16 @@ export default class Tree extends Component {
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        {events && events.length > 0 && !modalVisible && <EventModal width={width} events={events} onCloseButtonPress={() => {this.setState({events: []})}}/>}
-        <AnimatedNubes deviceWidth={width} deviceHeight={height} />
+        <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation}/>
+        {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
+        {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
           <Zoom
             flex={Platform.OS === 'android' ? 10 : 1}
             maxScale={zoomScale}
             onViewTransformed={this.onViewTransformed}
             onTransformGestureReleased={this.onTransformGestureReleased}
-            ref={view => { this.treeView = view; }}
+            ref={view => this.treeView = view }
           >
             <MacetaContainer><Maceta width={200} /></MacetaContainer>
             {level}
