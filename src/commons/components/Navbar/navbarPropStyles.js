@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { Font } from '../../styles';
 import styled from 'styled-components';
 import ProfileImageButton from './ProfileImageButton';
+import { Size } from '../../styles';
 
 const IconContainer = styled(TouchableOpacity)`
   width: 60px;
@@ -34,7 +35,7 @@ export default {
   },
 
   rightButtonStyle: {
-    top: -6,
+    top: Size.mavbarTopSpace - 6,
     position: 'absolute',
     right: 5,
   },
@@ -46,7 +47,7 @@ export default {
     fontFamily: Font.museo('bolder'),
     ...Platform.select({
       ios: {
-        top: -25,
+        top: Size.mavbarTopSpace - 25 ,
       },
       android: {
         top: -10,
@@ -55,7 +56,7 @@ export default {
   },
 
   leftButtonStyle: {
-    top: -7,
+    top: Size.mavbarTopSpace - 7,
     left: 5,
   },
 

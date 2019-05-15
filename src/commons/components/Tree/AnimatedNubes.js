@@ -6,6 +6,7 @@ import uuid from 'uuid/v4';
 import nube1L from '../../../../assets/images/nubes/nube1L.png';
 import nube2L from '../../../../assets/images/nubes/nube2L.png';
 import nube3L from '../../../../assets/images/nubes/nube3L.png';
+import { Size } from '../../styles';
 
 const nubesList = [nube1L, nube2L, nube3L];
 const delayStartRange = [0, 4000];
@@ -75,6 +76,7 @@ export class AnimatedNubes extends Component {
       left: -130,
       width: this.getWidthContainerNube(),
       flexDirection: 'column',
+      top: Size.mavbarTopSpace,
     };
     const animationValues = this.getAnimationValues();
     const isLandscape = orientation === 'LANDSCAPE';
