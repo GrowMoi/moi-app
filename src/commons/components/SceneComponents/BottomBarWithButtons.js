@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
 import { Image, ImageBackground, View, TouchableOpacity } from 'react-native';
+import { isIphoneX } from 'react-native-device-detection';
 import { getHeightAspectRatio } from '../../utils';
 
 // Frames and Buttons
@@ -59,6 +60,13 @@ const ReadFrame = styled(ImageBackground)`
 
 const bottomBarWidth = 788;
 const bottomBarHeight = 85;
+
+const BottomBarContainer = styled(View)`
+  width: ${props => props.width};
+  height: ${props => getHeightAspectRatio(bottomBarWidth, bottomBarHeight, props.width) + 10};
+  background-color: #888B48;
+`;
+
 const BottomBar = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(bottomBarWidth, bottomBarHeight, props.width)};
@@ -185,7 +193,7 @@ class BottomBarWithButtons extends Component {
     );
   }
 
-  render() {
+  renderBottomBar() {
     const minWidth = 320;
     const deviceIsBig = this.props.width > minWidth;
 
@@ -226,9 +234,18 @@ class BottomBarWithButtons extends Component {
             {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent, 'learnContent')}
           </ReadFrame>
         }
-
       </BottomBar>
     );
+  }
+
+  render() {
+
+    return isIphoneX ?
+      <BottomBarContainer width={this.props.width}>
+        {this.renderBottomBar()}
+      </BottomBarContainer>
+      :
+      this.renderBottomBar()
   };
 }
 
