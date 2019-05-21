@@ -68,10 +68,10 @@ export default class LevelPassedTransition extends Component {
                 {showAnimation && (<ReadingAnimation
                     ref={ref => this.readingAnim = ref}
                     onFinishAnimation={() => {
-                        this.setState({ showLevel: true });
-                        setTimeout(() => {
-                            Actions.moiDrawer();
-                        }, 1000);
+                        // this.setState({ showLevel: true });
+                        // setTimeout(() => {
+                        Actions.moiDrawer();
+                        // }, 1000);
                     }}
                 />)}
                 {showLevel && (<Animatable.View animation="zoomOut" easing="ease-in">
