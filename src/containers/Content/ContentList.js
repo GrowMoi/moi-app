@@ -88,7 +88,7 @@ export default class ContentListScene extends Component {
                 this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
               }
             }}
-            message='Elige el contenido que más te interese y preciona sobre el'
+            message='Elige el contenido que más te interese y presiona sobre el'
           />
         </MoiBackground>
       </UserInactivity>
