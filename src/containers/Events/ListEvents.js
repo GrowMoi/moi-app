@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, FlatList, View, TouchableOpacity } from 'react-native';
 import ContentContainer from './ContentContainer';
-import { Header } from '../../commons/components/Typography';
+import { Header, TextBody } from '../../commons/components/Typography';
 
 export default class ListEvents extends Component {
 
@@ -49,6 +49,9 @@ export default class ListEvents extends Component {
           data={events}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
+           ListEmptyComponent={
+            <TextBody center>No tienes eventos para unirte</TextBody>
+          }
           horizontal
         />
       </View>

@@ -65,13 +65,20 @@ export default class EventModal extends Component {
       await this.removeTakenEvent();
     }
     this.setState({ showAlert: false });
+    this.verifyNoEvents();
   }
 
-  removeTakenEvent = () => {
-    this.setState(prevState => ({
+  removeTakenEvent = async () => {
+    return await this.setState(prevState => ({
       events: prevState.events.filter(evt => evt !== prevState.selectedEvent),
       selectedEvent: null
     }));
+  }
+
+  verifyNoEvents = () => {
+    if(this.state.events.length === 0) {
+      this.props.onCloseButtonPress();
+    }
   }
 
   get modalSize() {

@@ -32,7 +32,7 @@ import menuSideFrame from '../../../../assets/images/sideMenu/menu-side-frame.pn
 const SideMenuContainer = styled(ImageBackground)`
   flex: 1;
   margin-top: ${-Size.spaceSmall};
-  padding-top: ${Size.spaceMedium};
+  padding-top: ${Size.spaceMedium + Size.mavbarTopSpace};
   background-color: ${Palette.menuBackground};
 `;
 

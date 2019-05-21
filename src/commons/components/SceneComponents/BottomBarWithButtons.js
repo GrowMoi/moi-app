@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
 import { Image, ImageBackground, View, TouchableOpacity } from 'react-native';
+import { isIphoneX } from 'react-native-device-detection';
 import { getHeightAspectRatio } from '../../utils';
 
 // Frames and Buttons
@@ -51,7 +52,7 @@ const blueFrameHeight = 100;
 const ReadFrame = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(blueFrameWidth, blueFrameHeight, props.width)};
-  left: 0;
+  right: -12;
   bottom: ${props => props.bottom};
   position: relative;
   overflow: visible;
@@ -59,6 +60,13 @@ const ReadFrame = styled(ImageBackground)`
 
 const bottomBarWidth = 788;
 const bottomBarHeight = 85;
+
+const BottomBarContainer = styled(View)`
+  width: ${props => props.width};
+  height: ${props => getHeightAspectRatio(bottomBarWidth, bottomBarHeight, props.width) + 10};
+  background-color: #888B48;
+`;
+
 const BottomBar = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(bottomBarWidth, bottomBarHeight, props.width)};
@@ -137,7 +145,7 @@ class BottomBarWithButtons extends Component {
 
   goToRandomContent = () => {
     const { scene, setReloadRandomContents } = this.props;
-    if(scene.name === 'randomContents') {
+    if (scene.name === 'randomContents') {
       setReloadRandomContents();
     } else {
       Actions.randomContents();
@@ -185,9 +193,17 @@ class BottomBarWithButtons extends Component {
     );
   }
 
-  render() {
+  renderBottomBar() {
+    const { width, readButton } = this.props;
+
     const minWidth = 320;
-    const deviceIsBig = this.props.width > minWidth;
+    const deviceIsBig = width > minWidth;
+
+    const marginLeftButton = {
+      task: readButton ? 39 : 15,
+      search: readButton ? 13 : -5,
+      random: readButton ? -14 : -25,
+    };
 
     const elementProps = {
       task: { width: deviceIsBig ? 63 : 57, source: taskButtonImg, marginLeft: deviceIsBig ? 33 : 28, bottom: -2 },
@@ -198,37 +214,47 @@ class BottomBarWithButtons extends Component {
 
     return (
       <BottomBar
-        width={this.props.width}
+        width={width}
         source={bottomBarWithoutButtons}
         resizeMode='stretch'>
 
         <Container>
           <ButtonsContainer>
-            <ContainerButton zIndex={2} width={deviceIsBig ? 120 : 105} left={15} bottom={deviceIsBig ? 7 : 6.5}>
+            <ContainerButton zIndex={2} width={deviceIsBig ? 120 : 105} left={marginLeftButton.task} bottom={deviceIsBig ? 7 : 6.5}>
               {this.renderBadge()}
               <Button width={deviceIsBig ? 120 : 105} source={btnInf1} resizeMode='stretch'>
                 {this.renderButtonWithSound(TaskButton, elementProps.task, this.pressTaskButton, 'tasks')}
               </Button>
             </ContainerButton>
 
-            <Button zIndex={1} width={deviceIsBig ? 114 : 104} source={btnInf2} resizeMode='stretch' left={-5} bottom={deviceIsBig ? 7.5: 7}>
+            <Button zIndex={1} width={deviceIsBig ? 114 : 104} source={btnInf2} resizeMode='stretch' left={marginLeftButton.search} bottom={deviceIsBig ? 7.5 : 7}>
               {this.renderButtonWithSound(SearchButton, elementProps.search, this.pressSearchButton, 'search')}
             </Button>
 
-            <Button zIndex={0} width={deviceIsBig ? 125 : 105} source={btnInf3} resizeMode='stretch' left={-25} bottom={deviceIsBig ? 8: 7.5}>
+            <Button zIndex={0} width={deviceIsBig ? 125 : 105} source={btnInf3} resizeMode='stretch' left={marginLeftButton.random} bottom={deviceIsBig ? 8 : 7.5}>
               {this.renderButtonWithSound(RandomButton, elementProps.random, this.goToRandomContent, 'random')}
             </Button>
           </ButtonsContainer>
         </Container>
 
-        {this.props.readButton &&
-          <ReadFrame width={deviceIsBig ? 101: 90} source={btnInfBlue} resizeMode='stretch' bottom={deviceIsBig ? 19 : 17}>
+        {readButton &&
+          <ReadFrame width={deviceIsBig ? 101 : 90} source={btnInfBlue} resizeMode='stretch' bottom={deviceIsBig ? 19 : 17}>
             {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent, 'learnContent')}
           </ReadFrame>
         }
 
       </BottomBar>
     );
+  }
+
+  render() {
+
+    return isIphoneX ?
+      <BottomBarContainer width={this.props.width}>
+        {this.renderBottomBar()}
+      </BottomBarContainer>
+      :
+      this.renderBottomBar()
   };
 }
 

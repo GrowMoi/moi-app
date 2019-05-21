@@ -1,3 +1,5 @@
+import { isIphoneX } from 'react-native-device-detection';
+
 export default {
   fontBody: 15,
   fontBodySmall: 13,
@@ -16,5 +18,6 @@ export default {
   spaceMediumLarge: 60,
   spaceXLarge: 80,
 
-  navbarHeight: 45,
+  navbarHeight: isIphoneX ? 70 : 45,
+  mavbarTopSpace: isIphoneX ? 23 : 0,
 };
