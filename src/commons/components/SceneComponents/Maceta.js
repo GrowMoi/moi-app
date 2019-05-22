@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-native';
 import styled from 'styled-components/native';
-import maceta from '../../../../assets/images/maceta/maceta.png';
 
 const aspectRatio = (4 / 11);
 const MacetaImage = styled(Image)`
@@ -14,7 +13,7 @@ const MacetaImage = styled(Image)`
 const Maceta = ({ width }) => (
   <MacetaImage
     width={width}
-    source={maceta}
+    source={{uri: 'maceta'}}
     resizeMode='contain'
   />
 );

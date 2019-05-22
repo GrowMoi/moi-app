@@ -6,14 +6,6 @@ import { View, ImageBackground } from 'react-native';
 import { Size, Palette } from '../../styles';
 import { getHeightAspectRatio } from '../../utils';
 
-import regular_box from '../../../../assets/images/background/regular_box.png';
-import yellow_box from '../../../../assets/images/background/amarillo_box.png';
-import orange_box from '../../../../assets/images/background/naranja_box.png';
-import fushia_box from '../../../../assets/images/background/fuccia_box.png';
-import blue_box from '../../../../assets/images/background/azul_box.png';
-import lila_box from '../../../../assets/images/background/lila_box.png';
-import green_box from '../../../../assets/images/background/verde_box.png';
-
 const Container = styled(View)`
   flex: 1;
   justify-content: center;
@@ -50,13 +42,13 @@ export default class ContentBox extends Component {
   }
 
   getCurrentBox() {
-     let currentBox = regular_box;
+     let currentBox = 'regular_box';
     const currentAchievement = (this.currentAchievement || {}).number;
-    if(currentAchievement === 2) currentBox = yellow_box;
-    else if(currentAchievement === 3) currentBox = fushia_box;
-    else if(currentAchievement === 4) currentBox = blue_box;
-    else if(currentAchievement === 5) currentBox = green_box;
-    else if(currentAchievement === 8) currentBox = lila_box;
+    if(currentAchievement === 2) currentBox = 'amarillo_box';
+    else if(currentAchievement === 3) currentBox = 'fuccia_box';
+    else if(currentAchievement === 4) currentBox = 'azul_box';
+    else if(currentAchievement === 5) currentBox = 'verde_box';
+    else if(currentAchievement === 8) currentBox = 'lila_box';
 
     return currentBox;
   }
@@ -76,7 +68,7 @@ export default class ContentBox extends Component {
           style={style}
           resizeMode='stretch'
           width={(width - padding)}
-          source={image ? image : this.getCurrentBox()}
+          source={{uri: image ? image : this.getCurrentBox()}}
           {...rest}>
           {this.props.children}
         </ContentScreen>

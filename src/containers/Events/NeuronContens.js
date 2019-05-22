@@ -3,14 +3,6 @@ import { View, FlatList, Image, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { Header } from '../../commons/components/Typography';
 
-import neuronaDescubierta from '../../../assets/images/neurona/neurona_descubierta.png';
-import neuronaAzul from '../../../assets/images/neurona/neurona_color_azul.png';
-import neuronaVerde from '../../../assets/images/neurona/neurona_color_verde.png';
-import neuronaFucsia from '../../../assets/images/neurona/neurona_color_fucsia.png';
-import neuronaNaranja from '../../../assets/images/neurona/neurona_color_naranja.png';
-import neuronaAmarilla from '../../../assets/images/neurona/neurona_color_amarillo.png';
-import neuronaNaranjaOscuro from '../../../assets/images/neurona/neurona_color_naranja_oscuro.png';
-
 const TextContainer = styled(View)`
   height: 25;
 `;
@@ -20,19 +12,19 @@ export default class NeuronContents extends Component {
   getNeuronColor(color) {
     switch (color) {
       case 'blue':
-        return neuronaAzul;
+        return 'neurona_color_azul';
       case 'yellow':
-        return neuronaAmarilla;
+        return 'neurona_color_amarillo';
       case 'orange':
-        return neuronaNaranja;
+        return 'neurona_color_naranja';
       case 'dark_orange':
-        return neuronaNaranjaOscuro;
+        return 'neurona_color_naranja_oscuro';
       case 'fuchsia':
-        return neuronaFucsia;
+        return 'neuronaFucsia';
       case 'green':
-        return neuronaVerde;
+        return 'neurona_color_verde';
       default:
-        return neuronaDescubierta;
+        return 'neurona_descubierta';
     }
   }
 
@@ -46,7 +38,7 @@ export default class NeuronContents extends Component {
         justifyContent: 'center',
         width: 50,
       }}>
-        <Image style={{ width: 15, height: 15 }} source={neuron} />
+        <Image style={{ width: 15, height: 15 }} source={{uri: neuron}} />
         <TextContainer>
           <Header color={'white'} customSize={8}>{item.neuron}</Header>
         </TextContainer>

@@ -60,7 +60,7 @@ class Button extends Component {
     else currentText = <Header small heavy>{title}</Header>;
 
     currentText = image ?
-      <ImageBackground style={{width: 'auto', height: 'auto', paddingHorizontal: Size.spaceSmall, paddingVertical: Size.spaceSmall}} source={image} resizeMode='stretch'>
+      <ImageBackground style={{width: 'auto', height: 'auto', paddingHorizontal: Size.spaceSmall, paddingVertical: Size.spaceSmall}} source={{uri: image}} resizeMode='stretch'>
         {currentText}
       </ImageBackground>
       :

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Modal from 'expo/src/modal/Modal';
+// import Modal from 'expo/src/modal/Modal';
 import PropTypes from 'prop-types';
-import { View, Image } from 'react-native';
+import { View, Image, Modal } from 'react-native';
 import styled from 'styled-components/native';
 
 import { Palette } from '../../styles'

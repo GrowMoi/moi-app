@@ -8,15 +8,6 @@ import NeuronsLayer from './NeuronsLayer';
 import neuronActions from '../../../actions/neuronActions';
 import Branches from './allBranches';
 
-import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
-import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
-import arbolNivel5Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel5_gris.png';
-import arbolNivel6Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel6_gris.png';
-import arbolNivel7Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel7_gris.png';
-import arbolNivel8Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel8_gris.png';
-import arbolNivel9Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel9_gris.png';
-import arbolColorNivel2 from '../../../../assets/images/tree/arbol_adulto/nivel_2/arbol_nivel2_color.png';
-
 const Container = styled(TouchableWithoutFeedback)`
   flex: 1;
   position: relative;
@@ -87,14 +78,14 @@ export default class AllLevels extends Component {
     return (
       <Container onPress={this.hideWoodLabel}>
         <Levels>
-          {isLevel5 && <TreeBase source={arbolNivel5Gris} {...defaultProps}/>}
-          {isLevel4 && <TreeBase source={arbolNivel4Gris} {...defaultProps}/>}
-          {isLevel3 && <TreeBase source={arbolNivel4Gris} {...defaultProps}/>}
-          {isLevel6 && <TreeBase source={arbolNivel6Gris} {...defaultProps}/>}
-          {isLevel7 && <TreeBase source={arbolNivel7Gris} {...defaultProps}/>}
-          {isLevel8 && <TreeBase source={arbolNivel8Gris} {...defaultProps}/>}
-          {isLevel9 && <TreeBase source={arbolNivel9Gris} {...defaultProps}/>}
-          <TreeBase source={arbolColorNivel2} {...defaultProps}/>
+          {isLevel5 && <TreeBase source={{uri: 'arbol_nivel5_gris'}} {...defaultProps}/>}
+          {isLevel4 && <TreeBase source={{uri: 'arbol_nivel4_gris'}} {...defaultProps}/>}
+          {isLevel3 && <TreeBase source={{uri: 'arbol_nivel4_gris'}} {...defaultProps}/>}
+          {isLevel6 && <TreeBase source={{uri: 'arbol_nivel6_gris'}} {...defaultProps}/>}
+          {isLevel7 && <TreeBase source={{uri: 'arbol_nivel7_gris'}} {...defaultProps}/>}
+          {isLevel8 && <TreeBase source={{uri: 'arbol_nivel8_gris'}} {...defaultProps}/>}
+          {isLevel9 && <TreeBase source={{uri: 'arbol_nivel9_gris'}} {...defaultProps}/>}
+          <TreeBase source={{uri: 'arbol_nivel2_color'}} {...defaultProps}/>
           <Branches
             level={depth}
             data={tree}

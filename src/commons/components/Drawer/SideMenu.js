@@ -19,16 +19,6 @@ import { Size, Palette } from '../../styles';
 import { DRAWER_OFFSET, PORTRAIT } from '../../../constants';
 import { normalizeAllCapLetter } from '../../utils';
 
-import regular_box from '../../../../assets/images/background/regular_box.png';
-import yellow_box from '../../../../assets/images/background/amarillo_box.png';
-import orange_box from '../../../../assets/images/background/naranja_box.png';
-import fushia_box from '../../../../assets/images/background/fuccia_box.png';
-import blue_box from '../../../../assets/images/background/azul_box.png';
-import lila_box from '../../../../assets/images/background/lila_box.png';
-import green_box from '../../../../assets/images/background/verde_box.png';
-import treeBackgroundDrawer from '../../../../assets/images/sideMenu/background_tree_drawer.png';
-import menuSideFrame from '../../../../assets/images/sideMenu/menu-side-frame.png';
-
 const SideMenuContainer = styled(ImageBackground)`
   flex: 1;
   margin-top: ${-Size.spaceSmall};
@@ -136,18 +126,18 @@ export default class SideMenu extends Component {
       },
     ];
 
-    let currentBox = regular_box;
+    let currentBox = 'regular_box';
     const currentAchievement = (this.currentAchievement || {}).number;
-    if(currentAchievement === 2) currentBox = yellow_box;
-    else if(currentAchievement === 3) currentBox = fushia_box;
-    else if(currentAchievement === 4) currentBox = blue_box;
-    else if(currentAchievement === 5) currentBox = green_box;
-    else if(currentAchievement === 8) currentBox = lila_box;
+    if(currentAchievement === 2) currentBox = 'amarillo_box';
+    else if(currentAchievement === 3) currentBox = 'fuccia_box';
+    else if(currentAchievement === 4) currentBox = 'azul_box';
+    else if(currentAchievement === 5) currentBox = 'verde_box';
+    else if(currentAchievement === 8) currentBox = 'lila_box';
 
     return (
       <SideMenuContainer
         resizeMode='cover'
-        source={currentBox}
+        source={{uri: currentBox}}
       >
         <SideBarMenuHeader>
           <MoIcon name='treeIcon' size={28} />
@@ -172,7 +162,7 @@ export default class SideMenu extends Component {
               if(onPressOption) onPressOption();
               Actions.refresh({ key: 'tree', type: 'reset' });
             }}>
-              <TreeScreenShot width={DRAWER_OFFSET - 2} height={230} treeBackground={treeBackgroundDrawer} profileImage={profile.tree_image} style={{margin: 10}} frame={menuSideFrame} />
+              <TreeScreenShot width={DRAWER_OFFSET - 2} height={230} treeBackground={'background_tree_drawer'} profileImage={profile.tree_image} style={{margin: 10}} frame={'menu_side_frame'} />
             </TouchableOpacity>
           </TreContainer>
         </ScrollView>

@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { ContentBox } from '../ContentComponents';
-import woodFrame from './../../../../assets/images/frames/wood_frame.png';
 
 const TabsContainer = styled(View)`
   padding-top: 5;
@@ -101,7 +100,7 @@ export default class VerticalTabs extends Component {
 
     return (<TabsContainer >
       {horizontalTabs && this.renderTabsLabel()}
-      <StyledContentBox image={woodFrame} horizontalTabs={horizontalTabs}>
+      <StyledContentBox image={'wood_frame'} horizontalTabs={horizontalTabs}>
         {data.length && data.map((d, i) => {
           if (d.label === currentTab) {
             return d.content

@@ -6,17 +6,6 @@ import { Actions } from 'react-native-router-flux';
 import { Image, ImageBackground, View, TouchableOpacity } from 'react-native';
 import { isIphoneX } from 'react-native-device-detection';
 import { getHeightAspectRatio } from '../../utils';
-
-// Frames and Buttons
-import bottomBarWithoutButtons from '../../../../assets/images/bottomBar/barra.png';
-import btnInf1 from '../../../../assets/images/bottomBar/Boton_inf_1.png';
-import btnInf2 from '../../../../assets/images/bottomBar/Boton_inf_2.png';
-import btnInf3 from '../../../../assets/images/bottomBar/Boton_inf_3.png';
-import btnInfBlue from '../../../../assets/images/bottomBar/Boton_inf_blue.png';
-import blueButtonImg from '../../../../assets/images/buttons/lightgreen_button.png';
-import taskButtonImg from '../../../../assets/images/buttons/task_button.png';
-import randomButtonImg from '../../../../assets/images/buttons/random_button.png';
-import searchButtonImg from '../../../../assets/images/buttons/search_button.png';
 import Badge from '../Badge/Badge';
 import userActions from '../../../actions/userActions';
 import tutorActions from '../../../actions/tutorActions';
@@ -206,39 +195,39 @@ class BottomBarWithButtons extends Component {
     };
 
     const elementProps = {
-      task: { width: deviceIsBig ? 63 : 57, source: taskButtonImg, marginLeft: deviceIsBig ? 33 : 28, bottom: -2 },
-      random: { width: deviceIsBig ? 65 : 55, source: randomButtonImg, marginLeft: deviceIsBig ? 38 : 32, bottom: -1 },
-      search: { width: deviceIsBig ? 63 : 56, source: searchButtonImg, marginLeft: 28, bottom: deviceIsBig ? 0 : -2 },
-      read: { width: deviceIsBig ? 72 : 65, source: blueButtonImg, marginLeft: deviceIsBig ? 10 : 7, bottom: deviceIsBig ? 2 : 2 },
+      task: { width: deviceIsBig ? 63 : 57, source: {uri: 'task_button'}, marginLeft: deviceIsBig ? 33 : 28, bottom: -2 },
+      random: { width: deviceIsBig ? 65 : 55, source: {uri: 'random_button'}, marginLeft: deviceIsBig ? 38 : 32, bottom: -1 },
+      search: { width: deviceIsBig ? 63 : 56, source: {uri: 'search_button'}, marginLeft: 28, bottom: deviceIsBig ? 0 : -2 },
+      read: { width: deviceIsBig ? 72 : 65, source: {uri: 'lightgreen_button'}, marginLeft: deviceIsBig ? 10 : 7, bottom: deviceIsBig ? 2 : 2 },
     };
 
     return (
       <BottomBar
         width={width}
-        source={bottomBarWithoutButtons}
+        source={{uri: 'barra'}}
         resizeMode='stretch'>
 
         <Container>
           <ButtonsContainer>
             <ContainerButton zIndex={2} width={deviceIsBig ? 120 : 105} left={marginLeftButton.task} bottom={deviceIsBig ? 7 : 6.5}>
               {this.renderBadge()}
-              <Button width={deviceIsBig ? 120 : 105} source={btnInf1} resizeMode='stretch'>
+              <Button width={deviceIsBig ? 120 : 105} source={{uri: 'boton_inf_1'}} resizeMode='stretch'>
                 {this.renderButtonWithSound(TaskButton, elementProps.task, this.pressTaskButton, 'tasks')}
               </Button>
             </ContainerButton>
 
-            <Button zIndex={1} width={deviceIsBig ? 114 : 104} source={btnInf2} resizeMode='stretch' left={marginLeftButton.search} bottom={deviceIsBig ? 7.5 : 7}>
+            <Button zIndex={1} width={deviceIsBig ? 114 : 104} source={{uri: 'boton_inf_2'}} resizeMode='stretch' left={marginLeftButton.search} bottom={deviceIsBig ? 7.5 : 7}>
               {this.renderButtonWithSound(SearchButton, elementProps.search, this.pressSearchButton, 'search')}
             </Button>
 
-            <Button zIndex={0} width={deviceIsBig ? 125 : 105} source={btnInf3} resizeMode='stretch' left={marginLeftButton.random} bottom={deviceIsBig ? 8 : 7.5}>
+            <Button zIndex={0} width={deviceIsBig ? 125 : 105} source={{uri: 'boton_inf_3'}} resizeMode='stretch' left={marginLeftButton.random} bottom={deviceIsBig ? 8 : 7.5}>
               {this.renderButtonWithSound(RandomButton, elementProps.random, this.goToRandomContent, 'random')}
             </Button>
           </ButtonsContainer>
         </Container>
 
         {readButton &&
-          <ReadFrame width={deviceIsBig ? 101 : 90} source={btnInfBlue} resizeMode='stretch' bottom={deviceIsBig ? 19 : 17}>
+          <ReadFrame width={deviceIsBig ? 101 : 90} source={{uri: 'boton_inf_blue'}} resizeMode='stretch' bottom={deviceIsBig ? 19 : 17}>
             {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent, 'learnContent')}
           </ReadFrame>
         }

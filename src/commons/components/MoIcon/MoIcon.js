@@ -75,7 +75,7 @@ export default class MoIcon extends Component {
     const iconImage = (
       <IconContainer style={style}>
         <IconImage
-          source={this.sourceIcon.icon}
+          source={{uri: this.sourceIcon.icon}}
           size={size}
           resizeMode={resizeMode}
           type={this.sourceIcon.type}

@@ -70,11 +70,11 @@ class Item extends Component {
     const source = this.getItemSource(renderTypeItem, active, disabled);
 
     return (
-      <Container source={box} resizeMode='contain' width={width}>
+      <Container source={{uri: box}} resizeMode='contain' width={width}>
         <TouchableWithoutFeedback onPress={() => this.onPressItem(disabled)}>
           <ItemImageAnimated
             ref={this.handleViewRef}
-            source={source}
+            source={{uri: source}}
             resizeMode='contain'
             width={(width - paddingForItem)}
           />

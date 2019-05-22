@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, ImageBackground, Image } from 'react-native';
 import styled from 'styled-components/native';
-import treeDefault from '../../../../assets/images/sideMenu/tree_default.png';
 
 const TreeContainer = styled(ImageBackground)`
   justify-content: center;
@@ -29,12 +28,12 @@ export default class TreeScreenShot extends Component {
     const { width, height, profileImage, treeBackground, style, frame } = this.props;
 
     const heightTree = height ? frame ? height - 50 : height -80 : 180;
-    const treeImage = profileImage ? { uri: profileImage } : treeDefault;
+    const treeImage = profileImage ? { uri: profileImage } : { uri: 'treeDefault' };
 
     return (
       <View style={style}>
         <TreeContainer width={width}
-          source={treeBackground}
+          source={{uri: treeBackground}}
           resizeMode='stretch'
         >
           <ImageContainer width={width + 30}
@@ -47,7 +46,7 @@ export default class TreeScreenShot extends Component {
           </ImageContainer>
           {frame && <ProfileImage style={{ position: 'absolute' }} width={width}
             height={height ? height : 170}
-            source={frame}
+            source={{uri: frame}}
             resizeMode='stretch' />}
         </TreeContainer>
       </View>

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
-import defaultProfileImage from '../../../../assets/images/profile/profile_photo.png';
 import { getHeightAspectRatio } from '../../utils';
 
 const heightProfile = 65;
@@ -17,7 +16,7 @@ const ProfileImage = styled(Image)`
 const ProfileContainer = styled(View)``;
 
 const Profile = ({ width, userImageUri, ...rest }) => {
-  const sourceImage = userImageUri ? {uri: userImageUri} : defaultProfileImage;
+  const sourceImage = {uri: userImageUri ? userImageUri : 'profile_photo' };
   return (
     <ProfileContainer>
       <ProfileImage

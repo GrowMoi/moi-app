@@ -22,7 +22,6 @@ import Input from '../../commons/components/Input/Input';
 import { Size } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 
 // Login Images
 import loginImages from './loginImages';
@@ -169,7 +168,7 @@ export default class Login extends PureComponent {
           <MoiBackground>
             <LoginContainer>
               <BackgroundTree
-                source={backgroundTree}
+                source={{uri: 'fondo_arbol'}}
                 width={width}
               />
               <FormContainer

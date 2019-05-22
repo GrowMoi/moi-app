@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { AnimatedImage } from './AnimatedImage';
 import uuid from 'uuid/v4';
-
-import nube1L from '../../../../assets/images/nubes/nube1L.png';
-import nube2L from '../../../../assets/images/nubes/nube2L.png';
-import nube3L from '../../../../assets/images/nubes/nube3L.png';
 import { Size } from '../../styles';
 
-const nubesList = [nube1L, nube2L, nube3L];
+const nubesList = ['nube1l', 'nube2l', 'nube3l'];
 const delayStartRange = [0, 4000];
 const positionNube = [{
   position: 'left',
@@ -43,7 +39,7 @@ export class AnimatedNubes extends Component {
     return this.getNubesArray().map(
       nube => {
         return {
-          source: nube,
+          source: {uri: nube},
           delayStart: this.getDelayStart(),
           verticalPosition: this.getRandomTopPostion(),
           horizontalPosition: this.getNubePosition(),

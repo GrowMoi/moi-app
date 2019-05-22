@@ -3,7 +3,6 @@ import { View, Image } from 'react-native';
 import { Header } from '../../commons/components/Typography';
 import Button from '../../commons/components/Buttons/Button';
 import NeuronContents from './NeuronContens';
-import botonUnete from '../../../assets/images/buttons/boton_unete.png';
 
 export default class EventInfo extends Component {
   render() {
@@ -23,7 +22,7 @@ export default class EventInfo extends Component {
           {event.image && <Image style={{ width: 70, height: 70 }} source={{ uri: event.image }} />}
         </View>
         <NeuronContents contents={event.contents}/>
-        <Button title={'UNETE'} onPress={() => onTakeEvent()} image={botonUnete}/>
+        <Button title={'UNETE'} onPress={() => onTakeEvent()} image={'boton_unete'}/>
       </View>
     );
   }

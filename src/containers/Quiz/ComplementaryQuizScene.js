@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import { getHeightAspectRatio } from '../../commons/utils';
-import iconTest from '../../../assets/images/quiz/icon_test.png';
 import { Palette } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
 import { Title, TextBody, Header } from '../../commons/components/Typography';
@@ -54,7 +53,7 @@ const ComplementaryScene = ({ title = '', text = '', caption = '',  onNext, onNe
 
   return (
     <IntroScene>
-      <IconTest width={200} source={iconTest} resizeMode='contain'/>
+      <IconTest width={200} source={{uri: 'icon_test'}} resizeMode='contain'/>
 
       <MessageContainer>
         <Container>

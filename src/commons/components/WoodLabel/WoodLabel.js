@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 
 import { Header } from '../Typography';
-import woodBg from '../../../../assets/images/buttons/wood_texture.png';
 import BackButton from '../SceneComponents/BackButton';
 
 const Container = styled(View)`
@@ -143,7 +142,7 @@ class WoodLabel extends PureComponent {
           <Box
             height={this.zoomScaleStyles.height}
             width={this.zoomScaleStyles.width}
-              source={woodBg}
+              source={{uri: 'wood_texture'}}
               resizeMode='contain'
               paddingHorizontal={this.labelSize.paddingHorizontal}
               paddingVertical={this.labelSize.paddingVertical}

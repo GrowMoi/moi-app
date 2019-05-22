@@ -3,7 +3,6 @@ import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Palette } from './../../../commons/styles';
 import { Ionicons } from '@expo/vector-icons';
 import { TextBody, Title, Header } from './../../../commons/components/Typography';
-import close from '../../../../assets/images/miscelaneous/button_close.png';
 
 const SubItemRow = (props) => {
 
@@ -30,7 +29,7 @@ const SubItemRow = (props) => {
       {props.clickClose && (
         <TouchableOpacity style={styles.onIcon} onPress={props.clickClose} >
           {/* <Ionicons name="md-close" size={10} color='black' /> */}
-          <Image style={styles.closeImage} source={close} resizeMode='contain' />
+          <Image style={styles.closeImage} source={{uri: 'button_close'}} resizeMode='contain' />
         </TouchableOpacity>
       )}
       {item}

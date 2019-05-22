@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Modal } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
-import Modal from 'expo/src/modal/Modal';
+// import Modal from 'expo/src/modal/Modal';
 import GenericAlert from '../../commons/components/Alert/GenericAlert';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Palette } from '../../commons/styles';

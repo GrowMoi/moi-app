@@ -6,7 +6,6 @@ import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 import { TextBody, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
-import learntCheck from '../../../../assets/images/miscelaneous/check.png';
 
 const RowContainer = styled(View)`
   flex-direction: row;
@@ -151,7 +150,7 @@ export default class ContentPreview extends Component {
             {this.rowContent()}
             {learnt && (
               <LearntOverlay>
-                <LearntImage source={learntCheck} resizeMode='contain' />
+                <LearntImage source={{uri: 'check'}} resizeMode='contain' />
               </LearntOverlay>
             )}
           </RowContainer>

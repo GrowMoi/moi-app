@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
 import { getHeightAspectRatio } from '../../utils';
-import leaderFrame from '../../../../assets/images/frames/leaderboard_frame.png';
 
 const widthFrame = 375;
 const heightFrame = 667;
@@ -18,7 +17,7 @@ const StyledLeaderFrame = styled(ImageBackground)`
 `;
 
 const LeaderFrame = ({ width = widthFrame, ...rest }) => (
-  <StyledLeaderFrame width={width} source={leaderFrame} resizeMode='contain' {...rest} />
+  <StyledLeaderFrame width={width} source={{uri: 'leaderboard_frame'}} resizeMode='contain' {...rest} />
 )
 
 export default LeaderFrame;

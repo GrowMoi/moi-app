@@ -21,7 +21,6 @@ import Input from '../../commons/components/Input/Input';
 import { Size } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import backgroundTree from '../../../assets/images/background/fondo_arbol.png';
 import Preloader from '../../commons/components/Preloader/Preloader';
 
 // Login Images
@@ -229,7 +228,7 @@ export default class Register extends Component {
                 <MoiBackground>
                     <RegisterContainer>
                         <BackgroundTree
-                            source={backgroundTree}
+                            source={{uri: 'fondo_arbol'}}
                             width={width}
                         />
                         {!loading && <FormContainer

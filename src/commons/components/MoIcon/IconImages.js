@@ -1,67 +1,67 @@
 export default {
   get question() {
     return {
-      icon: require('../../../../assets/icons/question_mark.png'),
+      icon: 'question_mark',
       type: 'square',
     };
   },
 
   get task() {
     return {
-      icon: require('../../../../assets/icons/task/task.png'),
+      icon: 'task',
       type: 'square',
     };
   },
   get task_active() {
     return {
-      icon: require('../../../../assets/icons/task/task_active.png'),
+      icon: 'task_active',
       type: 'square',
     };
   },
 
   get random() {
     return {
-      icon: require('../../../../assets/icons/random/random.png'),
+      icon: 'random',
       type: 'square',
     };
   },
   get random_active() {
     return {
-      icon: require('../../../../assets/icons/random/random_active.png'),
+      icon: 'random_active',
       type: 'square',
     };
   },
 
   get search() {
     return {
-      icon: require('../../../../assets/icons/search/search.png'),
+      icon: 'search',
       type: 'landscape',
     };
   },
   get search_active() {
     return {
-      icon: require('../../../../assets/icons/search/search_active.png'),
+      icon: 'search_active',
       type: 'landscape',
     };
   },
 
   get fav() {
     return {
-      icon: require('../../../../assets/icons/fav/fav.png'),
+      icon: 'fav',
       type: 'square',
     };
   },
 
   get profile() {
     return {
-      icon: require('../../../../assets/icons/profile/profile.png'),
+      icon: 'profile',
       type: 'square',
     };
   },
 
   get treeIcon() {
     return {
-      icon: require('../../../../assets/icons/treeIcon/tree_icon.png'),
+      icon: 'tree_icon',
       type: 'square',
     };
   },

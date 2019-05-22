@@ -3,11 +3,11 @@ import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
 import { AppLoading, Font, Icon, DangerZone } from 'expo';
-import { Text, Dimensions, AsyncStorage } from 'react-native';
+import { Text, Dimensions, AsyncStorage, View, Modal } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
-import ModalHost from 'expo/src/modal/ModalHost';
+// import ModalHost from 'expo/src/modal/ModalHost';
 
 import routes from './routes';
 import messages from './messages';
@@ -94,7 +94,7 @@ export default class Scenes extends Component {
 
     if (appIsReady && assetsLoaded) {
       return (
-        <ModalHost>
+        // <View style={{flex: 1}}>
           <Provider store={store}>
             <IntlProvider
               locale={locale}
@@ -103,7 +103,7 @@ export default class Scenes extends Component {
               <RouterWithRedux scenes={routes}/>
             </IntlProvider>
           </Provider>
-        </ModalHost>
+        // </View>
       );
     }
 

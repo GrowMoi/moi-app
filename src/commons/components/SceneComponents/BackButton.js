@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
-import backArrow from '../../../../assets/images/buttons/back_arrow.png';
 import * as Animatable from 'react-native-animatable';
 
 const ButtonContainer = styled(View)`
@@ -35,7 +34,7 @@ export default class BackButton extends Component {
     return (
       <TouchableWithoutFeedback {...this.props} onPress={this.onPressButton}>
         <ButtonContainerAnimated ref={this.handleViewRef}>
-          <BackImage style={{ ...reverseStyles }} source={backArrow} resizeMode='contain' />
+          <BackImage style={{ ...reverseStyles }} source={{uri: 'back_arrow'}} resizeMode='contain' />
         </ButtonContainerAnimated>
       </TouchableWithoutFeedback>
     );
