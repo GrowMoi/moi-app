@@ -1,15 +1,23 @@
 #Internal package file, do not edit.
-#Sat Oct 13 00:53:47 ECT 2018
-1.base=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/assets/devMinSdkDevKernel/debug
-2.path=kernel-manifest.json
-0.baseType=DIRECTORY
-2.base=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/assets/devMinSdkDevKernel/debug
-2.set=ASSET
-1.baseType=DIRECTORY
-count=3
-1.set=ASSET
-0.path=fonts/EmojiOne.ttf
-0.set=ASSET
-0.base=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/assets/devMinSdkDevKernel/debug
+#Wed May 22 10:59:33 ECT 2019
+2.base=/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/assets/devMinSdkDevKernel/debug
+0.path=shell-app-manifest.json
 2.baseType=DIRECTORY
+3.base=/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/assets/devMinSdkDevKernel/debug
+2.set=ASSET
 1.path=kernel.android.bundle
+4.base=/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/assets/devMinSdkDevKernel/debug
+count=5
+2.path=kernel-manifest.json
+4.set=ASSET
+3.path=shell-app.bundle
+3.baseType=DIRECTORY
+1.set=ASSET
+4.path=fonts/EmojiOne.ttf
+1.baseType=DIRECTORY
+0.base=/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/assets/devMinSdkDevKernel/debug
+0.baseType=DIRECTORY
+3.set=ASSET
+1.base=/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/assets/devMinSdkDevKernel/debug
+4.baseType=DIRECTORY
+0.set=ASSET

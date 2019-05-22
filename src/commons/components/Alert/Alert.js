@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, TouchableWithoutFeedback, Modal } from 'react-native'
+import { View, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
-// import Modal from 'expo/src/modal/Modal';
+import Modal from 'expo/src/modal/Modal';
 import { Palette } from '../../styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 

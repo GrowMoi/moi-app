@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/incremental/mergeDevMinSdkDevKernelDebugResources/merged.dir/values-es-rES/values-es-rES.xml",
+            "outputFile": "/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/incremental/mergeDevMinSdkDevKernelDebugResources/merged.dir/values-es-rES/values-es-rES.xml",
             "map": [
                 {
-                    "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/facebook-login-4.34.0.aar/9152b73b9b0a31bb70dcd6562b550a90/res/values-es-rES/values-es-rES.xml",
+                    "source": "/Users/luisgonzalez/.gradle/caches/transforms-1/files-1.1/facebook-login-4.34.0.aar/1aa741943b73c3925271a9c937f5969a/res/values-es-rES/values-es-rES.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -1,4 +1,4 @@
-#Sat Oct 13 00:57:41 ECT 2018
-base.0=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/8
+#Wed May 22 11:10:38 ECT 2019
+base.0=/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/8
 path.0=classes.dex
 renamed.0=classes.dex

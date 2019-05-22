@@ -188,7 +188,7 @@ export default class Tree extends Component {
       case 7:
         return { component: levels.allLevels, zoomScale: 4 };
       case 8:
-        return { component: levels.allLevels, zoomScale: 4 };
+        return { component: levels.allLevels, zoomScale: 1 };
       case 9:
         return { component: levels.allLevels, zoomScale: 4 };
       default:
@@ -199,6 +199,7 @@ export default class Tree extends Component {
   getTreeLevel = () => {
     const { userTree, setZoomScale } = this.props;
 
+    console.log("Rendering tree")
     if (userTree.meta) {
       const currentLevel = this.selectCurrentLevel(userTree);
 
@@ -350,16 +351,10 @@ export default class Tree extends Component {
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
-          <Zoom
-            flex={Platform.OS === 'android' ? 10 : 1}
-            maxScale={zoomScale}
-            onViewTransformed={this.onViewTransformed}
-            onTransformGestureReleased={this.onTransformGestureReleased}
-            ref={view => this.treeView = view }
-          >
+          <View style={{flex: 1}}>
             <MacetaContainer><Maceta width={200} /></MacetaContainer>
             {level}
-          </Zoom>}
+          </View>}
         {!modalVisible && <LabelsLayer />}
         {modalVisible && <Video
           videoDimensions={videoDimensions}

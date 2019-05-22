@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, StyleSheet, TouchableOpacity, Modal } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import ActionSheetOption from './ActionSheetOption';
-// import Modal from 'expo/src/modal/Modal';
+import Modal from 'expo/src/modal/Modal';
 import Palette from '../../styles/palette';
 
 class ModalOptions extends Component {

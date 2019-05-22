@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FlatList, Image, View, TouchableOpacity, Modal } from 'react-native';
+import { FlatList, Image, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { TextBody } from '../../commons/components/Typography';
 import { Palette } from '../../commons/styles';
-// import Modal from 'expo/src/modal/Modal';
+import Modal from 'expo/src/modal/Modal';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import ViewTransformer from 'react-native-view-transformer-next';
 // Actions
