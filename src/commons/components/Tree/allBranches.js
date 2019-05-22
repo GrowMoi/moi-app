@@ -95,6 +95,11 @@ const RecursiveBranches = ({
 };
 
 export default class Branches extends Component {
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.width !== this.props.width;
+  }
+
   renderBranchByDirection = (direction, data) => {
     const levelConfig = levelsConfig[direction];
     const { treeDimensions, width, level } = this.props;

@@ -39,7 +39,7 @@ export class AnimatedNubes extends Component {
     return this.getNubesArray().map(
       nube => {
         return {
-          source: {uri: nube},
+          source: nube,
           delayStart: this.getDelayStart(),
           verticalPosition: this.getRandomTopPostion(),
           horizontalPosition: this.getNubePosition(),
@@ -47,6 +47,7 @@ export class AnimatedNubes extends Component {
       }
     );
   }
+
 
   getAnimationValues() {
     return {

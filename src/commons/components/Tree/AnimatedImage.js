@@ -63,6 +63,7 @@ export class AnimatedImage extends Component {
   render() {
     const { source } = this.props;
     const { animationValue, verticalPosition, horizontalPosition } = this.state;
+    console.log("TCL: AnimatedImage -> render -> source", source)
 
     return (
       <Animated.View
@@ -74,7 +75,7 @@ export class AnimatedImage extends Component {
           [horizontalPosition.position]: animationValue,
         }}
       >
-        <Image source={source} />
+        <Image source={{uri: source}} style={{width: 80, height: 60}} />
       </Animated.View>
     );
   }

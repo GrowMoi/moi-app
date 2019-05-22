@@ -40,6 +40,10 @@ const Levels = styled(View)`
 })
 export default class AllLevels extends Component {
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.userTree !== this.props.userTree;
+  }
+
   componentWillReceiveProps(nextProps) {
     if(nextProps.device.dimensions.orientation !== this.props.device.dimensions.orientation) {
       this.props.setNeuronLabelInfo({});
