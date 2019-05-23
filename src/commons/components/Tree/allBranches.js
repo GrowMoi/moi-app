@@ -132,6 +132,7 @@ export default class Branches extends Component {
   render() {
     const { treeDimensions, width } = this.props;
 
+    console.log("TCL: Branches -> render -> width", width)
     return (
       <Container width={width} treeDimensions={treeDimensions}>
         {this.renderBranches()}
