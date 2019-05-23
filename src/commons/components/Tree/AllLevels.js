@@ -55,6 +55,10 @@ export default class AllLevels extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.userTree !== this.props.userTree;
+  }
+
   hideWoodLabel = () => {
     const { setNeuronLabelInfo } = this.props;
     setNeuronLabelInfo({});
@@ -64,6 +68,7 @@ export default class AllLevels extends Component {
     const {
       userTree: { tree, meta: { depth } },
     } = this.props;
+    console.log('sdfdfd');
 
     const isLevel4 = depth === 4;
     const isLevel3 = depth === 3;
