@@ -23,10 +23,10 @@ const ContentScreen = styled(ImageBackground)`
   margin-top: ${Size.navbarHeight + Size.spaceXSmall};
   justify-content: flex-start;
   align-items: center;
-  padding-bottom: 50;
-  padding-top: 30;
-  padding-left: 20;
-  padding-right: 10;
+  padding-bottom: ${Size.paddingBottom};
+  padding-top: ${Size.paddingTop};
+  padding-left: ${Size.paddingLeft};
+  padding-right: ${Size.paddingRight};
 `;
 
 @connect(store => ({
