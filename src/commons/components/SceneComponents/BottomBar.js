@@ -23,6 +23,6 @@ export default class BottomBar extends Component {
     const { device } = this.props;
     const { width, orientation } = device.dimensions;
     const currentImage = orientation === LANDSCAPE ? 'bottom_bar_landscape' : 'bottom_bar';
-    return (<Bar width={width} source={{uri: currentImage}} resizeMode='contain' />);
+    return (<Bar width={width} source={{uri: currentImage}} resizeMode='stretch' />);
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-native-slider';
 //TODO: remove this
-import thumbImage from '../../../../assets/images/buttons/slider_button.png';
+// import thumbImage from '../../../../assets/images/buttons/slider_button.png';
 
 const SliderLevels = ({ value, ...rest }) => {
   const thumbStyle = { backgroundColor: 'transparent', top: 4, left: -5 };
@@ -10,7 +10,7 @@ const SliderLevels = ({ value, ...rest }) => {
   const sliderStyle = { height: 30 };
   return (
     <Slider value={value}
-      thumbImage={thumbImage}
+      // thumbImage={thumbImage}
       thumbStyle={thumbStyle}
       trackStyle={trackStyle}
       style={sliderStyle}

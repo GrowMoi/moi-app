@@ -10,6 +10,7 @@ const ContainerOptions = styled(View)`
   flex: 1;
   padding-horizontal: ${Size.spaceMedium};
   padding-vertical: ${Size.spaceMedium};
+  z-index: 10;
 `;
 
 const Item = styled(TouchableOpacity)`

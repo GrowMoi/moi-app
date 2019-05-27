@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { isTablet } from 'react-native-device-detection';
 import WoodLabel from '../WoodLabel/WoodLabel';
 import neuronActions from '../../../actions/neuronActions'
 import Preloader from '../Preloader/Preloader';
@@ -12,9 +13,9 @@ import Preloader from '../Preloader/Preloader';
   zoomInfo: state.tree.zoomInfo,
   zoomScale: state.tree.zoomScale,
 }), {
-  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
-})
+    setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+    loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+  })
 export default class LabelsLayer extends Component {
 
   state = {
@@ -50,9 +51,24 @@ export default class LabelsLayer extends Component {
     const { label, zoomScale, zoomInfo, tree: { meta: { depth } } } = this.props;
     const { loading } = this.state;
 
-    const zoomValue = depth === 2 ? depth : zoomScale;
-    let topPosition = zoomScale === 1 ? label.pageY - (label.height / 2) : label.pageY;
-    topPosition = depth === 2 && label.height < 60 ? topPosition - 17 : topPosition;
+    const neuronWidth = label.width;
+    const isBigNeuron = neuronWidth >= (isTablet ? 160 : 80);
+    const zoom = zoomScale === 3 ? 4 : zoomScale
+
+    const zoomScaleValues = {
+      1: isTablet ? 2.1 : 1.2,
+      4: isTablet ? 1.2 + (zoomInfo.scale / 3) : 0.7 + (zoomInfo.scale / 5),
+    }
+
+    const topPositions = {
+      1: isTablet ? -70 : -62,
+      4: isTablet ? -75 : -65,//ok both
+    }
+
+    const leftPositions = {
+      1: isTablet ? isBigNeuron ? 38 : 15 : isBigNeuron ? 3 : -15,
+      4: isTablet ? - 21 : - 30,//ok both
+    }
 
     return (
       <View style={{ flex: 1, position: 'absolute', top: 0, left: 0 }}>
@@ -63,12 +79,13 @@ export default class LabelsLayer extends Component {
               this.hideWoodLabel();
               this.playContent();
             }}
-            zoomScale={zoomValue}
-            zoomInfo={zoomInfo}
             style={{
               position: 'absolute',
-              top: topPosition,
-              left: label.pageX + (label.width / 2),
+              top: label.pageY + topPositions[zoom],
+              left: label.pageX + leftPositions[zoom],
+              transform: [{
+                scale: zoomScaleValues[zoom],
+              }],
             }}
           />
         }

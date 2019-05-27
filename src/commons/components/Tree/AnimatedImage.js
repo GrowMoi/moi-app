@@ -24,6 +24,11 @@ export class AnimatedImage extends Component {
     }, delayStart);
   }
 
+  componentWillUnmount() {
+    this.animation.stop();
+    this.animation = null;
+  }
+
   createAnimation() {
     const { maxValue } = this.props;
     const { animationValue } = this.state;
@@ -38,6 +43,7 @@ export class AnimatedImage extends Component {
 
   initAnimation(infiniteLoop) {
     const { minValue, verticalPosition,  horizontalPosition } = this.props;
+    if(!this.animation) return;
     this.animation.start(() => {
       if (infiniteLoop) {
         this.setState({

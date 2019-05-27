@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 import { View, FlatList, StyleSheet, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { isTablet } from 'react-native-device-detection';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { Size } from '../../commons/styles';
@@ -12,28 +13,34 @@ import leaderboardActions from '../../actions/leaderboardActions';
 import { normalize, object } from '../../commons/utils';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
-import LeaderFrame from '../../commons/components/LeaderFrame/LeaderFrame';
+import leaderFrame from '../../../assets/images/frames/leaderboard_frame.png';
 
 // Actions
 import profilesActions from '../../actions/profileActions';
 import treeActions from '../../actions/treeActions';
+import { ContentBox } from '../../commons/components/ContentComponents';
 
-const FrameContainer = styled(View)`
-  flex: 1;
-  margin-top: ${Size.navbarHeight};
+const ContentContainer = styled(View)`
+  width: ${isTablet ? '85%' : '96%'};
+  height:${isTablet ? '90%' : '98%'};
+  padding-right: 8;
+  padding-top: 10;
+`;
+
+const StyledContentBox = styled(ContentBox)`
+  margin-bottom: ${Size.spaceMedium};
   align-items: center;
   justify-content: center;
-  align-self: stretch;
 `;
 
 @connect(state => ({
   leaders: state.leaderboard.leaders,
   device: state.device,
 }), {
-  getLeaderboardAsync: leaderboardActions.getLeadersAsync,
-  getPublicProfileAsync: profilesActions.loadProfileAsync,
-  loadTreeAsync: treeActions.loadTreeAsync,
-})
+    getLeaderboardAsync: leaderboardActions.getLeadersAsync,
+    getPublicProfileAsync: profilesActions.loadProfileAsync,
+    loadTreeAsync: treeActions.loadTreeAsync,
+  })
 export default class LeaderBoard extends PureComponent {
   state = {
     isLoadingProfile: false,
@@ -53,8 +60,8 @@ export default class LeaderBoard extends PureComponent {
 
     const { username } = item;
 
-    if(!username || username === undefined) return;
-    if(username === 'unknow') {
+    if (!username || username === undefined) return;
+    if (username === 'unknow') {
       Alert.alert('Error', 'El perfil de este usuario es desconocido, intenta con otro por favor.')
       return;
     }
@@ -69,7 +76,7 @@ export default class LeaderBoard extends PureComponent {
 
       this.setState({ isLoadingProfile: false });
 
-      if(!object.isEmpty(tree) && !object.isEmpty(profile)) {
+      if (!object.isEmpty(tree) && !object.isEmpty(profile)) {
         Actions.publicProfile({
           profile: profile.data,
           level: tree.data.meta.depth,
@@ -95,21 +102,20 @@ export default class LeaderBoard extends PureComponent {
     )
   }
   render() {
-    const { leaders: dataLeaders, device: { dimensions: { width, height } } } = this.props;
+    const { leaders: dataLeaders } = this.props;
 
-    const framePadding = 100;
     const styles = StyleSheet.create({
       contentContainer: {
         alignSelf: 'stretch',
-        width: width - framePadding,
+        width: '100%',
       }
     })
 
     return (
       <MoiBackground>
         <Navbar />
-        <FrameContainer>
-        <LeaderFrame width={(width - 35)}>
+        <StyledContentBox image={leaderFrame}>
+          <ContentContainer>
             {(dataLeaders.leaders || []).length > 0 && (
               <FlatList
                 contentContainerStyle={styles.contentContainer}
@@ -121,11 +127,11 @@ export default class LeaderBoard extends PureComponent {
               />
             )}
             {!(dataLeaders.leaders || []).length > 0 && (
-              <Preloader notFullScreen/>
+              <Preloader notFullScreen />
             )}
-          </LeaderFrame>
-          {this.state.isLoadingProfile && <Preloader />}
-        </FrameContainer>
+          </ContentContainer>
+        </StyledContentBox>
+        {this.state.isLoadingProfile && <Preloader />}
         <BottomBar />
       </MoiBackground>
     );

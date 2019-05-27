@@ -49,7 +49,7 @@ export default class EventModal extends Component {
   }
 
   takeEvent = async () => {
-    const { takeEventAsync, getEventInProgressAsync} = this.props;
+    const { takeEventAsync, getEventInProgressAsync } = this.props;
     const { selectedEvent } = this.state;
     try {
       await takeEventAsync(selectedEvent.id);
@@ -76,14 +76,14 @@ export default class EventModal extends Component {
   }
 
   verifyNoEvents = () => {
-    if(this.state.events.length === 0) {
+    if (this.state.events.length === 0) {
       this.props.onCloseButtonPress();
     }
   }
 
   get modalSize() {
-    const { width } = this.props;
     const { selectedEvent } = this.state;
+    const width = this.eventModalWidth;
 
     return {
       width: selectedEvent ? width / 1.3 : width,
@@ -99,8 +99,13 @@ export default class EventModal extends Component {
     };
   }
 
+  get eventModalWidth() {
+    const { width } = this.props;
+    return width > 500 ? 500 : width;
+  }
+
   render() {
-    const { open = true, animationType = 'slide', noOverlay = false, width } = this.props;
+    const { open = true, animationType = 'slide', noOverlay = false } = this.props;
     const { selectedEvent, events, showAlert, alertTitle, alertDescription } = this.state;
 
     return (
@@ -117,7 +122,7 @@ export default class EventModal extends Component {
               <CloseIcon onPress={this.onPress} />
               <ContentContainer style={{ width: this.modalSize.width - 25, height: this.modalSize.height - 10 }} colorsMargin={this.colorsModal.margin} colorsContent={this.colorsModal.content} horizontalGradient={false}>
                 {!selectedEvent && <Header bolder>Eventos</Header>}
-                {selectedEvent ? <EventInfo event={selectedEvent} onTakeEvent={this.takeEvent} /> : <ListEvents events={events} width={width} onSelectEvent={this.onSelectEvent} />}
+                {selectedEvent ? <EventInfo event={selectedEvent} onTakeEvent={this.takeEvent} /> : <ListEvents events={events} width={this.eventModalWidth} onSelectEvent={this.onSelectEvent} />}
               </ContentContainer>
             </View>
             :

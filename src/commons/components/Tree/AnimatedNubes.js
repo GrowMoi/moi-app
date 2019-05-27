@@ -68,7 +68,7 @@ export class AnimatedNubes extends Component {
     const { orientation } = this.props;
 
     const constainerStyle = {
-      position: "relative",
+      position: "absolute",
       flex: 1,
       left: -130,
       width: this.getWidthContainerNube(),

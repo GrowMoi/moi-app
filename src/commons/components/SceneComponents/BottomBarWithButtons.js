@@ -58,7 +58,7 @@ const BottomBarContainer = styled(View)`
 
 const BottomBar = styled(ImageBackground)`
   width: ${props => props.width};
-  height: ${props => getHeightAspectRatio(bottomBarWidth, bottomBarHeight, props.width)};
+  height: 39;
   flex-direction: row;
   overflow: visible;
 `;

@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
 import { Actions } from 'react-native-router-flux';
+import { isTablet } from 'react-native-device-detection';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
@@ -106,7 +107,7 @@ export default class Tree extends Component {
 
   setTitleView() {
     const { user } = this.props;
-    Actions.refresh({title: user.profile.username});
+    Actions.refresh({ title: user.profile.username });
   }
 
   handleVideoFirstLogin = async () => {
@@ -219,18 +220,18 @@ export default class Tree extends Component {
 
     const resultScreenShot = await takeSnapshotAsync(this.treeView, {
       result: 'base64',
-      height: (height / pixelRatio) / 2,
+      height: (height / pixelRatio),
       width: width / pixelRatio,
       quality: 1,
       format: 'png',
     });
 
-    if (orientation === 'LANDSCAPE' || Platform.OS === 'android') {
-      this.uploadTreeImage(resultScreenShot);
-      return;
-    }
+    // if (orientation === 'LANDSCAPE' || Platform.OS === 'android') {
+    this.uploadTreeImage(resultScreenShot);
+    return;
+    // }
 
-    this.cropImage(this.normalizeBase64Image(resultScreenShot), width, height);
+    // this.cropImage(this.normalizeBase64Image(resultScreenShot), width, height);
   }
 
   getHeigthImage(height) {
@@ -262,11 +263,11 @@ export default class Tree extends Component {
     const heightImage = this.getHeigthImage(height);
 
     let cropData = {
-      offset: { x: 0, y: heightImage.offset },
-      size: { width: width, height: heightImage.height }
+      offset: { x: 0, y: 0 },
+      size: { width: width, height: height }
     }
 
-    ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, (error) => {console.log('error ===> ', error) });
+    ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, (error) => { console.log('error ===> ', error) });
   }
 
   getImageFromRctImage = (rctImageUri) => {
@@ -288,17 +289,17 @@ export default class Tree extends Component {
   }
 
   validateResultQuiz() {
-    const { quizResult: { achievements= [], event = {} } } = this.props;
-    if(achievements.length > 0) {
+    const { quizResult: { achievements = [], event = {} } } = this.props;
+    if (achievements.length > 0) {
       this.showModalNewAchievements(achievements);
     }
 
-    if(event.completed) {
+    if (event.completed) {
       this.showEventCompletedModal(event.info.title);
     }
 
-    if(achievements.length === 0 && !event.completed) {
-        this.removeQuizResult();
+    if (achievements.length === 0 && !event.completed) {
+      this.removeQuizResult();
     }
   }
 
@@ -307,8 +308,8 @@ export default class Tree extends Component {
   }
 
   hideModalNewAchievements = () => {
-    if(!this.state.showEventCompleted) {
-        this.removeQuizResult();
+    if (!this.state.showEventCompleted) {
+      this.removeQuizResult();
     }
     this.setState({ showModalNewAchievements: false });
   }
@@ -323,18 +324,18 @@ export default class Tree extends Component {
   }
 
   removeQuizResult() {
-      this.props.removeQuizResult();
+    this.props.removeQuizResult();
   }
 
   render() {
     const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
 
-    if(quizResult && (!showModalNewAchievements && !showEventCompleted)) {
+    if (quizResult && (!showModalNewAchievements && !showEventCompleted)) {
       this.validateResultQuiz();
     }
 
-    const showAchievementsModal = !modalVisible  && showModalNewAchievements;
+    const showAchievementsModal = !modalVisible && showModalNewAchievements;
     const showEventCompletedModal = !modalVisible && !showModalNewAchievements && showEventCompleted;
 
 
@@ -343,23 +344,34 @@ export default class Tree extends Component {
       height: 720
     };
 
+//ipad 12"
+    const translateYTablet = orientation === 'LANDSCAPE' ? -240 : -330;
+
+    const minZoom = {
+      scale: isTablet ? 2 : 1,
+      translateY: isTablet ? translateYTablet : 0
+    }
+
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation}/>
+        <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
-          <Zoom
-            flex={Platform.OS === 'android' ? 10 : 1}
-            maxScale={zoomScale}
-            onViewTransformed={this.onViewTransformed}
-            onTransformGestureReleased={this.onTransformGestureReleased}
-            ref={view => this.treeView = view }
-          >
-            <MacetaContainer><Maceta width={200} /></MacetaContainer>
-            {level}
-          </Zoom>}
+          <View style={{ flex: 1, transform: [{ scale: minZoom.scale }, { translateY: minZoom.translateY }] }}>
+            <Zoom
+              flex={Platform.OS === 'android' ? 10 : 1}
+              maxScale={zoomScale}
+              onViewTransformed={this.onViewTransformed}
+              onTransformGestureReleased={this.onTransformGestureReleased}
+              ref={view => this.treeView = view}
+            >
+              <MacetaContainer><Maceta width={200} /></MacetaContainer>
+              {level}
+            </Zoom>
+          </View>
+        }
         {!modalVisible && <LabelsLayer />}
         {modalVisible && <Video
           videoDimensions={videoDimensions}
