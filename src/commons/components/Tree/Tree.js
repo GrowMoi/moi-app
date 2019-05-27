@@ -77,6 +77,7 @@ export default class Tree extends Component {
     showEventCompleted: false,
     eventTitle: '',
     achievements: null,
+    showLabelLayer: true,
   }
 
   initialActions = async () => {
@@ -142,7 +143,8 @@ export default class Tree extends Component {
 
     if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
     if (this.canPlaySound) {
-      setNeuronLabelInfo({});
+      // setNeuronLabelInfo({});
+      this.setState({showLabelLayer: false});
       Sound.playOverBackgroundSound('treeActions', true, 1);
       this.canPlaySound = false;
     }
@@ -154,11 +156,13 @@ export default class Tree extends Component {
   }
 
   onTransformGestureReleased = (zoomInfo) => {
-    const { setZoomTreeInfo } = this.props;
+    const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
     setZoomTreeInfo(zoomInfo);
     setTimeout(() => {
       Sound.stopOverBackgroundSound();
       this.canPlaySound = true;
+      setNeuronLabelInfo({});
+      this.setState({showLabelLayer: true});
     }, 1000);
   }
 
@@ -336,7 +340,7 @@ export default class Tree extends Component {
   }
 
   render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements, showLabelLayer } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
 
     if (quizResult && (!showModalNewAchievements && !showEventCompleted)) {
@@ -389,7 +393,7 @@ export default class Tree extends Component {
             </Zoom>
           </View>
         }
-        {!modalVisible && <LabelsLayer />}
+        {(!modalVisible && showLabelLayer) && <LabelsLayer />}
         {modalVisible && <Video
           videoDimensions={videoDimensions}
           source={vineta_1}
