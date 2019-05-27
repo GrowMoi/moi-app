@@ -4,7 +4,11 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   userTree: {},
   audio: null,
-  zoomInfo: {},
+  zoomInfo: {
+    scale: 1,
+    translateX: 0,
+    translateY: 0,
+  },
   zoomScale: 1,
 };
 

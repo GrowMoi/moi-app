@@ -25,6 +25,7 @@ import { AnimatedNubes } from './AnimatedNubes';
 import { Sound } from '../SoundPlayer';
 import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
+import { Size } from '../../styles';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -139,10 +140,9 @@ export default class Tree extends Component {
       this.prevZoomInfo = zoomInfo;
     }
 
-    setZoomTreeInfo(zoomInfo);
-    setNeuronLabelInfo({});
     if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
     if (this.canPlaySound) {
+      setNeuronLabelInfo({});
       Sound.playOverBackgroundSound('treeActions', true, 1);
       this.canPlaySound = false;
     }
@@ -328,7 +328,7 @@ export default class Tree extends Component {
   }
 
   getTabletScale(zoomScale) {
-    if(zoomScale === 1) {
+    if (zoomScale === 1) {
       return 1.3;
     } else {
       return 2;
@@ -356,6 +356,16 @@ export default class Tree extends Component {
       scale: isTablet ? this.getTabletScale(zoomScale) : 1,
     }
 
+    const zoomContainerStyle = isTablet ? {
+      position: 'absolute',
+      height: zoomScale === 1 ? '87%' : '67%',
+      top: 0,
+      left: 0,
+      right: 0,
+    } : {
+      flex: 1,
+    };
+
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
@@ -364,12 +374,8 @@ export default class Tree extends Component {
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
           <View style={{
-            flex: 1,
             transform: [{ scale: minZoom.scale }],
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
+            ...zoomContainerStyle,
           }}>
             <Zoom
               flex={Platform.OS === 'android' ? 10 : 1}

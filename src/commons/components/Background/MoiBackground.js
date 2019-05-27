@@ -15,9 +15,9 @@ position: relative;
 @connect(store => ({ device: store.device }))
 export default class MoiBackground extends Component {
 
-  shouldComponentUpdate(newProps, newState) {
-    return newProps.device !== this.props.device;
-  }
+  // shouldComponentUpdate(newProps, newState) {
+  //   return newProps.device !== this.props.device;
+  // }
 
   render() {
     const { device, style } = this.props;
@@ -35,18 +35,18 @@ export default class MoiBackground extends Component {
 
     if (isAndroidLandscape) {
 
-      console.log("TCL: MoiBackground -> render -> height", height)
+      // console.log("TCL: MoiBackground -> render -> height", height)
 
       const aspectRatio = width / height;
       // console.log("TCL: MoiBackground -> render -> aspectRatio", aspectRatio)
 
 
       correctHeight = height / aspectRatio;
-      console.log("TCL: MoiBackground -> render -> correctHeight", correctHeight)
+      // console.log("TCL: MoiBackground -> render -> correctHeight", correctHeight)
       // percent = aspectRatio > 1.6 ? (100 * correctHeight) / height : 100;
       percent = (100 * correctHeight) / height;
       if(isTablet) percent += (4.55 - aspectRatio);
-      console.log("TCL: MoiBackground -> render -> percent", percent)
+      // console.log("TCL: MoiBackground -> render -> percent", percent)
 
     }
 
