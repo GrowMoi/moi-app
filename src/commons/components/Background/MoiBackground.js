@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ImageBackground, PixelRatio } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
-import { isAndroid } from 'react-native-device-detection';
+import { isAndroid, isTablet } from 'react-native-device-detection';
 import { LANDSCAPE } from '../../../constants';
 
 const Background = styled(ImageBackground)`
@@ -15,9 +15,9 @@ position: relative;
 @connect(store => ({ device: store.device }))
 export default class MoiBackground extends Component {
 
-  // shouldComponentUpdate(newProps, newState) {
-  //   return newProps.device !== this.props.device;
-  // }
+  shouldComponentUpdate(newProps, newState) {
+    return newProps.device !== this.props.device;
+  }
 
   render() {
     const { device, style } = this.props;
@@ -42,9 +42,11 @@ export default class MoiBackground extends Component {
 
 
       correctHeight = height / aspectRatio;
-      // console.log("TCL: MoiBackground -> render -> correctHeight", correctHeight)
+      console.log("TCL: MoiBackground -> render -> correctHeight", correctHeight)
+      // percent = aspectRatio > 1.6 ? (100 * correctHeight) / height : 100;
       percent = (100 * correctHeight) / height;
-      // console.log("TCL: MoiBackground -> render -> percent", percent)
+      if(isTablet) percent += (4.55 - aspectRatio);
+      console.log("TCL: MoiBackground -> render -> percent", percent)
 
     }
 

@@ -327,6 +327,14 @@ export default class Tree extends Component {
     this.props.removeQuizResult();
   }
 
+  getTabletScale(zoomScale) {
+    if(zoomScale === 1) {
+      return 1.3;
+    } else {
+      return 2;
+    }
+  }
+
   render() {
     const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
@@ -344,12 +352,8 @@ export default class Tree extends Component {
       height: 720
     };
 
-//ipad 12"
-    const translateYTablet = orientation === 'LANDSCAPE' ? -240 : -330;
-
     const minZoom = {
-      scale: isTablet ? 2 : 1,
-      translateY: isTablet ? translateYTablet : 0
+      scale: isTablet ? this.getTabletScale(zoomScale) : 1,
     }
 
     if (loading && !hasUserTree) { return <Preloader />; }
@@ -359,7 +363,14 @@ export default class Tree extends Component {
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
-          <View style={{ flex: 1, transform: [{ scale: minZoom.scale }, { translateY: minZoom.translateY }] }}>
+          <View style={{
+            flex: 1,
+            transform: [{ scale: minZoom.scale }],
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+          }}>
             <Zoom
               flex={Platform.OS === 'android' ? 10 : 1}
               maxScale={zoomScale}
