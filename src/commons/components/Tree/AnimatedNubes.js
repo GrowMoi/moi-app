@@ -15,6 +15,11 @@ const positionNube = [{
 }];
 
 export class AnimatedNubes extends Component {
+
+  shouldComponentUpdate(newProps, newState) {
+    return newProps.orientation !== this.props.orientation;
+  }
+
   getRandomTopPostion = () => {
     const { deviceHeight, orientation } = this.props;
 

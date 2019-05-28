@@ -13,7 +13,6 @@ import leaderboardActions from '../../actions/leaderboardActions';
 import { normalize, object } from '../../commons/utils';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
-import leaderFrame from '../../../assets/images/frames/leaderboard_frame.png';
 
 // Actions
 import profilesActions from '../../actions/profileActions';
@@ -114,7 +113,7 @@ export default class LeaderBoard extends PureComponent {
     return (
       <MoiBackground>
         <Navbar />
-        <StyledContentBox image={leaderFrame}>
+        <StyledContentBox image={'leaderboard_frame'}>
           <ContentContainer>
             {(dataLeaders.leaders || []).length > 0 && (
               <FlatList

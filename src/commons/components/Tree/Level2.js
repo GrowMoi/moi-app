@@ -166,7 +166,7 @@ export default class Level2 extends Component {
       <StyledComponent
         key={index}
         { ...tree.branch.props }
-        source={isflorecida ? tree.branch.florecidaImg : tree.branch.descubiertaImg }
+        source={{uri: isflorecida ? tree.branch.florecidaImg : tree.branch.descubiertaImg }}
         resizeMode='contain'
       >
         <Neuron

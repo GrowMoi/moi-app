@@ -38,6 +38,7 @@ const IconContainer = styled(View)`
 
 const IconSwitch = styled(Image)`
     height: 22;
+    width: 29;
 `;
 
 
