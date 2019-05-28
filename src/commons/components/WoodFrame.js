@@ -3,7 +3,6 @@ import { ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
 import { Palette, Size } from './../styles';
 import { getHeightAspectRatio } from './../utils';
-import woodFrame from './../../../assets/images/frames/wood_frame.png';
 
 const widthFrame = 377;
 const heightFrame = 806;
@@ -17,7 +16,7 @@ const StyledWoodFrame = styled(ImageBackground)`
 `;
 
 const WoodFrame = ({ width = widthFrame, height, ...rest }) => (
-  <StyledWoodFrame width={width} height={height} source={woodFrame} resizeMode='stretch' {...rest} />
+  <StyledWoodFrame width={width} height={height} source={{uri: 'wood_frame'}} resizeMode='stretch' {...rest} />
 )
 
 export default WoodFrame;

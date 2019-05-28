@@ -103,7 +103,7 @@ export default class Scenes extends Component {
               <RouterWithRedux scenes={routes}/>
             </IntlProvider>
           </Provider>
-        </ModalHost>
+         </ModalHost>
       );
     }
 

@@ -6,7 +6,6 @@ import { colors } from '../../commons/styles/palette';
 import { Size } from '../../commons/styles';
 import SliderLevels from '../../commons/components/SliderLevels/SliderLevels';
 import { Description } from '../../commons/components/Typography';
-import rowBox from '../../../assets/images/settings/row_levels.png';
 import Switch from './Switch';
 
 const Row = styled(ImageBackground)`
@@ -37,7 +36,7 @@ const RowLevel = ({ title, onValueChange, kind, level, toggle = null, toggleSwit
 
   const levelToShow = level ? level - 1: null;
   return (
-    <Row source={toggle === null ? rowBox : null} resizeMode='contain'>
+    <Row source={toggle === null ? {uri: 'row_levels'} : null} resizeMode='contain'>
       <RowContainer>
         <DescriptionContainer>
           <Description ellipsizeMode='tail' numberOfLines={1} color={colors.cream.css()}>{title}</Description>

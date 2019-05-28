@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { View, Image } from 'react-native';
 import { Description } from '../../commons/components/Typography';
-import sportButton from '../../../assets/images/settings/sports_button.png';
 import { getHeightAspectRatio } from '../../commons/utils';
 
 const ContainerButton = styled(View)`
@@ -31,7 +30,7 @@ const InterestButton = ({ title, type }) => {
   let source;
   switch (type) {
     case 'sport':
-      source = sportButton;
+      source = 'sports_button';
       break;
     default:
       break;
@@ -42,7 +41,7 @@ const InterestButton = ({ title, type }) => {
       <Title>
         <Description color='#f4f095'>{title || 'Title'}</Description>
       </Title>
-      <IButton width={40} source={source} resizeMode='contain' />
+      <IButton width={40} source={{uri: source}} resizeMode='contain' />
     </ContainerButton>
   );
 };

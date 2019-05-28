@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, ImageBackground, Image } from 'react-native';
 import styled from 'styled-components/native';
-import treeDefault from '../../../../assets/images/sideMenu/tree_default.png';
+import { isTablet } from 'react-native-device-detection';
 
 const TreeContainer = styled(ImageBackground)`
   justify-content: center;
@@ -15,7 +15,8 @@ const ImageContainer = styled(View)`
   width: ${props => props.width};
   height: ${props => props.height};
   justify-content: center;
-  padding: 10px;
+  align-items: center;
+  z-index: 0;
 `;
 
 const ProfileImage = styled(Image)`
@@ -29,25 +30,25 @@ export default class TreeScreenShot extends Component {
     const { width, height, profileImage, treeBackground, style, frame } = this.props;
 
     const heightTree = height ? frame ? height - 50 : height -80 : 180;
-    const treeImage = profileImage ? { uri: profileImage } : treeDefault;
+    const treeImage = profileImage ? { uri: profileImage } : { uri: 'treeDefault' };
 
     return (
       <View style={style}>
         <TreeContainer width={width}
-          source={treeBackground}
+          source={{uri: treeBackground}}
           resizeMode='stretch'
         >
           <ImageContainer width={width + 30}
             height={heightTree}>
             <Image
-            style={{flex:1, height: undefined, width: undefined, marginBottom: -15}}
+              style={{height: isTablet ? height * 3 : height + 100, width: isTablet ? width * 2 : width, position: 'absolute', bottom: 0}}
               source={treeImage}
-              resizeMode='cover'
+              resizeMode='stretch'
             />
           </ImageContainer>
           {frame && <ProfileImage style={{ position: 'absolute' }} width={width}
             height={height ? height : 170}
-            source={frame}
+            source={{uri: frame}}
             resizeMode='stretch' />}
         </TreeContainer>
       </View>

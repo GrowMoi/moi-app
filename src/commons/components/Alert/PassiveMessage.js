@@ -3,7 +3,6 @@ import { View, Image } from 'react-native'
 import { LinearGradient } from 'expo'
 import styled, { css } from 'styled-components/native'
 import { TextBody, Header, Title } from '../Typography'
-import yellow_pattern from '../../../../assets/images/miscelaneous/yellow_pattern.png'
 import * as Animatable from 'react-native-animatable';
 
 const Container = styled(View)`
@@ -125,7 +124,7 @@ export default class PassiveMessage extends Component {
         <AnimatableContent animation="fadeIn" easing="ease-in-out">
           <Content>
             <Background colors={['#f8c570', '#d5a305']} />
-            <Pattern source={yellow_pattern} resizeMode='cover'/>
+            <Pattern source={{uri: 'yellow_pattern'}} resizeMode='cover'/>
             <TextContainer>
               <Header style={{ color: 'white' }} small heavy >{children}</Header>
             </TextContainer>

@@ -92,13 +92,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/devMinSdk/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/devMinSdk/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/devMinSdk/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/assets" type="java-test-resource" />
@@ -106,6 +99,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/assets" type="java-resource" />
@@ -113,13 +113,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevKernel/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevKernel/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevKernel/assets" type="java-test-resource" />
@@ -127,6 +120,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testDevKernel/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevKernel/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevKernel/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevKernel/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" type="java-resource" />
@@ -155,13 +155,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
@@ -169,9 +162,17 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/build-info" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
@@ -179,13 +180,16 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-runtime-classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-verifier" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-apk" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-main-apk-res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-resources" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifest-checker" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/resources" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/shaders" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/split-apk" />
@@ -318,6 +322,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.objenesis:objenesis:2.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-okhttp3-1.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:animated-webp-1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/luisgonzalez/Projects/moi/moi-app/node_modules/react-native-youtube/android/libs/YouTubeAndroidPlayerApi.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: host.exp.exponent:expo-local-authentication-1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-gass-15.0.1" level="project" />
@@ -483,10 +488,9 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.codehaus.plexus:plexus-interpolation:1.11@jar" level="project" />
     <orderEntry type="library" name="Gradle: host.exp:reactandroid-abi26_0_0-1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: host.exp.exponent:expo-file-system-abi29_0_0-1.0.0" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:/Users/luis/Projects/moi/moi-app/node_modules/react-native-youtube/android/libs/YouTubeAndroidPlayerApi.jar:unspecified@jar" level="project" />
     <orderEntry type="module" module-name="react-native-sound" />
-    <orderEntry type="module" module-name="react-native-orientation" />
     <orderEntry type="module" module-name="lottie-react-native" />
+    <orderEntry type="module" module-name="react-native-orientation" />
     <orderEntry type="module" module-name="react-native-youtube" />
   </component>
 </module>

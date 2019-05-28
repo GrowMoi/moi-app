@@ -31,15 +31,15 @@ public final class R {
         public static final int text_helper_color = 0x7f06009f;
     }
     public static final class drawable {
-        public static final int background_white = 0x7f08005d;
-        public static final int cc_back = 0x7f08006a;
-        public static final int ic_card_amex = 0x7f0800b8;
-        public static final int ic_card_diners = 0x7f0800b9;
-        public static final int ic_card_discover = 0x7f0800ba;
-        public static final int ic_card_jcb = 0x7f0800bb;
-        public static final int ic_card_mastercard = 0x7f0800bc;
-        public static final int ic_card_placeholder = 0x7f0800bd;
-        public static final int ic_card_visa = 0x7f0800be;
+        public static final int background_white = 0x7f080072;
+        public static final int cc_back = 0x7f080091;
+        public static final int ic_card_amex = 0x7f080151;
+        public static final int ic_card_diners = 0x7f080152;
+        public static final int ic_card_discover = 0x7f080153;
+        public static final int ic_card_jcb = 0x7f080154;
+        public static final int ic_card_mastercard = 0x7f080155;
+        public static final int ic_card_placeholder = 0x7f080156;
+        public static final int ic_card_visa = 0x7f080157;
     }
     public static final class id {
         public static final int cc_card = 0x7f090048;

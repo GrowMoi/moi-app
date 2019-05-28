@@ -12,14 +12,6 @@ import * as Animatable from 'react-native-animatable';
 
 import { math } from '../../utils';
 
-import neuronaDescubierta from '../../../../assets/images/neurona/neurona_descubierta.png';
-import neuronaAzul from '../../../../assets/images/neurona/neurona_color_azul.png';
-import neuronaVerde from '../../../../assets/images/neurona/neurona_color_verde.png';
-import neuronaFucsia from '../../../../assets/images/neurona/neurona_color_fucsia.png';
-import neuronaNaranja from '../../../../assets/images/neurona/neurona_color_naranja.png';
-import neuronaAmarilla from '../../../../assets/images/neurona/neurona_color_amarillo.png';
-import neuronaNaranjaOscuro from '../../../../assets/images/neurona/neurona_color_naranja_oscuro.png';
-
 export const NeuronContainer = styled(View)`
   justify-content: center;
   align-items: center;
@@ -94,22 +86,22 @@ export default class Neuron extends Component {
       contentsLearned,
     } = this.props;
 
-    if (contentsLearned === 0 || !color) return neuronaDescubierta;
+    if (contentsLearned === 0 || !color) return 'neurona_descubierta';
     switch (color) {
       case 'blue':
-        return neuronaAzul;
+        return 'neurona_color_azul';
       case 'yellow':
-        return neuronaAmarilla;
+        return 'neurona_color_amarillo';
       case 'orange':
-        return neuronaNaranja;
+        return 'neurona_color_naranja';
       case 'dark_orange':
-        return neuronaNaranjaOscuro;
+        return 'neurona_color_naranja_oscuro';
       case 'fuchsia':
-        return neuronaFucsia;
+        return 'neurona_color_fucsia';
       case 'green':
-        return neuronaVerde;
+        return 'neurona_color_verde';
       default:
-        return neuronaDescubierta;
+        return 'neurona_descubierta';
     }
   }
 
@@ -183,7 +175,7 @@ export default class Neuron extends Component {
           <NeuronImage
             size={neuronSize}
             style={[animatedStyle, style]}
-            source={this.neuronColor}
+            source={{uri: this.neuronColor}}
             resizeMode='contain'
           />
         </TouchableWithoutFeedback>

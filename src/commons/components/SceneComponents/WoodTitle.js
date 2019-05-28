@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { ImageBackground } from 'react-native';
 import { Header } from '../Typography';
-import background from '../../../../assets/images/buttons/boton_login.png';
 import { getHeightAspectRatio } from '../../utils';
 
 const LoginTitle = styled(ImageBackground)`
@@ -17,7 +16,7 @@ const LoginTitle = styled(ImageBackground)`
 const WoodTitle = ({ title }) => {
   return (
     <LoginTitle
-      source={background}
+      source={{uri: 'boton_login'}}
       width={150}
     >
       <Header

@@ -6,11 +6,6 @@ import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
 import ChartLearnedContent from './ChartLearnedContent';
 import Preloader from '../../commons/components/Preloader/Preloader';
-import marcoExterior from '../../../assets/images/certificate/marco_exterior_H.png';
-import marco from '../../../assets/images/certificate/marco.png';
-import fondo from '../../../assets/images/certificate/fondo.png';
-import closeIcon from '../../../assets/images/certificate/boton_salir_H.png';
-import title from '../../../assets/images/certificate/title.png';
 
 // Actions
 import userActions from '../../actions/userActions';
@@ -206,18 +201,18 @@ class Certificate extends Component {
             onPress={this.removeResultFinalTest} >
             <CloseIcon
               onPress={this.removeResultFinalTest}
-              source={closeIcon}
+              source={{uri: 'boton_salir_h'}}
               style={style}
               resizeMode='stretch'
             />
           </CloseContainer>
 
-          <Background style={style} width={width} height={height} source={marcoExterior} resizeMode='stretch'>
+          <Background style={style} width={width} height={height} source={{uri: 'marco_exterior_h'}} resizeMode='stretch'>
 
-            <BackgroundCertificate width={width} height={height} source={fondo} resizeMode='stretch' style={styles.container}>
+            <BackgroundCertificate width={width} height={height} source={{uri: 'fondo'}} resizeMode='stretch' style={styles.container}>
 
               <View style={[styles.row1, { justifyContent: 'center' }]}>
-                <TitleImage source={title} width={width} resizeMode='contain' />
+                <TitleImage source={{uri: 'title'}} width={width} resizeMode='contain' />
               </View>
 
               <View style={[styles.row2, { paddingLeft: "12%", paddingRight: "12%" }]}>
@@ -244,10 +239,10 @@ class Certificate extends Component {
 
                 <View style={styles.box}>
                   <Background
-                    source={fondo}
+                    source={{uri: 'fondo'}}
                     resizeMode='stretch' >
                     <Background
-                      source={marco}
+                      source={{uri: 'marco'}}
                       resizeMode='stretch' >
                       <Image
                         style={{ width: "100%", height: "100%", marginTop: -4 }}

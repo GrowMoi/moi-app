@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Image, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import thumbImage from '../../../assets/images/buttons/slider_button.png';
 import { Header } from '../../commons/components/Typography';
 
 const ContainerSwitch = styled(View)`
@@ -39,6 +38,7 @@ const IconContainer = styled(View)`
 
 const IconSwitch = styled(Image)`
     height: 22;
+    width: 29;
 `;
 
 
@@ -60,7 +60,7 @@ const Switch = ({ toggleValue, onPress }) => {
 
             <IconContainer style={styleIcon}>
                 <TouchableOpacity onPress={() => onPress()} activeOpacity={0.9}>
-                    <IconSwitch source={thumbImage} />
+                    <IconSwitch source={{uri: 'slider_button'}} />
                 </TouchableOpacity>
             </IconContainer>
         </ContainerSwitch>

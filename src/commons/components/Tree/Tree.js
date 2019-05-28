@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
 import { Actions } from 'react-native-router-flux';
+import { isTablet } from 'react-native-device-detection';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
@@ -24,6 +25,7 @@ import { AnimatedNubes } from './AnimatedNubes';
 import { Sound } from '../SoundPlayer';
 import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
+import { Size } from '../../styles';
 
 const styles = StyleSheet.create({
   treeView: {
@@ -75,6 +77,7 @@ export default class Tree extends Component {
     showEventCompleted: false,
     eventTitle: '',
     achievements: null,
+    showLabelLayer: true,
   }
 
   initialActions = async () => {
@@ -106,7 +109,7 @@ export default class Tree extends Component {
 
   setTitleView() {
     const { user } = this.props;
-    Actions.refresh({title: user.profile.username});
+    Actions.refresh({ title: user.profile.username });
   }
 
   handleVideoFirstLogin = async () => {
@@ -138,10 +141,10 @@ export default class Tree extends Component {
       this.prevZoomInfo = zoomInfo;
     }
 
-    setZoomTreeInfo(zoomInfo);
-    setNeuronLabelInfo({});
     if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
     if (this.canPlaySound) {
+      // setNeuronLabelInfo({});
+      this.setState({showLabelLayer: false});
       Sound.playOverBackgroundSound('treeActions', true, 1);
       this.canPlaySound = false;
     }
@@ -153,11 +156,13 @@ export default class Tree extends Component {
   }
 
   onTransformGestureReleased = (zoomInfo) => {
-    const { setZoomTreeInfo } = this.props;
+    const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
     setZoomTreeInfo(zoomInfo);
     setTimeout(() => {
       Sound.stopOverBackgroundSound();
       this.canPlaySound = true;
+      setNeuronLabelInfo({});
+      this.setState({showLabelLayer: true});
     }, 1000);
   }
 
@@ -219,18 +224,18 @@ export default class Tree extends Component {
 
     const resultScreenShot = await takeSnapshotAsync(this.treeView, {
       result: 'base64',
-      height: (height / pixelRatio) / 2,
+      height: (height / pixelRatio),
       width: width / pixelRatio,
       quality: 1,
       format: 'png',
     });
 
-    if (orientation === 'LANDSCAPE' || Platform.OS === 'android') {
-      this.uploadTreeImage(resultScreenShot);
-      return;
-    }
+    // if (orientation === 'LANDSCAPE' || Platform.OS === 'android') {
+    this.uploadTreeImage(resultScreenShot);
+    return;
+    // }
 
-    this.cropImage(this.normalizeBase64Image(resultScreenShot), width, height);
+    // this.cropImage(this.normalizeBase64Image(resultScreenShot), width, height);
   }
 
   getHeigthImage(height) {
@@ -262,11 +267,11 @@ export default class Tree extends Component {
     const heightImage = this.getHeigthImage(height);
 
     let cropData = {
-      offset: { x: 0, y: heightImage.offset },
-      size: { width: width, height: heightImage.height }
+      offset: { x: 0, y: 0 },
+      size: { width: width, height: height }
     }
 
-    ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, (error) => {console.log('error ===> ', error) });
+    ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, (error) => { console.log('error ===> ', error) });
   }
 
   getImageFromRctImage = (rctImageUri) => {
@@ -288,17 +293,17 @@ export default class Tree extends Component {
   }
 
   validateResultQuiz() {
-    const { quizResult: { achievements= [], event = {} } } = this.props;
-    if(achievements.length > 0) {
+    const { quizResult: { achievements = [], event = {} } } = this.props;
+    if (achievements.length > 0) {
       this.showModalNewAchievements(achievements);
     }
 
-    if(event.completed) {
+    if (event.completed) {
       this.showEventCompletedModal(event.info.title);
     }
 
-    if(achievements.length === 0 && !event.completed) {
-        this.removeQuizResult();
+    if (achievements.length === 0 && !event.completed) {
+      this.removeQuizResult();
     }
   }
 
@@ -307,8 +312,8 @@ export default class Tree extends Component {
   }
 
   hideModalNewAchievements = () => {
-    if(!this.state.showEventCompleted) {
-        this.removeQuizResult();
+    if (!this.state.showEventCompleted) {
+      this.removeQuizResult();
     }
     this.setState({ showModalNewAchievements: false });
   }
@@ -323,18 +328,26 @@ export default class Tree extends Component {
   }
 
   removeQuizResult() {
-      this.props.removeQuizResult();
+    this.props.removeQuizResult();
+  }
+
+  getTabletScale(zoomScale) {
+    if (zoomScale === 1) {
+      return 1.3;
+    } else {
+      return 2;
+    }
   }
 
   render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements, showLabelLayer } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
 
-    if(quizResult && (!showModalNewAchievements && !showEventCompleted)) {
+    if (quizResult && (!showModalNewAchievements && !showEventCompleted)) {
       this.validateResultQuiz();
     }
 
-    const showAchievementsModal = !modalVisible  && showModalNewAchievements;
+    const showAchievementsModal = !modalVisible && showModalNewAchievements;
     const showEventCompletedModal = !modalVisible && !showModalNewAchievements && showEventCompleted;
 
 
@@ -343,24 +356,44 @@ export default class Tree extends Component {
       height: 720
     };
 
+    const minZoom = {
+      scale: isTablet ? this.getTabletScale(zoomScale) : 1,
+    }
+
+    const zoomContainerStyle = isTablet ? {
+      position: 'absolute',
+      height: zoomScale === 1 ? '87%' : '67%',
+      top: 0,
+      left: 0,
+      right: 0,
+    } : {
+      flex: 1,
+    };
+
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
-        <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation}/>
+        <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
-          <Zoom
-            flex={Platform.OS === 'android' ? 10 : 1}
-            maxScale={zoomScale}
-            onViewTransformed={this.onViewTransformed}
-            onTransformGestureReleased={this.onTransformGestureReleased}
-            ref={view => this.treeView = view }
-          >
-            <MacetaContainer><Maceta width={200} /></MacetaContainer>
-            {level}
-          </Zoom>}
-        {!modalVisible && <LabelsLayer />}
+          <View style={{
+            transform: [{ scale: minZoom.scale }],
+            ...zoomContainerStyle,
+          }}>
+            <Zoom
+              flex={Platform.OS === 'android' ? 10 : 1}
+              maxScale={zoomScale}
+              onViewTransformed={this.onViewTransformed}
+              onTransformGestureReleased={this.onTransformGestureReleased}
+              ref={view => this.treeView = view}
+            >
+              <MacetaContainer><Maceta width={200} /></MacetaContainer>
+              {level}
+            </Zoom>
+          </View>
+        }
+        {(!modalVisible && showLabelLayer) && <LabelsLayer />}
         {modalVisible && <Video
           videoDimensions={videoDimensions}
           source={vineta_1}

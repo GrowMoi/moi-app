@@ -7,18 +7,6 @@ import Neuron from './Neuron';
 import { FLORECIDA } from '../../../constants';
 import secondLevelConfig from './neuronConfigs/level2.config';
 
-// branch images descubiertas
-import descubiertaRight from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_right.png';
-import descubiertaRightCenter from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_right_center.png';
-import descubiertaLeftCenter from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_left_center.png';
-import descubiertaLeft from '../../../../assets/images/tree/nivel_2/nivel_2_descubierta_left.png';
-
-// branch images color
-import colorRight from '../../../../assets/images/tree/nivel_2/nivel_2_color_right.png';
-import colorRightCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_right_center.png';
-import colorLeftCenter from '../../../../assets/images/tree/nivel_2/nivel_2_color_left_center.png';
-import colorLeft from '../../../../assets/images/tree/nivel_2/nivel_2_color_left.png';
-
 // Redux
 import { connect } from 'react-redux';
 import neuronActions from '../../../actions/neuronActions';
@@ -94,8 +82,8 @@ const levelConfig = {
       props: {
         width: 100,
       },
-      florecidaImg: colorLeft,
-      descubiertaImg: descubiertaLeft,
+      florecidaImg: 'nivel_2_color_left',
+      descubiertaImg: 'nivel_2_descubierta_left',
       styles: LeftBranch,
     },
   },
@@ -105,8 +93,8 @@ const levelConfig = {
       props: {
         width: 70,
       },
-      florecidaImg: colorLeftCenter,
-      descubiertaImg: descubiertaLeftCenter,
+      florecidaImg: 'nivel_2_color_left_center',
+      descubiertaImg: 'nivel_2_descubierta_left_center',
       styles: LeftCenterBranch,
     },
   },
@@ -116,8 +104,8 @@ const levelConfig = {
       props: {
         width: 70,
       },
-      florecidaImg: colorRightCenter,
-      descubiertaImg: descubiertaRightCenter,
+      florecidaImg: 'nivel_2_color_right_center',
+      descubiertaImg: 'nivel_2_descubierta_right_center',
       styles: RightCenterBranch,
     },
   },
@@ -127,8 +115,8 @@ const levelConfig = {
       props: {
         width: 100,
       },
-      florecidaImg: colorRight,
-      descubiertaImg: descubiertaRight,
+      florecidaImg: 'nivel_2_color_right',
+      descubiertaImg: 'nivel_2_descubierta_right',
       styles: RightBranch,
     },
   },
@@ -178,7 +166,7 @@ export default class Level2 extends Component {
       <StyledComponent
         key={index}
         { ...tree.branch.props }
-        source={isflorecida ? tree.branch.florecidaImg : tree.branch.descubiertaImg }
+        source={{uri: isflorecida ? tree.branch.florecidaImg : tree.branch.descubiertaImg }}
         resizeMode='contain'
       >
         <Neuron

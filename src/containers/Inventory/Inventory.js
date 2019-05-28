@@ -34,7 +34,6 @@ import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
 import { TIME_FOR_INACTIVITY } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
-import leaderFrame from '../../../assets/images/frames/leaderboard_frame.png';
 
 const StyledContentBox = styled(ContentBox)`
   margin-bottom: ${Size.spaceMedium};
@@ -322,7 +321,7 @@ export default class Inventory extends Component {
         <MoiBackground>
           <Navbar />
           {loading && <Preloader />}
-          <StyledContentBox image={leaderFrame}>
+          <StyledContentBox image={'leaderboard_frame'}>
             {this.renderTabs()}
           </StyledContentBox>
 

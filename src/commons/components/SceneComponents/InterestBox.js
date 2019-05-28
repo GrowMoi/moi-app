@@ -4,7 +4,6 @@ import { ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
 import { getHeightAspectRatio } from '../../utils';
 import { Palette } from '../../styles';
-import interestBox from '../../../../assets/images/settings/box_interests.png';
 
 const width = 540;
 const height = 340;
@@ -24,7 +23,7 @@ const Background = styled(ImageBackground)`
 
 const InterestBox = ({ children, ...rest }) => (
   <Background
-    source={interestBox}
+    source={{uri: 'box_interests'}}
     resizeMode='contain'
     {...rest}
   >

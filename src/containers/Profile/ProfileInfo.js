@@ -8,6 +8,7 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
+import { isTablet } from 'react-native-device-detection';
 
 // Components
 import { ContentBox } from '../../commons/components/ContentComponents';
@@ -19,12 +20,22 @@ import Button from '../../commons/components/Buttons/Button';
 import Tabs from '../../commons/components/Tabs';
 import Profile from '../../commons/components/Profile/Profile';
 import TreeScreenShot from '../../commons/components/TreeScreenShot/TreeScreenShot';
-import treeBackgroundProfile from '../../../assets/images/background/background-profile.png';
+import { getHeightAspectRatio } from '../../commons/utils';
 
 const { width } = Dimensions.get('window');
 
+const treeBackgroundProfileWidth = 117;
+const treeBackgroundProfileHeight = 73;//original 73
+const heightBackgroundProfile = getHeightAspectRatio(treeBackgroundProfileWidth, treeBackgroundProfileHeight, width)
+
 const Container = styled(ContentBox)`
-  margin-bottom: 28;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ContentContainer = styled(View)`
+  width: ${isTablet ? '90%' : '98%'};
+  height:${isTablet ? '97%' : '100%'};
 `;
 
 const HeaderProfile = styled(View)`
@@ -33,6 +44,7 @@ const HeaderProfile = styled(View)`
   flex-direction: row;
   align-self: stretch;
   margin-bottom: 15;
+  z-index: 10;
 `;
 
 const NameContainer = styled(View)`
@@ -65,8 +77,8 @@ const TabContainer = styled(View)`
 const paddingScrollContainer = 50;
 const styles = StyleSheet.create({
   scrollContainer: {
-    alignSelf: 'stretch',
-    width: width - paddingScrollContainer,
+    alignSelf: 'center',
+    width: '100%',
   },
 });
 
@@ -83,6 +95,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
 
   return (
     <Container>
+      <ContentContainer>
       <ScrollView contentContainerStyle={styles.scrollContainer} ref={(e) => { onProfileInfoReady(e) }} >
         <HeaderProfile>
           <Profile width={40} userImageUri={profile.image}/>
@@ -108,7 +121,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
         </PersonalInfo>
 
         {profile.tree_image && (
-          <TreeScreenShot width={200} treeBackground={treeBackgroundProfile} profileImage={profile.tree_image} style={{marginVertical : 10}}/>
+          <TreeScreenShot width={width - 100} height={isTablet ? heightBackgroundProfile : heightBackgroundProfile + 40} treeBackground={'background_profile'} profileImage={profile.tree_image} style={{marginVertical : 10}}/>
         )}
 
         {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} transparent/>}
@@ -117,6 +130,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
           <Button style={{ marginTop: 20, marginBottom: 20 }} onPress={onClickSignOut && onClickSignOut} title='Cerrar mi sesión' rightIcon='md-log-out' />
         }
       </ScrollView>
+      </ContentContainer>
     </Container>
   );
 };

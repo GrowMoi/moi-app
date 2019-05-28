@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { AnimatedImage } from './AnimatedImage';
 import uuid from 'uuid/v4';
-
-import nube1L from '../../../../assets/images/nubes/nube1L.png';
-import nube2L from '../../../../assets/images/nubes/nube2L.png';
-import nube3L from '../../../../assets/images/nubes/nube3L.png';
 import { Size } from '../../styles';
 
-const nubesList = [nube1L, nube2L, nube3L];
+const nubesList = ['nube1l', 'nube2l', 'nube3l'];
 const delayStartRange = [0, 4000];
 const positionNube = [{
   position: 'left',
@@ -19,6 +15,11 @@ const positionNube = [{
 }];
 
 export class AnimatedNubes extends Component {
+
+  shouldComponentUpdate(newProps, newState) {
+    return newProps.orientation !== this.props.orientation;
+  }
+
   getRandomTopPostion = () => {
     const { deviceHeight, orientation } = this.props;
 
@@ -52,6 +53,7 @@ export class AnimatedNubes extends Component {
     );
   }
 
+
   getAnimationValues() {
     return {
       minValue: 0,
@@ -71,7 +73,7 @@ export class AnimatedNubes extends Component {
     const { orientation } = this.props;
 
     const constainerStyle = {
-      position: "relative",
+      position: "absolute",
       flex: 1,
       left: -130,
       width: this.getWidthContainerNube(),

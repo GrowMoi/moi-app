@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { ImageBackground, View, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
 import Neuron from './Neuron';
-import treeLevel1Gray from '../../../../assets/images/tree/nivel_1/nivel_1_descubierta.png';
-import treeLevel1Color from '../../../../assets/images/tree/nivel_1/nivel_1_color.png';
 import { FLORECIDA } from '../../../constants';
 import { neuron } from '../../utils';
 import { connect } from 'react-redux';
@@ -79,7 +77,7 @@ export default class Level1 extends Component {
     const contentsLearned = tree.root.learnt_contents || 0;
     const totalContents = tree.root.total_approved_contents || 0;
 
-    const treeColor = tree.root.state === FLORECIDA ? treeLevel1Color : treeLevel1Gray;
+    const treeColor = tree.root.state === FLORECIDA ? 'nivel_1_color' : 'nivel_1_descubierta';
     const neuronColor = tree.root.state === FLORECIDA && 'yellow';
     const NEURON_MIN_SIZE = 50;
     const NEURON_MAX_SIZE = 80;
@@ -98,7 +96,7 @@ export default class Level1 extends Component {
           {children}
           <TreeLevel
             width={width}
-            source={treeColor}
+            source={{uri: treeColor}}
             resizeMode='contain'
           >
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>

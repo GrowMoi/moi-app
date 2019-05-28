@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styled, { css } from 'styled-components/native';
+import { isTablet } from 'react-native-device-detection';
 import { TextBody } from '../Typography';
 import { ContentBox } from '../ContentComponents';
-import woodFrame from './../../../../assets/images/frames/wood_frame.png';
 
 const TabsContainer = styled(View)`
   padding-top: 5;
@@ -14,7 +14,7 @@ const TabsContainer = styled(View)`
 const TabLabel = styled(View)`
   ${props => props.horizontalTabs ? css`
     flex-direction: row;
-    padding-left: 22;
+    padding-left: ${isTablet ? 80 : 22};
     margin-bottom: -1;
   ` : css`
     position: absolute;
@@ -101,7 +101,7 @@ export default class VerticalTabs extends Component {
 
     return (<TabsContainer >
       {horizontalTabs && this.renderTabsLabel()}
-      <StyledContentBox image={woodFrame} horizontalTabs={horizontalTabs}>
+      <StyledContentBox image={'wood_frame'} horizontalTabs={horizontalTabs}>
         {data.length && data.map((d, i) => {
           if (d.label === currentTab) {
             return d.content

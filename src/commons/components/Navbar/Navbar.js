@@ -4,8 +4,6 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { Image, StatusBar, View } from 'react-native';
 import styled from 'styled-components/native';
-import navbarImageLandscape from '../../../../assets/images/navbar/barra_sup_landscape.png';
-import navbarImagePortrait from '../../../../assets/images/navbar/barra_superior_portrait.png';
 import { Size } from '../../styles';
 import { LANDSCAPE } from '../../../constants';
 
@@ -41,7 +39,7 @@ class Navbar extends Component {
   render() {
     const { device } = this.props;
     const { width, orientation } = device.dimensions;
-    const currentImage = orientation === LANDSCAPE ? navbarImageLandscape : navbarImagePortrait;
+    const currentImage = orientation === LANDSCAPE ? 'barra_sup_landscape' : 'barra_superior_portrait';
 
     return (
       <Bar>
@@ -49,7 +47,7 @@ class Navbar extends Component {
         <BackgroundImage
           resizeMode='stretch'
           width={width}
-          source={currentImage}
+          source={{uri: currentImage}}
         />
       </Bar>
     );

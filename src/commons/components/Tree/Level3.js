@@ -11,9 +11,6 @@ import Neuron, { NeuronContainer } from './Neuron';
 import secondLevelConfig from './neuronConfigs/level2.config';
 import thirdLevelConfig from './neuronConfigs/level3-4.config';
 
-import arbolNivel3Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel3_gris.png';
-import arbolNivel4Gris from '../../../../assets/images/tree/arbol_adulto/gris/arbol_nivel4_gris.png';
-import arbolColorNivel2 from '../../../../assets/images/tree/arbol_adulto/nivel_2/arbol_nivel2_color.png';
 
 const Container = styled(View)`
   flex: 1;
@@ -264,9 +261,9 @@ export default class Level3 extends Component {
       <Container>
         {!!tree && (
           <Levels level={depth}>
-            <TreeBase source={isLevel4 ? arbolNivel4Gris : arbolNivel3Gris} {...defaultProps} />
+            <TreeBase source={{uri: isLevel4 ? 'arbol_nivel4_gris' : 'arbol_nivel3_gris'}} {...defaultProps} />
             {floweredBranches}
-            <TreeBase source={arbolColorNivel2} {...defaultProps} />
+            <TreeBase source={{uri: 'arbol_nivel2_color'}} {...defaultProps} />
             <NeuronsLayer level={depth}>
               {neuronsLayer}
             </NeuronsLayer>

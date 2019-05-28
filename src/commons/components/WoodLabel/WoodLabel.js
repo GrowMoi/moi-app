@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 
 import { Header } from '../Typography';
-import woodBg from '../../../../assets/images/buttons/wood_texture.png';
 import BackButton from '../SceneComponents/BackButton';
 
 const Container = styled(View)`
@@ -57,102 +56,33 @@ class WoodLabel extends PureComponent {
     // this.woodContainer.bounceInDown(200);
   }
 
-  get fontSize() {
-    const { zoomScale, zoomInfo } = this.props;
-
-    switch(zoomScale) {
-      case 1:
-        return 16;
-      case 2:
-        return 14;
-      case 3:
-        return 10 + ((zoomInfo.scale -1) * 7);
-      case 4:
-        return 9 * zoomInfo.scale;
-      default:
-        return null;
-    }
-  }
-
-  get labelSize() {
-    const { zoomScale, zoomInfo } = this.props;
-
-    switch (zoomScale) {
-      case 1, 2:
-        return { fontHeight: 40, width: 200 };
-      case 3:
-        return {
-          height: 21 * zoomInfo.scale,
-          width: 80 + ((zoomInfo.scale -1) * 30),
-          paddingHorizontal: 1,
-          paddingVertical: 10 * zoomInfo.scale,
-          fontHeight: 15 * zoomInfo.scale,
-          fontPositionTop: 0,
-        };
-      case 4:
-        return {
-          height: (22 * zoomInfo.scale),
-          width: 80 + ((zoomInfo.scale -1) * 30),
-          paddingHorizontal: 1,
-          paddingVertical: 10 * zoomInfo.scale,
-          fontHeight: 15 * zoomInfo.scale,
-          fontPositionTop: 0,
-        };
-      default:
-        return  {};
-    }
-  }
-
-  get zoomScaleStyles() {
-    const { zoomScale, zoomInfo, translate } = this.props;
-
-     switch(zoomScale) {
-      case 1:
-        return {
-          transform: [{translate: [-54, -30, 1]}],
-          width: null,
-        };
-      case 2:
-        return  {
-          transform: [{translate: [-54, -38, 1]}],
-          width: null,
-        };
-      case 3:
-        return {
-          height: this.labelSize.height,
-          width: this.labelSize.width,
-          transform: [{translate: [-40 -  (15 * (zoomInfo.scale -1)), -70 - (20 * (zoomInfo.scale -1)), 1]}],
-        };
-      case 4:
-        return  {
-          height: this.labelSize.height,
-          width: this.labelSize.width,
-          transform: [{translate: [-40 -  (15 * (zoomInfo.scale -1)), -70 - (20 * (zoomInfo.scale -1)), 1]}],
-        };
-      default:
-        return null;
-    }
-  }
-
   render() {
-    const { text = '', onPress = () => null, style, zoomScale, zoomInfo } = this.props;
+    const { text = '', onPress = () => null, style } = this.props;
+
+    const fontSize = 10;
+    const boxHeight = 33;
+    const boxWidth = 80;
+    const fontHeight = 15;
+    const fontPositionTop = 0;
+    const paddingHorizontal = 1;
+    const paddingVertical = 10;
 
     return (
-      <Container ref={this.storeRef} style={{...this.zoomScaleStyles, ...style, height: this.zoomScaleStyles.heigh, width: this.zoomScaleStyles.width}}>
+      <Container ref={this.storeRef} style={{...style, height: boxHeight, width: boxWidth}}>
         <TouchableOpacity onPress={onPress}>
           <Box
-            height={this.zoomScaleStyles.height}
-            width={this.zoomScaleStyles.width}
-              source={woodBg}
+              height={boxHeight}
+              width={boxWidth}
+              source={{uri: 'wood_texture'}}
               resizeMode='contain'
-              paddingHorizontal={this.labelSize.paddingHorizontal}
-              paddingVertical={this.labelSize.paddingVertical}
+              paddingHorizontal={paddingHorizontal}
+              paddingVertical={paddingVertical}
             >
             <TextContainer>
               <TextLabel
-                customSize={this.fontSize}
+                customSize={fontSize}
                 allowFontScaling
-                style={{ height: this.labelSize.fontHeight, top: this.labelSize.fontPositionTop }}
+                style={{ height: fontHeight, top: fontPositionTop }}
                 numberOfLines={1}>{text}</TextLabel>
               {/* <BackButton reverse onPress={onPress}/> */}
             </TextContainer>
