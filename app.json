@@ -27,7 +27,7 @@
       "buildNumber": "1"
     },
     "android": {
-      "package": "com.growmoisociallearning.moiapp",
+      "package": "com.moisociallearning.moiapp",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json",
       "permissions": [

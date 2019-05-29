@@ -20,7 +20,7 @@ android {
   buildToolsVersion '26.0.1'
 
   defaultConfig {
-    applicationId 'com.growmoisociallearning.moiapp'
+    applicationId 'com.moisociallearning.moiapp'
     targetSdkVersion 25
     versionCode 1
     versionName '0.1.0'
@@ -161,12 +161,12 @@ dependencies {
   androidTestCompile 'com.azimolabs.conditionwatcher:conditionwatcher:0.2'
 
 
-  
+
   compile('host.exp.exponent:expoview:27.0.0@aar') {
     transitive = true
   }
-  
-  
+
+
 }
 
 // This has to be down here for some reason

@@ -5,11 +5,11 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <permission
-    android:name="com.growmoisociallearning.moiapp.permission.C2D_MESSAGE"
+    android:name="com.moisociallearning.moiapp.permission.C2D_MESSAGE"
     android:protectionLevel="signature"/>
 
   <!-- These are required permissions to make the app run -->
-  <uses-permission android:name="com.growmoisociallearning.moiapp.permission.C2D_MESSAGE" />
+  <uses-permission android:name="com.moisociallearning.moiapp.permission.C2D_MESSAGE" />
   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
@@ -18,22 +18,23 @@
 
   <!-- ADD PERMISSIONS HERE -->
   <!-- BEGIN OPTIONAL PERMISSIONS -->
-  <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+  <!-- <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" /> -->
   <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-  <uses-permission android:name="android.permission.VIBRATE" />
+  <!-- <uses-permission android:name="android.permission.USE_FINGERPRINT" /> -->
+  <!-- <uses-permission android:name="android.permission.VIBRATE" /> -->
   <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+  <!-- <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> -->
 
   <!-- These require runtime permissions on M -->
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+  <uses-permission tools:node="remove" android:name="android.permission.READ_SMS" />
   <uses-permission android:name="android.permission.CAMERA" />
-  <uses-permission android:name="android.permission.READ_CALENDAR" />
-  <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+  <!-- <uses-permission android:name="android.permission.READ_CALENDAR" />
+  <uses-permission android:name="android.permission.WRITE_CALENDAR" /> -->
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+  <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS" /> -->
   <!-- END OPTIONAL PERMISSIONS -->
 
   <!-- ADD TEST PERMISSIONS HERE -->
@@ -150,7 +151,7 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="com.growmoisociallearning.moiapp" android:path="oauthredirect"/>
+        <data android:scheme="com.moisociallearning.moiapp" android:path="oauthredirect"/>
       </intent-filter>
     </activity>
 
@@ -244,7 +245,7 @@
         <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
         <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
 
-        <category android:name="com.growmoisociallearning.moiapp"/>
+        <category android:name="com.moisociallearning.moiapp"/>
       </intent-filter>
     </receiver>
 
