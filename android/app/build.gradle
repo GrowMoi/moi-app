@@ -22,8 +22,8 @@ android {
   defaultConfig {
     applicationId 'com.growmoisociallearning.moiapp'
     targetSdkVersion 26
-    versionCode 1
-    versionName '0.3.1'
+    versionCode 2
+    versionName '0.3.2'
     ndk {
       abiFilters 'armeabi-v7a', 'x86'
     }
@@ -174,13 +174,13 @@ dependencies {
   testImplementation 'com.android.support.test:runner:1.0.2-alpha1'
   testImplementation 'com.android.support.test:rules:1.0.2-alpha1'
 
-  
+
   implementation('host.exp.exponent:expoview:30.0.0@aar') {
     transitive = true
     exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     exclude group: 'com.squareup.okhttp3', module: 'okhttp-urlconnection'
   }
-  
+
   /* REMOVED_WHEN_DISTRIBUTING_FROM_HERE
   implementation(project(path: ':expoview')) {
     // Excluding okhttp3 included by expo-file-system
