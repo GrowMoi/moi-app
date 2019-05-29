@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.growmoisociallearning.moiapp"
+    package="com.moisociallearning.moiapp"
     android:versionCode="1"
     android:versionName="0.3.1" >
 
@@ -9,11 +9,11 @@
         android:targetSdkVersion="26" />
 
     <permission
-        android:name="com.growmoisociallearning.moiapp.permission.C2D_MESSAGE"
+        android:name="com.moisociallearning.moiapp.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <!-- These are required permissions to make the app run -->
-    <uses-permission android:name="com.growmoisociallearning.moiapp.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.moisociallearning.moiapp.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -214,7 +214,7 @@
 
                 <data
                     android:path="oauthredirect"
-                    android:scheme="com.growmoisociallearning.moiapp" />
+                    android:scheme="com.moisociallearning.moiapp" />
             </intent-filter>
         </activity>
         <activity android:name="host.exp.exponent.oauth.OAuthResultActivity" >
@@ -306,7 +306,7 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <category android:name="com.growmoisociallearning.moiapp" />
+                <category android:name="com.moisociallearning.moiapp" />
             </intent-filter>
         </receiver>
 
@@ -387,7 +387,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.growmoisociallearning.moiapp.provider"
+            android:authorities="com.moisociallearning.moiapp.provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -457,7 +457,7 @@
 
         <provider
             android:name="com.facebook.marketing.internal.MarketingInitProvider"
-            android:authorities="com.growmoisociallearning.moiapp.MarketingInitProvider"
+            android:authorities="com.moisociallearning.moiapp.MarketingInitProvider"
             android:exported="false" />
         <!--
          The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
@@ -470,7 +470,7 @@
         -->
         <provider
             android:name="com.facebook.internal.FacebookInitProvider"
-            android:authorities="com.growmoisociallearning.moiapp.FacebookInitProvider"
+            android:authorities="com.moisociallearning.moiapp.FacebookInitProvider"
             android:exported="false" />
 
         <receiver
@@ -532,7 +532,7 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-                <category android:name="com.growmoisociallearning.moiapp" />
+                <category android:name="com.moisociallearning.moiapp" />
             </intent-filter>
         </receiver>
         <!--
@@ -554,7 +554,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.growmoisociallearning.moiapp.firebaseinitprovider"
+            android:authorities="com.moisociallearning.moiapp.firebaseinitprovider"
             android:exported="false"
             android:initOrder="100" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
@@ -575,7 +575,7 @@
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="com.growmoisociallearning.moiapp.com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="com.moisociallearning.moiapp.com.android.tools.ir.server.InstantRunContentProvider"
             android:multiprocess="true" />
     </application>
 

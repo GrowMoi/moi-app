@@ -219,14 +219,14 @@ INJECTED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/Andr
 		INJECTED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:4:3-61
-permission#com.growmoisociallearning.moiapp.permission.C2D_MESSAGE
+permission#com.moisociallearning.moiapp.permission.C2D_MESSAGE
 ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:7:3-9:42
 MERGED from [com.google.firebase:firebase-iid:16.2.0] /Users/luisgonzalez/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.2.0.aar/b4d3dd18753d5046b9a0797191ca5866/AndroidManifest.xml:28:5-30:47
 	android:protectionLevel
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:9:5-40
 	android:name
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:8:5-75
-uses-permission#com.growmoisociallearning.moiapp.permission.C2D_MESSAGE
+uses-permission#com.moisociallearning.moiapp.permission.C2D_MESSAGE
 ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:12:3-93
 MERGED from [com.google.firebase:firebase-iid:16.2.0] /Users/luisgonzalez/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.2.0.aar/b4d3dd18753d5046b9a0797191ca5866/AndroidManifest.xml:32:5-79
 	android:name
@@ -810,7 +810,7 @@ REJECTED from [net.openid:appauth:0.4.1] /Users/luisgonzalez/.gradle/caches/tran
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:152:9-29
 	android:name
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:151:9-70
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:path:oauthredirect+data:scheme:com.growmoisociallearning.moiapp
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:path:oauthredirect+data:scheme:com.moisociallearning.moiapp
 ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:153:7-158:23
 activity#host.exp.exponent.oauth.OAuthResultActivity
 ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:161:5-163:16
@@ -925,7 +925,7 @@ ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/Android
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:246:7-67
 	android:name
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:244:7-60
-intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+action:name:com.google.android.c2dm.intent.REGISTRATION+category:name:com.growmoisociallearning.moiapp
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+action:name:com.google.android.c2dm.intent.REGISTRATION+category:name:com.moisociallearning.moiapp
 ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:247:7-252:23
 action#com.google.android.c2dm.intent.RECEIVE
 ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:248:9-72
@@ -935,7 +935,7 @@ action#com.google.android.c2dm.intent.REGISTRATION
 ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:249:9-77
 	android:name
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:249:17-75
-category#com.growmoisociallearning.moiapp
+category#com.moisociallearning.moiapp
 ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:251:9-68
 	android:name
 		ADDED from /Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/AndroidManifest.xml:251:19-66
@@ -1771,7 +1771,7 @@ ADDED from [com.google.firebase:firebase-iid:16.2.0] /Users/luisgonzalez/.gradle
 		ADDED from [com.google.firebase:firebase-iid:16.2.0] /Users/luisgonzalez/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.2.0.aar/b4d3dd18753d5046b9a0797191ca5866/AndroidManifest.xml:42:13-78
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:${applicationId}
 ADDED from [com.google.firebase:firebase-iid:16.2.0] /Users/luisgonzalez/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.2.0.aar/b4d3dd18753d5046b9a0797191ca5866/AndroidManifest.xml:45:13-49:29
-intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:com.growmoisociallearning.moiapp
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:com.moisociallearning.moiapp
 ADDED from [com.google.firebase:firebase-iid:16.2.0] /Users/luisgonzalez/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.2.0.aar/b4d3dd18753d5046b9a0797191ca5866/AndroidManifest.xml:45:13-49:29
 category#${applicationId}
 ADDED from [com.google.firebase:firebase-iid:16.2.0] /Users/luisgonzalez/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.2.0.aar/b4d3dd18753d5046b9a0797191ca5866/AndroidManifest.xml:48:17-61

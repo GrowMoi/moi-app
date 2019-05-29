@@ -6490,35 +6490,35 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #ActionBar_background com.growmoisociallearning.moiapp:background}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_backgroundSplit com.growmoisociallearning.moiapp:backgroundSplit}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_backgroundStacked com.growmoisociallearning.moiapp:backgroundStacked}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_contentInsetEnd com.growmoisociallearning.moiapp:contentInsetEnd}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_contentInsetEndWithActions com.growmoisociallearning.moiapp:contentInsetEndWithActions}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_contentInsetLeft com.growmoisociallearning.moiapp:contentInsetLeft}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_contentInsetRight com.growmoisociallearning.moiapp:contentInsetRight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_contentInsetStart com.growmoisociallearning.moiapp:contentInsetStart}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_contentInsetStartWithNavigation com.growmoisociallearning.moiapp:contentInsetStartWithNavigation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_customNavigationLayout com.growmoisociallearning.moiapp:customNavigationLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_displayOptions com.growmoisociallearning.moiapp:displayOptions}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_divider com.growmoisociallearning.moiapp:divider}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_elevation com.growmoisociallearning.moiapp:elevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_height com.growmoisociallearning.moiapp:height}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_hideOnContentScroll com.growmoisociallearning.moiapp:hideOnContentScroll}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_homeAsUpIndicator com.growmoisociallearning.moiapp:homeAsUpIndicator}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_homeLayout com.growmoisociallearning.moiapp:homeLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_icon com.growmoisociallearning.moiapp:icon}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_indeterminateProgressStyle com.growmoisociallearning.moiapp:indeterminateProgressStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_itemPadding com.growmoisociallearning.moiapp:itemPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_logo com.growmoisociallearning.moiapp:logo}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_navigationMode com.growmoisociallearning.moiapp:navigationMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_popupTheme com.growmoisociallearning.moiapp:popupTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_progressBarPadding com.growmoisociallearning.moiapp:progressBarPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_progressBarStyle com.growmoisociallearning.moiapp:progressBarStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_subtitle com.growmoisociallearning.moiapp:subtitle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_subtitleTextStyle com.growmoisociallearning.moiapp:subtitleTextStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_title com.growmoisociallearning.moiapp:title}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionBar_titleTextStyle com.growmoisociallearning.moiapp:titleTextStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_background com.moisociallearning.moiapp:background}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_backgroundSplit com.moisociallearning.moiapp:backgroundSplit}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_backgroundStacked com.moisociallearning.moiapp:backgroundStacked}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_contentInsetEnd com.moisociallearning.moiapp:contentInsetEnd}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_contentInsetEndWithActions com.moisociallearning.moiapp:contentInsetEndWithActions}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_contentInsetLeft com.moisociallearning.moiapp:contentInsetLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_contentInsetRight com.moisociallearning.moiapp:contentInsetRight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_contentInsetStart com.moisociallearning.moiapp:contentInsetStart}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_contentInsetStartWithNavigation com.moisociallearning.moiapp:contentInsetStartWithNavigation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_customNavigationLayout com.moisociallearning.moiapp:customNavigationLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_displayOptions com.moisociallearning.moiapp:displayOptions}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_divider com.moisociallearning.moiapp:divider}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_elevation com.moisociallearning.moiapp:elevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_height com.moisociallearning.moiapp:height}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_hideOnContentScroll com.moisociallearning.moiapp:hideOnContentScroll}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_homeAsUpIndicator com.moisociallearning.moiapp:homeAsUpIndicator}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_homeLayout com.moisociallearning.moiapp:homeLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_icon com.moisociallearning.moiapp:icon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_indeterminateProgressStyle com.moisociallearning.moiapp:indeterminateProgressStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_itemPadding com.moisociallearning.moiapp:itemPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_logo com.moisociallearning.moiapp:logo}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_navigationMode com.moisociallearning.moiapp:navigationMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_popupTheme com.moisociallearning.moiapp:popupTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_progressBarPadding com.moisociallearning.moiapp:progressBarPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_progressBarStyle com.moisociallearning.moiapp:progressBarStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_subtitle com.moisociallearning.moiapp:subtitle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_subtitleTextStyle com.moisociallearning.moiapp:subtitleTextStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_title com.moisociallearning.moiapp:title}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionBar_titleTextStyle com.moisociallearning.moiapp:titleTextStyle}</code></td><td></td></tr>
      * </table>
      * @see #ActionBar_background
      * @see #ActionBar_backgroundSplit
@@ -6551,17 +6551,17 @@ public final class R {
      * @see #ActionBar_titleTextStyle
      */
     public static final int[] ActionBar={
-        0x7f04003e, 0x7f040040, 0x7f040041, 0x7f040096, 
-        0x7f040097, 0x7f040098, 0x7f040099, 0x7f04009a, 
-        0x7f04009b, 0x7f0400ca, 0x7f0400d1, 0x7f0400d2, 
-        0x7f0400dd, 0x7f040107, 0x7f040109, 0x7f040110, 
-        0x7f040111, 0x7f040112, 0x7f04011d, 0x7f040124, 
-        0x7f040144, 0x7f040161, 0x7f040177, 0x7f04017f, 
-        0x7f040180, 0x7f0401be, 0x7f0401c1, 0x7f0401f0, 
+        0x7f04003e, 0x7f040040, 0x7f040041, 0x7f040096,
+        0x7f040097, 0x7f040098, 0x7f040099, 0x7f04009a,
+        0x7f04009b, 0x7f0400ca, 0x7f0400d1, 0x7f0400d2,
+        0x7f0400dd, 0x7f040107, 0x7f040109, 0x7f040110,
+        0x7f040111, 0x7f040112, 0x7f04011d, 0x7f040124,
+        0x7f040144, 0x7f040161, 0x7f040177, 0x7f04017f,
+        0x7f040180, 0x7f0401be, 0x7f0401c1, 0x7f0401f0,
         0x7f0401fa
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#background}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#background}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6569,11 +6569,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:background
+     * @attr name com.moisociallearning.moiapp:background
      */
     public static final int ActionBar_background=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#backgroundSplit}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#backgroundSplit}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6584,11 +6584,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:backgroundSplit
+     * @attr name com.moisociallearning.moiapp:backgroundSplit
      */
     public static final int ActionBar_backgroundSplit=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#backgroundStacked}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#backgroundStacked}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6599,11 +6599,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:backgroundStacked
+     * @attr name com.moisociallearning.moiapp:backgroundStacked
      */
     public static final int ActionBar_backgroundStacked=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetEnd}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetEnd}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6612,11 +6612,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetEnd
+     * @attr name com.moisociallearning.moiapp:contentInsetEnd
      */
     public static final int ActionBar_contentInsetEnd=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetEndWithActions}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetEndWithActions}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6625,11 +6625,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetEndWithActions
+     * @attr name com.moisociallearning.moiapp:contentInsetEndWithActions
      */
     public static final int ActionBar_contentInsetEndWithActions=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetLeft}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetLeft}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6638,11 +6638,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetLeft
+     * @attr name com.moisociallearning.moiapp:contentInsetLeft
      */
     public static final int ActionBar_contentInsetLeft=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetRight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetRight}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6651,11 +6651,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetRight
+     * @attr name com.moisociallearning.moiapp:contentInsetRight
      */
     public static final int ActionBar_contentInsetRight=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetStart}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetStart}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6664,11 +6664,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetStart
+     * @attr name com.moisociallearning.moiapp:contentInsetStart
      */
     public static final int ActionBar_contentInsetStart=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetStartWithNavigation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetStartWithNavigation}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6677,11 +6677,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetStartWithNavigation
+     * @attr name com.moisociallearning.moiapp:contentInsetStartWithNavigation
      */
     public static final int ActionBar_contentInsetStartWithNavigation=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#customNavigationLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#customNavigationLayout}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6689,11 +6689,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:customNavigationLayout
+     * @attr name com.moisociallearning.moiapp:customNavigationLayout
      */
     public static final int ActionBar_customNavigationLayout=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#displayOptions}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#displayOptions}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -6711,11 +6711,11 @@ public final class R {
      * <tr><td>useLogo</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:displayOptions
+     * @attr name com.moisociallearning.moiapp:displayOptions
      */
     public static final int ActionBar_displayOptions=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#divider}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#divider}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6723,11 +6723,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:divider
+     * @attr name com.moisociallearning.moiapp:divider
      */
     public static final int ActionBar_divider=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#elevation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#elevation}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6736,11 +6736,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:elevation
+     * @attr name com.moisociallearning.moiapp:elevation
      */
     public static final int ActionBar_elevation=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#height}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#height}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6749,21 +6749,21 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:height
+     * @attr name com.moisociallearning.moiapp:height
      */
     public static final int ActionBar_height=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#hideOnContentScroll}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#hideOnContentScroll}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:hideOnContentScroll
+     * @attr name com.moisociallearning.moiapp:hideOnContentScroll
      */
     public static final int ActionBar_hideOnContentScroll=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#homeAsUpIndicator}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#homeAsUpIndicator}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6771,11 +6771,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:homeAsUpIndicator
+     * @attr name com.moisociallearning.moiapp:homeAsUpIndicator
      */
     public static final int ActionBar_homeAsUpIndicator=15;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#homeLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#homeLayout}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6783,11 +6783,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:homeLayout
+     * @attr name com.moisociallearning.moiapp:homeLayout
      */
     public static final int ActionBar_homeLayout=16;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#icon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#icon}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6795,11 +6795,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:icon
+     * @attr name com.moisociallearning.moiapp:icon
      */
     public static final int ActionBar_icon=17;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#indeterminateProgressStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#indeterminateProgressStyle}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6807,11 +6807,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:indeterminateProgressStyle
+     * @attr name com.moisociallearning.moiapp:indeterminateProgressStyle
      */
     public static final int ActionBar_indeterminateProgressStyle=18;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#itemPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#itemPadding}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6820,11 +6820,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:itemPadding
+     * @attr name com.moisociallearning.moiapp:itemPadding
      */
     public static final int ActionBar_itemPadding=19;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#logo}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#logo}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6832,11 +6832,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:logo
+     * @attr name com.moisociallearning.moiapp:logo
      */
     public static final int ActionBar_logo=20;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#navigationMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#navigationMode}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -6850,11 +6850,11 @@ public final class R {
      * <tr><td>tabMode</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:navigationMode
+     * @attr name com.moisociallearning.moiapp:navigationMode
      */
     public static final int ActionBar_navigationMode=21;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#popupTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#popupTheme}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6862,11 +6862,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:popupTheme
+     * @attr name com.moisociallearning.moiapp:popupTheme
      */
     public static final int ActionBar_popupTheme=22;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#progressBarPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#progressBarPadding}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -6875,11 +6875,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:progressBarPadding
+     * @attr name com.moisociallearning.moiapp:progressBarPadding
      */
     public static final int ActionBar_progressBarPadding=23;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#progressBarStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#progressBarStyle}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6887,21 +6887,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:progressBarStyle
+     * @attr name com.moisociallearning.moiapp:progressBarStyle
      */
     public static final int ActionBar_progressBarStyle=24;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#subtitle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#subtitle}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:subtitle
+     * @attr name com.moisociallearning.moiapp:subtitle
      */
     public static final int ActionBar_subtitle=25;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#subtitleTextStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#subtitleTextStyle}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6909,21 +6909,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:subtitleTextStyle
+     * @attr name com.moisociallearning.moiapp:subtitleTextStyle
      */
     public static final int ActionBar_subtitleTextStyle=26;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#title}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#title}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:title
+     * @attr name com.moisociallearning.moiapp:title
      */
     public static final int ActionBar_title=27;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleTextStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleTextStyle}
      * attribute's value can be found in the {@link #ActionBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -6931,7 +6931,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:titleTextStyle
+     * @attr name com.moisociallearning.moiapp:titleTextStyle
      */
     public static final int ActionBar_titleTextStyle=28;
     /**
@@ -7013,12 +7013,12 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #ActionMode_background com.growmoisociallearning.moiapp:background}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionMode_backgroundSplit com.growmoisociallearning.moiapp:backgroundSplit}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionMode_closeItemLayout com.growmoisociallearning.moiapp:closeItemLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionMode_height com.growmoisociallearning.moiapp:height}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionMode_subtitleTextStyle com.growmoisociallearning.moiapp:subtitleTextStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActionMode_titleTextStyle com.growmoisociallearning.moiapp:titleTextStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionMode_background com.moisociallearning.moiapp:background}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionMode_backgroundSplit com.moisociallearning.moiapp:backgroundSplit}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionMode_closeItemLayout com.moisociallearning.moiapp:closeItemLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionMode_height com.moisociallearning.moiapp:height}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionMode_subtitleTextStyle com.moisociallearning.moiapp:subtitleTextStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActionMode_titleTextStyle com.moisociallearning.moiapp:titleTextStyle}</code></td><td></td></tr>
      * </table>
      * @see #ActionMode_background
      * @see #ActionMode_backgroundSplit
@@ -7028,11 +7028,11 @@ public final class R {
      * @see #ActionMode_titleTextStyle
      */
     public static final int[] ActionMode={
-        0x7f04003e, 0x7f040040, 0x7f040077, 0x7f040107, 
+        0x7f04003e, 0x7f040040, 0x7f040077, 0x7f040107,
         0x7f0401c1, 0x7f0401fa
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#background}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#background}
      * attribute's value can be found in the {@link #ActionMode} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7040,11 +7040,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:background
+     * @attr name com.moisociallearning.moiapp:background
      */
     public static final int ActionMode_background=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#backgroundSplit}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#backgroundSplit}
      * attribute's value can be found in the {@link #ActionMode} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7055,11 +7055,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:backgroundSplit
+     * @attr name com.moisociallearning.moiapp:backgroundSplit
      */
     public static final int ActionMode_backgroundSplit=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#closeItemLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#closeItemLayout}
      * attribute's value can be found in the {@link #ActionMode} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7067,11 +7067,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:closeItemLayout
+     * @attr name com.moisociallearning.moiapp:closeItemLayout
      */
     public static final int ActionMode_closeItemLayout=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#height}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#height}
      * attribute's value can be found in the {@link #ActionMode} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -7080,11 +7080,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:height
+     * @attr name com.moisociallearning.moiapp:height
      */
     public static final int ActionMode_height=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#subtitleTextStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#subtitleTextStyle}
      * attribute's value can be found in the {@link #ActionMode} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7092,11 +7092,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:subtitleTextStyle
+     * @attr name com.moisociallearning.moiapp:subtitleTextStyle
      */
     public static final int ActionMode_subtitleTextStyle=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleTextStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleTextStyle}
      * attribute's value can be found in the {@link #ActionMode} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7104,7 +7104,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:titleTextStyle
+     * @attr name com.moisociallearning.moiapp:titleTextStyle
      */
     public static final int ActionMode_titleTextStyle=5;
     /**
@@ -7114,8 +7114,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #ActivityChooserView_expandActivityOverflowButtonDrawable com.growmoisociallearning.moiapp:expandActivityOverflowButtonDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ActivityChooserView_initialActivityCount com.growmoisociallearning.moiapp:initialActivityCount}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActivityChooserView_expandActivityOverflowButtonDrawable com.moisociallearning.moiapp:expandActivityOverflowButtonDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ActivityChooserView_initialActivityCount com.moisociallearning.moiapp:initialActivityCount}</code></td><td></td></tr>
      * </table>
      * @see #ActivityChooserView_expandActivityOverflowButtonDrawable
      * @see #ActivityChooserView_initialActivityCount
@@ -7124,7 +7124,7 @@ public final class R {
         0x7f0400e1, 0x7f04011e
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expandActivityOverflowButtonDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expandActivityOverflowButtonDrawable}
      * attribute's value can be found in the {@link #ActivityChooserView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7132,17 +7132,17 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:expandActivityOverflowButtonDrawable
+     * @attr name com.moisociallearning.moiapp:expandActivityOverflowButtonDrawable
      */
     public static final int ActivityChooserView_expandActivityOverflowButtonDrawable=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#initialActivityCount}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#initialActivityCount}
      * attribute's value can be found in the {@link #ActivityChooserView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:initialActivityCount
+     * @attr name com.moisociallearning.moiapp:initialActivityCount
      */
     public static final int ActivityChooserView_initialActivityCount=1;
     /**
@@ -7152,9 +7152,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #AdsAttrs_adSize com.growmoisociallearning.moiapp:adSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AdsAttrs_adSizes com.growmoisociallearning.moiapp:adSizes}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AdsAttrs_adUnitId com.growmoisociallearning.moiapp:adUnitId}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AdsAttrs_adSize com.moisociallearning.moiapp:adSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AdsAttrs_adSizes com.moisociallearning.moiapp:adSizes}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AdsAttrs_adUnitId com.moisociallearning.moiapp:adUnitId}</code></td><td></td></tr>
      * </table>
      * @see #AdsAttrs_adSize
      * @see #AdsAttrs_adSizes
@@ -7164,33 +7164,33 @@ public final class R {
         0x7f040024, 0x7f040025, 0x7f040026
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#adSize}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#adSize}
      * attribute's value can be found in the {@link #AdsAttrs} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:adSize
+     * @attr name com.moisociallearning.moiapp:adSize
      */
     public static final int AdsAttrs_adSize=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#adSizes}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#adSizes}
      * attribute's value can be found in the {@link #AdsAttrs} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:adSizes
+     * @attr name com.moisociallearning.moiapp:adSizes
      */
     public static final int AdsAttrs_adSizes=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#adUnitId}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#adUnitId}
      * attribute's value can be found in the {@link #AdsAttrs} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:adUnitId
+     * @attr name com.moisociallearning.moiapp:adUnitId
      */
     public static final int AdsAttrs_adUnitId=2;
     /**
@@ -7201,13 +7201,13 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #AlertDialog_android_layout android:layout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AlertDialog_buttonIconDimen com.growmoisociallearning.moiapp:buttonIconDimen}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AlertDialog_buttonPanelSideLayout com.growmoisociallearning.moiapp:buttonPanelSideLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AlertDialog_listItemLayout com.growmoisociallearning.moiapp:listItemLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AlertDialog_listLayout com.growmoisociallearning.moiapp:listLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AlertDialog_multiChoiceItemLayout com.growmoisociallearning.moiapp:multiChoiceItemLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AlertDialog_showTitle com.growmoisociallearning.moiapp:showTitle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AlertDialog_singleChoiceItemLayout com.growmoisociallearning.moiapp:singleChoiceItemLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AlertDialog_buttonIconDimen com.moisociallearning.moiapp:buttonIconDimen}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AlertDialog_buttonPanelSideLayout com.moisociallearning.moiapp:buttonPanelSideLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AlertDialog_listItemLayout com.moisociallearning.moiapp:listItemLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AlertDialog_listLayout com.moisociallearning.moiapp:listLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AlertDialog_multiChoiceItemLayout com.moisociallearning.moiapp:multiChoiceItemLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AlertDialog_showTitle com.moisociallearning.moiapp:showTitle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AlertDialog_singleChoiceItemLayout com.moisociallearning.moiapp:singleChoiceItemLayout}</code></td><td></td></tr>
      * </table>
      * @see #AlertDialog_android_layout
      * @see #AlertDialog_buttonIconDimen
@@ -7219,7 +7219,7 @@ public final class R {
      * @see #AlertDialog_singleChoiceItemLayout
      */
     public static final int[] AlertDialog={
-        0x010100f2, 0x7f040056, 0x7f040057, 0x7f04013a, 
+        0x010100f2, 0x7f040056, 0x7f040057, 0x7f04013a,
         0x7f04013b, 0x7f04015e, 0x7f0401ab, 0x7f0401af
       };
     /**
@@ -7235,7 +7235,7 @@ public final class R {
      */
     public static final int AlertDialog_android_layout=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonIconDimen}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonIconDimen}
      * attribute's value can be found in the {@link #AlertDialog} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -7244,11 +7244,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonIconDimen
+     * @attr name com.moisociallearning.moiapp:buttonIconDimen
      */
     public static final int AlertDialog_buttonIconDimen=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonPanelSideLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonPanelSideLayout}
      * attribute's value can be found in the {@link #AlertDialog} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7256,11 +7256,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonPanelSideLayout
+     * @attr name com.moisociallearning.moiapp:buttonPanelSideLayout
      */
     public static final int AlertDialog_buttonPanelSideLayout=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listItemLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listItemLayout}
      * attribute's value can be found in the {@link #AlertDialog} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7268,11 +7268,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:listItemLayout
+     * @attr name com.moisociallearning.moiapp:listItemLayout
      */
     public static final int AlertDialog_listItemLayout=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listLayout}
      * attribute's value can be found in the {@link #AlertDialog} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7280,11 +7280,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:listLayout
+     * @attr name com.moisociallearning.moiapp:listLayout
      */
     public static final int AlertDialog_listLayout=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#multiChoiceItemLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#multiChoiceItemLayout}
      * attribute's value can be found in the {@link #AlertDialog} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7292,21 +7292,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:multiChoiceItemLayout
+     * @attr name com.moisociallearning.moiapp:multiChoiceItemLayout
      */
     public static final int AlertDialog_multiChoiceItemLayout=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#showTitle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#showTitle}
      * attribute's value can be found in the {@link #AlertDialog} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:showTitle
+     * @attr name com.moisociallearning.moiapp:showTitle
      */
     public static final int AlertDialog_showTitle=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#singleChoiceItemLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#singleChoiceItemLayout}
      * attribute's value can be found in the {@link #AlertDialog} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7314,7 +7314,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:singleChoiceItemLayout
+     * @attr name com.moisociallearning.moiapp:singleChoiceItemLayout
      */
     public static final int AlertDialog_singleChoiceItemLayout=7;
     /**
@@ -7327,8 +7327,8 @@ public final class R {
      * <tr><td><code>{@link #AppBarLayout_android_background android:background}</code></td><td></td></tr>
      * <tr><td><code>{@link #AppBarLayout_android_touchscreenBlocksFocus android:touchscreenBlocksFocus}</code></td><td></td></tr>
      * <tr><td><code>{@link #AppBarLayout_android_keyboardNavigationCluster android:keyboardNavigationCluster}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppBarLayout_elevation com.growmoisociallearning.moiapp:elevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppBarLayout_expanded com.growmoisociallearning.moiapp:expanded}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppBarLayout_elevation com.moisociallearning.moiapp:elevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppBarLayout_expanded com.moisociallearning.moiapp:expanded}</code></td><td></td></tr>
      * </table>
      * @see #AppBarLayout_android_background
      * @see #AppBarLayout_android_touchscreenBlocksFocus
@@ -7337,7 +7337,7 @@ public final class R {
      * @see #AppBarLayout_expanded
      */
     public static final int[] AppBarLayout={
-        0x010100d4, 0x0101048f, 0x01010540, 0x7f0400dd, 
+        0x010100d4, 0x0101048f, 0x01010540, 0x7f0400dd,
         0x7f0400e2
       };
     /**
@@ -7376,7 +7376,7 @@ public final class R {
      */
     public static final int AppBarLayout_android_keyboardNavigationCluster=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#elevation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#elevation}
      * attribute's value can be found in the {@link #AppBarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -7385,17 +7385,17 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:elevation
+     * @attr name com.moisociallearning.moiapp:elevation
      */
     public static final int AppBarLayout_elevation=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expanded}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expanded}
      * attribute's value can be found in the {@link #AppBarLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:expanded
+     * @attr name com.moisociallearning.moiapp:expanded
      */
     public static final int AppBarLayout_expanded=4;
     /**
@@ -7405,8 +7405,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #AppBarLayoutStates_state_collapsed com.growmoisociallearning.moiapp:state_collapsed}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppBarLayoutStates_state_collapsible com.growmoisociallearning.moiapp:state_collapsible}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppBarLayoutStates_state_collapsed com.moisociallearning.moiapp:state_collapsed}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppBarLayoutStates_state_collapsible com.moisociallearning.moiapp:state_collapsible}</code></td><td></td></tr>
      * </table>
      * @see #AppBarLayoutStates_state_collapsed
      * @see #AppBarLayoutStates_state_collapsible
@@ -7415,23 +7415,23 @@ public final class R {
         0x7f0401b8, 0x7f0401b9
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#state_collapsed}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#state_collapsed}
      * attribute's value can be found in the {@link #AppBarLayoutStates} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:state_collapsed
+     * @attr name com.moisociallearning.moiapp:state_collapsed
      */
     public static final int AppBarLayoutStates_state_collapsed=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#state_collapsible}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#state_collapsible}
      * attribute's value can be found in the {@link #AppBarLayoutStates} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:state_collapsible
+     * @attr name com.moisociallearning.moiapp:state_collapsible
      */
     public static final int AppBarLayoutStates_state_collapsible=1;
     /**
@@ -7441,8 +7441,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #AppBarLayout_Layout_layout_scrollFlags com.growmoisociallearning.moiapp:layout_scrollFlags}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppBarLayout_Layout_layout_scrollInterpolator com.growmoisociallearning.moiapp:layout_scrollInterpolator}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppBarLayout_Layout_layout_scrollFlags com.moisociallearning.moiapp:layout_scrollFlags}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppBarLayout_Layout_layout_scrollInterpolator com.moisociallearning.moiapp:layout_scrollInterpolator}</code></td><td></td></tr>
      * </table>
      * @see #AppBarLayout_Layout_layout_scrollFlags
      * @see #AppBarLayout_Layout_layout_scrollInterpolator
@@ -7451,7 +7451,7 @@ public final class R {
         0x7f040136, 0x7f040137
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_scrollFlags}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_scrollFlags}
      * attribute's value can be found in the {@link #AppBarLayout_Layout} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -7467,11 +7467,11 @@ public final class R {
      * <tr><td>snap</td><td>10</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_scrollFlags
+     * @attr name com.moisociallearning.moiapp:layout_scrollFlags
      */
     public static final int AppBarLayout_Layout_layout_scrollFlags=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_scrollInterpolator}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_scrollInterpolator}
      * attribute's value can be found in the {@link #AppBarLayout_Layout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7479,7 +7479,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_scrollInterpolator
+     * @attr name com.moisociallearning.moiapp:layout_scrollInterpolator
      */
     public static final int AppBarLayout_Layout_layout_scrollInterpolator=1;
     /**
@@ -7490,9 +7490,9 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #AppCompatImageView_android_src android:src}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatImageView_srcCompat com.growmoisociallearning.moiapp:srcCompat}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatImageView_tint com.growmoisociallearning.moiapp:tint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatImageView_tintMode com.growmoisociallearning.moiapp:tintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatImageView_srcCompat com.moisociallearning.moiapp:srcCompat}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatImageView_tint com.moisociallearning.moiapp:tint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatImageView_tintMode com.moisociallearning.moiapp:tintMode}</code></td><td></td></tr>
      * </table>
      * @see #AppCompatImageView_android_src
      * @see #AppCompatImageView_srcCompat
@@ -7518,7 +7518,7 @@ public final class R {
      */
     public static final int AppCompatImageView_android_src=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#srcCompat}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#srcCompat}
      * attribute's value can be found in the {@link #AppCompatImageView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7526,22 +7526,22 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:srcCompat
+     * @attr name com.moisociallearning.moiapp:srcCompat
      */
     public static final int AppCompatImageView_srcCompat=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tint}
      * attribute's value can be found in the {@link #AppCompatImageView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tint
+     * @attr name com.moisociallearning.moiapp:tint
      */
     public static final int AppCompatImageView_tint=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tintMode}
      * attribute's value can be found in the {@link #AppCompatImageView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -7558,7 +7558,7 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:tintMode
+     * @attr name com.moisociallearning.moiapp:tintMode
      */
     public static final int AppCompatImageView_tintMode=3;
     /**
@@ -7569,9 +7569,9 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #AppCompatSeekBar_android_thumb android:thumb}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatSeekBar_tickMark com.growmoisociallearning.moiapp:tickMark}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatSeekBar_tickMarkTint com.growmoisociallearning.moiapp:tickMarkTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatSeekBar_tickMarkTintMode com.growmoisociallearning.moiapp:tickMarkTintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatSeekBar_tickMark com.moisociallearning.moiapp:tickMark}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatSeekBar_tickMarkTint com.moisociallearning.moiapp:tickMarkTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatSeekBar_tickMarkTintMode com.moisociallearning.moiapp:tickMarkTintMode}</code></td><td></td></tr>
      * </table>
      * @see #AppCompatSeekBar_android_thumb
      * @see #AppCompatSeekBar_tickMark
@@ -7594,7 +7594,7 @@ public final class R {
      */
     public static final int AppCompatSeekBar_android_thumb=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tickMark}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tickMark}
      * attribute's value can be found in the {@link #AppCompatSeekBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7602,22 +7602,22 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tickMark
+     * @attr name com.moisociallearning.moiapp:tickMark
      */
     public static final int AppCompatSeekBar_tickMark=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tickMarkTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tickMarkTint}
      * attribute's value can be found in the {@link #AppCompatSeekBar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tickMarkTint
+     * @attr name com.moisociallearning.moiapp:tickMarkTint
      */
     public static final int AppCompatSeekBar_tickMarkTint=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tickMarkTintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tickMarkTintMode}
      * attribute's value can be found in the {@link #AppCompatSeekBar} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -7634,7 +7634,7 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:tickMarkTintMode
+     * @attr name com.moisociallearning.moiapp:tickMarkTintMode
      */
     public static final int AppCompatSeekBar_tickMarkTintMode=3;
     /**
@@ -7661,7 +7661,7 @@ public final class R {
      * @see #AppCompatTextHelper_android_drawableEnd
      */
     public static final int[] AppCompatTextHelper={
-        0x01010034, 0x0101016d, 0x0101016e, 0x0101016f, 
+        0x01010034, 0x0101016d, 0x0101016e, 0x0101016f,
         0x01010170, 0x01010392, 0x01010393
       };
     /**
@@ -7774,13 +7774,13 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #AppCompatTextView_android_textAppearance android:textAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTextView_autoSizeMaxTextSize com.growmoisociallearning.moiapp:autoSizeMaxTextSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTextView_autoSizeMinTextSize com.growmoisociallearning.moiapp:autoSizeMinTextSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTextView_autoSizePresetSizes com.growmoisociallearning.moiapp:autoSizePresetSizes}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTextView_autoSizeStepGranularity com.growmoisociallearning.moiapp:autoSizeStepGranularity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTextView_autoSizeTextType com.growmoisociallearning.moiapp:autoSizeTextType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTextView_fontFamily com.growmoisociallearning.moiapp:fontFamily}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTextView_textAllCaps com.growmoisociallearning.moiapp:textAllCaps}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTextView_autoSizeMaxTextSize com.moisociallearning.moiapp:autoSizeMaxTextSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTextView_autoSizeMinTextSize com.moisociallearning.moiapp:autoSizeMinTextSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTextView_autoSizePresetSizes com.moisociallearning.moiapp:autoSizePresetSizes}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTextView_autoSizeStepGranularity com.moisociallearning.moiapp:autoSizeStepGranularity}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTextView_autoSizeTextType com.moisociallearning.moiapp:autoSizeTextType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTextView_fontFamily com.moisociallearning.moiapp:fontFamily}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTextView_textAllCaps com.moisociallearning.moiapp:textAllCaps}</code></td><td></td></tr>
      * </table>
      * @see #AppCompatTextView_android_textAppearance
      * @see #AppCompatTextView_autoSizeMaxTextSize
@@ -7792,7 +7792,7 @@ public final class R {
      * @see #AppCompatTextView_textAllCaps
      */
     public static final int[] AppCompatTextView={
-        0x01010034, 0x7f040038, 0x7f040039, 0x7f04003a, 
+        0x01010034, 0x7f040038, 0x7f040039, 0x7f04003a,
         0x7f04003b, 0x7f04003c, 0x7f0400f8, 0x7f0401d8
       };
     /**
@@ -7808,7 +7808,7 @@ public final class R {
      */
     public static final int AppCompatTextView_android_textAppearance=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#autoSizeMaxTextSize}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#autoSizeMaxTextSize}
      * attribute's value can be found in the {@link #AppCompatTextView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -7817,11 +7817,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:autoSizeMaxTextSize
+     * @attr name com.moisociallearning.moiapp:autoSizeMaxTextSize
      */
     public static final int AppCompatTextView_autoSizeMaxTextSize=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#autoSizeMinTextSize}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#autoSizeMinTextSize}
      * attribute's value can be found in the {@link #AppCompatTextView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -7830,11 +7830,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:autoSizeMinTextSize
+     * @attr name com.moisociallearning.moiapp:autoSizeMinTextSize
      */
     public static final int AppCompatTextView_autoSizeMinTextSize=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#autoSizePresetSizes}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#autoSizePresetSizes}
      * attribute's value can be found in the {@link #AppCompatTextView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7842,11 +7842,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:autoSizePresetSizes
+     * @attr name com.moisociallearning.moiapp:autoSizePresetSizes
      */
     public static final int AppCompatTextView_autoSizePresetSizes=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#autoSizeStepGranularity}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#autoSizeStepGranularity}
      * attribute's value can be found in the {@link #AppCompatTextView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -7855,11 +7855,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:autoSizeStepGranularity
+     * @attr name com.moisociallearning.moiapp:autoSizeStepGranularity
      */
     public static final int AppCompatTextView_autoSizeStepGranularity=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#autoSizeTextType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#autoSizeTextType}
      * attribute's value can be found in the {@link #AppCompatTextView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -7872,21 +7872,21 @@ public final class R {
      * <tr><td>uniform</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:autoSizeTextType
+     * @attr name com.moisociallearning.moiapp:autoSizeTextType
      */
     public static final int AppCompatTextView_autoSizeTextType=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontFamily}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontFamily}
      * attribute's value can be found in the {@link #AppCompatTextView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:fontFamily
+     * @attr name com.moisociallearning.moiapp:fontFamily
      */
     public static final int AppCompatTextView_fontFamily=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAllCaps}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAllCaps}
      * attribute's value can be found in the {@link #AppCompatTextView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -7896,7 +7896,7 @@ public final class R {
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAllCaps
+     * @attr name com.moisociallearning.moiapp:textAllCaps
      */
     public static final int AppCompatTextView_textAllCaps=7;
     /**
@@ -7908,124 +7908,124 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #AppCompatTheme_android_windowIsFloating android:windowIsFloating}</code></td><td></td></tr>
      * <tr><td><code>{@link #AppCompatTheme_android_windowAnimationStyle android:windowAnimationStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarDivider com.growmoisociallearning.moiapp:actionBarDivider}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarItemBackground com.growmoisociallearning.moiapp:actionBarItemBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarPopupTheme com.growmoisociallearning.moiapp:actionBarPopupTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarSize com.growmoisociallearning.moiapp:actionBarSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarSplitStyle com.growmoisociallearning.moiapp:actionBarSplitStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarStyle com.growmoisociallearning.moiapp:actionBarStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarTabBarStyle com.growmoisociallearning.moiapp:actionBarTabBarStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarTabStyle com.growmoisociallearning.moiapp:actionBarTabStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarTabTextStyle com.growmoisociallearning.moiapp:actionBarTabTextStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarTheme com.growmoisociallearning.moiapp:actionBarTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionBarWidgetTheme com.growmoisociallearning.moiapp:actionBarWidgetTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionButtonStyle com.growmoisociallearning.moiapp:actionButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionDropDownStyle com.growmoisociallearning.moiapp:actionDropDownStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionMenuTextAppearance com.growmoisociallearning.moiapp:actionMenuTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionMenuTextColor com.growmoisociallearning.moiapp:actionMenuTextColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeBackground com.growmoisociallearning.moiapp:actionModeBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeCloseButtonStyle com.growmoisociallearning.moiapp:actionModeCloseButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeCloseDrawable com.growmoisociallearning.moiapp:actionModeCloseDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeCopyDrawable com.growmoisociallearning.moiapp:actionModeCopyDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeCutDrawable com.growmoisociallearning.moiapp:actionModeCutDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeFindDrawable com.growmoisociallearning.moiapp:actionModeFindDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModePasteDrawable com.growmoisociallearning.moiapp:actionModePasteDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModePopupWindowStyle com.growmoisociallearning.moiapp:actionModePopupWindowStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeSelectAllDrawable com.growmoisociallearning.moiapp:actionModeSelectAllDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeShareDrawable com.growmoisociallearning.moiapp:actionModeShareDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeSplitBackground com.growmoisociallearning.moiapp:actionModeSplitBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeStyle com.growmoisociallearning.moiapp:actionModeStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionModeWebSearchDrawable com.growmoisociallearning.moiapp:actionModeWebSearchDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionOverflowButtonStyle com.growmoisociallearning.moiapp:actionOverflowButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_actionOverflowMenuStyle com.growmoisociallearning.moiapp:actionOverflowMenuStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_activityChooserViewStyle com.growmoisociallearning.moiapp:activityChooserViewStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_alertDialogButtonGroupStyle com.growmoisociallearning.moiapp:alertDialogButtonGroupStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_alertDialogCenterButtons com.growmoisociallearning.moiapp:alertDialogCenterButtons}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_alertDialogStyle com.growmoisociallearning.moiapp:alertDialogStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_alertDialogTheme com.growmoisociallearning.moiapp:alertDialogTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_autoCompleteTextViewStyle com.growmoisociallearning.moiapp:autoCompleteTextViewStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_borderlessButtonStyle com.growmoisociallearning.moiapp:borderlessButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_buttonBarButtonStyle com.growmoisociallearning.moiapp:buttonBarButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_buttonBarNegativeButtonStyle com.growmoisociallearning.moiapp:buttonBarNegativeButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_buttonBarNeutralButtonStyle com.growmoisociallearning.moiapp:buttonBarNeutralButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_buttonBarPositiveButtonStyle com.growmoisociallearning.moiapp:buttonBarPositiveButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_buttonBarStyle com.growmoisociallearning.moiapp:buttonBarStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_buttonStyle com.growmoisociallearning.moiapp:buttonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_buttonStyleSmall com.growmoisociallearning.moiapp:buttonStyleSmall}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_checkboxStyle com.growmoisociallearning.moiapp:checkboxStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_checkedTextViewStyle com.growmoisociallearning.moiapp:checkedTextViewStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorAccent com.growmoisociallearning.moiapp:colorAccent}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorBackgroundFloating com.growmoisociallearning.moiapp:colorBackgroundFloating}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorButtonNormal com.growmoisociallearning.moiapp:colorButtonNormal}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorControlActivated com.growmoisociallearning.moiapp:colorControlActivated}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorControlHighlight com.growmoisociallearning.moiapp:colorControlHighlight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorControlNormal com.growmoisociallearning.moiapp:colorControlNormal}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorError com.growmoisociallearning.moiapp:colorError}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorPrimary com.growmoisociallearning.moiapp:colorPrimary}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorPrimaryDark com.growmoisociallearning.moiapp:colorPrimaryDark}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_colorSwitchThumbNormal com.growmoisociallearning.moiapp:colorSwitchThumbNormal}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_controlBackground com.growmoisociallearning.moiapp:controlBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_dialogPreferredPadding com.growmoisociallearning.moiapp:dialogPreferredPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_dialogTheme com.growmoisociallearning.moiapp:dialogTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_dividerHorizontal com.growmoisociallearning.moiapp:dividerHorizontal}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_dividerVertical com.growmoisociallearning.moiapp:dividerVertical}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_dropDownListViewStyle com.growmoisociallearning.moiapp:dropDownListViewStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_dropdownListPreferredItemHeight com.growmoisociallearning.moiapp:dropdownListPreferredItemHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_editTextBackground com.growmoisociallearning.moiapp:editTextBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_editTextColor com.growmoisociallearning.moiapp:editTextColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_editTextStyle com.growmoisociallearning.moiapp:editTextStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_homeAsUpIndicator com.growmoisociallearning.moiapp:homeAsUpIndicator}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_imageButtonStyle com.growmoisociallearning.moiapp:imageButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listChoiceBackgroundIndicator com.growmoisociallearning.moiapp:listChoiceBackgroundIndicator}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listDividerAlertDialog com.growmoisociallearning.moiapp:listDividerAlertDialog}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listMenuViewStyle com.growmoisociallearning.moiapp:listMenuViewStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listPopupWindowStyle com.growmoisociallearning.moiapp:listPopupWindowStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeight com.growmoisociallearning.moiapp:listPreferredItemHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightLarge com.growmoisociallearning.moiapp:listPreferredItemHeightLarge}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightSmall com.growmoisociallearning.moiapp:listPreferredItemHeightSmall}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingLeft com.growmoisociallearning.moiapp:listPreferredItemPaddingLeft}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingRight com.growmoisociallearning.moiapp:listPreferredItemPaddingRight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_panelBackground com.growmoisociallearning.moiapp:panelBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_panelMenuListTheme com.growmoisociallearning.moiapp:panelMenuListTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_panelMenuListWidth com.growmoisociallearning.moiapp:panelMenuListWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_popupMenuStyle com.growmoisociallearning.moiapp:popupMenuStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_popupWindowStyle com.growmoisociallearning.moiapp:popupWindowStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_radioButtonStyle com.growmoisociallearning.moiapp:radioButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_ratingBarStyle com.growmoisociallearning.moiapp:ratingBarStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_ratingBarStyleIndicator com.growmoisociallearning.moiapp:ratingBarStyleIndicator}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_ratingBarStyleSmall com.growmoisociallearning.moiapp:ratingBarStyleSmall}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_searchViewStyle com.growmoisociallearning.moiapp:searchViewStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_seekBarStyle com.growmoisociallearning.moiapp:seekBarStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_selectableItemBackground com.growmoisociallearning.moiapp:selectableItemBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_selectableItemBackgroundBorderless com.growmoisociallearning.moiapp:selectableItemBackgroundBorderless}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_spinnerDropDownItemStyle com.growmoisociallearning.moiapp:spinnerDropDownItemStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_spinnerStyle com.growmoisociallearning.moiapp:spinnerStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_switchStyle com.growmoisociallearning.moiapp:switchStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textAppearanceLargePopupMenu com.growmoisociallearning.moiapp:textAppearanceLargePopupMenu}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textAppearanceListItem com.growmoisociallearning.moiapp:textAppearanceListItem}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSecondary com.growmoisociallearning.moiapp:textAppearanceListItemSecondary}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSmall com.growmoisociallearning.moiapp:textAppearanceListItemSmall}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textAppearancePopupMenuHeader com.growmoisociallearning.moiapp:textAppearancePopupMenuHeader}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultSubtitle com.growmoisociallearning.moiapp:textAppearanceSearchResultSubtitle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultTitle com.growmoisociallearning.moiapp:textAppearanceSearchResultTitle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textAppearanceSmallPopupMenu com.growmoisociallearning.moiapp:textAppearanceSmallPopupMenu}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textColorAlertDialogListItem com.growmoisociallearning.moiapp:textColorAlertDialogListItem}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_textColorSearchUrl com.growmoisociallearning.moiapp:textColorSearchUrl}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_toolbarNavigationButtonStyle com.growmoisociallearning.moiapp:toolbarNavigationButtonStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_toolbarStyle com.growmoisociallearning.moiapp:toolbarStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_tooltipForegroundColor com.growmoisociallearning.moiapp:tooltipForegroundColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_tooltipFrameBackground com.growmoisociallearning.moiapp:tooltipFrameBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_viewInflaterClass com.growmoisociallearning.moiapp:viewInflaterClass}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowActionBar com.growmoisociallearning.moiapp:windowActionBar}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowActionBarOverlay com.growmoisociallearning.moiapp:windowActionBarOverlay}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowActionModeOverlay com.growmoisociallearning.moiapp:windowActionModeOverlay}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMajor com.growmoisociallearning.moiapp:windowFixedHeightMajor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMinor com.growmoisociallearning.moiapp:windowFixedHeightMinor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMajor com.growmoisociallearning.moiapp:windowFixedWidthMajor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMinor com.growmoisociallearning.moiapp:windowFixedWidthMinor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowMinWidthMajor com.growmoisociallearning.moiapp:windowMinWidthMajor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowMinWidthMinor com.growmoisociallearning.moiapp:windowMinWidthMinor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AppCompatTheme_windowNoTitle com.growmoisociallearning.moiapp:windowNoTitle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarDivider com.moisociallearning.moiapp:actionBarDivider}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarItemBackground com.moisociallearning.moiapp:actionBarItemBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarPopupTheme com.moisociallearning.moiapp:actionBarPopupTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarSize com.moisociallearning.moiapp:actionBarSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarSplitStyle com.moisociallearning.moiapp:actionBarSplitStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarStyle com.moisociallearning.moiapp:actionBarStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarTabBarStyle com.moisociallearning.moiapp:actionBarTabBarStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarTabStyle com.moisociallearning.moiapp:actionBarTabStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarTabTextStyle com.moisociallearning.moiapp:actionBarTabTextStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarTheme com.moisociallearning.moiapp:actionBarTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionBarWidgetTheme com.moisociallearning.moiapp:actionBarWidgetTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionButtonStyle com.moisociallearning.moiapp:actionButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionDropDownStyle com.moisociallearning.moiapp:actionDropDownStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionMenuTextAppearance com.moisociallearning.moiapp:actionMenuTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionMenuTextColor com.moisociallearning.moiapp:actionMenuTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeBackground com.moisociallearning.moiapp:actionModeBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeCloseButtonStyle com.moisociallearning.moiapp:actionModeCloseButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeCloseDrawable com.moisociallearning.moiapp:actionModeCloseDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeCopyDrawable com.moisociallearning.moiapp:actionModeCopyDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeCutDrawable com.moisociallearning.moiapp:actionModeCutDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeFindDrawable com.moisociallearning.moiapp:actionModeFindDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModePasteDrawable com.moisociallearning.moiapp:actionModePasteDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModePopupWindowStyle com.moisociallearning.moiapp:actionModePopupWindowStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeSelectAllDrawable com.moisociallearning.moiapp:actionModeSelectAllDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeShareDrawable com.moisociallearning.moiapp:actionModeShareDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeSplitBackground com.moisociallearning.moiapp:actionModeSplitBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeStyle com.moisociallearning.moiapp:actionModeStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionModeWebSearchDrawable com.moisociallearning.moiapp:actionModeWebSearchDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionOverflowButtonStyle com.moisociallearning.moiapp:actionOverflowButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_actionOverflowMenuStyle com.moisociallearning.moiapp:actionOverflowMenuStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_activityChooserViewStyle com.moisociallearning.moiapp:activityChooserViewStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_alertDialogButtonGroupStyle com.moisociallearning.moiapp:alertDialogButtonGroupStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_alertDialogCenterButtons com.moisociallearning.moiapp:alertDialogCenterButtons}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_alertDialogStyle com.moisociallearning.moiapp:alertDialogStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_alertDialogTheme com.moisociallearning.moiapp:alertDialogTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_autoCompleteTextViewStyle com.moisociallearning.moiapp:autoCompleteTextViewStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_borderlessButtonStyle com.moisociallearning.moiapp:borderlessButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_buttonBarButtonStyle com.moisociallearning.moiapp:buttonBarButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_buttonBarNegativeButtonStyle com.moisociallearning.moiapp:buttonBarNegativeButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_buttonBarNeutralButtonStyle com.moisociallearning.moiapp:buttonBarNeutralButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_buttonBarPositiveButtonStyle com.moisociallearning.moiapp:buttonBarPositiveButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_buttonBarStyle com.moisociallearning.moiapp:buttonBarStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_buttonStyle com.moisociallearning.moiapp:buttonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_buttonStyleSmall com.moisociallearning.moiapp:buttonStyleSmall}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_checkboxStyle com.moisociallearning.moiapp:checkboxStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_checkedTextViewStyle com.moisociallearning.moiapp:checkedTextViewStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorAccent com.moisociallearning.moiapp:colorAccent}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorBackgroundFloating com.moisociallearning.moiapp:colorBackgroundFloating}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorButtonNormal com.moisociallearning.moiapp:colorButtonNormal}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorControlActivated com.moisociallearning.moiapp:colorControlActivated}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorControlHighlight com.moisociallearning.moiapp:colorControlHighlight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorControlNormal com.moisociallearning.moiapp:colorControlNormal}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorError com.moisociallearning.moiapp:colorError}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorPrimary com.moisociallearning.moiapp:colorPrimary}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorPrimaryDark com.moisociallearning.moiapp:colorPrimaryDark}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_colorSwitchThumbNormal com.moisociallearning.moiapp:colorSwitchThumbNormal}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_controlBackground com.moisociallearning.moiapp:controlBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_dialogPreferredPadding com.moisociallearning.moiapp:dialogPreferredPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_dialogTheme com.moisociallearning.moiapp:dialogTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_dividerHorizontal com.moisociallearning.moiapp:dividerHorizontal}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_dividerVertical com.moisociallearning.moiapp:dividerVertical}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_dropDownListViewStyle com.moisociallearning.moiapp:dropDownListViewStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_dropdownListPreferredItemHeight com.moisociallearning.moiapp:dropdownListPreferredItemHeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_editTextBackground com.moisociallearning.moiapp:editTextBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_editTextColor com.moisociallearning.moiapp:editTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_editTextStyle com.moisociallearning.moiapp:editTextStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_homeAsUpIndicator com.moisociallearning.moiapp:homeAsUpIndicator}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_imageButtonStyle com.moisociallearning.moiapp:imageButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listChoiceBackgroundIndicator com.moisociallearning.moiapp:listChoiceBackgroundIndicator}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listDividerAlertDialog com.moisociallearning.moiapp:listDividerAlertDialog}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listMenuViewStyle com.moisociallearning.moiapp:listMenuViewStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listPopupWindowStyle com.moisociallearning.moiapp:listPopupWindowStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeight com.moisociallearning.moiapp:listPreferredItemHeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightLarge com.moisociallearning.moiapp:listPreferredItemHeightLarge}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightSmall com.moisociallearning.moiapp:listPreferredItemHeightSmall}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingLeft com.moisociallearning.moiapp:listPreferredItemPaddingLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingRight com.moisociallearning.moiapp:listPreferredItemPaddingRight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_panelBackground com.moisociallearning.moiapp:panelBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_panelMenuListTheme com.moisociallearning.moiapp:panelMenuListTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_panelMenuListWidth com.moisociallearning.moiapp:panelMenuListWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_popupMenuStyle com.moisociallearning.moiapp:popupMenuStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_popupWindowStyle com.moisociallearning.moiapp:popupWindowStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_radioButtonStyle com.moisociallearning.moiapp:radioButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_ratingBarStyle com.moisociallearning.moiapp:ratingBarStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_ratingBarStyleIndicator com.moisociallearning.moiapp:ratingBarStyleIndicator}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_ratingBarStyleSmall com.moisociallearning.moiapp:ratingBarStyleSmall}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_searchViewStyle com.moisociallearning.moiapp:searchViewStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_seekBarStyle com.moisociallearning.moiapp:seekBarStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_selectableItemBackground com.moisociallearning.moiapp:selectableItemBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_selectableItemBackgroundBorderless com.moisociallearning.moiapp:selectableItemBackgroundBorderless}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_spinnerDropDownItemStyle com.moisociallearning.moiapp:spinnerDropDownItemStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_spinnerStyle com.moisociallearning.moiapp:spinnerStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_switchStyle com.moisociallearning.moiapp:switchStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textAppearanceLargePopupMenu com.moisociallearning.moiapp:textAppearanceLargePopupMenu}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textAppearanceListItem com.moisociallearning.moiapp:textAppearanceListItem}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSecondary com.moisociallearning.moiapp:textAppearanceListItemSecondary}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSmall com.moisociallearning.moiapp:textAppearanceListItemSmall}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textAppearancePopupMenuHeader com.moisociallearning.moiapp:textAppearancePopupMenuHeader}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultSubtitle com.moisociallearning.moiapp:textAppearanceSearchResultSubtitle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultTitle com.moisociallearning.moiapp:textAppearanceSearchResultTitle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textAppearanceSmallPopupMenu com.moisociallearning.moiapp:textAppearanceSmallPopupMenu}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textColorAlertDialogListItem com.moisociallearning.moiapp:textColorAlertDialogListItem}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_textColorSearchUrl com.moisociallearning.moiapp:textColorSearchUrl}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_toolbarNavigationButtonStyle com.moisociallearning.moiapp:toolbarNavigationButtonStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_toolbarStyle com.moisociallearning.moiapp:toolbarStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_tooltipForegroundColor com.moisociallearning.moiapp:tooltipForegroundColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_tooltipFrameBackground com.moisociallearning.moiapp:tooltipFrameBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_viewInflaterClass com.moisociallearning.moiapp:viewInflaterClass}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowActionBar com.moisociallearning.moiapp:windowActionBar}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowActionBarOverlay com.moisociallearning.moiapp:windowActionBarOverlay}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowActionModeOverlay com.moisociallearning.moiapp:windowActionModeOverlay}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMajor com.moisociallearning.moiapp:windowFixedHeightMajor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMinor com.moisociallearning.moiapp:windowFixedHeightMinor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMajor com.moisociallearning.moiapp:windowFixedWidthMajor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMinor com.moisociallearning.moiapp:windowFixedWidthMinor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowMinWidthMajor com.moisociallearning.moiapp:windowMinWidthMajor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowMinWidthMinor com.moisociallearning.moiapp:windowMinWidthMinor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AppCompatTheme_windowNoTitle com.moisociallearning.moiapp:windowNoTitle}</code></td><td></td></tr>
      * </table>
      * @see #AppCompatTheme_android_windowIsFloating
      * @see #AppCompatTheme_android_windowAnimationStyle
@@ -8149,35 +8149,35 @@ public final class R {
      * @see #AppCompatTheme_windowNoTitle
      */
     public static final int[] AppCompatTheme={
-        0x01010057, 0x010100ae, 0x7f040000, 0x7f040001, 
-        0x7f040002, 0x7f040003, 0x7f040004, 0x7f040005, 
-        0x7f040006, 0x7f040007, 0x7f040008, 0x7f040009, 
-        0x7f04000a, 0x7f04000b, 0x7f04000c, 0x7f04000e, 
-        0x7f04000f, 0x7f040010, 0x7f040011, 0x7f040012, 
-        0x7f040013, 0x7f040014, 0x7f040015, 0x7f040016, 
-        0x7f040017, 0x7f040018, 0x7f040019, 0x7f04001a, 
-        0x7f04001b, 0x7f04001c, 0x7f04001d, 0x7f04001e, 
-        0x7f040021, 0x7f040029, 0x7f04002a, 0x7f04002b, 
-        0x7f04002c, 0x7f040036, 0x7f04004c, 0x7f040050, 
-        0x7f040051, 0x7f040052, 0x7f040053, 0x7f040054, 
-        0x7f040059, 0x7f04005a, 0x7f040073, 0x7f040074, 
-        0x7f04007d, 0x7f04007e, 0x7f04007f, 0x7f040080, 
-        0x7f040081, 0x7f040082, 0x7f040083, 0x7f040084, 
-        0x7f040085, 0x7f040087, 0x7f0400a2, 0x7f0400cf, 
-        0x7f0400d0, 0x7f0400d3, 0x7f0400d5, 0x7f0400d8, 
-        0x7f0400d9, 0x7f0400da, 0x7f0400db, 0x7f0400dc, 
-        0x7f040110, 0x7f040118, 0x7f040138, 0x7f040139, 
-        0x7f04013c, 0x7f04013d, 0x7f04013e, 0x7f04013f, 
-        0x7f040140, 0x7f040141, 0x7f040142, 0x7f040169, 
-        0x7f04016a, 0x7f04016b, 0x7f040176, 0x7f040178, 
-        0x7f040183, 0x7f040184, 0x7f040185, 0x7f040186, 
-        0x7f0401a3, 0x7f0401a4, 0x7f0401a5, 0x7f0401a6, 
-        0x7f0401b2, 0x7f0401b3, 0x7f0401c6, 0x7f0401d9, 
-        0x7f0401da, 0x7f0401db, 0x7f0401dc, 0x7f0401dd, 
-        0x7f0401de, 0x7f0401df, 0x7f0401e0, 0x7f0401e1, 
-        0x7f0401e3, 0x7f0401fc, 0x7f0401fd, 0x7f0401ff, 
-        0x7f040200, 0x7f040213, 0x7f040215, 0x7f040216, 
-        0x7f040217, 0x7f040218, 0x7f040219, 0x7f04021a, 
+        0x01010057, 0x010100ae, 0x7f040000, 0x7f040001,
+        0x7f040002, 0x7f040003, 0x7f040004, 0x7f040005,
+        0x7f040006, 0x7f040007, 0x7f040008, 0x7f040009,
+        0x7f04000a, 0x7f04000b, 0x7f04000c, 0x7f04000e,
+        0x7f04000f, 0x7f040010, 0x7f040011, 0x7f040012,
+        0x7f040013, 0x7f040014, 0x7f040015, 0x7f040016,
+        0x7f040017, 0x7f040018, 0x7f040019, 0x7f04001a,
+        0x7f04001b, 0x7f04001c, 0x7f04001d, 0x7f04001e,
+        0x7f040021, 0x7f040029, 0x7f04002a, 0x7f04002b,
+        0x7f04002c, 0x7f040036, 0x7f04004c, 0x7f040050,
+        0x7f040051, 0x7f040052, 0x7f040053, 0x7f040054,
+        0x7f040059, 0x7f04005a, 0x7f040073, 0x7f040074,
+        0x7f04007d, 0x7f04007e, 0x7f04007f, 0x7f040080,
+        0x7f040081, 0x7f040082, 0x7f040083, 0x7f040084,
+        0x7f040085, 0x7f040087, 0x7f0400a2, 0x7f0400cf,
+        0x7f0400d0, 0x7f0400d3, 0x7f0400d5, 0x7f0400d8,
+        0x7f0400d9, 0x7f0400da, 0x7f0400db, 0x7f0400dc,
+        0x7f040110, 0x7f040118, 0x7f040138, 0x7f040139,
+        0x7f04013c, 0x7f04013d, 0x7f04013e, 0x7f04013f,
+        0x7f040140, 0x7f040141, 0x7f040142, 0x7f040169,
+        0x7f04016a, 0x7f04016b, 0x7f040176, 0x7f040178,
+        0x7f040183, 0x7f040184, 0x7f040185, 0x7f040186,
+        0x7f0401a3, 0x7f0401a4, 0x7f0401a5, 0x7f0401a6,
+        0x7f0401b2, 0x7f0401b3, 0x7f0401c6, 0x7f0401d9,
+        0x7f0401da, 0x7f0401db, 0x7f0401dc, 0x7f0401dd,
+        0x7f0401de, 0x7f0401df, 0x7f0401e0, 0x7f0401e1,
+        0x7f0401e3, 0x7f0401fc, 0x7f0401fd, 0x7f0401ff,
+        0x7f040200, 0x7f040213, 0x7f040215, 0x7f040216,
+        0x7f040217, 0x7f040218, 0x7f040219, 0x7f04021a,
         0x7f04021b, 0x7f04021c, 0x7f04021d, 0x7f04021e
       };
     /**
@@ -8203,7 +8203,7 @@ public final class R {
      */
     public static final int AppCompatTheme_android_windowAnimationStyle=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarDivider}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarDivider}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8211,11 +8211,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarDivider
+     * @attr name com.moisociallearning.moiapp:actionBarDivider
      */
     public static final int AppCompatTheme_actionBarDivider=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarItemBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarItemBackground}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8223,11 +8223,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarItemBackground
+     * @attr name com.moisociallearning.moiapp:actionBarItemBackground
      */
     public static final int AppCompatTheme_actionBarItemBackground=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarPopupTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarPopupTheme}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8235,11 +8235,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarPopupTheme
+     * @attr name com.moisociallearning.moiapp:actionBarPopupTheme
      */
     public static final int AppCompatTheme_actionBarPopupTheme=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarSize}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarSize}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -8256,11 +8256,11 @@ public final class R {
      * <tr><td>wrap_content</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarSize
+     * @attr name com.moisociallearning.moiapp:actionBarSize
      */
     public static final int AppCompatTheme_actionBarSize=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarSplitStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarSplitStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8268,11 +8268,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarSplitStyle
+     * @attr name com.moisociallearning.moiapp:actionBarSplitStyle
      */
     public static final int AppCompatTheme_actionBarSplitStyle=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8280,11 +8280,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarStyle
+     * @attr name com.moisociallearning.moiapp:actionBarStyle
      */
     public static final int AppCompatTheme_actionBarStyle=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarTabBarStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarTabBarStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8292,11 +8292,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarTabBarStyle
+     * @attr name com.moisociallearning.moiapp:actionBarTabBarStyle
      */
     public static final int AppCompatTheme_actionBarTabBarStyle=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarTabStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarTabStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8304,11 +8304,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarTabStyle
+     * @attr name com.moisociallearning.moiapp:actionBarTabStyle
      */
     public static final int AppCompatTheme_actionBarTabStyle=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarTabTextStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarTabTextStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8316,11 +8316,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarTabTextStyle
+     * @attr name com.moisociallearning.moiapp:actionBarTabTextStyle
      */
     public static final int AppCompatTheme_actionBarTabTextStyle=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarTheme}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8328,11 +8328,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarTheme
+     * @attr name com.moisociallearning.moiapp:actionBarTheme
      */
     public static final int AppCompatTheme_actionBarTheme=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionBarWidgetTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionBarWidgetTheme}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8340,11 +8340,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionBarWidgetTheme
+     * @attr name com.moisociallearning.moiapp:actionBarWidgetTheme
      */
     public static final int AppCompatTheme_actionBarWidgetTheme=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8352,11 +8352,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionButtonStyle
+     * @attr name com.moisociallearning.moiapp:actionButtonStyle
      */
     public static final int AppCompatTheme_actionButtonStyle=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionDropDownStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionDropDownStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8364,11 +8364,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionDropDownStyle
+     * @attr name com.moisociallearning.moiapp:actionDropDownStyle
      */
     public static final int AppCompatTheme_actionDropDownStyle=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionMenuTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionMenuTextAppearance}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8376,11 +8376,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionMenuTextAppearance
+     * @attr name com.moisociallearning.moiapp:actionMenuTextAppearance
      */
     public static final int AppCompatTheme_actionMenuTextAppearance=15;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionMenuTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionMenuTextColor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8391,11 +8391,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionMenuTextColor
+     * @attr name com.moisociallearning.moiapp:actionMenuTextColor
      */
     public static final int AppCompatTheme_actionMenuTextColor=16;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeBackground}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8403,11 +8403,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeBackground
+     * @attr name com.moisociallearning.moiapp:actionModeBackground
      */
     public static final int AppCompatTheme_actionModeBackground=17;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeCloseButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeCloseButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8415,11 +8415,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeCloseButtonStyle
+     * @attr name com.moisociallearning.moiapp:actionModeCloseButtonStyle
      */
     public static final int AppCompatTheme_actionModeCloseButtonStyle=18;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeCloseDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeCloseDrawable}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8427,11 +8427,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeCloseDrawable
+     * @attr name com.moisociallearning.moiapp:actionModeCloseDrawable
      */
     public static final int AppCompatTheme_actionModeCloseDrawable=19;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeCopyDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeCopyDrawable}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8439,11 +8439,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeCopyDrawable
+     * @attr name com.moisociallearning.moiapp:actionModeCopyDrawable
      */
     public static final int AppCompatTheme_actionModeCopyDrawable=20;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeCutDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeCutDrawable}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8451,11 +8451,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeCutDrawable
+     * @attr name com.moisociallearning.moiapp:actionModeCutDrawable
      */
     public static final int AppCompatTheme_actionModeCutDrawable=21;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeFindDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeFindDrawable}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8463,11 +8463,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeFindDrawable
+     * @attr name com.moisociallearning.moiapp:actionModeFindDrawable
      */
     public static final int AppCompatTheme_actionModeFindDrawable=22;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModePasteDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModePasteDrawable}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8475,11 +8475,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModePasteDrawable
+     * @attr name com.moisociallearning.moiapp:actionModePasteDrawable
      */
     public static final int AppCompatTheme_actionModePasteDrawable=23;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModePopupWindowStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModePopupWindowStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8487,11 +8487,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModePopupWindowStyle
+     * @attr name com.moisociallearning.moiapp:actionModePopupWindowStyle
      */
     public static final int AppCompatTheme_actionModePopupWindowStyle=24;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeSelectAllDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeSelectAllDrawable}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8499,11 +8499,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeSelectAllDrawable
+     * @attr name com.moisociallearning.moiapp:actionModeSelectAllDrawable
      */
     public static final int AppCompatTheme_actionModeSelectAllDrawable=25;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeShareDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeShareDrawable}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8511,11 +8511,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeShareDrawable
+     * @attr name com.moisociallearning.moiapp:actionModeShareDrawable
      */
     public static final int AppCompatTheme_actionModeShareDrawable=26;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeSplitBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeSplitBackground}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8523,11 +8523,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeSplitBackground
+     * @attr name com.moisociallearning.moiapp:actionModeSplitBackground
      */
     public static final int AppCompatTheme_actionModeSplitBackground=27;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8535,11 +8535,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeStyle
+     * @attr name com.moisociallearning.moiapp:actionModeStyle
      */
     public static final int AppCompatTheme_actionModeStyle=28;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionModeWebSearchDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionModeWebSearchDrawable}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8547,11 +8547,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionModeWebSearchDrawable
+     * @attr name com.moisociallearning.moiapp:actionModeWebSearchDrawable
      */
     public static final int AppCompatTheme_actionModeWebSearchDrawable=29;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionOverflowButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionOverflowButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8559,11 +8559,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionOverflowButtonStyle
+     * @attr name com.moisociallearning.moiapp:actionOverflowButtonStyle
      */
     public static final int AppCompatTheme_actionOverflowButtonStyle=30;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionOverflowMenuStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionOverflowMenuStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8571,11 +8571,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionOverflowMenuStyle
+     * @attr name com.moisociallearning.moiapp:actionOverflowMenuStyle
      */
     public static final int AppCompatTheme_actionOverflowMenuStyle=31;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#activityChooserViewStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#activityChooserViewStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8583,11 +8583,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:activityChooserViewStyle
+     * @attr name com.moisociallearning.moiapp:activityChooserViewStyle
      */
     public static final int AppCompatTheme_activityChooserViewStyle=32;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#alertDialogButtonGroupStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#alertDialogButtonGroupStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8595,21 +8595,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:alertDialogButtonGroupStyle
+     * @attr name com.moisociallearning.moiapp:alertDialogButtonGroupStyle
      */
     public static final int AppCompatTheme_alertDialogButtonGroupStyle=33;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#alertDialogCenterButtons}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#alertDialogCenterButtons}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:alertDialogCenterButtons
+     * @attr name com.moisociallearning.moiapp:alertDialogCenterButtons
      */
     public static final int AppCompatTheme_alertDialogCenterButtons=34;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#alertDialogStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#alertDialogStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8617,11 +8617,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:alertDialogStyle
+     * @attr name com.moisociallearning.moiapp:alertDialogStyle
      */
     public static final int AppCompatTheme_alertDialogStyle=35;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#alertDialogTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#alertDialogTheme}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8629,11 +8629,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:alertDialogTheme
+     * @attr name com.moisociallearning.moiapp:alertDialogTheme
      */
     public static final int AppCompatTheme_alertDialogTheme=36;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#autoCompleteTextViewStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#autoCompleteTextViewStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8641,11 +8641,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:autoCompleteTextViewStyle
+     * @attr name com.moisociallearning.moiapp:autoCompleteTextViewStyle
      */
     public static final int AppCompatTheme_autoCompleteTextViewStyle=37;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#borderlessButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#borderlessButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8653,11 +8653,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:borderlessButtonStyle
+     * @attr name com.moisociallearning.moiapp:borderlessButtonStyle
      */
     public static final int AppCompatTheme_borderlessButtonStyle=38;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonBarButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonBarButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8665,11 +8665,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonBarButtonStyle
+     * @attr name com.moisociallearning.moiapp:buttonBarButtonStyle
      */
     public static final int AppCompatTheme_buttonBarButtonStyle=39;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonBarNegativeButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonBarNegativeButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8677,11 +8677,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonBarNegativeButtonStyle
+     * @attr name com.moisociallearning.moiapp:buttonBarNegativeButtonStyle
      */
     public static final int AppCompatTheme_buttonBarNegativeButtonStyle=40;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonBarNeutralButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonBarNeutralButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8689,11 +8689,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonBarNeutralButtonStyle
+     * @attr name com.moisociallearning.moiapp:buttonBarNeutralButtonStyle
      */
     public static final int AppCompatTheme_buttonBarNeutralButtonStyle=41;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonBarPositiveButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonBarPositiveButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8701,11 +8701,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonBarPositiveButtonStyle
+     * @attr name com.moisociallearning.moiapp:buttonBarPositiveButtonStyle
      */
     public static final int AppCompatTheme_buttonBarPositiveButtonStyle=42;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonBarStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonBarStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8713,11 +8713,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonBarStyle
+     * @attr name com.moisociallearning.moiapp:buttonBarStyle
      */
     public static final int AppCompatTheme_buttonBarStyle=43;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8725,11 +8725,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonStyle
+     * @attr name com.moisociallearning.moiapp:buttonStyle
      */
     public static final int AppCompatTheme_buttonStyle=44;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonStyleSmall}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonStyleSmall}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8737,11 +8737,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonStyleSmall
+     * @attr name com.moisociallearning.moiapp:buttonStyleSmall
      */
     public static final int AppCompatTheme_buttonStyleSmall=45;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#checkboxStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#checkboxStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8749,11 +8749,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:checkboxStyle
+     * @attr name com.moisociallearning.moiapp:checkboxStyle
      */
     public static final int AppCompatTheme_checkboxStyle=46;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#checkedTextViewStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#checkedTextViewStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8761,77 +8761,77 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:checkedTextViewStyle
+     * @attr name com.moisociallearning.moiapp:checkedTextViewStyle
      */
     public static final int AppCompatTheme_checkedTextViewStyle=47;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorAccent}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorAccent}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorAccent
+     * @attr name com.moisociallearning.moiapp:colorAccent
      */
     public static final int AppCompatTheme_colorAccent=48;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorBackgroundFloating}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorBackgroundFloating}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorBackgroundFloating
+     * @attr name com.moisociallearning.moiapp:colorBackgroundFloating
      */
     public static final int AppCompatTheme_colorBackgroundFloating=49;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorButtonNormal}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorButtonNormal}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorButtonNormal
+     * @attr name com.moisociallearning.moiapp:colorButtonNormal
      */
     public static final int AppCompatTheme_colorButtonNormal=50;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorControlActivated}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorControlActivated}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorControlActivated
+     * @attr name com.moisociallearning.moiapp:colorControlActivated
      */
     public static final int AppCompatTheme_colorControlActivated=51;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorControlHighlight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorControlHighlight}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorControlHighlight
+     * @attr name com.moisociallearning.moiapp:colorControlHighlight
      */
     public static final int AppCompatTheme_colorControlHighlight=52;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorControlNormal}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorControlNormal}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorControlNormal
+     * @attr name com.moisociallearning.moiapp:colorControlNormal
      */
     public static final int AppCompatTheme_colorControlNormal=53;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorError}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorError}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8842,44 +8842,44 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorError
+     * @attr name com.moisociallearning.moiapp:colorError
      */
     public static final int AppCompatTheme_colorError=54;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorPrimary}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorPrimary}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorPrimary
+     * @attr name com.moisociallearning.moiapp:colorPrimary
      */
     public static final int AppCompatTheme_colorPrimary=55;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorPrimaryDark}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorPrimaryDark}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorPrimaryDark
+     * @attr name com.moisociallearning.moiapp:colorPrimaryDark
      */
     public static final int AppCompatTheme_colorPrimaryDark=56;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorSwitchThumbNormal}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorSwitchThumbNormal}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:colorSwitchThumbNormal
+     * @attr name com.moisociallearning.moiapp:colorSwitchThumbNormal
      */
     public static final int AppCompatTheme_colorSwitchThumbNormal=57;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#controlBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#controlBackground}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8887,11 +8887,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:controlBackground
+     * @attr name com.moisociallearning.moiapp:controlBackground
      */
     public static final int AppCompatTheme_controlBackground=58;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#dialogPreferredPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#dialogPreferredPadding}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -8900,11 +8900,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:dialogPreferredPadding
+     * @attr name com.moisociallearning.moiapp:dialogPreferredPadding
      */
     public static final int AppCompatTheme_dialogPreferredPadding=59;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#dialogTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#dialogTheme}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8912,11 +8912,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:dialogTheme
+     * @attr name com.moisociallearning.moiapp:dialogTheme
      */
     public static final int AppCompatTheme_dialogTheme=60;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#dividerHorizontal}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#dividerHorizontal}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8924,11 +8924,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:dividerHorizontal
+     * @attr name com.moisociallearning.moiapp:dividerHorizontal
      */
     public static final int AppCompatTheme_dividerHorizontal=61;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#dividerVertical}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#dividerVertical}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8936,11 +8936,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:dividerVertical
+     * @attr name com.moisociallearning.moiapp:dividerVertical
      */
     public static final int AppCompatTheme_dividerVertical=62;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#dropDownListViewStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#dropDownListViewStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8948,11 +8948,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:dropDownListViewStyle
+     * @attr name com.moisociallearning.moiapp:dropDownListViewStyle
      */
     public static final int AppCompatTheme_dropDownListViewStyle=63;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#dropdownListPreferredItemHeight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#dropdownListPreferredItemHeight}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -8961,11 +8961,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:dropdownListPreferredItemHeight
+     * @attr name com.moisociallearning.moiapp:dropdownListPreferredItemHeight
      */
     public static final int AppCompatTheme_dropdownListPreferredItemHeight=64;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#editTextBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#editTextBackground}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8973,11 +8973,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:editTextBackground
+     * @attr name com.moisociallearning.moiapp:editTextBackground
      */
     public static final int AppCompatTheme_editTextBackground=65;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#editTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#editTextColor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -8988,11 +8988,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:editTextColor
+     * @attr name com.moisociallearning.moiapp:editTextColor
      */
     public static final int AppCompatTheme_editTextColor=66;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#editTextStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#editTextStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9000,11 +9000,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:editTextStyle
+     * @attr name com.moisociallearning.moiapp:editTextStyle
      */
     public static final int AppCompatTheme_editTextStyle=67;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#homeAsUpIndicator}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#homeAsUpIndicator}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9012,11 +9012,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:homeAsUpIndicator
+     * @attr name com.moisociallearning.moiapp:homeAsUpIndicator
      */
     public static final int AppCompatTheme_homeAsUpIndicator=68;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#imageButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#imageButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9024,11 +9024,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:imageButtonStyle
+     * @attr name com.moisociallearning.moiapp:imageButtonStyle
      */
     public static final int AppCompatTheme_imageButtonStyle=69;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listChoiceBackgroundIndicator}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listChoiceBackgroundIndicator}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9036,11 +9036,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:listChoiceBackgroundIndicator
+     * @attr name com.moisociallearning.moiapp:listChoiceBackgroundIndicator
      */
     public static final int AppCompatTheme_listChoiceBackgroundIndicator=70;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listDividerAlertDialog}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listDividerAlertDialog}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9048,11 +9048,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:listDividerAlertDialog
+     * @attr name com.moisociallearning.moiapp:listDividerAlertDialog
      */
     public static final int AppCompatTheme_listDividerAlertDialog=71;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listMenuViewStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listMenuViewStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9060,11 +9060,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:listMenuViewStyle
+     * @attr name com.moisociallearning.moiapp:listMenuViewStyle
      */
     public static final int AppCompatTheme_listMenuViewStyle=72;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listPopupWindowStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listPopupWindowStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9072,11 +9072,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:listPopupWindowStyle
+     * @attr name com.moisociallearning.moiapp:listPopupWindowStyle
      */
     public static final int AppCompatTheme_listPopupWindowStyle=73;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listPreferredItemHeight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listPreferredItemHeight}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9085,11 +9085,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:listPreferredItemHeight
+     * @attr name com.moisociallearning.moiapp:listPreferredItemHeight
      */
     public static final int AppCompatTheme_listPreferredItemHeight=74;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listPreferredItemHeightLarge}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listPreferredItemHeightLarge}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9098,11 +9098,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:listPreferredItemHeightLarge
+     * @attr name com.moisociallearning.moiapp:listPreferredItemHeightLarge
      */
     public static final int AppCompatTheme_listPreferredItemHeightLarge=75;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listPreferredItemHeightSmall}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listPreferredItemHeightSmall}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9111,11 +9111,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:listPreferredItemHeightSmall
+     * @attr name com.moisociallearning.moiapp:listPreferredItemHeightSmall
      */
     public static final int AppCompatTheme_listPreferredItemHeightSmall=76;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listPreferredItemPaddingLeft}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listPreferredItemPaddingLeft}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9124,11 +9124,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:listPreferredItemPaddingLeft
+     * @attr name com.moisociallearning.moiapp:listPreferredItemPaddingLeft
      */
     public static final int AppCompatTheme_listPreferredItemPaddingLeft=77;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#listPreferredItemPaddingRight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#listPreferredItemPaddingRight}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9137,11 +9137,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:listPreferredItemPaddingRight
+     * @attr name com.moisociallearning.moiapp:listPreferredItemPaddingRight
      */
     public static final int AppCompatTheme_listPreferredItemPaddingRight=78;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#panelBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#panelBackground}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9149,11 +9149,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:panelBackground
+     * @attr name com.moisociallearning.moiapp:panelBackground
      */
     public static final int AppCompatTheme_panelBackground=79;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#panelMenuListTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#panelMenuListTheme}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9161,11 +9161,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:panelMenuListTheme
+     * @attr name com.moisociallearning.moiapp:panelMenuListTheme
      */
     public static final int AppCompatTheme_panelMenuListTheme=80;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#panelMenuListWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#panelMenuListWidth}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9174,11 +9174,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:panelMenuListWidth
+     * @attr name com.moisociallearning.moiapp:panelMenuListWidth
      */
     public static final int AppCompatTheme_panelMenuListWidth=81;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#popupMenuStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#popupMenuStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9186,11 +9186,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:popupMenuStyle
+     * @attr name com.moisociallearning.moiapp:popupMenuStyle
      */
     public static final int AppCompatTheme_popupMenuStyle=82;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#popupWindowStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#popupWindowStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9198,11 +9198,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:popupWindowStyle
+     * @attr name com.moisociallearning.moiapp:popupWindowStyle
      */
     public static final int AppCompatTheme_popupWindowStyle=83;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#radioButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#radioButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9210,11 +9210,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:radioButtonStyle
+     * @attr name com.moisociallearning.moiapp:radioButtonStyle
      */
     public static final int AppCompatTheme_radioButtonStyle=84;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#ratingBarStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#ratingBarStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9222,11 +9222,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:ratingBarStyle
+     * @attr name com.moisociallearning.moiapp:ratingBarStyle
      */
     public static final int AppCompatTheme_ratingBarStyle=85;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#ratingBarStyleIndicator}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#ratingBarStyleIndicator}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9234,11 +9234,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:ratingBarStyleIndicator
+     * @attr name com.moisociallearning.moiapp:ratingBarStyleIndicator
      */
     public static final int AppCompatTheme_ratingBarStyleIndicator=86;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#ratingBarStyleSmall}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#ratingBarStyleSmall}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9246,11 +9246,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:ratingBarStyleSmall
+     * @attr name com.moisociallearning.moiapp:ratingBarStyleSmall
      */
     public static final int AppCompatTheme_ratingBarStyleSmall=87;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#searchViewStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#searchViewStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9258,11 +9258,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:searchViewStyle
+     * @attr name com.moisociallearning.moiapp:searchViewStyle
      */
     public static final int AppCompatTheme_searchViewStyle=88;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#seekBarStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#seekBarStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9270,11 +9270,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:seekBarStyle
+     * @attr name com.moisociallearning.moiapp:seekBarStyle
      */
     public static final int AppCompatTheme_seekBarStyle=89;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#selectableItemBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#selectableItemBackground}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9282,11 +9282,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:selectableItemBackground
+     * @attr name com.moisociallearning.moiapp:selectableItemBackground
      */
     public static final int AppCompatTheme_selectableItemBackground=90;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#selectableItemBackgroundBorderless}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#selectableItemBackgroundBorderless}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9294,11 +9294,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:selectableItemBackgroundBorderless
+     * @attr name com.moisociallearning.moiapp:selectableItemBackgroundBorderless
      */
     public static final int AppCompatTheme_selectableItemBackgroundBorderless=91;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#spinnerDropDownItemStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#spinnerDropDownItemStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9306,11 +9306,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:spinnerDropDownItemStyle
+     * @attr name com.moisociallearning.moiapp:spinnerDropDownItemStyle
      */
     public static final int AppCompatTheme_spinnerDropDownItemStyle=92;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#spinnerStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#spinnerStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9318,11 +9318,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:spinnerStyle
+     * @attr name com.moisociallearning.moiapp:spinnerStyle
      */
     public static final int AppCompatTheme_spinnerStyle=93;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#switchStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#switchStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9330,11 +9330,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:switchStyle
+     * @attr name com.moisociallearning.moiapp:switchStyle
      */
     public static final int AppCompatTheme_switchStyle=94;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAppearanceLargePopupMenu}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAppearanceLargePopupMenu}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9342,11 +9342,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAppearanceLargePopupMenu
+     * @attr name com.moisociallearning.moiapp:textAppearanceLargePopupMenu
      */
     public static final int AppCompatTheme_textAppearanceLargePopupMenu=95;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAppearanceListItem}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAppearanceListItem}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9354,11 +9354,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAppearanceListItem
+     * @attr name com.moisociallearning.moiapp:textAppearanceListItem
      */
     public static final int AppCompatTheme_textAppearanceListItem=96;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAppearanceListItemSecondary}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAppearanceListItemSecondary}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9366,11 +9366,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAppearanceListItemSecondary
+     * @attr name com.moisociallearning.moiapp:textAppearanceListItemSecondary
      */
     public static final int AppCompatTheme_textAppearanceListItemSecondary=97;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAppearanceListItemSmall}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAppearanceListItemSmall}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9378,11 +9378,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAppearanceListItemSmall
+     * @attr name com.moisociallearning.moiapp:textAppearanceListItemSmall
      */
     public static final int AppCompatTheme_textAppearanceListItemSmall=98;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAppearancePopupMenuHeader}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAppearancePopupMenuHeader}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9390,11 +9390,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAppearancePopupMenuHeader
+     * @attr name com.moisociallearning.moiapp:textAppearancePopupMenuHeader
      */
     public static final int AppCompatTheme_textAppearancePopupMenuHeader=99;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAppearanceSearchResultSubtitle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAppearanceSearchResultSubtitle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9402,11 +9402,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAppearanceSearchResultSubtitle
+     * @attr name com.moisociallearning.moiapp:textAppearanceSearchResultSubtitle
      */
     public static final int AppCompatTheme_textAppearanceSearchResultSubtitle=100;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAppearanceSearchResultTitle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAppearanceSearchResultTitle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9414,11 +9414,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAppearanceSearchResultTitle
+     * @attr name com.moisociallearning.moiapp:textAppearanceSearchResultTitle
      */
     public static final int AppCompatTheme_textAppearanceSearchResultTitle=101;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAppearanceSmallPopupMenu}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAppearanceSmallPopupMenu}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9426,11 +9426,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAppearanceSmallPopupMenu
+     * @attr name com.moisociallearning.moiapp:textAppearanceSmallPopupMenu
      */
     public static final int AppCompatTheme_textAppearanceSmallPopupMenu=102;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textColorAlertDialogListItem}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textColorAlertDialogListItem}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9441,11 +9441,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textColorAlertDialogListItem
+     * @attr name com.moisociallearning.moiapp:textColorAlertDialogListItem
      */
     public static final int AppCompatTheme_textColorAlertDialogListItem=103;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textColorSearchUrl}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textColorSearchUrl}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9456,11 +9456,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textColorSearchUrl
+     * @attr name com.moisociallearning.moiapp:textColorSearchUrl
      */
     public static final int AppCompatTheme_textColorSearchUrl=104;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#toolbarNavigationButtonStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#toolbarNavigationButtonStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9468,11 +9468,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:toolbarNavigationButtonStyle
+     * @attr name com.moisociallearning.moiapp:toolbarNavigationButtonStyle
      */
     public static final int AppCompatTheme_toolbarNavigationButtonStyle=105;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#toolbarStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#toolbarStyle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9480,11 +9480,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:toolbarStyle
+     * @attr name com.moisociallearning.moiapp:toolbarStyle
      */
     public static final int AppCompatTheme_toolbarStyle=106;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tooltipForegroundColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tooltipForegroundColor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9495,11 +9495,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tooltipForegroundColor
+     * @attr name com.moisociallearning.moiapp:tooltipForegroundColor
      */
     public static final int AppCompatTheme_tooltipForegroundColor=107;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tooltipFrameBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tooltipFrameBackground}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9507,51 +9507,51 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tooltipFrameBackground
+     * @attr name com.moisociallearning.moiapp:tooltipFrameBackground
      */
     public static final int AppCompatTheme_tooltipFrameBackground=108;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#viewInflaterClass}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#viewInflaterClass}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:viewInflaterClass
+     * @attr name com.moisociallearning.moiapp:viewInflaterClass
      */
     public static final int AppCompatTheme_viewInflaterClass=109;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowActionBar}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowActionBar}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:windowActionBar
+     * @attr name com.moisociallearning.moiapp:windowActionBar
      */
     public static final int AppCompatTheme_windowActionBar=110;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowActionBarOverlay}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowActionBarOverlay}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:windowActionBarOverlay
+     * @attr name com.moisociallearning.moiapp:windowActionBarOverlay
      */
     public static final int AppCompatTheme_windowActionBarOverlay=111;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowActionModeOverlay}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowActionModeOverlay}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:windowActionModeOverlay
+     * @attr name com.moisociallearning.moiapp:windowActionModeOverlay
      */
     public static final int AppCompatTheme_windowActionModeOverlay=112;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowFixedHeightMajor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowFixedHeightMajor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9564,11 +9564,11 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      *
-     * @attr name com.growmoisociallearning.moiapp:windowFixedHeightMajor
+     * @attr name com.moisociallearning.moiapp:windowFixedHeightMajor
      */
     public static final int AppCompatTheme_windowFixedHeightMajor=113;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowFixedHeightMinor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowFixedHeightMinor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9581,11 +9581,11 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      *
-     * @attr name com.growmoisociallearning.moiapp:windowFixedHeightMinor
+     * @attr name com.moisociallearning.moiapp:windowFixedHeightMinor
      */
     public static final int AppCompatTheme_windowFixedHeightMinor=114;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowFixedWidthMajor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowFixedWidthMajor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9598,11 +9598,11 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      *
-     * @attr name com.growmoisociallearning.moiapp:windowFixedWidthMajor
+     * @attr name com.moisociallearning.moiapp:windowFixedWidthMajor
      */
     public static final int AppCompatTheme_windowFixedWidthMajor=115;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowFixedWidthMinor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowFixedWidthMinor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9615,11 +9615,11 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      *
-     * @attr name com.growmoisociallearning.moiapp:windowFixedWidthMinor
+     * @attr name com.moisociallearning.moiapp:windowFixedWidthMinor
      */
     public static final int AppCompatTheme_windowFixedWidthMinor=116;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowMinWidthMajor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowMinWidthMajor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9632,11 +9632,11 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      *
-     * @attr name com.growmoisociallearning.moiapp:windowMinWidthMajor
+     * @attr name com.moisociallearning.moiapp:windowMinWidthMajor
      */
     public static final int AppCompatTheme_windowMinWidthMajor=117;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowMinWidthMinor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowMinWidthMinor}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9649,17 +9649,17 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      *
-     * @attr name com.growmoisociallearning.moiapp:windowMinWidthMinor
+     * @attr name com.moisociallearning.moiapp:windowMinWidthMinor
      */
     public static final int AppCompatTheme_windowMinWidthMinor=118;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowNoTitle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowNoTitle}
      * attribute's value can be found in the {@link #AppCompatTheme} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:windowNoTitle
+     * @attr name com.moisociallearning.moiapp:windowNoTitle
      */
     public static final int AppCompatTheme_windowNoTitle=119;
     /**
@@ -9669,7 +9669,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #AspectRatioFrameLayout_resize_mode com.growmoisociallearning.moiapp:resize_mode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AspectRatioFrameLayout_resize_mode com.moisociallearning.moiapp:resize_mode}</code></td><td></td></tr>
      * </table>
      * @see #AspectRatioFrameLayout_resize_mode
      */
@@ -9677,7 +9677,7 @@ public final class R {
         0x7f040188
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#resize_mode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#resize_mode}
      * attribute's value can be found in the {@link #AspectRatioFrameLayout} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -9692,7 +9692,7 @@ public final class R {
      * <tr><td>fixed_width</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:resize_mode
+     * @attr name com.moisociallearning.moiapp:resize_mode
      */
     public static final int AspectRatioFrameLayout_resize_mode=0;
     /**
@@ -9702,11 +9702,11 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #BottomNavigationView_elevation com.growmoisociallearning.moiapp:elevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #BottomNavigationView_itemBackground com.growmoisociallearning.moiapp:itemBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #BottomNavigationView_itemIconTint com.growmoisociallearning.moiapp:itemIconTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #BottomNavigationView_itemTextColor com.growmoisociallearning.moiapp:itemTextColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #BottomNavigationView_menu com.growmoisociallearning.moiapp:menu}</code></td><td></td></tr>
+     * <tr><td><code>{@link #BottomNavigationView_elevation com.moisociallearning.moiapp:elevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #BottomNavigationView_itemBackground com.moisociallearning.moiapp:itemBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #BottomNavigationView_itemIconTint com.moisociallearning.moiapp:itemIconTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #BottomNavigationView_itemTextColor com.moisociallearning.moiapp:itemTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #BottomNavigationView_menu com.moisociallearning.moiapp:menu}</code></td><td></td></tr>
      * </table>
      * @see #BottomNavigationView_elevation
      * @see #BottomNavigationView_itemBackground
@@ -9715,11 +9715,11 @@ public final class R {
      * @see #BottomNavigationView_menu
      */
     public static final int[] BottomNavigationView={
-        0x7f0400dd, 0x7f040122, 0x7f040123, 0x7f040126, 
+        0x7f0400dd, 0x7f040122, 0x7f040123, 0x7f040126,
         0x7f04015d
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#elevation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#elevation}
      * attribute's value can be found in the {@link #BottomNavigationView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9728,11 +9728,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:elevation
+     * @attr name com.moisociallearning.moiapp:elevation
      */
     public static final int BottomNavigationView_elevation=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#itemBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#itemBackground}
      * attribute's value can be found in the {@link #BottomNavigationView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9740,33 +9740,33 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:itemBackground
+     * @attr name com.moisociallearning.moiapp:itemBackground
      */
     public static final int BottomNavigationView_itemBackground=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#itemIconTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#itemIconTint}
      * attribute's value can be found in the {@link #BottomNavigationView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:itemIconTint
+     * @attr name com.moisociallearning.moiapp:itemIconTint
      */
     public static final int BottomNavigationView_itemIconTint=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#itemTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#itemTextColor}
      * attribute's value can be found in the {@link #BottomNavigationView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:itemTextColor
+     * @attr name com.moisociallearning.moiapp:itemTextColor
      */
     public static final int BottomNavigationView_itemTextColor=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#menu}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#menu}
      * attribute's value can be found in the {@link #BottomNavigationView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -9774,7 +9774,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:menu
+     * @attr name com.moisociallearning.moiapp:menu
      */
     public static final int BottomNavigationView_menu=4;
     /**
@@ -9784,9 +9784,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_hideable com.growmoisociallearning.moiapp:behavior_hideable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_peekHeight com.growmoisociallearning.moiapp:behavior_peekHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_skipCollapsed com.growmoisociallearning.moiapp:behavior_skipCollapsed}</code></td><td></td></tr>
+     * <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_hideable com.moisociallearning.moiapp:behavior_hideable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_peekHeight com.moisociallearning.moiapp:behavior_peekHeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_skipCollapsed com.moisociallearning.moiapp:behavior_skipCollapsed}</code></td><td></td></tr>
      * </table>
      * @see #BottomSheetBehavior_Layout_behavior_hideable
      * @see #BottomSheetBehavior_Layout_behavior_peekHeight
@@ -9796,17 +9796,17 @@ public final class R {
         0x7f040047, 0x7f040049, 0x7f04004a
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#behavior_hideable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#behavior_hideable}
      * attribute's value can be found in the {@link #BottomSheetBehavior_Layout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:behavior_hideable
+     * @attr name com.moisociallearning.moiapp:behavior_hideable
      */
     public static final int BottomSheetBehavior_Layout_behavior_hideable=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#behavior_peekHeight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#behavior_peekHeight}
      * attribute's value can be found in the {@link #BottomSheetBehavior_Layout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -9823,17 +9823,17 @@ public final class R {
      * <tr><td>auto</td><td>ffffffff</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:behavior_peekHeight
+     * @attr name com.moisociallearning.moiapp:behavior_peekHeight
      */
     public static final int BottomSheetBehavior_Layout_behavior_peekHeight=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#behavior_skipCollapsed}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#behavior_skipCollapsed}
      * attribute's value can be found in the {@link #BottomSheetBehavior_Layout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:behavior_skipCollapsed
+     * @attr name com.moisociallearning.moiapp:behavior_skipCollapsed
      */
     public static final int BottomSheetBehavior_Layout_behavior_skipCollapsed=2;
     /**
@@ -9843,7 +9843,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #ButtonBarLayout_allowStacking com.growmoisociallearning.moiapp:allowStacking}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ButtonBarLayout_allowStacking com.moisociallearning.moiapp:allowStacking}</code></td><td></td></tr>
      * </table>
      * @see #ButtonBarLayout_allowStacking
      */
@@ -9851,13 +9851,13 @@ public final class R {
         0x7f04002d
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#allowStacking}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#allowStacking}
      * attribute's value can be found in the {@link #ButtonBarLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:allowStacking
+     * @attr name com.moisociallearning.moiapp:allowStacking
      */
     public static final int ButtonBarLayout_allowStacking=0;
     /**
@@ -9868,10 +9868,10 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #CameraView_android_adjustViewBounds android:adjustViewBounds}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CameraView_aspectRatio com.growmoisociallearning.moiapp:aspectRatio}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CameraView_autoFocus com.growmoisociallearning.moiapp:autoFocus}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CameraView_facing com.growmoisociallearning.moiapp:facing}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CameraView_flash com.growmoisociallearning.moiapp:flash}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CameraView_aspectRatio com.moisociallearning.moiapp:aspectRatio}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CameraView_autoFocus com.moisociallearning.moiapp:autoFocus}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CameraView_facing com.moisociallearning.moiapp:facing}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CameraView_flash com.moisociallearning.moiapp:flash}</code></td><td></td></tr>
      * </table>
      * @see #CameraView_android_adjustViewBounds
      * @see #CameraView_aspectRatio
@@ -9880,7 +9880,7 @@ public final class R {
      * @see #CameraView_flash
      */
     public static final int[] CameraView={
-        0x0101011e, 0x7f040035, 0x7f040037, 0x7f0400ec, 
+        0x0101011e, 0x7f040035, 0x7f040037, 0x7f0400ec,
         0x7f0400f6
       };
     /**
@@ -9894,27 +9894,27 @@ public final class R {
      */
     public static final int CameraView_android_adjustViewBounds=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#aspectRatio}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#aspectRatio}
      * attribute's value can be found in the {@link #CameraView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:aspectRatio
+     * @attr name com.moisociallearning.moiapp:aspectRatio
      */
     public static final int CameraView_aspectRatio=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#autoFocus}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#autoFocus}
      * attribute's value can be found in the {@link #CameraView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:autoFocus
+     * @attr name com.moisociallearning.moiapp:autoFocus
      */
     public static final int CameraView_autoFocus=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#facing}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#facing}
      * attribute's value can be found in the {@link #CameraView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -9927,11 +9927,11 @@ public final class R {
      * <tr><td>front</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:facing
+     * @attr name com.moisociallearning.moiapp:facing
      */
     public static final int CameraView_facing=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#flash}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#flash}
      * attribute's value can be found in the {@link #CameraView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -9947,7 +9947,7 @@ public final class R {
      * <tr><td>torch</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:flash
+     * @attr name com.moisociallearning.moiapp:flash
      */
     public static final int CameraView_flash=4;
     /**
@@ -9957,9 +9957,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CardInputView_cardHintText com.growmoisociallearning.moiapp:cardHintText}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardInputView_cardTextErrorColor com.growmoisociallearning.moiapp:cardTextErrorColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardInputView_cardTint com.growmoisociallearning.moiapp:cardTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardInputView_cardHintText com.moisociallearning.moiapp:cardHintText}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardInputView_cardTextErrorColor com.moisociallearning.moiapp:cardTextErrorColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardInputView_cardTint com.moisociallearning.moiapp:cardTint}</code></td><td></td></tr>
      * </table>
      * @see #CardInputView_cardHintText
      * @see #CardInputView_cardTextErrorColor
@@ -9969,35 +9969,35 @@ public final class R {
         0x7f04006b, 0x7f04006e, 0x7f04006f
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardHintText}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardHintText}
      * attribute's value can be found in the {@link #CardInputView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:cardHintText
+     * @attr name com.moisociallearning.moiapp:cardHintText
      */
     public static final int CardInputView_cardHintText=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardTextErrorColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardTextErrorColor}
      * attribute's value can be found in the {@link #CardInputView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cardTextErrorColor
+     * @attr name com.moisociallearning.moiapp:cardTextErrorColor
      */
     public static final int CardInputView_cardTextErrorColor=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardTint}
      * attribute's value can be found in the {@link #CardInputView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cardTint
+     * @attr name com.moisociallearning.moiapp:cardTint
      */
     public static final int CardInputView_cardTint=2;
     /**
@@ -10007,7 +10007,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CardMultilineWidget_shouldShowPostalCode com.growmoisociallearning.moiapp:shouldShowPostalCode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardMultilineWidget_shouldShowPostalCode com.moisociallearning.moiapp:shouldShowPostalCode}</code></td><td></td></tr>
      * </table>
      * @see #CardMultilineWidget_shouldShowPostalCode
      */
@@ -10015,13 +10015,13 @@ public final class R {
         0x7f0401a7
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#shouldShowPostalCode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#shouldShowPostalCode}
      * attribute's value can be found in the {@link #CardMultilineWidget} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:shouldShowPostalCode
+     * @attr name com.moisociallearning.moiapp:shouldShowPostalCode
      */
     public static final int CardMultilineWidget_shouldShowPostalCode=0;
     /**
@@ -10033,17 +10033,17 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #CardView_android_minWidth android:minWidth}</code></td><td></td></tr>
      * <tr><td><code>{@link #CardView_android_minHeight android:minHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardBackgroundColor com.growmoisociallearning.moiapp:cardBackgroundColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardCornerRadius com.growmoisociallearning.moiapp:cardCornerRadius}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardElevation com.growmoisociallearning.moiapp:cardElevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardMaxElevation com.growmoisociallearning.moiapp:cardMaxElevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardPreventCornerOverlap com.growmoisociallearning.moiapp:cardPreventCornerOverlap}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardUseCompatPadding com.growmoisociallearning.moiapp:cardUseCompatPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPadding com.growmoisociallearning.moiapp:contentPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPaddingBottom com.growmoisociallearning.moiapp:contentPaddingBottom}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPaddingLeft com.growmoisociallearning.moiapp:contentPaddingLeft}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPaddingRight com.growmoisociallearning.moiapp:contentPaddingRight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPaddingTop com.growmoisociallearning.moiapp:contentPaddingTop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardBackgroundColor com.moisociallearning.moiapp:cardBackgroundColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardCornerRadius com.moisociallearning.moiapp:cardCornerRadius}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardElevation com.moisociallearning.moiapp:cardElevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardMaxElevation com.moisociallearning.moiapp:cardMaxElevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardPreventCornerOverlap com.moisociallearning.moiapp:cardPreventCornerOverlap}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardUseCompatPadding com.moisociallearning.moiapp:cardUseCompatPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPadding com.moisociallearning.moiapp:contentPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPaddingBottom com.moisociallearning.moiapp:contentPaddingBottom}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPaddingLeft com.moisociallearning.moiapp:contentPaddingLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPaddingRight com.moisociallearning.moiapp:contentPaddingRight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPaddingTop com.moisociallearning.moiapp:contentPaddingTop}</code></td><td></td></tr>
      * </table>
      * @see #CardView_android_minWidth
      * @see #CardView_android_minHeight
@@ -10060,9 +10060,9 @@ public final class R {
      * @see #CardView_contentPaddingTop
      */
     public static final int[] CardView={
-        0x0101013f, 0x01010140, 0x7f040068, 0x7f040069, 
-        0x7f04006a, 0x7f04006c, 0x7f04006d, 0x7f040070, 
-        0x7f04009c, 0x7f04009d, 0x7f04009e, 0x7f04009f, 
+        0x0101013f, 0x01010140, 0x7f040068, 0x7f040069,
+        0x7f04006a, 0x7f04006c, 0x7f04006d, 0x7f040070,
+        0x7f04009c, 0x7f04009d, 0x7f04009e, 0x7f04009f,
         0x7f0400a0
       };
     /**
@@ -10092,18 +10092,18 @@ public final class R {
      */
     public static final int CardView_android_minHeight=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardBackgroundColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardBackgroundColor}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cardBackgroundColor
+     * @attr name com.moisociallearning.moiapp:cardBackgroundColor
      */
     public static final int CardView_cardBackgroundColor=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardCornerRadius}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardCornerRadius}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10112,11 +10112,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cardCornerRadius
+     * @attr name com.moisociallearning.moiapp:cardCornerRadius
      */
     public static final int CardView_cardCornerRadius=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardElevation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardElevation}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10125,11 +10125,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cardElevation
+     * @attr name com.moisociallearning.moiapp:cardElevation
      */
     public static final int CardView_cardElevation=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardMaxElevation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardMaxElevation}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10138,31 +10138,31 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cardMaxElevation
+     * @attr name com.moisociallearning.moiapp:cardMaxElevation
      */
     public static final int CardView_cardMaxElevation=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardPreventCornerOverlap}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardPreventCornerOverlap}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cardPreventCornerOverlap
+     * @attr name com.moisociallearning.moiapp:cardPreventCornerOverlap
      */
     public static final int CardView_cardPreventCornerOverlap=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cardUseCompatPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cardUseCompatPadding}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cardUseCompatPadding
+     * @attr name com.moisociallearning.moiapp:cardUseCompatPadding
      */
     public static final int CardView_cardUseCompatPadding=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentPadding}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10171,11 +10171,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentPadding
+     * @attr name com.moisociallearning.moiapp:contentPadding
      */
     public static final int CardView_contentPadding=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentPaddingBottom}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentPaddingBottom}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10184,11 +10184,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentPaddingBottom
+     * @attr name com.moisociallearning.moiapp:contentPaddingBottom
      */
     public static final int CardView_contentPaddingBottom=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentPaddingLeft}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentPaddingLeft}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10197,11 +10197,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentPaddingLeft
+     * @attr name com.moisociallearning.moiapp:contentPaddingLeft
      */
     public static final int CardView_contentPaddingLeft=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentPaddingRight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentPaddingRight}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10210,11 +10210,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentPaddingRight
+     * @attr name com.moisociallearning.moiapp:contentPaddingRight
      */
     public static final int CardView_contentPaddingRight=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentPaddingTop}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentPaddingTop}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10223,7 +10223,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentPaddingTop
+     * @attr name com.moisociallearning.moiapp:contentPaddingTop
      */
     public static final int CardView_contentPaddingTop=12;
     /**
@@ -10233,22 +10233,22 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleGravity com.growmoisociallearning.moiapp:collapsedTitleGravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleTextAppearance com.growmoisociallearning.moiapp:collapsedTitleTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_contentScrim com.growmoisociallearning.moiapp:contentScrim}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleGravity com.growmoisociallearning.moiapp:expandedTitleGravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMargin com.growmoisociallearning.moiapp:expandedTitleMargin}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginBottom com.growmoisociallearning.moiapp:expandedTitleMarginBottom}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginEnd com.growmoisociallearning.moiapp:expandedTitleMarginEnd}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginStart com.growmoisociallearning.moiapp:expandedTitleMarginStart}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginTop com.growmoisociallearning.moiapp:expandedTitleMarginTop}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleTextAppearance com.growmoisociallearning.moiapp:expandedTitleTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_scrimAnimationDuration com.growmoisociallearning.moiapp:scrimAnimationDuration}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_scrimVisibleHeightTrigger com.growmoisociallearning.moiapp:scrimVisibleHeightTrigger}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_statusBarScrim com.growmoisociallearning.moiapp:statusBarScrim}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_title com.growmoisociallearning.moiapp:title}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_titleEnabled com.growmoisociallearning.moiapp:titleEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_toolbarId com.growmoisociallearning.moiapp:toolbarId}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleGravity com.moisociallearning.moiapp:collapsedTitleGravity}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleTextAppearance com.moisociallearning.moiapp:collapsedTitleTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_contentScrim com.moisociallearning.moiapp:contentScrim}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleGravity com.moisociallearning.moiapp:expandedTitleGravity}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMargin com.moisociallearning.moiapp:expandedTitleMargin}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginBottom com.moisociallearning.moiapp:expandedTitleMarginBottom}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginEnd com.moisociallearning.moiapp:expandedTitleMarginEnd}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginStart com.moisociallearning.moiapp:expandedTitleMarginStart}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginTop com.moisociallearning.moiapp:expandedTitleMarginTop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleTextAppearance com.moisociallearning.moiapp:expandedTitleTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_scrimAnimationDuration com.moisociallearning.moiapp:scrimAnimationDuration}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_scrimVisibleHeightTrigger com.moisociallearning.moiapp:scrimVisibleHeightTrigger}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_statusBarScrim com.moisociallearning.moiapp:statusBarScrim}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_title com.moisociallearning.moiapp:title}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_titleEnabled com.moisociallearning.moiapp:titleEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_toolbarId com.moisociallearning.moiapp:toolbarId}</code></td><td></td></tr>
      * </table>
      * @see #CollapsingToolbarLayout_collapsedTitleGravity
      * @see #CollapsingToolbarLayout_collapsedTitleTextAppearance
@@ -10268,13 +10268,13 @@ public final class R {
      * @see #CollapsingToolbarLayout_toolbarId
      */
     public static final int[] CollapsingToolbarLayout={
-        0x7f04007a, 0x7f04007b, 0x7f0400a1, 0x7f0400e3, 
-        0x7f0400e4, 0x7f0400e5, 0x7f0400e6, 0x7f0400e7, 
-        0x7f0400e8, 0x7f0400e9, 0x7f04019a, 0x7f04019b, 
+        0x7f04007a, 0x7f04007b, 0x7f0400a1, 0x7f0400e3,
+        0x7f0400e4, 0x7f0400e5, 0x7f0400e6, 0x7f0400e7,
+        0x7f0400e8, 0x7f0400e9, 0x7f04019a, 0x7f04019b,
         0x7f0401bb, 0x7f0401f0, 0x7f0401f1, 0x7f0401fb
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#collapsedTitleGravity}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#collapsedTitleGravity}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -10295,11 +10295,11 @@ public final class R {
      * <tr><td>top</td><td>30</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:collapsedTitleGravity
+     * @attr name com.moisociallearning.moiapp:collapsedTitleGravity
      */
     public static final int CollapsingToolbarLayout_collapsedTitleGravity=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#collapsedTitleTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#collapsedTitleTextAppearance}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -10307,22 +10307,22 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:collapsedTitleTextAppearance
+     * @attr name com.moisociallearning.moiapp:collapsedTitleTextAppearance
      */
     public static final int CollapsingToolbarLayout_collapsedTitleTextAppearance=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentScrim}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentScrim}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:contentScrim
+     * @attr name com.moisociallearning.moiapp:contentScrim
      */
     public static final int CollapsingToolbarLayout_contentScrim=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expandedTitleGravity}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expandedTitleGravity}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -10343,11 +10343,11 @@ public final class R {
      * <tr><td>top</td><td>30</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:expandedTitleGravity
+     * @attr name com.moisociallearning.moiapp:expandedTitleGravity
      */
     public static final int CollapsingToolbarLayout_expandedTitleGravity=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expandedTitleMargin}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expandedTitleMargin}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10356,11 +10356,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:expandedTitleMargin
+     * @attr name com.moisociallearning.moiapp:expandedTitleMargin
      */
     public static final int CollapsingToolbarLayout_expandedTitleMargin=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expandedTitleMarginBottom}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expandedTitleMarginBottom}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10369,11 +10369,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:expandedTitleMarginBottom
+     * @attr name com.moisociallearning.moiapp:expandedTitleMarginBottom
      */
     public static final int CollapsingToolbarLayout_expandedTitleMarginBottom=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expandedTitleMarginEnd}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expandedTitleMarginEnd}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10382,11 +10382,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:expandedTitleMarginEnd
+     * @attr name com.moisociallearning.moiapp:expandedTitleMarginEnd
      */
     public static final int CollapsingToolbarLayout_expandedTitleMarginEnd=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expandedTitleMarginStart}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expandedTitleMarginStart}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10395,11 +10395,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:expandedTitleMarginStart
+     * @attr name com.moisociallearning.moiapp:expandedTitleMarginStart
      */
     public static final int CollapsingToolbarLayout_expandedTitleMarginStart=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expandedTitleMarginTop}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expandedTitleMarginTop}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10408,11 +10408,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:expandedTitleMarginTop
+     * @attr name com.moisociallearning.moiapp:expandedTitleMarginTop
      */
     public static final int CollapsingToolbarLayout_expandedTitleMarginTop=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#expandedTitleTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#expandedTitleTextAppearance}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -10420,20 +10420,20 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:expandedTitleTextAppearance
+     * @attr name com.moisociallearning.moiapp:expandedTitleTextAppearance
      */
     public static final int CollapsingToolbarLayout_expandedTitleTextAppearance=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scrimAnimationDuration}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scrimAnimationDuration}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:scrimAnimationDuration
+     * @attr name com.moisociallearning.moiapp:scrimAnimationDuration
      */
     public static final int CollapsingToolbarLayout_scrimAnimationDuration=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scrimVisibleHeightTrigger}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scrimVisibleHeightTrigger}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -10442,42 +10442,42 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:scrimVisibleHeightTrigger
+     * @attr name com.moisociallearning.moiapp:scrimVisibleHeightTrigger
      */
     public static final int CollapsingToolbarLayout_scrimVisibleHeightTrigger=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#statusBarScrim}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#statusBarScrim}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:statusBarScrim
+     * @attr name com.moisociallearning.moiapp:statusBarScrim
      */
     public static final int CollapsingToolbarLayout_statusBarScrim=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#title}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#title}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:title
+     * @attr name com.moisociallearning.moiapp:title
      */
     public static final int CollapsingToolbarLayout_title=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleEnabled}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:titleEnabled
+     * @attr name com.moisociallearning.moiapp:titleEnabled
      */
     public static final int CollapsingToolbarLayout_titleEnabled=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#toolbarId}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#toolbarId}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -10485,7 +10485,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:toolbarId
+     * @attr name com.moisociallearning.moiapp:toolbarId
      */
     public static final int CollapsingToolbarLayout_toolbarId=15;
     /**
@@ -10495,8 +10495,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_Layout_layout_collapseMode com.growmoisociallearning.moiapp:layout_collapseMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier com.growmoisociallearning.moiapp:layout_collapseParallaxMultiplier}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_Layout_layout_collapseMode com.moisociallearning.moiapp:layout_collapseMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier com.moisociallearning.moiapp:layout_collapseParallaxMultiplier}</code></td><td></td></tr>
      * </table>
      * @see #CollapsingToolbarLayout_Layout_layout_collapseMode
      * @see #CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier
@@ -10505,7 +10505,7 @@ public final class R {
         0x7f040131, 0x7f040132
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_collapseMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_collapseMode}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout_Layout} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -10519,16 +10519,16 @@ public final class R {
      * <tr><td>pin</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_collapseMode
+     * @attr name com.moisociallearning.moiapp:layout_collapseMode
      */
     public static final int CollapsingToolbarLayout_Layout_layout_collapseMode=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_collapseParallaxMultiplier}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_collapseParallaxMultiplier}
      * attribute's value can be found in the {@link #CollapsingToolbarLayout_Layout} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_collapseParallaxMultiplier
+     * @attr name com.moisociallearning.moiapp:layout_collapseParallaxMultiplier
      */
     public static final int CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier=1;
     /**
@@ -10540,7 +10540,7 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #ColorStateListItem_android_color android:color}</code></td><td></td></tr>
      * <tr><td><code>{@link #ColorStateListItem_android_alpha android:alpha}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ColorStateListItem_alpha com.growmoisociallearning.moiapp:alpha}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ColorStateListItem_alpha com.moisociallearning.moiapp:alpha}</code></td><td></td></tr>
      * </table>
      * @see #ColorStateListItem_android_color
      * @see #ColorStateListItem_android_alpha
@@ -10570,12 +10570,12 @@ public final class R {
      */
     public static final int ColorStateListItem_android_alpha=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#alpha}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#alpha}
      * attribute's value can be found in the {@link #ColorStateListItem} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:alpha
+     * @attr name com.moisociallearning.moiapp:alpha
      */
     public static final int ColorStateListItem_alpha=2;
     /**
@@ -10586,8 +10586,8 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #CompoundButton_android_button android:button}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CompoundButton_buttonTint com.growmoisociallearning.moiapp:buttonTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CompoundButton_buttonTintMode com.growmoisociallearning.moiapp:buttonTintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CompoundButton_buttonTint com.moisociallearning.moiapp:buttonTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CompoundButton_buttonTintMode com.moisociallearning.moiapp:buttonTintMode}</code></td><td></td></tr>
      * </table>
      * @see #CompoundButton_android_button
      * @see #CompoundButton_buttonTint
@@ -10609,18 +10609,18 @@ public final class R {
      */
     public static final int CompoundButton_android_button=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonTint}
      * attribute's value can be found in the {@link #CompoundButton} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonTint
+     * @attr name com.moisociallearning.moiapp:buttonTint
      */
     public static final int CompoundButton_buttonTint=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonTintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonTintMode}
      * attribute's value can be found in the {@link #CompoundButton} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -10637,7 +10637,7 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonTintMode
+     * @attr name com.moisociallearning.moiapp:buttonTintMode
      */
     public static final int CompoundButton_buttonTintMode=2;
     /**
@@ -10647,8 +10647,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_keylines com.growmoisociallearning.moiapp:keylines}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_statusBarBackground com.growmoisociallearning.moiapp:statusBarBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_keylines com.moisociallearning.moiapp:keylines}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_statusBarBackground com.moisociallearning.moiapp:statusBarBackground}</code></td><td></td></tr>
      * </table>
      * @see #CoordinatorLayout_keylines
      * @see #CoordinatorLayout_statusBarBackground
@@ -10657,7 +10657,7 @@ public final class R {
         0x7f040127, 0x7f0401ba
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#keylines}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#keylines}
      * attribute's value can be found in the {@link #CoordinatorLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -10665,11 +10665,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:keylines
+     * @attr name com.moisociallearning.moiapp:keylines
      */
     public static final int CoordinatorLayout_keylines=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#statusBarBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#statusBarBackground}
      * attribute's value can be found in the {@link #CoordinatorLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -10680,7 +10680,7 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:statusBarBackground
+     * @attr name com.moisociallearning.moiapp:statusBarBackground
      */
     public static final int CoordinatorLayout_statusBarBackground=1;
     /**
@@ -10691,12 +10691,12 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #CoordinatorLayout_Layout_android_layout_gravity android:layout_gravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchor com.growmoisociallearning.moiapp:layout_anchor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchorGravity com.growmoisociallearning.moiapp:layout_anchorGravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_behavior com.growmoisociallearning.moiapp:layout_behavior}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_dodgeInsetEdges com.growmoisociallearning.moiapp:layout_dodgeInsetEdges}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_insetEdge com.growmoisociallearning.moiapp:layout_insetEdge}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_keyline com.growmoisociallearning.moiapp:layout_keyline}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchor com.moisociallearning.moiapp:layout_anchor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchorGravity com.moisociallearning.moiapp:layout_anchorGravity}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_behavior com.moisociallearning.moiapp:layout_behavior}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_dodgeInsetEdges com.moisociallearning.moiapp:layout_dodgeInsetEdges}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_insetEdge com.moisociallearning.moiapp:layout_insetEdge}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_keyline com.moisociallearning.moiapp:layout_keyline}</code></td><td></td></tr>
      * </table>
      * @see #CoordinatorLayout_Layout_android_layout_gravity
      * @see #CoordinatorLayout_Layout_layout_anchor
@@ -10707,7 +10707,7 @@ public final class R {
      * @see #CoordinatorLayout_Layout_layout_keyline
      */
     public static final int[] CoordinatorLayout_Layout={
-        0x010100b3, 0x7f04012e, 0x7f04012f, 0x7f040130, 
+        0x010100b3, 0x7f04012e, 0x7f04012f, 0x7f040130,
         0x7f040133, 0x7f040134, 0x7f040135
       };
     /**
@@ -10740,7 +10740,7 @@ public final class R {
      */
     public static final int CoordinatorLayout_Layout_android_layout_gravity=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_anchor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_anchor}
      * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -10748,11 +10748,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_anchor
+     * @attr name com.moisociallearning.moiapp:layout_anchor
      */
     public static final int CoordinatorLayout_Layout_layout_anchor=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_anchorGravity}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_anchorGravity}
      * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -10777,21 +10777,21 @@ public final class R {
      * <tr><td>top</td><td>30</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_anchorGravity
+     * @attr name com.moisociallearning.moiapp:layout_anchorGravity
      */
     public static final int CoordinatorLayout_Layout_layout_anchorGravity=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_behavior}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_behavior}
      * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_behavior
+     * @attr name com.moisociallearning.moiapp:layout_behavior
      */
     public static final int CoordinatorLayout_Layout_layout_behavior=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_dodgeInsetEdges}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_dodgeInsetEdges}
      * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -10810,11 +10810,11 @@ public final class R {
      * <tr><td>top</td><td>30</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_dodgeInsetEdges
+     * @attr name com.moisociallearning.moiapp:layout_dodgeInsetEdges
      */
     public static final int CoordinatorLayout_Layout_layout_dodgeInsetEdges=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_insetEdge}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_insetEdge}
      * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -10832,16 +10832,16 @@ public final class R {
      * <tr><td>top</td><td>30</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_insetEdge
+     * @attr name com.moisociallearning.moiapp:layout_insetEdge
      */
     public static final int CoordinatorLayout_Layout_layout_insetEdge=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout_keyline}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout_keyline}
      * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:layout_keyline
+     * @attr name com.moisociallearning.moiapp:layout_keyline
      */
     public static final int CoordinatorLayout_Layout_layout_keyline=6;
     /**
@@ -10851,19 +10851,19 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CreditCardForm_animate_on_error com.growmoisociallearning.moiapp:animate_on_error}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_card_number_hint com.growmoisociallearning.moiapp:card_number_hint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_cursor_color com.growmoisociallearning.moiapp:cursor_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_default_text_colors com.growmoisociallearning.moiapp:default_text_colors}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_helper_text_color com.growmoisociallearning.moiapp:helper_text_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_hint_text_color com.growmoisociallearning.moiapp:hint_text_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_include_exp com.growmoisociallearning.moiapp:include_exp}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_include_helper com.growmoisociallearning.moiapp:include_helper}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_include_security com.growmoisociallearning.moiapp:include_security}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_include_zip com.growmoisociallearning.moiapp:include_zip}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_input_background com.growmoisociallearning.moiapp:input_background}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_text_color com.growmoisociallearning.moiapp:text_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CreditCardForm_text_size com.growmoisociallearning.moiapp:text_size}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_animate_on_error com.moisociallearning.moiapp:animate_on_error}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_card_number_hint com.moisociallearning.moiapp:card_number_hint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_cursor_color com.moisociallearning.moiapp:cursor_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_default_text_colors com.moisociallearning.moiapp:default_text_colors}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_helper_text_color com.moisociallearning.moiapp:helper_text_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_hint_text_color com.moisociallearning.moiapp:hint_text_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_include_exp com.moisociallearning.moiapp:include_exp}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_include_helper com.moisociallearning.moiapp:include_helper}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_include_security com.moisociallearning.moiapp:include_security}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_include_zip com.moisociallearning.moiapp:include_zip}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_input_background com.moisociallearning.moiapp:input_background}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_text_color com.moisociallearning.moiapp:text_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CreditCardForm_text_size com.moisociallearning.moiapp:text_size}</code></td><td></td></tr>
      * </table>
      * @see #CreditCardForm_animate_on_error
      * @see #CreditCardForm_card_number_hint
@@ -10880,116 +10880,116 @@ public final class R {
      * @see #CreditCardForm_text_size
      */
     public static final int[] CreditCardForm={
-        0x7f040031, 0x7f040072, 0x7f0400c9, 0x7f0400ce, 
-        0x7f040108, 0x7f04010f, 0x7f040119, 0x7f04011a, 
-        0x7f04011b, 0x7f04011c, 0x7f04011f, 0x7f0401e4, 
+        0x7f040031, 0x7f040072, 0x7f0400c9, 0x7f0400ce,
+        0x7f040108, 0x7f04010f, 0x7f040119, 0x7f04011a,
+        0x7f04011b, 0x7f04011c, 0x7f04011f, 0x7f0401e4,
         0x7f0401e5
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#animate_on_error}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#animate_on_error}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:animate_on_error
+     * @attr name com.moisociallearning.moiapp:animate_on_error
      */
     public static final int CreditCardForm_animate_on_error=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#card_number_hint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#card_number_hint}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:card_number_hint
+     * @attr name com.moisociallearning.moiapp:card_number_hint
      */
     public static final int CreditCardForm_card_number_hint=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cursor_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cursor_color}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cursor_color
+     * @attr name com.moisociallearning.moiapp:cursor_color
      */
     public static final int CreditCardForm_cursor_color=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#default_text_colors}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#default_text_colors}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:default_text_colors
+     * @attr name com.moisociallearning.moiapp:default_text_colors
      */
     public static final int CreditCardForm_default_text_colors=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#helper_text_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#helper_text_color}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:helper_text_color
+     * @attr name com.moisociallearning.moiapp:helper_text_color
      */
     public static final int CreditCardForm_helper_text_color=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#hint_text_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#hint_text_color}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:hint_text_color
+     * @attr name com.moisociallearning.moiapp:hint_text_color
      */
     public static final int CreditCardForm_hint_text_color=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#include_exp}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#include_exp}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:include_exp
+     * @attr name com.moisociallearning.moiapp:include_exp
      */
     public static final int CreditCardForm_include_exp=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#include_helper}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#include_helper}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:include_helper
+     * @attr name com.moisociallearning.moiapp:include_helper
      */
     public static final int CreditCardForm_include_helper=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#include_security}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#include_security}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:include_security
+     * @attr name com.moisociallearning.moiapp:include_security
      */
     public static final int CreditCardForm_include_security=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#include_zip}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#include_zip}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:include_zip
+     * @attr name com.moisociallearning.moiapp:include_zip
      */
     public static final int CreditCardForm_include_zip=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#input_background}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#input_background}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -10997,22 +10997,22 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:input_background
+     * @attr name com.moisociallearning.moiapp:input_background
      */
     public static final int CreditCardForm_input_background=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#text_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#text_color}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:text_color
+     * @attr name com.moisociallearning.moiapp:text_color
      */
     public static final int CreditCardForm_text_color=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#text_size}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#text_size}
      * attribute's value can be found in the {@link #CreditCardForm} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11021,7 +11021,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:text_size
+     * @attr name com.moisociallearning.moiapp:text_size
      */
     public static final int CreditCardForm_text_size=12;
     /**
@@ -11031,38 +11031,38 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CropImageView_cropAspectRatioX com.growmoisociallearning.moiapp:cropAspectRatioX}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropAspectRatioY com.growmoisociallearning.moiapp:cropAspectRatioY}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropAutoZoomEnabled com.growmoisociallearning.moiapp:cropAutoZoomEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropBackgroundColor com.growmoisociallearning.moiapp:cropBackgroundColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropBorderCornerColor com.growmoisociallearning.moiapp:cropBorderCornerColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropBorderCornerLength com.growmoisociallearning.moiapp:cropBorderCornerLength}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropBorderCornerOffset com.growmoisociallearning.moiapp:cropBorderCornerOffset}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropBorderCornerThickness com.growmoisociallearning.moiapp:cropBorderCornerThickness}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropBorderLineColor com.growmoisociallearning.moiapp:cropBorderLineColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropBorderLineThickness com.growmoisociallearning.moiapp:cropBorderLineThickness}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropFixAspectRatio com.growmoisociallearning.moiapp:cropFixAspectRatio}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropFlipHorizontally com.growmoisociallearning.moiapp:cropFlipHorizontally}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropFlipVertically com.growmoisociallearning.moiapp:cropFlipVertically}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropGuidelines com.growmoisociallearning.moiapp:cropGuidelines}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropGuidelinesColor com.growmoisociallearning.moiapp:cropGuidelinesColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropGuidelinesThickness com.growmoisociallearning.moiapp:cropGuidelinesThickness}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropInitialCropWindowPaddingRatio com.growmoisociallearning.moiapp:cropInitialCropWindowPaddingRatio}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropMaxCropResultHeightPX com.growmoisociallearning.moiapp:cropMaxCropResultHeightPX}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropMaxCropResultWidthPX com.growmoisociallearning.moiapp:cropMaxCropResultWidthPX}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropMaxZoom com.growmoisociallearning.moiapp:cropMaxZoom}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropMinCropResultHeightPX com.growmoisociallearning.moiapp:cropMinCropResultHeightPX}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropMinCropResultWidthPX com.growmoisociallearning.moiapp:cropMinCropResultWidthPX}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropMinCropWindowHeight com.growmoisociallearning.moiapp:cropMinCropWindowHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropMinCropWindowWidth com.growmoisociallearning.moiapp:cropMinCropWindowWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropMultiTouchEnabled com.growmoisociallearning.moiapp:cropMultiTouchEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropSaveBitmapToInstanceState com.growmoisociallearning.moiapp:cropSaveBitmapToInstanceState}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropScaleType com.growmoisociallearning.moiapp:cropScaleType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropShape com.growmoisociallearning.moiapp:cropShape}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropShowCropOverlay com.growmoisociallearning.moiapp:cropShowCropOverlay}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropShowProgressBar com.growmoisociallearning.moiapp:cropShowProgressBar}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropSnapRadius com.growmoisociallearning.moiapp:cropSnapRadius}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CropImageView_cropTouchRadius com.growmoisociallearning.moiapp:cropTouchRadius}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropAspectRatioX com.moisociallearning.moiapp:cropAspectRatioX}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropAspectRatioY com.moisociallearning.moiapp:cropAspectRatioY}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropAutoZoomEnabled com.moisociallearning.moiapp:cropAutoZoomEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropBackgroundColor com.moisociallearning.moiapp:cropBackgroundColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropBorderCornerColor com.moisociallearning.moiapp:cropBorderCornerColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropBorderCornerLength com.moisociallearning.moiapp:cropBorderCornerLength}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropBorderCornerOffset com.moisociallearning.moiapp:cropBorderCornerOffset}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropBorderCornerThickness com.moisociallearning.moiapp:cropBorderCornerThickness}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropBorderLineColor com.moisociallearning.moiapp:cropBorderLineColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropBorderLineThickness com.moisociallearning.moiapp:cropBorderLineThickness}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropFixAspectRatio com.moisociallearning.moiapp:cropFixAspectRatio}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropFlipHorizontally com.moisociallearning.moiapp:cropFlipHorizontally}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropFlipVertically com.moisociallearning.moiapp:cropFlipVertically}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropGuidelines com.moisociallearning.moiapp:cropGuidelines}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropGuidelinesColor com.moisociallearning.moiapp:cropGuidelinesColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropGuidelinesThickness com.moisociallearning.moiapp:cropGuidelinesThickness}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropInitialCropWindowPaddingRatio com.moisociallearning.moiapp:cropInitialCropWindowPaddingRatio}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropMaxCropResultHeightPX com.moisociallearning.moiapp:cropMaxCropResultHeightPX}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropMaxCropResultWidthPX com.moisociallearning.moiapp:cropMaxCropResultWidthPX}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropMaxZoom com.moisociallearning.moiapp:cropMaxZoom}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropMinCropResultHeightPX com.moisociallearning.moiapp:cropMinCropResultHeightPX}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropMinCropResultWidthPX com.moisociallearning.moiapp:cropMinCropResultWidthPX}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropMinCropWindowHeight com.moisociallearning.moiapp:cropMinCropWindowHeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropMinCropWindowWidth com.moisociallearning.moiapp:cropMinCropWindowWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropMultiTouchEnabled com.moisociallearning.moiapp:cropMultiTouchEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropSaveBitmapToInstanceState com.moisociallearning.moiapp:cropSaveBitmapToInstanceState}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropScaleType com.moisociallearning.moiapp:cropScaleType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropShape com.moisociallearning.moiapp:cropShape}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropShowCropOverlay com.moisociallearning.moiapp:cropShowCropOverlay}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropShowProgressBar com.moisociallearning.moiapp:cropShowProgressBar}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropSnapRadius com.moisociallearning.moiapp:cropSnapRadius}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CropImageView_cropTouchRadius com.moisociallearning.moiapp:cropTouchRadius}</code></td><td></td></tr>
      * </table>
      * @see #CropImageView_cropAspectRatioX
      * @see #CropImageView_cropAspectRatioY
@@ -11098,67 +11098,67 @@ public final class R {
      * @see #CropImageView_cropTouchRadius
      */
     public static final int[] CropImageView={
-        0x7f0400a9, 0x7f0400aa, 0x7f0400ab, 0x7f0400ac, 
-        0x7f0400ad, 0x7f0400ae, 0x7f0400af, 0x7f0400b0, 
-        0x7f0400b1, 0x7f0400b2, 0x7f0400b3, 0x7f0400b4, 
-        0x7f0400b5, 0x7f0400b6, 0x7f0400b7, 0x7f0400b8, 
-        0x7f0400b9, 0x7f0400ba, 0x7f0400bb, 0x7f0400bc, 
-        0x7f0400bd, 0x7f0400be, 0x7f0400bf, 0x7f0400c0, 
-        0x7f0400c1, 0x7f0400c2, 0x7f0400c3, 0x7f0400c4, 
+        0x7f0400a9, 0x7f0400aa, 0x7f0400ab, 0x7f0400ac,
+        0x7f0400ad, 0x7f0400ae, 0x7f0400af, 0x7f0400b0,
+        0x7f0400b1, 0x7f0400b2, 0x7f0400b3, 0x7f0400b4,
+        0x7f0400b5, 0x7f0400b6, 0x7f0400b7, 0x7f0400b8,
+        0x7f0400b9, 0x7f0400ba, 0x7f0400bb, 0x7f0400bc,
+        0x7f0400bd, 0x7f0400be, 0x7f0400bf, 0x7f0400c0,
+        0x7f0400c1, 0x7f0400c2, 0x7f0400c3, 0x7f0400c4,
         0x7f0400c5, 0x7f0400c6, 0x7f0400c7, 0x7f0400c8
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropAspectRatioX}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropAspectRatioX}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropAspectRatioX
+     * @attr name com.moisociallearning.moiapp:cropAspectRatioX
      */
     public static final int CropImageView_cropAspectRatioX=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropAspectRatioY}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropAspectRatioY}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropAspectRatioY
+     * @attr name com.moisociallearning.moiapp:cropAspectRatioY
      */
     public static final int CropImageView_cropAspectRatioY=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropAutoZoomEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropAutoZoomEnabled}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropAutoZoomEnabled
+     * @attr name com.moisociallearning.moiapp:cropAutoZoomEnabled
      */
     public static final int CropImageView_cropAutoZoomEnabled=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropBackgroundColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropBackgroundColor}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropBackgroundColor
+     * @attr name com.moisociallearning.moiapp:cropBackgroundColor
      */
     public static final int CropImageView_cropBackgroundColor=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropBorderCornerColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropBorderCornerColor}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropBorderCornerColor
+     * @attr name com.moisociallearning.moiapp:cropBorderCornerColor
      */
     public static final int CropImageView_cropBorderCornerColor=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropBorderCornerLength}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropBorderCornerLength}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11167,11 +11167,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropBorderCornerLength
+     * @attr name com.moisociallearning.moiapp:cropBorderCornerLength
      */
     public static final int CropImageView_cropBorderCornerLength=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropBorderCornerOffset}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropBorderCornerOffset}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11180,11 +11180,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropBorderCornerOffset
+     * @attr name com.moisociallearning.moiapp:cropBorderCornerOffset
      */
     public static final int CropImageView_cropBorderCornerOffset=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropBorderCornerThickness}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropBorderCornerThickness}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11193,22 +11193,22 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropBorderCornerThickness
+     * @attr name com.moisociallearning.moiapp:cropBorderCornerThickness
      */
     public static final int CropImageView_cropBorderCornerThickness=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropBorderLineColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropBorderLineColor}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropBorderLineColor
+     * @attr name com.moisociallearning.moiapp:cropBorderLineColor
      */
     public static final int CropImageView_cropBorderLineColor=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropBorderLineThickness}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropBorderLineThickness}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11217,41 +11217,41 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropBorderLineThickness
+     * @attr name com.moisociallearning.moiapp:cropBorderLineThickness
      */
     public static final int CropImageView_cropBorderLineThickness=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropFixAspectRatio}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropFixAspectRatio}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropFixAspectRatio
+     * @attr name com.moisociallearning.moiapp:cropFixAspectRatio
      */
     public static final int CropImageView_cropFixAspectRatio=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropFlipHorizontally}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropFlipHorizontally}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropFlipHorizontally
+     * @attr name com.moisociallearning.moiapp:cropFlipHorizontally
      */
     public static final int CropImageView_cropFlipHorizontally=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropFlipVertically}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropFlipVertically}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropFlipVertically
+     * @attr name com.moisociallearning.moiapp:cropFlipVertically
      */
     public static final int CropImageView_cropFlipVertically=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropGuidelines}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropGuidelines}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -11265,22 +11265,22 @@ public final class R {
      * <tr><td>onTouch</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:cropGuidelines
+     * @attr name com.moisociallearning.moiapp:cropGuidelines
      */
     public static final int CropImageView_cropGuidelines=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropGuidelinesColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropGuidelinesColor}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropGuidelinesColor
+     * @attr name com.moisociallearning.moiapp:cropGuidelinesColor
      */
     public static final int CropImageView_cropGuidelinesColor=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropGuidelinesThickness}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropGuidelinesThickness}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11289,65 +11289,65 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropGuidelinesThickness
+     * @attr name com.moisociallearning.moiapp:cropGuidelinesThickness
      */
     public static final int CropImageView_cropGuidelinesThickness=15;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropInitialCropWindowPaddingRatio}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropInitialCropWindowPaddingRatio}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropInitialCropWindowPaddingRatio
+     * @attr name com.moisociallearning.moiapp:cropInitialCropWindowPaddingRatio
      */
     public static final int CropImageView_cropInitialCropWindowPaddingRatio=16;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropMaxCropResultHeightPX}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropMaxCropResultHeightPX}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropMaxCropResultHeightPX
+     * @attr name com.moisociallearning.moiapp:cropMaxCropResultHeightPX
      */
     public static final int CropImageView_cropMaxCropResultHeightPX=17;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropMaxCropResultWidthPX}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropMaxCropResultWidthPX}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropMaxCropResultWidthPX
+     * @attr name com.moisociallearning.moiapp:cropMaxCropResultWidthPX
      */
     public static final int CropImageView_cropMaxCropResultWidthPX=18;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropMaxZoom}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropMaxZoom}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropMaxZoom
+     * @attr name com.moisociallearning.moiapp:cropMaxZoom
      */
     public static final int CropImageView_cropMaxZoom=19;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropMinCropResultHeightPX}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropMinCropResultHeightPX}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropMinCropResultHeightPX
+     * @attr name com.moisociallearning.moiapp:cropMinCropResultHeightPX
      */
     public static final int CropImageView_cropMinCropResultHeightPX=20;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropMinCropResultWidthPX}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropMinCropResultWidthPX}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropMinCropResultWidthPX
+     * @attr name com.moisociallearning.moiapp:cropMinCropResultWidthPX
      */
     public static final int CropImageView_cropMinCropResultWidthPX=21;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropMinCropWindowHeight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropMinCropWindowHeight}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11356,11 +11356,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropMinCropWindowHeight
+     * @attr name com.moisociallearning.moiapp:cropMinCropWindowHeight
      */
     public static final int CropImageView_cropMinCropWindowHeight=22;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropMinCropWindowWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropMinCropWindowWidth}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11369,31 +11369,31 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropMinCropWindowWidth
+     * @attr name com.moisociallearning.moiapp:cropMinCropWindowWidth
      */
     public static final int CropImageView_cropMinCropWindowWidth=23;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropMultiTouchEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropMultiTouchEnabled}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropMultiTouchEnabled
+     * @attr name com.moisociallearning.moiapp:cropMultiTouchEnabled
      */
     public static final int CropImageView_cropMultiTouchEnabled=24;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropSaveBitmapToInstanceState}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropSaveBitmapToInstanceState}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropSaveBitmapToInstanceState
+     * @attr name com.moisociallearning.moiapp:cropSaveBitmapToInstanceState
      */
     public static final int CropImageView_cropSaveBitmapToInstanceState=25;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropScaleType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropScaleType}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -11408,11 +11408,11 @@ public final class R {
      * <tr><td>fitCenter</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:cropScaleType
+     * @attr name com.moisociallearning.moiapp:cropScaleType
      */
     public static final int CropImageView_cropScaleType=26;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropShape}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropShape}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -11425,31 +11425,31 @@ public final class R {
      * <tr><td>rectangle</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:cropShape
+     * @attr name com.moisociallearning.moiapp:cropShape
      */
     public static final int CropImageView_cropShape=27;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropShowCropOverlay}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropShowCropOverlay}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropShowCropOverlay
+     * @attr name com.moisociallearning.moiapp:cropShowCropOverlay
      */
     public static final int CropImageView_cropShowCropOverlay=28;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropShowProgressBar}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropShowProgressBar}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cropShowProgressBar
+     * @attr name com.moisociallearning.moiapp:cropShowProgressBar
      */
     public static final int CropImageView_cropShowProgressBar=29;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropSnapRadius}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropSnapRadius}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11458,11 +11458,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropSnapRadius
+     * @attr name com.moisociallearning.moiapp:cropSnapRadius
      */
     public static final int CropImageView_cropSnapRadius=30;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cropTouchRadius}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cropTouchRadius}
      * attribute's value can be found in the {@link #CropImageView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11471,7 +11471,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:cropTouchRadius
+     * @attr name com.moisociallearning.moiapp:cropTouchRadius
      */
     public static final int CropImageView_cropTouchRadius=31;
     /**
@@ -11481,9 +11481,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CustomWalletTheme_customThemeStyle com.growmoisociallearning.moiapp:customThemeStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CustomWalletTheme_toolbarTextColorStyle com.growmoisociallearning.moiapp:toolbarTextColorStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CustomWalletTheme_windowTransitionStyle com.growmoisociallearning.moiapp:windowTransitionStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CustomWalletTheme_customThemeStyle com.moisociallearning.moiapp:customThemeStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CustomWalletTheme_toolbarTextColorStyle com.moisociallearning.moiapp:toolbarTextColorStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CustomWalletTheme_windowTransitionStyle com.moisociallearning.moiapp:windowTransitionStyle}</code></td><td></td></tr>
      * </table>
      * @see #CustomWalletTheme_customThemeStyle
      * @see #CustomWalletTheme_toolbarTextColorStyle
@@ -11493,7 +11493,7 @@ public final class R {
         0x7f0400cb, 0x7f0401fe, 0x7f04021f
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#customThemeStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#customThemeStyle}
      * attribute's value can be found in the {@link #CustomWalletTheme} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -11506,11 +11506,11 @@ public final class R {
      * <tr><td>material</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:customThemeStyle
+     * @attr name com.moisociallearning.moiapp:customThemeStyle
      */
     public static final int CustomWalletTheme_customThemeStyle=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#toolbarTextColorStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#toolbarTextColorStyle}
      * attribute's value can be found in the {@link #CustomWalletTheme} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -11523,11 +11523,11 @@ public final class R {
      * <tr><td>light</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:toolbarTextColorStyle
+     * @attr name com.moisociallearning.moiapp:toolbarTextColorStyle
      */
     public static final int CustomWalletTheme_toolbarTextColorStyle=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#windowTransitionStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#windowTransitionStyle}
      * attribute's value can be found in the {@link #CustomWalletTheme} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -11540,7 +11540,7 @@ public final class R {
      * <tr><td>slide</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:windowTransitionStyle
+     * @attr name com.moisociallearning.moiapp:windowTransitionStyle
      */
     public static final int CustomWalletTheme_windowTransitionStyle=2;
     /**
@@ -11550,19 +11550,19 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_ad_marker_color com.growmoisociallearning.moiapp:ad_marker_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_ad_marker_width com.growmoisociallearning.moiapp:ad_marker_width}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_bar_height com.growmoisociallearning.moiapp:bar_height}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_buffered_color com.growmoisociallearning.moiapp:buffered_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_played_ad_marker_color com.growmoisociallearning.moiapp:played_ad_marker_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_played_color com.growmoisociallearning.moiapp:played_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_scrubber_color com.growmoisociallearning.moiapp:scrubber_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_scrubber_disabled_size com.growmoisociallearning.moiapp:scrubber_disabled_size}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_scrubber_dragged_size com.growmoisociallearning.moiapp:scrubber_dragged_size}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_scrubber_drawable com.growmoisociallearning.moiapp:scrubber_drawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_scrubber_enabled_size com.growmoisociallearning.moiapp:scrubber_enabled_size}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_touch_target_height com.growmoisociallearning.moiapp:touch_target_height}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DefaultTimeBar_unplayed_color com.growmoisociallearning.moiapp:unplayed_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_ad_marker_color com.moisociallearning.moiapp:ad_marker_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_ad_marker_width com.moisociallearning.moiapp:ad_marker_width}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_bar_height com.moisociallearning.moiapp:bar_height}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_buffered_color com.moisociallearning.moiapp:buffered_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_played_ad_marker_color com.moisociallearning.moiapp:played_ad_marker_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_played_color com.moisociallearning.moiapp:played_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_scrubber_color com.moisociallearning.moiapp:scrubber_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_scrubber_disabled_size com.moisociallearning.moiapp:scrubber_disabled_size}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_scrubber_dragged_size com.moisociallearning.moiapp:scrubber_dragged_size}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_scrubber_drawable com.moisociallearning.moiapp:scrubber_drawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_scrubber_enabled_size com.moisociallearning.moiapp:scrubber_enabled_size}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_touch_target_height com.moisociallearning.moiapp:touch_target_height}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DefaultTimeBar_unplayed_color com.moisociallearning.moiapp:unplayed_color}</code></td><td></td></tr>
      * </table>
      * @see #DefaultTimeBar_ad_marker_color
      * @see #DefaultTimeBar_ad_marker_width
@@ -11579,24 +11579,24 @@ public final class R {
      * @see #DefaultTimeBar_unplayed_color
      */
     public static final int[] DefaultTimeBar={
-        0x7f040027, 0x7f040028, 0x7f040045, 0x7f04004f, 
-        0x7f040173, 0x7f040174, 0x7f04019c, 0x7f04019d, 
-        0x7f04019e, 0x7f04019f, 0x7f0401a0, 0x7f040202, 
+        0x7f040027, 0x7f040028, 0x7f040045, 0x7f04004f,
+        0x7f040173, 0x7f040174, 0x7f04019c, 0x7f04019d,
+        0x7f04019e, 0x7f04019f, 0x7f0401a0, 0x7f040202,
         0x7f04020d
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#ad_marker_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#ad_marker_color}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:ad_marker_color
+     * @attr name com.moisociallearning.moiapp:ad_marker_color
      */
     public static final int DefaultTimeBar_ad_marker_color=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#ad_marker_width}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#ad_marker_width}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11605,11 +11605,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:ad_marker_width
+     * @attr name com.moisociallearning.moiapp:ad_marker_width
      */
     public static final int DefaultTimeBar_ad_marker_width=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#bar_height}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#bar_height}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11618,55 +11618,55 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:bar_height
+     * @attr name com.moisociallearning.moiapp:bar_height
      */
     public static final int DefaultTimeBar_bar_height=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buffered_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buffered_color}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:buffered_color
+     * @attr name com.moisociallearning.moiapp:buffered_color
      */
     public static final int DefaultTimeBar_buffered_color=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#played_ad_marker_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#played_ad_marker_color}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:played_ad_marker_color
+     * @attr name com.moisociallearning.moiapp:played_ad_marker_color
      */
     public static final int DefaultTimeBar_played_ad_marker_color=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#played_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#played_color}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:played_color
+     * @attr name com.moisociallearning.moiapp:played_color
      */
     public static final int DefaultTimeBar_played_color=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scrubber_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scrubber_color}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:scrubber_color
+     * @attr name com.moisociallearning.moiapp:scrubber_color
      */
     public static final int DefaultTimeBar_scrubber_color=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scrubber_disabled_size}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scrubber_disabled_size}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11675,11 +11675,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:scrubber_disabled_size
+     * @attr name com.moisociallearning.moiapp:scrubber_disabled_size
      */
     public static final int DefaultTimeBar_scrubber_disabled_size=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scrubber_dragged_size}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scrubber_dragged_size}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11688,11 +11688,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:scrubber_dragged_size
+     * @attr name com.moisociallearning.moiapp:scrubber_dragged_size
      */
     public static final int DefaultTimeBar_scrubber_dragged_size=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scrubber_drawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scrubber_drawable}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -11700,11 +11700,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:scrubber_drawable
+     * @attr name com.moisociallearning.moiapp:scrubber_drawable
      */
     public static final int DefaultTimeBar_scrubber_drawable=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scrubber_enabled_size}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scrubber_enabled_size}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11713,11 +11713,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:scrubber_enabled_size
+     * @attr name com.moisociallearning.moiapp:scrubber_enabled_size
      */
     public static final int DefaultTimeBar_scrubber_enabled_size=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#touch_target_height}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#touch_target_height}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11726,18 +11726,18 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:touch_target_height
+     * @attr name com.moisociallearning.moiapp:touch_target_height
      */
     public static final int DefaultTimeBar_touch_target_height=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#unplayed_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#unplayed_color}
      * attribute's value can be found in the {@link #DefaultTimeBar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:unplayed_color
+     * @attr name com.moisociallearning.moiapp:unplayed_color
      */
     public static final int DefaultTimeBar_unplayed_color=12;
     /**
@@ -11747,9 +11747,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #DesignTheme_bottomSheetDialogTheme com.growmoisociallearning.moiapp:bottomSheetDialogTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DesignTheme_bottomSheetStyle com.growmoisociallearning.moiapp:bottomSheetStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DesignTheme_textColorError com.growmoisociallearning.moiapp:textColorError}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DesignTheme_bottomSheetDialogTheme com.moisociallearning.moiapp:bottomSheetDialogTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DesignTheme_bottomSheetStyle com.moisociallearning.moiapp:bottomSheetStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DesignTheme_textColorError com.moisociallearning.moiapp:textColorError}</code></td><td></td></tr>
      * </table>
      * @see #DesignTheme_bottomSheetDialogTheme
      * @see #DesignTheme_bottomSheetStyle
@@ -11759,7 +11759,7 @@ public final class R {
         0x7f04004d, 0x7f04004e, 0x7f0401e2
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#bottomSheetDialogTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#bottomSheetDialogTheme}
      * attribute's value can be found in the {@link #DesignTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -11767,11 +11767,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:bottomSheetDialogTheme
+     * @attr name com.moisociallearning.moiapp:bottomSheetDialogTheme
      */
     public static final int DesignTheme_bottomSheetDialogTheme=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#bottomSheetStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#bottomSheetStyle}
      * attribute's value can be found in the {@link #DesignTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -11779,11 +11779,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:bottomSheetStyle
+     * @attr name com.moisociallearning.moiapp:bottomSheetStyle
      */
     public static final int DesignTheme_bottomSheetStyle=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textColorError}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textColorError}
      * attribute's value can be found in the {@link #DesignTheme} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -11794,7 +11794,7 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textColorError
+     * @attr name com.moisociallearning.moiapp:textColorError
      */
     public static final int DesignTheme_textColorError=2;
     /**
@@ -11804,14 +11804,14 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #DrawerArrowToggle_arrowHeadLength com.growmoisociallearning.moiapp:arrowHeadLength}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DrawerArrowToggle_arrowShaftLength com.growmoisociallearning.moiapp:arrowShaftLength}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DrawerArrowToggle_barLength com.growmoisociallearning.moiapp:barLength}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DrawerArrowToggle_color com.growmoisociallearning.moiapp:color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DrawerArrowToggle_drawableSize com.growmoisociallearning.moiapp:drawableSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DrawerArrowToggle_gapBetweenBars com.growmoisociallearning.moiapp:gapBetweenBars}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DrawerArrowToggle_spinBars com.growmoisociallearning.moiapp:spinBars}</code></td><td></td></tr>
-     * <tr><td><code>{@link #DrawerArrowToggle_thickness com.growmoisociallearning.moiapp:thickness}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DrawerArrowToggle_arrowHeadLength com.moisociallearning.moiapp:arrowHeadLength}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DrawerArrowToggle_arrowShaftLength com.moisociallearning.moiapp:arrowShaftLength}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DrawerArrowToggle_barLength com.moisociallearning.moiapp:barLength}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DrawerArrowToggle_color com.moisociallearning.moiapp:color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DrawerArrowToggle_drawableSize com.moisociallearning.moiapp:drawableSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DrawerArrowToggle_gapBetweenBars com.moisociallearning.moiapp:gapBetweenBars}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DrawerArrowToggle_spinBars com.moisociallearning.moiapp:spinBars}</code></td><td></td></tr>
+     * <tr><td><code>{@link #DrawerArrowToggle_thickness com.moisociallearning.moiapp:thickness}</code></td><td></td></tr>
      * </table>
      * @see #DrawerArrowToggle_arrowHeadLength
      * @see #DrawerArrowToggle_arrowShaftLength
@@ -11823,11 +11823,11 @@ public final class R {
      * @see #DrawerArrowToggle_thickness
      */
     public static final int[] DrawerArrowToggle={
-        0x7f040033, 0x7f040034, 0x7f040044, 0x7f04007c, 
+        0x7f040033, 0x7f040034, 0x7f040044, 0x7f04007c,
         0x7f0400d6, 0x7f040104, 0x7f0401b1, 0x7f0401e7
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#arrowHeadLength}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#arrowHeadLength}
      * attribute's value can be found in the {@link #DrawerArrowToggle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11836,11 +11836,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:arrowHeadLength
+     * @attr name com.moisociallearning.moiapp:arrowHeadLength
      */
     public static final int DrawerArrowToggle_arrowHeadLength=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#arrowShaftLength}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#arrowShaftLength}
      * attribute's value can be found in the {@link #DrawerArrowToggle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11849,11 +11849,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:arrowShaftLength
+     * @attr name com.moisociallearning.moiapp:arrowShaftLength
      */
     public static final int DrawerArrowToggle_arrowShaftLength=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#barLength}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#barLength}
      * attribute's value can be found in the {@link #DrawerArrowToggle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11862,22 +11862,22 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:barLength
+     * @attr name com.moisociallearning.moiapp:barLength
      */
     public static final int DrawerArrowToggle_barLength=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#color}
      * attribute's value can be found in the {@link #DrawerArrowToggle} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:color
+     * @attr name com.moisociallearning.moiapp:color
      */
     public static final int DrawerArrowToggle_color=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#drawableSize}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#drawableSize}
      * attribute's value can be found in the {@link #DrawerArrowToggle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11886,11 +11886,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:drawableSize
+     * @attr name com.moisociallearning.moiapp:drawableSize
      */
     public static final int DrawerArrowToggle_drawableSize=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#gapBetweenBars}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#gapBetweenBars}
      * attribute's value can be found in the {@link #DrawerArrowToggle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11899,21 +11899,21 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:gapBetweenBars
+     * @attr name com.moisociallearning.moiapp:gapBetweenBars
      */
     public static final int DrawerArrowToggle_gapBetweenBars=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#spinBars}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#spinBars}
      * attribute's value can be found in the {@link #DrawerArrowToggle} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:spinBars
+     * @attr name com.moisociallearning.moiapp:spinBars
      */
     public static final int DrawerArrowToggle_spinBars=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#thickness}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#thickness}
      * attribute's value can be found in the {@link #DrawerArrowToggle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11922,7 +11922,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:thickness
+     * @attr name com.moisociallearning.moiapp:thickness
      */
     public static final int DrawerArrowToggle_thickness=7;
     /**
@@ -11932,15 +11932,15 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #FloatingActionButton_backgroundTint com.growmoisociallearning.moiapp:backgroundTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FloatingActionButton_backgroundTintMode com.growmoisociallearning.moiapp:backgroundTintMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FloatingActionButton_borderWidth com.growmoisociallearning.moiapp:borderWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FloatingActionButton_elevation com.growmoisociallearning.moiapp:elevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FloatingActionButton_fabCustomSize com.growmoisociallearning.moiapp:fabCustomSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FloatingActionButton_fabSize com.growmoisociallearning.moiapp:fabSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FloatingActionButton_pressedTranslationZ com.growmoisociallearning.moiapp:pressedTranslationZ}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FloatingActionButton_rippleColor com.growmoisociallearning.moiapp:rippleColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FloatingActionButton_useCompatPadding com.growmoisociallearning.moiapp:useCompatPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_backgroundTint com.moisociallearning.moiapp:backgroundTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_backgroundTintMode com.moisociallearning.moiapp:backgroundTintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_borderWidth com.moisociallearning.moiapp:borderWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_elevation com.moisociallearning.moiapp:elevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_fabCustomSize com.moisociallearning.moiapp:fabCustomSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_fabSize com.moisociallearning.moiapp:fabSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_pressedTranslationZ com.moisociallearning.moiapp:pressedTranslationZ}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_rippleColor com.moisociallearning.moiapp:rippleColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_useCompatPadding com.moisociallearning.moiapp:useCompatPadding}</code></td><td></td></tr>
      * </table>
      * @see #FloatingActionButton_backgroundTint
      * @see #FloatingActionButton_backgroundTintMode
@@ -11953,23 +11953,23 @@ public final class R {
      * @see #FloatingActionButton_useCompatPadding
      */
     public static final int[] FloatingActionButton={
-        0x7f040042, 0x7f040043, 0x7f04004b, 0x7f0400dd, 
-        0x7f0400ea, 0x7f0400eb, 0x7f04017b, 0x7f04018d, 
+        0x7f040042, 0x7f040043, 0x7f04004b, 0x7f0400dd,
+        0x7f0400ea, 0x7f0400eb, 0x7f04017b, 0x7f04018d,
         0x7f04020e
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#backgroundTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#backgroundTint}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:backgroundTint
+     * @attr name com.moisociallearning.moiapp:backgroundTint
      */
     public static final int FloatingActionButton_backgroundTint=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#backgroundTintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#backgroundTintMode}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -11986,11 +11986,11 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:backgroundTintMode
+     * @attr name com.moisociallearning.moiapp:backgroundTintMode
      */
     public static final int FloatingActionButton_backgroundTintMode=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#borderWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#borderWidth}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -11999,11 +11999,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:borderWidth
+     * @attr name com.moisociallearning.moiapp:borderWidth
      */
     public static final int FloatingActionButton_borderWidth=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#elevation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#elevation}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -12012,11 +12012,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:elevation
+     * @attr name com.moisociallearning.moiapp:elevation
      */
     public static final int FloatingActionButton_elevation=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fabCustomSize}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fabCustomSize}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -12025,11 +12025,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:fabCustomSize
+     * @attr name com.moisociallearning.moiapp:fabCustomSize
      */
     public static final int FloatingActionButton_fabCustomSize=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fabSize}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fabSize}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -12043,11 +12043,11 @@ public final class R {
      * <tr><td>normal</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:fabSize
+     * @attr name com.moisociallearning.moiapp:fabSize
      */
     public static final int FloatingActionButton_fabSize=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#pressedTranslationZ}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#pressedTranslationZ}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -12056,28 +12056,28 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:pressedTranslationZ
+     * @attr name com.moisociallearning.moiapp:pressedTranslationZ
      */
     public static final int FloatingActionButton_pressedTranslationZ=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#rippleColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#rippleColor}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:rippleColor
+     * @attr name com.moisociallearning.moiapp:rippleColor
      */
     public static final int FloatingActionButton_rippleColor=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#useCompatPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#useCompatPadding}
      * attribute's value can be found in the {@link #FloatingActionButton} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:useCompatPadding
+     * @attr name com.moisociallearning.moiapp:useCompatPadding
      */
     public static final int FloatingActionButton_useCompatPadding=8;
     /**
@@ -12087,7 +12087,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #FloatingActionButton_Behavior_Layout_behavior_autoHide com.growmoisociallearning.moiapp:behavior_autoHide}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FloatingActionButton_Behavior_Layout_behavior_autoHide com.moisociallearning.moiapp:behavior_autoHide}</code></td><td></td></tr>
      * </table>
      * @see #FloatingActionButton_Behavior_Layout_behavior_autoHide
      */
@@ -12095,13 +12095,13 @@ public final class R {
         0x7f040046
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#behavior_autoHide}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#behavior_autoHide}
      * attribute's value can be found in the {@link #FloatingActionButton_Behavior_Layout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:behavior_autoHide
+     * @attr name com.moisociallearning.moiapp:behavior_autoHide
      */
     public static final int FloatingActionButton_Behavior_Layout_behavior_autoHide=0;
     /**
@@ -12111,12 +12111,12 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderAuthority com.growmoisociallearning.moiapp:fontProviderAuthority}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderCerts com.growmoisociallearning.moiapp:fontProviderCerts}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderFetchStrategy com.growmoisociallearning.moiapp:fontProviderFetchStrategy}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderFetchTimeout com.growmoisociallearning.moiapp:fontProviderFetchTimeout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderPackage com.growmoisociallearning.moiapp:fontProviderPackage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderQuery com.growmoisociallearning.moiapp:fontProviderQuery}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderAuthority com.moisociallearning.moiapp:fontProviderAuthority}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderCerts com.moisociallearning.moiapp:fontProviderCerts}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderFetchStrategy com.moisociallearning.moiapp:fontProviderFetchStrategy}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderFetchTimeout com.moisociallearning.moiapp:fontProviderFetchTimeout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderPackage com.moisociallearning.moiapp:fontProviderPackage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderQuery com.moisociallearning.moiapp:fontProviderQuery}</code></td><td></td></tr>
      * </table>
      * @see #FontFamily_fontProviderAuthority
      * @see #FontFamily_fontProviderCerts
@@ -12126,21 +12126,21 @@ public final class R {
      * @see #FontFamily_fontProviderQuery
      */
     public static final int[] FontFamily={
-        0x7f0400f9, 0x7f0400fa, 0x7f0400fb, 0x7f0400fc, 
+        0x7f0400f9, 0x7f0400fa, 0x7f0400fb, 0x7f0400fc,
         0x7f0400fd, 0x7f0400fe
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontProviderAuthority}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontProviderAuthority}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:fontProviderAuthority
+     * @attr name com.moisociallearning.moiapp:fontProviderAuthority
      */
     public static final int FontFamily_fontProviderAuthority=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontProviderCerts}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontProviderCerts}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12148,11 +12148,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fontProviderCerts
+     * @attr name com.moisociallearning.moiapp:fontProviderCerts
      */
     public static final int FontFamily_fontProviderCerts=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontProviderFetchStrategy}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontProviderFetchStrategy}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -12165,11 +12165,11 @@ public final class R {
      * <tr><td>blocking</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:fontProviderFetchStrategy
+     * @attr name com.moisociallearning.moiapp:fontProviderFetchStrategy
      */
     public static final int FontFamily_fontProviderFetchStrategy=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontProviderFetchTimeout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontProviderFetchTimeout}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
@@ -12182,27 +12182,27 @@ public final class R {
      * <tr><td>forever</td><td>ffffffff</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:fontProviderFetchTimeout
+     * @attr name com.moisociallearning.moiapp:fontProviderFetchTimeout
      */
     public static final int FontFamily_fontProviderFetchTimeout=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontProviderPackage}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontProviderPackage}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:fontProviderPackage
+     * @attr name com.moisociallearning.moiapp:fontProviderPackage
      */
     public static final int FontFamily_fontProviderPackage=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontProviderQuery}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontProviderQuery}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:fontProviderQuery
+     * @attr name com.moisociallearning.moiapp:fontProviderQuery
      */
     public static final int FontFamily_fontProviderQuery=5;
     /**
@@ -12215,9 +12215,9 @@ public final class R {
      * <tr><td><code>{@link #FontFamilyFont_android_font android:font}</code></td><td></td></tr>
      * <tr><td><code>{@link #FontFamilyFont_android_fontWeight android:fontWeight}</code></td><td></td></tr>
      * <tr><td><code>{@link #FontFamilyFont_android_fontStyle android:fontStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_font com.growmoisociallearning.moiapp:font}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_fontStyle com.growmoisociallearning.moiapp:fontStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_fontWeight com.growmoisociallearning.moiapp:fontWeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_font com.moisociallearning.moiapp:font}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_fontStyle com.moisociallearning.moiapp:fontStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_fontWeight com.moisociallearning.moiapp:fontWeight}</code></td><td></td></tr>
      * </table>
      * @see #FontFamilyFont_android_font
      * @see #FontFamilyFont_android_fontWeight
@@ -12227,7 +12227,7 @@ public final class R {
      * @see #FontFamilyFont_fontWeight
      */
     public static final int[] FontFamilyFont={
-        0x01010532, 0x01010533, 0x0101053f, 0x7f0400f7, 
+        0x01010532, 0x01010533, 0x0101053f, 0x7f0400f7,
         0x7f0400ff, 0x7f040100
       };
     /**
@@ -12269,7 +12269,7 @@ public final class R {
      */
     public static final int FontFamilyFont_android_fontStyle=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#font}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#font}
      * attribute's value can be found in the {@link #FontFamilyFont} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12277,11 +12277,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:font
+     * @attr name com.moisociallearning.moiapp:font
      */
     public static final int FontFamilyFont_font=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontStyle}
      * attribute's value can be found in the {@link #FontFamilyFont} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -12294,16 +12294,16 @@ public final class R {
      * <tr><td>normal</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:fontStyle
+     * @attr name com.moisociallearning.moiapp:fontStyle
      */
     public static final int FontFamilyFont_fontStyle=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontWeight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontWeight}
      * attribute's value can be found in the {@link #FontFamilyFont} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fontWeight
+     * @attr name com.moisociallearning.moiapp:fontWeight
      */
     public static final int FontFamilyFont_fontWeight=5;
     /**
@@ -12315,7 +12315,7 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #ForegroundLinearLayout_android_foreground android:foreground}</code></td><td></td></tr>
      * <tr><td><code>{@link #ForegroundLinearLayout_android_foregroundGravity android:foregroundGravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ForegroundLinearLayout_foregroundInsidePadding com.growmoisociallearning.moiapp:foregroundInsidePadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ForegroundLinearLayout_foregroundInsidePadding com.moisociallearning.moiapp:foregroundInsidePadding}</code></td><td></td></tr>
      * </table>
      * @see #ForegroundLinearLayout_android_foreground
      * @see #ForegroundLinearLayout_android_foregroundGravity
@@ -12367,13 +12367,13 @@ public final class R {
      */
     public static final int ForegroundLinearLayout_android_foregroundGravity=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#foregroundInsidePadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#foregroundInsidePadding}
      * attribute's value can be found in the {@link #ForegroundLinearLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:foregroundInsidePadding
+     * @attr name com.moisociallearning.moiapp:foregroundInsidePadding
      */
     public static final int ForegroundLinearLayout_foregroundInsidePadding=2;
     /**
@@ -12383,31 +12383,31 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_actualImageScaleType com.growmoisociallearning.moiapp:actualImageScaleType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_backgroundImage com.growmoisociallearning.moiapp:backgroundImage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_fadeDuration com.growmoisociallearning.moiapp:fadeDuration}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_failureImage com.growmoisociallearning.moiapp:failureImage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_failureImageScaleType com.growmoisociallearning.moiapp:failureImageScaleType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_overlayImage com.growmoisociallearning.moiapp:overlayImage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_placeholderImage com.growmoisociallearning.moiapp:placeholderImage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_placeholderImageScaleType com.growmoisociallearning.moiapp:placeholderImageScaleType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_pressedStateOverlayImage com.growmoisociallearning.moiapp:pressedStateOverlayImage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_progressBarAutoRotateInterval com.growmoisociallearning.moiapp:progressBarAutoRotateInterval}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_progressBarImage com.growmoisociallearning.moiapp:progressBarImage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_progressBarImageScaleType com.growmoisociallearning.moiapp:progressBarImageScaleType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_retryImage com.growmoisociallearning.moiapp:retryImage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_retryImageScaleType com.growmoisociallearning.moiapp:retryImageScaleType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundAsCircle com.growmoisociallearning.moiapp:roundAsCircle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundBottomLeft com.growmoisociallearning.moiapp:roundBottomLeft}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundBottomRight com.growmoisociallearning.moiapp:roundBottomRight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundTopLeft com.growmoisociallearning.moiapp:roundTopLeft}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundTopRight com.growmoisociallearning.moiapp:roundTopRight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundWithOverlayColor com.growmoisociallearning.moiapp:roundWithOverlayColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundedCornerRadius com.growmoisociallearning.moiapp:roundedCornerRadius}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderColor com.growmoisociallearning.moiapp:roundingBorderColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderPadding com.growmoisociallearning.moiapp:roundingBorderPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderWidth com.growmoisociallearning.moiapp:roundingBorderWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #GenericDraweeHierarchy_viewAspectRatio com.growmoisociallearning.moiapp:viewAspectRatio}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_actualImageScaleType com.moisociallearning.moiapp:actualImageScaleType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_backgroundImage com.moisociallearning.moiapp:backgroundImage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_fadeDuration com.moisociallearning.moiapp:fadeDuration}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_failureImage com.moisociallearning.moiapp:failureImage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_failureImageScaleType com.moisociallearning.moiapp:failureImageScaleType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_overlayImage com.moisociallearning.moiapp:overlayImage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_placeholderImage com.moisociallearning.moiapp:placeholderImage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_placeholderImageScaleType com.moisociallearning.moiapp:placeholderImageScaleType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_pressedStateOverlayImage com.moisociallearning.moiapp:pressedStateOverlayImage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_progressBarAutoRotateInterval com.moisociallearning.moiapp:progressBarAutoRotateInterval}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_progressBarImage com.moisociallearning.moiapp:progressBarImage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_progressBarImageScaleType com.moisociallearning.moiapp:progressBarImageScaleType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_retryImage com.moisociallearning.moiapp:retryImage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_retryImageScaleType com.moisociallearning.moiapp:retryImageScaleType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundAsCircle com.moisociallearning.moiapp:roundAsCircle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundBottomLeft com.moisociallearning.moiapp:roundBottomLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundBottomRight com.moisociallearning.moiapp:roundBottomRight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundTopLeft com.moisociallearning.moiapp:roundTopLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundTopRight com.moisociallearning.moiapp:roundTopRight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundWithOverlayColor com.moisociallearning.moiapp:roundWithOverlayColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundedCornerRadius com.moisociallearning.moiapp:roundedCornerRadius}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderColor com.moisociallearning.moiapp:roundingBorderColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderPadding com.moisociallearning.moiapp:roundingBorderPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderWidth com.moisociallearning.moiapp:roundingBorderWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #GenericDraweeHierarchy_viewAspectRatio com.moisociallearning.moiapp:viewAspectRatio}</code></td><td></td></tr>
      * </table>
      * @see #GenericDraweeHierarchy_actualImageScaleType
      * @see #GenericDraweeHierarchy_backgroundImage
@@ -12436,16 +12436,16 @@ public final class R {
      * @see #GenericDraweeHierarchy_viewAspectRatio
      */
     public static final int[] GenericDraweeHierarchy={
-        0x7f040022, 0x7f04003f, 0x7f0400ed, 0x7f0400ee, 
-        0x7f0400ef, 0x7f040164, 0x7f040171, 0x7f040172, 
-        0x7f04017a, 0x7f04017c, 0x7f04017d, 0x7f04017e, 
-        0x7f040189, 0x7f04018a, 0x7f04018e, 0x7f04018f, 
-        0x7f040190, 0x7f040191, 0x7f040192, 0x7f040193, 
-        0x7f040194, 0x7f040195, 0x7f040196, 0x7f040197, 
+        0x7f040022, 0x7f04003f, 0x7f0400ed, 0x7f0400ee,
+        0x7f0400ef, 0x7f040164, 0x7f040171, 0x7f040172,
+        0x7f04017a, 0x7f04017c, 0x7f04017d, 0x7f04017e,
+        0x7f040189, 0x7f04018a, 0x7f04018e, 0x7f04018f,
+        0x7f040190, 0x7f040191, 0x7f040192, 0x7f040193,
+        0x7f040194, 0x7f040195, 0x7f040196, 0x7f040197,
         0x7f040212
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actualImageScaleType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actualImageScaleType}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -12465,11 +12465,11 @@ public final class R {
      * <tr><td>none</td><td>ffffffff</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:actualImageScaleType
+     * @attr name com.moisociallearning.moiapp:actualImageScaleType
      */
     public static final int GenericDraweeHierarchy_actualImageScaleType=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#backgroundImage}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#backgroundImage}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12477,20 +12477,20 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:backgroundImage
+     * @attr name com.moisociallearning.moiapp:backgroundImage
      */
     public static final int GenericDraweeHierarchy_backgroundImage=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fadeDuration}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fadeDuration}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fadeDuration
+     * @attr name com.moisociallearning.moiapp:fadeDuration
      */
     public static final int GenericDraweeHierarchy_fadeDuration=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#failureImage}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#failureImage}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12498,11 +12498,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:failureImage
+     * @attr name com.moisociallearning.moiapp:failureImage
      */
     public static final int GenericDraweeHierarchy_failureImage=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#failureImageScaleType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#failureImageScaleType}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -12522,11 +12522,11 @@ public final class R {
      * <tr><td>none</td><td>ffffffff</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:failureImageScaleType
+     * @attr name com.moisociallearning.moiapp:failureImageScaleType
      */
     public static final int GenericDraweeHierarchy_failureImageScaleType=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#overlayImage}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#overlayImage}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12534,11 +12534,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:overlayImage
+     * @attr name com.moisociallearning.moiapp:overlayImage
      */
     public static final int GenericDraweeHierarchy_overlayImage=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#placeholderImage}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#placeholderImage}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12546,11 +12546,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:placeholderImage
+     * @attr name com.moisociallearning.moiapp:placeholderImage
      */
     public static final int GenericDraweeHierarchy_placeholderImage=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#placeholderImageScaleType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#placeholderImageScaleType}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -12570,11 +12570,11 @@ public final class R {
      * <tr><td>none</td><td>ffffffff</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:placeholderImageScaleType
+     * @attr name com.moisociallearning.moiapp:placeholderImageScaleType
      */
     public static final int GenericDraweeHierarchy_placeholderImageScaleType=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#pressedStateOverlayImage}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#pressedStateOverlayImage}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12582,20 +12582,20 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:pressedStateOverlayImage
+     * @attr name com.moisociallearning.moiapp:pressedStateOverlayImage
      */
     public static final int GenericDraweeHierarchy_pressedStateOverlayImage=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#progressBarAutoRotateInterval}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#progressBarAutoRotateInterval}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:progressBarAutoRotateInterval
+     * @attr name com.moisociallearning.moiapp:progressBarAutoRotateInterval
      */
     public static final int GenericDraweeHierarchy_progressBarAutoRotateInterval=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#progressBarImage}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#progressBarImage}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12603,11 +12603,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:progressBarImage
+     * @attr name com.moisociallearning.moiapp:progressBarImage
      */
     public static final int GenericDraweeHierarchy_progressBarImage=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#progressBarImageScaleType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#progressBarImageScaleType}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -12627,11 +12627,11 @@ public final class R {
      * <tr><td>none</td><td>ffffffff</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:progressBarImageScaleType
+     * @attr name com.moisociallearning.moiapp:progressBarImageScaleType
      */
     public static final int GenericDraweeHierarchy_progressBarImageScaleType=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#retryImage}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#retryImage}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12639,11 +12639,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:retryImage
+     * @attr name com.moisociallearning.moiapp:retryImage
      */
     public static final int GenericDraweeHierarchy_retryImage=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#retryImageScaleType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#retryImageScaleType}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -12663,72 +12663,72 @@ public final class R {
      * <tr><td>none</td><td>ffffffff</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:retryImageScaleType
+     * @attr name com.moisociallearning.moiapp:retryImageScaleType
      */
     public static final int GenericDraweeHierarchy_retryImageScaleType=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundAsCircle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundAsCircle}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:roundAsCircle
+     * @attr name com.moisociallearning.moiapp:roundAsCircle
      */
     public static final int GenericDraweeHierarchy_roundAsCircle=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundBottomLeft}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundBottomLeft}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:roundBottomLeft
+     * @attr name com.moisociallearning.moiapp:roundBottomLeft
      */
     public static final int GenericDraweeHierarchy_roundBottomLeft=15;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundBottomRight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundBottomRight}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:roundBottomRight
+     * @attr name com.moisociallearning.moiapp:roundBottomRight
      */
     public static final int GenericDraweeHierarchy_roundBottomRight=16;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundTopLeft}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundTopLeft}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:roundTopLeft
+     * @attr name com.moisociallearning.moiapp:roundTopLeft
      */
     public static final int GenericDraweeHierarchy_roundTopLeft=17;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundTopRight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundTopRight}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:roundTopRight
+     * @attr name com.moisociallearning.moiapp:roundTopRight
      */
     public static final int GenericDraweeHierarchy_roundTopRight=18;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundWithOverlayColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundWithOverlayColor}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:roundWithOverlayColor
+     * @attr name com.moisociallearning.moiapp:roundWithOverlayColor
      */
     public static final int GenericDraweeHierarchy_roundWithOverlayColor=19;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundedCornerRadius}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundedCornerRadius}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -12737,22 +12737,22 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:roundedCornerRadius
+     * @attr name com.moisociallearning.moiapp:roundedCornerRadius
      */
     public static final int GenericDraweeHierarchy_roundedCornerRadius=20;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundingBorderColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundingBorderColor}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:roundingBorderColor
+     * @attr name com.moisociallearning.moiapp:roundingBorderColor
      */
     public static final int GenericDraweeHierarchy_roundingBorderColor=21;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundingBorderPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundingBorderPadding}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -12761,11 +12761,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:roundingBorderPadding
+     * @attr name com.moisociallearning.moiapp:roundingBorderPadding
      */
     public static final int GenericDraweeHierarchy_roundingBorderPadding=22;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#roundingBorderWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#roundingBorderWidth}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -12774,16 +12774,16 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:roundingBorderWidth
+     * @attr name com.moisociallearning.moiapp:roundingBorderWidth
      */
     public static final int GenericDraweeHierarchy_roundingBorderWidth=23;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#viewAspectRatio}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#viewAspectRatio}
      * attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:viewAspectRatio
+     * @attr name com.moisociallearning.moiapp:viewAspectRatio
      */
     public static final int GenericDraweeHierarchy_viewAspectRatio=24;
     /**
@@ -12798,10 +12798,10 @@ public final class R {
      * <tr><td><code>{@link #LinearLayoutCompat_android_baselineAligned android:baselineAligned}</code></td><td></td></tr>
      * <tr><td><code>{@link #LinearLayoutCompat_android_baselineAlignedChildIndex android:baselineAlignedChildIndex}</code></td><td></td></tr>
      * <tr><td><code>{@link #LinearLayoutCompat_android_weightSum android:weightSum}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LinearLayoutCompat_divider com.growmoisociallearning.moiapp:divider}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LinearLayoutCompat_dividerPadding com.growmoisociallearning.moiapp:dividerPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LinearLayoutCompat_measureWithLargestChild com.growmoisociallearning.moiapp:measureWithLargestChild}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LinearLayoutCompat_showDividers com.growmoisociallearning.moiapp:showDividers}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LinearLayoutCompat_divider com.moisociallearning.moiapp:divider}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LinearLayoutCompat_dividerPadding com.moisociallearning.moiapp:dividerPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LinearLayoutCompat_measureWithLargestChild com.moisociallearning.moiapp:measureWithLargestChild}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LinearLayoutCompat_showDividers com.moisociallearning.moiapp:showDividers}</code></td><td></td></tr>
      * </table>
      * @see #LinearLayoutCompat_android_gravity
      * @see #LinearLayoutCompat_android_orientation
@@ -12814,8 +12814,8 @@ public final class R {
      * @see #LinearLayoutCompat_showDividers
      */
     public static final int[] LinearLayoutCompat={
-        0x010100af, 0x010100c4, 0x01010126, 0x01010127, 
-        0x01010128, 0x7f0400d2, 0x7f0400d4, 0x7f04015c, 
+        0x010100af, 0x010100c4, 0x01010126, 0x01010127,
+        0x01010128, 0x7f0400d2, 0x7f0400d4, 0x7f04015c,
         0x7f0401a9
       };
     /**
@@ -12893,7 +12893,7 @@ public final class R {
      */
     public static final int LinearLayoutCompat_android_weightSum=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#divider}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#divider}
      * attribute's value can be found in the {@link #LinearLayoutCompat} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -12901,11 +12901,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:divider
+     * @attr name com.moisociallearning.moiapp:divider
      */
     public static final int LinearLayoutCompat_divider=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#dividerPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#dividerPadding}
      * attribute's value can be found in the {@link #LinearLayoutCompat} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -12914,21 +12914,21 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:dividerPadding
+     * @attr name com.moisociallearning.moiapp:dividerPadding
      */
     public static final int LinearLayoutCompat_dividerPadding=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#measureWithLargestChild}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#measureWithLargestChild}
      * attribute's value can be found in the {@link #LinearLayoutCompat} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:measureWithLargestChild
+     * @attr name com.moisociallearning.moiapp:measureWithLargestChild
      */
     public static final int LinearLayoutCompat_measureWithLargestChild=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#showDividers}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#showDividers}
      * attribute's value can be found in the {@link #LinearLayoutCompat} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -12943,7 +12943,7 @@ public final class R {
      * <tr><td>none</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:showDividers
+     * @attr name com.moisociallearning.moiapp:showDividers
      */
     public static final int LinearLayoutCompat_showDividers=8;
     /**
@@ -13099,9 +13099,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #LoadingImageView_circleCrop com.growmoisociallearning.moiapp:circleCrop}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.growmoisociallearning.moiapp:imageAspectRatio}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.growmoisociallearning.moiapp:imageAspectRatioAdjust}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LoadingImageView_circleCrop com.moisociallearning.moiapp:circleCrop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.moisociallearning.moiapp:imageAspectRatio}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.moisociallearning.moiapp:imageAspectRatioAdjust}</code></td><td></td></tr>
      * </table>
      * @see #LoadingImageView_circleCrop
      * @see #LoadingImageView_imageAspectRatio
@@ -13111,26 +13111,26 @@ public final class R {
         0x7f040075, 0x7f040116, 0x7f040117
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#circleCrop}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#circleCrop}
      * attribute's value can be found in the {@link #LoadingImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:circleCrop
+     * @attr name com.moisociallearning.moiapp:circleCrop
      */
     public static final int LoadingImageView_circleCrop=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#imageAspectRatio}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#imageAspectRatio}
      * attribute's value can be found in the {@link #LoadingImageView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:imageAspectRatio
+     * @attr name com.moisociallearning.moiapp:imageAspectRatio
      */
     public static final int LoadingImageView_imageAspectRatio=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#imageAspectRatioAdjust}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#imageAspectRatioAdjust}
      * attribute's value can be found in the {@link #LoadingImageView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -13144,7 +13144,7 @@ public final class R {
      * <tr><td>none</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:imageAspectRatioAdjust
+     * @attr name com.moisociallearning.moiapp:imageAspectRatioAdjust
      */
     public static final int LoadingImageView_imageAspectRatioAdjust=2;
     /**
@@ -13154,18 +13154,18 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_autoPlay com.growmoisociallearning.moiapp:lottie_autoPlay}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_cacheStrategy com.growmoisociallearning.moiapp:lottie_cacheStrategy}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_colorFilter com.growmoisociallearning.moiapp:lottie_colorFilter}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_enableMergePathsForKitKatAndAbove com.growmoisociallearning.moiapp:lottie_enableMergePathsForKitKatAndAbove}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_fileName com.growmoisociallearning.moiapp:lottie_fileName}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_imageAssetsFolder com.growmoisociallearning.moiapp:lottie_imageAssetsFolder}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_loop com.growmoisociallearning.moiapp:lottie_loop}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_progress com.growmoisociallearning.moiapp:lottie_progress}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_rawRes com.growmoisociallearning.moiapp:lottie_rawRes}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_repeatCount com.growmoisociallearning.moiapp:lottie_repeatCount}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_repeatMode com.growmoisociallearning.moiapp:lottie_repeatMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LottieAnimationView_lottie_scale com.growmoisociallearning.moiapp:lottie_scale}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_autoPlay com.moisociallearning.moiapp:lottie_autoPlay}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_cacheStrategy com.moisociallearning.moiapp:lottie_cacheStrategy}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_colorFilter com.moisociallearning.moiapp:lottie_colorFilter}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_enableMergePathsForKitKatAndAbove com.moisociallearning.moiapp:lottie_enableMergePathsForKitKatAndAbove}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_fileName com.moisociallearning.moiapp:lottie_fileName}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_imageAssetsFolder com.moisociallearning.moiapp:lottie_imageAssetsFolder}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_loop com.moisociallearning.moiapp:lottie_loop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_progress com.moisociallearning.moiapp:lottie_progress}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_rawRes com.moisociallearning.moiapp:lottie_rawRes}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_repeatCount com.moisociallearning.moiapp:lottie_repeatCount}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_repeatMode com.moisociallearning.moiapp:lottie_repeatMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LottieAnimationView_lottie_scale com.moisociallearning.moiapp:lottie_scale}</code></td><td></td></tr>
      * </table>
      * @see #LottieAnimationView_lottie_autoPlay
      * @see #LottieAnimationView_lottie_cacheStrategy
@@ -13181,22 +13181,22 @@ public final class R {
      * @see #LottieAnimationView_lottie_scale
      */
     public static final int[] LottieAnimationView={
-        0x7f040146, 0x7f040147, 0x7f040148, 0x7f040149, 
-        0x7f04014a, 0x7f04014b, 0x7f04014c, 0x7f04014d, 
+        0x7f040146, 0x7f040147, 0x7f040148, 0x7f040149,
+        0x7f04014a, 0x7f04014b, 0x7f04014c, 0x7f04014d,
         0x7f04014e, 0x7f04014f, 0x7f040150, 0x7f040151
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_autoPlay}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_autoPlay}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_autoPlay
+     * @attr name com.moisociallearning.moiapp:lottie_autoPlay
      */
     public static final int LottieAnimationView_lottie_autoPlay=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_cacheStrategy}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_cacheStrategy}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -13210,71 +13210,71 @@ public final class R {
      * <tr><td>weak</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_cacheStrategy
+     * @attr name com.moisociallearning.moiapp:lottie_cacheStrategy
      */
     public static final int LottieAnimationView_lottie_cacheStrategy=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_colorFilter}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_colorFilter}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_colorFilter
+     * @attr name com.moisociallearning.moiapp:lottie_colorFilter
      */
     public static final int LottieAnimationView_lottie_colorFilter=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_enableMergePathsForKitKatAndAbove}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_enableMergePathsForKitKatAndAbove}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_enableMergePathsForKitKatAndAbove
+     * @attr name com.moisociallearning.moiapp:lottie_enableMergePathsForKitKatAndAbove
      */
     public static final int LottieAnimationView_lottie_enableMergePathsForKitKatAndAbove=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_fileName}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_fileName}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_fileName
+     * @attr name com.moisociallearning.moiapp:lottie_fileName
      */
     public static final int LottieAnimationView_lottie_fileName=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_imageAssetsFolder}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_imageAssetsFolder}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_imageAssetsFolder
+     * @attr name com.moisociallearning.moiapp:lottie_imageAssetsFolder
      */
     public static final int LottieAnimationView_lottie_imageAssetsFolder=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_loop}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_loop}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_loop
+     * @attr name com.moisociallearning.moiapp:lottie_loop
      */
     public static final int LottieAnimationView_lottie_loop=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_progress}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_progress}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_progress
+     * @attr name com.moisociallearning.moiapp:lottie_progress
      */
     public static final int LottieAnimationView_lottie_progress=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_rawRes}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_rawRes}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -13282,20 +13282,20 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_rawRes
+     * @attr name com.moisociallearning.moiapp:lottie_rawRes
      */
     public static final int LottieAnimationView_lottie_rawRes=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_repeatCount}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_repeatCount}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_repeatCount
+     * @attr name com.moisociallearning.moiapp:lottie_repeatCount
      */
     public static final int LottieAnimationView_lottie_repeatCount=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_repeatMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_repeatMode}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -13308,16 +13308,16 @@ public final class R {
      * <tr><td>reverse</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_repeatMode
+     * @attr name com.moisociallearning.moiapp:lottie_repeatMode
      */
     public static final int LottieAnimationView_lottie_repeatMode=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#lottie_scale}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#lottie_scale}
      * attribute's value can be found in the {@link #LottieAnimationView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:lottie_scale
+     * @attr name com.moisociallearning.moiapp:lottie_scale
      */
     public static final int LottieAnimationView_lottie_scale=11;
     /**
@@ -13327,29 +13327,29 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #MapAttrs_ambientEnabled com.growmoisociallearning.moiapp:ambientEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_cameraBearing com.growmoisociallearning.moiapp:cameraBearing}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_cameraMaxZoomPreference com.growmoisociallearning.moiapp:cameraMaxZoomPreference}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_cameraMinZoomPreference com.growmoisociallearning.moiapp:cameraMinZoomPreference}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_cameraTargetLat com.growmoisociallearning.moiapp:cameraTargetLat}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_cameraTargetLng com.growmoisociallearning.moiapp:cameraTargetLng}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_cameraTilt com.growmoisociallearning.moiapp:cameraTilt}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_cameraZoom com.growmoisociallearning.moiapp:cameraZoom}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_latLngBoundsNorthEastLatitude com.growmoisociallearning.moiapp:latLngBoundsNorthEastLatitude}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_latLngBoundsNorthEastLongitude com.growmoisociallearning.moiapp:latLngBoundsNorthEastLongitude}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_latLngBoundsSouthWestLatitude com.growmoisociallearning.moiapp:latLngBoundsSouthWestLatitude}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_latLngBoundsSouthWestLongitude com.growmoisociallearning.moiapp:latLngBoundsSouthWestLongitude}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_liteMode com.growmoisociallearning.moiapp:liteMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_mapType com.growmoisociallearning.moiapp:mapType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_uiCompass com.growmoisociallearning.moiapp:uiCompass}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_uiMapToolbar com.growmoisociallearning.moiapp:uiMapToolbar}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_uiRotateGestures com.growmoisociallearning.moiapp:uiRotateGestures}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_uiScrollGestures com.growmoisociallearning.moiapp:uiScrollGestures}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_uiTiltGestures com.growmoisociallearning.moiapp:uiTiltGestures}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_uiZoomControls com.growmoisociallearning.moiapp:uiZoomControls}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_uiZoomGestures com.growmoisociallearning.moiapp:uiZoomGestures}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_useViewLifecycle com.growmoisociallearning.moiapp:useViewLifecycle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MapAttrs_zOrderOnTop com.growmoisociallearning.moiapp:zOrderOnTop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_ambientEnabled com.moisociallearning.moiapp:ambientEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_cameraBearing com.moisociallearning.moiapp:cameraBearing}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_cameraMaxZoomPreference com.moisociallearning.moiapp:cameraMaxZoomPreference}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_cameraMinZoomPreference com.moisociallearning.moiapp:cameraMinZoomPreference}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_cameraTargetLat com.moisociallearning.moiapp:cameraTargetLat}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_cameraTargetLng com.moisociallearning.moiapp:cameraTargetLng}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_cameraTilt com.moisociallearning.moiapp:cameraTilt}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_cameraZoom com.moisociallearning.moiapp:cameraZoom}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_latLngBoundsNorthEastLatitude com.moisociallearning.moiapp:latLngBoundsNorthEastLatitude}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_latLngBoundsNorthEastLongitude com.moisociallearning.moiapp:latLngBoundsNorthEastLongitude}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_latLngBoundsSouthWestLatitude com.moisociallearning.moiapp:latLngBoundsSouthWestLatitude}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_latLngBoundsSouthWestLongitude com.moisociallearning.moiapp:latLngBoundsSouthWestLongitude}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_liteMode com.moisociallearning.moiapp:liteMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_mapType com.moisociallearning.moiapp:mapType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_uiCompass com.moisociallearning.moiapp:uiCompass}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_uiMapToolbar com.moisociallearning.moiapp:uiMapToolbar}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_uiRotateGestures com.moisociallearning.moiapp:uiRotateGestures}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_uiScrollGestures com.moisociallearning.moiapp:uiScrollGestures}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_uiTiltGestures com.moisociallearning.moiapp:uiTiltGestures}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_uiZoomControls com.moisociallearning.moiapp:uiZoomControls}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_uiZoomGestures com.moisociallearning.moiapp:uiZoomGestures}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_useViewLifecycle com.moisociallearning.moiapp:useViewLifecycle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MapAttrs_zOrderOnTop com.moisociallearning.moiapp:zOrderOnTop}</code></td><td></td></tr>
      * </table>
      * @see #MapAttrs_ambientEnabled
      * @see #MapAttrs_cameraBearing
@@ -13376,134 +13376,134 @@ public final class R {
      * @see #MapAttrs_zOrderOnTop
      */
     public static final int[] MapAttrs={
-        0x7f040030, 0x7f040061, 0x7f040062, 0x7f040063, 
-        0x7f040064, 0x7f040065, 0x7f040066, 0x7f040067, 
-        0x7f040128, 0x7f040129, 0x7f04012a, 0x7f04012b, 
-        0x7f040143, 0x7f040152, 0x7f040206, 0x7f040207, 
-        0x7f040208, 0x7f040209, 0x7f04020a, 0x7f04020b, 
+        0x7f040030, 0x7f040061, 0x7f040062, 0x7f040063,
+        0x7f040064, 0x7f040065, 0x7f040066, 0x7f040067,
+        0x7f040128, 0x7f040129, 0x7f04012a, 0x7f04012b,
+        0x7f040143, 0x7f040152, 0x7f040206, 0x7f040207,
+        0x7f040208, 0x7f040209, 0x7f04020a, 0x7f04020b,
         0x7f04020c, 0x7f04020f, 0x7f040220
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#ambientEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#ambientEnabled}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:ambientEnabled
+     * @attr name com.moisociallearning.moiapp:ambientEnabled
      */
     public static final int MapAttrs_ambientEnabled=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cameraBearing}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cameraBearing}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cameraBearing
+     * @attr name com.moisociallearning.moiapp:cameraBearing
      */
     public static final int MapAttrs_cameraBearing=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cameraMaxZoomPreference}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cameraMaxZoomPreference}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cameraMaxZoomPreference
+     * @attr name com.moisociallearning.moiapp:cameraMaxZoomPreference
      */
     public static final int MapAttrs_cameraMaxZoomPreference=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cameraMinZoomPreference}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cameraMinZoomPreference}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cameraMinZoomPreference
+     * @attr name com.moisociallearning.moiapp:cameraMinZoomPreference
      */
     public static final int MapAttrs_cameraMinZoomPreference=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cameraTargetLat}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cameraTargetLat}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cameraTargetLat
+     * @attr name com.moisociallearning.moiapp:cameraTargetLat
      */
     public static final int MapAttrs_cameraTargetLat=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cameraTargetLng}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cameraTargetLng}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cameraTargetLng
+     * @attr name com.moisociallearning.moiapp:cameraTargetLng
      */
     public static final int MapAttrs_cameraTargetLng=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cameraTilt}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cameraTilt}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cameraTilt
+     * @attr name com.moisociallearning.moiapp:cameraTilt
      */
     public static final int MapAttrs_cameraTilt=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#cameraZoom}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#cameraZoom}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:cameraZoom
+     * @attr name com.moisociallearning.moiapp:cameraZoom
      */
     public static final int MapAttrs_cameraZoom=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#latLngBoundsNorthEastLatitude}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#latLngBoundsNorthEastLatitude}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:latLngBoundsNorthEastLatitude
+     * @attr name com.moisociallearning.moiapp:latLngBoundsNorthEastLatitude
      */
     public static final int MapAttrs_latLngBoundsNorthEastLatitude=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#latLngBoundsNorthEastLongitude}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#latLngBoundsNorthEastLongitude}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:latLngBoundsNorthEastLongitude
+     * @attr name com.moisociallearning.moiapp:latLngBoundsNorthEastLongitude
      */
     public static final int MapAttrs_latLngBoundsNorthEastLongitude=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#latLngBoundsSouthWestLatitude}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#latLngBoundsSouthWestLatitude}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:latLngBoundsSouthWestLatitude
+     * @attr name com.moisociallearning.moiapp:latLngBoundsSouthWestLatitude
      */
     public static final int MapAttrs_latLngBoundsSouthWestLatitude=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#latLngBoundsSouthWestLongitude}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#latLngBoundsSouthWestLongitude}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:latLngBoundsSouthWestLongitude
+     * @attr name com.moisociallearning.moiapp:latLngBoundsSouthWestLongitude
      */
     public static final int MapAttrs_latLngBoundsSouthWestLongitude=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#liteMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#liteMode}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:liteMode
+     * @attr name com.moisociallearning.moiapp:liteMode
      */
     public static final int MapAttrs_liteMode=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#mapType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#mapType}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -13519,97 +13519,97 @@ public final class R {
      * <tr><td>terrain</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:mapType
+     * @attr name com.moisociallearning.moiapp:mapType
      */
     public static final int MapAttrs_mapType=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#uiCompass}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#uiCompass}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:uiCompass
+     * @attr name com.moisociallearning.moiapp:uiCompass
      */
     public static final int MapAttrs_uiCompass=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#uiMapToolbar}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#uiMapToolbar}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:uiMapToolbar
+     * @attr name com.moisociallearning.moiapp:uiMapToolbar
      */
     public static final int MapAttrs_uiMapToolbar=15;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#uiRotateGestures}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#uiRotateGestures}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:uiRotateGestures
+     * @attr name com.moisociallearning.moiapp:uiRotateGestures
      */
     public static final int MapAttrs_uiRotateGestures=16;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#uiScrollGestures}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#uiScrollGestures}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:uiScrollGestures
+     * @attr name com.moisociallearning.moiapp:uiScrollGestures
      */
     public static final int MapAttrs_uiScrollGestures=17;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#uiTiltGestures}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#uiTiltGestures}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:uiTiltGestures
+     * @attr name com.moisociallearning.moiapp:uiTiltGestures
      */
     public static final int MapAttrs_uiTiltGestures=18;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#uiZoomControls}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#uiZoomControls}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:uiZoomControls
+     * @attr name com.moisociallearning.moiapp:uiZoomControls
      */
     public static final int MapAttrs_uiZoomControls=19;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#uiZoomGestures}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#uiZoomGestures}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:uiZoomGestures
+     * @attr name com.moisociallearning.moiapp:uiZoomGestures
      */
     public static final int MapAttrs_uiZoomGestures=20;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#useViewLifecycle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#useViewLifecycle}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:useViewLifecycle
+     * @attr name com.moisociallearning.moiapp:useViewLifecycle
      */
     public static final int MapAttrs_useViewLifecycle=21;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#zOrderOnTop}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#zOrderOnTop}
      * attribute's value can be found in the {@link #MapAttrs} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:zOrderOnTop
+     * @attr name com.moisociallearning.moiapp:zOrderOnTop
      */
     public static final int MapAttrs_zOrderOnTop=22;
     /**
@@ -13634,7 +13634,7 @@ public final class R {
      * @see #MenuGroup_android_checkableBehavior
      */
     public static final int[] MenuGroup={
-        0x0101000e, 0x010100d0, 0x01010194, 0x010101de, 
+        0x0101000e, 0x010100d0, 0x01010194, 0x010101de,
         0x010101df, 0x010101e0
       };
     /**
@@ -13735,16 +13735,16 @@ public final class R {
      * <tr><td><code>{@link #MenuItem_android_numericShortcut android:numericShortcut}</code></td><td></td></tr>
      * <tr><td><code>{@link #MenuItem_android_checkable android:checkable}</code></td><td></td></tr>
      * <tr><td><code>{@link #MenuItem_android_onClick android:onClick}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_actionLayout com.growmoisociallearning.moiapp:actionLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_actionProviderClass com.growmoisociallearning.moiapp:actionProviderClass}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_actionViewClass com.growmoisociallearning.moiapp:actionViewClass}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_alphabeticModifiers com.growmoisociallearning.moiapp:alphabeticModifiers}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_contentDescription com.growmoisociallearning.moiapp:contentDescription}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_iconTint com.growmoisociallearning.moiapp:iconTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_iconTintMode com.growmoisociallearning.moiapp:iconTintMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_numericModifiers com.growmoisociallearning.moiapp:numericModifiers}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_showAsAction com.growmoisociallearning.moiapp:showAsAction}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuItem_tooltipText com.growmoisociallearning.moiapp:tooltipText}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_actionLayout com.moisociallearning.moiapp:actionLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_actionProviderClass com.moisociallearning.moiapp:actionProviderClass}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_actionViewClass com.moisociallearning.moiapp:actionViewClass}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_alphabeticModifiers com.moisociallearning.moiapp:alphabeticModifiers}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_contentDescription com.moisociallearning.moiapp:contentDescription}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_iconTint com.moisociallearning.moiapp:iconTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_iconTintMode com.moisociallearning.moiapp:iconTintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_numericModifiers com.moisociallearning.moiapp:numericModifiers}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_showAsAction com.moisociallearning.moiapp:showAsAction}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuItem_tooltipText com.moisociallearning.moiapp:tooltipText}</code></td><td></td></tr>
      * </table>
      * @see #MenuItem_android_icon
      * @see #MenuItem_android_enabled
@@ -13771,11 +13771,11 @@ public final class R {
      * @see #MenuItem_tooltipText
      */
     public static final int[] MenuItem={
-        0x01010002, 0x0101000e, 0x010100d0, 0x01010106, 
-        0x01010194, 0x010101de, 0x010101df, 0x010101e1, 
-        0x010101e2, 0x010101e3, 0x010101e4, 0x010101e5, 
-        0x0101026f, 0x7f04000d, 0x7f04001f, 0x7f040020, 
-        0x7f04002f, 0x7f040095, 0x7f040113, 0x7f040114, 
+        0x01010002, 0x0101000e, 0x010100d0, 0x01010106,
+        0x01010194, 0x010101de, 0x010101df, 0x010101e1,
+        0x010101e2, 0x010101e3, 0x010101e4, 0x010101e5,
+        0x0101026f, 0x7f04000d, 0x7f04001f, 0x7f040020,
+        0x7f04002f, 0x7f040095, 0x7f040113, 0x7f040114,
         0x7f040162, 0x7f0401a8, 0x7f040201
       };
     /**
@@ -13921,7 +13921,7 @@ public final class R {
      */
     public static final int MenuItem_android_onClick=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionLayout}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -13929,31 +13929,31 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:actionLayout
+     * @attr name com.moisociallearning.moiapp:actionLayout
      */
     public static final int MenuItem_actionLayout=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionProviderClass}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionProviderClass}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:actionProviderClass
+     * @attr name com.moisociallearning.moiapp:actionProviderClass
      */
     public static final int MenuItem_actionProviderClass=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actionViewClass}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actionViewClass}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:actionViewClass
+     * @attr name com.moisociallearning.moiapp:actionViewClass
      */
     public static final int MenuItem_actionViewClass=15;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#alphabeticModifiers}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#alphabeticModifiers}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -13970,32 +13970,32 @@ public final class R {
      * <tr><td>SYM</td><td>4</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:alphabeticModifiers
+     * @attr name com.moisociallearning.moiapp:alphabeticModifiers
      */
     public static final int MenuItem_alphabeticModifiers=16;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentDescription}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentDescription}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:contentDescription
+     * @attr name com.moisociallearning.moiapp:contentDescription
      */
     public static final int MenuItem_contentDescription=17;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#iconTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#iconTint}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:iconTint
+     * @attr name com.moisociallearning.moiapp:iconTint
      */
     public static final int MenuItem_iconTint=18;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#iconTintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#iconTintMode}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -14012,11 +14012,11 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:iconTintMode
+     * @attr name com.moisociallearning.moiapp:iconTintMode
      */
     public static final int MenuItem_iconTintMode=19;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#numericModifiers}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#numericModifiers}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -14033,11 +14033,11 @@ public final class R {
      * <tr><td>SYM</td><td>4</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:numericModifiers
+     * @attr name com.moisociallearning.moiapp:numericModifiers
      */
     public static final int MenuItem_numericModifiers=20;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#showAsAction}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#showAsAction}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -14053,17 +14053,17 @@ public final class R {
      * <tr><td>withText</td><td>4</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:showAsAction
+     * @attr name com.moisociallearning.moiapp:showAsAction
      */
     public static final int MenuItem_showAsAction=21;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tooltipText}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tooltipText}
      * attribute's value can be found in the {@link #MenuItem} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:tooltipText
+     * @attr name com.moisociallearning.moiapp:tooltipText
      */
     public static final int MenuItem_tooltipText=22;
     /**
@@ -14080,8 +14080,8 @@ public final class R {
      * <tr><td><code>{@link #MenuView_android_headerBackground android:headerBackground}</code></td><td></td></tr>
      * <tr><td><code>{@link #MenuView_android_itemBackground android:itemBackground}</code></td><td></td></tr>
      * <tr><td><code>{@link #MenuView_android_itemIconDisabledAlpha android:itemIconDisabledAlpha}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuView_preserveIconSpacing com.growmoisociallearning.moiapp:preserveIconSpacing}</code></td><td></td></tr>
-     * <tr><td><code>{@link #MenuView_subMenuArrow com.growmoisociallearning.moiapp:subMenuArrow}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuView_preserveIconSpacing com.moisociallearning.moiapp:preserveIconSpacing}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MenuView_subMenuArrow com.moisociallearning.moiapp:subMenuArrow}</code></td><td></td></tr>
      * </table>
      * @see #MenuView_android_windowAnimationStyle
      * @see #MenuView_android_itemTextAppearance
@@ -14094,8 +14094,8 @@ public final class R {
      * @see #MenuView_subMenuArrow
      */
     public static final int[] MenuView={
-        0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e, 
-        0x0101012f, 0x01010130, 0x01010131, 0x7f040179, 
+        0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e,
+        0x0101012f, 0x01010130, 0x01010131, 0x7f040179,
         0x7f0401bc
       };
     /**
@@ -14186,17 +14186,17 @@ public final class R {
      */
     public static final int MenuView_android_itemIconDisabledAlpha=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#preserveIconSpacing}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#preserveIconSpacing}
      * attribute's value can be found in the {@link #MenuView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:preserveIconSpacing
+     * @attr name com.moisociallearning.moiapp:preserveIconSpacing
      */
     public static final int MenuView_preserveIconSpacing=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#subMenuArrow}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#subMenuArrow}
      * attribute's value can be found in the {@link #MenuView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14204,7 +14204,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:subMenuArrow
+     * @attr name com.moisociallearning.moiapp:subMenuArrow
      */
     public static final int MenuView_subMenuArrow=8;
     /**
@@ -14217,13 +14217,13 @@ public final class R {
      * <tr><td><code>{@link #NavigationView_android_background android:background}</code></td><td></td></tr>
      * <tr><td><code>{@link #NavigationView_android_fitsSystemWindows android:fitsSystemWindows}</code></td><td></td></tr>
      * <tr><td><code>{@link #NavigationView_android_maxWidth android:maxWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #NavigationView_elevation com.growmoisociallearning.moiapp:elevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #NavigationView_headerLayout com.growmoisociallearning.moiapp:headerLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #NavigationView_itemBackground com.growmoisociallearning.moiapp:itemBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #NavigationView_itemIconTint com.growmoisociallearning.moiapp:itemIconTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #NavigationView_itemTextAppearance com.growmoisociallearning.moiapp:itemTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #NavigationView_itemTextColor com.growmoisociallearning.moiapp:itemTextColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #NavigationView_menu com.growmoisociallearning.moiapp:menu}</code></td><td></td></tr>
+     * <tr><td><code>{@link #NavigationView_elevation com.moisociallearning.moiapp:elevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #NavigationView_headerLayout com.moisociallearning.moiapp:headerLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #NavigationView_itemBackground com.moisociallearning.moiapp:itemBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #NavigationView_itemIconTint com.moisociallearning.moiapp:itemIconTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #NavigationView_itemTextAppearance com.moisociallearning.moiapp:itemTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #NavigationView_itemTextColor com.moisociallearning.moiapp:itemTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #NavigationView_menu com.moisociallearning.moiapp:menu}</code></td><td></td></tr>
      * </table>
      * @see #NavigationView_android_background
      * @see #NavigationView_android_fitsSystemWindows
@@ -14237,8 +14237,8 @@ public final class R {
      * @see #NavigationView_menu
      */
     public static final int[] NavigationView={
-        0x010100d4, 0x010100dd, 0x0101011f, 0x7f0400dd, 
-        0x7f040106, 0x7f040122, 0x7f040123, 0x7f040125, 
+        0x010100d4, 0x010100dd, 0x0101011f, 0x7f0400dd,
+        0x7f040106, 0x7f040122, 0x7f040123, 0x7f040125,
         0x7f040126, 0x7f04015d
       };
     /**
@@ -14280,7 +14280,7 @@ public final class R {
      */
     public static final int NavigationView_android_maxWidth=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#elevation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#elevation}
      * attribute's value can be found in the {@link #NavigationView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -14289,11 +14289,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:elevation
+     * @attr name com.moisociallearning.moiapp:elevation
      */
     public static final int NavigationView_elevation=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#headerLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#headerLayout}
      * attribute's value can be found in the {@link #NavigationView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14301,11 +14301,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:headerLayout
+     * @attr name com.moisociallearning.moiapp:headerLayout
      */
     public static final int NavigationView_headerLayout=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#itemBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#itemBackground}
      * attribute's value can be found in the {@link #NavigationView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14313,22 +14313,22 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:itemBackground
+     * @attr name com.moisociallearning.moiapp:itemBackground
      */
     public static final int NavigationView_itemBackground=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#itemIconTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#itemIconTint}
      * attribute's value can be found in the {@link #NavigationView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:itemIconTint
+     * @attr name com.moisociallearning.moiapp:itemIconTint
      */
     public static final int NavigationView_itemIconTint=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#itemTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#itemTextAppearance}
      * attribute's value can be found in the {@link #NavigationView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14336,22 +14336,22 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:itemTextAppearance
+     * @attr name com.moisociallearning.moiapp:itemTextAppearance
      */
     public static final int NavigationView_itemTextAppearance=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#itemTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#itemTextColor}
      * attribute's value can be found in the {@link #NavigationView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:itemTextColor
+     * @attr name com.moisociallearning.moiapp:itemTextColor
      */
     public static final int NavigationView_itemTextColor=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#menu}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#menu}
      * attribute's value can be found in the {@link #NavigationView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14359,7 +14359,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:menu
+     * @attr name com.moisociallearning.moiapp:menu
      */
     public static final int NavigationView_menu=9;
     /**
@@ -14369,12 +14369,12 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #PlaybackControlView_controller_layout_id com.growmoisociallearning.moiapp:controller_layout_id}</code></td><td></td></tr>
-     * <tr><td><code>{@link #PlaybackControlView_fastforward_increment com.growmoisociallearning.moiapp:fastforward_increment}</code></td><td></td></tr>
-     * <tr><td><code>{@link #PlaybackControlView_repeat_toggle_modes com.growmoisociallearning.moiapp:repeat_toggle_modes}</code></td><td></td></tr>
-     * <tr><td><code>{@link #PlaybackControlView_rewind_increment com.growmoisociallearning.moiapp:rewind_increment}</code></td><td></td></tr>
-     * <tr><td><code>{@link #PlaybackControlView_show_shuffle_button com.growmoisociallearning.moiapp:show_shuffle_button}</code></td><td></td></tr>
-     * <tr><td><code>{@link #PlaybackControlView_show_timeout com.growmoisociallearning.moiapp:show_timeout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #PlaybackControlView_controller_layout_id com.moisociallearning.moiapp:controller_layout_id}</code></td><td></td></tr>
+     * <tr><td><code>{@link #PlaybackControlView_fastforward_increment com.moisociallearning.moiapp:fastforward_increment}</code></td><td></td></tr>
+     * <tr><td><code>{@link #PlaybackControlView_repeat_toggle_modes com.moisociallearning.moiapp:repeat_toggle_modes}</code></td><td></td></tr>
+     * <tr><td><code>{@link #PlaybackControlView_rewind_increment com.moisociallearning.moiapp:rewind_increment}</code></td><td></td></tr>
+     * <tr><td><code>{@link #PlaybackControlView_show_shuffle_button com.moisociallearning.moiapp:show_shuffle_button}</code></td><td></td></tr>
+     * <tr><td><code>{@link #PlaybackControlView_show_timeout com.moisociallearning.moiapp:show_timeout}</code></td><td></td></tr>
      * </table>
      * @see #PlaybackControlView_controller_layout_id
      * @see #PlaybackControlView_fastforward_increment
@@ -14384,11 +14384,11 @@ public final class R {
      * @see #PlaybackControlView_show_timeout
      */
     public static final int[] PlaybackControlView={
-        0x7f0400a3, 0x7f0400f5, 0x7f040187, 0x7f04018c, 
+        0x7f0400a3, 0x7f0400f5, 0x7f040187, 0x7f04018c,
         0x7f0401ac, 0x7f0401ad
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#controller_layout_id}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#controller_layout_id}
      * attribute's value can be found in the {@link #PlaybackControlView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14396,20 +14396,20 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:controller_layout_id
+     * @attr name com.moisociallearning.moiapp:controller_layout_id
      */
     public static final int PlaybackControlView_controller_layout_id=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fastforward_increment}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fastforward_increment}
      * attribute's value can be found in the {@link #PlaybackControlView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fastforward_increment
+     * @attr name com.moisociallearning.moiapp:fastforward_increment
      */
     public static final int PlaybackControlView_fastforward_increment=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#repeat_toggle_modes}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#repeat_toggle_modes}
      * attribute's value can be found in the {@link #PlaybackControlView} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -14423,35 +14423,35 @@ public final class R {
      * <tr><td>one</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:repeat_toggle_modes
+     * @attr name com.moisociallearning.moiapp:repeat_toggle_modes
      */
     public static final int PlaybackControlView_repeat_toggle_modes=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#rewind_increment}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#rewind_increment}
      * attribute's value can be found in the {@link #PlaybackControlView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:rewind_increment
+     * @attr name com.moisociallearning.moiapp:rewind_increment
      */
     public static final int PlaybackControlView_rewind_increment=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#show_shuffle_button}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#show_shuffle_button}
      * attribute's value can be found in the {@link #PlaybackControlView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:show_shuffle_button
+     * @attr name com.moisociallearning.moiapp:show_shuffle_button
      */
     public static final int PlaybackControlView_show_shuffle_button=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#show_timeout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#show_timeout}
      * attribute's value can be found in the {@link #PlaybackControlView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:show_timeout
+     * @attr name com.moisociallearning.moiapp:show_timeout
      */
     public static final int PlaybackControlView_show_timeout=5;
     /**
@@ -14463,7 +14463,7 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #PopupWindow_android_popupBackground android:popupBackground}</code></td><td></td></tr>
      * <tr><td><code>{@link #PopupWindow_android_popupAnimationStyle android:popupAnimationStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #PopupWindow_overlapAnchor com.growmoisociallearning.moiapp:overlapAnchor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #PopupWindow_overlapAnchor com.moisociallearning.moiapp:overlapAnchor}</code></td><td></td></tr>
      * </table>
      * @see #PopupWindow_android_popupBackground
      * @see #PopupWindow_android_popupAnimationStyle
@@ -14500,13 +14500,13 @@ public final class R {
      */
     public static final int PopupWindow_android_popupAnimationStyle=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#overlapAnchor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#overlapAnchor}
      * attribute's value can be found in the {@link #PopupWindow} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:overlapAnchor
+     * @attr name com.moisociallearning.moiapp:overlapAnchor
      */
     public static final int PopupWindow_overlapAnchor=2;
     /**
@@ -14516,7 +14516,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #PopupWindowBackgroundState_state_above_anchor com.growmoisociallearning.moiapp:state_above_anchor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #PopupWindowBackgroundState_state_above_anchor com.moisociallearning.moiapp:state_above_anchor}</code></td><td></td></tr>
      * </table>
      * @see #PopupWindowBackgroundState_state_above_anchor
      */
@@ -14524,13 +14524,13 @@ public final class R {
         0x7f0401b7
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#state_above_anchor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#state_above_anchor}
      * attribute's value can be found in the {@link #PopupWindowBackgroundState} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:state_above_anchor
+     * @attr name com.moisociallearning.moiapp:state_above_anchor
      */
     public static final int PopupWindowBackgroundState_state_above_anchor=0;
     /**
@@ -14540,8 +14540,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #RecycleListView_paddingBottomNoButtons com.growmoisociallearning.moiapp:paddingBottomNoButtons}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecycleListView_paddingTopNoTitle com.growmoisociallearning.moiapp:paddingTopNoTitle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecycleListView_paddingBottomNoButtons com.moisociallearning.moiapp:paddingBottomNoButtons}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecycleListView_paddingTopNoTitle com.moisociallearning.moiapp:paddingTopNoTitle}</code></td><td></td></tr>
      * </table>
      * @see #RecycleListView_paddingBottomNoButtons
      * @see #RecycleListView_paddingTopNoTitle
@@ -14550,7 +14550,7 @@ public final class R {
         0x7f040165, 0x7f040168
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#paddingBottomNoButtons}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#paddingBottomNoButtons}
      * attribute's value can be found in the {@link #RecycleListView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -14559,11 +14559,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:paddingBottomNoButtons
+     * @attr name com.moisociallearning.moiapp:paddingBottomNoButtons
      */
     public static final int RecycleListView_paddingBottomNoButtons=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#paddingTopNoTitle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#paddingTopNoTitle}
      * attribute's value can be found in the {@link #RecycleListView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -14572,7 +14572,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:paddingTopNoTitle
+     * @attr name com.moisociallearning.moiapp:paddingTopNoTitle
      */
     public static final int RecycleListView_paddingTopNoTitle=1;
     /**
@@ -14584,15 +14584,15 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #RecyclerView_android_orientation android:orientation}</code></td><td></td></tr>
      * <tr><td><code>{@link #RecyclerView_android_descendantFocusability android:descendantFocusability}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_fastScrollEnabled com.growmoisociallearning.moiapp:fastScrollEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_fastScrollHorizontalThumbDrawable com.growmoisociallearning.moiapp:fastScrollHorizontalThumbDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_fastScrollHorizontalTrackDrawable com.growmoisociallearning.moiapp:fastScrollHorizontalTrackDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_fastScrollVerticalThumbDrawable com.growmoisociallearning.moiapp:fastScrollVerticalThumbDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_fastScrollVerticalTrackDrawable com.growmoisociallearning.moiapp:fastScrollVerticalTrackDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_layoutManager com.growmoisociallearning.moiapp:layoutManager}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_reverseLayout com.growmoisociallearning.moiapp:reverseLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_spanCount com.growmoisociallearning.moiapp:spanCount}</code></td><td></td></tr>
-     * <tr><td><code>{@link #RecyclerView_stackFromEnd com.growmoisociallearning.moiapp:stackFromEnd}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_fastScrollEnabled com.moisociallearning.moiapp:fastScrollEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_fastScrollHorizontalThumbDrawable com.moisociallearning.moiapp:fastScrollHorizontalThumbDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_fastScrollHorizontalTrackDrawable com.moisociallearning.moiapp:fastScrollHorizontalTrackDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_fastScrollVerticalThumbDrawable com.moisociallearning.moiapp:fastScrollVerticalThumbDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_fastScrollVerticalTrackDrawable com.moisociallearning.moiapp:fastScrollVerticalTrackDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_layoutManager com.moisociallearning.moiapp:layoutManager}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_reverseLayout com.moisociallearning.moiapp:reverseLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_spanCount com.moisociallearning.moiapp:spanCount}</code></td><td></td></tr>
+     * <tr><td><code>{@link #RecyclerView_stackFromEnd com.moisociallearning.moiapp:stackFromEnd}</code></td><td></td></tr>
      * </table>
      * @see #RecyclerView_android_orientation
      * @see #RecyclerView_android_descendantFocusability
@@ -14607,8 +14607,8 @@ public final class R {
      * @see #RecyclerView_stackFromEnd
      */
     public static final int[] RecyclerView={
-        0x010100c4, 0x010100f1, 0x7f0400f0, 0x7f0400f1, 
-        0x7f0400f2, 0x7f0400f3, 0x7f0400f4, 0x7f04012d, 
+        0x010100c4, 0x010100f1, 0x7f0400f0, 0x7f0400f1,
+        0x7f0400f2, 0x7f0400f3, 0x7f0400f4, 0x7f04012d,
         0x7f04018b, 0x7f0401b0, 0x7f0401b6
       };
     /**
@@ -14647,17 +14647,17 @@ public final class R {
      */
     public static final int RecyclerView_android_descendantFocusability=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fastScrollEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fastScrollEnabled}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fastScrollEnabled
+     * @attr name com.moisociallearning.moiapp:fastScrollEnabled
      */
     public static final int RecyclerView_fastScrollEnabled=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fastScrollHorizontalThumbDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fastScrollHorizontalThumbDrawable}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14665,11 +14665,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fastScrollHorizontalThumbDrawable
+     * @attr name com.moisociallearning.moiapp:fastScrollHorizontalThumbDrawable
      */
     public static final int RecyclerView_fastScrollHorizontalThumbDrawable=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fastScrollHorizontalTrackDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fastScrollHorizontalTrackDrawable}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14677,11 +14677,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fastScrollHorizontalTrackDrawable
+     * @attr name com.moisociallearning.moiapp:fastScrollHorizontalTrackDrawable
      */
     public static final int RecyclerView_fastScrollHorizontalTrackDrawable=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fastScrollVerticalThumbDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fastScrollVerticalThumbDrawable}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14689,11 +14689,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fastScrollVerticalThumbDrawable
+     * @attr name com.moisociallearning.moiapp:fastScrollVerticalThumbDrawable
      */
     public static final int RecyclerView_fastScrollVerticalThumbDrawable=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fastScrollVerticalTrackDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fastScrollVerticalTrackDrawable}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14701,46 +14701,46 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fastScrollVerticalTrackDrawable
+     * @attr name com.moisociallearning.moiapp:fastScrollVerticalTrackDrawable
      */
     public static final int RecyclerView_fastScrollVerticalTrackDrawable=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layoutManager}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layoutManager}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:layoutManager
+     * @attr name com.moisociallearning.moiapp:layoutManager
      */
     public static final int RecyclerView_layoutManager=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#reverseLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#reverseLayout}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:reverseLayout
+     * @attr name com.moisociallearning.moiapp:reverseLayout
      */
     public static final int RecyclerView_reverseLayout=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#spanCount}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#spanCount}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:spanCount
+     * @attr name com.moisociallearning.moiapp:spanCount
      */
     public static final int RecyclerView_spanCount=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#stackFromEnd}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#stackFromEnd}
      * attribute's value can be found in the {@link #RecyclerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:stackFromEnd
+     * @attr name com.moisociallearning.moiapp:stackFromEnd
      */
     public static final int RecyclerView_stackFromEnd=10;
     /**
@@ -14750,7 +14750,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #ScrimInsetsFrameLayout_insetForeground com.growmoisociallearning.moiapp:insetForeground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ScrimInsetsFrameLayout_insetForeground com.moisociallearning.moiapp:insetForeground}</code></td><td></td></tr>
      * </table>
      * @see #ScrimInsetsFrameLayout_insetForeground
      */
@@ -14758,7 +14758,7 @@ public final class R {
         0x7f040120
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#insetForeground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#insetForeground}
      * attribute's value can be found in the {@link #ScrimInsetsFrameLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14769,7 +14769,7 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:insetForeground
+     * @attr name com.moisociallearning.moiapp:insetForeground
      */
     public static final int ScrimInsetsFrameLayout_insetForeground=0;
     /**
@@ -14779,7 +14779,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #ScrollingViewBehavior_Layout_behavior_overlapTop com.growmoisociallearning.moiapp:behavior_overlapTop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ScrollingViewBehavior_Layout_behavior_overlapTop com.moisociallearning.moiapp:behavior_overlapTop}</code></td><td></td></tr>
      * </table>
      * @see #ScrollingViewBehavior_Layout_behavior_overlapTop
      */
@@ -14787,7 +14787,7 @@ public final class R {
         0x7f040048
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#behavior_overlapTop}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#behavior_overlapTop}
      * attribute's value can be found in the {@link #ScrollingViewBehavior_Layout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -14796,7 +14796,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:behavior_overlapTop
+     * @attr name com.moisociallearning.moiapp:behavior_overlapTop
      */
     public static final int ScrollingViewBehavior_Layout_behavior_overlapTop=0;
     /**
@@ -14810,19 +14810,19 @@ public final class R {
      * <tr><td><code>{@link #SearchView_android_maxWidth android:maxWidth}</code></td><td></td></tr>
      * <tr><td><code>{@link #SearchView_android_inputType android:inputType}</code></td><td></td></tr>
      * <tr><td><code>{@link #SearchView_android_imeOptions android:imeOptions}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_closeIcon com.growmoisociallearning.moiapp:closeIcon}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_commitIcon com.growmoisociallearning.moiapp:commitIcon}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_defaultQueryHint com.growmoisociallearning.moiapp:defaultQueryHint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_goIcon com.growmoisociallearning.moiapp:goIcon}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_iconifiedByDefault com.growmoisociallearning.moiapp:iconifiedByDefault}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_layout com.growmoisociallearning.moiapp:layout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_queryBackground com.growmoisociallearning.moiapp:queryBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_queryHint com.growmoisociallearning.moiapp:queryHint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_searchHintIcon com.growmoisociallearning.moiapp:searchHintIcon}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_searchIcon com.growmoisociallearning.moiapp:searchIcon}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_submitBackground com.growmoisociallearning.moiapp:submitBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_suggestionRowLayout com.growmoisociallearning.moiapp:suggestionRowLayout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SearchView_voiceIcon com.growmoisociallearning.moiapp:voiceIcon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_closeIcon com.moisociallearning.moiapp:closeIcon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_commitIcon com.moisociallearning.moiapp:commitIcon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_defaultQueryHint com.moisociallearning.moiapp:defaultQueryHint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_goIcon com.moisociallearning.moiapp:goIcon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_iconifiedByDefault com.moisociallearning.moiapp:iconifiedByDefault}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_layout com.moisociallearning.moiapp:layout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_queryBackground com.moisociallearning.moiapp:queryBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_queryHint com.moisociallearning.moiapp:queryHint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_searchHintIcon com.moisociallearning.moiapp:searchHintIcon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_searchIcon com.moisociallearning.moiapp:searchIcon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_submitBackground com.moisociallearning.moiapp:submitBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_suggestionRowLayout com.moisociallearning.moiapp:suggestionRowLayout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SearchView_voiceIcon com.moisociallearning.moiapp:voiceIcon}</code></td><td></td></tr>
      * </table>
      * @see #SearchView_android_focusable
      * @see #SearchView_android_maxWidth
@@ -14843,10 +14843,10 @@ public final class R {
      * @see #SearchView_voiceIcon
      */
     public static final int[] SearchView={
-        0x010100da, 0x0101011f, 0x01010220, 0x01010264, 
-        0x7f040076, 0x7f040094, 0x7f0400cc, 0x7f040105, 
-        0x7f040115, 0x7f04012c, 0x7f040181, 0x7f040182, 
-        0x7f0401a1, 0x7f0401a2, 0x7f0401bd, 0x7f0401c2, 
+        0x010100da, 0x0101011f, 0x01010220, 0x01010264,
+        0x7f040076, 0x7f040094, 0x7f0400cc, 0x7f040105,
+        0x7f040115, 0x7f04012c, 0x7f040181, 0x7f040182,
+        0x7f0401a1, 0x7f0401a2, 0x7f0401bd, 0x7f0401c2,
         0x7f040214
       };
     /**
@@ -14960,7 +14960,7 @@ public final class R {
      */
     public static final int SearchView_android_imeOptions=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#closeIcon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#closeIcon}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14968,11 +14968,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:closeIcon
+     * @attr name com.moisociallearning.moiapp:closeIcon
      */
     public static final int SearchView_closeIcon=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#commitIcon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#commitIcon}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -14980,21 +14980,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:commitIcon
+     * @attr name com.moisociallearning.moiapp:commitIcon
      */
     public static final int SearchView_commitIcon=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#defaultQueryHint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#defaultQueryHint}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:defaultQueryHint
+     * @attr name com.moisociallearning.moiapp:defaultQueryHint
      */
     public static final int SearchView_defaultQueryHint=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#goIcon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#goIcon}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15002,21 +15002,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:goIcon
+     * @attr name com.moisociallearning.moiapp:goIcon
      */
     public static final int SearchView_goIcon=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#iconifiedByDefault}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#iconifiedByDefault}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:iconifiedByDefault
+     * @attr name com.moisociallearning.moiapp:iconifiedByDefault
      */
     public static final int SearchView_iconifiedByDefault=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#layout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#layout}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15024,11 +15024,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:layout
+     * @attr name com.moisociallearning.moiapp:layout
      */
     public static final int SearchView_layout=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#queryBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#queryBackground}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15036,21 +15036,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:queryBackground
+     * @attr name com.moisociallearning.moiapp:queryBackground
      */
     public static final int SearchView_queryBackground=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#queryHint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#queryHint}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:queryHint
+     * @attr name com.moisociallearning.moiapp:queryHint
      */
     public static final int SearchView_queryHint=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#searchHintIcon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#searchHintIcon}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15058,11 +15058,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:searchHintIcon
+     * @attr name com.moisociallearning.moiapp:searchHintIcon
      */
     public static final int SearchView_searchHintIcon=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#searchIcon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#searchIcon}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15070,11 +15070,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:searchIcon
+     * @attr name com.moisociallearning.moiapp:searchIcon
      */
     public static final int SearchView_searchIcon=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#submitBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#submitBackground}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15082,11 +15082,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:submitBackground
+     * @attr name com.moisociallearning.moiapp:submitBackground
      */
     public static final int SearchView_submitBackground=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#suggestionRowLayout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#suggestionRowLayout}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15094,11 +15094,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:suggestionRowLayout
+     * @attr name com.moisociallearning.moiapp:suggestionRowLayout
      */
     public static final int SearchView_suggestionRowLayout=15;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#voiceIcon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#voiceIcon}
      * attribute's value can be found in the {@link #SearchView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15106,7 +15106,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:voiceIcon
+     * @attr name com.moisociallearning.moiapp:voiceIcon
      */
     public static final int SearchView_voiceIcon=16;
     /**
@@ -15116,9 +15116,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #SignInButton_buttonSize com.growmoisociallearning.moiapp:buttonSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SignInButton_colorScheme com.growmoisociallearning.moiapp:colorScheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SignInButton_scopeUris com.growmoisociallearning.moiapp:scopeUris}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignInButton_buttonSize com.moisociallearning.moiapp:buttonSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignInButton_colorScheme com.moisociallearning.moiapp:colorScheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignInButton_scopeUris com.moisociallearning.moiapp:scopeUris}</code></td><td></td></tr>
      * </table>
      * @see #SignInButton_buttonSize
      * @see #SignInButton_colorScheme
@@ -15128,7 +15128,7 @@ public final class R {
         0x7f040058, 0x7f040086, 0x7f040199
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonSize}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonSize}
      * attribute's value can be found in the {@link #SignInButton} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15146,11 +15146,11 @@ public final class R {
      * <tr><td>wide</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonSize
+     * @attr name com.moisociallearning.moiapp:buttonSize
      */
     public static final int SignInButton_buttonSize=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#colorScheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#colorScheme}
      * attribute's value can be found in the {@link #SignInButton} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15168,11 +15168,11 @@ public final class R {
      * <tr><td>light</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:colorScheme
+     * @attr name com.moisociallearning.moiapp:colorScheme
      */
     public static final int SignInButton_colorScheme=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scopeUris}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scopeUris}
      * attribute's value can be found in the {@link #SignInButton} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15182,7 +15182,7 @@ public final class R {
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:scopeUris
+     * @attr name com.moisociallearning.moiapp:scopeUris
      */
     public static final int SignInButton_scopeUris=2;
     /**
@@ -15192,7 +15192,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #SimpleDraweeView_actualImageUri com.growmoisociallearning.moiapp:actualImageUri}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleDraweeView_actualImageUri com.moisociallearning.moiapp:actualImageUri}</code></td><td></td></tr>
      * </table>
      * @see #SimpleDraweeView_actualImageUri
      */
@@ -15200,13 +15200,13 @@ public final class R {
         0x7f040023
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#actualImageUri}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#actualImageUri}
      * attribute's value can be found in the {@link #SimpleDraweeView} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:actualImageUri
+     * @attr name com.moisociallearning.moiapp:actualImageUri
      */
     public static final int SimpleDraweeView_actualImageUri=0;
     /**
@@ -15216,22 +15216,22 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_auto_show com.growmoisociallearning.moiapp:auto_show}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_controller_layout_id com.growmoisociallearning.moiapp:controller_layout_id}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_default_artwork com.growmoisociallearning.moiapp:default_artwork}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_fastforward_increment com.growmoisociallearning.moiapp:fastforward_increment}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_hide_during_ads com.growmoisociallearning.moiapp:hide_during_ads}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_hide_on_touch com.growmoisociallearning.moiapp:hide_on_touch}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_player_layout_id com.growmoisociallearning.moiapp:player_layout_id}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_repeat_toggle_modes com.growmoisociallearning.moiapp:repeat_toggle_modes}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_resize_mode com.growmoisociallearning.moiapp:resize_mode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_rewind_increment com.growmoisociallearning.moiapp:rewind_increment}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_show_shuffle_button com.growmoisociallearning.moiapp:show_shuffle_button}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_show_timeout com.growmoisociallearning.moiapp:show_timeout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_shutter_background_color com.growmoisociallearning.moiapp:shutter_background_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_surface_type com.growmoisociallearning.moiapp:surface_type}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_use_artwork com.growmoisociallearning.moiapp:use_artwork}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SimpleExoPlayerView_use_controller com.growmoisociallearning.moiapp:use_controller}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_auto_show com.moisociallearning.moiapp:auto_show}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_controller_layout_id com.moisociallearning.moiapp:controller_layout_id}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_default_artwork com.moisociallearning.moiapp:default_artwork}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_fastforward_increment com.moisociallearning.moiapp:fastforward_increment}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_hide_during_ads com.moisociallearning.moiapp:hide_during_ads}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_hide_on_touch com.moisociallearning.moiapp:hide_on_touch}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_player_layout_id com.moisociallearning.moiapp:player_layout_id}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_repeat_toggle_modes com.moisociallearning.moiapp:repeat_toggle_modes}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_resize_mode com.moisociallearning.moiapp:resize_mode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_rewind_increment com.moisociallearning.moiapp:rewind_increment}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_show_shuffle_button com.moisociallearning.moiapp:show_shuffle_button}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_show_timeout com.moisociallearning.moiapp:show_timeout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_shutter_background_color com.moisociallearning.moiapp:shutter_background_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_surface_type com.moisociallearning.moiapp:surface_type}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_use_artwork com.moisociallearning.moiapp:use_artwork}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SimpleExoPlayerView_use_controller com.moisociallearning.moiapp:use_controller}</code></td><td></td></tr>
      * </table>
      * @see #SimpleExoPlayerView_auto_show
      * @see #SimpleExoPlayerView_controller_layout_id
@@ -15251,23 +15251,23 @@ public final class R {
      * @see #SimpleExoPlayerView_use_controller
      */
     public static final int[] SimpleExoPlayerView={
-        0x7f04003d, 0x7f0400a3, 0x7f0400cd, 0x7f0400f5, 
-        0x7f04010a, 0x7f04010b, 0x7f040175, 0x7f040187, 
-        0x7f040188, 0x7f04018c, 0x7f0401ac, 0x7f0401ad, 
+        0x7f04003d, 0x7f0400a3, 0x7f0400cd, 0x7f0400f5,
+        0x7f04010a, 0x7f04010b, 0x7f040175, 0x7f040187,
+        0x7f040188, 0x7f04018c, 0x7f0401ac, 0x7f0401ad,
         0x7f0401ae, 0x7f0401c3, 0x7f040210, 0x7f040211
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#auto_show}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#auto_show}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:auto_show
+     * @attr name com.moisociallearning.moiapp:auto_show
      */
     public static final int SimpleExoPlayerView_auto_show=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#controller_layout_id}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#controller_layout_id}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15275,11 +15275,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:controller_layout_id
+     * @attr name com.moisociallearning.moiapp:controller_layout_id
      */
     public static final int SimpleExoPlayerView_controller_layout_id=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#default_artwork}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#default_artwork}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15287,40 +15287,40 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:default_artwork
+     * @attr name com.moisociallearning.moiapp:default_artwork
      */
     public static final int SimpleExoPlayerView_default_artwork=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fastforward_increment}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fastforward_increment}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fastforward_increment
+     * @attr name com.moisociallearning.moiapp:fastforward_increment
      */
     public static final int SimpleExoPlayerView_fastforward_increment=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#hide_during_ads}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#hide_during_ads}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:hide_during_ads
+     * @attr name com.moisociallearning.moiapp:hide_during_ads
      */
     public static final int SimpleExoPlayerView_hide_during_ads=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#hide_on_touch}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#hide_on_touch}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:hide_on_touch
+     * @attr name com.moisociallearning.moiapp:hide_on_touch
      */
     public static final int SimpleExoPlayerView_hide_on_touch=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#player_layout_id}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#player_layout_id}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15328,11 +15328,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:player_layout_id
+     * @attr name com.moisociallearning.moiapp:player_layout_id
      */
     public static final int SimpleExoPlayerView_player_layout_id=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#repeat_toggle_modes}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#repeat_toggle_modes}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -15346,11 +15346,11 @@ public final class R {
      * <tr><td>one</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:repeat_toggle_modes
+     * @attr name com.moisociallearning.moiapp:repeat_toggle_modes
      */
     public static final int SimpleExoPlayerView_repeat_toggle_modes=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#resize_mode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#resize_mode}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -15365,50 +15365,50 @@ public final class R {
      * <tr><td>fixed_width</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:resize_mode
+     * @attr name com.moisociallearning.moiapp:resize_mode
      */
     public static final int SimpleExoPlayerView_resize_mode=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#rewind_increment}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#rewind_increment}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:rewind_increment
+     * @attr name com.moisociallearning.moiapp:rewind_increment
      */
     public static final int SimpleExoPlayerView_rewind_increment=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#show_shuffle_button}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#show_shuffle_button}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:show_shuffle_button
+     * @attr name com.moisociallearning.moiapp:show_shuffle_button
      */
     public static final int SimpleExoPlayerView_show_shuffle_button=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#show_timeout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#show_timeout}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:show_timeout
+     * @attr name com.moisociallearning.moiapp:show_timeout
      */
     public static final int SimpleExoPlayerView_show_timeout=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#shutter_background_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#shutter_background_color}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:shutter_background_color
+     * @attr name com.moisociallearning.moiapp:shutter_background_color
      */
     public static final int SimpleExoPlayerView_shutter_background_color=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#surface_type}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#surface_type}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -15422,27 +15422,27 @@ public final class R {
      * <tr><td>texture_view</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:surface_type
+     * @attr name com.moisociallearning.moiapp:surface_type
      */
     public static final int SimpleExoPlayerView_surface_type=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#use_artwork}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#use_artwork}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:use_artwork
+     * @attr name com.moisociallearning.moiapp:use_artwork
      */
     public static final int SimpleExoPlayerView_use_artwork=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#use_controller}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#use_controller}
      * attribute's value can be found in the {@link #SimpleExoPlayerView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:use_controller
+     * @attr name com.moisociallearning.moiapp:use_controller
      */
     public static final int SimpleExoPlayerView_use_controller=15;
     /**
@@ -15453,8 +15453,8 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #SnackbarLayout_android_maxWidth android:maxWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SnackbarLayout_elevation com.growmoisociallearning.moiapp:elevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SnackbarLayout_maxActionInlineWidth com.growmoisociallearning.moiapp:maxActionInlineWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SnackbarLayout_elevation com.moisociallearning.moiapp:elevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SnackbarLayout_maxActionInlineWidth com.moisociallearning.moiapp:maxActionInlineWidth}</code></td><td></td></tr>
      * </table>
      * @see #SnackbarLayout_android_maxWidth
      * @see #SnackbarLayout_elevation
@@ -15477,7 +15477,7 @@ public final class R {
      */
     public static final int SnackbarLayout_android_maxWidth=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#elevation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#elevation}
      * attribute's value can be found in the {@link #SnackbarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -15486,11 +15486,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:elevation
+     * @attr name com.moisociallearning.moiapp:elevation
      */
     public static final int SnackbarLayout_elevation=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maxActionInlineWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maxActionInlineWidth}
      * attribute's value can be found in the {@link #SnackbarLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -15499,7 +15499,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:maxActionInlineWidth
+     * @attr name com.moisociallearning.moiapp:maxActionInlineWidth
      */
     public static final int SnackbarLayout_maxActionInlineWidth=2;
     /**
@@ -15513,7 +15513,7 @@ public final class R {
      * <tr><td><code>{@link #Spinner_android_popupBackground android:popupBackground}</code></td><td></td></tr>
      * <tr><td><code>{@link #Spinner_android_prompt android:prompt}</code></td><td></td></tr>
      * <tr><td><code>{@link #Spinner_android_dropDownWidth android:dropDownWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Spinner_popupTheme com.growmoisociallearning.moiapp:popupTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Spinner_popupTheme com.moisociallearning.moiapp:popupTheme}</code></td><td></td></tr>
      * </table>
      * @see #Spinner_android_entries
      * @see #Spinner_android_popupBackground
@@ -15522,7 +15522,7 @@ public final class R {
      * @see #Spinner_popupTheme
      */
     public static final int[] Spinner={
-        0x010100b2, 0x01010176, 0x0101017b, 0x01010262, 
+        0x010100b2, 0x01010176, 0x0101017b, 0x01010262,
         0x7f040177
       };
     /**
@@ -15588,7 +15588,7 @@ public final class R {
      */
     public static final int Spinner_android_dropDownWidth=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#popupTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#popupTheme}
      * attribute's value can be found in the {@link #Spinner} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15596,7 +15596,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:popupTheme
+     * @attr name com.moisociallearning.moiapp:popupTheme
      */
     public static final int Spinner_popupTheme=4;
     /**
@@ -15609,17 +15609,17 @@ public final class R {
      * <tr><td><code>{@link #SwitchCompat_android_textOn android:textOn}</code></td><td></td></tr>
      * <tr><td><code>{@link #SwitchCompat_android_textOff android:textOff}</code></td><td></td></tr>
      * <tr><td><code>{@link #SwitchCompat_android_thumb android:thumb}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_showText com.growmoisociallearning.moiapp:showText}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_splitTrack com.growmoisociallearning.moiapp:splitTrack}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_switchMinWidth com.growmoisociallearning.moiapp:switchMinWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_switchPadding com.growmoisociallearning.moiapp:switchPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_switchTextAppearance com.growmoisociallearning.moiapp:switchTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_thumbTextPadding com.growmoisociallearning.moiapp:thumbTextPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_thumbTint com.growmoisociallearning.moiapp:thumbTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_thumbTintMode com.growmoisociallearning.moiapp:thumbTintMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_track com.growmoisociallearning.moiapp:track}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_trackTint com.growmoisociallearning.moiapp:trackTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SwitchCompat_trackTintMode com.growmoisociallearning.moiapp:trackTintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_showText com.moisociallearning.moiapp:showText}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_splitTrack com.moisociallearning.moiapp:splitTrack}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_switchMinWidth com.moisociallearning.moiapp:switchMinWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_switchPadding com.moisociallearning.moiapp:switchPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_switchTextAppearance com.moisociallearning.moiapp:switchTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_thumbTextPadding com.moisociallearning.moiapp:thumbTextPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_thumbTint com.moisociallearning.moiapp:thumbTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_thumbTintMode com.moisociallearning.moiapp:thumbTintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_track com.moisociallearning.moiapp:track}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_trackTint com.moisociallearning.moiapp:trackTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SwitchCompat_trackTintMode com.moisociallearning.moiapp:trackTintMode}</code></td><td></td></tr>
      * </table>
      * @see #SwitchCompat_android_textOn
      * @see #SwitchCompat_android_textOff
@@ -15637,9 +15637,9 @@ public final class R {
      * @see #SwitchCompat_trackTintMode
      */
     public static final int[] SwitchCompat={
-        0x01010124, 0x01010125, 0x01010142, 0x7f0401aa, 
-        0x7f0401b4, 0x7f0401c4, 0x7f0401c5, 0x7f0401c7, 
-        0x7f0401e8, 0x7f0401e9, 0x7f0401ea, 0x7f040203, 
+        0x01010124, 0x01010125, 0x01010142, 0x7f0401aa,
+        0x7f0401b4, 0x7f0401c4, 0x7f0401c5, 0x7f0401c7,
+        0x7f0401e8, 0x7f0401e9, 0x7f0401ea, 0x7f040203,
         0x7f040204, 0x7f040205
       };
     /**
@@ -15675,27 +15675,27 @@ public final class R {
      */
     public static final int SwitchCompat_android_thumb=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#showText}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#showText}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:showText
+     * @attr name com.moisociallearning.moiapp:showText
      */
     public static final int SwitchCompat_showText=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#splitTrack}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#splitTrack}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:splitTrack
+     * @attr name com.moisociallearning.moiapp:splitTrack
      */
     public static final int SwitchCompat_splitTrack=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#switchMinWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#switchMinWidth}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -15704,11 +15704,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:switchMinWidth
+     * @attr name com.moisociallearning.moiapp:switchMinWidth
      */
     public static final int SwitchCompat_switchMinWidth=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#switchPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#switchPadding}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -15717,11 +15717,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:switchPadding
+     * @attr name com.moisociallearning.moiapp:switchPadding
      */
     public static final int SwitchCompat_switchPadding=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#switchTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#switchTextAppearance}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15729,11 +15729,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:switchTextAppearance
+     * @attr name com.moisociallearning.moiapp:switchTextAppearance
      */
     public static final int SwitchCompat_switchTextAppearance=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#thumbTextPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#thumbTextPadding}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -15742,22 +15742,22 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:thumbTextPadding
+     * @attr name com.moisociallearning.moiapp:thumbTextPadding
      */
     public static final int SwitchCompat_thumbTextPadding=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#thumbTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#thumbTint}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:thumbTint
+     * @attr name com.moisociallearning.moiapp:thumbTint
      */
     public static final int SwitchCompat_thumbTint=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#thumbTintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#thumbTintMode}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -15774,11 +15774,11 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:thumbTintMode
+     * @attr name com.moisociallearning.moiapp:thumbTintMode
      */
     public static final int SwitchCompat_thumbTintMode=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#track}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#track}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15786,22 +15786,22 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:track
+     * @attr name com.moisociallearning.moiapp:track
      */
     public static final int SwitchCompat_track=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#trackTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#trackTint}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:trackTint
+     * @attr name com.moisociallearning.moiapp:trackTint
      */
     public static final int SwitchCompat_trackTint=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#trackTintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#trackTintMode}
      * attribute's value can be found in the {@link #SwitchCompat} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -15818,7 +15818,7 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:trackTintMode
+     * @attr name com.moisociallearning.moiapp:trackTintMode
      */
     public static final int SwitchCompat_trackTintMode=13;
     /**
@@ -15880,22 +15880,22 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #TabLayout_tabBackground com.growmoisociallearning.moiapp:tabBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabContentStart com.growmoisociallearning.moiapp:tabContentStart}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabGravity com.growmoisociallearning.moiapp:tabGravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabIndicatorColor com.growmoisociallearning.moiapp:tabIndicatorColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabIndicatorHeight com.growmoisociallearning.moiapp:tabIndicatorHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabMaxWidth com.growmoisociallearning.moiapp:tabMaxWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabMinWidth com.growmoisociallearning.moiapp:tabMinWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabMode com.growmoisociallearning.moiapp:tabMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabPadding com.growmoisociallearning.moiapp:tabPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabPaddingBottom com.growmoisociallearning.moiapp:tabPaddingBottom}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabPaddingEnd com.growmoisociallearning.moiapp:tabPaddingEnd}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabPaddingStart com.growmoisociallearning.moiapp:tabPaddingStart}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabPaddingTop com.growmoisociallearning.moiapp:tabPaddingTop}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabSelectedTextColor com.growmoisociallearning.moiapp:tabSelectedTextColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabTextAppearance com.growmoisociallearning.moiapp:tabTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabLayout_tabTextColor com.growmoisociallearning.moiapp:tabTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabBackground com.moisociallearning.moiapp:tabBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabContentStart com.moisociallearning.moiapp:tabContentStart}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabGravity com.moisociallearning.moiapp:tabGravity}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabIndicatorColor com.moisociallearning.moiapp:tabIndicatorColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabIndicatorHeight com.moisociallearning.moiapp:tabIndicatorHeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabMaxWidth com.moisociallearning.moiapp:tabMaxWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabMinWidth com.moisociallearning.moiapp:tabMinWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabMode com.moisociallearning.moiapp:tabMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabPadding com.moisociallearning.moiapp:tabPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabPaddingBottom com.moisociallearning.moiapp:tabPaddingBottom}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabPaddingEnd com.moisociallearning.moiapp:tabPaddingEnd}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabPaddingStart com.moisociallearning.moiapp:tabPaddingStart}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabPaddingTop com.moisociallearning.moiapp:tabPaddingTop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabSelectedTextColor com.moisociallearning.moiapp:tabSelectedTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabTextAppearance com.moisociallearning.moiapp:tabTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabLayout_tabTextColor com.moisociallearning.moiapp:tabTextColor}</code></td><td></td></tr>
      * </table>
      * @see #TabLayout_tabBackground
      * @see #TabLayout_tabContentStart
@@ -15915,13 +15915,13 @@ public final class R {
      * @see #TabLayout_tabTextColor
      */
     public static final int[] TabLayout={
-        0x7f0401c8, 0x7f0401c9, 0x7f0401ca, 0x7f0401cb, 
-        0x7f0401cc, 0x7f0401cd, 0x7f0401ce, 0x7f0401cf, 
-        0x7f0401d0, 0x7f0401d1, 0x7f0401d2, 0x7f0401d3, 
+        0x7f0401c8, 0x7f0401c9, 0x7f0401ca, 0x7f0401cb,
+        0x7f0401cc, 0x7f0401cd, 0x7f0401ce, 0x7f0401cf,
+        0x7f0401d0, 0x7f0401d1, 0x7f0401d2, 0x7f0401d3,
         0x7f0401d4, 0x7f0401d5, 0x7f0401d6, 0x7f0401d7
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabBackground}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -15929,11 +15929,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tabBackground
+     * @attr name com.moisociallearning.moiapp:tabBackground
      */
     public static final int TabLayout_tabBackground=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabContentStart}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabContentStart}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -15942,11 +15942,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabContentStart
+     * @attr name com.moisociallearning.moiapp:tabContentStart
      */
     public static final int TabLayout_tabContentStart=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabGravity}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabGravity}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -15959,22 +15959,22 @@ public final class R {
      * <tr><td>fill</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:tabGravity
+     * @attr name com.moisociallearning.moiapp:tabGravity
      */
     public static final int TabLayout_tabGravity=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabIndicatorColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabIndicatorColor}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tabIndicatorColor
+     * @attr name com.moisociallearning.moiapp:tabIndicatorColor
      */
     public static final int TabLayout_tabIndicatorColor=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabIndicatorHeight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabIndicatorHeight}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -15983,11 +15983,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabIndicatorHeight
+     * @attr name com.moisociallearning.moiapp:tabIndicatorHeight
      */
     public static final int TabLayout_tabIndicatorHeight=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabMaxWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabMaxWidth}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -15996,11 +15996,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabMaxWidth
+     * @attr name com.moisociallearning.moiapp:tabMaxWidth
      */
     public static final int TabLayout_tabMaxWidth=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabMinWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabMinWidth}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16009,11 +16009,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabMinWidth
+     * @attr name com.moisociallearning.moiapp:tabMinWidth
      */
     public static final int TabLayout_tabMinWidth=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabMode}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -16026,11 +16026,11 @@ public final class R {
      * <tr><td>scrollable</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:tabMode
+     * @attr name com.moisociallearning.moiapp:tabMode
      */
     public static final int TabLayout_tabMode=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabPadding}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabPadding}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16039,11 +16039,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabPadding
+     * @attr name com.moisociallearning.moiapp:tabPadding
      */
     public static final int TabLayout_tabPadding=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabPaddingBottom}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabPaddingBottom}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16052,11 +16052,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabPaddingBottom
+     * @attr name com.moisociallearning.moiapp:tabPaddingBottom
      */
     public static final int TabLayout_tabPaddingBottom=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabPaddingEnd}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabPaddingEnd}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16065,11 +16065,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabPaddingEnd
+     * @attr name com.moisociallearning.moiapp:tabPaddingEnd
      */
     public static final int TabLayout_tabPaddingEnd=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabPaddingStart}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabPaddingStart}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16078,11 +16078,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabPaddingStart
+     * @attr name com.moisociallearning.moiapp:tabPaddingStart
      */
     public static final int TabLayout_tabPaddingStart=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabPaddingTop}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabPaddingTop}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16091,22 +16091,22 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:tabPaddingTop
+     * @attr name com.moisociallearning.moiapp:tabPaddingTop
      */
     public static final int TabLayout_tabPaddingTop=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabSelectedTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabSelectedTextColor}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tabSelectedTextColor
+     * @attr name com.moisociallearning.moiapp:tabSelectedTextColor
      */
     public static final int TabLayout_tabSelectedTextColor=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabTextAppearance}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16114,18 +16114,18 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tabTextAppearance
+     * @attr name com.moisociallearning.moiapp:tabTextAppearance
      */
     public static final int TabLayout_tabTextAppearance=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#tabTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#tabTextColor}
      * attribute's value can be found in the {@link #TabLayout} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:tabTextColor
+     * @attr name com.moisociallearning.moiapp:tabTextColor
      */
     public static final int TabLayout_tabTextColor=15;
     /**
@@ -16146,8 +16146,8 @@ public final class R {
      * <tr><td><code>{@link #TextAppearance_android_shadowDy android:shadowDy}</code></td><td></td></tr>
      * <tr><td><code>{@link #TextAppearance_android_shadowRadius android:shadowRadius}</code></td><td></td></tr>
      * <tr><td><code>{@link #TextAppearance_android_fontFamily android:fontFamily}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextAppearance_fontFamily com.growmoisociallearning.moiapp:fontFamily}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextAppearance_textAllCaps com.growmoisociallearning.moiapp:textAllCaps}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextAppearance_fontFamily com.moisociallearning.moiapp:fontFamily}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextAppearance_textAllCaps com.moisociallearning.moiapp:textAllCaps}</code></td><td></td></tr>
      * </table>
      * @see #TextAppearance_android_textSize
      * @see #TextAppearance_android_typeface
@@ -16164,9 +16164,9 @@ public final class R {
      * @see #TextAppearance_textAllCaps
      */
     public static final int[] TextAppearance={
-        0x01010095, 0x01010096, 0x01010097, 0x01010098, 
-        0x0101009a, 0x0101009b, 0x01010161, 0x01010162, 
-        0x01010163, 0x01010164, 0x010103ac, 0x7f0400f8, 
+        0x01010095, 0x01010096, 0x01010097, 0x01010098,
+        0x0101009a, 0x0101009b, 0x01010161, 0x01010162,
+        0x01010163, 0x01010164, 0x010103ac, 0x7f0400f8,
         0x7f0401d8
       };
     /**
@@ -16313,17 +16313,17 @@ public final class R {
      */
     public static final int TextAppearance_android_fontFamily=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fontFamily}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fontFamily}
      * attribute's value can be found in the {@link #TextAppearance} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:fontFamily
+     * @attr name com.moisociallearning.moiapp:fontFamily
      */
     public static final int TextAppearance_fontFamily=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#textAllCaps}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#textAllCaps}
      * attribute's value can be found in the {@link #TextAppearance} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16333,7 +16333,7 @@ public final class R {
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:textAllCaps
+     * @attr name com.moisociallearning.moiapp:textAllCaps
      */
     public static final int TextAppearance_textAllCaps=12;
     /**
@@ -16345,20 +16345,20 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #TextInputLayout_android_textColorHint android:textColorHint}</code></td><td></td></tr>
      * <tr><td><code>{@link #TextInputLayout_android_hint android:hint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_counterEnabled com.growmoisociallearning.moiapp:counterEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_counterMaxLength com.growmoisociallearning.moiapp:counterMaxLength}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_counterOverflowTextAppearance com.growmoisociallearning.moiapp:counterOverflowTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_counterTextAppearance com.growmoisociallearning.moiapp:counterTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_errorEnabled com.growmoisociallearning.moiapp:errorEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_errorTextAppearance com.growmoisociallearning.moiapp:errorTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_hintAnimationEnabled com.growmoisociallearning.moiapp:hintAnimationEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_hintEnabled com.growmoisociallearning.moiapp:hintEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_hintTextAppearance com.growmoisociallearning.moiapp:hintTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_passwordToggleContentDescription com.growmoisociallearning.moiapp:passwordToggleContentDescription}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_passwordToggleDrawable com.growmoisociallearning.moiapp:passwordToggleDrawable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_passwordToggleEnabled com.growmoisociallearning.moiapp:passwordToggleEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_passwordToggleTint com.growmoisociallearning.moiapp:passwordToggleTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TextInputLayout_passwordToggleTintMode com.growmoisociallearning.moiapp:passwordToggleTintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_counterEnabled com.moisociallearning.moiapp:counterEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_counterMaxLength com.moisociallearning.moiapp:counterMaxLength}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_counterOverflowTextAppearance com.moisociallearning.moiapp:counterOverflowTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_counterTextAppearance com.moisociallearning.moiapp:counterTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_errorEnabled com.moisociallearning.moiapp:errorEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_errorTextAppearance com.moisociallearning.moiapp:errorTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_hintAnimationEnabled com.moisociallearning.moiapp:hintAnimationEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_hintEnabled com.moisociallearning.moiapp:hintEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_hintTextAppearance com.moisociallearning.moiapp:hintTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_passwordToggleContentDescription com.moisociallearning.moiapp:passwordToggleContentDescription}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_passwordToggleDrawable com.moisociallearning.moiapp:passwordToggleDrawable}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_passwordToggleEnabled com.moisociallearning.moiapp:passwordToggleEnabled}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_passwordToggleTint com.moisociallearning.moiapp:passwordToggleTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TextInputLayout_passwordToggleTintMode com.moisociallearning.moiapp:passwordToggleTintMode}</code></td><td></td></tr>
      * </table>
      * @see #TextInputLayout_android_textColorHint
      * @see #TextInputLayout_android_hint
@@ -16378,9 +16378,9 @@ public final class R {
      * @see #TextInputLayout_passwordToggleTintMode
      */
     public static final int[] TextInputLayout={
-        0x0101009a, 0x01010150, 0x7f0400a5, 0x7f0400a6, 
-        0x7f0400a7, 0x7f0400a8, 0x7f0400df, 0x7f0400e0, 
-        0x7f04010c, 0x7f04010d, 0x7f04010e, 0x7f04016c, 
+        0x0101009a, 0x01010150, 0x7f0400a5, 0x7f0400a6,
+        0x7f0400a7, 0x7f0400a8, 0x7f0400df, 0x7f0400e0,
+        0x7f04010c, 0x7f04010d, 0x7f04010e, 0x7f04016c,
         0x7f04016d, 0x7f04016e, 0x7f04016f, 0x7f040170
       };
     /**
@@ -16409,26 +16409,26 @@ public final class R {
      */
     public static final int TextInputLayout_android_hint=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#counterEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#counterEnabled}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:counterEnabled
+     * @attr name com.moisociallearning.moiapp:counterEnabled
      */
     public static final int TextInputLayout_counterEnabled=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#counterMaxLength}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#counterMaxLength}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:counterMaxLength
+     * @attr name com.moisociallearning.moiapp:counterMaxLength
      */
     public static final int TextInputLayout_counterMaxLength=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#counterOverflowTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#counterOverflowTextAppearance}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16436,11 +16436,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:counterOverflowTextAppearance
+     * @attr name com.moisociallearning.moiapp:counterOverflowTextAppearance
      */
     public static final int TextInputLayout_counterOverflowTextAppearance=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#counterTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#counterTextAppearance}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16448,21 +16448,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:counterTextAppearance
+     * @attr name com.moisociallearning.moiapp:counterTextAppearance
      */
     public static final int TextInputLayout_counterTextAppearance=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#errorEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#errorEnabled}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:errorEnabled
+     * @attr name com.moisociallearning.moiapp:errorEnabled
      */
     public static final int TextInputLayout_errorEnabled=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#errorTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#errorTextAppearance}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16470,31 +16470,31 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:errorTextAppearance
+     * @attr name com.moisociallearning.moiapp:errorTextAppearance
      */
     public static final int TextInputLayout_errorTextAppearance=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#hintAnimationEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#hintAnimationEnabled}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:hintAnimationEnabled
+     * @attr name com.moisociallearning.moiapp:hintAnimationEnabled
      */
     public static final int TextInputLayout_hintAnimationEnabled=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#hintEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#hintEnabled}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:hintEnabled
+     * @attr name com.moisociallearning.moiapp:hintEnabled
      */
     public static final int TextInputLayout_hintEnabled=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#hintTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#hintTextAppearance}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16502,21 +16502,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:hintTextAppearance
+     * @attr name com.moisociallearning.moiapp:hintTextAppearance
      */
     public static final int TextInputLayout_hintTextAppearance=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#passwordToggleContentDescription}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#passwordToggleContentDescription}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:passwordToggleContentDescription
+     * @attr name com.moisociallearning.moiapp:passwordToggleContentDescription
      */
     public static final int TextInputLayout_passwordToggleContentDescription=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#passwordToggleDrawable}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#passwordToggleDrawable}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16524,32 +16524,32 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:passwordToggleDrawable
+     * @attr name com.moisociallearning.moiapp:passwordToggleDrawable
      */
     public static final int TextInputLayout_passwordToggleDrawable=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#passwordToggleEnabled}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#passwordToggleEnabled}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:passwordToggleEnabled
+     * @attr name com.moisociallearning.moiapp:passwordToggleEnabled
      */
     public static final int TextInputLayout_passwordToggleEnabled=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#passwordToggleTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#passwordToggleTint}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:passwordToggleTint
+     * @attr name com.moisociallearning.moiapp:passwordToggleTint
      */
     public static final int TextInputLayout_passwordToggleTint=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#passwordToggleTintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#passwordToggleTintMode}
      * attribute's value can be found in the {@link #TextInputLayout} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -16565,7 +16565,7 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:passwordToggleTintMode
+     * @attr name com.moisociallearning.moiapp:passwordToggleTintMode
      */
     public static final int TextInputLayout_passwordToggleTintMode=15;
     /**
@@ -16600,8 +16600,8 @@ public final class R {
      * @see #TextStyle_android_shadowRadius
      */
     public static final int[] TextStyle={
-        0x01010034, 0x01010095, 0x01010097, 0x01010098, 
-        0x010100ab, 0x01010153, 0x0101015d, 0x01010161, 
+        0x01010034, 0x01010095, 0x01010097, 0x01010098,
+        0x010100ab, 0x01010153, 0x0101015d, 0x01010161,
         0x01010162, 0x01010163, 0x01010164
       };
     /**
@@ -16748,33 +16748,33 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #Toolbar_android_gravity android:gravity}</code></td><td></td></tr>
      * <tr><td><code>{@link #Toolbar_android_minHeight android:minHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_buttonGravity com.growmoisociallearning.moiapp:buttonGravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_collapseContentDescription com.growmoisociallearning.moiapp:collapseContentDescription}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_collapseIcon com.growmoisociallearning.moiapp:collapseIcon}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_contentInsetEnd com.growmoisociallearning.moiapp:contentInsetEnd}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_contentInsetEndWithActions com.growmoisociallearning.moiapp:contentInsetEndWithActions}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_contentInsetLeft com.growmoisociallearning.moiapp:contentInsetLeft}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_contentInsetRight com.growmoisociallearning.moiapp:contentInsetRight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_contentInsetStart com.growmoisociallearning.moiapp:contentInsetStart}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_contentInsetStartWithNavigation com.growmoisociallearning.moiapp:contentInsetStartWithNavigation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_logo com.growmoisociallearning.moiapp:logo}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_logoDescription com.growmoisociallearning.moiapp:logoDescription}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_maxButtonHeight com.growmoisociallearning.moiapp:maxButtonHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_navigationContentDescription com.growmoisociallearning.moiapp:navigationContentDescription}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_navigationIcon com.growmoisociallearning.moiapp:navigationIcon}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_popupTheme com.growmoisociallearning.moiapp:popupTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_subtitle com.growmoisociallearning.moiapp:subtitle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_subtitleTextAppearance com.growmoisociallearning.moiapp:subtitleTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_subtitleTextColor com.growmoisociallearning.moiapp:subtitleTextColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_title com.growmoisociallearning.moiapp:title}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_titleMargin com.growmoisociallearning.moiapp:titleMargin}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_titleMarginBottom com.growmoisociallearning.moiapp:titleMarginBottom}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_titleMarginEnd com.growmoisociallearning.moiapp:titleMarginEnd}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_titleMarginStart com.growmoisociallearning.moiapp:titleMarginStart}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_titleMarginTop com.growmoisociallearning.moiapp:titleMarginTop}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_titleMargins com.growmoisociallearning.moiapp:titleMargins}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_titleTextAppearance com.growmoisociallearning.moiapp:titleTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Toolbar_titleTextColor com.growmoisociallearning.moiapp:titleTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_buttonGravity com.moisociallearning.moiapp:buttonGravity}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_collapseContentDescription com.moisociallearning.moiapp:collapseContentDescription}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_collapseIcon com.moisociallearning.moiapp:collapseIcon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_contentInsetEnd com.moisociallearning.moiapp:contentInsetEnd}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_contentInsetEndWithActions com.moisociallearning.moiapp:contentInsetEndWithActions}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_contentInsetLeft com.moisociallearning.moiapp:contentInsetLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_contentInsetRight com.moisociallearning.moiapp:contentInsetRight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_contentInsetStart com.moisociallearning.moiapp:contentInsetStart}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_contentInsetStartWithNavigation com.moisociallearning.moiapp:contentInsetStartWithNavigation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_logo com.moisociallearning.moiapp:logo}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_logoDescription com.moisociallearning.moiapp:logoDescription}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_maxButtonHeight com.moisociallearning.moiapp:maxButtonHeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_navigationContentDescription com.moisociallearning.moiapp:navigationContentDescription}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_navigationIcon com.moisociallearning.moiapp:navigationIcon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_popupTheme com.moisociallearning.moiapp:popupTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_subtitle com.moisociallearning.moiapp:subtitle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_subtitleTextAppearance com.moisociallearning.moiapp:subtitleTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_subtitleTextColor com.moisociallearning.moiapp:subtitleTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_title com.moisociallearning.moiapp:title}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_titleMargin com.moisociallearning.moiapp:titleMargin}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_titleMarginBottom com.moisociallearning.moiapp:titleMarginBottom}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_titleMarginEnd com.moisociallearning.moiapp:titleMarginEnd}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_titleMarginStart com.moisociallearning.moiapp:titleMarginStart}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_titleMarginTop com.moisociallearning.moiapp:titleMarginTop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_titleMargins com.moisociallearning.moiapp:titleMargins}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_titleTextAppearance com.moisociallearning.moiapp:titleTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Toolbar_titleTextColor com.moisociallearning.moiapp:titleTextColor}</code></td><td></td></tr>
      * </table>
      * @see #Toolbar_android_gravity
      * @see #Toolbar_android_minHeight
@@ -16807,13 +16807,13 @@ public final class R {
      * @see #Toolbar_titleTextColor
      */
     public static final int[] Toolbar={
-        0x010100af, 0x01010140, 0x7f040055, 0x7f040078, 
-        0x7f040079, 0x7f040096, 0x7f040097, 0x7f040098, 
-        0x7f040099, 0x7f04009a, 0x7f04009b, 0x7f040144, 
-        0x7f040145, 0x7f04015b, 0x7f04015f, 0x7f040160, 
-        0x7f040177, 0x7f0401be, 0x7f0401bf, 0x7f0401c0, 
-        0x7f0401f0, 0x7f0401f2, 0x7f0401f3, 0x7f0401f4, 
-        0x7f0401f5, 0x7f0401f6, 0x7f0401f7, 0x7f0401f8, 
+        0x010100af, 0x01010140, 0x7f040055, 0x7f040078,
+        0x7f040079, 0x7f040096, 0x7f040097, 0x7f040098,
+        0x7f040099, 0x7f04009a, 0x7f04009b, 0x7f040144,
+        0x7f040145, 0x7f04015b, 0x7f04015f, 0x7f040160,
+        0x7f040177, 0x7f0401be, 0x7f0401bf, 0x7f0401c0,
+        0x7f0401f0, 0x7f0401f2, 0x7f0401f3, 0x7f0401f4,
+        0x7f0401f5, 0x7f0401f6, 0x7f0401f7, 0x7f0401f8,
         0x7f0401f9
       };
     /**
@@ -16859,7 +16859,7 @@ public final class R {
      */
     public static final int Toolbar_android_minHeight=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buttonGravity}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buttonGravity}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
@@ -16872,21 +16872,21 @@ public final class R {
      * <tr><td>top</td><td>30</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:buttonGravity
+     * @attr name com.moisociallearning.moiapp:buttonGravity
      */
     public static final int Toolbar_buttonGravity=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#collapseContentDescription}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#collapseContentDescription}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:collapseContentDescription
+     * @attr name com.moisociallearning.moiapp:collapseContentDescription
      */
     public static final int Toolbar_collapseContentDescription=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#collapseIcon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#collapseIcon}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16894,11 +16894,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:collapseIcon
+     * @attr name com.moisociallearning.moiapp:collapseIcon
      */
     public static final int Toolbar_collapseIcon=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetEnd}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetEnd}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16907,11 +16907,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetEnd
+     * @attr name com.moisociallearning.moiapp:contentInsetEnd
      */
     public static final int Toolbar_contentInsetEnd=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetEndWithActions}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetEndWithActions}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16920,11 +16920,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetEndWithActions
+     * @attr name com.moisociallearning.moiapp:contentInsetEndWithActions
      */
     public static final int Toolbar_contentInsetEndWithActions=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetLeft}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetLeft}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16933,11 +16933,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetLeft
+     * @attr name com.moisociallearning.moiapp:contentInsetLeft
      */
     public static final int Toolbar_contentInsetLeft=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetRight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetRight}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16946,11 +16946,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetRight
+     * @attr name com.moisociallearning.moiapp:contentInsetRight
      */
     public static final int Toolbar_contentInsetRight=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetStart}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetStart}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16959,11 +16959,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetStart
+     * @attr name com.moisociallearning.moiapp:contentInsetStart
      */
     public static final int Toolbar_contentInsetStart=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#contentInsetStartWithNavigation}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#contentInsetStartWithNavigation}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -16972,11 +16972,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:contentInsetStartWithNavigation
+     * @attr name com.moisociallearning.moiapp:contentInsetStartWithNavigation
      */
     public static final int Toolbar_contentInsetStartWithNavigation=10;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#logo}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#logo}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -16984,21 +16984,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:logo
+     * @attr name com.moisociallearning.moiapp:logo
      */
     public static final int Toolbar_logo=11;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#logoDescription}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#logoDescription}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:logoDescription
+     * @attr name com.moisociallearning.moiapp:logoDescription
      */
     public static final int Toolbar_logoDescription=12;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maxButtonHeight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maxButtonHeight}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17007,21 +17007,21 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:maxButtonHeight
+     * @attr name com.moisociallearning.moiapp:maxButtonHeight
      */
     public static final int Toolbar_maxButtonHeight=13;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#navigationContentDescription}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#navigationContentDescription}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:navigationContentDescription
+     * @attr name com.moisociallearning.moiapp:navigationContentDescription
      */
     public static final int Toolbar_navigationContentDescription=14;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#navigationIcon}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#navigationIcon}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17029,11 +17029,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:navigationIcon
+     * @attr name com.moisociallearning.moiapp:navigationIcon
      */
     public static final int Toolbar_navigationIcon=15;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#popupTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#popupTheme}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17041,21 +17041,21 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:popupTheme
+     * @attr name com.moisociallearning.moiapp:popupTheme
      */
     public static final int Toolbar_popupTheme=16;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#subtitle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#subtitle}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:subtitle
+     * @attr name com.moisociallearning.moiapp:subtitle
      */
     public static final int Toolbar_subtitle=17;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#subtitleTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#subtitleTextAppearance}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17063,32 +17063,32 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:subtitleTextAppearance
+     * @attr name com.moisociallearning.moiapp:subtitleTextAppearance
      */
     public static final int Toolbar_subtitleTextAppearance=18;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#subtitleTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#subtitleTextColor}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:subtitleTextColor
+     * @attr name com.moisociallearning.moiapp:subtitleTextColor
      */
     public static final int Toolbar_subtitleTextColor=19;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#title}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#title}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:title
+     * @attr name com.moisociallearning.moiapp:title
      */
     public static final int Toolbar_title=20;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleMargin}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleMargin}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17097,11 +17097,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:titleMargin
+     * @attr name com.moisociallearning.moiapp:titleMargin
      */
     public static final int Toolbar_titleMargin=21;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleMarginBottom}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleMarginBottom}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17110,11 +17110,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:titleMarginBottom
+     * @attr name com.moisociallearning.moiapp:titleMarginBottom
      */
     public static final int Toolbar_titleMarginBottom=22;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleMarginEnd}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleMarginEnd}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17123,11 +17123,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:titleMarginEnd
+     * @attr name com.moisociallearning.moiapp:titleMarginEnd
      */
     public static final int Toolbar_titleMarginEnd=23;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleMarginStart}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleMarginStart}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17136,11 +17136,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:titleMarginStart
+     * @attr name com.moisociallearning.moiapp:titleMarginStart
      */
     public static final int Toolbar_titleMarginStart=24;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleMarginTop}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleMarginTop}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17149,11 +17149,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:titleMarginTop
+     * @attr name com.moisociallearning.moiapp:titleMarginTop
      */
     public static final int Toolbar_titleMarginTop=25;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleMargins}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleMargins}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17162,11 +17162,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:titleMargins
+     * @attr name com.moisociallearning.moiapp:titleMargins
      */
     public static final int Toolbar_titleMargins=26;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleTextAppearance}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17174,18 +17174,18 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:titleTextAppearance
+     * @attr name com.moisociallearning.moiapp:titleTextAppearance
      */
     public static final int Toolbar_titleTextAppearance=27;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#titleTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#titleTextColor}
      * attribute's value can be found in the {@link #Toolbar} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:titleTextColor
+     * @attr name com.moisociallearning.moiapp:titleTextColor
      */
     public static final int Toolbar_titleTextColor=28;
     /**
@@ -17197,9 +17197,9 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #View_android_theme android:theme}</code></td><td></td></tr>
      * <tr><td><code>{@link #View_android_focusable android:focusable}</code></td><td></td></tr>
-     * <tr><td><code>{@link #View_paddingEnd com.growmoisociallearning.moiapp:paddingEnd}</code></td><td></td></tr>
-     * <tr><td><code>{@link #View_paddingStart com.growmoisociallearning.moiapp:paddingStart}</code></td><td></td></tr>
-     * <tr><td><code>{@link #View_theme com.growmoisociallearning.moiapp:theme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #View_paddingEnd com.moisociallearning.moiapp:paddingEnd}</code></td><td></td></tr>
+     * <tr><td><code>{@link #View_paddingStart com.moisociallearning.moiapp:paddingStart}</code></td><td></td></tr>
+     * <tr><td><code>{@link #View_theme com.moisociallearning.moiapp:theme}</code></td><td></td></tr>
      * </table>
      * @see #View_android_theme
      * @see #View_android_focusable
@@ -17208,7 +17208,7 @@ public final class R {
      * @see #View_theme
      */
     public static final int[] View={
-        0x01010000, 0x010100da, 0x7f040166, 0x7f040167, 
+        0x01010000, 0x010100da, 0x7f040166, 0x7f040167,
         0x7f0401e6
       };
     /**
@@ -17242,7 +17242,7 @@ public final class R {
      */
     public static final int View_android_focusable=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#paddingEnd}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#paddingEnd}
      * attribute's value can be found in the {@link #View} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17251,11 +17251,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:paddingEnd
+     * @attr name com.moisociallearning.moiapp:paddingEnd
      */
     public static final int View_paddingEnd=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#paddingStart}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#paddingStart}
      * attribute's value can be found in the {@link #View} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17264,11 +17264,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.growmoisociallearning.moiapp:paddingStart
+     * @attr name com.moisociallearning.moiapp:paddingStart
      */
     public static final int View_paddingStart=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#theme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#theme}
      * attribute's value can be found in the {@link #View} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17276,7 +17276,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:theme
+     * @attr name com.moisociallearning.moiapp:theme
      */
     public static final int View_theme=4;
     /**
@@ -17287,8 +17287,8 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #ViewBackgroundHelper_android_background android:background}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ViewBackgroundHelper_backgroundTint com.growmoisociallearning.moiapp:backgroundTint}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ViewBackgroundHelper_backgroundTintMode com.growmoisociallearning.moiapp:backgroundTintMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ViewBackgroundHelper_backgroundTint com.moisociallearning.moiapp:backgroundTint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ViewBackgroundHelper_backgroundTintMode com.moisociallearning.moiapp:backgroundTintMode}</code></td><td></td></tr>
      * </table>
      * @see #ViewBackgroundHelper_android_background
      * @see #ViewBackgroundHelper_backgroundTint
@@ -17313,18 +17313,18 @@ public final class R {
      */
     public static final int ViewBackgroundHelper_android_background=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#backgroundTint}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#backgroundTint}
      * attribute's value can be found in the {@link #ViewBackgroundHelper} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:backgroundTint
+     * @attr name com.moisociallearning.moiapp:backgroundTint
      */
     public static final int ViewBackgroundHelper_backgroundTint=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#backgroundTintMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#backgroundTintMode}
      * attribute's value can be found in the {@link #ViewBackgroundHelper} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17341,7 +17341,7 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:backgroundTintMode
+     * @attr name com.moisociallearning.moiapp:backgroundTintMode
      */
     public static final int ViewBackgroundHelper_backgroundTintMode=2;
     /**
@@ -17405,10 +17405,10 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #WalletFragmentOptions_appTheme com.growmoisociallearning.moiapp:appTheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentOptions_environment com.growmoisociallearning.moiapp:environment}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentOptions_fragmentMode com.growmoisociallearning.moiapp:fragmentMode}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentOptions_fragmentStyle com.growmoisociallearning.moiapp:fragmentStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentOptions_appTheme com.moisociallearning.moiapp:appTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentOptions_environment com.moisociallearning.moiapp:environment}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentOptions_fragmentMode com.moisociallearning.moiapp:fragmentMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentOptions_fragmentStyle com.moisociallearning.moiapp:fragmentStyle}</code></td><td></td></tr>
      * </table>
      * @see #WalletFragmentOptions_appTheme
      * @see #WalletFragmentOptions_environment
@@ -17419,7 +17419,7 @@ public final class R {
         0x7f040032, 0x7f0400de, 0x7f040102, 0x7f040103
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#appTheme}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#appTheme}
      * attribute's value can be found in the {@link #WalletFragmentOptions} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17432,11 +17432,11 @@ public final class R {
      * <tr><td>holo_light</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:appTheme
+     * @attr name com.moisociallearning.moiapp:appTheme
      */
     public static final int WalletFragmentOptions_appTheme=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#environment}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#environment}
      * attribute's value can be found in the {@link #WalletFragmentOptions} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17451,11 +17451,11 @@ public final class R {
      * <tr><td>test</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:environment
+     * @attr name com.moisociallearning.moiapp:environment
      */
     public static final int WalletFragmentOptions_environment=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fragmentMode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fragmentMode}
      * attribute's value can be found in the {@link #WalletFragmentOptions} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17468,11 +17468,11 @@ public final class R {
      * <tr><td>selectionDetails</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:fragmentMode
+     * @attr name com.moisociallearning.moiapp:fragmentMode
      */
     public static final int WalletFragmentOptions_fragmentMode=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#fragmentStyle}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#fragmentStyle}
      * attribute's value can be found in the {@link #WalletFragmentOptions} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17480,7 +17480,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:fragmentStyle
+     * @attr name com.moisociallearning.moiapp:fragmentStyle
      */
     public static final int WalletFragmentOptions_fragmentStyle=3;
     /**
@@ -17490,17 +17490,17 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonAppearance com.growmoisociallearning.moiapp:buyButtonAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonHeight com.growmoisociallearning.moiapp:buyButtonHeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonText com.growmoisociallearning.moiapp:buyButtonText}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonWidth com.growmoisociallearning.moiapp:buyButtonWidth}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsBackground com.growmoisociallearning.moiapp:maskedWalletDetailsBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonBackground com.growmoisociallearning.moiapp:maskedWalletDetailsButtonBackground}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance com.growmoisociallearning.moiapp:maskedWalletDetailsButtonTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance com.growmoisociallearning.moiapp:maskedWalletDetailsHeaderTextAppearance}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoImageType com.growmoisociallearning.moiapp:maskedWalletDetailsLogoImageType}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoTextColor com.growmoisociallearning.moiapp:maskedWalletDetailsLogoTextColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsTextAppearance com.growmoisociallearning.moiapp:maskedWalletDetailsTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonAppearance com.moisociallearning.moiapp:buyButtonAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonHeight com.moisociallearning.moiapp:buyButtonHeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonText com.moisociallearning.moiapp:buyButtonText}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonWidth com.moisociallearning.moiapp:buyButtonWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsBackground com.moisociallearning.moiapp:maskedWalletDetailsBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonBackground com.moisociallearning.moiapp:maskedWalletDetailsButtonBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance com.moisociallearning.moiapp:maskedWalletDetailsButtonTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance com.moisociallearning.moiapp:maskedWalletDetailsHeaderTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoImageType com.moisociallearning.moiapp:maskedWalletDetailsLogoImageType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoTextColor com.moisociallearning.moiapp:maskedWalletDetailsLogoTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsTextAppearance com.moisociallearning.moiapp:maskedWalletDetailsTextAppearance}</code></td><td></td></tr>
      * </table>
      * @see #WalletFragmentStyle_buyButtonAppearance
      * @see #WalletFragmentStyle_buyButtonHeight
@@ -17515,12 +17515,12 @@ public final class R {
      * @see #WalletFragmentStyle_maskedWalletDetailsTextAppearance
      */
     public static final int[] WalletFragmentStyle={
-        0x7f04005d, 0x7f04005e, 0x7f04005f, 0x7f040060, 
-        0x7f040153, 0x7f040154, 0x7f040155, 0x7f040156, 
+        0x7f04005d, 0x7f04005e, 0x7f04005f, 0x7f040060,
+        0x7f040153, 0x7f040154, 0x7f040155, 0x7f040156,
         0x7f040157, 0x7f040158, 0x7f040159
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buyButtonAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buyButtonAppearance}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17540,11 +17540,11 @@ public final class R {
      * <tr><td>monochrome</td><td>3</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:buyButtonAppearance
+     * @attr name com.moisociallearning.moiapp:buyButtonAppearance
      */
     public static final int WalletFragmentStyle_buyButtonAppearance=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buyButtonHeight}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buyButtonHeight}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17562,11 +17562,11 @@ public final class R {
      * <tr><td>wrap_content</td><td>fffffffe</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:buyButtonHeight
+     * @attr name com.moisociallearning.moiapp:buyButtonHeight
      */
     public static final int WalletFragmentStyle_buyButtonHeight=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buyButtonText}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buyButtonText}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17584,11 +17584,11 @@ public final class R {
      * <tr><td>logo_only</td><td>6</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:buyButtonText
+     * @attr name com.moisociallearning.moiapp:buyButtonText
      */
     public static final int WalletFragmentStyle_buyButtonText=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#buyButtonWidth}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#buyButtonWidth}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -17606,11 +17606,11 @@ public final class R {
      * <tr><td>wrap_content</td><td>fffffffe</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:buyButtonWidth
+     * @attr name com.moisociallearning.moiapp:buyButtonWidth
      */
     public static final int WalletFragmentStyle_buyButtonWidth=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maskedWalletDetailsBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maskedWalletDetailsBackground}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17621,11 +17621,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:maskedWalletDetailsBackground
+     * @attr name com.moisociallearning.moiapp:maskedWalletDetailsBackground
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsBackground=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maskedWalletDetailsButtonBackground}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maskedWalletDetailsButtonBackground}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17636,11 +17636,11 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:maskedWalletDetailsButtonBackground
+     * @attr name com.moisociallearning.moiapp:maskedWalletDetailsButtonBackground
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsButtonBackground=5;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maskedWalletDetailsButtonTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maskedWalletDetailsButtonTextAppearance}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17648,11 +17648,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:maskedWalletDetailsButtonTextAppearance
+     * @attr name com.moisociallearning.moiapp:maskedWalletDetailsButtonTextAppearance
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance=6;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maskedWalletDetailsHeaderTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maskedWalletDetailsHeaderTextAppearance}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17660,11 +17660,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:maskedWalletDetailsHeaderTextAppearance
+     * @attr name com.moisociallearning.moiapp:maskedWalletDetailsHeaderTextAppearance
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance=7;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maskedWalletDetailsLogoImageType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maskedWalletDetailsLogoImageType}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17680,22 +17680,22 @@ public final class R {
      * <tr><td>monochrome</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:maskedWalletDetailsLogoImageType
+     * @attr name com.moisociallearning.moiapp:maskedWalletDetailsLogoImageType
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsLogoImageType=8;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maskedWalletDetailsLogoTextColor}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maskedWalletDetailsLogoTextColor}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:maskedWalletDetailsLogoTextColor
+     * @attr name com.moisociallearning.moiapp:maskedWalletDetailsLogoTextColor
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsLogoTextColor=9;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#maskedWalletDetailsTextAppearance}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#maskedWalletDetailsTextAppearance}
      * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -17703,7 +17703,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:maskedWalletDetailsTextAppearance
+     * @attr name com.moisociallearning.moiapp:maskedWalletDetailsTextAppearance
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsTextAppearance=10;
     /**
@@ -17713,12 +17713,12 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_auxiliary_view_position com.growmoisociallearning.moiapp:com_facebook_auxiliary_view_position}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_foreground_color com.growmoisociallearning.moiapp:com_facebook_foreground_color}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_horizontal_alignment com.growmoisociallearning.moiapp:com_facebook_horizontal_alignment}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_object_id com.growmoisociallearning.moiapp:com_facebook_object_id}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_object_type com.growmoisociallearning.moiapp:com_facebook_object_type}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_style com.growmoisociallearning.moiapp:com_facebook_style}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_auxiliary_view_position com.moisociallearning.moiapp:com_facebook_auxiliary_view_position}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_foreground_color com.moisociallearning.moiapp:com_facebook_foreground_color}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_horizontal_alignment com.moisociallearning.moiapp:com_facebook_horizontal_alignment}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_object_id com.moisociallearning.moiapp:com_facebook_object_id}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_object_type com.moisociallearning.moiapp:com_facebook_object_type}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_like_view_com_facebook_style com.moisociallearning.moiapp:com_facebook_style}</code></td><td></td></tr>
      * </table>
      * @see #com_facebook_like_view_com_facebook_auxiliary_view_position
      * @see #com_facebook_like_view_com_facebook_foreground_color
@@ -17728,11 +17728,11 @@ public final class R {
      * @see #com_facebook_like_view_com_facebook_style
      */
     public static final int[] com_facebook_like_view={
-        0x7f040088, 0x7f04008a, 0x7f04008b, 0x7f04008f, 
+        0x7f040088, 0x7f04008a, 0x7f04008b, 0x7f04008f,
         0x7f040090, 0x7f040092
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_auxiliary_view_position}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_auxiliary_view_position}
      * attribute's value can be found in the {@link #com_facebook_like_view} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17746,22 +17746,22 @@ public final class R {
      * <tr><td>top</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_auxiliary_view_position
+     * @attr name com.moisociallearning.moiapp:com_facebook_auxiliary_view_position
      */
     public static final int com_facebook_like_view_com_facebook_auxiliary_view_position=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_foreground_color}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_foreground_color}
      * attribute's value can be found in the {@link #com_facebook_like_view} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_foreground_color
+     * @attr name com.moisociallearning.moiapp:com_facebook_foreground_color
      */
     public static final int com_facebook_like_view_com_facebook_foreground_color=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_horizontal_alignment}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_horizontal_alignment}
      * attribute's value can be found in the {@link #com_facebook_like_view} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17775,21 +17775,21 @@ public final class R {
      * <tr><td>right</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_horizontal_alignment
+     * @attr name com.moisociallearning.moiapp:com_facebook_horizontal_alignment
      */
     public static final int com_facebook_like_view_com_facebook_horizontal_alignment=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_object_id}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_object_id}
      * attribute's value can be found in the {@link #com_facebook_like_view} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_object_id
+     * @attr name com.moisociallearning.moiapp:com_facebook_object_id
      */
     public static final int com_facebook_like_view_com_facebook_object_id=3;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_object_type}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_object_type}
      * attribute's value can be found in the {@link #com_facebook_like_view} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17803,11 +17803,11 @@ public final class R {
      * <tr><td>unknown</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_object_type
+     * @attr name com.moisociallearning.moiapp:com_facebook_object_type
      */
     public static final int com_facebook_like_view_com_facebook_object_type=4;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_style}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_style}
      * attribute's value can be found in the {@link #com_facebook_like_view} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17821,7 +17821,7 @@ public final class R {
      * <tr><td>standard</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_style
+     * @attr name com.moisociallearning.moiapp:com_facebook_style
      */
     public static final int com_facebook_like_view_com_facebook_style=5;
     /**
@@ -17831,10 +17831,10 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #com_facebook_login_view_com_facebook_confirm_logout com.growmoisociallearning.moiapp:com_facebook_confirm_logout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_login_view_com_facebook_login_text com.growmoisociallearning.moiapp:com_facebook_login_text}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_login_view_com_facebook_logout_text com.growmoisociallearning.moiapp:com_facebook_logout_text}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_login_view_com_facebook_tooltip_mode com.growmoisociallearning.moiapp:com_facebook_tooltip_mode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_login_view_com_facebook_confirm_logout com.moisociallearning.moiapp:com_facebook_confirm_logout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_login_view_com_facebook_login_text com.moisociallearning.moiapp:com_facebook_login_text}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_login_view_com_facebook_logout_text com.moisociallearning.moiapp:com_facebook_logout_text}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_login_view_com_facebook_tooltip_mode com.moisociallearning.moiapp:com_facebook_tooltip_mode}</code></td><td></td></tr>
      * </table>
      * @see #com_facebook_login_view_com_facebook_confirm_logout
      * @see #com_facebook_login_view_com_facebook_login_text
@@ -17845,37 +17845,37 @@ public final class R {
         0x7f040089, 0x7f04008d, 0x7f04008e, 0x7f040093
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_confirm_logout}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_confirm_logout}
      * attribute's value can be found in the {@link #com_facebook_login_view} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_confirm_logout
+     * @attr name com.moisociallearning.moiapp:com_facebook_confirm_logout
      */
     public static final int com_facebook_login_view_com_facebook_confirm_logout=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_login_text}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_login_text}
      * attribute's value can be found in the {@link #com_facebook_login_view} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_login_text
+     * @attr name com.moisociallearning.moiapp:com_facebook_login_text
      */
     public static final int com_facebook_login_view_com_facebook_login_text=1;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_logout_text}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_logout_text}
      * attribute's value can be found in the {@link #com_facebook_login_view} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_logout_text
+     * @attr name com.moisociallearning.moiapp:com_facebook_logout_text
      */
     public static final int com_facebook_login_view_com_facebook_logout_text=2;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_tooltip_mode}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_tooltip_mode}
      * attribute's value can be found in the {@link #com_facebook_login_view} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17889,7 +17889,7 @@ public final class R {
      * <tr><td>never_display</td><td>2</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_tooltip_mode
+     * @attr name com.moisociallearning.moiapp:com_facebook_tooltip_mode
      */
     public static final int com_facebook_login_view_com_facebook_tooltip_mode=3;
     /**
@@ -17899,8 +17899,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #com_facebook_profile_picture_view_com_facebook_is_cropped com.growmoisociallearning.moiapp:com_facebook_is_cropped}</code></td><td></td></tr>
-     * <tr><td><code>{@link #com_facebook_profile_picture_view_com_facebook_preset_size com.growmoisociallearning.moiapp:com_facebook_preset_size}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_profile_picture_view_com_facebook_is_cropped com.moisociallearning.moiapp:com_facebook_is_cropped}</code></td><td></td></tr>
+     * <tr><td><code>{@link #com_facebook_profile_picture_view_com_facebook_preset_size com.moisociallearning.moiapp:com_facebook_preset_size}</code></td><td></td></tr>
      * </table>
      * @see #com_facebook_profile_picture_view_com_facebook_is_cropped
      * @see #com_facebook_profile_picture_view_com_facebook_preset_size
@@ -17909,17 +17909,17 @@ public final class R {
         0x7f04008c, 0x7f040091
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_is_cropped}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_is_cropped}
      * attribute's value can be found in the {@link #com_facebook_profile_picture_view} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_is_cropped
+     * @attr name com.moisociallearning.moiapp:com_facebook_is_cropped
      */
     public static final int com_facebook_profile_picture_view_com_facebook_is_cropped=0;
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#com_facebook_preset_size}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#com_facebook_preset_size}
      * attribute's value can be found in the {@link #com_facebook_profile_picture_view} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17933,7 +17933,7 @@ public final class R {
      * <tr><td>small</td><td>fffffffe</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:com_facebook_preset_size
+     * @attr name com.moisociallearning.moiapp:com_facebook_preset_size
      */
     public static final int com_facebook_profile_picture_view_com_facebook_preset_size=1;
     /**
@@ -17943,7 +17943,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #scaleStyle_scalableType com.growmoisociallearning.moiapp:scalableType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #scaleStyle_scalableType com.moisociallearning.moiapp:scalableType}</code></td><td></td></tr>
      * </table>
      * @see #scaleStyle_scalableType
      */
@@ -17951,7 +17951,7 @@ public final class R {
         0x7f040198
       };
     /**
-     * <p>This symbol is the offset where the {@link com.growmoisociallearning.moiapp.R.attr#scalableType}
+     * <p>This symbol is the offset where the {@link com.moisociallearning.moiapp.R.attr#scalableType}
      * attribute's value can be found in the {@link #scaleStyle} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -17988,7 +17988,7 @@ public final class R {
      * <tr><td>startInside</td><td>17</td><td></td></tr>
      * </table>
      *
-     * @attr name com.growmoisociallearning.moiapp:scalableType
+     * @attr name com.moisociallearning.moiapp:scalableType
      */
     public static final int scaleStyle_scalableType=0;
   }
