@@ -40,7 +40,6 @@ import MoiIcon from '../../commons/components/MoIcon/MoIcon';
 import { Palette, Size } from '../../commons/styles';
 import ActionsHeader from './ActionsContentMax';
 import NoteInput from '../../commons/components/NoteInput/NoteInput';
-import { YoutubePlayer } from '../../commons/components/VideoPlayer';
 import { youtube } from '../../commons/utils';
 import ContentImagePreview from '../../commons/components/ContentComponents/ContentImagePreview'
 import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
@@ -504,13 +503,6 @@ export default class SingleContentScene extends Component {
                 options={options}
                 dismiss={this.dismissActionSheets}
             />
-            {/* Modal */}
-            {/* <YoutubePlayer
-                videoId={currentVideoId}
-                visible={videoModalVisible}
-                onPressClose={() => this.setModalVisible(false)}
-            /> */}
-
             <Navbar/>
 
             <PassiveMessageAlert
