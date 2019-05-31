@@ -30,7 +30,7 @@ export default class TreeScreenShot extends Component {
     const { width, height, profileImage, treeBackground, style, frame } = this.props;
 
     const heightTree = height ? frame ? height - 50 : height -80 : 180;
-    const treeImage = profileImage ? { uri: profileImage } : { uri: 'treeDefault' };
+    const treeImage = profileImage ? { uri: profileImage } : { uri: 'tree_default' };
 
     return (
       <View style={style}>
