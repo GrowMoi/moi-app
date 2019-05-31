@@ -22,8 +22,8 @@ android {
   defaultConfig {
     applicationId 'com.moisociallearning.moiapp'
     targetSdkVersion 26
-    versionCode 1
-    versionName '0.3.1'
+    versionCode 3
+    versionName '0.3.3'
     ndk {
       abiFilters 'armeabi-v7a', 'x86'
     }
@@ -101,7 +101,6 @@ apply from: 'expo.gradle'
 dependencies {
     compile project(':react-native-orientation')
     compile project(':react-native-sound')
-    compile project(':react-native-youtube')
     compile project(':lottie-react-native')
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
