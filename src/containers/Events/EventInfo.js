@@ -16,8 +16,8 @@ export default class EventInfo extends Component {
         justifyContent: 'center'
       }}
       >
-        <Header style={{ paddingTop: 10, paddingBottom: 5 }} superSmall bolder >{event.title.toUpperCase()}</Header>
-        <Header superSmall >{event.description}</Header>
+        <Header style={{ paddingTop: 10, paddingBottom: 5 }} small bolder >{event.title.toUpperCase()}</Header>
+        <Header small >{event.description}</Header>
         <View style={{ width: 70, height: 70, borderWidth: 1, borderColor: '#E3BB83',  margin: 10 }}>
           {event.image && <Image style={{ width: 70, height: 70 }} source={{ uri: event.image }} />}
         </View>
