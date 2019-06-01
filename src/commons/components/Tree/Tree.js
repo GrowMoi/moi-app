@@ -402,6 +402,7 @@ export default class Tree extends Component {
           width={width}
           onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
           showCloseIcon={false}
+          skipButton
         />}
       </TreeContainer>
     );
