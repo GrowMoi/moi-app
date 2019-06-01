@@ -7,6 +7,7 @@ import { Palette } from './../../../commons/styles';
 import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
 import Badge from '../../../commons/components/Badge/Badge';
+import eventsUtils from '../../Events/events-utils';
 
 // Actions
 import userActions from '../../../actions/userActions';
@@ -83,12 +84,25 @@ class NotificationTabContainer extends PureComponent {
     return Array.isArray(item);
   }
 
+  isSuperEvent = item => {
+    return item[0] === 'super_event';
+  }
+
   _renderItem = ({ item }) => {
     const { onClickItem = () => null } = this.props;
 
     const isEvent = this.isEvent(item);
-    const title = isEvent ? `Eventos` : item.title;
-    const description = isEvent ? `(${item[0]})` : item.description;
+
+    let title;
+    let description;
+
+    if (isEvent) {
+      title = this.isSuperEvent(item) ? 'Super Evento' : 'Eventos';
+      description = this.isSuperEvent(item) ? '' : `(${item[0]})`;
+    } else {
+      title = item.title;
+      description = item.description;
+    }
 
     return (
       <SubItemRow
@@ -102,9 +116,13 @@ class NotificationTabContainer extends PureComponent {
 
   get events() {
     const { events } = this.props;
-    let arrayEventts = Object.entries(events);
+    let arrayEvents = Object.entries(events);
 
-    return arrayEventts.filter(item => item[1].length > 0)
+    if (arrayEvents[0][0] === 'super_event') {
+      arrayEvents[0][1] = eventsUtils.handleSuperEvents(arrayEvents[0][1]);
+    }
+
+    return arrayEvents.filter(item => item[1].length > 0)
   }
 
   render() {

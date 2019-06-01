@@ -11,6 +11,7 @@ import GenericAlert from '../../commons/components/Alert/GenericAlert';
 import withSound from '../../commons/utils/withSound';
 import userActions from '../../actions/userActions';
 import EventModal from '../Events/EventModal';
+import eventsUtils from '../Events/events-utils';
 
 @connect(store => ({
   neuronSelected: store.neuron.neuronSelected,
@@ -38,7 +39,7 @@ export default class ContentListBox extends Component {
   async componentDidMount() {
       const { getEventsTodayAsync } = this.props;
       const events = await getEventsTodayAsync();
-      this.setState({events: events})
+      this.setState({events: eventsUtils.mergeEvents(events)})
   }
 
   componentWillUpdate() {

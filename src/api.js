@@ -334,6 +334,12 @@ const api = {
       return res;
     },
 
+    async takeSuperEvent(eventId) {
+      const endpoint = `/api/users/events/${eventId}/take_super_event`;
+      const res = await client.post(endpoint, { id: eventId });
+      return res;
+    },
+
     async getEventInProgress() {
       const endpoint = '/api/users/event_in_progress';
       const res = await client.get(

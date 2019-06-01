@@ -182,7 +182,7 @@ class TasksContainer extends Component {
     this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
   }
 
-  render(){
+  render() {
     const { device: { dimensions: { width } } } = this.props;
     const { loading, isAlertOpen, isEventModalOpen, itemSelected } = this.state;
 

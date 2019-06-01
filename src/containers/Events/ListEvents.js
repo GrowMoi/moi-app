@@ -23,7 +23,7 @@ export default class ListEvents extends Component {
     );
   }
 
-  _keyExtractor = item => item.id.toString();
+  _keyExtractor = item => item.isSuperEvent ? `se-${item.id.toString()}`  : item.id.toString();
 
   render() {
 

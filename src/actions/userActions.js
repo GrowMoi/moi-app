@@ -622,6 +622,17 @@ const takeEventAsync = (eventId) => async (dispatch) => {
   }
 }
 
+const takeSuperEventAsync = (eventId) => async (dispatch) => {
+  try {
+    const res = await api.events.takeSuperEvent(eventId);
+    const { headers, data } = res;
+    dispatch(setHeaders(headers));
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 
 const getEventInProgressAsync = () => async (dispatch) => {
   try {
@@ -692,6 +703,7 @@ export default {
   setReloadRandomContents,
   getEventsTodayAsync,
   takeEventAsync,
+  takeSuperEventAsync,
   getEventInProgressAsync,
   getEventsWeekAsync,
   setDrawerState,

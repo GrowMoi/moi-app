@@ -20,10 +20,15 @@ const Overlay = styled(View)`
   background-color: ${props => props.noOverlay ? 'transparent' : Palette.black.alpha(0.7).css()};
 `;
 
+const succesDescriptionEvent = 'Te uniste al evento con éxito, los contenidos que debes aprender están en la pestaña Tareas';
+const succesDescriptionSuperEvent = 'Te uniste al super evento con éxito.';
+
 @connect(store => ({}),
   {
     takeEventAsync: userActions.takeEventAsync,
+    takeSuperEventAsync: userActions.takeSuperEventAsync,
     getEventInProgressAsync: userActions.getEventInProgressAsync,
+    getEventsWeekAsync: userActions.getEventsWeekAsync,
   })
 export default class EventModal extends Component {
   state = {
@@ -49,12 +54,15 @@ export default class EventModal extends Component {
   }
 
   takeEvent = async () => {
-    const { takeEventAsync, getEventInProgressAsync } = this.props;
+    const { takeEventAsync, takeSuperEventAsync, getEventInProgressAsync, getEventsWeekAsync } = this.props;
     const { selectedEvent } = this.state;
     try {
-      await takeEventAsync(selectedEvent.id);
+      const isSuperEvent = selectedEvent.isSuperEvent;
+      const takeEvent = isSuperEvent ? takeSuperEventAsync : takeEventAsync;
+      await takeEvent(selectedEvent.id);
       await getEventInProgressAsync();
-      this.setState({ showAlert: true, alertTitle: 'Success!!', alertDescription: 'Te uniste al evento con éxito, los contenidos que debes aprender están en la pestaña Tareas' });
+      await getEventsWeekAsync();
+      this.setState({ showAlert: true, alertTitle: 'Success!!', alertDescription: isSuperEvent ? succesDescriptionSuperEvent : succesDescriptionEvent });
     } catch (error) {
       this.setState({ showAlert: true, alertTitle: 'Error!!', alertDescription: 'Hay un evento ya en curso' });
     }
