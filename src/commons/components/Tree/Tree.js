@@ -76,6 +76,7 @@ export default class Tree extends Component {
     showModalNewAchievements: false,
     showEventCompleted: false,
     eventTitle: '',
+    eventType: '',
     achievements: null,
     showLabelLayer: true,
   }
@@ -293,13 +294,17 @@ export default class Tree extends Component {
   }
 
   validateResultQuiz() {
-    const { quizResult: { achievements = [], event = {} } } = this.props;
+    const { quizResult: { achievements = [], event = {}, super_event = {} } } = this.props;
     if (achievements.length > 0) {
       this.showModalNewAchievements(achievements);
     }
 
     if (event.completed) {
-      this.showEventCompletedModal(event.info.title);
+      this.showEventCompletedModal(event.info.title, 'evento');
+    }
+
+    if(super_event.completed) {
+      this.showEventCompletedModal(super_event.info.event_achievement.title, 'super evento');
     }
 
     if (achievements.length === 0 && !event.completed) {
@@ -318,8 +323,8 @@ export default class Tree extends Component {
     this.setState({ showModalNewAchievements: false });
   }
 
-  showEventCompletedModal = (title) => {
-    this.setState({ showEventCompleted: true, eventTitle: title });
+  showEventCompletedModal = (title, type) => {
+    this.setState({ showEventCompleted: true, eventTitle: title, eventType: type });
   }
 
   hideEventCompletedModal = () => {
@@ -340,7 +345,7 @@ export default class Tree extends Component {
   }
 
   render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements, showLabelLayer } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, eventType, achievements, showLabelLayer } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
 
     if (quizResult && (!showModalNewAchievements && !showEventCompleted)) {
@@ -375,7 +380,7 @@ export default class Tree extends Component {
       <TreeContainer>
         <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
-        {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
+        {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} eventType={eventType} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
           <View style={{
             transform: [{ scale: minZoom.scale }],
