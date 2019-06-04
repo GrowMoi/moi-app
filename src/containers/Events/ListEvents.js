@@ -16,7 +16,10 @@ export default class ListEvents extends Component {
           <View style={{ width: 40, height: 40, borderWidth: 1, borderColor: '#E3BB83' }}>
             {item.image && <Image style={{ width: 40, height: 40 }} source={{ uri: item.image }} />}
           </View>
-          <Header style={{ paddingTop: 10, paddingBottom: 5, textAlign: 'center' }} customSize={13} bolder>{item.title}</Header>
+          <View style={{ width: '100%', height: 70 }}>
+            <Header style={{ paddingTop: 10, paddingBottom: 5, textAlign: 'center' }} ellipsizeMode='tail' numberOfLines={3} customSize={13} bolder>{item.title}</Header>
+          </View>
+
           {/* <Header  style={{ textAlign: 'center' }} customSize={12} >{item.description}</Header> */}
         </ContentContainer>
       </TouchableOpacity>
