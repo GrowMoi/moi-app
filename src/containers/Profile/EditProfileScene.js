@@ -92,6 +92,7 @@ export default class EditProfileScene extends Component {
 
       if(res.status === 202) {
         Alert.alert('Editar Perfil', 'Datos actualizados correctamente!');
+        Actions.pop();
       } else {
         Alert.alert('Editar Perfil', 'Ups! tuvimos un error intentalo más tarde por favor.');
       }
