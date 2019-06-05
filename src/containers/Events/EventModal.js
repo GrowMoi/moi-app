@@ -95,7 +95,7 @@ export default class EventModal extends Component {
 
     return {
       width: selectedEvent ? width / 1.3 : width,
-      height: selectedEvent ? 250 : 215,
+      height: selectedEvent ? 275 : 215,
     };
   }
 

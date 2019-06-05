@@ -9,6 +9,11 @@ const TextContainer = styled(View)`
 
 export default class NeuronContents extends Component {
 
+  get data() {
+    const { contents } = this.props;
+    return contents && contents.length > 4 ? contents.slice(0, 4) : contents;
+  }
+
   getNeuronColor(color) {
     switch (color) {
       case 'blue':
@@ -38,7 +43,7 @@ export default class NeuronContents extends Component {
         justifyContent: 'center',
         width: 50,
       }}>
-        <Image style={{ width: 15, height: 15 }} source={{uri: neuron}} />
+        <Image style={{ width: 15, height: 15 }} source={{ uri: neuron }} />
         <TextContainer>
           <Header color={'white'} customSize={8}>{item.neuron}</Header>
         </TextContainer>
@@ -50,7 +55,6 @@ export default class NeuronContents extends Component {
   _keyExtractor = item => item.content_id.toString();
 
   render() {
-    const { contents } = this.props;
 
     return (
       <View style={{
@@ -70,7 +74,7 @@ export default class NeuronContents extends Component {
           ItemSeparatorComponent={({ highlighted }) => (
             <View style={{ width: 12, height: 1, backgroundColor: 'white', marginTop: 7 }}></View>
           )}
-          data={contents}
+          data={this.data}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
           horizontal
