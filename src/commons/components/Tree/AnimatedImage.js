@@ -3,7 +3,7 @@ import { Animated, Image } from 'react-native';
 
 export class AnimatedImage extends Component {
   state = {
-    animationValue: new Animated.Value(0),
+    opacity: new Animated.Value(0),
     verticalPosition: 0,
     horizontalPosition: {
       position: 'left',
@@ -13,15 +13,18 @@ export class AnimatedImage extends Component {
 
   animation;
 
-  componentDidMount() {
-    const { infiniteLoop, minValue, delayStart = 0 } = this.props;
+  componentWillMount() {
+    this.initialValuesAnimation(true);
+    setTimeout(() => {
+      this.showAnimatedImage();
+    }, 1000);
+  }
 
-    if (minValue) this.setState({ animationValue: new Animated.Value(minValue) });
+  componentDidMount() {
+    const { infiniteLoop } = this.props;
 
     this.animation = this.createAnimation();
-    setTimeout(() => {
-      this.initAnimation(infiniteLoop);
-    }, delayStart);
+    this.initAnimation(infiniteLoop);
   }
 
   componentWillUnmount() {
@@ -29,50 +32,56 @@ export class AnimatedImage extends Component {
     this.animation = null;
   }
 
+  showAnimatedImage() {
+    Animated.timing(this.state.opacity, {
+      toValue: 1,
+      duration: 2000,
+    }).start();
+  }
+
+  initialValuesAnimation(firstTime) {
+    const { minValue, maxValue, verticalPosition, horizontalPosition } = this.props;
+    const initialValue = firstTime ? this.calculateIntermediateValue(minValue + 150, maxValue - 150) : 0;
+
+    this.setState({ animationValue: new Animated.Value(initialValue), verticalPosition: verticalPosition(), horizontalPosition: horizontalPosition() });
+  }
+
   createAnimation() {
-    const { maxValue } = this.props;
+    const { maxValue, timeRange, animationTime = 1000 } = this.props;
     const { animationValue } = this.state;
     return Animated.timing(
       animationValue,
       {
         toValue: maxValue || 300,
-        duration: this.getAnimationTime()
+        duration: timeRange ? this.calculateIntermediateValue(timeRange[0], timeRange[1]) : animationTime,
       }
     );
   }
 
   initAnimation(infiniteLoop) {
-    const { minValue, verticalPosition,  horizontalPosition } = this.props;
-    if(!this.animation) return;
+    const { minValue, verticalPosition, horizontalPosition } = this.props;
+    if (!this.animation) return;
     this.animation.start(() => {
       if (infiniteLoop) {
-        this.setState({
-          animationValue: new Animated.Value(minValue || 0),
-          verticalPosition: verticalPosition(),
-          horizontalPosition: horizontalPosition(),
-          });
+        this.initialValuesAnimation();
         this.animation = this.createAnimation();
         this.initAnimation(true);
       }
     });
   }
 
-  getAnimationTime() {
-    const { timeRange, animationTime = 1000 } = this.props;
-    if(timeRange) {
-      return Math.random() * (timeRange[1] - timeRange[0]) + timeRange[0];
-    } else {
-      return animationTime;
-    }
+  calculateIntermediateValue(minValue, maxValue) {
+    return Math.random() * (maxValue - minValue) + minValue;
   }
 
   render() {
     const { source } = this.props;
-    const { animationValue, verticalPosition, horizontalPosition } = this.state;
+    const { animationValue, verticalPosition, horizontalPosition, opacity } = this.state;
 
     return (
       <Animated.View
         style={{
+          opacity: opacity,
           position: 'absolute',
           top: verticalPosition,
           justifyContent: horizontalPosition.flexPosition,
@@ -80,7 +89,7 @@ export class AnimatedImage extends Component {
           [horizontalPosition.position]: animationValue,
         }}
       >
-        <Image source={{uri: source}} style={{width: 80, height: 60}} />
+        <Image source={{ uri: source }} style={{ width: 80, height: 60 }} />
       </Animated.View>
     );
   }
