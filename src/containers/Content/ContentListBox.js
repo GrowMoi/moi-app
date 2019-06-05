@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import uuid from 'uuid/v4';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
@@ -26,6 +26,7 @@ export default class ContentListBox extends Component {
   state = {
     isAlertOpen: true,
     events: [],
+    isFirstTimeEvents: false,
   }
 
   previousScene;
@@ -34,6 +35,11 @@ export default class ContentListBox extends Component {
     super(props);
     this.backToTree = this.backToTree.bind(this);
     this.previousScene = null;
+  }
+
+  async componentWillMount() {
+    const isFirstTime = await this.fistTimeOfTheDay();
+    this.setState({ isFirstTimeEvents: isFirstTime });
   }
 
   async componentDidMount() {
@@ -46,6 +52,22 @@ export default class ContentListBox extends Component {
     if (!this.state.isAlertOpen) {
       this.setState({ isAlertOpen: true });
     }
+  }
+
+   async fistTimeOfTheDay() {
+    const dateEventShown = await AsyncStorage.getItem('dateEventShown');
+    const today = this.getTodayDate();
+    if(today !== dateEventShown) {
+      await AsyncStorage.setItem('dateEventShown', today);
+    }
+    return today !== dateEventShown;
+  }
+
+  getTodayDate() {
+    var day = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    return `${year}-${month}-${day}`;
   }
 
   backToTree() {
@@ -97,7 +119,7 @@ export default class ContentListBox extends Component {
 
   render() {
     const { containerStyles, device: { dimensions: { width } }, neuronSelected, scene } = this.props;
-    const { isAlertOpen, events } = this.state;
+    const { isAlertOpen, events, isFirstTimeEvents } = this.state;
     const widthContentPreview = width > 320 ? 110 : 100;
     const MILLISECONDS = 100;
 
@@ -105,7 +127,7 @@ export default class ContentListBox extends Component {
     const existContentsToRead = (contents || []).length > 0;
 
     const isContetScene = this.isContetScene;
-    const showEvents = events && events.length > 0;
+    const showEvents = events && events.length > 0 && isFirstTimeEvents;
 
     return (
       <ContentBox>
