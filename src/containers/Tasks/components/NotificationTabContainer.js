@@ -69,12 +69,14 @@ class NotificationTabContainer extends PureComponent {
     }
   }
 
-  renderBadge = ({ meta: { total_count = 0 } }) => {
-    if (total_count == 0) return null;
+  renderBadge() {
+    const { data: { meta: { total_count = 0 } }, events } = this.props;
+    const totalNotifications = total_count + Object.keys(events).length;
+    if (totalNotifications === 0) return null;
 
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: -8, right: 0 }}>
-        <Badge value={total_count}
+        <Badge value={totalNotifications}
           size={18} />
       </View>
     );
@@ -131,7 +133,7 @@ class NotificationTabContainer extends PureComponent {
 
     return (
       <View style={styles.tasks}>
-        {this.renderBadge(data)}
+        {this.renderBadge()}
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />
         {open && (
           <View style={styles.subItemContainer}>

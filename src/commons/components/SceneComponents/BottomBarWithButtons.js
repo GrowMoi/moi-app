@@ -111,17 +111,24 @@ const BlueButton = styled(Image)`
   notifications: store.user.notifications,
   details: store.tutor.details,
   scene: store.routes.scene,
+  events: store.user.events,
+  eventsWeek: store.user.eventsWeek,
+
 }), {
     getNotificationsAsync: userActions.getNotificationsAsync,
     setReloadRandomContents: userActions.setReloadRandomContents,
     getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
+    getEventInProgressAsync: userActions.getEventInProgressAsync,
+    getEventsWeekAsync: userActions.getEventsWeekAsync,
   })
 class BottomBarWithButtons extends Component {
 
   async componentWillMount() {
-    const { getNotificationsAsync, getTutorDetailsAsync } = this.props;
+    const { getNotificationsAsync, getTutorDetailsAsync, getEventInProgressAsync, getEventsWeekAsync } = this.props;
     await getNotificationsAsync();
     await getTutorDetailsAsync();
+    await getEventInProgressAsync();
+    await getEventsWeekAsync();
   }
 
   pressTaskButton = () => {
@@ -168,9 +175,9 @@ class BottomBarWithButtons extends Component {
   };
 
   renderBadge = () => {
-    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 } } = this.props;
+    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, events, eventsWeek } = this.props;
 
-    const counterNotifications = total_count + recommendation_contents_pending;
+    const counterNotifications = total_count + recommendation_contents_pending + events.length + Object.keys(eventsWeek).length;
 
     if (counterNotifications == 0) return null;
 
