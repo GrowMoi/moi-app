@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import {
+  View,
   FlatList,
+  SectionList,
+  TouchableOpacity,
+  Image,
   Alert,
   Keyboard
 } from 'react-native';
@@ -12,8 +16,8 @@ import { Video } from '../../commons/components/VideoPlayer';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { Size } from '../../commons/styles';
-import { object } from '../../commons/utils';
-import { BottomBar } from '../../commons/components/SceneComponents';
+import { object, getHeightAspectRatio } from '../../commons/utils';
+import { BottomBar, Line } from '../../commons/components/SceneComponents';
 import Item from '../../commons/components/Item/Item';
 import { TextBody } from '../../commons/components/Typography';
 import AlertComponent from '../../commons/components/Alert/Alert';
@@ -34,6 +38,7 @@ import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
 import { TIME_FOR_INACTIVITY } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
+import ModalEventDescription from '../Events/ModalEventDescription';
 
 const StyledContentBox = styled(ContentBox)`
   margin-bottom: ${Size.spaceMedium};
@@ -41,15 +46,41 @@ const StyledContentBox = styled(ContentBox)`
   padding-right: 12;
 `;
 
+const width = 108;
+const height = 107;
+const Container = styled(TouchableOpacity)`
+  justify-content: center;
+  align-items: center;
+  margin-horizontal: 5;
+  margin-vertical: 5;
+  width: ${props => props.width};
+  height: ${props => getHeightAspectRatio(width, height, props.width)};
+  ${props => {
+    if (props.inactive) {
+      return css`
+        border: solid 5px #40582D;
+        border-radius: 13px;
+      `}
+    }
+  }
+`;
+
+const EventImage = styled(Image)`
+  width: ${ props => props.width};
+  height: ${ props => getHeightAspectRatio(width, height, props.width)};
+`;
+
 @connect(state => ({
   device: state.device,
   achievements: state.user.achievements,
   finalTestResult: state.user.finalTestResult,
   scene: state.routes.scene,
+  eventsWeek: state.user.eventsWeek,
 }), {
     getAchievementsAsync: userActions.getAchievementsAsync,
     updateAchievementsAsync: userActions.updateAchievementsAsync,
     loadFinalTestAsync: userActions.loadFinalTestAsync,
+    getEventsWeekAsync: userActions.getEventsWeekAsync,
   })
 export default class Inventory extends Component {
   state = {
@@ -63,6 +94,14 @@ export default class Inventory extends Component {
 
   currentScene = '';
   prevScene = '';
+
+  async componentDidMount() {
+    const { getEventsWeekAsync } = this.props;
+
+    this.showLoading();
+    await getEventsWeekAsync();
+    this.showLoading(false);
+  }
 
   updateItem = async ({ id, name }) => {
     const { updateAchievementsAsync } = this.props;
@@ -233,7 +272,8 @@ export default class Inventory extends Component {
   }
 
   _keyExtractor = (item, index) => index.toString();
-  _renderItem = ({ item }) => {
+
+  _renderMainItem = ({ item }) => {
     return (
       <Item
         type={item.number}
@@ -242,6 +282,51 @@ export default class Inventory extends Component {
         onPress={() => this.activeItem(item)}
       />
     )
+  }
+
+  _renderEventsItem = ({ item }) => {
+    return (
+      <Container
+        onPress={() => this.setState({ isEventModalOpen: true, eventSelected: item })}
+        activeOpacity={0.8}
+        width={90}
+        inactive={!item.completed}
+      >
+        <EventImage
+          source={{ uri: item.completed ? item.image : item.inactive_image }}
+          width={item.completed ? 90 : 80}
+        />
+      </Container>
+    );
+  }
+
+  _renderSection = ({ section, index }) => {
+    const data = section.data[0];
+
+    const renderItem = data.key === 'items' ? this._renderMainItem : this._renderEventsItem;
+
+    return  (
+      <View style={{flex: 1}}>
+        {data.key === 'events' && <Line style={{marginTop:10, marginBottom:10}}  size={5}/> }
+        <FlatList
+          data={data.list}
+          ListEmptyComponent={
+            <TextBody center>No tienes logros ganados aún</TextBody>
+          }
+          renderItem={renderItem}
+          keyExtractor={this._keyExtractor}
+          numColumns={2}
+          columnWrapperStyle={{ justifyContent: 'center' }}
+          key={index}
+        />
+      </View>
+    );
+  };
+
+  mergeAllEvents(eventsWeek) {
+    let allEvents = [];
+    Object.values(eventsWeek).forEach((event) => allEvents = [...allEvents, ...event])
+    return allEvents;
   }
 
   renderTabs() {
@@ -258,39 +343,30 @@ export default class Inventory extends Component {
   }
 
   renderItems() {
-    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
+    const { achievements = [], eventsWeek } = this.props;
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
     const allAchievements = this.addDisabledAchievements(sortedAchievements);
-    const backScenes = ['profile', 'quiz'];
+    const allEvents = this.mergeAllEvents(eventsWeek);
 
-    if (scene.name !== 'moiDrawer') {
-      if (scene.name === 'inventory') {
-        this.prevScene = scene.name;
-      }
-      this.currentScene = scene.name;
-    } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
-      this.currentScene = this.prevScene;
-    }
+    if (this.state.loading) return <Preloader key={0}/>;
 
     return (
-      <FlatList
-        data={allAchievements}
-        ListEmptyComponent={
-          <TextBody center>No tienes logros ganados aún</TextBody>
-        }
-        renderItem={this._renderItem}
-        keyExtractor={this._keyExtractor}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: 'center' }}
+      <SectionList
+        renderItem={this._renderSection}
+        sections={[
+          {title: '', data: [{key: 'items', list: allAchievements}]},
+          {title: '', data: [{key: 'events', list: allEvents}]},
+        ]}
+        keyExtractor={(item, index) => item.name + index}
         key={0}
       />
     );
   }
 
   render() {
-    const { modalVisible, currentVineta, loading, isAlertOpen, itemSelected, isOpenPassiveMessage } = this.state;
-    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
+    const { modalVisible, currentVineta, isAlertOpen, itemSelected, isOpenPassiveMessage, isEventModalOpen, eventSelected } = this.state;
+    const { device: { dimensions: { width, height } }, finalTestResult, scene } = this.props;
 
     const videoDimensions = {
       width: 1280,
@@ -320,10 +396,15 @@ export default class Inventory extends Component {
       >
         <MoiBackground>
           <Navbar />
-          {loading && <Preloader />}
           <StyledContentBox image={'leaderboard_frame'}>
             {this.renderTabs()}
           </StyledContentBox>
+
+          {isEventModalOpen && <ModalEventDescription
+            width={width}
+            event={eventSelected}
+            onClose={() => { this.setState({ isEventModalOpen: false }) }}
+          />}
 
           {modalVisible && <Video
             videoDimensions={videoDimensions}
