@@ -5,7 +5,7 @@ import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
 import { Palette } from '../../styles'
-import loadingGif from '../../../../assets/images/loading.gif';
+import loadingGif from '../../../../assets/images/spiner-moi.gif';
 
 const PreloaderContainer = styled(View)`
   flex: 1;
@@ -63,7 +63,7 @@ Preloader.propTypes = {
 };
 
 Preloader.defaultProps = {
-  size: 40,
+  size: 60,
 };
 
 export default Preloader;
