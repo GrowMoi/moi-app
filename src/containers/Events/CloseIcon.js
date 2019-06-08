@@ -29,12 +29,13 @@ const Icon = styled(ImageBackground)`
 
 export default class CloseIcon extends Component {
   render() {
-    const { onPress } = this.props;
+    const { onPress, style = {} } = this.props;
 
     return (
       <Container
         onPress={onPress}
         activeOpacity={0.8}
+        style={{...style}}
       >
         <Icon
           onPress={this.removeResultFinalTest}

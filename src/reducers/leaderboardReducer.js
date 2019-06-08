@@ -4,6 +4,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   leaders: [],
   meta: {},
+  type: ''
 };
 
 const leaders = (state = initialState, action) => {

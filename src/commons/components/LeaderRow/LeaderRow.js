@@ -40,9 +40,9 @@ const Seconds = styled(TextBody)`
   width: 35;
 `;
 
-const LeaderRow = ({ playerName, grade, seconds, onPress = () => null }) => {
+const LeaderRow = ({ playerName, grade, seconds, style, onPress = () => null }) => {
   return (
-    <Container onPress={onPress}>
+    <Container style={style} onPress={onPress}>
       <Icon name='profile' size={30}/>
       <PlayerName numberOfLines={1} inverted heavy>{playerName}</PlayerName>
       <Grade inverted bolder>{grade}</Grade>

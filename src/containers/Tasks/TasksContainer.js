@@ -21,10 +21,14 @@ import RecomendationsTabContainer from './components/RecomendationsTabContainer'
 import EventTabContainer from './components/EventTabContainer';
 import TutorGenericAlert from '../../commons/components/Alert/TutorGenericAlert';
 import EventModal from '../Events/EventModal';
+import LeaderBoardModal from '../LeaderBoard/LeaderboardModal';
+import leaderboardActions from '../../actions/leaderboardActions';
 
 @connect(store => ({
   device: store.device,
   neuronSelected: store.neuron.neuronSelected,
+  leaders: store.leaderboard.leaders,
+  profile: store.user.profile,
 }), {
     loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
     getUserNotesAsync: userActions.getStoreNotesAsync,
@@ -33,6 +37,7 @@ import EventModal from '../Events/EventModal';
     getNotificationsAsync: userActions.getNotificationsAsync,
     getEventInProgressAsync: userActions.getEventInProgressAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
+    getLeadersSuperEventAsync: leaderboardActions.getLeadersSuperEventAsync,
   })
 class TasksContainer extends Component {
   state = {
@@ -98,13 +103,25 @@ class TasksContainer extends Component {
 
   onPressNotification = (item) => {
     const isEvent = Array.isArray(item);
+    const isSuperEvent = isEvent && !!item[0].achievements;
+    const isSuperEventTaken = isSuperEvent && item[0].taken;
 
-    if (isEvent) {
+    if(isSuperEventTaken) {
+      this.showLeaderBoard();
+      return;
+    } else if (isEvent) {
       this.setState({ isEventModalOpen: true, itemSelected: item });
       return;
     }
 
     this.setState({ isAlertOpen: true, itemSelected: item });
+  }
+
+  async showLeaderBoard() {
+    const { getLeadersSuperEventAsync, profile } = this.props;
+    await getLeadersSuperEventAsync(profile.id, 1);
+
+    this.setState({ isLeaderboardModalOpen: true});
   }
 
   goToTutorQuiz = () => {
@@ -183,8 +200,8 @@ class TasksContainer extends Component {
   }
 
   render() {
-    const { device: { dimensions: { width } } } = this.props;
-    const { loading, isAlertOpen, isEventModalOpen, itemSelected } = this.state;
+    const { device: { dimensions: { width } }, leaders } = this.props;
+    const { loading, isAlertOpen, isEventModalOpen, itemSelected, isLeaderboardModalOpen } = this.state;
 
     return (
       <View style={styles.container}>
@@ -234,6 +251,12 @@ class TasksContainer extends Component {
             width={width}
             events={itemSelected}
             onCloseButtonPress={() => { this.setState({ isEventModalOpen: false }) }} />
+        }
+
+        {isLeaderboardModalOpen &&
+          <LeaderBoardModal
+            data= {leaders}
+            onClose={() => { this.setState({ isLeaderboardModalOpen: false }) }} />
         }
 
         {isAlertOpen && <Alert open={isAlertOpen}>

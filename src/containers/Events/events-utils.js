@@ -15,7 +15,7 @@ export default EventsUtils = {
   },
 
   handleSuperEvents: superEvents => {
-    return EventsUtils.filterNoTakenEvents(EventsUtils.addKeySuperEvent(superEvents));
+    return EventsUtils.addKeySuperEvent(superEvents);
   }
 
 }
