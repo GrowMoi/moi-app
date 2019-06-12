@@ -177,7 +177,6 @@ class TasksContainer extends Component {
           message={itemSelected.title}
           description={itemSelected.description}
           onCancel={this.closeAlert}
-          video={itemSelected.videos[0]}
           media={itemSelected.media[0]}
           cancelText='Ok'
         />

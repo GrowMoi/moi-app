@@ -12,7 +12,6 @@ import {
   WebView,
   Platform,
   Keyboard,
-  YouTube,
   log,
   PixelRatio,
   Share,
@@ -40,7 +39,6 @@ import MoiIcon from '../../commons/components/MoIcon/MoIcon';
 import { Palette, Size } from '../../commons/styles';
 import ActionsHeader from './ActionsContentMax';
 import NoteInput from '../../commons/components/NoteInput/NoteInput';
-import { youtube } from '../../commons/utils';
 import ContentImagePreview from '../../commons/components/ContentComponents/ContentImagePreview'
 import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
 import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
@@ -419,7 +417,6 @@ export default class SingleContentScene extends Component {
                         autoplay
                         size={{ height: 200, width: (width - Size.spaceXLarge) }}
                         images={content.media}
-                        videos={content.videos}
                     />
 
                     <ActionsHeader>

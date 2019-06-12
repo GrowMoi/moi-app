@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, WebView, ImageBackground, ScrollView } from 'react-native'
+import { View, ImageBackground, ScrollView } from 'react-native'
 import styled, { css } from 'styled-components/native'
 
 // Components
@@ -9,7 +9,7 @@ import { Title, TextBody } from '../Typography';
 import Button from '../Buttons/Button';
 
 // Utils
-import { youtube, getHeightAspectRatio } from '../../utils';
+import { getHeightAspectRatio } from '../../utils';
 
 const Container = styled(View)`
   width: 300;
@@ -42,10 +42,6 @@ const Buttons = styled(View)`
   padding-horizontal: 20;
 `;
 
-const Video = styled(View)`
-  height: 148;
-`;
-
 const imageWidth = 260;
 const Img = styled(ImageBackground)`
   height: ${getHeightAspectRatio(imageWidth, 150, 250)};
@@ -54,31 +50,6 @@ const Img = styled(ImageBackground)`
   background-color: white;
 `;
 
-const makeHTLM = (url = '') => {
-  const id = youtube.extractIdFromUrl(url);
-
-  return (`
-    <style>
-      .video {
-        position: relative;
-        padding-bottom: 56.25%;
-      }
-      iframe {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-      }
-    </style>
-    <div class='video'>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/${id}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-  `);
-}
-
 export const TutorGenericAlert = ({
   onNext,
   onCancel,
@@ -86,7 +57,6 @@ export const TutorGenericAlert = ({
   nextText = 'Aceptar',
   cancelText='Cancelar',
   description='',
-  video = '',
   media = '',
 }) => {
 
@@ -94,18 +64,9 @@ export const TutorGenericAlert = ({
     <Container>
       <ContentBox>
         <Title center book color='white'>{message}</Title>
-        <Description marginBottom={!!(video || media)}>
+        <Description marginBottom={!!media}>
           {description && <TextBody inverted center>{description}</TextBody>}
         </Description>
-        {video && (
-          <Video>
-            <WebView
-              scrollEnabled={false}
-              style={{ backgroundColor: 'transparent' }}
-              source={{ html: makeHTLM(video) }}
-            />
-          </Video>
-        )}
         {media && (
           <Img source={{ uri: media }} resizeMode='contain' />
         )}

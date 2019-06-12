@@ -12,7 +12,6 @@ import Swiper from 'react-native-swiper';
 import ContentImage from './ContentImage';
 import { Palette, Size } from '../../styles';
 import { colors } from '../../styles/palette';
-import { youtube } from '../../../commons/utils';
 
 // Actions
 import neuronActions from '../../../actions/neuronActions';
@@ -45,48 +44,6 @@ const Zoom = styled(ViewTransformer)`
   width: 100%;
 `;
 
-const VideoContainer = styled(View)`
-  flex: 1;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  margin-vertical: ${Size.spaceSmall};
-`;
-
-const makeHTLM = (url = '') => {
-  const id = youtube.extractIdFromUrl(url);
-
-  return (`
-    <style>
-      .video {
-        position: relative;
-        padding-bottom: 56.25%;
-      }
-      iframe {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-      }
-    </style>
-    <div class='video'>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-  `);
-}
-
-const Video = styled(View)`
-  height: 220;
-  width: 100%;
-`;
-
-@connect(store => ({}),
-{
-  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
-  playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
-})
 export default class Carousel extends Component {
   state = {
     fullScreenImage: false,
@@ -95,18 +52,10 @@ export default class Carousel extends Component {
   }
 
   openImage = ({attrs, type}) => {
-    const { stopCurrentBackgroundAudio } = this.props;
-    if(type === 'video') {
-      stopCurrentBackgroundAudio();
-    }
     this.setState({ fullScreenImage: true, expandedImage: attrs, type });
   }
 
   dismiss = () => {
-    const { playCurrentBackgroundAudio } = this.props;
-    if(this.state.type === 'video') {
-      playCurrentBackgroundAudio();
-    }
     this.setState({ fullScreenImage: false, expandedImage: {}, type: '' });
   }
 
@@ -114,24 +63,15 @@ export default class Carousel extends Component {
     const {
       size,
       images,
-      videos,
       ...rest
     } = this.props;
 
     const { fullScreenImage, expandedImage, type } = this.state;
-    const videosFormatted = (videos || []).map(video => ({
-      thumbnail: video.thumbnail || '',
-      url: video.url || '',
-      type: 'video',
-    }))
 
     const imagesFormatted = (images || []).map(imageUrl => ({
       url: imageUrl,
       type: 'image',
     }))
-
-
-    const media = [...videosFormatted, ...imagesFormatted];
 
     return (
       <ContainerSwiper size={size}>
@@ -141,13 +81,13 @@ export default class Carousel extends Component {
           nextButton={<Entypo name='chevron-right' size={35} color={colors.lightGray.css()} />}
           prevButton={<Entypo name='chevron-left' size={35} color={colors.lightGray.css()} />}
         >
-          {(media || []).map(d => {
+          {(imagesFormatted || []).map(d => {
             return <ContentImage
               key={uuid()}
               onPressImage={(attrs) => this.openImage({ attrs, type: d.type })}
               size={size}
               data={d}
-              source={{ uri: d.type === 'video' ? `https:${d.thumbnail}` : d.url }}
+              source={{ uri: d.url }}
             />
           })}
         </Swiper>
@@ -172,15 +112,6 @@ export default class Carousel extends Component {
                 style={{ width: '100%', height: '100%' }}
               />
             </Zoom>}
-            {type === 'video' && (
-              <Video>
-                <WebView
-                  scrollEnabled={false}
-                  style={{ backgroundColor: 'transparent' }}
-                  source={{ html: makeHTLM(expandedImage.data.url) }}
-                />
-              </Video>
-            )}
           </Overlay>
         </Modal>
       </ContainerSwiper>

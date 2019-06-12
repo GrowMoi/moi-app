@@ -1848,10 +1848,6 @@
         "source": "/Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/res/drawable/inventario9_disabled.png"
     },
     {
-        "merged": "/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/layout_youtube_layout.xml.flat",
-        "source": "/Users/luisgonzalez/Projects/moi/moi-app/node_modules/react-native-youtube/android/build/intermediates/packaged_res/debug/layout/youtube_layout.xml"
-    },
-    {
         "merged": "/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/res/merged/devMinSdkDevKernel/debug/drawable_inventario3.png.flat",
         "source": "/Users/luisgonzalez/Projects/moi/moi-app/android/app/src/main/res/drawable/inventario3.png"
     },

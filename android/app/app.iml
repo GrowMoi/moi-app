@@ -322,7 +322,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.objenesis:objenesis:2.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-okhttp3-1.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:animated-webp-1.0.1" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:/Users/luisgonzalez/Projects/moi/moi-app/node_modules/react-native-youtube/android/libs/YouTubeAndroidPlayerApi.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: host.exp.exponent:expo-local-authentication-1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-gass-15.0.1" level="project" />
@@ -491,6 +490,5 @@
     <orderEntry type="module" module-name="react-native-sound" />
     <orderEntry type="module" module-name="lottie-react-native" />
     <orderEntry type="module" module-name="react-native-orientation" />
-    <orderEntry type="module" module-name="react-native-youtube" />
   </component>
 </module>
