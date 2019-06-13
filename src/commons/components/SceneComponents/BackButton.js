@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
+import { Size } from '../../styles';
 
 const ButtonContainer = styled(View)`
   position: relative;
   justify-content: center;
   align-items: center;
+  padding-top: 7px;
 `;
 
 const BackImage = styled(Image)`
-  width: 30;
-  height: 30;
+  width: ${Size.hamburgerSize};
+  height: ${Size.hamburgerSize};
 `;
 
 const ButtonContainerAnimated = Animatable.createAnimatableComponent(ButtonContainer);

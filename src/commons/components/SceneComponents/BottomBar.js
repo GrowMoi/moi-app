@@ -5,9 +5,10 @@ import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 
 import { LANDSCAPE } from '../../../constants';
+import { Size } from '../../styles';
 
 const Bar = styled(Image)`
-  height: 20;
+  height: ${Size.bottomBarHeight};
   width: ${props => props.width};
   position: absolute;
   bottom: -2;
