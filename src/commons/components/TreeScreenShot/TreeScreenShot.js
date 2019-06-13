@@ -31,13 +31,12 @@ const ProfileImage = styled(Image)`
 }))
 export default class TreeScreenShot extends Component {
   state = {
-    imageWidth: 0,
-    imageHeight: 0,
+    imageWidth: 375,
+    imageHeight: 667,
   }
 
   componentWillReceiveProps() {
     const { profileImage } = this.props;
-    console.log("TCL: TreeScreenShot -> componentWillReceiveProps -> profileImage", profileImage)
     if (!profileImage) return;
     Image.getSize(profileImage, (width, height) => this.setState({ imageWidth: width, imageHeight: height }));
   }
