@@ -159,8 +159,8 @@ export default class Tree extends Component {
   onTransformGestureReleased = (zoomInfo) => {
     const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
     setZoomTreeInfo(zoomInfo);
+    Sound.stopOverBackgroundSound();
     setTimeout(() => {
-      Sound.stopOverBackgroundSound();
       this.canPlaySound = true;
       setNeuronLabelInfo({});
       this.setState({showLabelLayer: true});
