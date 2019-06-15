@@ -2,7 +2,7 @@ export default [
 
   require('./loading.gif'),
 
-  // require('./buttons/slider_button.png'),
+  require('./buttons/slider_button.png'),
 
   //Videos
   require('../videos/vineta_1.mp4'),
