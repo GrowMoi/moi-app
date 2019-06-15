@@ -8,6 +8,7 @@ import { Palette } from '../../commons/styles';
 import Modal from 'expo/src/modal/Modal';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import ViewTransformer from 'react-native-view-transformer-next';
+import { isTablet } from 'react-native-device-detection';
 // Actions
 import userActions from '../../actions/userActions';
 
@@ -107,7 +108,7 @@ class ListCertificates extends Component {
           }
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
-          numColumns={1}
+          numColumns={isTablet ? 2 : 1}
         />}
         {fullScreenImage && <Modal
           visible={fullScreenImage}

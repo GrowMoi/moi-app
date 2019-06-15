@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Image, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { Header } from '../../commons/components/Typography';
+import { Size } from '../../commons/styles';
 
 const ContainerSwitch = styled(View)`
     flex: 1;
@@ -11,7 +12,7 @@ const ContainerSwitch = styled(View)`
 
 const LineSwitch = styled(View)`
     position: absolute;
-    height: 16;
+    height: ${Size.lineSwitchHeigth};
     width: 60;
     left:1;
     border-width: 2;
@@ -37,7 +38,7 @@ const IconContainer = styled(View)`
 `;
 
 const IconSwitch = styled(Image)`
-    height: 22;
+    height: ${Size.lineSwitchHeigth + 6};
     width: 29;
 `;
 
@@ -54,7 +55,7 @@ const Switch = ({ toggleValue, onPress }) => {
         <ContainerSwitch>
             <LineSwitch style={styleLine}>
                 <TextContainer style={styleText}>
-                    <Header customSize={11} inverted={!!toggleValue} >{stichText}</Header>
+                    <Header customSize={Size.fontDescription} inverted={!!toggleValue} >{stichText}</Header>
                 </TextContainer>
             </LineSwitch>
 

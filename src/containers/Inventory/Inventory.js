@@ -22,6 +22,7 @@ import Item from '../../commons/components/Item/Item';
 import { TextBody } from '../../commons/components/Typography';
 import AlertComponent from '../../commons/components/Alert/Alert';
 import GenericAlert from '../../commons/components/Alert/GenericAlert';
+import { isTablet } from 'react-native-device-detection';
 
 // Viñetas
 import vineta_1 from '../../../assets/videos/vineta_1.mp4';
@@ -36,7 +37,7 @@ import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
-import { TIME_FOR_INACTIVITY } from '../../constants';
+import { TIME_FOR_INACTIVITY, PORTRAIT, LANDSCAPE } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import ModalEventDescription from '../Events/ModalEventDescription';
 
@@ -94,13 +95,22 @@ export default class Inventory extends Component {
 
   currentScene = '';
   prevScene = '';
+  columnsNumber;
 
   async componentDidMount() {
     const { getEventsWeekAsync } = this.props;
 
+    this.generateNumberOfColumns()
     this.showLoading();
     await getEventsWeekAsync();
     this.showLoading(false);
+  }
+
+  generateNumberOfColumns() {
+    const { device: { dimensions: { orientation } } } = this.props;
+    const defaultColumns = isTablet ? 3 : 2;
+    const additionalColumns = orientation ===  PORTRAIT ? 0 : 1 ;
+    this.columnsNumber = defaultColumns + additionalColumns;
   }
 
   updateItem = async ({ id, name }) => {
@@ -273,28 +283,35 @@ export default class Inventory extends Component {
 
   _keyExtractor = (item, index) => index.toString();
 
+  get itemWidth() {
+    return isTablet ? 140 : 90;
+  }
+
   _renderMainItem = ({ item }) => {
     return (
       <Item
         type={item.number}
         active={item.active}
         disabled={item.disabled}
+        width={this.itemWidth}
         onPress={() => this.activeItem(item)}
       />
     )
   }
 
   _renderEventsItem = ({ item }) => {
+    const width = this.itemWidth;
+
     return (
       <Container
         onPress={() => this.setState({ isEventModalOpen: true, eventSelected: item })}
         activeOpacity={0.8}
-        width={90}
+        width={width}
         inactive={!item.completed}
       >
         <EventImage
           source={{ uri: item.completed ? item.image : item.inactive_image }}
-          width={item.completed ? 90 : 80}
+          width={item.completed ? width : width - 10}
         />
       </Container>
     );
@@ -315,7 +332,7 @@ export default class Inventory extends Component {
           }
           renderItem={renderItem}
           keyExtractor={this._keyExtractor}
-          numColumns={2}
+          numColumns={this.columnsNumber}
           columnWrapperStyle={{ justifyContent: 'center' }}
           key={index}
         />

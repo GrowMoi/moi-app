@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 import ItemTasks from './ItemTasks';
-import { Palette } from '../../../commons/styles';
+import { Palette, Size } from '../../../commons/styles';
 import SubItem from './SubItem';
 import { TextBody } from '../../../commons/components/Typography';
 import Badge from '../../../commons/components/Badge/Badge';
@@ -43,9 +43,9 @@ class EventTabContainer extends PureComponent {
     if (totalNotifications === 0) return null;
 
     return (
-      <View style={{ position: 'absolute', zIndex: 8, top: -8, right: 0 }}>
+      <View style={{ position: 'absolute', zIndex: 8, top: -8, right: Size.paddingRightBadge }}>
         <Badge value={totalNotifications}
-          size={18} />
+          size={Size.badgeTaskSize} />
       </View>
     );
   }
@@ -86,7 +86,7 @@ class EventTabContainer extends PureComponent {
 const styles = StyleSheet.create(
   {
     tasks: {
-      width: '95%',
+      width: '100%',
     },
     emptyText: {
       paddingHorizontal: 10,

@@ -1,21 +1,23 @@
 import { isIphoneX, isTablet } from 'react-native-device-detection';
 
 export default {
-  fontBody: 15,
+  fontBody: isTablet ? 22 : 15,
   fontBodySmall: 13,
 
   fontTitle: 25,
-  fontDescription: 11,
+  fontDescription: isTablet ? 15 : 11,
 
   fontHeader: isTablet ? 25 : 20,
-  fontHeaderSmall: 15,
+  fontHeaderSmall: isTablet ? 22 : 15 ,
   fontHeaderSuperSmall: 12,
+
+  fontContentMinimized: isTablet ? 23 : 18,
 
   spaceXSmall: 5,
   spaceSmall: 10,
   spaceMedium: 20,
   spaceLarge: 40,
-  spaceMediumLarge: 60,
+  spaceMediumLarge: isTablet ? 100 : 60,
   spaceXLarge: 80,
 
   navbarHeight: isIphoneX ? 70 : isTablet ? 55 : 45,
@@ -41,7 +43,7 @@ export default {
   taskButtonLeftRead: isTablet ? -40 : 39,
   taskButtonWidth: isTablet ? 80 : 63,
   taskButtonLeft: isTablet ? 40 : 33,
-  badgeTaskSize: isTablet ? 25 : 16,
+  badgeTaskSize: isTablet ? 25 : 18,
 
   //search button
   searchButtonContainerWidth: isTablet ? 150 : 114,
@@ -63,4 +65,29 @@ export default {
   readButtonContainerBottom: isTablet ? 23 : 19,
   readButtonWidth: isTablet ? 89 : 72,
   readButtonLeft: isTablet ? 17 : 10,
+
+  //tasks view
+  paddingRightBadge: isTablet ? 9 : 0,
+
+  //side menu
+  heigthTreeContainer: isTablet ? 340 : 230,
+
+  //Leaderboard
+  heigthLeaderRow: isTablet ? 60 : 40,
+
+  //events
+  fontSizeEventDescription: isTablet ? 19 : 13,
+  heigthModalListEvent: isTablet ? 300 : 215,
+  heigthModalEventInfo: isTablet ? 350 : 275,
+  iconSizeEvent: isTablet ? 80 : 40,
+  iconSizeEventInfo: isTablet ? 100 : 70,
+  neuronContainerSizeEventInfo: isTablet ? 70 : 50,
+  neuronSizeEventInfo: isTablet ? 28 : 15,
+  titleNeuronSizeEventInfo: isTablet ? 12 : 8,
+  marginTopSeparatorNeurons: isTablet ? 12 : 7,
+  iconSizeEventDescription: isTablet ? 160 : 130,
+
+  //settings
+  heigthRowLevel: isTablet ? 50 : 30,
+  lineSwitchHeigth: isTablet ? 20 : 16,
 };

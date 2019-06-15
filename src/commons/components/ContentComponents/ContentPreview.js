@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 import { TextBody, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
+import size from '../../styles/size';
 
 const RowContainer = styled(View)`
   flex-direction: row;
@@ -104,7 +105,7 @@ export default class ContentPreview extends Component {
 
     const content = (
       <Content key='row-description'>
-        <Header ellipsizeMode='tail' numberOfLines={3} customSize={18} bolder>{title}</Header>
+        <Header ellipsizeMode='tail' numberOfLines={3} customSize={size.fontContentMinimized} bolder>{title}</Header>
         <TextBody small secondary>{subtitle}</TextBody>
         <TextBody small ellipsizeMode='tail' numberOfLines={4}>{description}</TextBody>
       </Content>

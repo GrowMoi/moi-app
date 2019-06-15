@@ -71,7 +71,7 @@ export default class RecomendationsTabContainer extends Component {
 const styles = StyleSheet.create(
   {
     tasks: {
-      width: '95%',
+      width: '100%',
     },
     emptyText: {
       paddingHorizontal: 10,

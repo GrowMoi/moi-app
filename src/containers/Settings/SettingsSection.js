@@ -18,7 +18,9 @@ const StyledLine = styled(Line)`
 
 const StyledSettingsSection = styled(View)`
   margin-top: ${Size.spaceMedium};
-  flex: 1;
+  width: 95%;
+  align-items: center;
+  align-self: center;
 `;
 
 const SettingsSection = ({ children, title }) => (

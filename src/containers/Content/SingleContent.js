@@ -79,6 +79,7 @@ const TextLeftBorder = styled(View)`
 
 const Source = styled(View)`
   align-items: flex-start;
+  padding-top: 10;
 `;
 const Divider = styled(View)`
   height: 1;

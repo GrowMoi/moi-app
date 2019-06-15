@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import Modal from 'expo/src/modal/Modal';
 import GenericAlert from '../../commons/components/Alert/GenericAlert';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Palette } from '../../commons/styles';
+import { Palette, Size } from '../../commons/styles';
 import ListEvents from './ListEvents';
 import ContentContainer from './ContentContainer';
 import CloseIcon from './CloseIcon';
@@ -95,7 +95,7 @@ export default class EventModal extends Component {
 
     return {
       width: selectedEvent ? width / 1.3 : width,
-      height: selectedEvent ? 275 : 215,
+      height: selectedEvent ? Size.heigthModalEventInfo : Size.heigthModalListEvent,
     };
   }
 
@@ -130,7 +130,7 @@ export default class EventModal extends Component {
               <CloseIcon onPress={this.onPress} />
               <ContentContainer style={{ width: this.modalSize.width - 25, height: this.modalSize.height - 10 }} colorsMargin={this.colorsModal.margin} colorsContent={this.colorsModal.content} horizontalGradient={false}>
                 {!selectedEvent && <Header bolder>Eventos</Header>}
-                {selectedEvent ? <EventInfo event={selectedEvent} onTakeEvent={this.takeEvent} /> : <ListEvents events={events} width={this.eventModalWidth} onSelectEvent={this.onSelectEvent} />}
+                {selectedEvent ? <EventInfo event={selectedEvent} onTakeEvent={this.takeEvent} /> : <ListEvents events={events} width={this.eventModalWidth} height= {this.modalSize.height * 0.7} onSelectEvent={this.onSelectEvent} />}
               </ContentContainer>
             </View>
             :

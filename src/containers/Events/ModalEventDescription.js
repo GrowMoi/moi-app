@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import Modal from 'expo/src/modal/Modal';
-import { Palette } from '../../commons/styles';
+import { Palette, Size } from '../../commons/styles';
 import ContentContainer from './ContentContainer';
 import CloseIcon from './CloseIcon';
 import { Header } from '../../commons/components/Typography';
@@ -21,7 +21,7 @@ export default class ModalEventDescription extends Component {
 
     return {
       width: width / 1.3,
-      height: 275,
+      height: Size.heigthModalEventInfo,
     };
   }
 
@@ -46,8 +46,8 @@ export default class ModalEventDescription extends Component {
             <CloseIcon onPress={onClose} />
             <ContentContainer style={{ width: this.modalSize.width - 25, height: this.modalSize.height - 10}} colorsMargin={['#344F39', '#344F39']} colorsContent={['#74AD50', '#74AD50']}>
                 <Header bolder>{normalize.capitalizeFirstLetter(event.title)}</Header>}
-                <View style={{ width: 130, height: 130, margin: 10 }}>
-                  <Image source={{ uri: event.image }} style={{ width: 130, height: 130 }} />
+                <View style={{ width: Size.iconSizeEventDescription, height: Size.iconSizeEventDescription, margin: 10 }}>
+                  <Image source={{ uri: event.image }} style={{ width: Size.iconSizeEventDescription, height: Size.iconSizeEventDescription }} />
                 </View>
                 <Header small ellipsizeMode='tail' numberOfLines={3}>{normalize.capitalizeFirstLetter(event.description)}</Header>
             </ContentContainer>

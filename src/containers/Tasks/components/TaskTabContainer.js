@@ -73,7 +73,7 @@ export default class TaskTabContainer extends Component {
 const styles = StyleSheet.create(
   {
     tasks: {
-      width: '95%',
+      width: '100%',
     },
     emptyText: {
       paddingHorizontal: 10,
