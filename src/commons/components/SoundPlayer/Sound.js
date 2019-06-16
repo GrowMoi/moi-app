@@ -60,6 +60,7 @@ export default class MoiSound {
   }
 
   static stopOverBackgroundSound = async () => {
+    if (!MoiSound.currentSound) return;
     MoiSound.currentSound.stop();
   }
 
@@ -82,6 +83,7 @@ export default class MoiSound {
   static _handleAppStateChange = function (currentAppState) {
     if (currentAppState === 'background') {
       MoiSound.pause();
+      MoiSound.stopOverBackgroundSound();
     }
     if (currentAppState === "active") {
       MoiSound.play();

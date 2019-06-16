@@ -137,14 +137,12 @@ export default class Tree extends Component {
   canPlaySound = true;
 
   onViewTransformed = zoomInfo => {
-    const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
     if (this.prevZoomInfo === null) {
       this.prevZoomInfo = zoomInfo;
     }
 
     if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
     if (this.canPlaySound) {
-      // setNeuronLabelInfo({});
       this.setState({showLabelLayer: false});
       Sound.playOverBackgroundSound('treeActions', true, 1);
       this.canPlaySound = false;
@@ -158,8 +156,8 @@ export default class Tree extends Component {
 
   onTransformGestureReleased = (zoomInfo) => {
     const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
-    setZoomTreeInfo(zoomInfo);
     Sound.stopOverBackgroundSound();
+    setZoomTreeInfo(zoomInfo);
     setTimeout(() => {
       this.canPlaySound = true;
       setNeuronLabelInfo({});
