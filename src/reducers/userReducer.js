@@ -167,7 +167,9 @@ const settings = (state = initialState.settings, action) => {
 const passiveMessageSettings = (state = initialState.passiveMessageSettings, action) => {
   switch (action.type) {
     case actionTypes.SET_PASSIVE_MESSAGE_SETTINGS:
+      console.log("TCL: passiveMessageSettings -> action.payload", action.payload)
       return action.payload;
+
     default:
       return state;
   }

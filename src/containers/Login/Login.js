@@ -62,7 +62,7 @@ const Form = styled(View)`
 `;
 
 const InputsContainer = styled(View)`
-  height: 135;
+  height: ${Size.buttonWidth + 5};
   justify-content: center;
   flex-shrink: 1;
 `;
@@ -219,7 +219,7 @@ export default class Login extends PureComponent {
                     <ButtonsContainer>
                       <Animatable.View animation="bounceInLeft" easing="ease-in">
                         <Button
-                          style={{ width: 130, marginRight: Size.spaceMedium }}
+                          style={{ width: Size.buttonWidth, marginRight: Size.spaceMedium }}
                           title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
                           onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
                         />
@@ -228,7 +228,7 @@ export default class Login extends PureComponent {
                       <Animatable.View animation="bounceInRight" easing="ease-in">
                         <Button
                           loading={validating}
-                          style={{ width: 130 }}
+                          style={{ width: Size.buttonWidth }}
                           title={!showingSelectionKey ? 'Siguiente' : 'Login'}
                           disabled={!((login.trim()).length > 0)}
                           onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}

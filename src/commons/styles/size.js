@@ -90,4 +90,10 @@ export default {
   //settings
   heigthRowLevel: isTablet ? 50 : 30,
   lineSwitchHeigth: isTablet ? 20 : 16,
+
+  //login
+  buttonWidth: isTablet ? 150 : 130,
+  loginImageWidth: isTablet ? 60 : 40,
+  fontSizeLoginImage: isTablet ? 18 : 10,
+  fontSizeInput: isTablet ? 20 : 10,
 };

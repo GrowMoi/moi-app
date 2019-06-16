@@ -4,8 +4,9 @@ import { Image, Text, TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 import { getHeightAspectRatio } from '../../commons/utils';
+import { Size } from '../../commons/styles';
 
-const WIDTH = 40;
+const WIDTH = Size.loginImageWidth;
 const widthImage = 83;
 const heightImage = 75;
 
@@ -23,7 +24,7 @@ const StyledImage = styled(Image)`
 const AnimatableImage = Animatable.createAnimatableComponent(StyledImage);
 
 const StyledText = styled(Text)`
-  font-size: 10px;
+  font-size: ${Size.fontSizeLoginImage};
   background-color: transparent;
 `;
 

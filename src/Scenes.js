@@ -56,7 +56,8 @@ export default class Scenes extends Component {
 
   setPassiveMessageSettings = async () => {
     const passiveMessage = await AsyncStorage.getItem('passiveMessage');
-    store.dispatch(userActions.setCurrentPassiveMessageSettings({show: passiveMessage || true}));
+    const passiveMessageBoolean = passiveMessage !== null ? passiveMessage === 'true' : true;
+    store.dispatch(userActions.setCurrentPassiveMessageSettings({show:  passiveMessageBoolean}));
   }
 
   async preLoadingAssets() {
