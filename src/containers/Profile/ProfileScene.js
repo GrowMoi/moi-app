@@ -11,26 +11,22 @@ import FavoritesTab from './TabsContent/FavoritesTab';
 import LastContentsLearnt from './TabsContent/LastContentsLearnt';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import ProfileInfo from './ProfileInfo';
-import UserInactivity from 'react-native-user-inactivity'
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 
 // Redux Actions
 import userActions from './../../actions/userActions';
-import { TIME_FOR_INACTIVITY } from '../../constants';
 
 @connect(store => ({
   user: store.user.userData,
   tree: store.tree.userTree,
   profile: store.user.profile,
   scene: store.routes.scene,
+  showPassiveMessage: store.user.showPassiveMessage,
 }), {
   signOutAsync: userActions.signOutAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
 })
 export default class ProfileScene extends Component {
-  state = {
-    isOpenPassiveMessage: false,
-  }
-
   scrollRef = null;
 
   editProfile = () => {
@@ -54,8 +50,7 @@ export default class ProfileScene extends Component {
   }
 
   render() {
-    const { tree: { meta: { depth: level } }, profile, scene } = this.props;
-    const { isOpenPassiveMessage } = this.state
+    const { tree: { meta: { depth: level } }, profile, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const profileInfo = {
       profile,
@@ -63,38 +58,28 @@ export default class ProfileScene extends Component {
     };
 
     return (
-      <UserInactivity
-        timeForInactivity={TIME_FOR_INACTIVITY}
-        onAction={(isActive) => {
-          if(!isActive && scene.name === 'profile') {
-            Keyboard.dismiss()
-            this.setState({ isOpenPassiveMessage: !isActive })
-          }
-        }}
-      >
-        <Moibackground>
-          <Navbar />
-          <ProfileInfo
-            data={profileInfo}
-            tabsData={this.tabs}
-            onClickEdit={this.editProfile}
-            onClickSignOut={this.signOut}
-            onProfileInfoReady={(scrollRef) => {this.scrollRef = scrollRef}}
-          />
-          <BottomBar />
+      <Moibackground>
+        <Navbar />
+        <ProfileInfo
+          data={profileInfo}
+          tabsData={this.tabs}
+          onClickEdit={this.editProfile}
+          onClickSignOut={this.signOut}
+          onProfileInfoReady={(scrollRef) => {this.scrollRef = scrollRef}}
+        />
+        <BottomBar />
 
-          <PassiveMessageAlert
-            isOpenPassiveMessage={isOpenPassiveMessage}
-            touchableProps={{
-              onPress: () => {
-                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
-              }
-            }}
-            message='Este es tu perfil personal. Edita tu información, revisa tus logros y la tabla de posiciones y busca a tus amigos
-            haciendo clic en el botón correspondiente'
-          />
-        </Moibackground>
-      </UserInactivity>
+        <PassiveMessageAlert
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'profile'}
+          touchableProps={{
+            onPress: () => {
+                showPassiveMessageAsync(false);
+            }
+          }}
+          message='Este es tu perfil personal. Edita tu información, revisa tus logros y la tabla de posiciones y busca a tus amigos
+          haciendo clic en el botón correspondiente'
+        />
+      </Moibackground>
     );
   }
 }

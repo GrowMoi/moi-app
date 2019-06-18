@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
   Image,
   Alert,
-  Keyboard
 } from 'react-native';
 
 import { Video } from '../../commons/components/VideoPlayer';
@@ -33,11 +32,10 @@ import vineta_4 from '../../../assets/videos/vineta_4.mp4';
 import userActions from '../../actions/userActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Certificate from '../Certificate/Certificate';
-import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
-import { TIME_FOR_INACTIVITY, PORTRAIT, LANDSCAPE } from '../../constants';
+import { PORTRAIT } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import ModalEventDescription from '../Events/ModalEventDescription';
 
@@ -77,11 +75,13 @@ const EventImage = styled(Image)`
   finalTestResult: state.user.finalTestResult,
   scene: state.routes.scene,
   eventsWeek: state.user.eventsWeek,
+  showPassiveMessage: state.user.showPassiveMessage,
 }), {
     getAchievementsAsync: userActions.getAchievementsAsync,
     updateAchievementsAsync: userActions.updateAchievementsAsync,
     loadFinalTestAsync: userActions.loadFinalTestAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
+    showPassiveMessageAsync: userActions.showPassiveMessageAsync,
   })
 export default class Inventory extends Component {
   state = {
@@ -90,7 +90,6 @@ export default class Inventory extends Component {
     isAlertOpen: false,
     itemSelected: {},
     loading: false,
-    isOpenPassiveMessage: false,
   }
 
   currentScene = '';
@@ -382,8 +381,8 @@ export default class Inventory extends Component {
   }
 
   render() {
-    const { modalVisible, currentVineta, isAlertOpen, itemSelected, isOpenPassiveMessage, isEventModalOpen, eventSelected } = this.state;
-    const { device: { dimensions: { width, height } }, finalTestResult, scene } = this.props;
+    const { modalVisible, currentVineta, isAlertOpen, itemSelected, isEventModalOpen, eventSelected } = this.state;
+    const { device: { dimensions: { width, height } }, finalTestResult, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const videoDimensions = {
       width: 1280,
@@ -402,56 +401,46 @@ export default class Inventory extends Component {
     }
 
     return (
-      <UserInactivity
-        timeForInactivity={TIME_FOR_INACTIVITY}
-        onAction={(isActive) => {
-          if (!isActive && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen) {
-            Keyboard.dismiss()
-            this.setState({ isOpenPassiveMessage: !isActive })
-          }
-        }}
-      >
-        <MoiBackground>
-          <Navbar />
-          <StyledContentBox image={'leaderboard_frame'}>
-            {this.renderTabs()}
-          </StyledContentBox>
+      <MoiBackground>
+        <Navbar />
+        <StyledContentBox image={'leaderboard_frame'}>
+          {this.renderTabs()}
+        </StyledContentBox>
 
-          {isEventModalOpen && <ModalEventDescription
-            width={width}
-            event={eventSelected}
-            onClose={() => { this.setState({ isEventModalOpen: false }) }}
-          />}
+        {isEventModalOpen && <ModalEventDescription
+          width={width}
+          event={eventSelected}
+          onClose={() => { this.setState({ isEventModalOpen: false }) }}
+        />}
 
-          {modalVisible && <Video
-            videoDimensions={videoDimensions}
-            source={currentVineta}
-            dismiss={() => this.showVideo(false)}
-            visible={modalVisible}
-            width={width}
-          />}
+        {modalVisible && <Video
+          videoDimensions={videoDimensions}
+          source={currentVineta}
+          dismiss={() => this.showVideo(false)}
+          visible={modalVisible}
+          width={width}
+        />}
 
-          {isAlertOpen && <AlertComponent open={isAlertOpen}>
-            <GenericAlert
-              message={itemSelected.name}
-              description={itemSelected.description}
-              onCancel={this.closeAlert}
-              cancelText='Ok'
-            />
-          </AlertComponent>}
-          {finalTestResult && <Certificate />}
-          <BottomBar />
-          <PassiveMessageAlert
-            isOpenPassiveMessage={isOpenPassiveMessage}
-            touchableProps={{
-              onPress: () => {
-                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
-              }
-            }}
-            message='"Selecciona uno de los objetos que ganaste para activarlo. Cada uno tiene un efecto diferente'
+        {isAlertOpen && <AlertComponent open={isAlertOpen}>
+          <GenericAlert
+            message={itemSelected.name}
+            description={itemSelected.description}
+            onCancel={this.closeAlert}
+            cancelText='Ok'
           />
-        </MoiBackground>
-      </UserInactivity>
+        </AlertComponent>}
+        {finalTestResult && <Certificate />}
+        <BottomBar />
+        <PassiveMessageAlert
+          isOpenPassiveMessage={showPassiveMessage && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen}
+          touchableProps={{
+            onPress: () => {
+              showPassiveMessageAsync(false);
+            }
+          }}
+          message='"Selecciona uno de los objetos que ganaste para activarlo. Cada uno tiene un efecto diferente'
+        />
+      </MoiBackground>
     );
   }
 }

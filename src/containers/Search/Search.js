@@ -1,13 +1,10 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import {
   FlatList,
-  Keyboard,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
-import UserInactivity from 'react-native-user-inactivity'
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 
 import EmptyState from '../../commons/components/EmptyState';
@@ -20,15 +17,16 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import searchActions from '../../actions/searchActions';
-import { TextBody } from '../../commons/components/Typography';
-import { TIME_FOR_INACTIVITY } from '../../constants';
+import userActions from '../../actions/userActions';
 
 @connect(store => ({
   device: store.device,
   search: store.search,
   scene: store.routes.scene,
+  showPassiveMessage: store.user.showPassiveMessage,
 }), {
   getContentsAsync: searchActions.getContentsAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
 })
 export default class Search extends PureComponent {
   state = {
@@ -36,7 +34,6 @@ export default class Search extends PureComponent {
     page: 0,
     dataSource: [],
     searching: false,
-    isOpenPassiveMessage: false,
   }
 
   onPressRowContent = (item) => {
@@ -83,8 +80,8 @@ export default class Search extends PureComponent {
   }
 
   render() {
-    const { loading, dataSource, searching, isOpenPassiveMessage } = this.state;
-    const { device, scene } = this.props;
+    const { loading, dataSource, searching } = this.state;
+    const { device, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
@@ -114,32 +111,22 @@ export default class Search extends PureComponent {
     )
 
     return (
-      <UserInactivity
-        timeForInactivity={TIME_FOR_INACTIVITY}
-        onAction={(isActive) => {
-          if(!isActive && scene.name === 'search') {
-            Keyboard.dismiss()
-            this.setState({ isOpenPassiveMessage: !isActive })
-          }
-        }}
-      >
-        <MoiBackground>
-          {contentBox}
-          {loading && <Preloader />}
-          <Navbar />
-          <BottomBarWithButtons width={device.dimensions.width} />
+      <MoiBackground>
+        {contentBox}
+        {loading && <Preloader />}
+        <Navbar />
+        <BottomBarWithButtons width={device.dimensions.width} />
 
-          <PassiveMessageAlert
-            isOpenPassiveMessage={isOpenPassiveMessage}
-            touchableProps={{
-              onPress: () => {
-                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
-              }
-            }}
-            message='Escribe lo que quieres conocer y presiona el botón buscar'
-          />
-        </MoiBackground>
-      </UserInactivity>
+        <PassiveMessageAlert
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'search'}
+          touchableProps={{
+            onPress: () => {
+              showPassiveMessageAsync(false);
+            }
+          }}
+          message='Escribe lo que quieres conocer y presiona el botón buscar'
+        />
+      </MoiBackground>
     )
   }
 };

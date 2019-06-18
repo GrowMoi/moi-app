@@ -53,6 +53,13 @@ const setPassiveMessageSettings = passiveMessageSettings => ({
   payload: passiveMessageSettings,
 })
 
+const showPassiveMessageAsync = (show = true) => async (dispatch) => {
+  dispatch({
+    type: actionTypes.SHOW_PASSIVE_MESSAGE,
+    payload: show
+  });
+}
+
 const storeFinalTestResult = finalTestResult => ({
   type: actionTypes.STORE_FINAL_TEST_RESULT,
   payload: finalTestResult,
@@ -684,6 +691,7 @@ export default {
   signOutAsync,
   setCurrentSettings,
   setCurrentPassiveMessageSettings,
+  showPassiveMessageAsync,
   updateSettingsAsync,
   getNotificationsAsync,
   getStoreNotesAsync,

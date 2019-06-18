@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
 import { AppLoading, Font, Icon, DangerZone } from 'expo';
-import { Text, Dimensions, AsyncStorage } from 'react-native';
+import { Text, Dimensions, AsyncStorage, Keyboard } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -17,6 +17,8 @@ import allImages from '../assets/images';
 import fonts from '../assets/fonts';
 import { setDeviceDimensions } from './actions/deviceActions';
 import userActions from './actions/userActions';
+import UserInactivity from 'react-native-user-inactivity';
+import { TIME_FOR_INACTIVITY } from './constants';
 
 addLocaleData([...en, ...es]);
 
@@ -90,6 +92,10 @@ export default class Scenes extends Component {
     this.setState({ appIsReady: true });
   }
 
+  showPassiveMessage = async () => {
+    await store.dispatch(userActions.showPassiveMessageAsync());
+  }
+
   render() {
     const { locale, appIsReady, assetsLoaded } = this.state;
 
@@ -101,7 +107,18 @@ export default class Scenes extends Component {
               locale={locale}
               messages={flattenMessages(messages[locale])}
               textComponent={Text}>
-              <RouterWithRedux scenes={routes}/>
+              <UserInactivity
+                timeForInactivity={TIME_FOR_INACTIVITY}
+                onAction={(isActive) => {
+                  if(!isActive) {
+                    Keyboard.dismiss()
+                    this.showPassiveMessage();
+                  }
+                }}
+
+              >
+                <RouterWithRedux scenes={routes}/>
+              </UserInactivity>
             </IntlProvider>
           </Provider>
          </ModalHost>
