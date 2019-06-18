@@ -103,7 +103,7 @@ export default class Tree extends Component {
     const { userTree } = this.props;
     const newUserTree = newProps.userTree;
 
-    if (Object.keys(userTree).length !== 0 && userTree !== newUserTree) {
+    if (Object.keys(userTree).length !== 0 && userTree.meta.current_learnt_contents !== newUserTree.meta.current_learnt_contents) {
       setTimeout(() => { this.takeScreenShotTree() }, 2000);
     }
   }
