@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { ScrollView, AsyncStorage, FlatList } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import uuid from 'uuid/v4';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
 import { normalize } from '../../commons/utils';
@@ -78,7 +78,8 @@ export default class ContentListBox extends PureComponent {
 
   backToTree() {
     this.setState({ isAlertOpen: false });
-    Actions.tree();
+    // Actions.tree({type: ActionConst.RESET});
+    Actions.pop();
   }
 
   onPressRowcontent = (content) => {
