@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { View, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
@@ -76,7 +76,7 @@ const LearntOverlay = styled(View)`
   border-radius: 10;
 `
 
-export default class ContentPreview extends Component {
+export default class ContentPreview extends PureComponent {
   static propTypes = {
     inverted: PropTypes.bool,
     source: PropTypes.any,
