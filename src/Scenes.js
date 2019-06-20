@@ -19,6 +19,7 @@ import { setDeviceDimensions } from './actions/deviceActions';
 import userActions from './actions/userActions';
 import UserInactivity from 'react-native-user-inactivity';
 import { TIME_FOR_INACTIVITY } from './constants';
+import Loader from './commons/components/Loader/Loader';
 
 addLocaleData([...en, ...es]);
 
@@ -115,7 +116,6 @@ export default class Scenes extends Component {
                     this.showPassiveMessage();
                   }
                 }}
-
               >
                 <RouterWithRedux scenes={routes}/>
               </UserInactivity>
@@ -125,6 +125,6 @@ export default class Scenes extends Component {
       );
     }
 
-    return <AppLoading/>;
+    return <Loader/>;
   }
 }
