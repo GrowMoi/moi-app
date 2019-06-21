@@ -9,9 +9,13 @@ const minDuration = 2000;
 const maxDuration = 3000;
 
 export default class AnimatedTree extends Component {
-
-  state = {
-    topPosition: new Animated.Value(50),
+  constructor(props) {
+    super(props);
+    const topPosition = props.generateTopPosition;
+      this.state = {
+        // topPosition: new Animated.Value(props.isLandscape ? 15 : 30),
+        topPosition: new Animated.Value(props.isLandscape ? topPosition(4.7) : topPosition(5.3)),
+      }
   }
 
   topAnimation;
@@ -21,6 +25,7 @@ export default class AnimatedTree extends Component {
     this.topAnimation = this.createTopAnimation();
     this.initAnimation();
   }
+
 
   initAnimation() {
     if (!this.topAnimation) return;
@@ -34,9 +39,9 @@ export default class AnimatedTree extends Component {
   getNextPosition(current) {
     let value;
     if(this.treeShouldGoUp) {
-      value = current - 20;
+      value = current - 10;
     } else {
-      value = current + 20;
+      value = current + 10;
     }
 
     this.treeShouldGoUp = !this.treeShouldGoUp;
@@ -59,8 +64,11 @@ export default class AnimatedTree extends Component {
   }
 
   render() {
-
+    const { width: containerWidth, isLandscape } = this.props;
     const { topPosition } = this.state;
+
+    const percentageToReduce = isLandscape ? 0.5 : 0.1;
+    const treeWidth = containerWidth - (containerWidth * percentageToReduce);
 
     return (
       <Animated.View
@@ -69,11 +77,11 @@ export default class AnimatedTree extends Component {
           justifyContent: 'center',
           alignItems: 'center',
           top: topPosition,
-          width: 320,
-          height: getHeightAspectRatio(width, height, 320),
+          width: treeWidth,
+          height: getHeightAspectRatio(width, height, treeWidth),
         }}
       >
-        <Image source={{ uri: 'tree_splash' }} style={{ width: 320, height: getHeightAspectRatio(width, height, 320) }} />
+        <Image source={{ uri: 'tree_splash' }} style={{ width: treeWidth, height: getHeightAspectRatio(width, height, treeWidth) }} />
       </Animated.View>
     );
   }

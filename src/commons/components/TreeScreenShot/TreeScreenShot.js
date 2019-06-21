@@ -38,7 +38,7 @@ export default class TreeScreenShot extends Component {
   componentWillReceiveProps() {
     const { profileImage } = this.props;
     if (!profileImage) return;
-    Image.getSize(profileImage, (width, height) => this.setState({ imageWidth: width, imageHeight: height }));
+    // Image.getSize(profileImage, (width, height) => this.setState({ imageWidth: width, imageHeight: height }));
   }
 
   get imageOrientation() {
