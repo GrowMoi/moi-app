@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Modal, Text, ImageBackground, TouchableHighlight, Image, StyleSheet, PixelRatio, Platform } from 'react-native';
+import { View, Text, ImageBackground, TouchableHighlight, Image, StyleSheet, PixelRatio, Platform } from 'react-native';
 import { takeSnapshotAsync } from 'expo';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
@@ -9,6 +9,7 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 
 // Actions
 import userActions from '../../actions/userActions';
+import MoiModal from '../Modal/MoiModal';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -187,7 +188,7 @@ class Certificate extends Component {
     });
 
     return (
-      <Modal {...modalProps}
+      <MoiModal {...modalProps}
         animationType={animationType}
         visible={showModal}
         transparent={true}
@@ -285,7 +286,7 @@ class Certificate extends Component {
 
         </Overlay>
 
-      </Modal>
+      </MoiModal>
     );
   }
 

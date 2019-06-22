@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
-import Modal from 'expo/src/modal/Modal';
 import { Palette, Size } from '../../commons/styles';
 import ContentContainer from './ContentContainer';
 import CloseIcon from './CloseIcon';
 import { Header } from '../../commons/components/Typography';
 import { normalize } from '../../commons/utils';
+import MoiModal from '../Modal/MoiModal';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -33,8 +33,11 @@ export default class ModalEventDescription extends Component {
   render() {
     const { event, open = true, animationType = 'slide', noOverlay = false, onClose } = this.props;
 
+    const title = normalize.capitalizeFirstLetter(event.title);
+    const description = normalize.capitalizeFirstLetter(event.description);
+
     return (
-      <Modal
+      <MoiModal
         visible={open}
         transparent
         supportedOrientations={['portrait']}
@@ -45,15 +48,15 @@ export default class ModalEventDescription extends Component {
           <View style={{ width: this.modalSize.width, height: this.modalSize.height, padding: 5, paddingTop: 10, alignItems: 'center' }}>
             <CloseIcon onPress={onClose} />
             <ContentContainer style={{ width: this.modalSize.width - 25, height: this.modalSize.height - 10}} colorsMargin={['#344F39', '#344F39']} colorsContent={['#74AD50', '#74AD50']}>
-                <Header bolder>{normalize.capitalizeFirstLetter(event.title)}</Header>}
+                  <Header bolder>{title}</Header>
                 <View style={{ width: Size.iconSizeEventDescription, height: Size.iconSizeEventDescription, margin: 10 }}>
                   <Image source={{ uri: event.image }} style={{ width: Size.iconSizeEventDescription, height: Size.iconSizeEventDescription }} />
                 </View>
-                <Header small ellipsizeMode='tail' numberOfLines={3}>{normalize.capitalizeFirstLetter(event.description)}</Header>
+                <Header small ellipsizeMode='tail' numberOfLines={3}>{description}</Header>
             </ContentContainer>
           </View>
         </Overlay>
-      </Modal>
+      </MoiModal>
     );
   }
 };

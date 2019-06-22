@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'expo';
-import { Modal, TouchableOpacity, Animated, Platform } from 'react-native';
+import { TouchableOpacity, Animated, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { Palette, Size } from '../../styles';
+import MoiModal from '../../../containers/Modal/MoiModal';
 
 const Overlay = styled(TouchableOpacity)`
   background-color: ${Palette.black.alpha(0.2).css()};
@@ -86,7 +87,7 @@ export default class ActionSheet extends Component {
       : { transform: this.translateValue.getTranslateTransform() };
 
     return (
-      <Modal
+      <MoiModal
         animationType='none'
         transparent
         visible={visible}
@@ -110,7 +111,7 @@ export default class ActionSheet extends Component {
             )}
           </OptionsBox>
         </Overlay>
-      </Modal>
+      </MoiModal>
     );
   }
 }

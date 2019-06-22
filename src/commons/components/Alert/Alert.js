@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { View, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
-import Modal from 'expo/src/modal/Modal';
 import { Palette } from '../../styles';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import MoiModal from '../../../containers/Modal/MoiModal';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -21,7 +20,7 @@ export default class Alert extends Component {
     const { open, children, touchableProps = {}, animationType='slide', noOverlay=false } = this.props;
 
     return (
-      <Modal
+      <MoiModal
         visible={open}
         transparent
         supportedOrientations={['portrait']}
@@ -33,7 +32,7 @@ export default class Alert extends Component {
           {children}
         </Overlay>
       </TouchableWithoutFeedback>
-      </Modal>
+      </MoiModal>
     );
   }
 };

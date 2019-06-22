@@ -6,6 +6,7 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 import LeaderBoardContent from './LeaderboardContent';
 import CloseIcon from '../Events/CloseIcon';
 import { Palette } from '../../commons/styles';
+import MoiModal from '../Modal/MoiModal';
 
 const Overlay = styled(View)`
   flex: 1;

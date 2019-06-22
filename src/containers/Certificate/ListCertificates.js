@@ -5,12 +5,12 @@ import styled from 'styled-components/native';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { TextBody } from '../../commons/components/Typography';
 import { Palette } from '../../commons/styles';
-import Modal from 'expo/src/modal/Modal';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import ViewTransformer from 'react-native-view-transformer-next';
 import { isTablet } from 'react-native-device-detection';
 // Actions
 import userActions from '../../actions/userActions';
+import MoiModal from '../Modal/MoiModal';
 
 const imageWidth = 190;
 const imageHeight = 130;
@@ -110,7 +110,7 @@ class ListCertificates extends Component {
           keyExtractor={this._keyExtractor}
           numColumns={isTablet ? 2 : 1}
         />}
-        {fullScreenImage && <Modal
+        {fullScreenImage && <MoiModal
           visible={fullScreenImage}
           animationType='fade'
           transparent
@@ -131,7 +131,7 @@ class ListCertificates extends Component {
               />
             </Zoom>
           </Overlay>
-        </Modal>}
+        </MoiModal>}
       </View>
     );
   }

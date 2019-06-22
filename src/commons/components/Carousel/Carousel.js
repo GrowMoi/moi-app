@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import { Entypo } from '@expo/vector-icons';
-import Modal from 'expo/src/modal/Modal';
-import { View, ActivityIndicator, Image, WebView } from 'react-native';
+import { View, ActivityIndicator, Image } from 'react-native';
 import ViewTransformer from 'react-native-view-transformer-next';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4'
 import Swiper from 'react-native-swiper';
 import ContentImage from './ContentImage';
+import MoiModal from '../../../containers/Modal/MoiModal';
 import { Palette, Size } from '../../styles';
 import { colors } from '../../styles/palette';
 
@@ -92,7 +92,7 @@ export default class Carousel extends Component {
           })}
         </Swiper>
 
-        <Modal
+        <MoiModal
           visible={fullScreenImage}
           animationType='fade'
           transparent
@@ -113,7 +113,7 @@ export default class Carousel extends Component {
               />
             </Zoom>}
           </Overlay>
-        </Modal>
+        </MoiModal>
       </ContainerSwiper>
     );
   }

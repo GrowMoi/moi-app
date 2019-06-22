@@ -8,6 +8,7 @@ import { getHeightAspectRatio } from '../../utils';
 import { Palette } from '../../styles';
 import Sound from '../SoundPlayer/Sound';
 import Button from '../Buttons/Button';
+import MoiModal from '../../../containers/Modal/MoiModal';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -56,7 +57,7 @@ class Video extends Component {
     const { source, animationType , visible , dismiss, videoDimensions, width, modalProps, videoProps, onPlaybackStatusUpdate, showCloseIcon, skipButton } = this.props;
 
     return (
-          <Modal {...modalProps}
+          <MoiModal {...modalProps}
             animationType={animationType}
             visible={visible}
             supportedOrientations={['landscape']}
@@ -97,7 +98,7 @@ class Video extends Component {
                 }}
                />}
             </Overlay>
-          </Modal>
+          </MoiModal>
         );
   }
 

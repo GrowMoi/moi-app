@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
-import Modal from 'expo/src/modal/Modal';
 import GenericAlert from '../../commons/components/Alert/GenericAlert';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Palette, Size } from '../../commons/styles';
 import ListEvents from './ListEvents';
 import ContentContainer from './ContentContainer';
@@ -12,6 +10,7 @@ import CloseIcon from './CloseIcon';
 import EventInfo from './EventInfo';
 import userActions from '../../actions/userActions';
 import { Header } from '../../commons/components/Typography';
+import MoiModal from '../Modal/MoiModal';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -117,7 +116,7 @@ export default class EventModal extends Component {
     const { selectedEvent, events, showAlert, alertTitle, alertDescription } = this.state;
 
     return (
-      <Modal
+      <MoiModal
         visible={open}
         transparent
         supportedOrientations={['portrait']}
@@ -141,7 +140,7 @@ export default class EventModal extends Component {
               cancelText={'OK'}
             />}
         </Overlay>
-      </Modal>
+      </MoiModal>
     );
   }
 };
