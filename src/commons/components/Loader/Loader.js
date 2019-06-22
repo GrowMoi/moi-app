@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { ImageBackground, Image, Text, View, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
+import Orientation from 'react-native-orientation';
 import { getHeightAspectRatio } from '../../utils';
 import AnimatedTree from './AminatedTree';
 import ProgressBar from './ProgressBar';
-// import loadingGif from './assets/images/spiner-moi.gif';
-
-const width = 873;
-const height = 1146;
-const screenWidth = Math.round(Dimensions.get('window').width);
-const screenHeight = Math.round(Dimensions.get('window').height);
-const getMinSize = () => screenWidth < screenHeight ? screenWidth - (screenWidth * 0.05) : screenHeight;
-const isLandscape = () => screenWidth > screenHeight;
-
 
 const Background = styled(ImageBackground)`
   width: 100%;
@@ -40,54 +31,62 @@ const TextContainer = styled(View)`
   position: absolute;
   top: ${props => props.topPosition};
   align-items: center;
-
 `;
 
 export default class Loader extends Component {
+  screenWidth;
+  screenHeight;
+
+  getMinSize = () => this.screenWidth < this.screenHeight ? this.screenWidth - (this.screenWidth * 0.05) : this.screenHeight;
+  isLandscape = () => this.screenWidth > this.screenHeight;
+
+  componentWillMount() {
+    Orientation.lockToPortrait();
+    this.setState({showDefaultSpash: false});
+  }
 
   getPositionBasedOnPercent(percent) {
     const inversePercent = 100 - percent;
-    const sizeToRest = screenHeight * (inversePercent / 100)
-    // Math.trunc
-    return screenHeight - sizeToRest;
+    const sizeToRest = this.screenHeight * (inversePercent / 100)
+    return this.screenHeight - sizeToRest;
   }
 
   get widthLogo() {
-    const sizeElements = getMinSize();
-    const percentToReduce = isLandscape() ? 0.7  : 0.3
+    const sizeElements = this.getMinSize();
+    const percentToReduce = this.isLandscape() ? 0.7  : 0.3
     return sizeElements - (sizeElements * percentToReduce);
   }
 
   get widthProgressBar() {
-    const sizeElements = getMinSize();
-    const percentToReduce = isLandscape() ? 0.4  : 0
+    const sizeElements = this.getMinSize();
+    const percentToReduce = this.isLandscape() ? 0.2  : 0
     return sizeElements - (sizeElements * percentToReduce);
   }
 
-  render() {
-    // const topTree = this.getPositionBasedOnPercent(5.3);
-    // console.log("TCL: Loader -> render -> topTree", topTree)
+  get topPositionText() {
+    return this.isLandscape() ? this.getPositionBasedOnPercent(85) : this.getPositionBasedOnPercent(90);
+  }
 
-    // const sizeElements = getMinSize();
-    // const widthLogo = sizeElements - (sizeElements * 0.3);
+  getScreenValues() {
+    this.screenWidth = Math.round(Dimensions.get('window').width);
+    this.screenHeight = Math.round(Dimensions.get('window').height);
+  }
+
+  render() {
+    this.getScreenValues();
 
     return (
       <Background source={{ uri: 'splash' }} resizeMode='stretch'>
-        <AnimatedTree width={getMinSize()} isLandscape={isLandscape()} generateTopPosition={this.getPositionBasedOnPercent} />
+        <AnimatedTree width={this.getMinSize()} isLandscape={this.isLandscape()} generateTopPosition={this.getPositionBasedOnPercent} />
         <LogoMoi source={{ uri: 'logo_moi' }} resizeMode='stretch' width={this.widthLogo} topPosition={this.getPositionBasedOnPercent(70)} />
-        <TextContainer width={this.widthProgressBar} topPosition={this.getPositionBasedOnPercent(85)}>
-          <Text>some text</Text>
+        <TextContainer width={this.widthProgressBar} topPosition={this.topPositionText}>
+          <Text style={{fontSize: this.isLandscape() ? 5 : 7}}>
+            {/* change text */}
+            If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill.
+          </Text>
         </TextContainer>
-
         <ProgressBar width={this.widthProgressBar} {...this.props} />
       </Background>
     );
   }
 }
-
-// ContentListScene.propTypes = {
-//   title: PropTypes.string,
-//   neuronSelected: PropTypes.object,
-//   neuron_id: PropTypes.number,
-//   device: PropTypes.object,
-// };

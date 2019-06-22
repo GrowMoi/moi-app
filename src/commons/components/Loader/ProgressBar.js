@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { View, Text, Animated } from 'react-native';
 import styled from 'styled-components/native';
+import Orientation from 'react-native-orientation';
 
 const BackgroundBar = styled(View)`
   width: ${props => props.width};
@@ -50,18 +50,21 @@ export default class ProgressBar extends Component {
 
   handleAppReady() {
     if (this.state.progress === 100) {
-      this.props.onAppReady();
+      this.goToMainApp();
     } else {
       this.progressAnimation.stop();
       this.duration = 500;
       this.progressAnimation = this.createProgressAnimation();
       this.progressAnimation.start(() => {
-        this.props.onAppReady();
+        this.goToMainApp();
       });
     }
   }
 
-
+  goToMainApp() {
+    Orientation.unlockAllOrientations();
+    this.props.onAppReady();
+  }
 
   createProgressAnimation() {
     const { progressValue } = this.state;
@@ -89,7 +92,7 @@ export default class ProgressBar extends Component {
     return (
       <BackgroundBar width={width}>
         <Animated.View style={{ backgroundColor: '#BEF649', borderRadius: 5, height: 20, position: 'absolute', left: 0, ...style }} />
-        <Text style={{ fontSize: 7, fontWeight: '500', color: progress <= 50 ? 'white' : 'black' }}>{`${progress}%`}</Text>
+        <Text style={{ fontSize: 10, fontWeight: '600', fontStyle: 'italic', color: progress <= 50 ? 'white' : 'black' }}>{`${progress}%`}</Text>
       </BackgroundBar>
     );
   }

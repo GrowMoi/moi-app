@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import { AppLoading, Font, Icon, DangerZone } from 'expo';
+import { Font, Icon, DangerZone } from 'expo';
 import { Text, Dimensions, AsyncStorage, Keyboard } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
@@ -46,10 +46,6 @@ export default class Scenes extends Component {
     Dimensions.addEventListener('change', this.setOrientation);
   }
 
-  // componentDidMount() {
-  //   this.validateAuth();
-  // }
-
   componentWillUnmount() {
     Dimensions.removeEventListener('change', this.setOrientation);
   }
@@ -70,7 +66,6 @@ export default class Scenes extends Component {
     await Font.loadAsync(allFonts);
 
     await Promise.all(cacheImgs);
-    console.log("TCL: Scenes -> preLoadingAssets -> cacheImgs assets loaded")
     this.setState({ assetsLoaded: true, locale });
   }
 
@@ -106,32 +101,31 @@ export default class Scenes extends Component {
   render() {
     const { locale, appIsReady, assetsLoaded, showMainApp } = this.state;
 
-    // if (showMainApp) {
-    //   return (
-    //     <ModalHost>
-    //       <Provider store={store}>
-    //         <IntlProvider
-    //           locale={locale}
-    //           messages={flattenMessages(messages[locale])}
-    //           textComponent={Text}>
-    //           <UserInactivity
-    //             timeForInactivity={TIME_FOR_INACTIVITY}
-    //             onAction={(isActive) => {
-    //               if(!isActive) {
-    //                 Keyboard.dismiss()
-    //                 this.showPassiveMessage();
-    //               }
-    //             }}
-    //           >
-    //             <RouterWithRedux scenes={routes}/>
-    //           </UserInactivity>
-    //         </IntlProvider>
-    //       </Provider>
-    //      </ModalHost>
-    //   );
-    // }
+    if (showMainApp) {
+      return (
+        <ModalHost>
+          <Provider store={store}>
+            <IntlProvider
+              locale={locale}
+              messages={flattenMessages(messages[locale])}
+              textComponent={Text}>
+              <UserInactivity
+                timeForInactivity={TIME_FOR_INACTIVITY}
+                onAction={(isActive) => {
+                  if(!isActive) {
+                    Keyboard.dismiss()
+                    this.showPassiveMessage();
+                  }
+                }}
+              >
+                <RouterWithRedux scenes={routes}/>
+              </UserInactivity>
+            </IntlProvider>
+          </Provider>
+         </ModalHost>
+      );
+    }
 
-    //maybe wait for 2 second to load assets
     return <Loader assetsLoaded={assetsLoaded} appIsReady={appIsReady} onAssetsLoaded={this.validateAuth} onAppReady={this.onAppReady}/>;
   }
 }
