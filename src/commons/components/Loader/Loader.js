@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { ImageBackground, Image, Text, View, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
+import { isTablet } from 'react-native-device-detection';
 import { getHeightAspectRatio } from '../../utils';
 import AnimatedTree from './AminatedTree';
 import ProgressBar from './ProgressBar';
+import size from '../../styles/size';
 
 const Background = styled(ImageBackground)`
   width: 100%;
   height: 100%;
-  padding: 20px;
   align-self: stretch;
   align-items: center;
   justify-content: center;
@@ -42,7 +43,7 @@ export default class Loader extends Component {
 
   componentWillMount() {
     Orientation.lockToPortrait();
-    this.setState({showDefaultSpash: false});
+    this.setState({ showDefaultSpash: false });
   }
 
   getPositionBasedOnPercent(percent) {
@@ -53,18 +54,19 @@ export default class Loader extends Component {
 
   get widthLogo() {
     const sizeElements = this.getMinSize();
-    const percentToReduce = this.isLandscape() ? 0.7  : 0.3
+    // const percentToReduce = this.isLandscape() ? 0.7  : 0.3
+    const percentToReduce = isTablet ? 0.55 : 0.3;
     return sizeElements - (sizeElements * percentToReduce);
   }
 
   get widthProgressBar() {
     const sizeElements = this.getMinSize();
-    const percentToReduce = this.isLandscape() ? 0.2  : 0
+    const percentToReduce = this.isLandscape() ? 0.2 : 0
     return sizeElements - (sizeElements * percentToReduce);
   }
 
   get topPositionText() {
-    return this.isLandscape() ? this.getPositionBasedOnPercent(85) : this.getPositionBasedOnPercent(90);
+    return this.isLandscape() ? this.getPositionBasedOnPercent(85) : this.getPositionBasedOnPercent(93);
   }
 
   getScreenValues() {
@@ -77,15 +79,18 @@ export default class Loader extends Component {
 
     return (
       <Background source={{ uri: 'splash' }} resizeMode='stretch'>
-        <AnimatedTree width={this.getMinSize()} isLandscape={this.isLandscape()} generateTopPosition={this.getPositionBasedOnPercent} />
-        <LogoMoi source={{ uri: 'logo_moi' }} resizeMode='stretch' width={this.widthLogo} topPosition={this.getPositionBasedOnPercent(70)} />
-        <TextContainer width={this.widthProgressBar} topPosition={this.topPositionText}>
-          <Text style={{fontSize: this.isLandscape() ? 5 : 7}}>
-            {/* change text */}
-            If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill.
-          </Text>
-        </TextContainer>
-        <ProgressBar width={this.widthProgressBar} {...this.props} />
+        <Background source={{ uri: 'fondo_blanco' }} resizeMode='stretch'>
+          <AnimatedTree width={this.getMinSize()} isLandscape={this.isLandscape()} generateTopPosition={this.getPositionBasedOnPercent} />
+          <LogoMoi source={{ uri: 'logo_moi' }} resizeMode='stretch' width={this.widthLogo} topPosition={this.getPositionBasedOnPercent(78)} />
+          <TextContainer width={this.widthProgressBar} topPosition={this.topPositionText}>
+            <Text style={{ fontSize: size.fontSizeLoginImage, color: '#30225E' }}>
+              {/* change text */}
+              {/* If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill. */}
+              © copyright moi, 2019
+            </Text>
+          </TextContainer>
+          <ProgressBar width={this.widthProgressBar} {...this.props} />
+        </Background>
       </Background>
     );
   }

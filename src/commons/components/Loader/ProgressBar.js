@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, Animated } from 'react-native';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
+import size from '../../styles/size';
+import { Size } from '../../styles';
 
 const BackgroundBar = styled(View)`
   width: ${props => props.width};
   background-color: #336869;
   border-radius: 5;
-  height: 20;
+  height: ${size.bottomBarHeight};
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -43,7 +45,7 @@ export default class ProgressBar extends Component {
 
   handleAssetsLoaded() {
     this.props.onAssetsLoaded();
-    this.duration = 5000;
+    this.duration = 10000;
     this.progressAnimation = this.createProgressAnimation();
     this.progressAnimation.start();
   }
@@ -91,8 +93,8 @@ export default class ProgressBar extends Component {
 
     return (
       <BackgroundBar width={width}>
-        <Animated.View style={{ backgroundColor: '#BEF649', borderRadius: 5, height: 20, position: 'absolute', left: 0, ...style }} />
-        <Text style={{ fontSize: 10, fontWeight: '600', fontStyle: 'italic', color: progress <= 50 ? 'white' : 'black' }}>{`${progress}%`}</Text>
+        <Animated.View style={{ backgroundColor: '#BEF649', borderRadius: 5, height: size.bottomBarHeight, position: 'absolute', left: 0, ...style }} />
+        <Text style={{ fontSize: Size.fontBarLoader, fontWeight: '700', fontStyle: 'italic', color: progress <= 50 ? 'white' : '#366D68' }}>{`${progress}%`}</Text>
       </BackgroundBar>
     );
   }
