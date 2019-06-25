@@ -25,13 +25,15 @@ public class AppConstants {
   static {
     List<Constants.EmbeddedResponse> embeddedResponses = new ArrayList<>();
 
-    
-        
-        
+
+
+
+
         // ADD EMBEDDED RESPONSES HERE
         // START EMBEDDED RESPONSES
         embeddedResponses.add(new Constants.EmbeddedResponse("https://exp.host/@mvinan/moi", "assets://shell-app-manifest.json", "application/json"));
-        embeddedResponses.add(new Constants.EmbeddedResponse("https://d1wp6m56sqw74a.cloudfront.net/%40mvinan%2Fmoi%2F0.7.2%2F93a0549934f5f1b65f17ad566eec34e8-30.0.0-android.js", "assets://shell-app.bundle", "application/javascript"));
+        embeddedResponses.add(new Constants.EmbeddedResponse("https://d1wp6m56sqw74a.cloudfront.net/%40mvinan%2Fmoi%2F0.7.2%2F18ef2ff9a5b1106289ea5e5a755b3609-30.0.0-android.js", "assets://shell-app.bundle", "application/javascript"));
+        // embeddedResponses.add(new Constants.EmbeddedResponse("assets://shell-app.bundle", "assets://shell-app.bundle", "application/javascript"));
         // END EMBEDDED RESPONSES
     EMBEDDED_RESPONSES = embeddedResponses;
   }
