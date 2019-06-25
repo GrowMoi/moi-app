@@ -37,3 +37,13 @@ Install all dependencies: `yarn` or `npm i`
 
 ### WIP:Storybook
   comming soon
+
+### Generate android build
+
+Run:
+
+```
+react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/shell-app.bundle --assets-dest android/app/src/main/res/
+```
+
+After that, generate the signed apk from android studio (don't update the gradle plugin)

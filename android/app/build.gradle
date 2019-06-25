@@ -15,6 +15,11 @@ repositories {
   maven { url 'https://maven.fabric.io/public' }
 }
 
+ext.react = [
+  bundleInDebug     : false,
+  bundleInRelease   : true
+]
+
 android {
   compileSdkVersion 27
   buildToolsVersion '27.0.3'
@@ -22,8 +27,8 @@ android {
   defaultConfig {
     applicationId 'com.moisociallearning.moiapp'
     targetSdkVersion 26
-    versionCode 3
-    versionName '0.3.3'
+    versionCode 6
+    versionName '0.3.6'
     ndk {
       abiFilters 'armeabi-v7a', 'x86'
     }
