@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/luisgonzalez/Projects/moi/moi-app/android/app/build/intermediates/incremental/mergeDevMinSdkDevKernelDebugResources/merged.dir/values-v14/values-v14.xml",
+            "outputFile": "/Users/luis/Projects/moi/moi-app/android/app/build/intermediates/incremental/mergeDevMinSdkDevKernelDebugResources/merged.dir/values-v14/values-v14.xml",
             "map": [
                 {
-                    "source": "/Users/luisgonzalez/.gradle/caches/transforms-1/files-1.1/CreditCardEntry-1.4.8.10.aar/970dfdf77a4b2d10fc682b8e7b0c0e86/res/values-v14/values-v14.xml",
+                    "source": "/Users/luis/.gradle/caches/transforms-1/files-1.1/CreditCardEntry-1.4.8.10.aar/f008534892c923fbc69dfa05fa24188a/res/values-v14/values-v14.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
