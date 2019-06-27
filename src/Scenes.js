@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import { Font, Icon, DangerZone } from 'expo';
-import { Text, Dimensions, AsyncStorage, Keyboard } from 'react-native';
+import Expo, { Font, Icon, DangerZone } from 'expo';
+import { Text, Dimensions, AsyncStorage, Keyboard, Alert } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -44,6 +44,7 @@ export default class Scenes extends Component {
     await this.preLoadingAssets();
     await this.setPassiveMessageSettings();
     Dimensions.addEventListener('change', this.setOrientation);
+    this.checkUpdates();
   }
 
   componentWillUnmount() {
@@ -57,7 +58,7 @@ export default class Scenes extends Component {
   setPassiveMessageSettings = async () => {
     const passiveMessage = await AsyncStorage.getItem('passiveMessage');
     const passiveMessageBoolean = passiveMessage !== null ? passiveMessage === 'true' : true;
-    store.dispatch(userActions.setCurrentPassiveMessageSettings({show:  passiveMessageBoolean}));
+    store.dispatch(userActions.setCurrentPassiveMessageSettings({ show: passiveMessageBoolean }));
   }
 
   async preLoadingAssets() {
@@ -95,7 +96,18 @@ export default class Scenes extends Component {
   }
 
   onAppReady = () => {
-    this.setState({showMainApp: true});
+    this.setState({ showMainApp: true });
+  }
+
+  async checkUpdates() {
+    try {
+      const update = await Expo.Updates.checkForUpdateAsync();
+      if(update.isAvailable) {
+        //do nothing
+      }
+    } catch (e) {
+      // handle or log error
+    }
   }
 
   render() {
@@ -126,6 +138,6 @@ export default class Scenes extends Component {
       );
     }
 
-    return <Loader assetsLoaded={assetsLoaded} appIsReady={appIsReady} onAssetsLoaded={this.validateAuth} onAppReady={this.onAppReady}/>;
+    return <Loader assetsLoaded={assetsLoaded} appIsReady={appIsReady} onAssetsLoaded={this.validateAuth} onAppReady={this.onAppReady} />;
   }
 }

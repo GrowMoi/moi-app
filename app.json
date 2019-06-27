@@ -9,7 +9,9 @@
       "resizeMode": "cover"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "checkAutomatically":  "ON_ERROR_RECOVERY",
+      "enabled": false
     },
     "packagerOpts": {
       "assetExts": [
