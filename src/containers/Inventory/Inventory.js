@@ -285,7 +285,7 @@ export default class Inventory extends Component {
   _keyExtractor = (item, index) => index.toString();
 
   get itemWidth() {
-    return isTablet ? 140 : 90;
+    return isTablet ? 125 : 90;
   }
 
   _renderMainItem = ({ item }) => {
