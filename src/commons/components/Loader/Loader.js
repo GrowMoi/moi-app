@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { ImageBackground, Image, Text, View, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
-import { isTablet } from 'react-native-device-detection';
 import { getHeightAspectRatio } from '../../utils';
 import AnimatedTree from './AminatedTree';
 import ProgressBar from './ProgressBar';
 import size from '../../styles/size';
+import deviceUtils from '../../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const Background = styled(ImageBackground)`
   width: 100%;

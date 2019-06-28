@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, ImageBackground, Image } from 'react-native';
 import styled from 'styled-components/native';
-import { isTablet } from 'react-native-device-detection';
 import { LANDSCAPE, PORTRAIT } from '../../../constants';
+import deviceUtils from '../../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const TreeContainer = styled(ImageBackground)`
   justify-content: center;

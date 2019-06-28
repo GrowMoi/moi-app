@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 import { View, FlatList, StyleSheet, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { isTablet } from 'react-native-device-detection';
 import { Size, Palette } from '../../commons/styles';
 import LeaderRow from '../../commons/components/LeaderRow/LeaderRow';
 import { normalize, object } from '../../commons/utils';
@@ -15,6 +14,9 @@ import profilesActions from '../../actions/profileActions';
 import treeActions from '../../actions/treeActions';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import leaderboardActions from '../../actions/leaderboardActions';
+import deviceUtils from '../../commons/utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const ContentContainer = styled(View)`
   width: ${isTablet ? '85%' : '96%'};

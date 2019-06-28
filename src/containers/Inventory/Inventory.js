@@ -21,7 +21,6 @@ import Item from '../../commons/components/Item/Item';
 import { TextBody } from '../../commons/components/Typography';
 import AlertComponent from '../../commons/components/Alert/Alert';
 import GenericAlert from '../../commons/components/Alert/GenericAlert';
-import { isTablet } from 'react-native-device-detection';
 
 // Viñetas
 import vineta_1 from '../../../assets/videos/vineta_1.mp4';
@@ -38,6 +37,9 @@ import ListCertificates from '../Certificate/ListCertificates';
 import { PORTRAIT } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import ModalEventDescription from '../Events/ModalEventDescription';
+import deviceUtils from '../../commons/utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const StyledContentBox = styled(ContentBox)`
   margin-bottom: ${Size.spaceMedium};

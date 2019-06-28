@@ -1,4 +1,6 @@
-import { isTablet } from 'react-native-device-detection';
+import deviceUtils from "./commons/utils/device-utils";
+
+const isTablet = deviceUtils.isTablet();
 
 export const LANDSCAPE = 'LANDSCAPE';
 export const PORTRAIT = 'PORTRAIT';

@@ -6,7 +6,6 @@ import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
 import { Actions } from 'react-native-router-flux';
-import { isTablet } from 'react-native-device-detection';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
@@ -26,6 +25,9 @@ import { Sound } from '../SoundPlayer';
 import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
 import { Size } from '../../styles';
+import deviceUtils from '../../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const styles = StyleSheet.create({
   treeView: {

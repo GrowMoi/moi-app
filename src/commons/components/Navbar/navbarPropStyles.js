@@ -6,7 +6,9 @@ import { Font } from '../../styles';
 import styled from 'styled-components';
 import ProfileImageButton from './ProfileImageButton';
 import { Size } from '../../styles';
-import { isTablet } from 'react-native-device-detection';
+import deviceUtils from '../../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const IconContainer = styled(TouchableOpacity)`
   width:  ${Size.hamburgerContainerWidth};

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styled, { css } from 'styled-components/native';
-import { isTablet } from 'react-native-device-detection';
 import { TextBody } from '../Typography';
 import { ContentBox } from '../ContentComponents';
+import deviceUtils from '../../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const TabsContainer = styled(View)`
   padding-top: 5;

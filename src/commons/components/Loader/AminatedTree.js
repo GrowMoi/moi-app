@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Animated, Image } from 'react-native';
-import { isTablet } from 'react-native-device-detection';
 import { getHeightAspectRatio } from '../../utils';
+import deviceUtils from '../../utils/device-utils';
 
 const width = 873;
 const height = 1146;
 
 const minDuration = 2000;
 const maxDuration = 3000;
+const isTablet = deviceUtils.isTablet();
 
 export default class AnimatedTree extends Component {
   state = {

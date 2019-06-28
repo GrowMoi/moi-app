@@ -10,7 +10,7 @@ const deviceUtils = {
     const aspectRatio = width / height;
     correctHeight = height / aspectRatio;
     percent = (100 * correctHeight) / height;
-    if (isTablet) percent += (4.55 - aspectRatio);
+    if (deviceUtils.isTablet()) percent += (4.55 - aspectRatio);
 
     return percent;
   },
