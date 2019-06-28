@@ -1,4 +1,7 @@
-import { isIphoneX, isTablet } from 'react-native-device-detection';
+import { isIphoneX } from 'react-native-device-detection';
+import deviceUtils from '../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 export default {
   fontBody: isTablet ? 22 : 15,

@@ -1,4 +1,5 @@
 import { isAndroid, isTablet } from 'react-native-device-detection';
+import { PixelRatio } from 'react-native';
 import { LANDSCAPE } from '../../constants';
 
 const deviceUtils = {
@@ -16,6 +17,17 @@ const deviceUtils = {
 
   isAndroidLandscape(dimensions) {
     return isAndroid && (dimensions.orientation === LANDSCAPE);
+  },
+
+  isTablet() {
+    const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
+    console.log("TCL: isTablet -> pixelRatio", pixelRatio)
+    if (!isAndroid) return isTablet;
+    if (pixelRatio > 1.6) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
 

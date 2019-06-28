@@ -11,9 +11,15 @@ import userActions from '../../../actions/userActions';
 import tutorActions from '../../../actions/tutorActions';
 import withSound from '../../utils/withSound';
 import { Size } from '../../styles';
+import deviceUtils from '../../utils/device-utils';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
+
+const Separator = styled(View)`
+  width: ${props => props.width};
+`;
+
 const Button = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(wCommonBtn, hCommonBtn, props.width)};
@@ -23,7 +29,6 @@ const Button = styled(ImageBackground)`
   position: relative;
   overflow: visible;
   z-index: ${props => props.zIndex || 0};
-
 `;
 
 const ContainerButton = styled(View)`
@@ -190,11 +195,18 @@ class BottomBarWithButtons extends Component {
     );
   }
 
+  get separatorWidth () {
+    const { width, readButton } = this.props;
+    let percentage = readButton ? 50 : 30;
+     return width / percentage;
+  }
+
   renderBottomBar() {
     const { width, readButton } = this.props;
 
     const minWidth = 320;
     const deviceIsBig = width > minWidth;
+    const isTablet = deviceUtils.isTablet();
 
     const marginLeftButton = {
       task: readButton ? Size.taskButtonLeftRead : Size.taskButtonContainerLeft,
@@ -218,18 +230,22 @@ class BottomBarWithButtons extends Component {
 
         <Container>
           <ButtonsContainer>
-            <ContainerButton zIndex={2} width={deviceIsBig ? Size.taskButtonContainerWidth : 105} left={marginLeftButton.task} bottom={deviceIsBig ? Size.taskButtonBottom : 6.5}>
+            <ContainerButton zIndex={2} width={deviceIsBig ? Size.taskButtonContainerWidth : 105} left={isTablet ? 0 : marginLeftButton.task} bottom={deviceIsBig ? Size.taskButtonBottom : 6.5}>
               {this.renderBadge()}
               <Button width={deviceIsBig ? Size.taskButtonContainerWidth : 105} source={{uri: 'boton_inf_1'}} resizeMode='stretch'>
                 {this.renderButtonWithSound(TaskButton, elementProps.task, this.pressTaskButton, 'tasks')}
               </Button>
             </ContainerButton>
 
-            <Button zIndex={1} width={deviceIsBig ? Size.searchButtonContainerWidth : 104} source={{uri: 'boton_inf_2'}} resizeMode='stretch' left={marginLeftButton.search} bottom={deviceIsBig ? 7.5 : 7}>
+            {deviceUtils.isTablet() && <Separator width={this.separatorWidth}/>}
+
+            <Button zIndex={1} width={deviceIsBig ? Size.searchButtonContainerWidth : 104} source={{uri: 'boton_inf_2'}} resizeMode='stretch' left={isTablet ? 0 : marginLeftButton.search} bottom={deviceIsBig ? 7.5 : 7}>
               {this.renderButtonWithSound(SearchButton, elementProps.search, this.pressSearchButton, 'search')}
             </Button>
 
-            <Button zIndex={0} width={deviceIsBig ? Size.randomButtonContainerWidth : 105} source={{uri: 'boton_inf_3'}} resizeMode='stretch' left={marginLeftButton.random} bottom={deviceIsBig ? Size.randomButtonContainerBottom : 7.5}>
+            {deviceUtils.isTablet() && <Separator width={this.separatorWidth}/>}
+
+            <Button zIndex={0} width={deviceIsBig ? Size.randomButtonContainerWidth : 105} source={{uri: 'boton_inf_3'}} resizeMode='stretch' left={isTablet ? 0 : marginLeftButton.random} bottom={deviceIsBig ? Size.randomButtonContainerBottom : 7.5}>
               {this.renderButtonWithSound(RandomButton, elementProps.random, this.goToRandomContent, 'random')}
             </Button>
           </ButtonsContainer>
