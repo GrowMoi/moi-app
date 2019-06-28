@@ -6,9 +6,10 @@ import QuizPicker from './QuizPicker';
 import { Header } from '../Typography';
 import Button from '../Buttons/Button';
 import withSound from '../../utils/withSound';
+import { Size } from '../../styles';
 
 const Container = styled(View)`
-  width: 240px
+  width: ${Size.containerQuizWidth};
 `;
 
 const QuizPickerContainer = styled(ScrollView)`
@@ -23,6 +24,7 @@ const Thumbnail = styled(Image)`
 `;
 
 const ButtonContainer = styled(View)`
+  margin-top: 15;
   justify-content: flex-end;
   flex-direction: row;
   align-self: stretch;

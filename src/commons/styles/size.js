@@ -102,4 +102,7 @@ export default {
 
   //loader view
   fontBarLoader: isTablet ? 23 : 13,
+
+  //quiz
+  containerQuizWidth: isTablet ? 480 : 240,
 };
