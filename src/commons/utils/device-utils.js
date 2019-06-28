@@ -21,7 +21,6 @@ const deviceUtils = {
 
   isTablet() {
     const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
-    console.log("TCL: isTablet -> pixelRatio", pixelRatio)
     if (!isAndroid) return isTablet;
     if (pixelRatio > 1.6) {
       return false;
