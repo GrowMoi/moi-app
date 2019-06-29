@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'expo';
-import { TouchableOpacity, Animated, Platform } from 'react-native';
+import { TouchableOpacity, Animated, Platform, Modal } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { Palette, Size } from '../../styles';
@@ -86,8 +86,10 @@ export default class ActionSheet extends Component {
       ? { transform: [{ scale: nearFar }] }
       : { transform: this.translateValue.getTranslateTransform() };
 
+    const ActionSheetModal = Platform.OS === 'android' ? MoiModal : Modal;
+
     return (
-      <MoiModal
+      <ActionSheetModal
         animationType='none'
         transparent
         visible={visible}
@@ -111,7 +113,7 @@ export default class ActionSheet extends Component {
             )}
           </OptionsBox>
         </Overlay>
-      </MoiModal>
+      </ActionSheetModal>
     );
   }
 }
