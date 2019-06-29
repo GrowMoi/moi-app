@@ -340,7 +340,7 @@ export default class Tree extends Component {
     if (zoomScale === 1) {
       return 1.3;
     } else {
-      return 2;
+      return 1.5;
     }
   }
 
@@ -367,7 +367,7 @@ export default class Tree extends Component {
 
     const zoomContainerStyle = isTablet ? {
       position: 'absolute',
-      height: zoomScale === 1 ? '87%' : '67%',
+      height: zoomScale === 1 ? '87%' : '80%',
       top: 0,
       left: 0,
       right: 0,
