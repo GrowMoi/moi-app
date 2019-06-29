@@ -98,7 +98,7 @@ export default {
   buttonWidth: isTablet ? 150 : 130,
   loginImageWidth: isTablet ? 60 : 40,
   fontSizeLoginImage: isTablet ? 18 : 10,
-  fontSizeInput: isTablet ? 20 : 13,
+  fontSizeInput: isTablet ? 24 : 16,
 
   //loader view
   fontBarLoader: isTablet ? 23 : 13,
