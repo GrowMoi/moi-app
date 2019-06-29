@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'expo';
-import { TouchableOpacity, Animated, Platform, Modal } from 'react-native';
+import { TouchableOpacity, Animated, Platform, Modal, ScrollView } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { Palette, Size } from '../../styles';
@@ -88,6 +88,19 @@ export default class ActionSheet extends Component {
 
     const ActionSheetModal = Platform.OS === 'android' ? MoiModal : Modal;
 
+    let optionsView = options.length > 0 && options.map((option, i) => (
+      <Option key={i} onPress={() => !!option.fn && option.fn(option.label)}>
+        <OptionIcon name={option.icon} size={iconSize} />
+        <TextBody>{option.label}</TextBody>
+      </Option>
+    ));
+
+    if(options.length > 4) {
+      optionsView = <ScrollView style={{height: '30%'}}>
+        {optionsView}
+      </ScrollView>
+    }
+
     return (
       <ActionSheetModal
         animationType='none'
@@ -99,12 +112,7 @@ export default class ActionSheet extends Component {
       >
         <Overlay onPress={this.dismiss} activeOpacity={1}>
           <OptionsBox style={currentAnim}>
-            {options.length > 0 && options.map((option, i) => (
-              <Option key={i} onPress={() => !!option.fn && option.fn()}>
-                <OptionIcon name={option.icon} size={iconSize} />
-                <TextBody>{option.label}</TextBody>
-              </Option>
-            ))}
+            {optionsView}
             {hasCancelOption && (
               <CancelOption onPress={this.dismiss}>
                 <OptionIcon name='md-close' size={iconSize} />
