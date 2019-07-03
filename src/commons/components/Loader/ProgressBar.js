@@ -35,20 +35,20 @@ export default class ProgressBar extends Component {
   componentWillReceiveProps(newProps) {
     const { assetsLoaded, appIsReady } = this.props;
     if (!assetsLoaded && newProps.assetsLoaded) {
-      this.handleAssetsLoaded();
-    }
-
-    if (!appIsReady && newProps.appIsReady) {
       this.handleAppReady();
     }
+
+    // if (!appIsReady && newProps.appIsReady) {
+    //   this.handleAppReady();
+    // }
   }
 
-  handleAssetsLoaded() {
-    this.props.onAssetsLoaded();
-    this.duration = 10000;
-    this.progressAnimation = this.createProgressAnimation();
-    this.progressAnimation.start();
-  }
+  // handleAssetsLoaded() {
+  //   this.props.onAssetsLoaded();
+  //   this.duration = 10000;
+  //   this.progressAnimation = this.createProgressAnimation();
+  //   this.progressAnimation.start();
+  // }
 
   handleAppReady() {
     if (this.state.progress === 100) {

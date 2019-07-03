@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Router } from 'react-native-router-flux';
-import Expo, { Font, Icon, DangerZone } from 'expo';
+import Expo, { Font, Icon, DangerZone, AppLoading } from 'expo';
 import { Text, Dimensions, AsyncStorage, Keyboard, Alert } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
@@ -41,7 +41,8 @@ export default class Scenes extends Component {
 
   async componentWillMount() {
     await this.setOrientation();
-    await this.preLoadingAssets();
+    await this.validateAuth();
+    // await this.preLoadingAssets();
     await this.setPassiveMessageSettings();
     Dimensions.addEventListener('change', this.setOrientation);
     this.checkUpdates();
@@ -61,7 +62,7 @@ export default class Scenes extends Component {
     store.dispatch(userActions.setCurrentPassiveMessageSettings({ show: passiveMessageBoolean }));
   }
 
-  async preLoadingAssets() {
+  preLoadingAssets = async () => {
     const locale = await this.getCurrentLocale();
     const cacheImgs = await cacheImages(allImages);
     await Font.loadAsync(allFonts);
@@ -113,6 +114,10 @@ export default class Scenes extends Component {
   render() {
     const { locale, appIsReady, assetsLoaded, showMainApp } = this.state;
 
+    if(!appIsReady) {
+      return <AppLoading />;
+    }
+
     if (showMainApp) {
       return (
         <ModalHost>
@@ -138,6 +143,6 @@ export default class Scenes extends Component {
       );
     }
 
-    return <Loader assetsLoaded={assetsLoaded} appIsReady={appIsReady} onAssetsLoaded={this.validateAuth} onAppReady={this.onAppReady} />;
+    return <Loader onInit={this.preLoadingAssets} assetsLoaded={assetsLoaded} onAppReady={this.onAppReady} />;
   }
 }
