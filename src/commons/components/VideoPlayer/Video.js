@@ -7,6 +7,8 @@ import Orientation from 'react-native-orientation';
 import { getHeightAspectRatio } from '../../utils';
 import { Palette } from '../../styles';
 import Sound from '../SoundPlayer/Sound';
+import Button from '../Buttons/Button';
+import MoiModal from '../../../containers/Modal/MoiModal';
 
 const Overlay = styled(View)`
   flex: 1;
@@ -45,11 +47,17 @@ class Video extends Component {
     }
   }
 
+  onDismiss = () => {
+    const { dismiss, onPlaybackStatusUpdate} = this.props;
+    if(dismiss) dismiss();
+    if(onPlaybackStatusUpdate) onPlaybackStatusUpdate({didJustFinish: true});
+  }
+
   render() {
-    const { source, animationType , visible , dismiss, videoDimensions, width, modalProps, videoProps, onPlaybackStatusUpdate, showCloseIcon } = this.props;
+    const { source, animationType , visible , dismiss, videoDimensions, width, modalProps, videoProps, onPlaybackStatusUpdate, showCloseIcon, skipButton } = this.props;
 
     return (
-          <Modal {...modalProps}
+          <MoiModal {...modalProps}
             animationType={animationType}
             visible={visible}
             supportedOrientations={['landscape']}
@@ -77,8 +85,20 @@ class Video extends Component {
                   height: !!videoDimensions ? getHeightAspectRatio(videoDimensions.width, videoDimensions.height, width) : '',
                 }}
               />
+              {skipButton && <Button
+                title={'Saltar'}
+                onPress={this.onDismiss}
+                style={{
+                  position: 'absolute',
+                  bottom: 5,
+                  right: 10,
+                  backgroundColor: '#E8C37C',
+                  borderWidth: 0,
+                  borderRadius: 10
+                }}
+               />}
             </Overlay>
-          </Modal>
+          </MoiModal>
         );
   }
 

@@ -6,10 +6,13 @@ import { Font } from '../../styles';
 import styled from 'styled-components';
 import ProfileImageButton from './ProfileImageButton';
 import { Size } from '../../styles';
+import deviceUtils from '../../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const IconContainer = styled(TouchableOpacity)`
-  width: 60px;
-  height: 38px;
+  width:  ${Size.hamburgerContainerWidth};
+  height: ${Size.hamburgerContainerHeigth};
   margin-left: -15px;
   justify-content: center;
   align-items: center;
@@ -22,7 +25,7 @@ const toggleDrawer = () => Actions.refresh({ key: 'moiDrawer', open: value => !v
 const ProfileButton = () => <ProfileImageButton />; //eslint-disable-line
 const HamburgerButton = () => (
     <IconContainer onPress={toggleDrawer}>
-      <Icon.Ionicons color="#FFF" name="md-menu" size={30} />
+      <Icon.Ionicons color="#FFF" name="md-menu" size={Size.hamburgerSize} />
     </IconContainer>
   ); //eslint-disable-line
 
@@ -42,7 +45,7 @@ export default {
 
   titleStyle: {
     color: '#FFF',
-    fontSize: 20,
+    fontSize: Size.fontHeader,
     width: width < 320 ? 150 : 180,
     fontFamily: Font.museo('bolder'),
     ...Platform.select({

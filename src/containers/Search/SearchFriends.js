@@ -1,26 +1,20 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import {
   FlatList,
-  Alert,
-  Keyboard,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
-import UserInactivity from 'react-native-user-inactivity'
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 
 // Components
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import SearchInput from './SearchInput';
-import { ContentBox, ContentPreview } from '../../commons/components/ContentComponents';
+import { ContentBox } from '../../commons/components/ContentComponents';
 import { Size } from '../../commons/styles';
-import { normalize } from '../../commons/utils';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
-import { TextBody } from '../../commons/components/Typography';
 import UserPreview from '../../commons/components/UserPreview';
 import EmptyState from '../../commons/components/EmptyState';
 
@@ -28,16 +22,18 @@ import EmptyState from '../../commons/components/EmptyState';
 import searchActions from '../../actions/searchActions';
 import profilesActions from '../../actions/profileActions';
 import treeActions from '../../actions/treeActions';
-import { TIME_FOR_INACTIVITY } from '../../constants';
+import userActions from '../../actions/userActions';
 
 @connect(store => ({
   device: store.device,
   search: store.search,
   scene: store.routes.scene,
+  showPassiveMessage: store.user.showPassiveMessage,
 }), {
   getUsersAsync: searchActions.getUsersAsync,
   getPublicProfileAsync: profilesActions.loadProfileAsync,
   loadTreeAsync: treeActions.loadTreeAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
 })
 export default class SearchFriends extends PureComponent {
   state = {
@@ -45,7 +41,6 @@ export default class SearchFriends extends PureComponent {
     page: 0,
     dataSource: [],
     searching: false,
-    isOpenPassiveMessage: false,
   }
 
   currentScene = '';
@@ -76,7 +71,6 @@ export default class SearchFriends extends PureComponent {
   onPressProfile = async (item) => {
     const { getPublicProfileAsync, loadTreeAsync } = this.props;
 
-    // console.log(this.state.dataSource);
     if(item.username === undefined) return;
 
     this.setDataSource(item);
@@ -129,8 +123,8 @@ export default class SearchFriends extends PureComponent {
   }
 
   render() {
-    const { loading, dataSource, searching, isOpenPassiveMessage } = this.state;
-    const { device, scene } = this.props;
+    const { loading, dataSource, searching } = this.state;
+    const { device, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
@@ -171,35 +165,25 @@ export default class SearchFriends extends PureComponent {
     }
 
     return (
-      <UserInactivity
-        timeForInactivity={TIME_FOR_INACTIVITY}
-        onAction={(isActive) => {
-          if(!isActive && this.currentScene === 'searchFriends') {
-            Keyboard.dismiss()
-            this.setState({ isOpenPassiveMessage: !isActive })
-          }
-        }}
-      >
-        <MoiBackground>
-          {contentBox}
-          {loading && <Preloader />}
-          <Navbar />
-          <BottomBarWithButtons
-            readButton={false}
-            width={device.dimensions.width}
-          />
+      <MoiBackground>
+        {contentBox}
+        {loading && <Preloader />}
+        <Navbar />
+        <BottomBarWithButtons
+          readButton={false}
+          width={device.dimensions.width}
+        />
 
-          <PassiveMessageAlert
-            isOpenPassiveMessage={isOpenPassiveMessage}
-            touchableProps={{
-              onPress: () => {
-                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
-              }
-            }}
-            message='Busca a tus amigos por su nombre. Podrás conocer su árbol y su progreso en Moi'
-          />
-        </MoiBackground>
-      </UserInactivity>
+        <PassiveMessageAlert
+          isOpenPassiveMessage={showPassiveMessage && this.currentScene === 'searchFriends'}
+          touchableProps={{
+            onPress: () => {
+              showPassiveMessageAsync(false);
+            }
+          }}
+          message='Busca a tus amigos por su nombre. Podrás conocer su árbol y su progreso en Moi'
+        />
+      </MoiBackground>
     )
   }
 };

@@ -1,6 +1,10 @@
+import deviceUtils from "./commons/utils/device-utils";
+
+const isTablet = deviceUtils.isTablet();
+
 export const LANDSCAPE = 'LANDSCAPE';
 export const PORTRAIT = 'PORTRAIT';
-export const DRAWER_OFFSET = 220;
+export const DRAWER_OFFSET = isTablet ? 320 : 220;
 export const FLORECIDA = 'florecida';
 export const TIME_FOR_INACTIVITY = 12000;
 // export const URL_BASE = __DEV__ ? 'http://moi-backend.growmoi.com' : 'http://moi-backend.growmoi.com';

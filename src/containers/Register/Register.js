@@ -12,6 +12,7 @@ import {
   View,
   Alert,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from 'react-native';
 
 import userActions from './../../actions/userActions';
@@ -26,6 +27,8 @@ import Preloader from '../../commons/components/Preloader/Preloader';
 // Login Images
 import loginImages from '../Login/loginImages';
 import LoginImage from '../Login/LoginImage';
+import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
+import array from '../../commons/utils/array';
 
 const RegisterContainer = styled(View)`
   flex: 1;
@@ -90,7 +93,7 @@ export default class Register extends Component {
     state = {
         username: '',
         email: '',
-        age: '',
+        year: '',
         school: '',
         country: '',
         city: '',
@@ -100,6 +103,7 @@ export default class Register extends Component {
         validating: false,
         validForm: false,
         loading: false,
+        showSelectYear: false,
     }
 
     handleFormContainer = ref => this.formContainer = ref;
@@ -156,8 +160,13 @@ export default class Register extends Component {
         if (user.authenticate) Actions.moiDrawer();
     }
 
+    generateAge(year) {
+      const currentYear = (new Date()).getFullYear();
+      return currentYear - Number(year);
+    }
+
     submit = async () => {
-        const { username, email, age, school, country, city, authorization_key } = this.state;
+        const { username, email, year, school, country, city, authorization_key } = this.state;
 
         if(!authorization_key) {
             Alert.alert('Necesita seleccionar una imagen');
@@ -172,7 +181,7 @@ export default class Register extends Component {
           await registerAsync({
             username,
             email,
-            age,
+            age: this.generateAge(year),
             school,
             country,
             city,
@@ -213,11 +222,26 @@ export default class Register extends Component {
         Actions.login({type: ActionConst.RESET});
     }
 
+    toggleSelectYearDropdown = () => {
+      this.setState(prevState => ({showSelectYear: !prevState.showSelectYear}))
+    }
+
+    onSelectYear = year => {
+      this.setState({year});
+      this.toggleSelectYearDropdown();
+    }
+
+    generateYears() {
+      const currentYear = (new Date()).getFullYear();
+      const years = array.range(1990, currentYear, 1);
+      return years.map(year => ({label: year.toString(), fn: this.onSelectYear}));
+    }
+
     render() {
         const { device } = this.props;
-        const { showingSelectionKey, authorization_key: key, validating, validForm, loading } = this.state;
+        const { showingSelectionKey, authorization_key: key, validating, validForm, loading, showSelectYear } = this.state;
 
-        const { username, email, age, school, country, city } = this.state;
+        const { username, email, year, school, country, city } = this.state;
 
         const { width } = device.dimensions;
 
@@ -261,13 +285,14 @@ export default class Register extends Component {
                                                     value={email}
                                                     onChangeText={text => this.onChangeInput('email', text)}
                                                 />
-                                                <Input
-                                                    placeholder='edad'
-                                                    keyboardType='numeric'
-                                                    autoCorrect={false}
-                                                    value={age}
-                                                    onChangeText={text => this.onChangeInput('age', text)}
-                                                />
+                                                <TouchableOpacity onPress={this.toggleSelectYearDropdown} activeOpacity={1}>
+                                                  <Input
+                                                    placeholder='año de nacimiento'
+                                                    pointerEvents="none"
+                                                    editable={false}
+                                                    value={year}
+                                                  />
+                                                </TouchableOpacity>
                                                 <Input
                                                     placeholder='escuela'
                                                     keyboardType='default'
@@ -334,6 +359,12 @@ export default class Register extends Component {
                                 </Form>
                             </Animatable.View>
                         </FormContainer>}
+                        <ActionSheet
+                          hasCancelOption
+                          visible={showSelectYear}
+                          options={this.generateYears()}
+                          dismiss={this.toggleSelectYearDropdown}
+                      />
                         {loading && <Preloader />}
                     </RegisterContainer>
                 </MoiBackground>

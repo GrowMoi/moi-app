@@ -162,7 +162,7 @@ export default class SideMenu extends Component {
               if(onPressOption) onPressOption();
               Actions.refresh({ key: 'tree', type: 'reset' });
             }}>
-              <TreeScreenShot width={DRAWER_OFFSET - 2} height={230} treeBackground={'background_tree_drawer'} profileImage={profile.tree_image} style={{margin: 10}} frame={'menu_side_frame'} />
+              <TreeScreenShot width={DRAWER_OFFSET - 2} height={Size.heigthTreeContainer} treeBackground={'background_tree_drawer'} profileImage={profile.tree_image} style={{margin: 10}} frame={'menu_side_frame'} />
             </TouchableOpacity>
           </TreContainer>
         </ScrollView>

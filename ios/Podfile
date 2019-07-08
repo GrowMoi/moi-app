@@ -102,8 +102,6 @@ target 'moi' do
 
   pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
 
-  pod 'react-native-youtube', :path => '../node_modules/react-native-youtube'
-
   pod 'RNSound', :path => '../node_modules/react-native-sound'
 
   pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'

@@ -10,9 +10,16 @@ import Badge from '../Badge/Badge';
 import userActions from '../../../actions/userActions';
 import tutorActions from '../../../actions/tutorActions';
 import withSound from '../../utils/withSound';
+import { Size } from '../../styles';
+import deviceUtils from '../../utils/device-utils';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
+
+const Separator = styled(View)`
+  width: ${props => props.width};
+`;
+
 const Button = styled(ImageBackground)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(wCommonBtn, hCommonBtn, props.width)};
@@ -22,7 +29,6 @@ const Button = styled(ImageBackground)`
   position: relative;
   overflow: visible;
   z-index: ${props => props.zIndex || 0};
-
 `;
 
 const ContainerButton = styled(View)`
@@ -58,7 +64,7 @@ const BottomBarContainer = styled(View)`
 
 const BottomBar = styled(ImageBackground)`
   width: ${props => props.width};
-  height: 39;
+  height: ${Size.bottomBarButtonsHeigth};
   flex-direction: row;
   overflow: visible;
 `;
@@ -111,17 +117,24 @@ const BlueButton = styled(Image)`
   notifications: store.user.notifications,
   details: store.tutor.details,
   scene: store.routes.scene,
+  events: store.user.events,
+  eventsWeek: store.user.eventsWeek,
+
 }), {
     getNotificationsAsync: userActions.getNotificationsAsync,
     setReloadRandomContents: userActions.setReloadRandomContents,
     getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
+    getEventInProgressAsync: userActions.getEventInProgressAsync,
+    getEventsWeekAsync: userActions.getEventsWeekAsync,
   })
 class BottomBarWithButtons extends Component {
 
   async componentWillMount() {
-    const { getNotificationsAsync, getTutorDetailsAsync } = this.props;
+    const { getNotificationsAsync, getTutorDetailsAsync, getEventInProgressAsync, getEventsWeekAsync } = this.props;
     await getNotificationsAsync();
     await getTutorDetailsAsync();
+    await getEventInProgressAsync();
+    await getEventsWeekAsync();
   }
 
   pressTaskButton = () => {
@@ -168,18 +181,24 @@ class BottomBarWithButtons extends Component {
   };
 
   renderBadge = () => {
-    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 } } = this.props;
+    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, events, eventsWeek } = this.props;
 
-    const counterNotifications = total_count + recommendation_contents_pending;
+    const counterNotifications = total_count + recommendation_contents_pending + events.length + Object.keys(eventsWeek).length;
 
     if (counterNotifications == 0) return null;
 
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: 1, right: 12 }}>
         <Badge value={counterNotifications}
-          size={16} />
+          size={Size.badgeTaskSize} />
       </View>
     );
+  }
+
+  get separatorWidth () {
+    const { width, readButton } = this.props;
+    let percentage = readButton ? 50 : 30;
+     return width / percentage;
   }
 
   renderBottomBar() {
@@ -187,18 +206,20 @@ class BottomBarWithButtons extends Component {
 
     const minWidth = 320;
     const deviceIsBig = width > minWidth;
+    const isTablet = deviceUtils.isTablet();
 
     const marginLeftButton = {
-      task: readButton ? 39 : 15,
+      task: readButton ? Size.taskButtonLeftRead : Size.taskButtonContainerLeft,
       search: readButton ? 13 : -5,
-      random: readButton ? -14 : -25,
+      random: readButton ? Size.randomButtonLeftRead : Size.randomButtonContainerLeft,
     };
 
+
     const elementProps = {
-      task: { width: deviceIsBig ? 63 : 57, source: {uri: 'task_button'}, marginLeft: deviceIsBig ? 33 : 28, bottom: -2 },
-      random: { width: deviceIsBig ? 65 : 55, source: {uri: 'random_button'}, marginLeft: deviceIsBig ? 38 : 32, bottom: -1 },
-      search: { width: deviceIsBig ? 63 : 56, source: {uri: 'search_button'}, marginLeft: 28, bottom: deviceIsBig ? 0 : -2 },
-      read: { width: deviceIsBig ? 72 : 65, source: {uri: 'lightgreen_button'}, marginLeft: deviceIsBig ? 10 : 7, bottom: deviceIsBig ? 2 : 2 },
+      task: { width: deviceIsBig ? Size.taskButtonWidth : 57, source: {uri: 'task_button'}, marginLeft: deviceIsBig ? Size.taskButtonLeft : 28, bottom: -2 },
+      search: { width: deviceIsBig ? Size.searchButtonWidth : 56, source: {uri: 'search_button'}, marginLeft: Size.searchButtonLeft, bottom: deviceIsBig ? Size.searchButtonBottom : -2 },
+      random: { width: deviceIsBig ? Size.randomButtonWidth : 55, source: {uri: 'random_button'}, marginLeft: deviceIsBig ? Size.randomButtonLeft : 32, bottom: Size.randomButtonBottom },
+      read: { width: deviceIsBig ? Size.readButtonWidth : 65, source: {uri: 'lightgreen_button'}, marginLeft: deviceIsBig ? Size.readButtonLeft : 7, bottom: 2 },
     };
 
     return (
@@ -209,25 +230,29 @@ class BottomBarWithButtons extends Component {
 
         <Container>
           <ButtonsContainer>
-            <ContainerButton zIndex={2} width={deviceIsBig ? 120 : 105} left={marginLeftButton.task} bottom={deviceIsBig ? 7 : 6.5}>
+            <ContainerButton zIndex={2} width={deviceIsBig ? Size.taskButtonContainerWidth : 105} left={isTablet ? 0 : marginLeftButton.task} bottom={deviceIsBig ? Size.taskButtonBottom : 6.5}>
               {this.renderBadge()}
-              <Button width={deviceIsBig ? 120 : 105} source={{uri: 'boton_inf_1'}} resizeMode='stretch'>
+              <Button width={deviceIsBig ? Size.taskButtonContainerWidth : 105} source={{uri: 'boton_inf_1'}} resizeMode='stretch'>
                 {this.renderButtonWithSound(TaskButton, elementProps.task, this.pressTaskButton, 'tasks')}
               </Button>
             </ContainerButton>
 
-            <Button zIndex={1} width={deviceIsBig ? 114 : 104} source={{uri: 'boton_inf_2'}} resizeMode='stretch' left={marginLeftButton.search} bottom={deviceIsBig ? 7.5 : 7}>
+            {deviceUtils.isTablet() && <Separator width={this.separatorWidth}/>}
+
+            <Button zIndex={1} width={deviceIsBig ? Size.searchButtonContainerWidth : 104} source={{uri: 'boton_inf_2'}} resizeMode='stretch' left={isTablet ? 0 : marginLeftButton.search} bottom={deviceIsBig ? 7.5 : 7}>
               {this.renderButtonWithSound(SearchButton, elementProps.search, this.pressSearchButton, 'search')}
             </Button>
 
-            <Button zIndex={0} width={deviceIsBig ? 125 : 105} source={{uri: 'boton_inf_3'}} resizeMode='stretch' left={marginLeftButton.random} bottom={deviceIsBig ? 8 : 7.5}>
+            {deviceUtils.isTablet() && <Separator width={this.separatorWidth}/>}
+
+            <Button zIndex={0} width={deviceIsBig ? Size.randomButtonContainerWidth : 105} source={{uri: 'boton_inf_3'}} resizeMode='stretch' left={isTablet ? 0 : marginLeftButton.random} bottom={deviceIsBig ? Size.randomButtonContainerBottom : 7.5}>
               {this.renderButtonWithSound(RandomButton, elementProps.random, this.goToRandomContent, 'random')}
             </Button>
           </ButtonsContainer>
         </Container>
 
         {readButton &&
-          <ReadFrame width={deviceIsBig ? 101 : 90} source={{uri: 'boton_inf_blue'}} resizeMode='stretch' bottom={deviceIsBig ? 19 : 17}>
+          <ReadFrame width={deviceIsBig ? Size.readButtonContainerWidth : 90} source={{uri: 'boton_inf_blue'}} resizeMode='stretch' bottom={deviceIsBig ? Size.readButtonContainerBottom : 17}>
             {this.renderButtonWithSound(BlueButton, elementProps.read, this.readContent, 'learnContent')}
           </ReadFrame>
         }

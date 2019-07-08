@@ -3,10 +3,11 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import ItemTasks from './ItemTasks';
 import SubItemRow from './SubItemRow';
 import { TextBody } from '../../../commons/components/Typography';
-import { Palette } from './../../../commons/styles';
+import { Palette, Size } from './../../../commons/styles';
 import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
 import Badge from '../../../commons/components/Badge/Badge';
+import eventsUtils from '../../Events/events-utils';
 
 // Actions
 import userActions from '../../../actions/userActions';
@@ -68,13 +69,15 @@ class NotificationTabContainer extends PureComponent {
     }
   }
 
-  renderBadge = ({ meta: { total_count = 0 } }) => {
-    if (total_count == 0) return null;
+  renderBadge() {
+    const { data: { meta: { total_count = 0 } }, events } = this.props;
+    const totalNotifications = total_count + Object.keys(events).length;
+    if (totalNotifications === 0) return null;
 
     return (
-      <View style={{ position: 'absolute', zIndex: 8, top: -8, right: 0 }}>
-        <Badge value={total_count}
-          size={18} />
+      <View style={{ position: 'absolute', zIndex: 8, top: -8, right:  Size.paddingRightBadge}}>
+        <Badge value={totalNotifications}
+          size={Size.badgeTaskSize} />
       </View>
     );
   }
@@ -83,12 +86,25 @@ class NotificationTabContainer extends PureComponent {
     return Array.isArray(item);
   }
 
+  isSuperEvent = item => {
+    return item[0] === 'super_event';
+  }
+
   _renderItem = ({ item }) => {
     const { onClickItem = () => null } = this.props;
 
     const isEvent = this.isEvent(item);
-    const title = isEvent ? `Eventos` : item.title;
-    const description = isEvent ? `(${item[0]})` : item.description;
+
+    let title;
+    let description;
+
+    if (isEvent) {
+      title = this.isSuperEvent(item) ? 'Super Evento' : 'Eventos';
+      description = this.isSuperEvent(item) ? '' : `(${item[0]})`;
+    } else {
+      title = item.title;
+      description = item.description;
+    }
 
     return (
       <SubItemRow
@@ -102,9 +118,13 @@ class NotificationTabContainer extends PureComponent {
 
   get events() {
     const { events } = this.props;
-    let arrayEventts = Object.entries(events);
+    let arrayEvents = Object.entries(events);
 
-    return arrayEventts.filter(item => item[1].length > 0)
+    if (arrayEvents[0][0] === 'super_event') {
+      arrayEvents[0][1] = eventsUtils.handleSuperEvents(arrayEvents[0][1]);
+    }
+
+    return arrayEvents.filter(item => item[1].length > 0)
   }
 
   render() {
@@ -113,7 +133,7 @@ class NotificationTabContainer extends PureComponent {
 
     return (
       <View style={styles.tasks}>
-        {this.renderBadge(data)}
+        {this.renderBadge()}
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />
         {open && (
           <View style={styles.subItemContainer}>
@@ -137,7 +157,7 @@ class NotificationTabContainer extends PureComponent {
 const styles = StyleSheet.create(
   {
     tasks: {
-      width: '95%',
+      width: '100%',
     },
     emptyText: {
       paddingHorizontal: 10,

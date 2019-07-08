@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { View, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 import { TextBody, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
+import size from '../../styles/size';
 
 const RowContainer = styled(View)`
   flex-direction: row;
@@ -75,7 +76,7 @@ const LearntOverlay = styled(View)`
   border-radius: 10;
 `
 
-export default class ContentPreview extends Component {
+export default class ContentPreview extends PureComponent {
   static propTypes = {
     inverted: PropTypes.bool,
     source: PropTypes.any,
@@ -104,7 +105,7 @@ export default class ContentPreview extends Component {
 
     const content = (
       <Content key='row-description'>
-        <Header ellipsizeMode='tail' numberOfLines={3} customSize={18} bolder>{title}</Header>
+        <Header ellipsizeMode='tail' numberOfLines={3} customSize={size.fontContentMinimized} bolder>{title}</Header>
         <TextBody small secondary>{subtitle}</TextBody>
         <TextBody small ellipsizeMode='tail' numberOfLines={4}>{description}</TextBody>
       </Content>

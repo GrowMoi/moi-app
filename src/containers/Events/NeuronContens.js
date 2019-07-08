@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { View, FlatList, Image, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { Header } from '../../commons/components/Typography';
+import { Size } from '../../commons/styles';
 
 const TextContainer = styled(View)`
   height: 25;
 `;
 
 export default class NeuronContents extends Component {
+
+  get data() {
+    const { contents } = this.props;
+    return contents && contents.length > 4 ? contents.slice(0, 4) : contents;
+  }
 
   getNeuronColor(color) {
     switch (color) {
@@ -36,11 +42,11 @@ export default class NeuronContents extends Component {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 50,
+        width: Size.neuronContainerSizeEventInfo,
       }}>
-        <Image style={{ width: 15, height: 15 }} source={{uri: neuron}} />
+        <Image style={{ width: Size.neuronSizeEventInfo, height: Size.neuronSizeEventInfo }} source={{ uri: neuron }} />
         <TextContainer>
-          <Header color={'white'} customSize={8}>{item.neuron}</Header>
+          <Header color={'white'} customSize={Size.titleNeuronSizeEventInfo}>{item.neuron}</Header>
         </TextContainer>
 
       </View>
@@ -50,7 +56,6 @@ export default class NeuronContents extends Component {
   _keyExtractor = item => item.content_id.toString();
 
   render() {
-    const { contents } = this.props;
 
     return (
       <View style={{
@@ -68,9 +73,9 @@ export default class NeuronContents extends Component {
             justifyContent: 'center'
           }}
           ItemSeparatorComponent={({ highlighted }) => (
-            <View style={{ width: 12, height: 1, backgroundColor: 'white', marginTop: 7 }}></View>
+            <View style={{ width: 12, height: 1, backgroundColor: 'white', marginTop: Size.marginTopSeparatorNeurons }}></View>
           )}
-          data={contents}
+          data={this.data}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
           horizontal

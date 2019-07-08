@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Modal from 'expo/src/modal/Modal';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
 import { Palette } from '../../styles'
-import loadingGif from '../../../../assets/images/loading.gif';
+import loadingGif from '../../../../assets/images/spiner-moi.gif';
+import MoiModal from '../../../containers/Modal/MoiModal';
 
 const PreloaderContainer = styled(View)`
   flex: 1;
@@ -44,14 +44,14 @@ class Preloader extends Component {
     if(notFullScreen) return loader;
     return (
       <PreloaderContainer style={style}>
-        <Modal
+        <MoiModal
           animationType='fade'
           transparent={true}
           visible={modalIsVisible}
           supportedOrientations={['portrait', 'landscape']}
         >
           {loader}
-        </Modal>
+        </MoiModal>
       </PreloaderContainer>
     );
   }
@@ -63,7 +63,7 @@ Preloader.propTypes = {
 };
 
 Preloader.defaultProps = {
-  size: 40,
+  size: 60,
 };
 
 export default Preloader;

@@ -126,6 +126,11 @@ const api = {
       const res = await client.get(endpoint, { user_id });
       return res;
     },
+    async getLeaderboardSuperEvent(user_id, event_id) {
+      const endpoint = `/api/leaderboard?event_id=${event_id}&page=1&per_page=20&user_id=${user_id}`;
+      const res = await client.get(endpoint);
+      return res;
+    },
   },
 
   contents: {
@@ -330,6 +335,12 @@ const api = {
 
     async takeEvent(eventId) {
       const endpoint = `/api/users/events/${eventId}/take`;
+      const res = await client.post(endpoint, { id: eventId });
+      return res;
+    },
+
+    async takeSuperEvent(eventId) {
+      const endpoint = `/api/users/events/${eventId}/take_super_event`;
       const res = await client.post(endpoint, { id: eventId });
       return res;
     },

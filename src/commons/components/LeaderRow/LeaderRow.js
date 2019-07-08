@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import { Palette } from '../../styles';
+import { Palette, Size } from '../../styles';
 import { Header, TextBody } from '../Typography';
 import MoIcon from '../MoIcon/MoIcon';
 
 const Container = styled(TouchableOpacity)`
   flex: 1;
-  height: 40;
+  height: ${Size.heigthLeaderRow};
   background-color: ${Palette.white.alpha(0.4).css()};
   align-self: stretch;
   margin-horizontal: 10;
@@ -40,9 +40,9 @@ const Seconds = styled(TextBody)`
   width: 35;
 `;
 
-const LeaderRow = ({ playerName, grade, seconds, onPress = () => null }) => {
+const LeaderRow = ({ playerName, grade, seconds, style, onPress = () => null }) => {
   return (
-    <Container onPress={onPress}>
+    <Container style={style} onPress={onPress}>
       <Icon name='profile' size={30}/>
       <PlayerName numberOfLines={1} inverted heavy>{playerName}</PlayerName>
       <Grade inverted bolder>{grade}</Grade>

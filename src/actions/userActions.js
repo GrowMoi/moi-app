@@ -53,6 +53,13 @@ const setPassiveMessageSettings = passiveMessageSettings => ({
   payload: passiveMessageSettings,
 })
 
+const showPassiveMessageAsync = (show = true) => async (dispatch) => {
+  dispatch({
+    type: actionTypes.SHOW_PASSIVE_MESSAGE,
+    payload: show
+  });
+}
+
 const storeFinalTestResult = finalTestResult => ({
   type: actionTypes.STORE_FINAL_TEST_RESULT,
   payload: finalTestResult,
@@ -622,6 +629,17 @@ const takeEventAsync = (eventId) => async (dispatch) => {
   }
 }
 
+const takeSuperEventAsync = (eventId) => async (dispatch) => {
+  try {
+    const res = await api.events.takeSuperEvent(eventId);
+    const { headers, data } = res;
+    dispatch(setHeaders(headers));
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 
 const getEventInProgressAsync = () => async (dispatch) => {
   try {
@@ -673,6 +691,7 @@ export default {
   signOutAsync,
   setCurrentSettings,
   setCurrentPassiveMessageSettings,
+  showPassiveMessageAsync,
   updateSettingsAsync,
   getNotificationsAsync,
   getStoreNotesAsync,
@@ -692,6 +711,7 @@ export default {
   setReloadRandomContents,
   getEventsTodayAsync,
   takeEventAsync,
+  takeSuperEventAsync,
   getEventInProgressAsync,
   getEventsWeekAsync,
   setDrawerState,

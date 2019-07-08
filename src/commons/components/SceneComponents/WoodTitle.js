@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { ImageBackground } from 'react-native';
 import { Header } from '../Typography';
 import { getHeightAspectRatio } from '../../utils';
+import { Size } from '../../styles';
 
 const LoginTitle = styled(ImageBackground)`
   width: ${props => props.width};
@@ -17,7 +18,7 @@ const WoodTitle = ({ title }) => {
   return (
     <LoginTitle
       source={{uri: 'boton_login'}}
-      width={150}
+      width={Size.buttonWidth + 20}
     >
       <Header
         ellipsizeMode='tail'

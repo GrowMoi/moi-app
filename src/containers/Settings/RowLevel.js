@@ -9,9 +9,9 @@ import { Description } from '../../commons/components/Typography';
 import Switch from './Switch';
 
 const Row = styled(ImageBackground)`
-  width: 270;
+  width: 100%;
   align-items: center;
-  height: 40;
+  height: ${Size.heigthRowLevel};
   justify-content: center;
 `;
 
@@ -25,18 +25,18 @@ const RowContainer = styled(View)`
 `;
 
 const SliderContainer = styled(View)`
-  width: 100;
+  width: 50%;
 `;
 
 const DescriptionContainer = styled(View)`
-  width: 125;
+  width: 50%;
 `;
 
 const RowLevel = ({ title, onValueChange, kind, level, toggle = null, toggleSwitch }) => {
 
   const levelToShow = level ? level - 1: null;
   return (
-    <Row source={toggle === null ? {uri: 'row_levels'} : null} resizeMode='contain'>
+    <Row source={toggle === null ? {uri: 'row_levels'} : null} resizeMode='stretch'>
       <RowContainer>
         <DescriptionContainer>
           <Description ellipsizeMode='tail' numberOfLines={1} color={colors.cream.css()}>{title}</Description>

@@ -3,56 +3,46 @@ import PropTypes from 'prop-types';
 import { ImageBackground, PixelRatio } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
-import { isAndroid, isTablet } from 'react-native-device-detection';
 import { LANDSCAPE } from '../../../constants';
+import { setHeightPercent } from '../../../actions/deviceActions';
+import deviceUtils from '../../utils/device-utils';
 
 const Background = styled(ImageBackground)`
 position: relative;
   width: 100%;
-  height: ${props => props.isAndroidLandscape ? props.heightPercent + '%' : '100%'};
+  height: ${props => props.heightPercent + '%'};
 `;
 
-@connect(store => ({ device: store.device }))
+@connect(store => ({
+  device: store.device
+}),
+{
+  setHeightPercent: setHeightPercent,
+})
 export default class MoiBackground extends Component {
 
-  // shouldComponentUpdate(newProps, newState) {
-  //   return newProps.device !== this.props.device;
-  // }
+  shouldSetHeightPercent = true;
+
+  getPercentHeight() {
+    const { device } = this.props;
+    let heightPercent = device.heightPercent;
+    const isAndroidLandscape = deviceUtils.isAndroidLandscape(device.dimensions);
+    if(isAndroidLandscape && !heightPercent) {
+      heightPercent = deviceUtils.getHeigthPercentage(device.dimensions)
+      this.props.setHeightPercent(heightPercent);
+    }
+
+    return isAndroidLandscape ? heightPercent : 100;
+  }
 
   render() {
     const { device, style } = this.props;
-    const { width, height, orientation } = device.dimensions;
+    const { orientation } = device.dimensions;
     const currentImage = orientation === LANDSCAPE ? 'background_tree_landscape' : 'background_tree_portrait';
-    // console.log("TCL: MoiBackground -> render -> orientation", orientation)
-
-
-
-    let correctHeight = height;
-    const isAndroidLandscape = isAndroid && (orientation === LANDSCAPE);
-
-    // console.log("TCL: MoiBackground -> render -> isAndroidLandscape", isAndroidLandscape)
-    let percent = 100;
-
-    if (isAndroidLandscape) {
-
-      // console.log("TCL: MoiBackground -> render -> height", height)
-
-      const aspectRatio = width / height;
-      // console.log("TCL: MoiBackground -> render -> aspectRatio", aspectRatio)
-
-
-      correctHeight = height / aspectRatio;
-      // console.log("TCL: MoiBackground -> render -> correctHeight", correctHeight)
-      // percent = aspectRatio > 1.6 ? (100 * correctHeight) / height : 100;
-      percent = (100 * correctHeight) / height;
-      if(isTablet) percent += (4.55 - aspectRatio);
-      // console.log("TCL: MoiBackground -> render -> percent", percent)
-
-    }
-
+    const percentHeight = this.getPercentHeight();
 
     return (
-      <Background style={style} width={width} height={correctHeight} isAndroidLandscape={isAndroidLandscape} heightPercent={percent} source={{uri: currentImage}} resizeMode='stretch'>
+      <Background style={style} heightPercent={percentHeight} source={{ uri: currentImage }} resizeMode='stretch'>
         {this.props.children}
       </Background>
     );

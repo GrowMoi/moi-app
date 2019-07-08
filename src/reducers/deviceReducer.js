@@ -9,6 +9,7 @@ const initialState = {
     height: null,
     orientation: null,
   },
+  heightPercent: null,
 };
 
 const dimensions = (state = initialState.dimensions, action) => {
@@ -27,6 +28,16 @@ const dimensions = (state = initialState.dimensions, action) => {
   }
 };
 
+const heightPercent =  (state = initialState.heightPercent, action) => {
+  switch (action.type) {
+    case actionTypes.SET_HEIGTH_PERCENT:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   dimensions,
+  heightPercent,
 });

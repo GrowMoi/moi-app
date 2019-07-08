@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { isTablet } from 'react-native-device-detection';
 import WoodLabel from '../WoodLabel/WoodLabel';
 import neuronActions from '../../../actions/neuronActions'
 import Preloader from '../Preloader/Preloader';
+import deviceUtils from '../../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
+
 @connect(state => ({
   label: state.neuron.currentlyPressed,
   tree: state.tree.userTree,

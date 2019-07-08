@@ -33,13 +33,13 @@ public final class R {
     public static final class drawable {
         public static final int background_white = 0x7f080072;
         public static final int cc_back = 0x7f080091;
-        public static final int ic_card_amex = 0x7f080151;
-        public static final int ic_card_diners = 0x7f080152;
-        public static final int ic_card_discover = 0x7f080153;
-        public static final int ic_card_jcb = 0x7f080154;
-        public static final int ic_card_mastercard = 0x7f080155;
-        public static final int ic_card_placeholder = 0x7f080156;
-        public static final int ic_card_visa = 0x7f080157;
+        public static final int ic_card_amex = 0x7f080153;
+        public static final int ic_card_diners = 0x7f080154;
+        public static final int ic_card_discover = 0x7f080155;
+        public static final int ic_card_jcb = 0x7f080156;
+        public static final int ic_card_mastercard = 0x7f080157;
+        public static final int ic_card_placeholder = 0x7f080158;
+        public static final int ic_card_visa = 0x7f080159;
     }
     public static final class id {
         public static final int cc_card = 0x7f090048;
@@ -50,7 +50,7 @@ public final class R {
         public static final int cc_form_layout = 0x7f09004d;
         public static final int cc_four_digits = 0x7f09004e;
         public static final int cc_zip = 0x7f09004f;
-        public static final int text_helper = 0x7f090192;
+        public static final int text_helper = 0x7f090191;
     }
     public static final class string {
         public static final int CreditCardFormCardNumberHint = 0x7f0f0000;

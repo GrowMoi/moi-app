@@ -19,6 +19,7 @@ const initialState = {
   passiveMessageSettings: {
       show: true,
   },
+  showPassiveMessage: false,
   notifications: {
     notifications: [],
     meta: {},
@@ -168,6 +169,17 @@ const passiveMessageSettings = (state = initialState.passiveMessageSettings, act
   switch (action.type) {
     case actionTypes.SET_PASSIVE_MESSAGE_SETTINGS:
       return action.payload;
+
+    default:
+      return state;
+  }
+}
+
+const showPassiveMessage = (state = initialState.showPassiveMessage, action) => {
+  switch (action.type) {
+    case actionTypes.SHOW_PASSIVE_MESSAGE:
+      return action.payload;
+
     default:
       return state;
   }
@@ -275,6 +287,7 @@ const user = combineReducers({
   achievements,
   settings,
   passiveMessageSettings,
+  showPassiveMessage,
   notifications,
   notes,
   finalTestResult,

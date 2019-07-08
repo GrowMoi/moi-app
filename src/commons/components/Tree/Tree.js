@@ -6,7 +6,6 @@ import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
 import { Actions } from 'react-native-router-flux';
-import { isTablet } from 'react-native-device-detection';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
@@ -26,6 +25,9 @@ import { Sound } from '../SoundPlayer';
 import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
 import { Size } from '../../styles';
+import deviceUtils from '../../utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const styles = StyleSheet.create({
   treeView: {
@@ -76,6 +78,7 @@ export default class Tree extends Component {
     showModalNewAchievements: false,
     showEventCompleted: false,
     eventTitle: '',
+    eventType: '',
     achievements: null,
     showLabelLayer: true,
   }
@@ -102,7 +105,7 @@ export default class Tree extends Component {
     const { userTree } = this.props;
     const newUserTree = newProps.userTree;
 
-    if (Object.keys(userTree).length !== 0 && userTree !== newUserTree) {
+    if (Object.keys(userTree).length !== 0 && userTree.meta.current_learnt_contents !== newUserTree.meta.current_learnt_contents) {
       setTimeout(() => { this.takeScreenShotTree() }, 2000);
     }
   }
@@ -136,14 +139,12 @@ export default class Tree extends Component {
   canPlaySound = true;
 
   onViewTransformed = zoomInfo => {
-    const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
     if (this.prevZoomInfo === null) {
       this.prevZoomInfo = zoomInfo;
     }
 
     if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
     if (this.canPlaySound) {
-      // setNeuronLabelInfo({});
       this.setState({showLabelLayer: false});
       Sound.playOverBackgroundSound('treeActions', true, 1);
       this.canPlaySound = false;
@@ -157,9 +158,9 @@ export default class Tree extends Component {
 
   onTransformGestureReleased = (zoomInfo) => {
     const { setZoomTreeInfo, setNeuronLabelInfo } = this.props;
+    Sound.stopOverBackgroundSound();
     setZoomTreeInfo(zoomInfo);
     setTimeout(() => {
-      Sound.stopOverBackgroundSound();
       this.canPlaySound = true;
       setNeuronLabelInfo({});
       this.setState({showLabelLayer: true});
@@ -293,13 +294,17 @@ export default class Tree extends Component {
   }
 
   validateResultQuiz() {
-    const { quizResult: { achievements = [], event = {} } } = this.props;
+    const { quizResult: { achievements = [], event = {}, super_event = {} } } = this.props;
     if (achievements.length > 0) {
       this.showModalNewAchievements(achievements);
     }
 
     if (event.completed) {
-      this.showEventCompletedModal(event.info.title);
+      this.showEventCompletedModal(event.info.title, 'evento');
+    }
+
+    if(super_event.completed) {
+      this.showEventCompletedModal(super_event.info.event_achievement.title, 'super evento');
     }
 
     if (achievements.length === 0 && !event.completed) {
@@ -318,8 +323,8 @@ export default class Tree extends Component {
     this.setState({ showModalNewAchievements: false });
   }
 
-  showEventCompletedModal = (title) => {
-    this.setState({ showEventCompleted: true, eventTitle: title });
+  showEventCompletedModal = (title, type) => {
+    this.setState({ showEventCompleted: true, eventTitle: title, eventType: type });
   }
 
   hideEventCompletedModal = () => {
@@ -335,12 +340,12 @@ export default class Tree extends Component {
     if (zoomScale === 1) {
       return 1.3;
     } else {
-      return 2;
+      return 1.5;
     }
   }
 
   render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, achievements, showLabelLayer } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, eventType, achievements, showLabelLayer } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
 
     if (quizResult && (!showModalNewAchievements && !showEventCompleted)) {
@@ -362,7 +367,7 @@ export default class Tree extends Component {
 
     const zoomContainerStyle = isTablet ? {
       position: 'absolute',
-      height: zoomScale === 1 ? '87%' : '67%',
+      height: zoomScale === 1 ? '87%' : '80%',
       top: 0,
       left: 0,
       right: 0,
@@ -375,7 +380,7 @@ export default class Tree extends Component {
       <TreeContainer>
         <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
-        {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} onHideModal={this.hideEventCompletedModal} />}
+        {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} eventType={eventType} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
           <View style={{
             transform: [{ scale: minZoom.scale }],
@@ -402,6 +407,7 @@ export default class Tree extends Component {
           width={width}
           onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
           showCloseIcon={false}
+          skipButton
         />}
       </TreeContainer>
     );

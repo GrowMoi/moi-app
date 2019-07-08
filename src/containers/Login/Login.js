@@ -13,7 +13,6 @@ import {
   Alert,
   TouchableWithoutFeedback,
 } from 'react-native';
-import UserInactivity from 'react-native-user-inactivity';
 
 import userActions from './../../actions/userActions';
 import { WoodTitle } from '../../commons/components/SceneComponents';
@@ -27,7 +26,6 @@ import MoiBackground from '../../commons/components/Background/MoiBackground';
 import loginImages from './loginImages';
 import LoginImage from './LoginImage';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
-import { TIME_FOR_INACTIVITY } from '../../constants';
 
 const LoginContainer = styled(View)`
   flex: 1;
@@ -62,7 +60,7 @@ const Form = styled(View)`
 `;
 
 const InputsContainer = styled(View)`
-  height: 135;
+  height: ${Size.buttonWidth + 5};
   justify-content: center;
   flex-shrink: 1;
 `;
@@ -79,10 +77,12 @@ const AnimatableContainerLoginKeys = Animatable.createAnimatableComponent(Contai
 @connect(store => ({
   user: store.user.userData,
   device: store.device,
+  showPassiveMessage: store.user.showPassiveMessage,
 }), {
   loginAsync: userActions.loginAsync,
   validateToken: userActions.validateToken,
   signOutAsync: userActions.signOutAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
 })
 export default class Login extends PureComponent {
   state = {
@@ -92,7 +92,6 @@ export default class Login extends PureComponent {
     showingUsername: true,
     currentSelected: '',
     validating: false,
-    isOpenPassiveMessage: false,
   }
   handleFormContainer = ref => this.formContainer = ref;
 
@@ -147,113 +146,102 @@ export default class Login extends PureComponent {
   }
 
   render() {
-    const { device } = this.props;
+    const { device, showPassiveMessage, showPassiveMessageAsync } = this.props;
     const { showingSelectionKey, authorization_key: key, login, validating } = this.state;
     const { width } = device.dimensions;
-    const { isOpenPassiveMessage } = this.state;
 
     return (
-      <UserInactivity
-        timeForInactivity={TIME_FOR_INACTIVITY}
-        onAction={(isActive) => {
-          if(!isActive) {
-            Keyboard.dismiss()
-            this.setState({ isOpenPassiveMessage: !isActive })
-          }
-        }}
+      <TouchableWithoutFeedback
+        onPress={() => Keyboard.dismiss()}
       >
-        <TouchableWithoutFeedback
-          onPress={() => Keyboard.dismiss()}
-        >
-          <MoiBackground>
-            <LoginContainer>
-              <BackgroundTree
-                source={{uri: 'fondo_arbol'}}
-                width={width}
-              />
-              <FormContainer
-                behavior="padding"
-                width={width - Size.spaceXLarge}
-                keyboardVerticalOffset={Size.spaceLarge}
-              >
-                <Animatable.View ref={this.handleFormContainer}>
-                  <StatusBar hidden/>
-
-                  <Animatable.View animation="bounceInDown" easing="ease-in">
-                    <WoodTitle title='Login' />
-                  </Animatable.View>
-
-                  <Form>
-                    <InputsContainer>
-                      {!showingSelectionKey &&
-                        <Animatable.View animation="fadeIn" delay={300}>
-                          <Input
-                            placeholder='nombre de usuario'
-                            keyboardType='email-address'
-                            autoCorrect={false}
-                            value={login}
-                            onChangeText={text => this.onChangeInput('login', text)}
-                          />
-                        </Animatable.View>
-                      }
-                      {showingSelectionKey &&
-                        <AnimatableContainerLoginKeys animation="fadeIn">
-                          {loginImages.map((image) => {
-                            const selected = image.key === key;
-                            return (
-                              <LoginImage
-                                selected={selected}
-                                selectedImage={image.selected}
-                                key={image.key}
-                                keyName={image.key}
-                                source={image.source}
-                                name={image.name}
-                                onPress={this.onPressLoginImage}
-                              />
-                            );
-                          })}
-                        </AnimatableContainerLoginKeys>
-                      }
-                    </InputsContainer>
-
-                    <ButtonsContainer>
-                      <Animatable.View animation="bounceInLeft" easing="ease-in">
-                        <Button
-                          style={{ width: 130, marginRight: Size.spaceMedium }}
-                          title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
-                          onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
-                        />
-                      </Animatable.View>
-
-                      <Animatable.View animation="bounceInRight" easing="ease-in">
-                        <Button
-                          loading={validating}
-                          style={{ width: 130 }}
-                          title={!showingSelectionKey ? 'Siguiente' : 'Login'}
-                          disabled={!((login.trim()).length > 0)}
-                          onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
-                        />
-                      </Animatable.View>
-                    </ButtonsContainer>
-
-                  </Form>
-                </Animatable.View>
-              </FormContainer>
-            </LoginContainer>
-
-            <PassiveMessageAlert
-              isOpenPassiveMessage={isOpenPassiveMessage}
-              touchableProps={{
-                onPress: () => {
-                  this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
-                }
-              }}
-              message='Hola! Ingresa tu nombre de usuario y presiona siguiente. Si no tienes uno, da clic en Registrarse'
+        <MoiBackground>
+          <LoginContainer>
+            <BackgroundTree
+              source={{uri: 'fondo_arbol'}}
+              width={width}
             />
+            <FormContainer
+              behavior="padding"
+              width={width - Size.spaceXLarge}
+              keyboardVerticalOffset={Size.spaceLarge}
+            >
+              <Animatable.View ref={this.handleFormContainer}>
+                <StatusBar hidden/>
 
-          </MoiBackground>
-        </TouchableWithoutFeedback>
-      </UserInactivity>
+                <Animatable.View animation="bounceInDown" easing="ease-in">
+                  <WoodTitle title='Login' />
+                </Animatable.View>
+
+                <Form>
+                  <InputsContainer>
+                    {!showingSelectionKey &&
+                      <Animatable.View animation="fadeIn" delay={300}>
+                        <Input
+                          placeholder='nombre de usuario'
+                          keyboardType='email-address'
+                          autoCorrect={false}
+                          value={login}
+                          onChangeText={text => this.onChangeInput('login', text)}
+                        />
+                      </Animatable.View>
+                    }
+                    {showingSelectionKey &&
+                      <AnimatableContainerLoginKeys animation="fadeIn">
+                        {loginImages.map((image) => {
+                          const selected = image.key === key;
+                          return (
+                            <LoginImage
+                              selected={selected}
+                              selectedImage={image.selected}
+                              key={image.key}
+                              keyName={image.key}
+                              source={image.source}
+                              name={image.name}
+                              onPress={this.onPressLoginImage}
+                            />
+                          );
+                        })}
+                      </AnimatableContainerLoginKeys>
+                    }
+                  </InputsContainer>
+
+                  <ButtonsContainer>
+                    <Animatable.View animation="bounceInLeft" easing="ease-in">
+                      <Button
+                        style={{ width: Size.buttonWidth, marginRight: Size.spaceMedium }}
+                        title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
+                        onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
+                      />
+                    </Animatable.View>
+
+                    <Animatable.View animation="bounceInRight" easing="ease-in">
+                      <Button
+                        loading={validating}
+                        style={{ width: Size.buttonWidth }}
+                        title={!showingSelectionKey ? 'Siguiente' : 'Login'}
+                        disabled={!((login.trim()).length > 0)}
+                        onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
+                      />
+                    </Animatable.View>
+                  </ButtonsContainer>
+
+                </Form>
+              </Animatable.View>
+            </FormContainer>
+          </LoginContainer>
+
+          <PassiveMessageAlert
+            isOpenPassiveMessage={showPassiveMessage}
+            touchableProps={{
+              onPress: () => {
+                showPassiveMessageAsync(false);
+              }
+            }}
+            message='Hola! Ingresa tu nombre de usuario y presiona siguiente. Si no tienes uno, da clic en Registrarse'
+          />
+
+        </MoiBackground>
+      </TouchableWithoutFeedback>
     );
   }
 }

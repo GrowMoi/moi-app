@@ -4,9 +4,10 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 import ItemTasks from './ItemTasks';
-import { Palette } from '../../../commons/styles';
+import { Palette, Size } from '../../../commons/styles';
 import SubItem from './SubItem';
 import { TextBody } from '../../../commons/components/Typography';
+import Badge from '../../../commons/components/Badge/Badge';
 
 @connect(state => ({
   data: state.user.events,
@@ -36,12 +37,26 @@ class EventTabContainer extends PureComponent {
     );
   }
 
+  renderBadge() {
+    const { data } = this.props;
+    const totalNotifications = data.length;
+    if (totalNotifications === 0) return null;
+
+    return (
+      <View style={{ position: 'absolute', zIndex: 8, top: -8, right: Size.paddingRightBadge }}>
+        <Badge value={totalNotifications}
+          size={Size.badgeTaskSize} />
+      </View>
+    );
+  }
+
   render() {
     const { title, icon, data = [], enableScroll, disableScroll } = this.props;
     const { open } = this.state;
 
     return (
       <View style={styles.tasks}>
+        {this.renderBadge()}
         <ItemTasks onPress={this.openContainer} title={title} icon={icon} />
         {open && (
           <View style={styles.subItemContainer}
@@ -71,7 +86,7 @@ class EventTabContainer extends PureComponent {
 const styles = StyleSheet.create(
   {
     tasks: {
-      width: '95%',
+      width: '100%',
     },
     emptyText: {
       paddingHorizontal: 10,

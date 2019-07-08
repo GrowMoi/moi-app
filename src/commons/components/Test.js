@@ -1,9 +1,6 @@
 import React from 'react';
 import { View, Animated, Easing, Button, ImageBackground } from 'react-native';
 import LottieView from 'lottie-react-native'
-import Alert from './Alert/Alert';
-import TutorGenericAlert from './Alert/TutorGenericAlert';
-import WoodLabel from './WoodLabel/WoodLabel';
 import moi_articulation from '../../../assets/animations/moi-articulation.json';
 
 class Test extends React.Component {

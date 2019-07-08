@@ -11,6 +11,7 @@ import styled, { css } from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 
 import { math } from '../../utils';
+import { Sound } from '../SoundPlayer';
 
 export const NeuronContainer = styled(View)`
   justify-content: center;
@@ -56,6 +57,7 @@ export default class Neuron extends Component {
   }
 
   onPressIn = () => {
+    Sound.stopOverBackgroundSound();
     Animated.spring(this.animatedValue, {
       toValue: 0.5,
     }).start();

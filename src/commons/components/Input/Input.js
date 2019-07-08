@@ -15,6 +15,7 @@ const StyledInput = styled(TextInput)`
   padding-horizontal: ${Size.spaceXSmall};
   color: ${props => props.textColor};
   margin-bottom: ${Size.spaceMedium};
+  font-size: ${Size.fontSizeInput};
 `;
 
 const Input = ({ ...rest }) => (

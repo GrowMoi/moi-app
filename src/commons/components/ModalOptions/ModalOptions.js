@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import ActionSheetOption from './ActionSheetOption';
-import Modal from 'expo/src/modal/Modal';
 import Palette from '../../styles/palette';
+import MoiModal from '../../../containers/Modal/MoiModal';
 
 class ModalOptions extends Component {
 
@@ -24,7 +24,7 @@ class ModalOptions extends Component {
     const bgOpacity = { backgroundColor: Palette.dark.alpha(0.5).css() }
 
     return (
-      <Modal
+      <MoiModal
         visible={isOpen}
         animationType={animationType}
         transparent={transparent}>
@@ -55,7 +55,7 @@ class ModalOptions extends Component {
           </View>
         </TouchableOpacity>
 
-      </Modal>
+      </MoiModal>
     )
   }
 }

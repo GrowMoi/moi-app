@@ -8,7 +8,6 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import { isTablet } from 'react-native-device-detection';
 
 // Components
 import { ContentBox } from '../../commons/components/ContentComponents';
@@ -21,7 +20,9 @@ import Tabs from '../../commons/components/Tabs';
 import Profile from '../../commons/components/Profile/Profile';
 import TreeScreenShot from '../../commons/components/TreeScreenShot/TreeScreenShot';
 import { getHeightAspectRatio } from '../../commons/utils';
+import deviceUtils from '../../commons/utils/device-utils';
 
+const isTablet = deviceUtils.isTablet();
 const { width } = Dimensions.get('window');
 
 const treeBackgroundProfileWidth = 117;

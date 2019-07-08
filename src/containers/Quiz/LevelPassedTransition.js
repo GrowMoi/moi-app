@@ -10,23 +10,24 @@ import { Header } from '../../commons/components/Typography';
 import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
 
 const AnimationContainer = styled(View)`
-position: absolute;
- height: 100%;
+  position: absolute;
+  height: 100%;
   width: 100%;
-    flex: 1;
-    align-self: stretch;
-    align-items: center;
-    justify-content: center;
+  flex: 1;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
 `;
 
 const TextContainer = styled(View)`
-    flex: 1;
-    align-items: center;
-    align-self: stretch;
+  flex: 1;
+  align-items: center;
+  align-self: stretch;
 `;
 
 @connect(store => ({
     userTree: store.tree.userTree,
+    quizResult: store.user.quizResult,
 }),
     {
         loadTreeAsync: treeActions.loadTreeAsync,
@@ -51,6 +52,12 @@ export default class LevelPassedTransition extends Component {
         this.setState({ currentLevel: res.data.meta.depth });
     }
 
+    validateQuizResults() {
+      const { quizResult: { achievements = [], event = {}, super_event = {} } } = this.props;
+      // return achievements.length > 0 || event.completed || super_event.completed;
+      return achievements.length > 0;
+    }
+
     render() {
         const { showAnimation, showLevel, currentLevel } = this.state;
 
@@ -58,7 +65,7 @@ export default class LevelPassedTransition extends Component {
             return null;
         }
 
-        if (currentLevel === this.prevLevel) {
+        if (currentLevel === this.prevLevel && !this.validateQuizResults()) {
             Actions.moiDrawer();
             return null;
         }

@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import {
+  View,
   FlatList,
+  SectionList,
+  TouchableOpacity,
+  Image,
   Alert,
-  Keyboard
 } from 'react-native';
 
 import { Video } from '../../commons/components/VideoPlayer';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { Size } from '../../commons/styles';
-import { object } from '../../commons/utils';
-import { BottomBar } from '../../commons/components/SceneComponents';
+import { object, getHeightAspectRatio } from '../../commons/utils';
+import { BottomBar, Line } from '../../commons/components/SceneComponents';
 import Item from '../../commons/components/Item/Item';
 import { TextBody } from '../../commons/components/Typography';
 import AlertComponent from '../../commons/components/Alert/Alert';
@@ -28,12 +31,15 @@ import vineta_4 from '../../../assets/videos/vineta_4.mp4';
 import userActions from '../../actions/userActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Certificate from '../Certificate/Certificate';
-import UserInactivity from 'react-native-user-inactivity';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
-import { TIME_FOR_INACTIVITY } from '../../constants';
+import { PORTRAIT } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
+import ModalEventDescription from '../Events/ModalEventDescription';
+import deviceUtils from '../../commons/utils/device-utils';
+
+const isTablet = deviceUtils.isTablet();
 
 const StyledContentBox = styled(ContentBox)`
   margin-bottom: ${Size.spaceMedium};
@@ -41,15 +47,43 @@ const StyledContentBox = styled(ContentBox)`
   padding-right: 12;
 `;
 
+const width = 108;
+const height = 107;
+const Container = styled(TouchableOpacity)`
+  justify-content: center;
+  align-items: center;
+  margin-horizontal: 5;
+  margin-vertical: 5;
+  width: ${props => props.width};
+  height: ${props => getHeightAspectRatio(width, height, props.width)};
+  ${props => {
+    if (props.inactive) {
+      return css`
+        border: solid 5px #40582D;
+        border-radius: 13px;
+      `}
+    }
+  }
+`;
+
+const EventImage = styled(Image)`
+  width: ${ props => props.width};
+  height: ${ props => getHeightAspectRatio(width, height, props.width)};
+`;
+
 @connect(state => ({
   device: state.device,
   achievements: state.user.achievements,
   finalTestResult: state.user.finalTestResult,
   scene: state.routes.scene,
+  eventsWeek: state.user.eventsWeek,
+  showPassiveMessage: state.user.showPassiveMessage,
 }), {
     getAchievementsAsync: userActions.getAchievementsAsync,
     updateAchievementsAsync: userActions.updateAchievementsAsync,
     loadFinalTestAsync: userActions.loadFinalTestAsync,
+    getEventsWeekAsync: userActions.getEventsWeekAsync,
+    showPassiveMessageAsync: userActions.showPassiveMessageAsync,
   })
 export default class Inventory extends Component {
   state = {
@@ -58,11 +92,27 @@ export default class Inventory extends Component {
     isAlertOpen: false,
     itemSelected: {},
     loading: false,
-    isOpenPassiveMessage: false,
   }
 
   currentScene = '';
   prevScene = '';
+  columnsNumber;
+
+  async componentDidMount() {
+    const { getEventsWeekAsync } = this.props;
+
+    this.generateNumberOfColumns()
+    this.showLoading();
+    await getEventsWeekAsync();
+    this.showLoading(false);
+  }
+
+  generateNumberOfColumns() {
+    const { device: { dimensions: { orientation } } } = this.props;
+    const defaultColumns = isTablet ? 3 : 2;
+    const additionalColumns = orientation ===  PORTRAIT ? 0 : 1 ;
+    this.columnsNumber = defaultColumns + additionalColumns;
+  }
 
   updateItem = async ({ id, name }) => {
     const { updateAchievementsAsync } = this.props;
@@ -233,15 +283,68 @@ export default class Inventory extends Component {
   }
 
   _keyExtractor = (item, index) => index.toString();
-  _renderItem = ({ item }) => {
+
+  get itemWidth() {
+    return isTablet ? 125 : 90;
+  }
+
+  _renderMainItem = ({ item }) => {
     return (
       <Item
         type={item.number}
         active={item.active}
         disabled={item.disabled}
+        width={this.itemWidth}
         onPress={() => this.activeItem(item)}
       />
     )
+  }
+
+  _renderEventsItem = ({ item }) => {
+    const width = this.itemWidth;
+
+    return (
+      <Container
+        onPress={() => this.setState({ isEventModalOpen: true, eventSelected: item })}
+        activeOpacity={0.8}
+        width={width}
+        inactive={!item.completed}
+      >
+        <EventImage
+          source={{ uri: item.completed ? item.image : item.inactive_image }}
+          width={item.completed ? width : width - 10}
+        />
+      </Container>
+    );
+  }
+
+  _renderSection = ({ section, index }) => {
+    const data = section.data[0];
+
+    const renderItem = data.key === 'items' ? this._renderMainItem : this._renderEventsItem;
+
+    return  (
+      <View style={{flex: 1}}>
+        {data.key === 'events' && <Line style={{marginTop:10, marginBottom:10}}  size={5}/> }
+        <FlatList
+          data={data.list}
+          ListEmptyComponent={
+            <TextBody center>No tienes logros ganados aún</TextBody>
+          }
+          renderItem={renderItem}
+          keyExtractor={this._keyExtractor}
+          numColumns={this.columnsNumber}
+          columnWrapperStyle={{ justifyContent: 'center' }}
+          key={index}
+        />
+      </View>
+    );
+  };
+
+  mergeAllEvents(eventsWeek) {
+    let allEvents = [];
+    Object.values(eventsWeek).forEach((event) => allEvents = [...allEvents, ...event])
+    return allEvents;
   }
 
   renderTabs() {
@@ -258,39 +361,30 @@ export default class Inventory extends Component {
   }
 
   renderItems() {
-    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
+    const { achievements = [], eventsWeek } = this.props;
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
     const allAchievements = this.addDisabledAchievements(sortedAchievements);
-    const backScenes = ['profile', 'quiz'];
+    const allEvents = this.mergeAllEvents(eventsWeek);
 
-    if (scene.name !== 'moiDrawer') {
-      if (scene.name === 'inventory') {
-        this.prevScene = scene.name;
-      }
-      this.currentScene = scene.name;
-    } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
-      this.currentScene = this.prevScene;
-    }
+    if (this.state.loading) return <Preloader key={0}/>;
 
     return (
-      <FlatList
-        data={allAchievements}
-        ListEmptyComponent={
-          <TextBody center>No tienes logros ganados aún</TextBody>
-        }
-        renderItem={this._renderItem}
-        keyExtractor={this._keyExtractor}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: 'center' }}
+      <SectionList
+        renderItem={this._renderSection}
+        sections={[
+          {title: '', data: [{key: 'items', list: allAchievements}]},
+          {title: '', data: [{key: 'events', list: allEvents}]},
+        ]}
+        keyExtractor={(item, index) => item.name + index}
         key={0}
       />
     );
   }
 
   render() {
-    const { modalVisible, currentVineta, loading, isAlertOpen, itemSelected, isOpenPassiveMessage } = this.state;
-    const { device: { dimensions: { width, height } }, achievements = [], finalTestResult, scene } = this.props;
+    const { modalVisible, currentVineta, isAlertOpen, itemSelected, isEventModalOpen, eventSelected } = this.state;
+    const { device: { dimensions: { width, height } }, finalTestResult, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const videoDimensions = {
       width: 1280,
@@ -309,51 +403,46 @@ export default class Inventory extends Component {
     }
 
     return (
-      <UserInactivity
-        timeForInactivity={TIME_FOR_INACTIVITY}
-        onAction={(isActive) => {
-          if (!isActive && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen) {
-            Keyboard.dismiss()
-            this.setState({ isOpenPassiveMessage: !isActive })
-          }
-        }}
-      >
-        <MoiBackground>
-          <Navbar />
-          {loading && <Preloader />}
-          <StyledContentBox image={'leaderboard_frame'}>
-            {this.renderTabs()}
-          </StyledContentBox>
+      <MoiBackground>
+        <Navbar />
+        <StyledContentBox image={'leaderboard_frame'}>
+          {this.renderTabs()}
+        </StyledContentBox>
 
-          {modalVisible && <Video
-            videoDimensions={videoDimensions}
-            source={currentVineta}
-            dismiss={() => this.showVideo(false)}
-            visible={modalVisible}
-            width={width}
-          />}
+        {isEventModalOpen && <ModalEventDescription
+          width={width}
+          event={eventSelected}
+          onClose={() => { this.setState({ isEventModalOpen: false }) }}
+        />}
 
-          {isAlertOpen && <AlertComponent open={isAlertOpen}>
-            <GenericAlert
-              message={itemSelected.name}
-              description={itemSelected.description}
-              onCancel={this.closeAlert}
-              cancelText='Ok'
-            />
-          </AlertComponent>}
-          {finalTestResult && <Certificate />}
-          <BottomBar />
-          <PassiveMessageAlert
-            isOpenPassiveMessage={isOpenPassiveMessage}
-            touchableProps={{
-              onPress: () => {
-                this.setState(prevState => ({ isOpenPassiveMessage: !prevState.isOpenPassiveMessage }))
-              }
-            }}
-            message='"Selecciona uno de los objetos que ganaste para activarlo. Cada uno tiene un efecto diferente'
+        {modalVisible && <Video
+          videoDimensions={videoDimensions}
+          source={currentVineta}
+          dismiss={() => this.showVideo(false)}
+          visible={modalVisible}
+          width={width}
+        />}
+
+        {isAlertOpen && <AlertComponent open={isAlertOpen}>
+          <GenericAlert
+            message={itemSelected.name}
+            description={itemSelected.description}
+            onCancel={this.closeAlert}
+            cancelText='Ok'
           />
-        </MoiBackground>
-      </UserInactivity>
+        </AlertComponent>}
+        {finalTestResult && <Certificate />}
+        <BottomBar />
+        <PassiveMessageAlert
+          isOpenPassiveMessage={showPassiveMessage && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen}
+          touchableProps={{
+            onPress: () => {
+              showPassiveMessageAsync(false);
+            }
+          }}
+          message='"Selecciona uno de los objetos que ganaste para activarlo. Cada uno tiene un efecto diferente'
+        />
+      </MoiBackground>
     );
   }
 }
