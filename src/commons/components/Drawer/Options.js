@@ -17,7 +17,7 @@ const ItemWithSound = ({ option, index }) => {
       onPress={() => { if(option.onPress) option.onPress(option, index) }}
     >
       <ButtonForm>
-        <Header color={Palette.colors.dark} bolder>{option.label}</Header>
+        <Header small color={Palette.colors.dark} heavy>{option.label}</Header>
       </ButtonForm>
     </WithSound>
   )
@@ -57,9 +57,9 @@ const ButtonForm = styled(View)`
   padding-vertical: 10px;
   padding-horizontal: 15px;
   border-radius: 10px;
-  background-color: ${chroma('#dbd05c').alpha(0.5)};
+  background-color: ${chroma('#dbd05c').alpha(0.6)};
   shadow-color: black;
   shadow-offset: 1px 3px;
-  shadow-opacity: 0.4;
+  shadow-opacity: 0.2;
   shadow-radius: 3px;
 `
