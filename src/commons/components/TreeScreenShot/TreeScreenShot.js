@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, ImageBackground, Image, Platform } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { LANDSCAPE, PORTRAIT } from '../../../constants';
 import deviceUtils from '../../utils/device-utils';
 
@@ -16,8 +16,12 @@ const TreeContainer = styled(ImageBackground)`
 `;
 
 const ImageContainer = styled(View)`
-  width: ${props => props.width};
-  height: ${props => props.height};
+  ${(props) => !!props.width && css`
+    width: ${props.width};
+  `}
+  ${props => !!props.height && css`
+    height: ${props.height};
+  `}
   justify-content: center;
   align-items: center;
   z-index: 0;
@@ -127,7 +131,7 @@ export default class TreeScreenShot extends Component {
           <ImageContainer width={width + 30}
             height={heightTree}>
             <Image
-              style={{ ...this.imageSize, position: 'absolute', bottom: frame ? 10 : 0 }}
+              style={{ ...this.imageSize, position: 'absolute', bottom: frame ? 17 : 0 }}
               source={treeImage}
               resizeMode='stretch'
             />

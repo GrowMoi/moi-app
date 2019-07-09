@@ -25,6 +25,12 @@ const SideMenuContainer = styled(ImageBackground)`
   margin-top: ${-Size.spaceSmall};
   padding-top: ${Size.spaceMedium + Size.mavbarTopSpace};
   background-color: ${Palette.menuBackground};
+  border-right-color: ${Palette.dark.alpha(0.3)};
+  border-right-width: 2;
+  shadow-offset: 2.5px 0px;
+  shadow-radius: 2.5;
+  shadow-opacity: 0.7;
+  shadow-color: ${Palette.black.alpha(0.4)};
 `;
 
 const SideBarTitleContainer = styled(View)`
@@ -115,7 +121,7 @@ export default class SideMenu extends Component {
   }
 
   render() {
-    const { device, userTree, user, profile, data, onPressOption } = this.props;
+    const { device, userTree, user, profile, data, onPressOption, width } = this.props;
     const { orientation } = device.dimensions;
     const portraitOrientation = orientation === PORTRAIT;
 
@@ -147,7 +153,7 @@ export default class SideMenu extends Component {
         >
           <UserInfo
             name={profile.name || profile.username || ''}
-            level={treeIsLoaded && userTree.meta.depth}
+            level={treeIsLoaded ? userTree.meta.depth : 0}
           />
 
           <Options options={this.options}/>
@@ -157,7 +163,13 @@ export default class SideMenu extends Component {
               if(onPressOption) onPressOption();
               Actions.refresh({ key: 'tree', type: 'reset' });
             }}>
-              <TreeScreenShot width={DRAWER_OFFSET - 2} height={Size.heigthTreeContainer} treeBackground={'background_tree_drawer'} profileImage={profile.tree_image} style={{margin: 10}} frame={'menu_side_frame'} />
+              <TreeScreenShot
+                width={width}
+                height={Size.heigthTreeContainer}
+                treeBackground={'background_tree_drawer'}
+                profileImage={profile.tree_image}
+                frame={'menu_side_frame'}
+              />
             </TouchableOpacity>
           </TreContainer>
         </ScrollView>
