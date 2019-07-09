@@ -5,6 +5,42 @@ import styled from 'styled-components/native';
 import { Header } from '../Typography';
 import { Size } from '../../styles';
 import withSound from '../../utils/withSound';
+import { Palette } from '../../styles'
+import chroma from 'chroma-js'
+
+const ItemWithSound = ({ option, index }) => {
+  const WithSound = withSound(Item);
+
+  return (
+    <WithSound
+      soundName={option.id}
+      onPress={() => { if(option.onPress) option.onPress(option, index) }}
+    >
+      <ButtonForm>
+        <Header color={Palette.colors.dark} bolder>{option.label}</Header>
+      </ButtonForm>
+    </WithSound>
+  )
+}
+
+export default class Options extends Component {
+  render() {
+    const { options } = this.props;
+
+    return (
+      <ContainerOptions>
+        {(options || []).map((option, i) => {
+          return <ItemWithSound option={option} index={i} key={i} />
+        })}
+      </ContainerOptions>
+    );
+  }
+}
+
+Options.propTypes = {
+  options: PropTypes.array,
+  onPress: PropTypes.func,
+};
 
 const ContainerOptions = styled(View)`
   flex: 1;
@@ -17,36 +53,13 @@ const Item = styled(TouchableOpacity)`
   padding-vertical: 7;
 `;
 
-export default class Options extends Component {
-
-  renderItemWithSound = (option, i) => {
-    const ItemWithSound = withSound(Item);
-
-    return (
-      <ItemWithSound
-      key={i}
-      soundName={option.id}
-      onPress={() => {
-        if(option.onPress){
-          option.onPress(option, i)
-        }
-      }}>
-        <Header bolder small inverted>{option.label}</Header>
-      </ItemWithSound>
-    );
-  }
-
-  render() {
-    const { options } = this.props;
-    return (
-      <ContainerOptions>
-        {options.length > 0 && options.map((option, i) => this.renderItemWithSound(option, i))}
-      </ContainerOptions>
-    );
-  }
-}
-
-Options.propTypes = {
-  options: PropTypes.array,
-  onPress: PropTypes.func,
-};
+const ButtonForm = styled(View)`
+  padding-vertical: 10px;
+  padding-horizontal: 15px;
+  border-radius: 10px;
+  background-color: ${chroma('#dbd05c').alpha(0.5)};
+  shadow-color: black;
+  shadow-offset: 1px 3px;
+  shadow-opacity: 0.4;
+  shadow-radius: 3px;
+`

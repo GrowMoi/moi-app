@@ -18,6 +18,7 @@ import { Title, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 import { DRAWER_OFFSET, PORTRAIT } from '../../../constants';
 import { normalizeAllCapLetter } from '../../utils';
+import UserInfo from './UserInfo';
 
 const SideMenuContainer = styled(ImageBackground)`
   flex: 1;
@@ -43,18 +44,6 @@ const SideBarMenuHeader = styled(View)`
 const TreContainer = styled(View)`
   align-self: center;
   bottom: 0;
-`;
-
-const UserNameContainer = styled(View)`
-  padding-horizontal: ${Size.spaceMedium};
-  padding-vertical: ${Size.spaceMedium};
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const UserName = styled(Header)`
-  width: 130;
 `;
 
 const styles = StyleSheet.create({
@@ -84,12 +73,8 @@ export default class SideMenu extends Component {
     return achievement;
   }
 
-  render() {
-    const { device, userTree, user, profile, data, onPressOption } = this.props;
-    const { orientation } = device.dimensions;
-    const portraitOrientation = orientation === PORTRAIT;
-
-    const treeIsLoaded = 'tree' in userTree;
+  get options() {
+    const { onPressOption } = this.props;
 
     const options = [
       {
@@ -126,6 +111,16 @@ export default class SideMenu extends Component {
       },
     ];
 
+    return options
+  }
+
+  render() {
+    const { device, userTree, user, profile, data, onPressOption } = this.props;
+    const { orientation } = device.dimensions;
+    const portraitOrientation = orientation === PORTRAIT;
+
+    const treeIsLoaded = 'tree' in userTree;
+
     let currentBox = 'regular_box';
     const currentAchievement = (this.currentAchievement || {}).number;
     if(currentAchievement === 2) currentBox = 'amarillo_box';
@@ -150,12 +145,12 @@ export default class SideMenu extends Component {
           contentContainerStyle={portraitOrientation && styles.ScrollViewContainer}
           showsVerticalScrollIndicator
         >
-          <UserNameContainer>
-            <UserName numberOfLines={1} small heavy inverted>{profile.name || profile.username}</UserName>
-            <Header small heavy inverted>Nivel: {treeIsLoaded && userTree.meta.depth}</Header>
-          </UserNameContainer>
+          <UserInfo
+            name={profile.name || profile.username || ''}
+            level={treeIsLoaded && userTree.meta.depth}
+          />
 
-          <Options options={options}/>
+          <Options options={this.options}/>
 
           <TreContainer>
             <TouchableOpacity onPress={() => {
