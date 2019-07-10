@@ -135,7 +135,7 @@ export default class SideMenu extends Component {
   }
 
   render() {
-    const { device, userTree, user, profile, data, onPressOption, width } = this.props;
+    const { device, userTree, user, profile, data, onPressOption, width, onClose } = this.props;
     const { orientation } = device.dimensions;
     const portraitOrientation = orientation === PORTRAIT;
 
@@ -160,7 +160,7 @@ export default class SideMenu extends Component {
             <Title inverted bolder>Menú</Title>
           </SideBarTitleContainer>
 
-          <CloseButton>
+          <CloseButton onPress={() => { if(onClose) onClose() }}>
             <CloseIcon name='ios-close' size={45}/>
           </CloseButton>
         </SideBarMenuHeader>

@@ -1,25 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, TouchableWithoutFeedback } from 'react-native'
-import { Palette } from '../../commons/styles'
 import SideMenu from '../../commons/components/Drawer/SideMenu'
+
+// Redux
+import { connect } from 'react-redux'
+import * as sideActions from '../../actions/sideActions'
+
+// styles
 import styled, { css } from 'styled-components/native'
+import { Palette } from '../../commons/styles'
 
 const { colors } = Palette;
 
-const MenuContainer = (props) => {
-  const MENU_WIDTH = 250;
+class MenuContainer extends Component {
+  state = {
+    MENU_WIDTH: 250,
+    expanded: false,
+  }
 
-  return (
-    <Container>
-      <MenuContent width={MENU_WIDTH}>
-        <SideMenu width={MENU_WIDTH} />
-      </MenuContent>
+  closeMenu = () => this.props.sideMenuClose()
 
-      <TouchableWithoutFeedback onPress={() => { console.log('press') }}>
-        <RestContainer/>
-      </TouchableWithoutFeedback>
-    </Container>
-  )
+  render() {
+    return (
+      <Container>
+        <MenuContent width={this.state.MENU_WIDTH}>
+          <SideMenu onClose={this.closeMenu} width={this.state.MENU_WIDTH} />
+        </MenuContent>
+
+        <TouchableWithoutFeedback onPress={this.closeMenu}>
+          <RestContainer/>
+        </TouchableWithoutFeedback>
+      </Container>
+    )
+  }
 }
 
 const MenuContent = styled(View)`
@@ -44,4 +57,12 @@ const RestContainer = styled(View)`
   width: 100%;
 `
 
-export default MenuContainer
+const mapStateToProps = (state) => ({
+  sideMenu: state.sideMenu,
+})
+
+const mapDispatchToProps = {
+  ...sideActions,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer)
