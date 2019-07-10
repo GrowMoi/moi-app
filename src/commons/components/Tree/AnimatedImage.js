@@ -59,9 +59,8 @@ export class AnimatedImage extends Component {
   }
 
   initAnimation(infiniteLoop) {
-    const { minValue, verticalPosition, horizontalPosition } = this.props;
-    if (!this.animation) return;
     this.animation.start(() => {
+      if (!this.animation) return;
       if (infiniteLoop) {
         this.initialValuesAnimation();
         this.animation = this.createAnimation();

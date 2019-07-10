@@ -8,16 +8,22 @@ import NeuronsLayer from './NeuronsLayer';
 import neuronActions from '../../../actions/neuronActions';
 import Branches from './allBranches';
 
+const CURRENT_TREE_WIDTH = 320;
+
 const Container = styled(TouchableWithoutFeedback)`
-  flex: 1;
-  position: relative;
+`;
+
+const LevelContainer = styled(View)`
+  width: 100%;
+  height: ${props => getHeightAspectRatio(treeBaseWidth, treeBaseHeight, props.width)};
+  position: absolute;
+  bottom: 50;
 `;
 
 const treeBaseWidth = 1417;
 const treeBaseHeight = 1193;
 const TreeBase = styled(Image)`
   position: absolute;
-  bottom: 50;
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(treeBaseWidth, treeBaseHeight, props.width)};
   z-index: ${props => props.zIndex || 0};
@@ -28,7 +34,8 @@ const TreeBase = styled(Image)`
 
 const Levels = styled(View)`
   align-items: center;
-  flex: 1;
+  width: 100%;
+  height: ${props => getHeightAspectRatio(treeBaseWidth, treeBaseHeight, props.width)};
   overflow: visible;
 `;
 
@@ -39,6 +46,12 @@ const Levels = styled(View)`
   setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
 })
 export default class AllLevels extends Component {
+
+  componentWillMount() {
+    const { setHeightTreeContainer  } = this.props;
+    const heightTree = getHeightAspectRatio(treeBaseWidth, treeBaseHeight, CURRENT_TREE_WIDTH);
+    setHeightTreeContainer(heightTree);
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.userTree !== this.props.userTree;
@@ -64,6 +77,8 @@ export default class AllLevels extends Component {
       userTree: { tree, meta: { depth } },
     } = this.props;
 
+
+
     const isLevel4 = depth === 4;
     const isLevel3 = depth === 3;
     const isLevel5 = depth === 5;
@@ -72,7 +87,6 @@ export default class AllLevels extends Component {
     const isLevel8 = depth === 8;
     const isLevel9 = depth === 9;
 
-    const CURRENT_TREE_WIDTH = 320;
     const defaultProps = {
       resizeMode: 'contain',
       width: CURRENT_TREE_WIDTH,
@@ -85,7 +99,8 @@ export default class AllLevels extends Component {
 
     return (
       <Container onPress={this.hideWoodLabel}>
-        <Levels>
+      <LevelContainer onPress={this.hideWoodLabel} width={CURRENT_TREE_WIDTH}>
+        <Levels width={CURRENT_TREE_WIDTH}>
           {isLevel5 && <TreeBase source={{uri: 'arbol_nivel5_gris'}} {...defaultProps}/>}
           {isLevel4 && <TreeBase source={{uri: 'arbol_nivel4_gris'}} {...defaultProps}/>}
           {isLevel3 && <TreeBase source={{uri: 'arbol_nivel4_gris'}} {...defaultProps}/>}
@@ -107,6 +122,7 @@ export default class AllLevels extends Component {
             width={CURRENT_TREE_WIDTH}
           />
         </Levels>
+      </LevelContainer>
       </Container>
     );
   }

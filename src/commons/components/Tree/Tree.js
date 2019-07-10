@@ -26,8 +26,11 @@ import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
 import { Size } from '../../styles';
 import deviceUtils from '../../utils/device-utils';
+import { PORTRAIT } from '../../../constants';
 
 const isTablet = deviceUtils.isTablet();
+
+const screenShotHeight = 350;
 
 const styles = StyleSheet.create({
   treeView: {
@@ -145,7 +148,7 @@ export default class Tree extends Component {
 
     if (this.isSameZoomInfo(this.prevZoomInfo, zoomInfo)) return;
     if (this.canPlaySound) {
-      this.setState({showLabelLayer: false});
+      this.setState({ showLabelLayer: false });
       Sound.playOverBackgroundSound('treeActions', true, 1);
       this.canPlaySound = false;
     }
@@ -163,7 +166,7 @@ export default class Tree extends Component {
     setTimeout(() => {
       this.canPlaySound = true;
       setNeuronLabelInfo({});
-      this.setState({showLabelLayer: true});
+      this.setState({ showLabelLayer: true });
     }, 1000);
   }
 
@@ -172,10 +175,10 @@ export default class Tree extends Component {
     const levelData = { userTree };
 
     const levels = {
-      tree1: <Level1 {...levelData} />,
-      tree2: <Level2 {...levelData} />,
+      tree1: <Level1 {...levelData} setHeightTreeContainer={this.setHeightTreeContainer} />,
+      tree2: <Level2 {...levelData} setHeightTreeContainer={this.setHeightTreeContainer} />,
       tree3: <Level3 {...levelData} />,
-      allLevels: <AllLevels {...levelData} zoomScale={4} />,
+      allLevels: <AllLevels {...levelData} zoomScale={4} setHeightTreeContainer={this.setHeightTreeContainer} />,
     };
 
     switch (level) {
@@ -220,66 +223,21 @@ export default class Tree extends Component {
 
   async takeScreenShotTree() {
     const { device: { dimensions: { width, height, orientation } } } = this.props;
+    const { treeHeight, zoomScale } = this.state;
 
     const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
 
+    const zoom = isTablet ? this.getTabletScale(zoomScale) : 1;
+
     const resultScreenShot = await takeSnapshotAsync(this.treeView, {
       result: 'base64',
-      height: (height / pixelRatio),
-      width: width / pixelRatio,
+      height: this.sizeTreeScreenShot / pixelRatio,
+      width: this.sizeTreeScreenShot / pixelRatio,
       quality: 1,
       format: 'png',
     });
 
-    // if (orientation === 'LANDSCAPE' || Platform.OS === 'android') {
     this.uploadTreeImage(resultScreenShot);
-    return;
-    // }
-
-    // this.cropImage(this.normalizeBase64Image(resultScreenShot), width, height);
-  }
-
-  getHeigthImage(height) {
-    const { userTree } = this.props;
-
-    const level = userTree.meta.depth;
-    const imageHeight = height / 1.9617;
-
-    const levelsOffset = {
-      1: imageHeight / 2.125,
-      2: imageHeight / 8.5,
-      3: imageHeight / 2.2667,
-      4: imageHeight / 2.2667,
-      5: imageHeight / 4.25,
-      6: imageHeight / 6.8,
-      7: imageHeight / 13.6,
-      8: 0,
-      9: 0,
-    }
-
-    return {
-      offset: levelsOffset[level],
-      height: levelsOffset[level] === 0 ? height / 2 : imageHeight - levelsOffset[level],
-    }
-  }
-
-  async cropImage(image, width, height) {
-
-    const heightImage = this.getHeigthImage(height);
-
-    let cropData = {
-      offset: { x: 0, y: 0 },
-      size: { width: width, height: height }
-    }
-
-    ImageEditor.cropImage(image, cropData, this.getImageFromRctImage, (error) => { console.log('error ===> ', error) });
-  }
-
-  getImageFromRctImage = (rctImageUri) => {
-    ImageStore.getBase64ForTag(rctImageUri, (image) => {
-      ImageStore.removeImageForTag(rctImageUri);
-      this.uploadTreeImage(image);
-    }, () => { });
   }
 
   uploadTreeImage = async (image) => {
@@ -303,7 +261,7 @@ export default class Tree extends Component {
       this.showEventCompletedModal(event.info.title, 'evento');
     }
 
-    if(super_event.completed) {
+    if (super_event.completed) {
       this.showEventCompletedModal(super_event.info.event_achievement.title, 'super evento');
     }
 
@@ -344,8 +302,18 @@ export default class Tree extends Component {
     }
   }
 
+  setHeightTreeContainer = (treeHeight) => {
+    this.setState({ treeHeight });
+  }
+
+  get sizeTreeScreenShot() {
+    const { device: { dimensions: { width, height, orientation } } } = this.props;
+    const size = orientation === PORTRAIT ? width : height;
+    return size * (isTablet ? 0.9 : 0.8);
+  }
+
   render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, eventType, achievements, showLabelLayer } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, eventType, achievements, showLabelLayer, treeHeight } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
 
     if (quizResult && (!showModalNewAchievements && !showEventCompleted)) {
@@ -363,7 +331,7 @@ export default class Tree extends Component {
 
     const minZoom = {
       scale: isTablet ? this.getTabletScale(zoomScale) : 1,
-    }
+    };
 
     const zoomContainerStyle = isTablet ? {
       position: 'absolute',
@@ -372,8 +340,8 @@ export default class Tree extends Component {
       left: 0,
       right: 0,
     } : {
-      flex: 1,
-    };
+        flex: 1,
+      };
 
     if (loading && !hasUserTree) { return <Preloader />; }
     return (
@@ -382,21 +350,36 @@ export default class Tree extends Component {
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} eventType={eventType} onHideModal={this.hideEventCompletedModal} />}
         {!modalVisible &&
-          <View style={{
-            transform: [{ scale: minZoom.scale }],
-            ...zoomContainerStyle,
-          }}>
-            <Zoom
-              flex={Platform.OS === 'android' ? 10 : 1}
-              maxScale={zoomScale}
-              onViewTransformed={this.onViewTransformed}
-              onTransformGestureReleased={this.onTransformGestureReleased}
+          <Zoom
+            flex={Platform.OS === 'android' ? 10 : 1}
+            maxScale={zoomScale}
+            onViewTransformed={this.onViewTransformed}
+            onTransformGestureReleased={this.onTransformGestureReleased}
+          >
+            <View
+              style={{
+                height: this.sizeTreeScreenShot,
+                width: this.sizeTreeScreenShot,
+                position: 'absolute',
+                bottom: 0,
+                left: (width - this.sizeTreeScreenShot) / 2,
+              }}
               ref={view => this.treeView = view}
+              collapsable={false}
             >
-              <MacetaContainer><Maceta width={200} /></MacetaContainer>
-              {level}
-            </Zoom>
-          </View>
+              <TreeImage
+                style={{
+                  height: this.sizeTreeScreenShot,
+                  width: this.sizeTreeScreenShot,
+                  transform: [{ scale: minZoom.scale }],
+                  ...zoomContainerStyle,
+                }}
+              >
+                <MacetaContainer><Maceta width={200} /></MacetaContainer>
+                {level}
+              </TreeImage>
+            </View>
+          </Zoom>
         }
         {(!modalVisible && showLabelLayer) && <LabelsLayer />}
         {modalVisible && <Video
@@ -417,7 +400,9 @@ export default class Tree extends Component {
 const Zoom = styled(ViewTransformer)`
   overflow: visible;
   position: relative;
-  flex: ${props => props.flex};
+`;
+
+const TreeImage = styled(View)`
 `;
 
 Tree.propTypes = {

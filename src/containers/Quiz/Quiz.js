@@ -138,7 +138,7 @@ export default class QuizScene extends Component {
     const message = `Respondiste ${correctResults.length} de ${results.length} preguntas correctamente`;
 
     if(!this.soundQuizFinishedPlayed) {
-      Sound.playOverBackgroundSound('recompensa');
+      Sound.playSingleSound('recompensa');
       this.soundQuizFinishedPlayed = true;
     }
 

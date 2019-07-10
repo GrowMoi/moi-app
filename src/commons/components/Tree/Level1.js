@@ -25,6 +25,8 @@ const Container = styled(TouchableWithoutFeedback)`
 `;
 
 const LevelContainer = styled(View)`
+  width: 100%;
+  height: ${props => Math.round(props.width / aspect) + 60};
   position: relative;
   flex: 1;
   overflow: visible;
@@ -48,6 +50,13 @@ export default class Level1 extends Component {
     userTree: PropTypes.object,
     children: PropTypes.any,
   }
+
+  componentWillMount() {
+    const { setHeightTreeContainer, width  } = this.props;
+    const heightTree = Math.round(width / aspect);
+    setHeightTreeContainer(heightTree + 50);
+  }
+
 
   hideWoodLabel = () => {
     const { setNeuronLabelInfo } = this.props;
@@ -92,7 +101,7 @@ export default class Level1 extends Component {
 
     return (
       <Container onPress={this.hideWoodLabel}>
-        <LevelContainer>
+        <LevelContainer width={width}>
           {children}
           <TreeLevel
             width={width}
