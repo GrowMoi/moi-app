@@ -96,15 +96,6 @@ export default class ContentListBox extends PureComponent {
     return contents.filter(d => (!d.read || d.learnt));
   }
 
-  get isContetScene() {
-    const { scene } = this.props;
-    const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'tree';
-
-    this.previousScene = scene.name;
-
-    return isContent;
-  }
-
   renderContentPreviewWithSound = (content, delay, oddInverted) => {
     // const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
     const ContentPreviewWithSound = withSound(ContentPreview);
@@ -139,7 +130,7 @@ export default class ContentListBox extends PureComponent {
     const contents = this.filterReadedContents((neuronSelected || {}).contents);
     const existContentsToRead = (contents || []).length > 0;
 
-    const isContetScene = this.isContetScene;
+    const isContetScene = scene.name === 'content';
     const showEvents = events && events.length > 0 && isFirstTimeEvents;
 
     return (

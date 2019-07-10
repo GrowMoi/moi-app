@@ -146,7 +146,7 @@ export default sounds = {
     inventory: 'btn_inventory',
     settings: 'btn_settings',
     leaderboard: 'btn_amigos',
-    friends: 'btn_amigos',
+    searchFriends: 'btn_amigos',
     tasks: 'btn_show_tasks',
     search: 'btn_search',
     random: 'btn_recomendation',

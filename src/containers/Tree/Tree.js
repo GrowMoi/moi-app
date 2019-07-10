@@ -46,21 +46,8 @@ export default class TreeScene extends Component {
     isOpenPassiveMessage: false,
   }
 
-  currentScene = '';
-  prevScene = '';
-
   render() {
     const { scene, showPassiveMessage, showPassiveMessageAsync } = this.props
-    const backScenes = ['profile'];
-
-    if (scene.name !== 'moiDrawer') {
-      if (scene.name === 'tree') {
-        this.prevScene = scene.name;
-      }
-      this.currentScene = scene.name;
-    } else if (backScenes.indexOf(this.currentScene) !== -1) {
-      this.currentScene = this.prevScene;
-    }
 
     return (
       <Background>
@@ -71,7 +58,7 @@ export default class TreeScene extends Component {
         <BottomBar />
 
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && this.currentScene === 'tree'}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'tree'}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);

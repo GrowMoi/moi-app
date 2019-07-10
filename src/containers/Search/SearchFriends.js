@@ -43,9 +43,6 @@ export default class SearchFriends extends PureComponent {
     searching: false,
   }
 
-  currentScene = '';
-  prevScene = '';
-
   changeFriendState = (data, itemToActivate, resetAll = false) => {
     const friendIsLoading = false;
 
@@ -153,17 +150,6 @@ export default class SearchFriends extends PureComponent {
       </ContentBox>
     )
 
-    const backScenes = ['profile', 'tasks', 'search', 'randomContents'];
-
-    if(scene.name !== 'moiDrawer') {
-      if(scene.name === 'searchFriends') {
-        this.prevScene = scene.name;
-      }
-      this.currentScene = scene.name;
-    } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
-      this.currentScene = this.prevScene;
-    }
-
     return (
       <MoiBackground>
         {contentBox}
@@ -175,7 +161,7 @@ export default class SearchFriends extends PureComponent {
         />
 
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && this.currentScene === 'searchFriends'}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'searchFriends'}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);
