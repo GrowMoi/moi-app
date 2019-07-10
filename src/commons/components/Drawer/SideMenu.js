@@ -7,6 +7,7 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -36,21 +37,34 @@ const SideMenuContainer = styled(ImageBackground)`
 const SideBarTitleContainer = styled(View)`
   flex: 1;
   align-items: center;
-  padding-right: 20;
 `;
 
 const SideBarMenuHeader = styled(View)`
-  padding-horizontal: ${Size.spaceMedium};
+  padding-left: ${Size.spaceMedium};
+  padding-right: 10;
   padding-bottom: ${Size.spaceSmall};
   border-bottom-width: 1;
   border-bottom-color: ${Palette.white.alpha(0.1).css()};
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const TreContainer = styled(View)`
   align-self: center;
   bottom: 0;
 `;
+
+const CloseIcon = styled(Ionicons)`
+  color: white;
+`
+
+const CloseButton = styled(TouchableOpacity)`
+  width: 45;
+  height: 45;
+  align-items: center;
+  justify-content: center;
+`
 
 const styles = StyleSheet.create({
   ScrollViewContainer: {
@@ -145,6 +159,10 @@ export default class SideMenu extends Component {
           <SideBarTitleContainer>
             <Title inverted bolder>Menú</Title>
           </SideBarTitleContainer>
+
+          <CloseButton>
+            <CloseIcon name='ios-close' size={45}/>
+          </CloseButton>
         </SideBarMenuHeader>
 
         <ScrollView

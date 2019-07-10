@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, TouchableWithoutFeedback } from 'react-native'
 import { Palette } from '../../commons/styles'
 import SideMenu from '../../commons/components/Drawer/SideMenu'
 import styled, { css } from 'styled-components/native'
@@ -15,7 +15,9 @@ const MenuContainer = (props) => {
         <SideMenu width={MENU_WIDTH} />
       </MenuContent>
 
-      <RestContainer />
+      <TouchableWithoutFeedback onPress={() => { console.log('press') }}>
+        <RestContainer/>
+      </TouchableWithoutFeedback>
     </Container>
   )
 }

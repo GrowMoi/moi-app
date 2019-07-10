@@ -45,12 +45,12 @@ Options.propTypes = {
 const ContainerOptions = styled(View)`
   flex: 1;
   padding-horizontal: ${Size.spaceMedium};
-  padding-vertical: ${Size.spaceMedium};
+  padding-vertical: ${Size.spaceXSmall};
   z-index: 10;
 `;
 
 const Item = styled(TouchableOpacity)`
-  padding-vertical: 7;
+  padding-vertical: 4;
 `;
 
 const ButtonForm = styled(View)`
