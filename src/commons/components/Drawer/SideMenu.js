@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components/native';
@@ -18,6 +18,7 @@ import TreeScreenShot from '../TreeScreenShot/TreeScreenShot';
 import { Title, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 import { DRAWER_OFFSET, PORTRAIT } from '../../../constants';
+import * as routeTypes from '../../../routeTypes'
 import { normalizeAllCapLetter } from '../../utils';
 import UserInfo from './UserInfo';
 
@@ -100,33 +101,29 @@ export default class SideMenu extends Component {
       {
         id: 'inventory',
         label: 'Inventario',
-        onPress: () => {
-          if(onPressOption) onPressOption();
-          Actions.refresh({ key: 'inventory' })
+        onPress: (option) => {
+          if(onPressOption) onPressOption(option);
         }
       },
       {
         id: 'settings',
         label: 'Configuración',
-        onPress: () => {
-          if(onPressOption) onPressOption();
-          Actions.refresh({ key: 'settings' })
+        onPress: (option) => {
+          if(onPressOption) onPressOption(option);
         }
       },
       {
         id: 'leaderboard',
         label: 'Leaderboard',
-        onPress: () => {
-          if(onPressOption) onPressOption();
-          Actions.refresh({ key: 'leaderboard' })
+        onPress: (option) => {
+          if(onPressOption) onPressOption(option);
         }
       },
       {
-        id: 'friends',
+        id: 'searchFriends',
         label: 'Buscar Amigos',
-        onPress: () => {
-          if(onPressOption) onPressOption();
-          Actions.refresh({ key: 'searchFriends' })
+        onPress: (option) => {
+          if(onPressOption) onPressOption(option);
         }
       },
     ];
@@ -178,8 +175,7 @@ export default class SideMenu extends Component {
 
           <TreContainer>
             <TouchableOpacity onPress={() => {
-              if(onPressOption) onPressOption();
-              Actions.refresh({ key: 'tree', type: 'reset' });
+              if(onPressOption) onPressOption({ id: 'tree', label: 'Arbol' });
             }}>
               <TreeScreenShot
                 width={width}

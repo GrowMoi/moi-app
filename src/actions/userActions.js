@@ -1,9 +1,10 @@
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import { Alert, AsyncStorage } from 'react-native';
 import api from '../api';
 import * as actionTypes from './actionTypes';
 import { setHeaders } from './headerActions';
 import neuronActions from './neuronActions'
+import * as routeTypes from '../routeTypes'
 
 const notAuthenticate = () => ({
   type: actionTypes.AUTH_NOTVALID,
@@ -70,7 +71,7 @@ const signOutAsync = () => async (dispatch) => {
   await dispatch(neuronActions.setNeuronLabelInfo({}));
   await AsyncStorage.clear();
 
-  Actions.login({ type: 'reset' });
+  Actions.login({ type: ActionConst.RESET });
 }
 
 const setNotifications = (notifications) => ({
@@ -116,7 +117,7 @@ const loginAsync = ({ login, authorization_key: authorizationKey }) => async (di
     dispatch(setHeaders(headers));
     dispatch(userLogin(user));
 
-    Actions.moiDrawer();
+    Actions.tree();
     return res;
   } catch (error) {
     dispatch(notAuthenticate());
@@ -148,7 +149,7 @@ const registerAsync = ({ username, email, age, school, country, city, authorizat
 
 };
 
-const validateToken = () => async (dispatch) => {
+const validateToken = () => async (dispatch, getStore) => {
   dispatch({ type: actionTypes.VALIDATE_TOKEN });
 
   try {
@@ -161,6 +162,8 @@ const validateToken = () => async (dispatch) => {
     return res;
   } catch (error) {
     dispatch(notAuthenticate());
+
+    console.log(getStore())
     throw new Error(error);
   }
 };

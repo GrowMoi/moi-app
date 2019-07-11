@@ -157,7 +157,7 @@ export default class Register extends Component {
 
     componentWillMount() {
         const { user } = this.props;
-        if (user.authenticate) Actions.moiDrawer();
+        if (user.authenticate) Actions.tree();
     }
 
     generateAge(year) {

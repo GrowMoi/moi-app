@@ -73,7 +73,7 @@ export default class QuizTutorScene extends Component {
       <ComplementaryScene
         title='RESULTADO'
         text={message}
-        onNext={Actions.moiDrawer}
+        onNext={Actions.tree}
       />
     );
   }

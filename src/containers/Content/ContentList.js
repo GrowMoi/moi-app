@@ -31,7 +31,7 @@ export default class ContentListScene extends Component {
 //arreglar la recarga de los contenidos minimizados
   get isContetScene() {
     const { scene } = this.props;
-    const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'moiDrawer';
+    const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'tree';
     this.previousScene = scene.name;
     return isContent;
   }

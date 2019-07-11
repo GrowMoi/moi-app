@@ -3,12 +3,16 @@ import { Icon } from 'expo';
 import { Platform, Dimensions, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Font } from '../../styles';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import ProfileImageButton from './ProfileImageButton';
 import { Size } from '../../styles';
-import deviceUtils from '../../utils/device-utils';
 
-const isTablet = deviceUtils.isTablet();
+//REDUX
+import store from '../../../store'
+import * as sideActions from '../../../actions/sideActions'
+
+const { width } = Dimensions.get('window');
+
 
 const IconContainer = styled(TouchableOpacity)`
   width:  ${Size.hamburgerContainerWidth};
@@ -20,16 +24,16 @@ const IconContainer = styled(TouchableOpacity)`
   background-color: transparent;
 `;
 
-const toggleDrawer = () => Actions.refresh({ key: 'moiDrawer', open: value => !value });
+// const toggleDrawer = () => Actions.refresh({ key: 'moiDrawer', open: value => !value });
 
 const ProfileButton = () => <ProfileImageButton />; //eslint-disable-line
-const HamburgerButton = () => (
-    <IconContainer onPress={toggleDrawer}>
-      <Icon.Ionicons color="#FFF" name="md-menu" size={Size.hamburgerSize} />
-    </IconContainer>
-  ); //eslint-disable-line
-
-const { width } = Dimensions.get('window');
+export const HamburgerButton = () => (
+  <IconContainer onPress={() => {
+      store.dispatch(sideActions.sideMenuOpen());
+    }}>
+    <Icon.Ionicons color="#FFF" name="md-menu" size={Size.hamburgerSize} />
+  </IconContainer>
+); //eslint-disable-line
 
 export default {
   navigationBarStyle: {

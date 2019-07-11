@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux';
 import { Router } from 'react-native-router-flux';
@@ -8,13 +8,15 @@ import styled from 'styled-components/native'
 
 const RouterWithRedux = connect()(Router)
 
-const AppContainer = (props) => {
-  return (
-    <Container>
-      <RouterWithRedux scenes={props.scenes} />
-      <MenuContainer />
-    </Container>
-  )
+class AppContainer extends Component {
+  render() {
+    return (
+      <Container>
+        <RouterWithRedux scenes={this.props.scenes} />
+        <MenuContainer />
+      </Container>
+    )
+  }
 }
 
 const Container = styled(View)`
