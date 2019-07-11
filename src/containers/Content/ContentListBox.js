@@ -98,7 +98,7 @@ export default class ContentListBox extends PureComponent {
 
   get isContetScene() {
     const { scene } = this.props;
-    const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'moiDrawer';
+    const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'tree';
 
     this.previousScene = scene.name;
 

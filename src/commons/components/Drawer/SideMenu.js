@@ -7,7 +7,8 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Ionicons } from '@expo/vector-icons'
+import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components/native';
@@ -17,6 +18,7 @@ import TreeScreenShot from '../TreeScreenShot/TreeScreenShot';
 import { Title, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 import { DRAWER_OFFSET, PORTRAIT } from '../../../constants';
+import * as routeTypes from '../../../routeTypes'
 import { normalizeAllCapLetter } from '../../utils';
 import UserInfo from './UserInfo';
 
@@ -25,26 +27,45 @@ const SideMenuContainer = styled(ImageBackground)`
   margin-top: ${-Size.spaceSmall};
   padding-top: ${Size.spaceMedium + Size.mavbarTopSpace};
   background-color: ${Palette.menuBackground};
+  border-right-color: ${Palette.dark.alpha(0.3)};
+  border-right-width: 2;
+  shadow-offset: 2.5px 0px;
+  shadow-radius: 2.5;
+  shadow-opacity: 0.7;
+  shadow-color: ${Palette.black.alpha(0.4)};
 `;
 
 const SideBarTitleContainer = styled(View)`
   flex: 1;
   align-items: center;
-  padding-right: 20;
 `;
 
 const SideBarMenuHeader = styled(View)`
-  padding-horizontal: ${Size.spaceMedium};
+  padding-left: ${Size.spaceMedium};
+  padding-right: 10;
   padding-bottom: ${Size.spaceSmall};
   border-bottom-width: 1;
   border-bottom-color: ${Palette.white.alpha(0.1).css()};
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const TreContainer = styled(View)`
   align-self: center;
   bottom: 0;
 `;
+
+const CloseIcon = styled(Ionicons)`
+  color: white;
+`
+
+const CloseButton = styled(TouchableOpacity)`
+  width: 45;
+  height: 45;
+  align-items: center;
+  justify-content: center;
+`
 
 const styles = StyleSheet.create({
   ScrollViewContainer: {
@@ -80,33 +101,29 @@ export default class SideMenu extends Component {
       {
         id: 'inventory',
         label: 'Inventario',
-        onPress: () => {
-          if(onPressOption) onPressOption();
-          Actions.refresh({ key: 'inventory' })
+        onPress: (option) => {
+          if(onPressOption) onPressOption(option);
         }
       },
       {
         id: 'settings',
         label: 'Configuración',
-        onPress: () => {
-          if(onPressOption) onPressOption();
-          Actions.refresh({ key: 'settings' })
+        onPress: (option) => {
+          if(onPressOption) onPressOption(option);
         }
       },
       {
         id: 'leaderboard',
         label: 'Leaderboard',
-        onPress: () => {
-          if(onPressOption) onPressOption();
-          Actions.refresh({ key: 'leaderboard' })
+        onPress: (option) => {
+          if(onPressOption) onPressOption(option);
         }
       },
       {
-        id: 'friends',
+        id: 'searchFriends',
         label: 'Buscar Amigos',
-        onPress: () => {
-          if(onPressOption) onPressOption();
-          Actions.refresh({ key: 'searchFriends' })
+        onPress: (option) => {
+          if(onPressOption) onPressOption(option);
         }
       },
     ];
@@ -115,7 +132,7 @@ export default class SideMenu extends Component {
   }
 
   render() {
-    const { device, userTree, user, profile, data, onPressOption } = this.props;
+    const { device, userTree, user, profile, data, onPressOption, width, onClose } = this.props;
     const { orientation } = device.dimensions;
     const portraitOrientation = orientation === PORTRAIT;
 
@@ -139,6 +156,10 @@ export default class SideMenu extends Component {
           <SideBarTitleContainer>
             <Title inverted bolder>Menú</Title>
           </SideBarTitleContainer>
+
+          <CloseButton onPress={() => { if(onClose) onClose() }}>
+            <CloseIcon name='ios-close' size={45}/>
+          </CloseButton>
         </SideBarMenuHeader>
 
         <ScrollView
@@ -147,17 +168,22 @@ export default class SideMenu extends Component {
         >
           <UserInfo
             name={profile.name || profile.username || ''}
-            level={treeIsLoaded && userTree.meta.depth}
+            level={treeIsLoaded ? userTree.meta.depth : 0}
           />
 
           <Options options={this.options}/>
 
           <TreContainer>
             <TouchableOpacity onPress={() => {
-              if(onPressOption) onPressOption();
-              Actions.refresh({ key: 'tree', type: 'reset' });
+              if(onPressOption) onPressOption({ id: 'tree', label: 'Arbol' });
             }}>
-              <TreeScreenShot width={DRAWER_OFFSET - 2} height={Size.heigthTreeContainer} treeBackground={'background_tree_drawer'} profileImage={profile.tree_image} style={{margin: 10}} frame={'menu_side_frame'} />
+              <TreeScreenShot
+                width={width}
+                height={Size.heigthTreeContainer}
+                treeBackground={'background_tree_drawer'}
+                profileImage={profile.tree_image}
+                frame={'menu_side_frame'}
+              />
             </TouchableOpacity>
           </TreContainer>
         </ScrollView>

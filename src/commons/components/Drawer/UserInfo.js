@@ -27,9 +27,8 @@ const UserInfo = ({ name = '', level = 0 }) => {
 
 //Styles
 const Container = styled(View)`
-  padding: 20px 10px;
+  padding: 10px 10px;
   flex-direction: row;
-  box-sizing: border-box;
   align-items: center;
   justify-content: flex-start;
   border-bottom-width: 1px;

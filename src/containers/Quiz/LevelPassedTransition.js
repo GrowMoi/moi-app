@@ -66,7 +66,7 @@ export default class LevelPassedTransition extends Component {
         }
 
         if (currentLevel === this.prevLevel && !this.validateQuizResults()) {
-            Actions.moiDrawer();
+            Actions.tree();
             return null;
         }
 
@@ -77,7 +77,7 @@ export default class LevelPassedTransition extends Component {
                     onFinishAnimation={() => {
                         // this.setState({ showLevel: true });
                         // setTimeout(() => {
-                        Actions.moiDrawer();
+                        Actions.tree();
                         // }, 1000);
                     }}
                 />)}

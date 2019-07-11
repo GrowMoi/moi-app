@@ -8,6 +8,7 @@ import user from './userReducer';
 import leaderboard from './leaderboardReducer';
 import search from './searchReducer';
 import tutor from './tutorReducer';
+import sideMenu from './sideReducer';
 // ... other reducers
 
 export default combineReducers({
@@ -20,5 +21,6 @@ export default combineReducers({
   leaderboard,
   search,
   tutor,
+  sideMenu,
   // ... other reducers
 });

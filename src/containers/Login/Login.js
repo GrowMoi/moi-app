@@ -103,7 +103,8 @@ export default class Login extends PureComponent {
 
   componentWillMount() {
     const { user } = this.props;
-    if (user.authenticate) Actions.moiDrawer();
+    console.log('USER AUTHENTICATE', user.authenticate)
+    if (user.authenticate) Actions.tree();
   }
 
   submit = async () => {

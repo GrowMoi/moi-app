@@ -15,11 +15,11 @@ const deviceUtils = {
     return percent;
   },
 
-  isAndroidLandscape(dimensions) {
+  isAndroidLandscape: (dimensions) => {
     return isAndroid && (dimensions.orientation === LANDSCAPE);
   },
 
-  isTablet() {
+  isTablet: () => {
     const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
     if (!isAndroid) return isTablet;
     if (pixelRatio > 1.6) {
