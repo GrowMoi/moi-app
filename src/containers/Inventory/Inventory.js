@@ -94,8 +94,6 @@ export default class Inventory extends Component {
     loading: false,
   }
 
-  currentScene = '';
-  prevScene = '';
   columnsNumber;
 
   async componentDidMount() {
@@ -391,17 +389,6 @@ export default class Inventory extends Component {
       height: 720
     };
 
-    const backScenes = ['profile', 'quiz'];
-
-    if (scene.name !== 'moiDrawer') {
-      if (scene.name === 'inventory') {
-        this.prevScene = scene.name;
-      }
-      this.currentScene = scene.name;
-    } else if (this.prevScene && backScenes.indexOf(this.currentScene) !== -1) {
-      this.currentScene = this.prevScene;
-    }
-
     return (
       <MoiBackground>
         <Navbar />
@@ -434,7 +421,7 @@ export default class Inventory extends Component {
         {finalTestResult && <Certificate />}
         <BottomBar />
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && this.currentScene === 'inventory' && !modalVisible && !isAlertOpen}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !modalVisible && !isAlertOpen}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);

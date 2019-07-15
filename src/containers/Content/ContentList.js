@@ -28,18 +28,9 @@ export default class ContentListScene extends Component {
     this.previousScene = null;
   }
 
-//arreglar la recarga de los contenidos minimizados
-  get isContetScene() {
-    const { scene } = this.props;
-    const isContent =  scene.name === 'content' || this.previousScene === 'singleContent' && scene.name === 'tree';
-    this.previousScene = scene.name;
-    return isContent;
-  }
-
   render() {
-    const { device, neuron_id, showPassiveMessage, showPassiveMessageAsync } = this.props;
+    const { device, neuron_id, showPassiveMessage, showPassiveMessageAsync, scene } = this.props;
 
-    const isContetScene = this.isContetScene;
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
       paddingHorizontal: Size.spaceSmall,
@@ -59,7 +50,7 @@ export default class ContentListScene extends Component {
         />
 
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && isContetScene}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'content'}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);
