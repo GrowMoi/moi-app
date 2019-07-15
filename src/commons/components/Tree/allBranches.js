@@ -10,7 +10,6 @@ const Container = styled(View)`
   position: absolute;
   width: ${({ width }) => width};
   height: ${({ treeDimensions: { width: _width, height }, width }) => getHeightAspectRatio(_width, height, width)};
-  bottom: 50;
   overflow: visible;
   align-items: center;
 `;

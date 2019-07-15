@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, ImageBackground, Image, Platform } from 'react-native';
+import { View, ImageBackground, Image } from 'react-native';
 import styled, { css } from 'styled-components/native';
-import { LANDSCAPE, PORTRAIT } from '../../../constants';
-import deviceUtils from '../../utils/device-utils';
-
-const isTablet = deviceUtils.isTablet();
 
 const TreeContainer = styled(ImageBackground)`
   justify-content: center;
@@ -47,77 +43,14 @@ export default class TreeScreenShot extends Component {
     Image.getSize(profileImage, (width, height) => this.setState({ imageWidth: width, imageHeight: height }));
   }
 
-  get imageOrientation() {
-    const { imageWidth, imageHeight } = this.state;
-    return imageWidth > imageHeight ? LANDSCAPE : PORTRAIT;
-  }
-
-  calculateImageHeight(width, height, containerWidth) {
-    const percentageSize = (containerWidth * 100) / width;
-    return height * (percentageSize / 100);
-  }
-
-  // get calculateImageWidth() {
-  //   const { frame, width, device: { dimensions: { orientation } } } = this.props;
-
-  //   const imageOrientation = this.imageOrientation;
-
-  //   if (isTablet) {
-  //     return frame ? width + 40 : width + 200
-  //   }
-
-  //   if ((orientation === PORTRAIT && imageOrientation === PORTRAIT) || (orientation === LANDSCAPE && imageOrientation === LANDSCAPE)) {
-  //     return orientation === PORTRAIT ? width - (width * 0.4) : width;
-  //   }
-
-  //   if ((orientation === PORTRAIT && imageOrientation === LANDSCAPE)) {
-  //     return width + (width * 0.1);
-  //   } else {
-  //     return width - (width * 0.4);
-  //   }
-  // }
-
-  get calculateImageWidth() {
-    const { frame, width, device: { dimensions: { orientation } } } = this.props;
-
-    const imageOrientation = this.imageOrientation;
-    // const imageWidth;
-
-    if (isTablet && Platform.OS === 'ios') {
-      return width;
-      // return frame ? width + 40 : width + 200
-    }
-
-    if ((orientation === PORTRAIT && imageOrientation === PORTRAIT) || (orientation === LANDSCAPE && imageOrientation === LANDSCAPE)) {
-      return orientation === PORTRAIT ? width - (width * 0.4) : width;
-    }
-
-    if ((orientation === PORTRAIT && imageOrientation === LANDSCAPE)) {
-      return width + (width * 0.1);
-    } else {
-      return width - (width * 0.4);
-    }
-  }
-
-  get imageSize() {
-    const { frame } = this.props;
-    const { imageWidth, imageHeight } = this.state;
-
-    const isIOS = Platform.OS === 'ios';
-
-    // return {
-    //   height: this.calculateImageHeight(imageWidth, imageHeight, isTablet ? width - (width * 0.2) : this.calculateImageWidth),
-      // width: isTablet ? width - (width * 0.2) : this.calculateImageWidth
-    // }
-
-    return {
-      height: this.calculateImageHeight(imageWidth, imageHeight, frame ? this.calculateImageWidth / 1.5 : this.calculateImageWidth),
-      width: frame ? this.calculateImageWidth * 1.7 : this.calculateImageWidth
-    }
+  calculateImageWidth(width, height, containerHeight) {
+    const percentageSize = (containerHeight * 100) / height;
+    return width * (percentageSize / 100);
   }
 
   render() {
     const { width, height, profileImage, treeBackground, style, frame } = this.props;
+    const { imageWidth, imageHeight } = this.state;
 
     const heightTree = height ? frame ? height - 50 : height - 80 : 180;
     const treeImage = profileImage ? { uri: profileImage } : { uri: 'tree_default' };
@@ -131,7 +64,7 @@ export default class TreeScreenShot extends Component {
           <ImageContainer width={width + 30}
             height={heightTree}>
             <Image
-              style={{ ...this.imageSize, position: 'absolute', bottom: frame ? 17 : 0 }}
+              style={{ height: heightTree, width: this.calculateImageWidth(imageWidth, imageHeight, frame ? heightTree + 150 : heightTree), position: 'absolute', bottom: frame ? 17 : 0 }}
               source={treeImage}
               resizeMode='stretch'
             />

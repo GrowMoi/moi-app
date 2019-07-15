@@ -192,6 +192,14 @@ export default class Level2 extends Component {
     }
   }
 
+  setTreeHeigth = (level1Height) => {
+  console.log("TCL: Level2 -> setTreeHeigth -> level1Height", level1Height)
+  const { setHeightTreeContainer  } = this.props;
+  const branchHeight = Math.round(70 / aspectSimpleBranch);
+  setHeightTreeContainer(level1Height + branchHeight);
+
+  }
+
   render() {
     const { userTree } = this.props;
 
@@ -199,7 +207,7 @@ export default class Level2 extends Component {
       <Container onPress={this.hideWoodLabel}>
         <LevelContainer>
           {!!userTree.tree && (
-            <Level1 userTree={userTree}>
+            <Level1 userTree={userTree} setHeightTreeContainer={this.setTreeHeigth}>
               <BranchContainer>
                 {userTree.tree.root.children.length > 0 && (
                   userTree.tree.root.children.map((child, i) => (
