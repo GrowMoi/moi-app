@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, TouchableWithoutFeedback, Animated, Dimensions, Easing } from 'react-native'
 import SideMenu from '../../commons/components/Drawer/SideMenu'
+import deviceUtils from '../../commons/utils/device-utils';
 
 // Redux
 import { connect } from 'react-redux'
@@ -15,10 +16,11 @@ const { colors } = Palette;
 // const { Value, Clock, useCode, set } = Animated;
 
 const {width, height} = Dimensions.get('window')
+const isTablet = deviceUtils.isTablet()
 
 class MenuContainer extends Component {
   state = {
-    MENU_WIDTH: 250,
+    MENU_WIDTH: isTablet ? 350 : 250,
     translateX: new Animated.Value(0),
     opacity: new Animated.Value(0),
   }
