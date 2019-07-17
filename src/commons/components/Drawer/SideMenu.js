@@ -181,7 +181,7 @@ export default class SideMenu extends Component {
                 width={width}
                 height={Size.heigthTreeContainer}
                 treeBackground={'background_tree_drawer'}
-                profileImage={profile.tree_image}
+                profileImage={profile.tree_image_app}
                 frame={'menu_side_frame'}
               />
             </TouchableOpacity>

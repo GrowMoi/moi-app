@@ -55,18 +55,26 @@ export default class TreeScreenShot extends Component {
     const heightTree = height ? frame ? height - 50 : height - 80 : 180;
     const treeImage = profileImage ? { uri: profileImage } : { uri: 'tree_default' };
 
+    // const widthTree = this.calculateImageWidth(imageWidth, imageHeight, frame ? heightTree + 150 : heightTree)
+
     return (
       <View style={style}>
         <TreeContainer width={width}
           source={{ uri: treeBackground }}
           resizeMode='stretch'
         >
-          <ImageContainer width={width + 30}
+          <ImageContainer
+            width={width + 30}
             height={heightTree}>
             <Image
-              style={{ height: heightTree, width: this.calculateImageWidth(imageWidth, imageHeight, frame ? heightTree + 150 : heightTree), position: 'absolute', bottom: frame ? 17 : 0 }}
+              style={{
+                height: '80%',
+                width: '80%',
+                position: 'absolute',
+                bottom: frame ? 45 : 0,
+              }}
               source={treeImage}
-              resizeMode='stretch'
+              resizeMode='contain'
             />
           </ImageContainer>
           {frame && <ProfileImage style={{ position: 'absolute' }} width={width}

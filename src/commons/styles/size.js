@@ -73,7 +73,7 @@ export default {
   paddingRightBadge: isTablet ? 9 : 0,
 
   //side menu
-  heigthTreeContainer: isTablet ? 340 : 290,
+  heigthTreeContainer: isTablet ? 440 : 290,
 
   //Leaderboard
   heigthLeaderRow: isTablet ? 60 : 40,

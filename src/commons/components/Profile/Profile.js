@@ -9,6 +9,7 @@ const widthProfile = 62;
 const ProfileImage = styled(Image)`
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   width: ${props => getHeightAspectRatio(widthProfile, heightProfile, props.width)};
   height: ${props => props.width};
 `;
@@ -23,7 +24,7 @@ const Profile = ({ width, userImageUri, ...rest }) => {
         {...rest}
         width={width}
         source={sourceImage}
-        resizeMode='contain'
+        resizeMode='cover'
       />
     </ProfileContainer>
   );

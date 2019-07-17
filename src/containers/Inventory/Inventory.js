@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Image,
   Alert,
+  ImageBackground,
 } from 'react-native';
 
 import { Video } from '../../commons/components/VideoPlayer';
@@ -38,6 +39,7 @@ import { PORTRAIT } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import ModalEventDescription from '../Events/ModalEventDescription';
 import deviceUtils from '../../commons/utils/device-utils';
+import resources from '../../commons/components/Item/resources';
 
 const isTablet = deviceUtils.isTablet();
 
@@ -59,17 +61,26 @@ const Container = styled(TouchableOpacity)`
   ${props => {
     if (props.inactive) {
       return css`
-        border: solid 5px #40582D;
+        border: solid 0px #40582D;
         border-radius: 13px;
       `}
     }
   }
+  overflow: hidden;
 `;
 
 const EventImage = styled(Image)`
   width: ${ props => props.width};
   height: ${ props => getHeightAspectRatio(width, height, props.width)};
 `;
+
+const ItemBackground = styled(ImageBackground)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 @connect(state => ({
   device: state.device,
@@ -300,7 +311,7 @@ export default class Inventory extends Component {
 
   _renderEventsItem = ({ item }) => {
     const width = this.itemWidth;
-
+    const box = resources.getBox(!item.completed)
     return (
       <Container
         onPress={() => this.setState({ isEventModalOpen: true, eventSelected: item })}
@@ -308,28 +319,38 @@ export default class Inventory extends Component {
         width={width}
         inactive={!item.completed}
       >
-        <EventImage
-          source={{ uri: item.completed ? item.image : item.inactive_image }}
-          width={item.completed ? width : width - 10}
-        />
+        <ItemBackground
+          width={width}
+          source={{ uri: box }}>
+          <EventImage
+            source={{ uri: item.completed ? item.image : item.inactive_image }}
+            width={item.completed ? width - 30 : width - 40}
+          />
+        </ItemBackground>
       </Container>
     );
+  }
+
+  _renderItem = ({ item }) => {
+    if((Object.keys(item || {}) || []).includes('completed')) {
+      return this._renderEventsItem({ item });
+    }
+
+    return this._renderMainItem({ item });
   }
 
   _renderSection = ({ section, index }) => {
     const data = section.data[0];
 
-    const renderItem = data.key === 'items' ? this._renderMainItem : this._renderEventsItem;
-
     return  (
       <View style={{flex: 1}}>
-        {data.key === 'events' && <Line style={{marginTop:10, marginBottom:10}}  size={5}/> }
+        {/* {data.key === 'events' && <Line style={{marginTop:10, marginBottom:10}}  size={5}/> } */}
         <FlatList
           data={data.list}
           ListEmptyComponent={
             <TextBody center>No tienes logros ganados aún</TextBody>
           }
-          renderItem={renderItem}
+          renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
           numColumns={this.columnsNumber}
           columnWrapperStyle={{ justifyContent: 'center' }}
@@ -371,8 +392,8 @@ export default class Inventory extends Component {
       <SectionList
         renderItem={this._renderSection}
         sections={[
-          {title: '', data: [{key: 'items', list: allAchievements}]},
-          {title: '', data: [{key: 'events', list: allEvents}]},
+          {title: '', data: [{key: 'items', list: [...allAchievements, ...allEvents]}]},
+          // {title: '', data: [{key: 'events', list: allEvents}]},
         ]}
         keyExtractor={(item, index) => item.name + index}
         key={0}

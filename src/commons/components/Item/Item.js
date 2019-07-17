@@ -5,7 +5,7 @@ import {
   ImageBackground,
   TouchableWithoutFeedback,
 } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 import { object } from '../../utils';
 
@@ -19,6 +19,9 @@ const Container = styled(ImageBackground)`
   align-items: center;
   margin-horizontal: 5;
   margin-vertical: 5;
+  border: solid 0px #40582D;
+  border-radius: 13px;
+  overflow: hidden;
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};
 `;
