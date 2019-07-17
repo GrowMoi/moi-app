@@ -99,11 +99,6 @@ const storeEventsWeek = events => ({
   payload: events,
 });
 
-const storeDrawerState = isOpen => ({
-  type: actionTypes.STORE_DRAWER_STATE,
-  payload: isOpen,
-});
-
 const storeQuizResult = quizResult => ({
   type: actionTypes.STORE_QUIZ_RESULT,
   payload: quizResult,
@@ -667,10 +662,6 @@ const generateShareDataAsync = (titulo, descripcion, uri, imagen_url) => async (
   }
 }
 
-const setDrawerState = isOpen => async (dispatch) => {
-  await dispatch(storeDrawerState(isOpen));
-}
-
 export default {
   loginAsync,
   registerAsync,
@@ -717,7 +708,6 @@ export default {
   takeSuperEventAsync,
   getEventInProgressAsync,
   getEventsWeekAsync,
-  setDrawerState,
   removeQuizResult,
   generateShareDataAsync,
 };
