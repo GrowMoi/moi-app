@@ -208,7 +208,7 @@ const api = {
       const endpoint = '/api/users/tree_image';
 
       try {
-        const res = await client.put(endpoint, { image: image });
+        const res = await client.put(endpoint, { image_app: image });
         return res;
       } catch (error) {
         throw new Error(error);

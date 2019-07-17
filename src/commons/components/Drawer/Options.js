@@ -59,6 +59,7 @@ const ButtonForm = styled(View)`
   border-radius: 10px;
   background-color: ${chroma('#dbd05c').alpha(0.6)};
   shadow-color: black;
+  height: 45;
   shadow-offset: 1px 3px;
   shadow-opacity: 0.2;
   shadow-radius: 3px;

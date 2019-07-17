@@ -122,7 +122,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
         </PersonalInfo>
 
         {profile.tree_image && (
-          <TreeScreenShot width={width - 100} height={isTablet ? heightBackgroundProfile : heightBackgroundProfile + 40} treeBackground={'background_profile'} profileImage={profile.tree_image} style={{marginVertical : 10}}/>
+          <TreeScreenShot width={width - 100} height={isTablet ? heightBackgroundProfile : heightBackgroundProfile + 40} treeBackground={'background_profile'} profileImage={profile.tree_image_app} style={{marginVertical : 10}}/>
         )}
 
         {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} transparent/>}
