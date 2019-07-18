@@ -25,6 +25,7 @@ const Background = styled(MoiBackground)`
 
 const QuizSceneContainer = styled(View)`
   flex: 1;
+  width: 80%;
   align-items: center;
   justify-content: center;
 `;
@@ -164,9 +165,8 @@ export default class QuizScene extends Component {
       <Background>
         {quiz && Object.keys(quiz).length && (
           <QuizSceneContainer>
-            {loading && <Preloader />}
             {currentScene === 'intro' && this.renderIntroScene}
-            {currentScene === 'quiz' &&
+            {currentScene === 'quiz' && !loading &&
               <Quiz onQuizComplete={this.quizFinished}>
                 {quiz.questions.map(question => (
                   <Question
@@ -180,6 +180,7 @@ export default class QuizScene extends Component {
                 ))}
               </Quiz>}
             {currentScene === 'results' && this.renderFinalScene}
+            {loading && <Preloader />}
           </QuizSceneContainer>
         )}
         <Navbar />
