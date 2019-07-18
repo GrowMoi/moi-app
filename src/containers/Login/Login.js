@@ -103,7 +103,7 @@ export default class Login extends PureComponent {
 
   componentWillMount() {
     const { user } = this.props;
-    console.log('USER AUTHENTICATE', user.authenticate)
+    // console.log('USER AUTHENTICATE', user.authenticate)
     if (user.authenticate) Actions.tree();
   }
 

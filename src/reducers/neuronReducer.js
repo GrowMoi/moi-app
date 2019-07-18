@@ -5,6 +5,7 @@ const initialState = {
   neuronSelected: {},
   contentSelected: {},
   recomendedContents: {},
+  randomNeuronSelected: {},
   currentlyPressed: {
     pageX: null,
     pageY: null,
@@ -14,6 +15,15 @@ const initialState = {
 const neuronSelected = (state = initialState.neuronSelected, action = {}) => {
   switch (action.type) {
     case actionTypes.LOAD_NEURON_SELECTED:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const randomNeuronSelected = (state = initialState.randomNeuronSelected, action = {}) => {
+  switch (action.type) {
+    case actionTypes.LOAD_RANDOM_NEURON_SELECTED:
       return action.payload;
     default:
       return state;
@@ -52,4 +62,5 @@ export default combineReducers({
   contentSelected,
   recomendedContents,
   currentlyPressed,
+  randomNeuronSelected,
 });

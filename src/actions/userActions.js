@@ -158,7 +158,7 @@ const validateToken = () => async (dispatch, getStore) => {
   } catch (error) {
     dispatch(notAuthenticate());
 
-    console.log(getStore())
+    // console.log(getStore())
     throw new Error(error);
   }
 };

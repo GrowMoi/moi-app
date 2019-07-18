@@ -40,18 +40,29 @@ export default class ContentListBox extends Component {
     }
   }
 
-  shouldComponentUpdate() {
-    const { scene } = this.props;
-    const isContentScene = scene.name === 'content';
+  shouldComponentUpdate(nextProps) {
+    const { neuronSelected, scene } = this.props;
+
+
+    const isContentScene = (this.props.scene.name === nextProps.scene.name) && (this.props.neuronSelected.id === nextProps.neuronSelected.id);
+
+    // // console.log('CONTENTLISTBOX nextProps', nextProps.scene)
+    // console.log('Scene', this.props.scene)
+    // console.log('NeuronID', neuronSelected);
+
+    // // console.log('CONTENTLISTBOX NEURON ID', neuronSelected)
+    // // console.log('CONTENTLISTBOX scene', this.props.scene)
 
     if(isContentScene) return false
     return true
   }
 
-  backToTree = () => {
+  onCancelAlert = () => {
     this.setState(
       () => ({ isAlertOpen: false }),
-      () => { Actions.pop(); }
+      () => {
+        // Actions.pop();
+      }
     );
   }
 
@@ -121,7 +132,7 @@ export default class ContentListBox extends Component {
             <GenericAlert
               message='No hay contenidos!'
               description='Ya haz leido todos los contenidos en esta neurona.'
-              onCancel={this.backToTree}
+              onCancel={this.onCancelAlert}
               cancelText='Ok'
             />
           </Alert>
