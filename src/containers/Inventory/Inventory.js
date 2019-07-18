@@ -40,6 +40,7 @@ import { ContentBox } from '../../commons/components/ContentComponents';
 import ModalEventDescription from '../Events/ModalEventDescription';
 import deviceUtils from '../../commons/utils/device-utils';
 import resources from '../../commons/components/Item/resources';
+import eventsUtils from '../Events/events-utils';
 
 const isTablet = deviceUtils.isTablet();
 
@@ -64,7 +65,7 @@ const Container = styled(TouchableOpacity)`
         border: solid 0px #40582D;
         border-radius: 13px;
       `}
-    }
+  }
   }
   overflow: hidden;
 `;
@@ -87,13 +88,13 @@ const ItemBackground = styled(ImageBackground)`
   achievements: state.user.achievements,
   finalTestResult: state.user.finalTestResult,
   scene: state.routes.scene,
-  eventsWeek: state.user.eventsWeek,
   showPassiveMessage: state.user.showPassiveMessage,
 }), {
     getAchievementsAsync: userActions.getAchievementsAsync,
     updateAchievementsAsync: userActions.updateAchievementsAsync,
     loadFinalTestAsync: userActions.loadFinalTestAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
+    getEventsAsync: userActions.getEventsAsync,
     showPassiveMessageAsync: userActions.showPassiveMessageAsync,
   })
 export default class Inventory extends Component {
@@ -103,16 +104,16 @@ export default class Inventory extends Component {
     isAlertOpen: false,
     itemSelected: {},
     loading: false,
+    events: [],
   }
 
   columnsNumber;
+  allEvents;
 
   async componentDidMount() {
-    const { getEventsWeekAsync } = this.props;
-
     this.generateNumberOfColumns()
     this.showLoading();
-    await getEventsWeekAsync();
+    await this.getEventItems();
     this.showLoading(false);
   }
 
@@ -360,9 +361,20 @@ export default class Inventory extends Component {
     );
   };
 
-  mergeAllEvents(eventsWeek) {
+  async getEventItems() {
+    const { getEventsAsync, getEventsWeekAsync } = this.props;
+    let events = await getEventsAsync();
+    const eventsWeek = await getEventsWeekAsync();
+    const eventsWeekArray = this.mergeAllEvents(eventsWeek);
+    const decoratedEvents = eventsUtils.addCompletedKeyEvents(events.events, eventsWeekArray)
+    events.events = decoratedEvents
+    const allEvents  = this.mergeAllEvents(events);
+    this.setState({events: eventsUtils.normalizeEvents(allEvents)});
+  }
+
+  mergeAllEvents(events) {
     let allEvents = [];
-    Object.values(eventsWeek).forEach((event) => allEvents = [...allEvents, ...event])
+    Object.values(events).forEach((event) => allEvents = [...allEvents, ...event])
     return allEvents;
   }
 
@@ -380,19 +392,19 @@ export default class Inventory extends Component {
   }
 
   renderItems() {
-    const { achievements = [], eventsWeek } = this.props;
+    const { achievements = [] } = this.props;
+    const { events } = this.state;
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
     const allAchievements = this.addDisabledAchievements(sortedAchievements);
-    const allEvents = this.mergeAllEvents(eventsWeek);
 
-    if (this.state.loading) return <Preloader key={0}/>;
+    if (this.state.loading) return <Preloader key={0} />;
 
     return (
       <SectionList
         renderItem={this._renderSection}
         sections={[
-          {title: '', data: [{key: 'items', list: [...allAchievements, ...allEvents]}]},
+          { title: '', data: [{ key: 'items', list: [...allAchievements, ...events] }] },
           // {title: '', data: [{key: 'events', list: allEvents}]},
         ]}
         keyExtractor={(item, index) => item.name + index}
