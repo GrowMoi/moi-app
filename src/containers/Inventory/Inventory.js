@@ -40,6 +40,7 @@ import { ContentBox } from '../../commons/components/ContentComponents';
 import ModalEventDescription from '../Events/ModalEventDescription';
 import deviceUtils from '../../commons/utils/device-utils';
 import resources from '../../commons/components/Item/resources';
+import eventsUtils from '../Events/events-utils';
 
 const isTablet = deviceUtils.isTablet();
 
@@ -64,7 +65,7 @@ const Container = styled(TouchableOpacity)`
         border: solid 0px #40582D;
         border-radius: 13px;
       `}
-    }
+  }
   }
   overflow: hidden;
 `;
@@ -87,43 +88,42 @@ const ItemBackground = styled(ImageBackground)`
   achievements: state.user.achievements,
   finalTestResult: state.user.finalTestResult,
   scene: state.routes.scene,
-  eventsWeek: state.user.eventsWeek,
   showPassiveMessage: state.user.showPassiveMessage,
 }), {
     getAchievementsAsync: userActions.getAchievementsAsync,
     updateAchievementsAsync: userActions.updateAchievementsAsync,
     loadFinalTestAsync: userActions.loadFinalTestAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
+    getEventsAsync: userActions.getEventsAsync,
     showPassiveMessageAsync: userActions.showPassiveMessageAsync,
   })
 export default class Inventory extends Component {
   state = {
     modalVisible: false,
     currentVineta: null,
-    isAlertOpen: false,
     itemSelected: {},
     loading: false,
+    events: [],
   }
 
   columnsNumber;
+  allEvents;
 
   async componentDidMount() {
-    const { getEventsWeekAsync } = this.props;
-
     this.generateNumberOfColumns()
     this.showLoading();
-    await getEventsWeekAsync();
+    await this.getEventItems();
     this.showLoading(false);
   }
 
   generateNumberOfColumns() {
     const { device: { dimensions: { orientation } } } = this.props;
     const defaultColumns = isTablet ? 3 : 2;
-    const additionalColumns = orientation ===  PORTRAIT ? 0 : 1 ;
+    const additionalColumns = orientation === PORTRAIT ? 0 : 1;
     this.columnsNumber = defaultColumns + additionalColumns;
   }
 
-  updateItem = async ({ id, name }) => {
+  updateItem = ({ id, name }) => async () => {
     const { updateAchievementsAsync } = this.props;
     this.showLoading();
 
@@ -158,13 +158,28 @@ export default class Inventory extends Component {
     this.showLoading(false);
   }
 
-  closeAlert = () => {
-    this.setState({ isAlertOpen: false });
+  generateButtonProps = (title, opnPressButton) => {
+    return {
+      title,
+      onPress: () => {
+        this.setState({ isEventModalOpen: false })
+        opnPressButton();
+      }
+    }
+  }
+
+  generateFakeEvent = (title, description, image) => {
+    return {
+      title,
+      description,
+      image
+    }
   }
 
   activeItem = item => {
+    const source = resources.getItem(item.number);
     if (item.disabled) {
-      this.setState({ isAlertOpen: true, itemSelected: item });
+      this.setState({ isEventModalOpen: true, eventSelected: this.generateFakeEvent(item.name, item.description, source.disabled) });
       return
     }
 
@@ -184,14 +199,7 @@ export default class Inventory extends Component {
       this.showVideo(true, vineta_2);
       return;
     } else if (item.number === 10) {
-      Alert.alert(
-        `${item.name} `,
-        'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente',
-        [
-          { text: `OK`, onPress: () => this.goFinalQuiz() },
-          { text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-        ],
-      )
+      this.setState({ isEventModalOpen: true, eventSelected: { ...this.generateFakeEvent(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', source.source), buttonProps: this.generateButtonProps('OK', this.goFinalQuiz) } });
       return;
     }
 
@@ -209,14 +217,7 @@ export default class Inventory extends Component {
       }
     }
 
-    Alert.alert(
-      `${item.name} `,
-      `${item.description} (Item ${currentStatus.status})`,
-      [
-        { text: `${currentStatus.textButton}`, onPress: () => this.updateItem(item) },
-        { text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-      ],
-    )
+    this.setState({ isEventModalOpen: true, eventSelected: { ...this.generateFakeEvent(item.name,`${item.description} (Item ${currentStatus.status})`, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
   }
 
   addDisabledAchievements = (currentAchievements = []) => {
@@ -332,7 +333,7 @@ export default class Inventory extends Component {
   }
 
   _renderItem = ({ item }) => {
-    if((Object.keys(item || {}) || []).includes('completed')) {
+    if ((Object.keys(item || {}) || []).includes('completed')) {
       return this._renderEventsItem({ item });
     }
 
@@ -342,8 +343,8 @@ export default class Inventory extends Component {
   _renderSection = ({ section, index }) => {
     const data = section.data[0];
 
-    return  (
-      <View style={{flex: 1}}>
+    return (
+      <View style={{ flex: 1 }}>
         {/* {data.key === 'events' && <Line style={{marginTop:10, marginBottom:10}}  size={5}/> } */}
         <FlatList
           data={data.list}
@@ -360,14 +361,25 @@ export default class Inventory extends Component {
     );
   };
 
-  mergeAllEvents(eventsWeek) {
+  async getEventItems() {
+    const { getEventsAsync, getEventsWeekAsync } = this.props;
+    let events = await getEventsAsync();
+    const eventsWeek = await getEventsWeekAsync();
+    const eventsWeekArray = this.mergeAllEvents(eventsWeek);
+    const decoratedEvents = eventsUtils.addCompletedKeyEvents(events.events, eventsWeekArray)
+    events.events = decoratedEvents
+    const allEvents = this.mergeAllEvents(events);
+    this.setState({ events: eventsUtils.normalizeEvents(allEvents) });
+  }
+
+  mergeAllEvents(events) {
     let allEvents = [];
-    Object.values(eventsWeek).forEach((event) => allEvents = [...allEvents, ...event])
+    Object.values(events).forEach((event) => allEvents = [...allEvents, ...event])
     return allEvents;
   }
 
   renderTabs() {
-    const ContentCertificate = <ListCertificates key={1}/>;
+    const ContentCertificate = <ListCertificates key={1} />;
 
     const tabsData = [
       { label: 'Items', content: this.renderItems() },
@@ -380,19 +392,19 @@ export default class Inventory extends Component {
   }
 
   renderItems() {
-    const { achievements = [], eventsWeek } = this.props;
+    const { achievements = [] } = this.props;
+    const { events } = this.state;
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
     const allAchievements = this.addDisabledAchievements(sortedAchievements);
-    const allEvents = this.mergeAllEvents(eventsWeek);
 
-    if (this.state.loading) return <Preloader key={0}/>;
+    if (this.state.loading) return <Preloader key={0} />;
 
     return (
       <SectionList
         renderItem={this._renderSection}
         sections={[
-          {title: '', data: [{key: 'items', list: [...allAchievements, ...allEvents]}]},
+          { title: '', data: [{ key: 'items', list: [...allAchievements, ...events] }] },
           // {title: '', data: [{key: 'events', list: allEvents}]},
         ]}
         keyExtractor={(item, index) => item.name + index}
@@ -402,7 +414,7 @@ export default class Inventory extends Component {
   }
 
   render() {
-    const { modalVisible, currentVineta, isAlertOpen, itemSelected, isEventModalOpen, eventSelected } = this.state;
+    const { modalVisible, currentVineta, itemSelected, isEventModalOpen, eventSelected } = this.state;
     const { device: { dimensions: { width, height } }, finalTestResult, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const videoDimensions = {
@@ -419,7 +431,7 @@ export default class Inventory extends Component {
 
         {isEventModalOpen && <ModalEventDescription
           width={width}
-          event={eventSelected}
+          item={eventSelected}
           onClose={() => { this.setState({ isEventModalOpen: false }) }}
         />}
 
@@ -431,18 +443,10 @@ export default class Inventory extends Component {
           width={width}
         />}
 
-        {isAlertOpen && <AlertComponent open={isAlertOpen}>
-          <GenericAlert
-            message={itemSelected.name}
-            description={itemSelected.description}
-            onCancel={this.closeAlert}
-            cancelText='Ok'
-          />
-        </AlertComponent>}
         {finalTestResult && <Certificate />}
         <BottomBar />
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !modalVisible && !isAlertOpen}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !modalVisible && !isEventModalOpen}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);

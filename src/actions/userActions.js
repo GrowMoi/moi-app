@@ -616,6 +616,17 @@ const getEventsWeekAsync = () => async (dispatch) => {
   }
 }
 
+const getEventsAsync = () => async (dispatch) => {
+  try {
+    const res = await api.events.getEvents();
+    const { headers, data } = res;
+    await dispatch(setHeaders(headers));
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 const takeEventAsync = (eventId) => async (dispatch) => {
   try {
     const res = await api.events.takeEvent(eventId);
@@ -708,6 +719,7 @@ export default {
   takeSuperEventAsync,
   getEventInProgressAsync,
   getEventsWeekAsync,
+  getEventsAsync,
   removeQuizResult,
   generateShareDataAsync,
 };

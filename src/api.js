@@ -325,8 +325,16 @@ const api = {
       return res;
     },
 
-     async getEventsWeek() {
+    async getEventsWeek() {
       const endpoint = '/api/events/week';
+      const res = await client.get(
+        endpoint
+      );
+      return res;
+    },
+
+    async getEvents() {
+      const endpoint = '/api/events';
       const res = await client.get(
         endpoint
       );
