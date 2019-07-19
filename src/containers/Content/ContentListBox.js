@@ -41,19 +41,20 @@ export default class ContentListBox extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const { neuronSelected, scene } = this.props;
+    const { neuronSelected, scene, device } = this.props;
 
+    // Conditions FIXME: remove this conditions later.
+    const isContentScene = (this.props.scene.name === nextProps.scene.name);
+    const isSameNeuronSelected = (this.props.neuronSelected.id === nextProps.neuronSelected.id)
+    const isDiferentOrientation = device.dimensions.orientation !== nextProps.device.dimensions.orientation
 
-    const isContentScene = (this.props.scene.name === nextProps.scene.name) && (this.props.neuronSelected.id === nextProps.neuronSelected.id);
+    if(isContentScene) {
+      if(isSameNeuronSelected) {
+        if(isDiferentOrientation) return true
+        return false
+      }
+    }
 
-    // // console.log('CONTENTLISTBOX nextProps', nextProps.scene)
-    // console.log('Scene', this.props.scene)
-    // console.log('NeuronID', neuronSelected);
-
-    // // console.log('CONTENTLISTBOX NEURON ID', neuronSelected)
-    // // console.log('CONTENTLISTBOX scene', this.props.scene)
-
-    if(isContentScene) return false
     return true
   }
 
