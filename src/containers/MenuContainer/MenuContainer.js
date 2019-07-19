@@ -13,9 +13,6 @@ import { Palette } from '../../commons/styles'
 import { Actions, ActionConst } from 'react-native-router-flux';
 
 const { colors } = Palette;
-// const { Value, Clock, useCode, set } = Animated;
-
-const {width, height} = Dimensions.get('window')
 const isTablet = deviceUtils.isTablet()
 
 class MenuContainer extends Component {
@@ -100,15 +97,16 @@ class MenuContainer extends Component {
   }
 
   render() {
+    const { device: { dimensions = {} } } = this.props;
     const { MENU_WIDTH } = this.state;
 
     return (
       <Container style={{
-        width: width,
+        width: dimensions.width,
         transform: [{
           translateX: this.state.translateX.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, width]
+            outputRange: [0, dimensions.width]
           })
         }]
           }}>
@@ -163,6 +161,7 @@ const RestContainer = styled(Animated.View)`
 
 const mapStateToProps = (state) => ({
   sideMenu: state.sideMenu,
+  device: state.device,
 })
 
 const mapDispatchToProps = {

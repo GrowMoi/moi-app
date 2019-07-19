@@ -15,15 +15,15 @@ import userActions from '../../actions/userActions';
 
 
 @connect(store => ({
-  neuronSelected: store.neuron.neuronSelected,
+  randomNeuronSelected: store.neuron.randomNeuronSelected,
   device: store.device,
   reloadRandomContents: store.user.reloadRandomContents,
 }), {
   loadRecomendedContents: neuronActions.loadRecomendedContents,
-  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+  loadRandomNeuronContentByIdAsync: neuronActions.loadRandomNeuronContentByIdAsync,
   setReloadRandomContents: userActions.setReloadRandomContents,
 })
-class Tasks extends Component {
+class RandomContents extends Component {
   state = {
     loading: true,
   }
@@ -41,13 +41,13 @@ class Tasks extends Component {
   }
 
   getRandomContents = async () => {
-    const { loadRecomendedContents, loadNeuronByIdAsync } = this.props;
+    const { loadRecomendedContents, loadRandomNeuronContentByIdAsync } = this.props;
     const { data } = await loadRecomendedContents(1);
     const neurons = (data.neurons || []);
     const randomNeuron = (neurons[Math.floor(Math.random() * neurons.length)] || {});
     Actions.refresh({title: randomNeuron.title});
 
-    await loadNeuronByIdAsync(randomNeuron.id || 1);
+    await loadRandomNeuronContentByIdAsync(randomNeuron.id || 1);
     this.setState({ loading: false });
   }
 
@@ -61,7 +61,7 @@ class Tasks extends Component {
 
   render() {
     const { loading } = this.state;
-    const { device, neuronSelected } = this.props;
+    const { device, randomNeuronSelected } = this.props;
     const widthContentPreview = device.dimensions.width > 320 ? 110 : 100;
 
     const containerStyles = {
@@ -72,7 +72,7 @@ class Tasks extends Component {
     const contentBox = !loading && (
       <ContentBox>
         <ScrollView contentContainerStyle={containerStyles}>
-          {((neuronSelected || {}).contents || []).map((content, i) => {
+          {((randomNeuronSelected || {}).contents || []).map((content, i) => {
               const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind || '')}?`;
               const oddInverted = i % 2 === 1;
 
@@ -109,11 +109,11 @@ class Tasks extends Component {
   }
 }
 
-Tasks.propTypes = {
-  neuronSelected: PropTypes.object,
+RandomContents.propTypes = {
+  randomNeuronSelected: PropTypes.object,
   device: PropTypes.object,
   user: PropTypes.object,
   neuron_id: PropTypes.number,
 };
 
-export default Tasks;
+export default RandomContents;

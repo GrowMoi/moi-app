@@ -54,6 +54,7 @@ const SideBarMenuHeader = styled(View)`
 const TreContainer = styled(View)`
   align-self: center;
   bottom: 0;
+  margin-top: 40;
 `;
 
 const CloseIcon = styled(Ionicons)`

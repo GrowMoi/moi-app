@@ -7,20 +7,24 @@ import { Header } from '../Typography';
 import Button from '../Buttons/Button';
 import withSound from '../../utils/withSound';
 import { Size } from '../../styles';
+import deviceUtils from '../../utils/device-utils'
 
 const Container = styled(View)`
-  width: ${Size.containerQuizWidth};
+  width: 100%;
 `;
 
 const QuizPickerContainer = styled(ScrollView)`
-  height: 280px;
+  max-height: ${() => deviceUtils.isTablet() ? '400px' : '280px' };
 `;
 
 const Thumbnail = styled(Image)`
   align-self: stretch;
-  height: 160px;
+  width: 70%;
+  height: ${props => deviceUtils.isTablet() ? 250 : 160}
   border-radius: 2;
   margin-top: 10;
+  background-color: gray;
+  margin-left: 5%;
 `;
 
 const ButtonContainer = styled(View)`
@@ -29,6 +33,12 @@ const ButtonContainer = styled(View)`
   flex-direction: row;
   align-self: stretch;
 `;
+
+const ThumbnailContainer = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`
 
 export default class Question extends Component {
   state = {
@@ -59,8 +69,10 @@ export default class Question extends Component {
 
     return (
       <Container>
-        <Header bolder inverted>{title}</Header>
-        {mediaUrl && <Thumbnail source={{ uri: mediaUrl }} />}
+        <Header center customSize={30} bolder inverted>{title}</Header>
+        <ThumbnailContainer>
+          {mediaUrl && <Thumbnail source={{ uri: mediaUrl }} />}
+        </ThumbnailContainer>
         <QuizPickerContainer>
           {options &&
             <QuizPicker

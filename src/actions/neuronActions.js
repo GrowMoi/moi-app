@@ -55,6 +55,23 @@ const loadNeuronByIdAsync = id => async (dispatch) => {
   return res;
 };
 
+const loadRandomNeuronContentByIdAsync = id => async (dispatch) => {
+
+  try {
+    const res = await api.neuron.getNeuronById(id);
+
+    dispatch(setHeaders(res.headers))
+    dispatch({
+      type: actionTypes.LOAD_RANDOM_NEURON_SELECTED,
+      payload: res.data,
+    })
+
+    return res.data;
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
 const loadContentByIdAsync = (neuronId, contentId) => async (dispatch) => {
 
   try {
@@ -101,4 +118,5 @@ export default {
   setCurrentBackgroundAudio,
   removeCurrentBackgroundAudio,
   setNeuronLabelInfo,
+  loadRandomNeuronContentByIdAsync,
 };

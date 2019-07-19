@@ -5,6 +5,7 @@ import { View, TouchableOpacity } from 'react-native';
 import { TextBody } from '../Typography';
 import palette, { colors } from '../../styles/palette';
 import withSound from '../../utils/withSound';
+import deviceUtils from '../../utils/device-utils'
 
 const ContainerAnswers = styled(View)`
   align-self: stretch;
@@ -13,8 +14,8 @@ const ContainerAnswers = styled(View)`
 
 const Answer = styled(TouchableOpacity)`
   background-color: ${palette.white};
-  padding-horizontal: 10;
-  padding-vertical: 10;
+  padding-horizontal: ${10};
+  padding-vertical: ${() => deviceUtils.isTablet() ? 20 : 15};
   margin-bottom: 15;
   shadow-color: ${palette.dark};
   shadow-opacity: 0.5;

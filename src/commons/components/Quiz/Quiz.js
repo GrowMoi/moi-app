@@ -56,9 +56,9 @@ export default class Quiz extends Component {
   render() {
     const { currentQuestion } = this.state;
     return (
-      <View>
+      <React.Fragment>
         {this.questions[currentQuestion]}
-      </View>
+      </React.Fragment>
     );
   }
 }

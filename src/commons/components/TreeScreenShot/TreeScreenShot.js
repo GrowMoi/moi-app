@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, ImageBackground, Image } from 'react-native';
 import styled, { css } from 'styled-components/native';
+import deviceUtils from '../../utils/device-utils'
 
 const TreeContainer = styled(ImageBackground)`
   justify-content: center;
@@ -50,7 +51,7 @@ export default class TreeScreenShot extends Component {
 
   render() {
     const { width, height, profileImage, treeBackground, style, frame } = this.props;
-    const { imageWidth, imageHeight } = this.state;
+    // const { imageWidth, imageHeight } = this.state;
 
     const heightTree = height ? frame ? height - 50 : height - 80 : 180;
     const treeImage = profileImage ? { uri: profileImage } : { uri: 'tree_default' };
@@ -71,7 +72,7 @@ export default class TreeScreenShot extends Component {
                 height: '80%',
                 width: '80%',
                 position: 'absolute',
-                bottom: frame ? 45 : 0,
+                bottom: frame ? (deviceUtils.isTablet() ? 45 : 23) : 0,
               }}
               source={treeImage}
               resizeMode='contain'
