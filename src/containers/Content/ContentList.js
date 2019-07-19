@@ -2,7 +2,10 @@ import React, { PureComponent } from 'react';
 import { AsyncStorage } from 'react-native'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
+import Alert from '../../commons/components/Alert/Alert';
+import GenericAlert from '../../commons/components/Alert/GenericAlert';
 
 // Common Components
 import Navbar from '../../commons/components/Navbar/Navbar';
@@ -28,6 +31,7 @@ export default class ContentListScene extends PureComponent {
   state = {
     isFirstTimeEvents: true,
     events: [],
+    isAlertOpen: true,
   }
 
   async componentDidMount() {
@@ -57,17 +61,30 @@ export default class ContentListScene extends PureComponent {
     return `${year}-${month}-${day}`;
   }
 
-  filterReadedContents = (contents = []) => {
+  onCancelAlert = () => {
+    this.setState(
+      () => ({ isAlertOpen: false }),
+      () => {
+        if(!this.existContentsToRead) Actions.pop();
+      }
+    );
+  }
+
+  get filterReadedContents() {
+    const { neuronSelected } = this.props;
+    const contents = (neuronSelected || {}).contents || []
+
     return contents.filter(d => (!d.read || d.learnt));
+  }
+  get existContentsToRead() {
+    return this.filterReadedContents.length > 0;
   }
 
   render() {
     const { device, neuron_id, showPassiveMessage, showPassiveMessageAsync, neuronSelected } = this.props;
-    const { events, isFirstTimeEvents } = this.state
+    const { events, isFirstTimeEvents, isAlertOpen } = this.state
 
     const showEvents = events && events.length > 0 && isFirstTimeEvents;
-    const contents = this.filterReadedContents((neuronSelected || {}).contents);
-    const existContentsToRead = (contents || []).length > 0;
 
     const containerStyles = {
       width: (device.dimensions.width - Size.spaceMediumLarge),
@@ -79,7 +96,7 @@ export default class ContentListScene extends PureComponent {
         <ContentListBox
           containerStyles={containerStyles}
           neuronId={neuron_id}
-          contents={contents}
+          contents={this.filterReadedContents}
           neuronSelected={neuronSelected}
         />
 
@@ -90,7 +107,7 @@ export default class ContentListScene extends PureComponent {
         />
 
         {showEvents && (
-          existContentsToRead && (
+          this.existContentsToRead && (
             <EventModal
               width={device.dimensions.width}
               events={events}
@@ -109,6 +126,17 @@ export default class ContentListScene extends PureComponent {
           }}
           message='Elige el contenido que más te interese y presiona sobre el'
         />
+
+        {(!this.existContentsToRead) &&
+          <Alert open={isAlertOpen}>
+            <GenericAlert
+              message='No hay contenidos!'
+              description='Ya haz leido todos los contenidos en esta neurona.'
+              onCancel={this.onCancelAlert}
+              cancelText='Ok'
+            />
+          </Alert>
+        }
       </MoiBackground>
     );
   }

@@ -14,7 +14,8 @@ import EventModal from '../Events/EventModal';
 import eventsUtils from '../Events/events-utils';
 import { View, Text } from 'react-native-animatable';
 
-const MILLISECONDS = 100;
+const MILLISECONDS = 60;
+const ContentPreviewWithSound = withSound(ContentPreview);
 
 @connect(store => ({
   device: store.device,
@@ -23,10 +24,6 @@ const MILLISECONDS = 100;
   getEventsTodayAsync: userActions.getEventsTodayAsync,
 })
 export default class ContentListBox extends Component {
-
-  state = {
-    isAlertOpen: true,
-  }
   widthContentPreview;
 
   componentWillMount() {
@@ -34,18 +31,12 @@ export default class ContentListBox extends Component {
     this.widthContentPreview = width > 320 ? 110 : 100;
   }
 
-  componentWillUpdate() {
-    if (!this.state.isAlertOpen) {
-      this.setState({ isAlertOpen: true });
-    }
-  }
-
   shouldComponentUpdate(nextProps) {
     const { neuronSelected, scene, device } = this.props;
 
     // Conditions FIXME: remove this conditions later.
-    const isContentScene = (this.props.scene.name === nextProps.scene.name);
-    const isSameNeuronSelected = (this.props.neuronSelected.id === nextProps.neuronSelected.id)
+    const isContentScene = (scene.name === nextProps.scene.name);
+    const isSameNeuronSelected = (neuronSelected.id === nextProps.neuronSelected.id)
     const isDiferentOrientation = device.dimensions.orientation !== nextProps.device.dimensions.orientation
 
     if(isContentScene) {
@@ -58,15 +49,6 @@ export default class ContentListBox extends Component {
     return true
   }
 
-  onCancelAlert = () => {
-    this.setState(
-      () => ({ isAlertOpen: false }),
-      () => {
-        // Actions.pop();
-      }
-    );
-  }
-
   onPressRowcontent = (content) => {
     const { neuronSelected, neuronId } = this.props;
 
@@ -77,30 +59,23 @@ export default class ContentListBox extends Component {
     });
   }
 
-
-  renderContentPreviewWithSound = (content, delay, oddInverted) => {
-    // const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind)}?`;
-    const ContentPreviewWithSound = withSound(ContentPreview);
+  _renderItem = ({ item, index }) => {
+    const oddInverted = index % 2 === 1;
+    const delay = MILLISECONDS * index;
 
     return (
       <ContentPreviewWithSound
         soundName="selectOption"
-        learnt={content.learnt}
+        learnt={item.learnt}
         animationDelay={delay}
-        key={`item-${content.id}`}
+        key={`item-${item.id}.${item.title}`}
         width={this.widthContentPreview}
-        onPress={e => this.onPressRowcontent(content)}
+        onPress={e => this.onPressRowcontent(item)}
         inverted={oddInverted}
-        title={content.title || ''}
-        source={{ uri: content.media[0] }}
+        title={item.title || ''}
+        source={{ uri: item.media[0] }}
       />
     );
-  }
-
-  _renderItem = ({ item, index }) => {
-    const oddInverted = index % 2 === 1;
-    const delay = MILLISECONDS * index;
-    return this.renderContentPreviewWithSound(item, delay, oddInverted);
   }
 
   _keyExtractor = (item) => {
@@ -108,36 +83,17 @@ export default class ContentListBox extends Component {
   };
 
   render() {
-    const { containerStyles, device: { dimensions: { width } }, neuronSelected, contents } = this.props;
-    const { isAlertOpen } = this.state;
+    const { containerStyles, contents = [] } = this.props;
 
-    const existContentsToRead = (contents || []).length > 0;
-    // const contents = this.filterReadedContents((neuronSelected || {}).contents);
-
-    // const isContentScene = scene.name === 'content';
-    // const showEvents = events && events.length > 0 && isFirstTimeEvents;
     return (
       <ContentBox>
         <FlatList
           contentContainerStyle={containerStyles}
-          data={contents || []}
-          renderItem={this._renderItem}
+          data={contents}
           keyExtractor={this._keyExtractor}
+          renderItem={this._renderItem}
           numColumns={1}
         />
-
-        {/* {showEvents && existContentsToRead && <EventModal width={width} events={events} onCloseButtonPress={() => {this.setState({events: []})}}/>} */}
-
-        {!existContentsToRead &&
-          <Alert open={isAlertOpen}>
-            <GenericAlert
-              message='No hay contenidos!'
-              description='Ya haz leido todos los contenidos en esta neurona.'
-              onCancel={this.onCancelAlert}
-              cancelText='Ok'
-            />
-          </Alert>
-        }
       </ContentBox>
     )
   }
