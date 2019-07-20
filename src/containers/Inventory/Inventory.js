@@ -324,7 +324,7 @@ export default class Inventory extends Component {
           source={{ uri: box }}>
           <EventImage
             source={{ uri: item.completed ? item.image : item.inactive_image }}
-            width={item.completed ? width - 30 : width - 40}
+            width={item.completed ?  width + 10: width - 40}
           />
         </ItemBackground>
       </Container>

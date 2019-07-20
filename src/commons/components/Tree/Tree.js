@@ -24,20 +24,10 @@ import { AnimatedNubes } from './AnimatedNubes';
 import { Sound } from '../SoundPlayer';
 import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
-import { Size } from '../../styles';
 import deviceUtils from '../../utils/device-utils';
 import { PORTRAIT } from '../../../constants';
 
 const isTablet = deviceUtils.isTablet();
-
-const screenShotHeight = 350;
-
-const styles = StyleSheet.create({
-  treeView: {
-    position: 'relative',
-    flex: 1,
-  },
-});
 
 const TreeContainer = styled(View)`
   flex: 1;
