@@ -16,6 +16,7 @@ import creditos from '../../../assets/videos/creditos.mp4';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import { Sound } from '../../commons/components/SoundPlayer';
 import LevelPassedTransition from './LevelPassedTransition';
+import neuronActions from '../../actions/neuronActions';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -40,6 +41,7 @@ const QuizSceneContainer = styled(View)`
   evaluateFinalTestAsync: userActions.evaluateFinalTestAsync,
   saveResultFinalTest: userActions.saveResultFinalTest,
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
 })
 export default class QuizScene extends Component {
   state = {
@@ -139,7 +141,8 @@ export default class QuizScene extends Component {
     const message = `Respondiste ${correctResults.length} de ${results.length} preguntas correctamente`;
 
     if(!this.soundQuizFinishedPlayed) {
-      Sound.playSingleSound('recompensa');
+      this.props.stopCurrentBackgroundAudio();
+      Sound.playOverBackgroundSound('recompensa');
       this.soundQuizFinishedPlayed = true;
     }
 

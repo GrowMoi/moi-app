@@ -18,12 +18,12 @@ export default EventsUtils = {
     return EventsUtils.addKeySuperEvent(superEvents);
   },
 
-  addCompletedKeyEvents: (events, eventsWeek) => {
-    function isCompletedEvent(event) {
-      return eventsWeek.findIndex(evt => evt.id === event.id) === -1;
-    }
+  addCompletedKeyEvents: (events) => {
+    // function isCompletedEvent(event) {
+    //   return eventsWeek.findIndex(evt => evt.id === event.id) === -1;
+    // }
     return events.map(event => {
-      event.completed = isCompletedEvent(event);
+      event.completed = !!event.completed;
       return event;
     })
   },

@@ -93,7 +93,6 @@ const ItemBackground = styled(ImageBackground)`
     getAchievementsAsync: userActions.getAchievementsAsync,
     updateAchievementsAsync: userActions.updateAchievementsAsync,
     loadFinalTestAsync: userActions.loadFinalTestAsync,
-    getEventsWeekAsync: userActions.getEventsWeekAsync,
     getEventsAsync: userActions.getEventsAsync,
     showPassiveMessageAsync: userActions.showPassiveMessageAsync,
   })
@@ -362,11 +361,9 @@ export default class Inventory extends Component {
   };
 
   async getEventItems() {
-    const { getEventsAsync, getEventsWeekAsync } = this.props;
+    const { getEventsAsync } = this.props;
     let events = await getEventsAsync();
-    const eventsWeek = await getEventsWeekAsync();
-    const eventsWeekArray = this.mergeAllEvents(eventsWeek);
-    const decoratedEvents = eventsUtils.addCompletedKeyEvents(events.events, eventsWeekArray)
+    const decoratedEvents = eventsUtils.addCompletedKeyEvents(events.events)
     events.events = decoratedEvents
     const allEvents = this.mergeAllEvents(events);
     this.setState({ events: eventsUtils.normalizeEvents(allEvents) });
