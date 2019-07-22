@@ -52,16 +52,6 @@ export default class MoiSound {
     });
   }
 
-  static playSingleSound = async (soundName, resumeBgSound) => {
-    let sound = MoiSound.loadedSounds[soundName];
-    MoiSound.pause();
-    sound.play((didJustFnished) => {
-      if(didJustFnished && resumeBgSound) {
-        MoiSound.play();
-      }
-    });
-  }
-
   static playOverBackgroundSound = async (soundName, repeatSound = false, currentTime) => {
     MoiSound.currentSound = MoiSound.loadedSounds[soundName];
     MoiSound.currentSound.setNumberOfLoops(repeatSound ? -1 : 0);

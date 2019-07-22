@@ -8,6 +8,7 @@ import * as Animatable from 'react-native-animatable';
 import treeActions from '../../actions/treeActions';
 import { Header } from '../../commons/components/Typography';
 import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
+import Preloader from '../../commons/components/Preloader/Preloader';
 
 const AnimationContainer = styled(View)`
   position: absolute;
@@ -48,7 +49,7 @@ export default class LevelPassedTransition extends Component {
 
     async componentDidMount() {
         const { loadTreeAsync } = this.props;
-        const res = await loadTreeAsync();
+        const res = await loadTreeAsync(null, true);
         this.setState({ currentLevel: res.data.meta.depth });
     }
 
@@ -62,7 +63,7 @@ export default class LevelPassedTransition extends Component {
         const { showAnimation, showLevel, currentLevel } = this.state;
 
         if (!currentLevel) {
-            return null;
+            return <Preloader />;
         }
 
         if (currentLevel === this.prevLevel && !this.validateQuizResults()) {

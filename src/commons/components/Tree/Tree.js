@@ -24,20 +24,10 @@ import { AnimatedNubes } from './AnimatedNubes';
 import { Sound } from '../SoundPlayer';
 import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
-import { Size } from '../../styles';
 import deviceUtils from '../../utils/device-utils';
 import { PORTRAIT } from '../../../constants';
 
 const isTablet = deviceUtils.isTablet();
-
-const screenShotHeight = 350;
-
-const styles = StyleSheet.create({
-  treeView: {
-    position: 'relative',
-    flex: 1,
-  },
-});
 
 const TreeContainer = styled(View)`
   flex: 1;
@@ -104,13 +94,19 @@ export default class Tree extends Component {
     this.handleVideoFirstLogin();
   }
 
-  componentWillReceiveProps(newProps) {
+  async componentWillReceiveProps(newProps) {
+    if (await this.canTakeScreenShot(newProps)) {
+      setTimeout(() => { this.takeScreenShotTree() }, 2000);
+    }
+  }
+
+  canTakeScreenShot = async (newProps) => {
     const { userTree } = this.props;
     const newUserTree = newProps.userTree;
 
-    if (Object.keys(userTree).length !== 0 && userTree.meta.current_learnt_contents !== newUserTree.meta.current_learnt_contents) {
-      setTimeout(() => { this.takeScreenShotTree() }, 2000);
-    }
+    const hasNewLearntContent = Object.keys(userTree).length !== 0 && userTree.meta.current_learnt_contents !== newUserTree.meta.current_learnt_contents;
+    const firstScreenShotTaken = await AsyncStorage.getItem('firstScreenshotTaken');
+    return hasNewLearntContent || !firstScreenShotTaken;
   }
 
   setTitleView() {
@@ -244,6 +240,7 @@ export default class Tree extends Component {
     const { uploadTreeImageAsync, getUserProfileAsync, user } = this.props;
     await uploadTreeImageAsync(this.normalizeBase64Image(image));
     await getUserProfileAsync(user.profile.id);
+    AsyncStorage.setItem('firstScreenshotTaken', 'true')
     console.log("upload ok");
   }
 

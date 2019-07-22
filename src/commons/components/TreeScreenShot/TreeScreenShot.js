@@ -51,12 +51,11 @@ export default class TreeScreenShot extends Component {
 
   render() {
     const { width, height, profileImage, treeBackground, style, frame } = this.props;
-    // const { imageWidth, imageHeight } = this.state;
 
     const heightTree = height ? frame ? height - 50 : height - 80 : 180;
     const treeImage = profileImage ? { uri: profileImage } : { uri: 'tree_default' };
 
-    // const widthTree = this.calculateImageWidth(imageWidth, imageHeight, frame ? heightTree + 150 : heightTree)
+    const heightFrame = height ? height : 170;
 
     return (
       <View style={style}>
@@ -72,16 +71,20 @@ export default class TreeScreenShot extends Component {
                 height: '80%',
                 width: '80%',
                 position: 'absolute',
-                bottom: frame ? (deviceUtils.isTablet() ? 45 : 23) : 0,
+                bottom: frame && deviceUtils.isTablet() ? 20 : 0,
               }}
               source={treeImage}
               resizeMode='contain'
             />
           </ImageContainer>
-          {frame && <ProfileImage style={{ position: 'absolute' }} width={width}
-            height={height ? height : 170}
-            source={{ uri: frame }}
-            resizeMode='stretch' />}
+          {frame &&
+          <View style={{position: 'absolute', height: heightFrame + 30, paddingTop: 30}}>
+            <ProfileImage width={width}
+                height={heightFrame}
+                source={{ uri: frame }}
+                resizeMode='stretch' />
+            </View>
+            }
         </TreeContainer>
       </View>
     );
