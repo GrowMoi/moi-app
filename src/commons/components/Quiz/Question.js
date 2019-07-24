@@ -69,7 +69,7 @@ export default class Question extends Component {
 
     return (
       <Container>
-        <Header center customSize={30} bolder inverted>{title}</Header>
+        <Header center customSize={deviceUtils.isTablet() ? 30 : 15} bolder inverted>{title}</Header>
         <ThumbnailContainer>
           {mediaUrl && <Thumbnail source={{ uri: mediaUrl }} />}
         </ThumbnailContainer>
