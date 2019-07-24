@@ -69,11 +69,12 @@ class Item extends Component {
     const renderTypeItem = resources.getItem(type);
     const box = resources.getBox(disabled);
     if(object.isEmpty(renderTypeItem)) return null;
+    const styleInactiveItem = active ? { opacity: 0.5 } : {};
 
     const source = this.getItemSource(renderTypeItem, active, disabled);
 
     return (
-      <Container source={{uri: box}} resizeMode='contain' width={width}>
+      <Container source={{uri: box}} resizeMode='contain' width={width} style={styleInactiveItem}>
         <TouchableWithoutFeedback onPress={() => this.onPressItem(disabled)}>
           <ItemImageAnimated
             ref={this.handleViewRef}

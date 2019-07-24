@@ -216,7 +216,7 @@ export default class Inventory extends Component {
       }
     }
 
-    this.setState({ isEventModalOpen: true, eventSelected: { ...this.generateFakeEvent(item.name,`${item.description} (Item ${currentStatus.status})`, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
+    this.setState({ isEventModalOpen: true, eventSelected: { ...this.generateFakeEvent(item.name, item.description, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
   }
 
   addDisabledAchievements = (currentAchievements = []) => {
@@ -312,8 +312,10 @@ export default class Inventory extends Component {
   _renderEventsItem = ({ item }) => {
     const width = this.itemWidth;
     const box = resources.getBox(!item.completed)
+    const styleInactiveItem = item.completed ? { opacity: 0.5 } : {};
     return (
       <Container
+        style={styleInactiveItem}
         onPress={() => this.setState({ isEventModalOpen: true, eventSelected: item })}
         activeOpacity={0.8}
         width={width}
