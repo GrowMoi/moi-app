@@ -121,7 +121,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
           </DescriptionContainer>
         </PersonalInfo>
 
-        {profile.tree_image && (
+        {profile.tree_image_app && (
           <TreeScreenShot width={width - 100} height={isTablet ? heightBackgroundProfile : heightBackgroundProfile + 40} treeBackground={'background_profile'} profileImage={profile.tree_image_app} style={{marginVertical : 10}}/>
         )}
 

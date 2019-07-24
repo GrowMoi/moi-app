@@ -196,6 +196,7 @@ export default class QuizScene extends Component {
           width={width}
           onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
           showCloseIcon={false}
+          skipButton
         />}
         {showLevelPassedAnimation && <LevelPassedTransition/>}
         <PassiveMessageAlert

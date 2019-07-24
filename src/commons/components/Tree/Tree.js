@@ -101,12 +101,14 @@ export default class Tree extends Component {
   }
 
   canTakeScreenShot = async (newProps) => {
-    const { userTree } = this.props;
     const newUserTree = newProps.userTree;
+    const lastLearntContents = await AsyncStorage.getItem('lastLearntContents');
+    const hasNewLearntContent = lastLearntContents !== this.getLearntContents(newUserTree).toString();
+    return hasNewLearntContent;
+  }
 
-    const hasNewLearntContent = Object.keys(userTree).length !== 0 && userTree.meta.current_learnt_contents !== newUserTree.meta.current_learnt_contents;
-    const firstScreenShotTaken = await AsyncStorage.getItem('firstScreenshotTaken');
-    return hasNewLearntContent || !firstScreenShotTaken;
+  getLearntContents(userTree) {
+    return (userTree || this.props.userTree).meta.current_learnt_contents;
   }
 
   setTitleView() {
@@ -240,7 +242,7 @@ export default class Tree extends Component {
     const { uploadTreeImageAsync, getUserProfileAsync, user } = this.props;
     await uploadTreeImageAsync(this.normalizeBase64Image(image));
     await getUserProfileAsync(user.profile.id);
-    AsyncStorage.setItem('firstScreenshotTaken', 'true')
+    AsyncStorage.setItem('lastLearntContents', this.getLearntContents().toString());
     console.log("upload ok");
   }
 
