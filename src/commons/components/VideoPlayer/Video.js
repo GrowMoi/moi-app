@@ -28,8 +28,6 @@ const CloseIcon = styled(Ionicons)`
 class Video extends Component {
 
   componentWillMount() {
-    if(Platform.OS === 'ios') return;
-
     this.currentOrientation = Orientation.getInitialOrientation();
     Orientation.lockToLandscape();
   }
@@ -40,7 +38,6 @@ class Video extends Component {
 
   componentWillUnmount() {
     Sound.play();
-    if(Platform.OS === 'ios') return;
 
     if(this.currentOrientation === 'PORTRAIT') {
       Orientation.lockToPortrait();

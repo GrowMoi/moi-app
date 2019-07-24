@@ -1,6 +1,7 @@
 import React from 'react'
 import { PieChart } from 'react-native-svg-charts'
 import { Text } from 'react-native-svg'
+import size from '../../commons/styles/size';
 
 class ChartLearnedContent extends React.PureComponent {
 
@@ -41,7 +42,7 @@ class ChartLearnedContent extends React.PureComponent {
 
     return (
       <PieChart
-        style={{ height: 77 }}
+        style={{ height: size.sizeChart }}
         valueAccessor={({ item }) => item.amount}
         data={this.generateData()}
         spacing={0}

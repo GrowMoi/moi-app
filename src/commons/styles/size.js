@@ -105,4 +105,10 @@ export default {
 
   //quiz
   containerQuizWidth: isTablet ? 480 : 240,
+
+  //certificate
+  heigthTitle: isTablet ? 80 : 45,
+  heigthBody: isTablet ? 270 : 150,
+  certificateFont: isTablet ? 25 : 14,
+  sizeChart: isTablet ? 100 : 60,
 };
