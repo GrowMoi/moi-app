@@ -8,6 +8,7 @@ import { Size, Palette } from '../../commons/styles';
 import LeaderRow from '../../commons/components/LeaderRow/LeaderRow';
 import { normalize, object } from '../../commons/utils';
 import Preloader from '../../commons/components/Preloader/Preloader';
+import { FontAwesome } from '@expo/vector-icons';
 
 // Actions
 import profilesActions from '../../actions/profileActions';
@@ -29,6 +30,12 @@ const StyledContentBox = styled(ContentBox)`
   margin-bottom: ${Size.spaceMedium};
   align-items: center;
   justify-content: center;
+`;
+
+const ContentFooter = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;
 
 @connect(state => ({
@@ -94,7 +101,7 @@ export default class LeaderBoardContent extends PureComponent {
 
   _keyExtractor = (item, index) => uuid();
   _renderItem = ({ item }) => {
-    const { leaders: { meta }, profile } = this.props;
+    const { profile } = this.props;
     const style = item.user_id === profile.id ? { backgroundColor: Palette.white.alpha(0.7).css() } : {};
 
     return (
@@ -105,6 +112,21 @@ export default class LeaderBoardContent extends PureComponent {
         seconds={`${new Date(item.time_elapsed).getSeconds()}s`}
         onPress={() => this.onPressProfile(item)}
       />
+    )
+  }
+  _renderFooter = () => {
+    const { data: dataLeaders } = this.props;
+    const currentUser = dataLeaders.meta.user_data;
+
+    return (
+      <ContentFooter>
+        <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
+        <LeaderRow
+          playerName={normalize.normalizeAllCapLetter(currentUser.username)}
+          grade={currentUser.contents_learnt}
+          seconds={`${new Date(currentUser.time_elapsed).getSeconds()}s`}
+        />
+      </ContentFooter>
     )
   }
   render() {
@@ -131,6 +153,7 @@ export default class LeaderBoardContent extends PureComponent {
               data={dataLeaders.leaders}
               renderItem={this._renderItem}
               keyExtractor={this._keyExtractor}
+              ListFooterComponent={this._renderFooter}
             />
           )}
           {!(dataLeaders.leaders || []).length > 0 && (
