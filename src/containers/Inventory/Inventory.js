@@ -60,12 +60,17 @@ const Container = styled(TouchableOpacity)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};
   ${props => {
-    if (props.inactive) {
-      return css`
-        border: solid 0px #40582D;
-        border-radius: 13px;
-      `}
-  }
+      if (props.inactive) {
+        return css`
+          border: solid 0px #40582D;
+          border-radius: 13px;
+        `
+      }else {
+        return css`
+          border: solid 5px #FFFF;
+        `
+      }
+    }
   }
   overflow: hidden;
 `;
@@ -312,10 +317,8 @@ export default class Inventory extends Component {
   _renderEventsItem = ({ item }) => {
     const width = this.itemWidth;
     const box = resources.getBox(!item.completed)
-    const styleInactiveItem = item.completed ? { opacity: 0.5 } : {};
     return (
       <Container
-        style={styleInactiveItem}
         onPress={() => this.setState({ isEventModalOpen: true, eventSelected: item })}
         activeOpacity={0.8}
         width={width}

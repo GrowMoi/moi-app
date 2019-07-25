@@ -24,6 +24,14 @@ const Container = styled(ImageBackground)`
   overflow: hidden;
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};
+  ${props => {
+      if (props.active) {
+        return css`
+          border: solid 5px #FFFF;
+        `
+      }
+    }
+  }
 `;
 
 const itemWidth = 70;
@@ -69,12 +77,11 @@ class Item extends Component {
     const renderTypeItem = resources.getItem(type);
     const box = resources.getBox(disabled);
     if(object.isEmpty(renderTypeItem)) return null;
-    const styleInactiveItem = active ? { opacity: 0.5 } : {};
 
     const source = this.getItemSource(renderTypeItem, active, disabled);
 
     return (
-      <Container source={{uri: box}} resizeMode='contain' width={width} style={styleInactiveItem}>
+      <Container source={{uri: box}} resizeMode='contain' width={width} active={active}>
         <TouchableWithoutFeedback onPress={() => this.onPressItem(disabled)}>
           <ItemImageAnimated
             ref={this.handleViewRef}
