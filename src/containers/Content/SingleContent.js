@@ -24,7 +24,7 @@ import uuid from 'uuid/v4'
 
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
+import { BottomBarWithButtons, BackButton } from '../../commons/components/SceneComponents';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { TextBody, Header } from '../../commons/components/Typography';
@@ -42,6 +42,7 @@ import * as constants from '../../constants';
 // Redux
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
+import { backButtonWithSound } from '../../routes';
 
 const { width } = Dimensions.get('window');
 
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
 })
 export default class SingleContentScene extends Component {
   state = {
-    loading: true,
+    loading: false,
     videoModalVisible: false,
     currentVideoId: '',
     actionSheetsVisible: false,
@@ -153,6 +154,8 @@ export default class SingleContentScene extends Component {
 
   loadContentAsync = async () => {
     const { loadContentByIdAsync, content_id, neuron_id } = this.props;
+
+    this.toggleLoading(true);
 
     try {
       await loadContentByIdAsync(neuron_id, content_id);
@@ -323,10 +326,15 @@ export default class SingleContentScene extends Component {
   }
 
   goToSingleContent = (contentId, neuronId, title) => {
+
     Actions.singleContent({
       content_id: contentId,
       neuron_id: neuronId,
-      title,
+      title: this.props.title,
+      renderBackButton: () => backButtonWithSound(async () => {
+        Actions.pop();
+        await this.loadContentAsync();
+      })
     })
   }
 

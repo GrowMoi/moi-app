@@ -21,7 +21,7 @@ import navbarPropStyles, { HamburgerButton } from './commons/components/Navbar/n
 import withSound from './commons/utils/withSound';
 // import Test from './commons/components/Test';
 
-const backButtonWithSound = (action) => {
+export const backButtonWithSound = (action) => {
   const BackButtonWithSound = withSound(BackButton);
 
   return (
