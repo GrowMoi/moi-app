@@ -60,12 +60,17 @@ const Container = styled(TouchableOpacity)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};
   ${props => {
-    if (props.inactive) {
-      return css`
-        border: solid 0px #40582D;
-        border-radius: 13px;
-      `}
-  }
+      if (props.inactive) {
+        return css`
+          border: solid 0px #40582D;
+          border-radius: 13px;
+        `
+      }else {
+        return css`
+          border: solid 5px #FFFF;
+        `
+      }
+    }
   }
   overflow: hidden;
 `;
@@ -216,7 +221,7 @@ export default class Inventory extends Component {
       }
     }
 
-    this.setState({ isEventModalOpen: true, eventSelected: { ...this.generateFakeEvent(item.name,`${item.description} (Item ${currentStatus.status})`, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
+    this.setState({ isEventModalOpen: true, eventSelected: { ...this.generateFakeEvent(item.name, item.description, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
   }
 
   addDisabledAchievements = (currentAchievements = []) => {

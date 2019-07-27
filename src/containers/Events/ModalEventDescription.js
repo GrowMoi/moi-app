@@ -55,11 +55,11 @@ export default class ModalEventDescription extends Component {
           <View style={{ width: this.modalSize.width, height: this.modalSize.height, padding: 5, paddingTop: 10, alignItems: 'center' }}>
             <CloseIcon onPress={onClose} />
             <ContentContainer style={{ width: this.modalSize.width - 25, height: this.modalSize.height - 10 }} colorsMargin={['#344F39', '#344F39']} colorsContent={['#74AD50', '#74AD50']}>
-              <Header bolder>{title}</Header>
+              <Header bolder center style={{ marginTop:5 }}>{title}</Header>
               <View style={{ width: Size.iconSizeEventDescription, height: Size.iconSizeEventDescription, margin: 10 }}>
                 <Image source={{ uri: item.image }} style={{ width: Size.iconSizeEventDescription, height: Size.iconSizeEventDescription }} />
               </View>
-              <Header small ellipsizeMode='tail' numberOfLines={3}>{description}</Header>
+              <Header small ellipsizeMode='tail' numberOfLines={3} center style={{marginLeft:5, marginRight:5}}>{description}</Header>
               {buttonProps &&
               <View style={{flex: 1, justifyContent: 'center'}}>
                 <Button {...buttonProps} style={{minWidth: 70}} />
