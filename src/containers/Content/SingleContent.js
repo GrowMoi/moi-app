@@ -24,7 +24,7 @@ import uuid from 'uuid/v4'
 
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
+import { BottomBarWithButtons, BackButton } from '../../commons/components/SceneComponents';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { TextBody, Header } from '../../commons/components/Typography';
@@ -42,6 +42,7 @@ import * as constants from '../../constants';
 // Redux
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
+import { backButtonWithSound } from '../../routes';
 
 const { width } = Dimensions.get('window');
 
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
 })
 export default class SingleContentScene extends Component {
   state = {
-    loading: true,
+    loading: false,
     videoModalVisible: false,
     currentVideoId: '',
     actionSheetsVisible: false,
@@ -151,11 +152,15 @@ export default class SingleContentScene extends Component {
     await this.loadContentAsync();
   }
 
-  loadContentAsync = async () => {
-    const { loadContentByIdAsync, content_id, neuron_id } = this.props;
+  loadContentAsync = async (fromReadContent) => {
+    const { loadContentByIdAsync, content_id, neuron_id, parentContent } = this.props;
+    const neuronId = fromReadContent && parentContent ? parentContent.neuronId : neuron_id;
+    const contentId = fromReadContent && parentContent ? parentContent.contentId : content_id;
+
+    this.toggleLoading(true);
 
     try {
-      await loadContentByIdAsync(neuron_id, content_id);
+      await loadContentByIdAsync(neuronId, contentId);
     } catch (error) {
       this.showErrorMessage();
     }
@@ -258,7 +263,7 @@ export default class SingleContentScene extends Component {
   }
 
   afterFinishAnimation = async (neuronId) => {
-    const { loadNeuronByIdAsync, fromEvent, getEventInProgressAsync } = this.props;
+    const { loadNeuronByIdAsync, fromEvent, getEventInProgressAsync, parentContent } = this.props;
     const { hasTest } = this.state;
 
     this.setState({ reading: false, isShowingContent: false });
@@ -267,7 +272,11 @@ export default class SingleContentScene extends Component {
       Actions.quiz({ type: ActionConst.RESET });
     } else {
       try {
-        await loadNeuronByIdAsync(neuronId);
+        if(!parentContent) {
+          await loadNeuronByIdAsync(neuronId);
+        }else {
+          await this.loadContentAsync(true);
+        }
         if(fromEvent) await getEventInProgressAsync();
         Actions.pop();
       } catch (error) {
@@ -323,10 +332,20 @@ export default class SingleContentScene extends Component {
   }
 
   goToSingleContent = (contentId, neuronId, title) => {
+    const {  content_id, neuron_id, } = this.props;
+
     Actions.singleContent({
       content_id: contentId,
       neuron_id: neuronId,
-      title,
+      title: this.props.title,
+      parentContent: {
+         contentId: content_id,
+         neuronId: neuron_id,
+      },
+      renderBackButton: () => backButtonWithSound(async () => {
+        Actions.pop();
+        await this.loadContentAsync();
+      })
     })
   }
 
@@ -440,8 +459,8 @@ export default class SingleContentScene extends Component {
 
                       <VideoContainer>
                       {((content || {}).recommended_contents || []).map(rContent => {
-                          return (
-                          <ContentImagePreview
+                          const showRecomendationContent = !rContent.read && !rContent.learnt;
+                          return showRecomendationContent && <ContentImagePreview
                               data={rContent}
                               key={uuid()}
                               width={'46%'}
@@ -449,7 +468,6 @@ export default class SingleContentScene extends Component {
                               onPress:() => this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title),
                               }}
                           />
-                          )
                       })}
                       </VideoContainer>
                   </Section>
@@ -504,4 +522,5 @@ SingleContentScene.propTypes = {
   device: PropTypes.object,
   storeTaskAsync: PropTypes.func,
   fromEvent: PropTypes.bool,
+  parentContent: PropTypes.object,
 };
