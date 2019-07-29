@@ -43,16 +43,18 @@ const ContentFooter = styled(View)`
   profile: state.user.profile,
 }), {
     getLeaderboardAsync: leaderboardActions.getLeadersAsync,
+    loadMoreLeadersAsync: leaderboardActions.loadMoreLeadersAsync,
     getPublicProfileAsync: profilesActions.loadProfileAsync,
     loadTreeAsync: treeActions.loadTreeAsync,
   })
 export default class LeaderBoardContent extends PureComponent {
   state = {
-    isLoadingProfile: false,
+    isLoadingProfile: false
   }
 
   fetchNextPage = async () => {
-    const { leaders: { meta }, getLeaderboardAsync } = this.props;
+    const { profile, loadMoreLeadersAsync } = this.props;
+    await loadMoreLeadersAsync(profile.id);
   }
 
   onPressProfile = async (item) => {
@@ -114,23 +116,14 @@ export default class LeaderBoardContent extends PureComponent {
       />
     )
   }
-  _renderFooter = () => {
-    const { data: dataLeaders } = this.props;
-    const currentUser = dataLeaders.meta.user_data;
-
-    return (
-      <ContentFooter>
-        <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
-        <LeaderRow
-          playerName={normalize.normalizeAllCapLetter(currentUser.username)}
-          grade={currentUser.contents_learnt}
-          seconds={`${new Date(currentUser.time_elapsed).getSeconds()}s`}
-        />
-      </ContentFooter>
-    )
-  }
   render() {
-    const { data: dataLeaders } = this.props;
+    const {
+      leaders: {
+        leaders: allLeaders,
+        meta: { user_data: userLeader }
+      },
+      loading,
+    } = this.props;
     const { isLoadingProfile } = this.state;
 
     const styles = StyleSheet.create({
@@ -140,25 +133,30 @@ export default class LeaderBoardContent extends PureComponent {
       }
     })
 
-    if (isLoadingProfile) return <Preloader />;
+    if (loading || isLoadingProfile) return <Preloader notFullScreen/>;
 
     return (
       <StyledContentBox image={'leaderboard_frame'}>
         <ContentContainer>
-          {(dataLeaders.leaders || []).length > 0 && (
+          {(allLeaders || []).length > 0 && (
             <FlatList
+              style={{ height: '80%' }}
               contentContainerStyle={styles.contentContainer}
               onEndReached={this.fetchNextPage}
               onEndReachedThreshold={0}
-              data={dataLeaders.leaders}
+              data={allLeaders}
               renderItem={this._renderItem}
               keyExtractor={this._keyExtractor}
-              ListFooterComponent={this._renderFooter}
             />
           )}
-          {!(dataLeaders.leaders || []).length > 0 && (
-            <Preloader notFullScreen />
-          )}
+          <ContentFooter>
+            <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
+            <LeaderRow
+              playerName={normalize.normalizeAllCapLetter(userLeader.username)}
+              grade={userLeader.contents_learnt}
+              seconds={`${new Date(userLeader.time_elapsed).getSeconds()}s`}
+            />
+          </ContentFooter>
         </ContentContainer>
       </StyledContentBox>
     );

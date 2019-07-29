@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
-import { Actions, ActionConst } from 'react-native-router-flux';
-import uuid from 'uuid/v4';
+import { Actions } from 'react-native-router-flux';
 import { ContentPreview, ContentBox } from '../../commons/components/ContentComponents';
-import { normalize } from '../../commons/utils';
-import EmptyState from '../../commons/components/EmptyState';
 import { connect } from 'react-redux';
-import Alert from '../../commons/components/Alert/Alert';
-import GenericAlert from '../../commons/components/Alert/GenericAlert';
 import withSound from '../../commons/utils/withSound';
 import userActions from '../../actions/userActions';
-import EventModal from '../Events/EventModal';
-import eventsUtils from '../Events/events-utils';
-import { View, Text } from 'react-native-animatable';
 
 const MILLISECONDS = 60;
 const ContentPreviewWithSound = withSound(ContentPreview);
