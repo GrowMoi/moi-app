@@ -109,6 +109,15 @@ const setNeuronLabelInfo = (neuronInfo = {}) => dispatch => {
   dispatch({ type: actionTypes.SET_NEURON_INFO, payload: neuronInfo });
 }
 
+const getNeuronInfoByIdAsync = (id) => async (dispatch) => {
+  try {
+    const response = await api.neuron.getNeuronById(id);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
 export default {
   loadNeuronByIdAsync,
   loadContentByIdAsync,
@@ -119,4 +128,5 @@ export default {
   removeCurrentBackgroundAudio,
   setNeuronLabelInfo,
   loadRandomNeuronContentByIdAsync,
+  getNeuronInfoByIdAsync,
 };
