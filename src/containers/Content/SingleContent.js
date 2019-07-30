@@ -24,7 +24,7 @@ import uuid from 'uuid/v4'
 
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
-import { BottomBarWithButtons, BackButton } from '../../commons/components/SceneComponents';
+import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import { TextBody, Header } from '../../commons/components/Typography';
@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
   uploadImageAsync: userActions.uploadImageAsync,
   generateShareDataAsync: userActions.generateShareDataAsync,
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+  getNeuronInfoByIdAsync: neuronActions.getNeuronInfoByIdAsync,
 })
 export default class SingleContentScene extends Component {
   state = {
@@ -153,11 +154,20 @@ export default class SingleContentScene extends Component {
   }
 
   loadContentAsync = async (fromReadContent) => {
-    const { loadContentByIdAsync, content_id, neuron_id, parentContent } = this.props;
+    const { loadContentByIdAsync, content_id, neuron_id, parentContent, getNeuronInfoByIdAsync } = this.props;
     const neuronId = fromReadContent && parentContent ? parentContent.neuronId : neuron_id;
     const contentId = fromReadContent && parentContent ? parentContent.contentId : content_id;
 
     this.toggleLoading(true);
+
+    // if(this.props.contentType === constants.CONTENT_TYPE_RECOMMENDED) {
+    //   try {
+    //     const neuron = await getNeuronInfoByIdAsync(neuronId);
+    //     Actions.refresh({ title: neuron.title });
+    //   } catch (error) {
+    //     this.showErrorMessage();
+    //   }
+    // }
 
     try {
       await loadContentByIdAsync(neuronId, contentId);
@@ -258,10 +268,6 @@ export default class SingleContentScene extends Component {
 	this.dismissActionSheets();
   }
 
-  redirectTo = (route) => {
-    Actions.refresh(route);
-  }
-
   afterFinishAnimation = async (neuronId) => {
     const { loadNeuronByIdAsync, fromEvent, getEventInProgressAsync, parentContent } = this.props;
     const { hasTest } = this.state;
@@ -286,7 +292,7 @@ export default class SingleContentScene extends Component {
   }
 
   readContent = async (neuronId, contentId) => {
-    const { readContentAsync, loadNeuronByIdAsync } = this.props;
+    const { readContentAsync } = this.props;
     const { reading } = this.state;
 
     if(!reading) {
@@ -331,13 +337,23 @@ export default class SingleContentScene extends Component {
     }
   }
 
-  goToSingleContent = (contentId, neuronId, title) => {
-    const {  content_id, neuron_id, } = this.props;
+  goToSingleContent = async (contentId, neuronId, title) => {
+    const {  content_id, neuron_id } = this.props;
+
+    if(this.props.contentType === constants.CONTENT_TYPE_RECOMMENDED) {
+      try {
+        const neuron = await getNeuronInfoByIdAsync(neuronId);
+        Actions.refresh({ title: neuron.title });
+      } catch (error) {
+        this.showErrorMessage();
+      }
+    }
 
     Actions.singleContent({
       content_id: contentId,
       neuron_id: neuronId,
       title: this.props.title,
+      contentType: constants.CONTENT_TYPE_RECOMMENDED,
       parentContent: {
          contentId: content_id,
          neuronId: neuron_id,
@@ -350,7 +366,7 @@ export default class SingleContentScene extends Component {
   }
 
   async takeScreenShotTree() {
-    const { device: { dimensions: { width, height, orientation } } } = this.props;
+    const { device: { dimensions: { width, height } } } = this.props;
 
     const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
 
@@ -465,7 +481,9 @@ export default class SingleContentScene extends Component {
                               key={uuid()}
                               width={'46%'}
                               touchProps={{
-                              onPress:() => this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title),
+                                onPress: () => {
+                                  this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title)
+                                },
                               }}
                           />
                       })}
