@@ -6,6 +6,7 @@ import { Font } from '../../styles';
 import styled from 'styled-components/native';
 import ProfileImageButton from './ProfileImageButton';
 import { Size } from '../../styles';
+import deviceUtils from '../../utils/device-utils'
 
 //REDUX
 import store from '../../../store'
@@ -50,7 +51,7 @@ export default {
   titleStyle: {
     color: '#FFF',
     fontSize: Size.fontHeader,
-    width: width < 320 ? 150 : 180,
+    width: '56%',
     fontFamily: Font.museo('bolder'),
     ...Platform.select({
       ios: {
