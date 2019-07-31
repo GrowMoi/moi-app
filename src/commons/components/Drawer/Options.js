@@ -8,6 +8,31 @@ import withSound from '../../utils/withSound';
 import { Palette } from '../../styles'
 import chroma from 'chroma-js'
 
+
+const ContainerOptions = styled(View)`
+  flex: 1;
+  padding-horizontal: ${Size.spaceMedium};
+  padding-vertical: ${Size.spaceXSmall};
+  z-index: 10;
+`;
+
+const Item = styled(TouchableOpacity)`
+  padding-vertical: 4;
+`;
+
+const ButtonForm = styled(View)`
+  padding-vertical: 10px;
+  padding-horizontal: 15px;
+  border-radius: 10px;
+  background-color: ${chroma('#dbd05c').alpha(0.6)};
+  shadow-color: black;
+  height: 45;
+  shadow-offset: 1px 3px;
+  shadow-opacity: 0.2;
+  shadow-radius: 3px;
+  justify-content: center;
+`
+
 const ItemWithSound = ({ option, index }) => {
   const WithSound = withSound(Item);
 
@@ -41,26 +66,3 @@ Options.propTypes = {
   options: PropTypes.array,
   onPress: PropTypes.func,
 };
-
-const ContainerOptions = styled(View)`
-  flex: 1;
-  padding-horizontal: ${Size.spaceMedium};
-  padding-vertical: ${Size.spaceXSmall};
-  z-index: 10;
-`;
-
-const Item = styled(TouchableOpacity)`
-  padding-vertical: 4;
-`;
-
-const ButtonForm = styled(View)`
-  padding-vertical: 10px;
-  padding-horizontal: 15px;
-  border-radius: 10px;
-  background-color: ${chroma('#dbd05c').alpha(0.6)};
-  shadow-color: black;
-  height: 45;
-  shadow-offset: 1px 3px;
-  shadow-opacity: 0.2;
-  shadow-radius: 3px;
-`

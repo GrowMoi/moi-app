@@ -149,8 +149,8 @@ export default class SingleContentScene extends Component {
     isShowingContent: true,
   }
 
-  async componentDidMount() {
-    await this.loadContentAsync();
+  componentDidMount() {
+    this.loadContentAsync();
   }
 
   loadContentAsync = async (fromReadContent) => {

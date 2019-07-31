@@ -104,6 +104,7 @@ apply from: 'expo.gradle'
 
 
 dependencies {
+    compile project(':@react-native-community/masked-view')
     compile project(':react-native-orientation')
     compile project(':react-native-sound')
     compile project(':lottie-react-native')

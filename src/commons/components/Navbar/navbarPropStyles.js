@@ -6,13 +6,10 @@ import { Font } from '../../styles';
 import styled from 'styled-components/native';
 import ProfileImageButton from './ProfileImageButton';
 import { Size } from '../../styles';
-import deviceUtils from '../../utils/device-utils'
 
 //REDUX
 import store from '../../../store'
 import * as sideActions from '../../../actions/sideActions'
-
-const { width } = Dimensions.get('window');
 
 
 const IconContainer = styled(TouchableOpacity)`
@@ -51,7 +48,7 @@ export default {
   titleStyle: {
     color: '#FFF',
     fontSize: Size.fontHeader,
-    width: '56%',
+    width: '55%',
     fontFamily: Font.museo('bolder'),
     ...Platform.select({
       ios: {
