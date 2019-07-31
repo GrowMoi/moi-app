@@ -233,6 +233,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNCMaskedView (0.1.1):
+    - React
   - RNSound (0.10.12):
     - React/Core
     - RNSound/Core (= 0.10.12)
@@ -290,6 +292,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNSound (from `../node_modules/react-native-sound`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -395,6 +398,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-orientation:
     :path: "../node_modules/react-native-orientation"
+  RNCMaskedView:
+    :path: "../node_modules/@react-native-community/masked-view"
   RNSound:
     :path: "../node_modules/react-native-sound"
   yoga:
@@ -466,10 +471,11 @@ SPEC CHECKSUMS:
   lottie-react-native: 31ceb9d2d1423fa99c64d19eb93c0364256a6a3e
   React: aa2040dbb6f317b95314968021bd2888816e03d5
   react-native-orientation: 3d9a0a8273d18260f7528414093a6a36491382b6
+  RNCMaskedView: 3bd4ae572a8d4333b40425695a77e904681ac1e1
   RNSound: b360b3862d3118ed1c74bb9825696b5957686ac4
   Stripe: 76c203e21555089b708e6cbe972a3e3baf1ab4d8
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 1c3ff82bad492e60b3be75dc1e7799278afec9fc
+PODFILE CHECKSUM: 76b61fe9517395720cf600fcb09064ca097e88e2
 
 COCOAPODS: 1.5.3
