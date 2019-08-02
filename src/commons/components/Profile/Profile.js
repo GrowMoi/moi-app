@@ -53,6 +53,10 @@ const MaskContainer = styled(MaskedView)`
   flexDirection: row;
 `
 
+const MaskImageContainer = styled(View)`
+  flex: 1;
+`
+
 const MaskImage = styled(Image)`
   height: ${props => props.height || 0};
   width: ${props => props.width || 0};
@@ -61,15 +65,9 @@ const MaskImage = styled(Image)`
 class ProfileAvatar extends Component {
   state = {
     mask: {
-      width: 0,
-      height: 0,
+      width: 458,
+      height: 374,
     }
-  }
-
-  componentWillMount() {
-    Image.getSize('profile_mask', (width, height) => {
-      this.setState({ mask: { width, height } })
-    })
   }
 
   get adjustedMaskWidth() {
@@ -90,7 +88,12 @@ class ProfileAvatar extends Component {
         <MaskContainer
           height={MASK_HEIGHT}
           width={MASK_WIDTH}
-          maskElement={<MaskImage height={MASK_HEIGHT} width={MASK_WIDTH} source={{ uri: 'profile_mask' }} resizeMode='stretch' />}>
+          maskElement={
+            <MaskImageContainer>
+              <MaskImage  height={MASK_HEIGHT} width={MASK_WIDTH} source={{uri: 'profile_mask'}} />
+            </MaskImageContainer>
+          }
+          >
           <ProfileImage
             {...rest}
             source={sourceImage}
