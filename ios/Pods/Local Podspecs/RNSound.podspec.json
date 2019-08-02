@@ -4,7 +4,11 @@
   "summary": "React Native module for playing sound clips on iOS, Android, and Windows",
   "homepage": "https://github.com/zmxv/react-native-sound",
   "license": "MIT",
-  "authors": "Zhen Wang <z@zmxv.com> (http://blog.zmxv.com)",
+  "authors": {
+    "name": "Zhen Wang",
+    "email": "z@zmxv.com",
+    "url": "http://blog.zmxv.com"
+  },
   "source": {
     "git": "https://github.com/zmxv/react-native-sound.git",
     "tag": "v0.10.12"

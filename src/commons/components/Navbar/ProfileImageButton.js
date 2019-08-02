@@ -5,6 +5,7 @@ import { Image, TouchableOpacity } from 'react-native';
 import MoIcon from '../MoIcon/MoIcon';
 import withSound from '../../utils/withSound';
 import { Size } from '../../styles';
+import ProfileAvatar from '../Profile/Profile'
 
 @connect(store => ({
   profile: store.user.profile,
@@ -19,13 +20,7 @@ export default class ProfileImageButton extends Component {
         soundName="profile"
         onPress={() => Actions.profile()}
       >
-        <Image
-          style={{
-            width: Size.hamburgerSize,
-            height: Size.hamburgerSize,
-            borderRadius: Size.borderRadiusProfileIcon,
-          }}
-          source={{ uri: profile.image }}
+        <ProfileAvatar width={Size.hamburgerSize} userImageUri={profile.image}
         />
       </TouchableOpacityWithSound>
     );
@@ -33,11 +28,6 @@ export default class ProfileImageButton extends Component {
 
   render() {
     const { profile } = this.props;
-
-    if (profile.image) {
-      return this.renderProfileIconWithSound(profile);
-    } else {
-      return (<MoIcon name="profile" size={Size.hamburgerSize} onPress={() => Actions.profile()} />)
-    }
+    return this.renderProfileIconWithSound(profile);
   }
 }

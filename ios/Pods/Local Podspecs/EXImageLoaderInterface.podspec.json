@@ -4,7 +4,9 @@
   "summary": "Expo Module interface for ImageLoader",
   "description": "Expo Module interface for ImageLoader",
   "license": "MIT",
-  "authors": "650 Industries, Inc.",
+  "authors": {
+    "name": "650 Industries, Inc."
+  },
   "homepage": "https://docs.expo.io/",
   "platforms": {
     "ios": "9.0"

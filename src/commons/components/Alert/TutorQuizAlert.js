@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 // Components
 import { Palette } from '../../styles';
-import Profile from '../Profile/Profile';
+import ProfileAvatar from '../Profile/Profile';
 import { Title, TextBody } from '../Typography';
 import Button from '../Buttons/Button';
 
@@ -46,7 +46,7 @@ export const TutorQuizAlert = ({
 
   return (
     <Container>
-      <Profile width={80} />
+      <ProfileAvatar width={80} />
       <ContentBox>
         <Title center book color='white'>{message}</Title>
         <Description>

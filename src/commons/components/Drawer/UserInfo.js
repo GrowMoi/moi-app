@@ -6,28 +6,11 @@ import { Title, Header, TextBody } from '../Typography';
 import MoIcon from '../MoIcon/MoIcon'
 import { colors } from '../../styles/palette'
 import { normalize } from '../../utils'
-
-
-//Component
-const UserInfo = ({ name = '', level = 0 }) => {
-  const _name = normalize.normalizeFirstCapLetter(name)
-  return (
-    <Container>
-      <Avatar>
-        <MoIcon name="profile" size={50} />
-      </Avatar>
-
-      <Info>
-        <Username numberOfLines={1} small heavy>{_name}</Username>
-        <TextBody small heavy>Nivel: {level}</TextBody>
-      </Info>
-    </Container>
-  )
-}
+import ProfileAvatar from '../Profile/Profile'
 
 //Styles
 const Container = styled(View)`
-  padding: 10px 10px;
+  padding: 10px 10px 10px 20px;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -48,6 +31,23 @@ const Username = styled(Header)`
   width: 140px;
 `
 
+
+//Component
+const UserInfo = ({ name = '', level = 0, avatarImage = '' }) => {
+  const _name = normalize.normalizeFirstCapLetter(name)
+  return (
+    <Container>
+      <Avatar>
+        <ProfileAvatar userImageUri={avatarImage} width={50} />
+      </Avatar>
+
+      <Info>
+        <Username numberOfLines={1} small heavy>{_name}</Username>
+        <TextBody small heavy>Nivel: {level}</TextBody>
+      </Info>
+    </Container>
+  )
+}
 
 // Props
 UserInfo.propTypes = {

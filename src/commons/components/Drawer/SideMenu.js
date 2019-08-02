@@ -168,6 +168,7 @@ export default class SideMenu extends Component {
           showsVerticalScrollIndicator
         >
           <UserInfo
+            avatarImage={profile.image}
             name={profile.name || profile.username || ''}
             level={treeIsLoaded ? userTree.meta.depth : 0}
           />

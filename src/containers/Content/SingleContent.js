@@ -149,25 +149,25 @@ export default class SingleContentScene extends Component {
     isShowingContent: true,
   }
 
-  async componentDidMount() {
-    await this.loadContentAsync();
+  componentDidMount() {
+    this.loadContentAsync();
   }
 
   loadContentAsync = async (fromReadContent) => {
-    const { loadContentByIdAsync, content_id, neuron_id, parentContent, getNeuronInfoByIdAsync } = this.props;
+    const { loadContentByIdAsync, content_id, neuron_id, parentContent, getNeuronInfoByIdAsync, contentType } = this.props;
     const neuronId = fromReadContent && parentContent ? parentContent.neuronId : neuron_id;
     const contentId = fromReadContent && parentContent ? parentContent.contentId : content_id;
 
     this.toggleLoading(true);
 
-    // if(this.props.contentType === constants.CONTENT_TYPE_RECOMMENDED) {
-    //   try {
-    //     const neuron = await getNeuronInfoByIdAsync(neuronId);
-    //     Actions.refresh({ title: neuron.title });
-    //   } catch (error) {
-    //     this.showErrorMessage();
-    //   }
-    // }
+    if(contentType === constants.CONTENT_TYPE_RECOMMENDED) {
+      try {
+        const neuron = await getNeuronInfoByIdAsync(neuronId);
+        Actions.refresh({ title: neuron.title });
+      } catch (error) {
+        this.showErrorMessage();
+      }
+    }
 
     try {
       await loadContentByIdAsync(neuronId, contentId);
@@ -340,19 +340,10 @@ export default class SingleContentScene extends Component {
   goToSingleContent = async (contentId, neuronId, title) => {
     const {  content_id, neuron_id } = this.props;
 
-    if(this.props.contentType === constants.CONTENT_TYPE_RECOMMENDED) {
-      try {
-        const neuron = await getNeuronInfoByIdAsync(neuronId);
-        Actions.refresh({ title: neuron.title });
-      } catch (error) {
-        this.showErrorMessage();
-      }
-    }
-
     Actions.singleContent({
       content_id: contentId,
       neuron_id: neuronId,
-      title: this.props.title,
+      title: '...',
       contentType: constants.CONTENT_TYPE_RECOMMENDED,
       parentContent: {
          contentId: content_id,

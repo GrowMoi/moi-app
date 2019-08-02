@@ -11,8 +11,6 @@ import { Size } from '../../styles';
 import store from '../../../store'
 import * as sideActions from '../../../actions/sideActions'
 
-const { width } = Dimensions.get('window');
-
 
 const IconContainer = styled(TouchableOpacity)`
   width:  ${Size.hamburgerContainerWidth};
@@ -50,7 +48,7 @@ export default {
   titleStyle: {
     color: '#FFF',
     fontSize: Size.fontHeader,
-    width: width < 320 ? 150 : 180,
+    width: '55%',
     fontFamily: Font.museo('bolder'),
     ...Platform.select({
       ios: {

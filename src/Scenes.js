@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { connect, Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
-import { Router } from 'react-native-router-flux';
 import Expo, { Font, Icon, DangerZone, AppLoading } from 'expo';
-import { Text, Dimensions, AsyncStorage, Keyboard, Alert, View } from 'react-native';
+import { Text, Dimensions, AsyncStorage, Keyboard } from 'react-native';
 import 'intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -23,8 +22,6 @@ import Loader from './commons/components/Loader/Loader';
 import AppContainer from './containers/App/AppContainer'
 
 addLocaleData([...en, ...es]);
-
-const RouterWithRedux = connect()(Router);
 
 const allFonts = {
   ...fonts,

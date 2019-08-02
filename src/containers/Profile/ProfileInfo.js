@@ -17,7 +17,7 @@ import { normalizeAllCapLetter } from '../../commons/utils/normalize';
 import { Size, Palette } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
 import Tabs from '../../commons/components/Tabs';
-import Profile from '../../commons/components/Profile/Profile';
+import ProfileAvatar from '../../commons/components/Profile/Profile';
 import TreeScreenShot from '../../commons/components/TreeScreenShot/TreeScreenShot';
 import { getHeightAspectRatio } from '../../commons/utils';
 import deviceUtils from '../../commons/utils/device-utils';
@@ -99,7 +99,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
       <ContentContainer>
       <ScrollView contentContainerStyle={styles.scrollContainer} ref={(e) => { onProfileInfoReady(e) }} >
         <HeaderProfile>
-          <Profile width={40} userImageUri={profile.image}/>
+          <ProfileAvatar width={65} userImageUri={profile.image}/>
           <NameContainer>
             <Title style={{ flex: 1 }} numberOfLines={1} heavy>{userName}</Title>
             {!isShared &&
