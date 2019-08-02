@@ -28,7 +28,7 @@ class LeaderBoardModal extends Component {
   }
 
   render() {
-    const { animationType, device: { dimensions: { width, height } }, onClose, data } = this.props;
+    const { animationType, device: { dimensions: { width, height } }, onClose, data, leaderboardParams } = this.props;
     const { loading } = this.state;
 
     return (
@@ -40,7 +40,7 @@ class LeaderBoardModal extends Component {
         {loading && <Preloader notFullScreen style={{ position: "absolute", width: width, height: height, zIndex: 10 }} />}
         <Overlay>
           <CloseIcon onPress={onClose} style={{ top: 42, right: 8 }} />
-          <LeaderBoardContent data={data} closeModal={onClose} showLoading={this.showLoading} />
+          <LeaderBoardContent data={data} closeModal={onClose} showLoading={this.showLoading} leaderboardParams={leaderboardParams} />
         </Overlay>
       </Modal>
     );

@@ -46,6 +46,7 @@ class TasksContainer extends Component {
     alertType: false,
     itemSelected: {},
     enableScroll: true,
+    superEvent: {},
   }
 
   componentDidMount() {
@@ -125,7 +126,7 @@ class TasksContainer extends Component {
     };
     await getLeaderboardAsync(leaderboardParams, 1);
 
-    this.setState({ isLeaderboardModalOpen: true});
+    this.setState({ isLeaderboardModalOpen: true, superEvent});
   }
 
   goToTutorQuiz = () => {
@@ -203,8 +204,12 @@ class TasksContainer extends Component {
   }
 
   render() {
-    const { device: { dimensions: { width } }, leaders } = this.props;
-    const { loading, isAlertOpen, isEventModalOpen, itemSelected, isLeaderboardModalOpen } = this.state;
+    const { device: { dimensions: { width } }, leaders, profile } = this.props;
+    const { loading, isAlertOpen, isEventModalOpen, itemSelected, isLeaderboardModalOpen, superEvent } = this.state;
+    const leaderboardParams = {
+      user_id: profile.id,
+      event_id: superEvent.id
+    };
 
     return (
       <View style={styles.container}>
@@ -259,6 +264,7 @@ class TasksContainer extends Component {
         {isLeaderboardModalOpen &&
           <LeaderBoardModal
             data= {leaders}
+            leaderboardParams={leaderboardParams}
             onClose={() => { this.setState({ isLeaderboardModalOpen: false }) }} />
         }
 

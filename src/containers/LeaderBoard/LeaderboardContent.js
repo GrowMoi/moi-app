@@ -53,10 +53,7 @@ export default class LeaderBoardContent extends PureComponent {
   }
 
   fetchNextPage = async () => {
-    const { profile, loadMoreLeadersAsync } = this.props;
-    const leaderboardParams = {
-      user_id: profile.id
-    };
+    const { loadMoreLeadersAsync, leaderboardParams } = this.props;
     await loadMoreLeadersAsync(leaderboardParams);
   }
 

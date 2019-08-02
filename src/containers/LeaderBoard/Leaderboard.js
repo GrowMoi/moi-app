@@ -30,11 +30,14 @@ export default class LeaderBoard extends PureComponent {
 
   render() {
     const { isLoadingLeaders } = this.state;
-
+    const { profile } = this.props;
+    const leaderboardParams = {
+      user_id: profile.id
+    };
     return (
       <MoiBackground>
         <Navbar />
-        <LeaderBoardContent loading={isLoadingLeaders} />
+        <LeaderBoardContent loading={isLoadingLeaders} leaderboardParams={leaderboardParams}/>
         <BottomBar />
       </MoiBackground>
     );
