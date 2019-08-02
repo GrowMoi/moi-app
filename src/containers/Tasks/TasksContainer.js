@@ -37,7 +37,7 @@ import leaderboardActions from '../../actions/leaderboardActions';
     getNotificationsAsync: userActions.getNotificationsAsync,
     getEventInProgressAsync: userActions.getEventInProgressAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
-    getLeadersSuperEventAsync: leaderboardActions.getLeadersSuperEventAsync,
+    getLeaderboardAsync: leaderboardActions.getLeadersAsync,
   })
 class TasksContainer extends Component {
   state = {
@@ -107,7 +107,7 @@ class TasksContainer extends Component {
     const isSuperEventTaken = isSuperEvent && item[0].taken;
 
     if(isSuperEventTaken) {
-      this.showLeaderBoard();
+      this.showLeaderBoard(item[0]);
       return;
     } else if (isEvent) {
       this.setState({ isEventModalOpen: true, itemSelected: item });
@@ -117,9 +117,13 @@ class TasksContainer extends Component {
     this.setState({ isAlertOpen: true, itemSelected: item });
   }
 
-  async showLeaderBoard() {
-    const { getLeadersSuperEventAsync, profile } = this.props;
-    await getLeadersSuperEventAsync(profile.id, 1);
+  async showLeaderBoard(superEvent) {
+    const { getLeaderboardAsync, profile } = this.props;
+    const leaderboardParams = {
+      user_id: profile.id,
+      event_id: superEvent.id
+    };
+    await getLeaderboardAsync(leaderboardParams, 1);
 
     this.setState({ isLeaderboardModalOpen: true});
   }

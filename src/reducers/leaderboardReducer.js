@@ -10,7 +10,7 @@ const initialState = {
 const leaders = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_LEADERBOARD:
-      const leaders = [...new Set([...state.leaders, ...action.payload.leaders])];
+      const leaders = action.payload.page === 1 ? action.payload.leaders : [...new Set([...state.leaders, ...action.payload.leaders])];
 
       return {
         meta: action.payload.meta,
