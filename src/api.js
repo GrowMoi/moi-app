@@ -121,9 +121,9 @@ const api = {
   },
 
   leaderboard: {
-    async getLeaderboard(user_id) {
+    async getLeaderboard(user_id, page = 1) {
       const endpoint = '/api/leaderboard';
-      const res = await client.get(endpoint, { user_id });
+      const res = await client.get(endpoint, { params: { user_id, page }});
       return res;
     },
     async getLeaderboardSuperEvent(user_id, event_id) {

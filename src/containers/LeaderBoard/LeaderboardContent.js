@@ -8,6 +8,7 @@ import { Size, Palette } from '../../commons/styles';
 import LeaderRow from '../../commons/components/LeaderRow/LeaderRow';
 import { normalize, object } from '../../commons/utils';
 import Preloader from '../../commons/components/Preloader/Preloader';
+import { FontAwesome } from '@expo/vector-icons';
 
 // Actions
 import profilesActions from '../../actions/profileActions';
@@ -31,21 +32,29 @@ const StyledContentBox = styled(ContentBox)`
   justify-content: center;
 `;
 
+const ContentFooter = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
 @connect(state => ({
   leaders: state.leaderboard.leaders,
   profile: state.user.profile,
 }), {
     getLeaderboardAsync: leaderboardActions.getLeadersAsync,
+    loadMoreLeadersAsync: leaderboardActions.loadMoreLeadersAsync,
     getPublicProfileAsync: profilesActions.loadProfileAsync,
     loadTreeAsync: treeActions.loadTreeAsync,
   })
 export default class LeaderBoardContent extends PureComponent {
   state = {
-    isLoadingProfile: false,
+    isLoadingProfile: false
   }
 
   fetchNextPage = async () => {
-    const { leaders: { meta }, getLeaderboardAsync } = this.props;
+    const { profile, loadMoreLeadersAsync } = this.props;
+    await loadMoreLeadersAsync(profile.id);
   }
 
   onPressProfile = async (item) => {
@@ -94,7 +103,7 @@ export default class LeaderBoardContent extends PureComponent {
 
   _keyExtractor = (item, index) => uuid();
   _renderItem = ({ item }) => {
-    const { leaders: { meta }, profile } = this.props;
+    const { profile } = this.props;
     const style = item.user_id === profile.id ? { backgroundColor: Palette.white.alpha(0.7).css() } : {};
 
     return (
@@ -108,7 +117,13 @@ export default class LeaderBoardContent extends PureComponent {
     )
   }
   render() {
-    const { data: dataLeaders } = this.props;
+    const {
+      leaders: {
+        leaders: allLeaders,
+        meta: { user_data: userLeader }
+      },
+      loading,
+    } = this.props;
     const { isLoadingProfile } = this.state;
 
     const styles = StyleSheet.create({
@@ -118,24 +133,30 @@ export default class LeaderBoardContent extends PureComponent {
       }
     })
 
-    if (isLoadingProfile) return <Preloader />;
+    if (loading || isLoadingProfile) return <Preloader notFullScreen/>;
 
     return (
       <StyledContentBox image={'leaderboard_frame'}>
         <ContentContainer>
-          {(dataLeaders.leaders || []).length > 0 && (
+          {(allLeaders || []).length > 0 && (
             <FlatList
+              style={{ height: '80%' }}
               contentContainerStyle={styles.contentContainer}
               onEndReached={this.fetchNextPage}
               onEndReachedThreshold={0}
-              data={dataLeaders.leaders}
+              data={allLeaders}
               renderItem={this._renderItem}
               keyExtractor={this._keyExtractor}
             />
           )}
-          {!(dataLeaders.leaders || []).length > 0 && (
-            <Preloader notFullScreen />
-          )}
+          <ContentFooter>
+            <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
+            <LeaderRow
+              playerName={normalize.normalizeAllCapLetter(userLeader.username)}
+              grade={userLeader.contents_learnt}
+              seconds={`${new Date(userLeader.time_elapsed).getSeconds()}s`}
+            />
+          </ContentFooter>
         </ContentContainer>
       </StyledContentBox>
     );
