@@ -89,7 +89,8 @@ export default {
   neuronSizeEventInfo: isTablet ? 28 : 15,
   titleNeuronSizeEventInfo: isTablet ? 12 : 8,
   marginTopSeparatorNeurons: isTablet ? 12 : 7,
-  iconSizeEventDescription: isTablet ? 160 : 130,
+  heigthModalAlert: isTablet ? 190 : 145,
+  iconSizeModalAlert: isTablet ? 160 : 130,
 
   //settings
   heigthRowLevel: isTablet ? 50 : 30,

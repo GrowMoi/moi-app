@@ -1,6 +1,6 @@
 export default EventsUtils = {
   mergeEvents: events => {
-    return [...EventsUtils.handleSuperEvents(events.superevent), ...events.events].slice(0, 3);
+    return [...EventsUtils.handleSuperEvents(EventsUtils.filterNoTakenEvents(events.superevent)), ...events.events].slice(0, 3);
   },
 
   addKeySuperEvent: (superEvents) => {
