@@ -121,9 +121,10 @@ const api = {
   },
 
   leaderboard: {
-    async getLeaderboard(user_id, page = 1) {
+    async getLeaderboard(newParams, page = 1) {
+      const defaultParams = { page };
       const endpoint = '/api/leaderboard';
-      const res = await client.get(endpoint, { params: { user_id, page }});
+      const res = await client.get(endpoint, { params: {...defaultParams, ...newParams }});
       return res;
     },
     async getLeaderboardSuperEvent(user_id, event_id) {

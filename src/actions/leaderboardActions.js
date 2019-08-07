@@ -7,9 +7,9 @@ export const setLeaders = (leaderboardData) => ({
   payload: leaderboardData,
 });
 
-const getLeadersAsync = (userId, page = 1) => async (dispatch) => {
+const getLeadersAsync = (params, page = 1) => async (dispatch) => {
   try {
-    const res = await api.leaderboard.getLeaderboard(userId, page);
+    const res = await api.leaderboard.getLeaderboard(params, page);
 
     await dispatch(setHeaders(res.headers));
     dispatch(setLeaders({ ...res.data, page }));
@@ -18,7 +18,7 @@ const getLeadersAsync = (userId, page = 1) => async (dispatch) => {
   }
 };
 
-const loadMoreLeadersAsync = (userId) => async (dispatch, getState) => {
+const loadMoreLeadersAsync = (params) => async (dispatch, getState) => {
 
   const leadersState = getState().leaderboard.leaders;
   const currentPage = (leadersState || {}).page;
@@ -26,25 +26,12 @@ const loadMoreLeadersAsync = (userId) => async (dispatch, getState) => {
   const totalPages = (leadersState.meta || {}).total_pages || 1;
 
   if(nextPage <= totalPages) {
-    const res = await dispatch(getLeadersAsync(userId, nextPage));
+    const res = await dispatch(getLeadersAsync(params, nextPage));
     dispatch(setHeaders(res.headers));
   }
 }
 
-const getLeadersSuperEventAsync = (userId, eventId) => async (dispatch, getState) => {
-  try {
-    const res = await api.leaderboard.getLeaderboardSuperEvent(userId, eventId);
-
-    await dispatch(setHeaders(res.headers));
-    dispatch(setLeaders({ ...res.data }));
-    return res.data;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
-
 export default {
   getLeadersAsync,
   loadMoreLeadersAsync,
-  getLeadersSuperEventAsync,
 };

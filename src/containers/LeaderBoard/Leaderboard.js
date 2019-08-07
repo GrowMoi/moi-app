@@ -21,17 +21,23 @@ export default class LeaderBoard extends PureComponent {
 
   async componentDidMount() {
     const { getLeaderboardAsync, profile } = this.props;
-    await getLeaderboardAsync(profile.id, 1);
+    const leaderboardParams = {
+      user_id: profile.id
+    };
+    await getLeaderboardAsync(leaderboardParams, 1);
     this.setState({isLoadingLeaders: false});
   }
 
   render() {
     const { isLoadingLeaders } = this.state;
-
+    const { profile } = this.props;
+    const leaderboardParams = {
+      user_id: profile.id
+    };
     return (
       <MoiBackground>
         <Navbar />
-        <LeaderBoardContent loading={isLoadingLeaders} />
+        <LeaderBoardContent loading={isLoadingLeaders} leaderboardParams={leaderboardParams}/>
         <BottomBar />
       </MoiBackground>
     );

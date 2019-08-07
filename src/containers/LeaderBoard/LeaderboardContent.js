@@ -53,8 +53,8 @@ export default class LeaderBoardContent extends PureComponent {
   }
 
   fetchNextPage = async () => {
-    const { profile, loadMoreLeadersAsync } = this.props;
-    await loadMoreLeadersAsync(profile.id);
+    const { loadMoreLeadersAsync, leaderboardParams } = this.props;
+    await loadMoreLeadersAsync(leaderboardParams);
   }
 
   onPressProfile = async (item) => {

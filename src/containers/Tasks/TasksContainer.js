@@ -37,7 +37,7 @@ import leaderboardActions from '../../actions/leaderboardActions';
     getNotificationsAsync: userActions.getNotificationsAsync,
     getEventInProgressAsync: userActions.getEventInProgressAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
-    getLeadersSuperEventAsync: leaderboardActions.getLeadersSuperEventAsync,
+    getLeaderboardAsync: leaderboardActions.getLeadersAsync,
   })
 class TasksContainer extends Component {
   state = {
@@ -46,6 +46,7 @@ class TasksContainer extends Component {
     alertType: false,
     itemSelected: {},
     enableScroll: true,
+    superEvent: {},
   }
 
   componentDidMount() {
@@ -107,7 +108,7 @@ class TasksContainer extends Component {
     const isSuperEventTaken = isSuperEvent && item[0].taken;
 
     if(isSuperEventTaken) {
-      this.showLeaderBoard();
+      this.showLeaderBoard(item[0]);
       return;
     } else if (isEvent) {
       this.setState({ isEventModalOpen: true, itemSelected: item });
@@ -117,11 +118,15 @@ class TasksContainer extends Component {
     this.setState({ isAlertOpen: true, itemSelected: item });
   }
 
-  async showLeaderBoard() {
-    const { getLeadersSuperEventAsync, profile } = this.props;
-    await getLeadersSuperEventAsync(profile.id, 1);
+  async showLeaderBoard(superEvent) {
+    const { getLeaderboardAsync, profile } = this.props;
+    const leaderboardParams = {
+      user_id: profile.id,
+      event_id: superEvent.id
+    };
+    await getLeaderboardAsync(leaderboardParams, 1);
 
-    this.setState({ isLeaderboardModalOpen: true});
+    this.setState({ isLeaderboardModalOpen: true, superEvent});
   }
 
   goToTutorQuiz = () => {
@@ -199,8 +204,12 @@ class TasksContainer extends Component {
   }
 
   render() {
-    const { device: { dimensions: { width } }, leaders } = this.props;
-    const { loading, isAlertOpen, isEventModalOpen, itemSelected, isLeaderboardModalOpen } = this.state;
+    const { device: { dimensions: { width } }, leaders, profile } = this.props;
+    const { loading, isAlertOpen, isEventModalOpen, itemSelected, isLeaderboardModalOpen, superEvent } = this.state;
+    const leaderboardParams = {
+      user_id: profile.id,
+      event_id: superEvent.id
+    };
 
     return (
       <View style={styles.container}>
@@ -255,6 +264,7 @@ class TasksContainer extends Component {
         {isLeaderboardModalOpen &&
           <LeaderBoardModal
             data= {leaders}
+            leaderboardParams={leaderboardParams}
             onClose={() => { this.setState({ isLeaderboardModalOpen: false }) }} />
         }
 
