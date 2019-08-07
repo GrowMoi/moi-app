@@ -28,19 +28,28 @@ import ModalAlert from '../../commons/components/Alert/ModalAlert';
 }), {
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
   getEventsTodayAsync: userActions.getEventsTodayAsync,
+  getEventInProgressAsync: userActions.getEventInProgressAsync,
 })
 export default class ContentListScene extends PureComponent {
   state = {
-    isFirstTimeEvents: true,
+    isFirstTimeEvents: false,
     events: [],
     isAlertOpen: true,
     showNoMoreContentsModal: true,
   }
 
   async componentDidMount() {
-    const { getEventsTodayAsync } = this.props;
+    const { getEventsTodayAsync, getEventInProgressAsync } = this.props;
     const isFirstTime = await this.fistTimeOfTheDay();
-    const events = await getEventsTodayAsync();
+
+    if(!isFirstTime) return;
+
+    const eventsInProgress = await getEventInProgressAsync();
+    let events = await getEventsTodayAsync();
+
+    if(eventsInProgress.length) {
+      events.events = [];
+    }
 
     this.setState({
       isFirstTimeEvents: isFirstTime,
