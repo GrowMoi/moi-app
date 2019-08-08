@@ -26,8 +26,7 @@ const loadMoreLeadersAsync = (params) => async (dispatch, getState) => {
   const totalPages = (leadersState.meta || {}).total_pages || 1;
 
   if(nextPage <= totalPages) {
-    const res = await dispatch(getLeadersAsync(params, nextPage));
-    dispatch(setHeaders(res.headers));
+    await dispatch(getLeadersAsync(params, nextPage));
   }
 }
 
