@@ -5,7 +5,7 @@ import { Palette, Size, Font } from '../../styles';
 
 const StyledTitle = styled(Text)`
   background-color: transparent;
-  font-size: ${Size.fontTitle};
+  font-size: ${props => props.small ? Size.fontTitleSmall : Size.fontTitle};
   font-family: ${(props) => {
     if (props.bolder) return Font.museo('bolder');
     else if (props.heavy) return Font.museo('heavy');

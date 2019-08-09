@@ -11,6 +11,8 @@ import Spinner from '../components/MoIcon/Spinner';
 
 import Profile from './Profile/Profile';
 import { Title, Header } from './Typography';
+import { normalize } from '../utils';
+import { Size } from '../styles';
 
 const Container = styled(View)`
   flex: 1;
@@ -22,7 +24,7 @@ const AnimatableContainer = Animatable.createAnimatableComponent(Container);
 
 const Content = styled(View)`
   flex: 1;
-  margin-left: 30;
+  margin-left: ${Size.titleNeuronSizeEventInfo};
   justify-content: center;
 `;
 
@@ -31,10 +33,11 @@ const Info = styled(View)`
 `;
 const IconLabel = styled(View)`
     flex-direction: row;
-    margin-right: 30;
+    flex: ${props => props.flex || 1};
 `;
 const Icon = styled(FontAwesome)`
   background-color: transparent;
+  padding-right: 5px;
 `;
 
 const lightColor = '#fef8bd';
@@ -64,18 +67,18 @@ class UserPreview extends Component {
     return (
       <TouchableWithoutFeedback onPress={this.onPress}>
         <AnimatableContainer ref={this.handleAnimatableContainer}>
-          <Profile width={50}/>
+          <Profile width={Size.hamburgerSize + 13}/>
 
           <Content>
-            <Title heavy color={lightColor}>{name}</Title>
+            <Title heavy color={lightColor} small>{normalize.normalizeAllCapLetter(name)}</Title>
             <Info>
-              <IconLabel>
-                <Icon name='book' size={20} color={lightColor} />
-                <Header bolder inverted >{school || '-'}</Header>
+              <IconLabel flex={5}>
+                <Icon name='book' size={Size.neuronSizeEventInfo + 2} color={lightColor} />
+                <Header bolder inverted superSmall>{school ? normalize.normalizeAllCapLetter(school) : '-'}</Header>
               </IconLabel>
-              <IconLabel>
-                <Icon name='flag' size={20} color={lightColor} />
-                <Header bolder inverted>{country || '-'}</Header>
+              <IconLabel flex={3}>
+                <Icon name='flag' size={Size.neuronSizeEventInfo + 2} color={lightColor} />
+                <Header bolder inverted superSmall>{country ? normalize.normalizeAllCapLetter(country) : '-'}</Header>
               </IconLabel>
             </Info>
           </Content>

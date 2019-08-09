@@ -43,6 +43,8 @@ export default class SearchFriends extends PureComponent {
     searching: false,
   }
 
+  friendsPage;
+
   changeFriendState = (data, itemToActivate, resetAll = false) => {
     const friendIsLoading = false;
 
@@ -105,18 +107,22 @@ export default class SearchFriends extends PureComponent {
   onSubmit = async (query) => {
     if(!query.trim()) return;
 
-    const { getUsersAsync } = this.props;
-    const getInitialPage = 1;
+    this.friendsPage = 0;
+    this.query = query;
+
     this.setState({ searching: true, dataSource: [] });
+    await this.searchFriends();
+    this.setState({ searching: false });
+  }
 
-    await getUsersAsync(getInitialPage, query);
+  searchFriends = async () => {
+    const { getUsersAsync } = this.props;
+
+    this.friendsPage++;
+    await getUsersAsync(this.friendsPage, this.query);
+
     const { search } = this.props;
-
-    const _data = search.friends.map((friends) => {
-      friends.loading = false;
-      return friends;
-    });
-    this.setState({ dataSource: _data, searching: false });
+    await this.setState({ dataSource: search.friends });
   }
 
   render() {
@@ -133,6 +139,8 @@ export default class SearchFriends extends PureComponent {
       results = (
         <FlatList
           contentContainerStyle={containerStyles}
+          onEndReached={this.searchFriends}
+          onEndReachedThreshold={0}
           data={dataSource}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}

@@ -8,11 +8,12 @@ export default {
   fontBodySmall: 13,
 
   fontTitle: 25,
+  fontTitleSmall: isTablet ? 22 : 17,
   fontDescription: isTablet ? 15 : 11,
 
   fontHeader: isTablet ? 25 : 20,
   fontHeaderSmall: isTablet ? 22 : 15 ,
-  fontHeaderSuperSmall: 12,
+  fontHeaderSuperSmall: isTablet ? 19 : 12,
 
   fontContentMinimized: isTablet ? 23 : 18,
 
