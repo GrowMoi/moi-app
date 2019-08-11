@@ -44,12 +44,12 @@ export default class ContentListScene extends PureComponent {
 
     if(!isFirstTime) return;
 
-    const eventsInProgress = await getEventInProgressAsync();
+    // const eventsInProgress = await getEventInProgressAsync();
     let events = await getEventsTodayAsync();
 
-    if(eventsInProgress.length) {
-      events.events = [];
-    }
+    // if(eventsInProgress.length) {
+    //   events.events = [];
+    // }
 
     this.setState({
       isFirstTimeEvents: isFirstTime,
