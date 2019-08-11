@@ -7,9 +7,11 @@ import { Palette } from '../../styles';
 import Profile from '../Profile/Profile';
 import { Title, TextBody } from '../Typography';
 import Button from '../Buttons/Button';
+import CloseIcon from '../../../containers/Events/CloseIcon';
+import ContentContainer from '../../../containers/Events/ContentContainer';
 
 const Container = styled(View)`
-  width: 300;
+  width: 325;
   align-items: center;
 `;
 
@@ -18,16 +20,13 @@ const Description = styled(View)`
 `;
 
 const ContentBox = styled(View)`
-  margin-top: 20;
-  background-color: ${Palette.colors.greenFrame};
-  width: 100%;
   padding-horizontal: 20;
   padding-vertical: 20;
   border-radius: 5;
-  margin-bottom: 10;
 `;
 
 const Buttons = styled(View)`
+  margin-top: 10;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -35,30 +34,36 @@ const Buttons = styled(View)`
   padding-horizontal: 20;
 `;
 
+const colorsMargin = ['#344F39', '#344F39'];
+const colorsContent = ['#74AD50', '#74AD50'];
+
 export const GenericAlert = ({
   onNext,
   onCancel,
   message = '',
   nextText = 'Aceptar',
-  cancelText='Cancelar',
-  description='',
+  cancelText = 'Cancelar',
+  description = '',
 }) => {
 
   return (
     <Container>
-      <ContentBox>
-        <Title center book color='white'>{message}</Title>
-        <Description>
-          {description && <TextBody inverted center>{description}</TextBody>}
-        </Description>
-      </ContentBox>
+      <CloseIcon onPress={onCancel} style={{ top: -10 }} />
+      <ContentContainer style={{ width: 300, height: 'auto' }} colorsMargin={colorsMargin} colorsContent={colorsContent}>
+        <ContentBox>
+          <Title center book color='white'>{message}</Title>
+          <Description>
+            {description && <TextBody inverted center>{description}</TextBody>}
+          </Description>
+        </ContentBox>
+      </ContentContainer>
 
       <Buttons>
         <View style={{ width: '45%' }}>
           {(onNext && typeof onNext === 'function') && <Button style={{ width: '100%' }} title={nextText} onPress={onNext} />}
         </View>
         <View style={{ width: '45%' }}>
-          {(onCancel && typeof onCancel === 'function') && <Button style={{ width: '100%' }} title={cancelText} onPress={onCancel}/>}
+          {(onCancel && typeof onCancel === 'function') && <Button style={{ width: '100%' }} title={cancelText} onPress={onCancel} />}
         </View>
       </Buttons>
     </Container>
