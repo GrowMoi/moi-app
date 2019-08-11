@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, AsyncStorage, PixelRatio, ImageEditor, ImageStore, Platform } from 'react-native';
+import { View, AsyncStorage, PixelRatio, Platform, Linking } from 'react-native';
 import { takeSnapshotAsync } from 'expo';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
@@ -26,6 +26,8 @@ import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
 import deviceUtils from '../../utils/device-utils';
 import { PORTRAIT } from '../../../constants';
+import { generateAlertData } from '../Alert/alertUtils';
+import ModalAlert from '../Alert/ModalAlert';
 
 const isTablet = deviceUtils.isTablet();
 
@@ -74,6 +76,7 @@ export default class Tree extends Component {
     eventType: '',
     achievements: null,
     showLabelLayer: true,
+    showLeftRewiewModal: false,
   }
 
   initialActions = async () => {
@@ -276,6 +279,7 @@ export default class Tree extends Component {
   hideModalNewAchievements = () => {
     if (!this.state.showEventCompleted) {
       this.removeQuizResult();
+      this.setState({ showLeftRewiewModal: true });
     }
     this.setState({ showModalNewAchievements: false });
   }
@@ -286,7 +290,7 @@ export default class Tree extends Component {
 
   hideEventCompletedModal = () => {
     this.removeQuizResult();
-    this.setState({ showEventCompleted: false });
+    this.setState({ showEventCompleted: false, showLeftRewiewModal: true });
   }
 
   removeQuizResult() {
@@ -311,8 +315,29 @@ export default class Tree extends Component {
     return size * (isTablet ? 0.9 : 1);
   }
 
+  generateButtonProps = (title, opnPressButton) => {
+    return {
+      title,
+      onPress: () => {
+        this.setState({ showLeftRewiewModal: false })
+        opnPressButton();
+      }
+    }
+  }
+
+  redirectToStore = () => {
+    let marketUrl = 'market://details?id=com.moisociallearning.moiapp';
+    if (Platform.OS === 'ios') {
+        marketUrl = 'itms://itunes.apple.com/us/app/apple-store/com.growmoisociallearning.moiapp?mt=8';
+    }
+    Linking.canOpenURL(marketUrl).then(supported => {
+        supported && Linking.openURL(marketUrl);
+    }, (err) => console.log(err));
+  }
+
+
   render() {
-    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, eventType, achievements, showLabelLayer, treeHeight } = this.state;
+    const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, eventType, achievements, showLabelLayer, treeHeight, showLeftRewiewModal } = this.state;
     const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
 
     if (quizResult && (!showModalNewAchievements && !showEventCompleted)) {
@@ -321,7 +346,6 @@ export default class Tree extends Component {
 
     const showAchievementsModal = !modalVisible && showModalNewAchievements;
     const showEventCompletedModal = !modalVisible && !showModalNewAchievements && showEventCompleted;
-
 
     const videoDimensions = {
       width: 1280,
@@ -348,6 +372,13 @@ export default class Tree extends Component {
         <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} eventType={eventType} onHideModal={this.hideEventCompletedModal} />}
+        {showLeftRewiewModal &&<ModalAlert
+          width={width}
+          item={generateAlertData('Que te parecio esta experiencia', 'Seras redireccionado a la tienda para dejarnos un reivew.')}
+          okButtonProps={this.generateButtonProps('Dejar review', this.redirectToStore)}
+          cancelButtonProps={{title: 'Más tarde'}}
+          onClose={() => { this.setState({ showLeftRewiewModal: false }) }}
+        />}
         {!modalVisible &&
           <Zoom
             flex={Platform.OS === 'android' ? 10 : 1}

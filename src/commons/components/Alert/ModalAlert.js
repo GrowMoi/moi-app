@@ -18,9 +18,22 @@ const Overlay = styled(View)`
 
 const ContentSection = styled(View)`
   ${props => props.flex ?
-  'flex: ' + props.flex :
-  'height: auto'}
+    'flex: ' + props.flex :
+    'height: auto'}
   justify-content: center;
+`;
+
+const ButtonsContainer = styled(View)`
+  margin-top: 20;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: ${props => props.width};
+  padding-horizontal: 20;
+`;
+
+const ButtonView = styled(View)`
+ width: 45%;
 `;
 
 const colorsMargin = ['#344F39', '#344F39'];
@@ -31,7 +44,7 @@ export default class ModalAlert extends Component {
     const width = this.modalWidth;
 
     return {
-      width: width / 1.3,
+      width: width / 1.2,
       height: this.modalHeight,
     };
   }
@@ -42,15 +55,14 @@ export default class ModalAlert extends Component {
   }
 
   get modalHeight() {
-    const { item: { buttonProps, image }, defaultButton } = this.props;
+    const { item: { image } } = this.props;
     let heightModal = Size.heigthModalAlert;
-    heightModal = (buttonProps || defaultButton) ? heightModal + 50 : heightModal;
     heightModal = image ? heightModal + Size.iconSizeModalAlert : heightModal;
     return heightModal;
   }
 
   render() {
-    const { item: { title, description, image, buttonProps }, open = true, animationType = 'slide', noOverlay = false, onClose, defaultButton } = this.props;
+    const { item: { title, description, image }, open = true, animationType = 'slide', noOverlay = false, onClose, okButtonProps, cancelButtonProps, defaultButton } = this.props;
 
     const itemTitle = normalize.capitalizeFirstLetter(title);
     const itemDescription = normalize.capitalizeFirstLetter(description);
@@ -62,10 +74,13 @@ export default class ModalAlert extends Component {
 
     const modalWidth = this.modalSize.width;
     const modalHeight = this.modalSize.height;
-    const moiButtonProps = buttonProps ? buttonProps : {
+    const mainButtonProps = okButtonProps ? okButtonProps : {
       title: 'OK',
-      onPress: onClose
+      onPress: onClose,
     };
+
+    const showButtons = okButtonProps || cancelButtonProps || defaultButton;
+    const showMainButton = defaultButton || okButtonProps;
 
     return (
       <MoiModal
@@ -88,14 +103,18 @@ export default class ModalAlert extends Component {
               </ContentSection> : null}
 
               <ContentSection flex={2}>
-                <Header small ellipsizeMode='tail' numberOfLines={3} center style={{ marginLeft: 5, marginRight: 5, marginTop: 10}}>{itemDescription}</Header>
+                <Header small ellipsizeMode='tail' numberOfLines={3} center style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}>{itemDescription}</Header>
               </ContentSection>
-              {(buttonProps || defaultButton) &&
-                <ContentSection flex={2}>
-                  <Button {...moiButtonProps} style={{ minWidth: 70 }} />
-               </ContentSection>}
             </ContentContainer>
           </View>
+          {showButtons && <ButtonsContainer width={modalWidth}>
+            <ButtonView>
+              {cancelButtonProps && <Button {...cancelButtonProps} onPress={cancelButtonProps.onPress || onClose} style={{ width: '100%' }} />}
+            </ButtonView>
+            <ButtonView>
+              {showMainButton && <Button {...mainButtonProps} style={{ width: '100%' }} />}
+            </ButtonView>
+          </ButtonsContainer>}
         </Overlay>
       </MoiModal>
     );

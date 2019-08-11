@@ -174,7 +174,7 @@ export default class Inventory extends Component {
   activeItem = item => {
     const source = resources.getItem(item.number);
     if (item.disabled) {
-      this.setState({ isEventModalOpen: true, itemSelected: generateAlertData(item.name, item.description, source.disabled) });
+      this.setState({ isEventModalOpen: true, itemSelected: {item: generateAlertData(item.name, item.description, source.disabled)} });
       return
     }
 
@@ -194,7 +194,10 @@ export default class Inventory extends Component {
       this.showVideo(true, vineta_2);
       return;
     } else if (item.number === 10) {
-      this.setState({ isEventModalOpen: true, itemSelected: { ...generateAlertData(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', source.source), buttonProps: this.generateButtonProps('OK', this.goFinalQuiz) } });
+      this.setState({ isEventModalOpen: true, itemSelected: {
+        item: generateAlertData(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', source.source),
+        buttonProps: this.generateButtonProps('OK', this.goFinalQuiz) }
+      });
       return;
     }
 
@@ -212,7 +215,7 @@ export default class Inventory extends Component {
       }
     }
 
-    this.setState({ isEventModalOpen: true, itemSelected: { ...generateAlertData(item.name, item.description, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
+    this.setState({ isEventModalOpen: true, itemSelected: { item: generateAlertData(item.name, item.description, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
   }
 
   addDisabledAchievements = (currentAchievements = []) => {
@@ -310,7 +313,7 @@ export default class Inventory extends Component {
     const box = resources.getBox(!item.completed)
     return (
       <Container
-        onPress={() => this.setState({ isEventModalOpen: true, itemSelected: item })}
+        onPress={() => this.setState({ isEventModalOpen: true, itemSelected: {item} })}
         activeOpacity={0.8}
         width={width}
         inactive={!item.completed}
@@ -424,7 +427,8 @@ export default class Inventory extends Component {
 
         {isEventModalOpen && <ModalAlert
           width={width}
-          item={itemSelected}
+          item={itemSelected.item}
+          okButtonProps={itemSelected.buttonProps}
           onClose={() => { this.setState({ isEventModalOpen: false }) }}
         />}
 

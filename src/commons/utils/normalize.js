@@ -7,7 +7,7 @@ export const capitalizeAllLetters = (str) => {
 
 export const capitalizeFirstLetter = (str) => {
   const firstLetter = str.slice(0, 1).toUpperCase();
-  return firstLetter.concat(str.slice(1).toLowerCase);
+  return firstLetter.concat(str.slice(1).toLowerCase());
 };
 
 export const normalizeText = str =>
