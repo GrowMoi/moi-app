@@ -70,9 +70,9 @@ export default class EventModal extends Component {
   hideAlert = async () => {
     if (this.state.alertTitle === 'Success!!') {
       await this.removeTakenEvent();
+      this.verifyNoEvents();
     }
     this.setState({ showAlert: false });
-    this.verifyNoEvents();
   }
 
   removeTakenEvent = async () => {
