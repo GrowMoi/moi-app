@@ -35,7 +35,7 @@ import leaderboardActions from '../../actions/leaderboardActions';
     loadAllFavorites: userActions.loadAllFavorites,
     getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
     getNotificationsAsync: userActions.getNotificationsAsync,
-    getEventInProgressAsync: userActions.getEventInProgressAsync,
+    getContentsToLearnAsync: userActions.getContentsToLearnAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
     getLeaderboardAsync: leaderboardActions.getLeadersAsync,
   })
@@ -60,7 +60,7 @@ class TasksContainer extends Component {
       loadAllFavorites,
       getTutorRecomendationAsync,
       getNotificationsAsync,
-      getEventInProgressAsync,
+      getContentsToLearnAsync,
       getEventsWeekAsync,
     } = this.props;
 
@@ -73,7 +73,7 @@ class TasksContainer extends Component {
         loadAllFavorites(),
         getTutorRecomendationAsync(),
         getNotificationsAsync(),
-        getEventInProgressAsync(),
+        getContentsToLearnAsync(),
         getEventsWeekAsync(),
       ]);
     } catch (error) {
@@ -244,7 +244,7 @@ class TasksContainer extends Component {
               onClickItem={(item) => this.onPressNotification(item)}
             />
             <EventTabContainer
-              title='Eventos'
+              title='Contenidos por aprender'
               icon='calendar'
               onClickItem={(item) => this.onPressNotification(item)}
               enableScroll={this.enableMainScroll(true)}

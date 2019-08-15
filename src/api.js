@@ -117,7 +117,13 @@ const api = {
       const endpoint = '/api/users/user_image';
       const res = await client.put(endpoint, { image: imageBase64 });
       return res;
-    }
+    },
+    async getContentsToLearn(page) {
+      console.log("TCL: getContentsToLearn -> page", page)
+      const endpoint = '/api/users/contents_to_learn';
+      const res = await client.get(endpoint, { params: { page } });
+      return res;
+    },
   },
 
   leaderboard: {

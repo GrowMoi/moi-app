@@ -33,6 +33,11 @@ const initialState = {
   events: [],
   eventsWeek: [],
   quizResult: null,
+  contentsToLearn: {
+    contents: {},
+    meta: {},
+    page: 1,
+  }
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -265,6 +270,23 @@ const eventsWeek = (state = initialState.eventsWeek, action) => {
   }
 }
 
+const contentsToLearn = (state = initialState.contentsToLearn, action) => {
+  switch (action.type) {
+    case actionTypes.STORE_CONTENTS_TO_LEARN:
+      const contents = [
+        ...state.contents,
+        ...(action.payload.contents || []),
+      ];
+
+      return {
+        ...action.payload,
+        contents
+      };
+    default:
+      return state;
+  }
+}
+
 const user = combineReducers({
   userData,
   tasks,
@@ -283,6 +305,7 @@ const user = combineReducers({
   events,
   eventsWeek,
   quizResult,
+  contentsToLearn,
 });
 
 export default user;
