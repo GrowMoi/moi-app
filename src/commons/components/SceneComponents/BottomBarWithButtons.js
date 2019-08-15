@@ -12,6 +12,7 @@ import tutorActions from '../../../actions/tutorActions';
 import withSound from '../../utils/withSound';
 import { Size } from '../../styles';
 import deviceUtils from '../../utils/device-utils';
+import eventsUtils from '../../../containers/Events/events-utils';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
@@ -183,7 +184,7 @@ class BottomBarWithButtons extends Component {
   renderBadge = () => {
     const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, contentsToLearn: { meta: { total_items = 0 } }, eventsWeek } = this.props;
 
-    const counterNotifications = total_count + recommendation_contents_pending + total_items + Object.keys(eventsWeek).length;
+    const counterNotifications = total_count + recommendation_contents_pending + total_items + eventsUtils.filterValidEvents(eventsWeek).length;
 
     if (counterNotifications == 0) return null;
 

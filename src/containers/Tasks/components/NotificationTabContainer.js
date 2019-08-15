@@ -70,8 +70,8 @@ class NotificationTabContainer extends PureComponent {
   }
 
   renderBadge() {
-    const { data: { meta: { total_count = 0 } }, events } = this.props;
-    const totalNotifications = total_count + Object.keys(events).length;
+    const { data: { meta: { total_count = 0 } } } = this.props;
+    const totalNotifications = total_count + this.events.length;
     if (totalNotifications === 0) return null;
 
     return (
@@ -118,13 +118,7 @@ class NotificationTabContainer extends PureComponent {
 
   get events() {
     const { events } = this.props;
-    let arrayEvents = Object.entries(events);
-
-    if (arrayEvents[0][0] === 'super_event') {
-      arrayEvents[0][1] = eventsUtils.handleSuperEvents(arrayEvents[0][1]);
-    }
-
-    return arrayEvents.filter(item => item[1].length > 0)
+    return eventsUtils.filterValidEvents(events);
   }
 
   render() {
