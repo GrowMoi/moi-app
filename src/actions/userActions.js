@@ -44,6 +44,10 @@ const signOut = () => ({
   type: actionTypes.LOGOUT,
 })
 
+const resetData = () => ({
+  type: actionTypes.RESET_DATA,
+});
+
 const setSettings = settings => ({
   type: actionTypes.SET_SETTINGS,
   payload: settings,
@@ -67,12 +71,11 @@ const storeFinalTestResult = finalTestResult => ({
 })
 
 const signOutAsync = () => async (dispatch) => {
-    //aqui
   await dispatch(signOut());
-  await dispatch(neuronActions.setNeuronLabelInfo({}));
   await AsyncStorage.clear();
 
-  Actions.login({ type: ActionConst.RESET });
+  await Actions.login({ type: ActionConst.RESET });
+  await dispatch(resetData());
 }
 
 const setNotifications = (notifications) => ({
@@ -725,4 +728,5 @@ export default {
   getEventsAsync,
   removeQuizResult,
   generateShareDataAsync,
+  resetData,
 };
