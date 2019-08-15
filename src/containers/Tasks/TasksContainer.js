@@ -35,7 +35,6 @@ import leaderboardActions from '../../actions/leaderboardActions';
     loadAllFavorites: userActions.loadAllFavorites,
     getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
     getNotificationsAsync: userActions.getNotificationsAsync,
-    getContentsToLearnAsync: userActions.getContentsToLearnAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
     getLeaderboardAsync: leaderboardActions.getLeadersAsync,
   })
@@ -60,7 +59,6 @@ class TasksContainer extends Component {
       loadAllFavorites,
       getTutorRecomendationAsync,
       getNotificationsAsync,
-      getContentsToLearnAsync,
       getEventsWeekAsync,
     } = this.props;
 
@@ -73,7 +71,6 @@ class TasksContainer extends Component {
         loadAllFavorites(),
         getTutorRecomendationAsync(),
         getNotificationsAsync(),
-        getContentsToLearnAsync(),
         getEventsWeekAsync(),
       ]);
     } catch (error) {

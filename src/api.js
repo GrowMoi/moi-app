@@ -119,7 +119,6 @@ const api = {
       return res;
     },
     async getContentsToLearn(page) {
-      console.log("TCL: getContentsToLearn -> page", page)
       const endpoint = '/api/users/contents_to_learn';
       const res = await client.get(endpoint, { params: { page } });
       return res;

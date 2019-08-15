@@ -36,7 +36,7 @@ const initialState = {
   contentsToLearn: {
     contents: {},
     meta: {},
-    page: 1,
+    page: 0,
   }
 };
 
@@ -273,14 +273,15 @@ const eventsWeek = (state = initialState.eventsWeek, action) => {
 const contentsToLearn = (state = initialState.contentsToLearn, action) => {
   switch (action.type) {
     case actionTypes.STORE_CONTENTS_TO_LEARN:
-      const contents = [
+      const { contents, page } = action.payload;
+      const _contents = page === 1 ? contents : [
         ...state.contents,
-        ...(action.payload.contents || []),
+        ...(contents || []),
       ];
 
       return {
         ...action.payload,
-        contents
+        contents: state.page === page ? state.contents : _contents
       };
     default:
       return state;
