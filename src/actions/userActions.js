@@ -67,6 +67,7 @@ const storeFinalTestResult = finalTestResult => ({
 })
 
 const signOutAsync = () => async (dispatch) => {
+    //aqui
   await dispatch(signOut());
   await dispatch(neuronActions.setNeuronLabelInfo({}));
   await AsyncStorage.clear();
@@ -454,9 +455,11 @@ const getMoreStoreNotesAsync = () => async (dispatch, getState) => {
 const getNotificationsAsync = (page = 1) => async (dispatch) => {
   try {
     const res = await api.notifications.getNotifications(page);
+    console.log("TCL: getNotificationsAsync -> page", page)
 
     await dispatch(setHeaders(res.headers));
     dispatch(setNotifications({ ...res.data, page }));
+    console.log("TCL: getNotificationsAsync -> res.data", res.data)
     return res.data;
   } catch (error) {
     throw new Error(error);

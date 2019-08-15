@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Palette } from './../../../commons/styles';
+import { Palette, Size } from './../../../commons/styles';
 import { Ionicons } from '@expo/vector-icons';
 import { TextBody, Title, Header } from './../../../commons/components/Typography';
 
@@ -9,8 +9,8 @@ const SubItemRow = (props) => {
   const content = (
     <View style={styles.rowContainer}>
       <View style={styles.titleContainer}>
-        <Header>{props.title}</Header>
-        <TextBody ellipsizeMode='tail' numberOfLines={2} t>{props.description}</TextBody>
+        <Header customSize={Size.fontContentMinimized} ellipsizeMode='tail' numberOfLines={2}>{props.title}</Header>
+        <TextBody ellipsizeMode='tail' numberOfLines={2}>{props.description}</TextBody>
       </View>
     </View>
   );
