@@ -278,10 +278,11 @@ const contentsToLearn = (state = initialState.contentsToLearn, action) => {
         ...state.contents,
         ...(contents || []),
       ];
+      const cleanContents = object.removeDuplicates(_contents, 'id');
 
       return {
         ...action.payload,
-        contents: state.page === page ? state.contents : _contents
+        contents: cleanContents
       };
     default:
       return state;

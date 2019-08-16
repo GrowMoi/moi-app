@@ -15,7 +15,7 @@ import userActions from '../../../actions/userActions';
 }), {
     getMoreContentsToLearnAsync: userActions.getMoreContentsToLearnAsync,
 })
-class EventTabContainer extends PureComponent {
+class ContentsToLearnTabContainer extends PureComponent {
   state = {
     open: false,
     isLoading: false,
@@ -118,4 +118,4 @@ const styles = StyleSheet.create(
   }
 )
 
-export default EventTabContainer;
+export default ContentsToLearnTabContainer;
