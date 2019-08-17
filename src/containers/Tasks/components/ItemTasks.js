@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons, Feather } from '@expo/vector-icons';
-import { Palette } from './../../../commons/styles';
+import { Palette, Size } from './../../../commons/styles';
 import { Header } from './../../../commons/components/Typography';
 
 function ItemTasks(props) {
@@ -9,7 +9,7 @@ function ItemTasks(props) {
     <TouchableOpacity onPress={props.onPress && props.onPress} style={styles.container}>
       <View style={styles.subContainer}>
         <Feather style={styles.icon} name={props.icon} size={25}  />
-        <Header>{props.title}</Header>
+        <Header customSize={Size.fontContentMinimized}>{props.title}</Header>
       </View>
     </TouchableOpacity>
   );
@@ -18,7 +18,7 @@ function ItemTasks(props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Palette.tasksList,
-    height: 40,
+    height: 60,
     width: '95%',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    paddingVertical: 10,
   },
   icon: {
     marginHorizontal: 10,
