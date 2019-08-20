@@ -27,8 +27,8 @@ android {
   defaultConfig {
     applicationId 'com.moisociallearning.moiapp'
     targetSdkVersion 26
-    versionCode 9
-    versionName '0.3.9'
+    versionCode 10
+    versionName '0.3.10'
     ndk {
       abiFilters 'armeabi-v7a', 'x86'
     }
