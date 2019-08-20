@@ -18,6 +18,8 @@ import EventModal from '../Events/EventModal';
 
 // Actions
 import userActions from '../../actions/userActions';
+import { generateAlertData } from '../../commons/components/Alert/alertUtils';
+import ModalAlert from '../../commons/components/Alert/ModalAlert';
 
 @connect(state => ({
   device: state.device,
@@ -29,15 +31,20 @@ import userActions from '../../actions/userActions';
 })
 export default class ContentListScene extends PureComponent {
   state = {
-    isFirstTimeEvents: true,
+    isFirstTimeEvents: false,
     events: [],
     isAlertOpen: true,
+    showNoMoreContentsModal: true,
   }
 
   async componentDidMount() {
     const { getEventsTodayAsync } = this.props;
     const isFirstTime = await this.fistTimeOfTheDay();
-    const events = await getEventsTodayAsync();
+
+    if(!isFirstTime) return;
+
+    let events = await getEventsTodayAsync();
+
 
     this.setState({
       isFirstTimeEvents: isFirstTime,
@@ -80,9 +87,16 @@ export default class ContentListScene extends PureComponent {
     return this.filterReadedContents.length > 0;
   }
 
+  get onlyLearntContents() {
+    const shownContents = this.filterReadedContents;
+    const shownContentsNumber = shownContents.length;
+    const contentsLearntNumber = shownContents.filter(d => d.learnt).length;
+    return  shownContentsNumber === 0 ? false : shownContentsNumber === contentsLearntNumber;
+  }
+
   render() {
     const { device, neuron_id, showPassiveMessage, showPassiveMessageAsync, neuronSelected } = this.props;
-    const { events, isFirstTimeEvents, isAlertOpen } = this.state
+    const { events, isFirstTimeEvents, isAlertOpen, showNoMoreContentsModal } = this.state
 
     const showEvents = events && events.length > 0 && isFirstTimeEvents;
 
@@ -126,6 +140,14 @@ export default class ContentListScene extends PureComponent {
           }}
           message='Elige el contenido que más te interese y presiona sobre el'
         />
+
+        {this.onlyLearntContents && <ModalAlert
+          width={device.dimensions.width}
+          open={showNoMoreContentsModal}
+          item={generateAlertData('Aviso', 'No hay contenidos para aprender')}
+          onClose={() => { this.setState({ showNoMoreContentsModal: false }) }}
+          defaultButton
+        />}
 
         {(!this.existContentsToRead) &&
           <Alert open={isAlertOpen}>

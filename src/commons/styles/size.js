@@ -8,11 +8,12 @@ export default {
   fontBodySmall: 13,
 
   fontTitle: 25,
+  fontTitleSmall: isTablet ? 22 : 17,
   fontDescription: isTablet ? 15 : 11,
 
   fontHeader: isTablet ? 25 : 20,
   fontHeaderSmall: isTablet ? 22 : 15 ,
-  fontHeaderSuperSmall: 12,
+  fontHeaderSuperSmall: isTablet ? 19 : 12,
 
   fontContentMinimized: isTablet ? 23 : 18,
 
@@ -88,7 +89,8 @@ export default {
   neuronSizeEventInfo: isTablet ? 28 : 15,
   titleNeuronSizeEventInfo: isTablet ? 12 : 8,
   marginTopSeparatorNeurons: isTablet ? 12 : 7,
-  iconSizeEventDescription: isTablet ? 160 : 130,
+  heigthModalAlert: isTablet ? 190 : 145,
+  iconSizeModalAlert: isTablet ? 160 : 130,
 
   //settings
   heigthRowLevel: isTablet ? 50 : 30,

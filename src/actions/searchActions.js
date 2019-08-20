@@ -27,14 +27,22 @@ const getContentsAsync = (page, query) => async (dispatch) => {
   return res;
 };
 
-const getUsersAsync = (page, query) => async (dispatch) => {
+const getUsersAsync = (page, query) => async (dispatch, getState) => {
+  console.log("TCL: getUsersAsync -> page", page)
   let res;
   try {
     res = await api.search.getUsers(page, query);
     const { headers, data } = res;
 
+    let friends = data.search_users.users;
+
+    if(page > 1) {
+        const prevFriends = getState().search.friends;
+        friends = [...prevFriends, ...friends];
+    }
+
     dispatch(setHeaders(headers));
-    dispatch(setUsersResult(data.search_users.users));
+    dispatch(setUsersResult(friends));
   } catch (error) {
     // console.log(error)
   }

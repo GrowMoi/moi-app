@@ -27,13 +27,12 @@ const ContentContainer = styled(View)`
 `;
 
 const StyledContentBox = styled(ContentBox)`
-  margin-bottom: ${Size.spaceMedium};
   align-items: center;
   justify-content: center;
 `;
 
 const ContentFooter = styled(View)`
-  flex: 1;
+  height: 67;
   justify-content: center;
   align-items: center;
 `;

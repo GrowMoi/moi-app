@@ -33,6 +33,11 @@ const initialState = {
   events: [],
   eventsWeek: [],
   quizResult: null,
+  contentsToLearn: {
+    contents: {},
+    meta: {},
+    page: 0,
+  }
 };
 
 const userData = (state = initialState.userData, action = {}) => {
@@ -187,14 +192,15 @@ const showPassiveMessage = (state = initialState.showPassiveMessage, action) => 
 const notifications = (state = initialState.notifications, action) => {
   switch (action.type) {
     case actionTypes.SET_NOTIFICATIONS:
+      const { notifications, meta, page } = action.payload;
+      const _notifications = page === 1 ? notifications : [...state.notifications, ...notifications];
 
-      const notifications = [...state.notifications, ...action.payload.notifications];
-      const cleanNotifications = object.removeDuplicates(notifications, 'id');
+      const cleanNotifications = object.removeDuplicates(_notifications, 'id');
 
       return {
-        meta: action.payload.meta,
+        meta,
         notifications: cleanNotifications,
-        page: action.payload.page,
+        page,
       };
 
     case actionTypes.DELETE_NOTIFICATIONS:
@@ -264,6 +270,25 @@ const eventsWeek = (state = initialState.eventsWeek, action) => {
   }
 }
 
+const contentsToLearn = (state = initialState.contentsToLearn, action) => {
+  switch (action.type) {
+    case actionTypes.STORE_CONTENTS_TO_LEARN:
+      const { contents, page } = action.payload;
+      const _contents = page === 1 ? contents : [
+        ...state.contents,
+        ...(contents || []),
+      ];
+      const cleanContents = object.removeDuplicates(_contents, 'id');
+
+      return {
+        ...action.payload,
+        contents: cleanContents
+      };
+    default:
+      return state;
+  }
+}
+
 const user = combineReducers({
   userData,
   tasks,
@@ -282,6 +307,7 @@ const user = combineReducers({
   events,
   eventsWeek,
   quizResult,
+  contentsToLearn,
 });
 
 export default user;

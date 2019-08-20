@@ -44,6 +44,10 @@ const signOut = () => ({
   type: actionTypes.LOGOUT,
 })
 
+const resetData = () => ({
+  type: actionTypes.RESET_DATA,
+});
+
 const setSettings = settings => ({
   type: actionTypes.SET_SETTINGS,
   payload: settings,
@@ -68,10 +72,10 @@ const storeFinalTestResult = finalTestResult => ({
 
 const signOutAsync = () => async (dispatch) => {
   await dispatch(signOut());
-  await dispatch(neuronActions.setNeuronLabelInfo({}));
   await AsyncStorage.clear();
 
-  Actions.login({ type: ActionConst.RESET });
+  await Actions.login({ type: ActionConst.RESET });
+  await dispatch(resetData());
 }
 
 const setNotifications = (notifications) => ({
@@ -102,6 +106,11 @@ const storeEventsWeek = events => ({
 const storeQuizResult = quizResult => ({
   type: actionTypes.STORE_QUIZ_RESULT,
   payload: quizResult,
+});
+
+const storeContentsToLearn = contentsToLearn => ({
+  type: actionTypes.STORE_CONTENTS_TO_LEARN,
+  payload: contentsToLearn,
 });
 
 const loginAsync = ({ login, authorization_key: authorizationKey }) => async (dispatch) => {
@@ -649,7 +658,6 @@ const takeSuperEventAsync = (eventId) => async (dispatch) => {
   }
 }
 
-
 const getEventInProgressAsync = () => async (dispatch) => {
   try {
     const res = await api.events.getEventInProgress();
@@ -659,6 +667,36 @@ const getEventInProgressAsync = () => async (dispatch) => {
     return data.contents;
   } catch (error) {
     throw new Error(error);
+  }
+}
+
+const getContentsToLearnAsync = (page = 1) => async (dispatch) => {
+  let res;
+
+  try {
+    const res = await api.user.getContentsToLearn(page);
+    const { data, headers } = res;
+    await dispatch(setHeaders(headers));
+    dispatch(storeContentsToLearn({ ...data, page }));
+  } catch (error) {
+    console.log(error);
+  }
+
+  return res;
+};
+
+const getMoreContentsToLearnAsync = () => async (dispatch, getState) => {
+  const contentsToLearnState = getState().user.contentsToLearn;
+  const currentPage = (contentsToLearnState || {}).page;
+
+  const itemsToGet = 4;
+  const totalItems = (contentsToLearnState.meta || {}).total_items || 0;
+  const maxPage = Math.ceil((totalItems/itemsToGet));
+
+  const pageToGet = currentPage + 1;
+
+  if(pageToGet <= maxPage) {
+    await dispatch(getContentsToLearnAsync(pageToGet));
   }
 }
 
@@ -722,4 +760,7 @@ export default {
   getEventsAsync,
   removeQuizResult,
   generateShareDataAsync,
+  getContentsToLearnAsync,
+  getMoreContentsToLearnAsync,
+  resetData,
 };

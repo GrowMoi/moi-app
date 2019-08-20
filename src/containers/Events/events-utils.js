@@ -1,6 +1,6 @@
 export default EventsUtils = {
   mergeEvents: events => {
-    return [...EventsUtils.handleSuperEvents(events.superevent), ...events.events].slice(0, 3);
+    return [...EventsUtils.handleSuperEvents(EventsUtils.filterNoTakenEvents(events.superevent)), ...events.events].slice(0, 3);
   },
 
   addKeySuperEvent: (superEvents) => {
@@ -37,6 +37,20 @@ export default EventsUtils = {
       event.inactive_image = getImageUrl(event.inactive_image);
       return event;
     })
+  },
+
+  filterValidEvents: allEvents => {
+    if(allEvents.length === 0) {
+      return [];
+    }
+
+    let arrayEvents = Object.entries(allEvents);
+
+    if (arrayEvents[0][0] === 'super_event') {
+      arrayEvents[0][1] = EventsUtils.handleSuperEvents(arrayEvents[0][1]);
+    }
+
+    return arrayEvents.filter(item => item[1].length > 0)
   }
 
 }

@@ -12,6 +12,7 @@ import tutorActions from '../../../actions/tutorActions';
 import withSound from '../../utils/withSound';
 import { Size } from '../../styles';
 import deviceUtils from '../../utils/device-utils';
+import eventsUtils from '../../../containers/Events/events-utils';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
@@ -117,23 +118,23 @@ const BlueButton = styled(Image)`
   notifications: store.user.notifications,
   details: store.tutor.details,
   scene: store.routes.scene,
-  events: store.user.events,
+  contentsToLearn: store.user.contentsToLearn,
   eventsWeek: store.user.eventsWeek,
 
 }), {
     getNotificationsAsync: userActions.getNotificationsAsync,
     setReloadRandomContents: userActions.setReloadRandomContents,
     getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
-    getEventInProgressAsync: userActions.getEventInProgressAsync,
+    getContentsToLearnAsync: userActions.getContentsToLearnAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
   })
 class BottomBarWithButtons extends Component {
 
   async componentWillMount() {
-    const { getNotificationsAsync, getTutorDetailsAsync, getEventInProgressAsync, getEventsWeekAsync } = this.props;
+    const { getNotificationsAsync, getTutorDetailsAsync, getContentsToLearnAsync, getEventsWeekAsync } = this.props;
     await getNotificationsAsync();
     await getTutorDetailsAsync();
-    await getEventInProgressAsync();
+    await getContentsToLearnAsync();
     await getEventsWeekAsync();
   }
 
@@ -181,9 +182,9 @@ class BottomBarWithButtons extends Component {
   };
 
   renderBadge = () => {
-    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, events, eventsWeek } = this.props;
+    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, contentsToLearn: { meta: { total_items = 0 } }, eventsWeek } = this.props;
 
-    const counterNotifications = total_count + recommendation_contents_pending + events.length + Object.keys(eventsWeek).length;
+    const counterNotifications = total_count + recommendation_contents_pending + total_items + eventsUtils.filterValidEvents(eventsWeek).length;
 
     if (counterNotifications == 0) return null;
 

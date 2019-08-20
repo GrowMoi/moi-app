@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
   storeNotesAsync: userActions.storeNotesAsync,
   storeAsFavoriteAsync: userActions.storeAsFavoriteAsync,
-  getEventInProgressAsync: userActions.getEventInProgressAsync,
+  getContentsToLearnAsync: userActions.getContentsToLearnAsync,
   stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
   playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
   uploadImageAsync: userActions.uploadImageAsync,
@@ -269,7 +269,7 @@ export default class SingleContentScene extends Component {
   }
 
   afterFinishAnimation = async (neuronId) => {
-    const { loadNeuronByIdAsync, fromEvent, getEventInProgressAsync, parentContent } = this.props;
+    const { loadNeuronByIdAsync, fromEvent, getContentsToLearnAsync, parentContent } = this.props;
     const { hasTest } = this.state;
 
     this.setState({ reading: false, isShowingContent: false });
@@ -283,7 +283,7 @@ export default class SingleContentScene extends Component {
         }else {
           await this.loadContentAsync(true);
         }
-        if(fromEvent) await getEventInProgressAsync();
+        if(fromEvent) await getContentsToLearnAsync();
         Actions.pop();
       } catch (error) {
         console.log(error);

@@ -60,10 +60,10 @@ const CloseAction = styled(TouchableOpacity)`
 
 const LearntImage = styled(Image)`
   position: absolute;
-  top: -10;
-  right: -5;
-  width: 50;
-  height: 50;
+  top: 7;
+  right: 0;
+  width: ${props => props.width - 25};
+  height: ${props => Math.round(props.width / aspect)};
 `
 
 const LearntOverlay = styled(View)`
@@ -136,7 +136,7 @@ export default class ContentPreview extends PureComponent {
   }
 
   render() {
-    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false, learnt = false, onPressIn = ()=>{} } = this.props;
+    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false, learnt = false, onPressIn = ()=>{}, width } = this.props;
     const closeAction = closeButton && (
       <CloseAction onPress={() => onPressCloseButton && onPressCloseButton(id)}>
         <Ionicons name='md-close' size={15} color={Palette.white.css()}/>
@@ -151,7 +151,7 @@ export default class ContentPreview extends PureComponent {
             {this.rowContent()}
             {learnt && (
               <LearntOverlay>
-                <LearntImage source={{uri: 'check'}} resizeMode='contain' />
+                <LearntImage source={{uri: 'check'}} width={width + 6} resizeMode='contain' />
               </LearntOverlay>
             )}
           </RowContainer>

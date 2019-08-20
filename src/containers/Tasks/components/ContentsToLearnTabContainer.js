@@ -8,11 +8,14 @@ import { Palette, Size } from '../../../commons/styles';
 import SubItem from './SubItem';
 import { TextBody } from '../../../commons/components/Typography';
 import Badge from '../../../commons/components/Badge/Badge';
+import userActions from '../../../actions/userActions';
 
 @connect(state => ({
-  data: state.user.events,
-}), {})
-class EventTabContainer extends PureComponent {
+  contentsToLearn: state.user.contentsToLearn,
+}), {
+    getMoreContentsToLearnAsync: userActions.getMoreContentsToLearnAsync,
+})
+class ContentsToLearnTabContainer extends PureComponent {
   state = {
     open: false,
     isLoading: false,
@@ -38,20 +41,24 @@ class EventTabContainer extends PureComponent {
   }
 
   renderBadge() {
-    const { data } = this.props;
-    const totalNotifications = data.length;
-    if (totalNotifications === 0) return null;
+    const { contentsToLearn: { meta: { total_items } } } = this.props;
+    if (total_items === 0) return null;
 
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: -8, right: Size.paddingRightBadge }}>
-        <Badge value={totalNotifications}
+        <Badge value={total_items}
           size={Size.badgeTaskSize} />
       </View>
     );
   }
 
+  handleLoadMore = () => {
+      const { getMoreContentsToLearnAsync } = this.props;
+      getMoreContentsToLearnAsync();
+  }
+
   render() {
-    const { title, icon, data = [], enableScroll, disableScroll } = this.props;
+    const { title, icon, enableScroll, disableScroll, contentsToLearn } = this.props;
     const { open } = this.state;
 
     return (
@@ -68,10 +75,12 @@ class EventTabContainer extends PureComponent {
             }}
           >
             <FlatList
-              data={data}
+              data={contentsToLearn.contents}
               renderItem={this._renderItem}
               keyExtractor={this._keyExtractor}
               numColumns={2}
+              onEndReached={this.handleLoadMore}
+              onEndReachedThreshold={0}
               ListEmptyComponent={
                 <TextBody style={styles.emptyText} center>{`No tienes eventos en progreso.`}</TextBody>
               }
@@ -109,4 +118,4 @@ const styles = StyleSheet.create(
   }
 )
 
-export default EventTabContainer;
+export default ContentsToLearnTabContainer;

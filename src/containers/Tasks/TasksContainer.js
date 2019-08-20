@@ -17,8 +17,7 @@ import TaskTabContainer from './components/TaskTabContainer';
 import NotificationTabContainer from './components/NotificationTabContainer';
 import NotesTabContainer from './components/NotesTabContainer';
 import FavoritesTabContainer from './components/FavoritesTabContainer';
-import RecomendationsTabContainer from './components/RecomendationsTabContainer';
-import EventTabContainer from './components/EventTabContainer';
+import ContentsToLearnTabContainer from './components/ContentsToLearnTabContainer';
 import TutorGenericAlert from '../../commons/components/Alert/TutorGenericAlert';
 import EventModal from '../Events/EventModal';
 import LeaderBoardModal from '../LeaderBoard/LeaderboardModal';
@@ -35,7 +34,6 @@ import leaderboardActions from '../../actions/leaderboardActions';
     loadAllFavorites: userActions.loadAllFavorites,
     getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
     getNotificationsAsync: userActions.getNotificationsAsync,
-    getEventInProgressAsync: userActions.getEventInProgressAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
     getLeaderboardAsync: leaderboardActions.getLeadersAsync,
   })
@@ -58,9 +56,7 @@ class TasksContainer extends Component {
       loadUserContentTasksAsync,
       getUserNotesAsync,
       loadAllFavorites,
-      getTutorRecomendationAsync,
       getNotificationsAsync,
-      getEventInProgressAsync,
       getEventsWeekAsync,
     } = this.props;
 
@@ -71,9 +67,7 @@ class TasksContainer extends Component {
         loadUserContentTasksAsync(),
         getUserNotesAsync(),
         loadAllFavorites(),
-        getTutorRecomendationAsync(),
         getNotificationsAsync(),
-        getEventInProgressAsync(),
         getEventsWeekAsync(),
       ]);
     } catch (error) {
@@ -216,37 +210,32 @@ class TasksContainer extends Component {
         <Header title='Mis Tareas' />
         <ScrollView ref={(e) => { this.scrollRef = e }}>
           {!loading && <View style={styles.scrollContainer}>
-            <TaskTabContainer
-              title='Tareas'
-              icon='list'
-              onClickItem={item => this.onPressItem(item)}
-            />
-            <FavoritesTabContainer
-              title='Favoritos'
-              icon='star'
-              onClickItem={item => this.onPressItem(item)}
-              enableScroll={this.enableMainScroll(true)}
-              disableScroll={this.enableMainScroll(false)}
-            />
-            <RecomendationsTabContainer
-              title='Recomendaciones'
-              icon='thumbs-up'
-              onClickItem={item => this.onPressItem(item)}
-            />
             <NotesTabContainer
               title='Notas'
               icon='edit-2'
               onClickItem={note => this.onPressNote(note)}
+            />
+            <ContentsToLearnTabContainer
+              title='Contenidos por aprender'
+              icon='calendar'
+              onClickItem={(item) => this.onPressNotification(item)}
+              enableScroll={this.enableMainScroll(true)}
+              disableScroll={this.enableMainScroll(false)}
+            />
+            <TaskTabContainer
+              title='Contenidos Guardados'
+              icon='list'
+              onClickItem={item => this.onPressItem(item)}
             />
             <NotificationTabContainer
               title='Notificaciones'
               icon='bell'
               onClickItem={(item) => this.onPressNotification(item)}
             />
-            <EventTabContainer
-              title='Eventos'
-              icon='calendar'
-              onClickItem={(item) => this.onPressNotification(item)}
+            <FavoritesTabContainer
+              title='Favoritos'
+              icon='star'
+              onClickItem={item => this.onPressItem(item)}
               enableScroll={this.enableMainScroll(true)}
               disableScroll={this.enableMainScroll(false)}
             />

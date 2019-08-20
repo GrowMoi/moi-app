@@ -26,7 +26,7 @@ const succesDescriptionSuperEvent = 'Te uniste al super evento con éxito.';
   {
     takeEventAsync: userActions.takeEventAsync,
     takeSuperEventAsync: userActions.takeSuperEventAsync,
-    getEventInProgressAsync: userActions.getEventInProgressAsync,
+    getContentsToLearnAsync: userActions.getContentsToLearnAsync,
     getEventsWeekAsync: userActions.getEventsWeekAsync,
   })
 export default class EventModal extends Component {
@@ -53,13 +53,13 @@ export default class EventModal extends Component {
   }
 
   takeEvent = async () => {
-    const { takeEventAsync, takeSuperEventAsync, getEventInProgressAsync, getEventsWeekAsync } = this.props;
+    const { takeEventAsync, takeSuperEventAsync, getContentsToLearnAsync, getEventsWeekAsync } = this.props;
     const { selectedEvent } = this.state;
     try {
       const isSuperEvent = selectedEvent.isSuperEvent;
       const takeEvent = isSuperEvent ? takeSuperEventAsync : takeEventAsync;
       await takeEvent(selectedEvent.id);
-      await getEventInProgressAsync();
+      await getContentsToLearnAsync();
       await getEventsWeekAsync();
       this.setState({ showAlert: true, alertTitle: 'Success!!', alertDescription: isSuperEvent ? succesDescriptionSuperEvent : succesDescriptionEvent });
     } catch (error) {
@@ -70,9 +70,9 @@ export default class EventModal extends Component {
   hideAlert = async () => {
     if (this.state.alertTitle === 'Success!!') {
       await this.removeTakenEvent();
+      this.verifyNoEvents();
     }
     this.setState({ showAlert: false });
-    this.verifyNoEvents();
   }
 
   removeTakenEvent = async () => {

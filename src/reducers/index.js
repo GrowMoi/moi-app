@@ -10,8 +10,9 @@ import search from './searchReducer';
 import tutor from './tutorReducer';
 import sideMenu from './sideReducer';
 // ... other reducers
+import * as actionTypes from '../actions/actionTypes';
 
-export default combineReducers({
+const appReducer = combineReducers({
   routes,
   device,
   neuron,
@@ -24,3 +25,13 @@ export default combineReducers({
   sideMenu,
   // ... other reducers
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === actionTypes.RESET_DATA) {
+    state = undefined
+  }
+
+  return appReducer(state, action)
+}
+
+export default rootReducer;

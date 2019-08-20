@@ -20,8 +20,6 @@ import { object, getHeightAspectRatio } from '../../commons/utils';
 import { BottomBar, Line } from '../../commons/components/SceneComponents';
 import Item from '../../commons/components/Item/Item';
 import { TextBody } from '../../commons/components/Typography';
-import AlertComponent from '../../commons/components/Alert/Alert';
-import GenericAlert from '../../commons/components/Alert/GenericAlert';
 
 // Viñetas
 import vineta_1 from '../../../assets/videos/vineta_1.mp4';
@@ -37,10 +35,11 @@ import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
 import { PORTRAIT } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
-import ModalEventDescription from '../Events/ModalEventDescription';
 import deviceUtils from '../../commons/utils/device-utils';
 import resources from '../../commons/components/Item/resources';
 import eventsUtils from '../Events/events-utils';
+import ModalAlert from '../../commons/components/Alert/ModalAlert';
+import { generateAlertData } from '../../commons/components/Alert/alertUtils';
 
 const isTablet = deviceUtils.isTablet();
 
@@ -172,18 +171,10 @@ export default class Inventory extends Component {
     }
   }
 
-  generateFakeEvent = (title, description, image) => {
-    return {
-      title,
-      description,
-      image
-    }
-  }
-
   activeItem = item => {
     const source = resources.getItem(item.number);
     if (item.disabled) {
-      this.setState({ isEventModalOpen: true, eventSelected: this.generateFakeEvent(item.name, item.description, source.disabled) });
+      this.setState({ isEventModalOpen: true, itemSelected: {item: generateAlertData(item.name, item.description, source.disabled)} });
       return
     }
 
@@ -203,7 +194,10 @@ export default class Inventory extends Component {
       this.showVideo(true, vineta_2);
       return;
     } else if (item.number === 10) {
-      this.setState({ isEventModalOpen: true, eventSelected: { ...this.generateFakeEvent(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', source.source), buttonProps: this.generateButtonProps('OK', this.goFinalQuiz) } });
+      this.setState({ isEventModalOpen: true, itemSelected: {
+        item: generateAlertData(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', source.source),
+        buttonProps: this.generateButtonProps('OK', this.goFinalQuiz) }
+      });
       return;
     }
 
@@ -221,7 +215,7 @@ export default class Inventory extends Component {
       }
     }
 
-    this.setState({ isEventModalOpen: true, eventSelected: { ...this.generateFakeEvent(item.name, item.description, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
+    this.setState({ isEventModalOpen: true, itemSelected: { item: generateAlertData(item.name, item.description, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
   }
 
   addDisabledAchievements = (currentAchievements = []) => {
@@ -319,7 +313,7 @@ export default class Inventory extends Component {
     const box = resources.getBox(!item.completed)
     return (
       <Container
-        onPress={() => this.setState({ isEventModalOpen: true, eventSelected: item })}
+        onPress={() => this.setState({ isEventModalOpen: true, itemSelected: {item} })}
         activeOpacity={0.8}
         width={width}
         inactive={!item.completed}
@@ -416,7 +410,7 @@ export default class Inventory extends Component {
   }
 
   render() {
-    const { modalVisible, currentVineta, itemSelected, isEventModalOpen, eventSelected } = this.state;
+    const { modalVisible, currentVineta, itemSelected, isEventModalOpen } = this.state;
     const { device: { dimensions: { width, height } }, finalTestResult, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const videoDimensions = {
@@ -431,9 +425,10 @@ export default class Inventory extends Component {
           {this.renderTabs()}
         </StyledContentBox>
 
-        {isEventModalOpen && <ModalEventDescription
+        {isEventModalOpen && <ModalAlert
           width={width}
-          item={eventSelected}
+          item={itemSelected.item}
+          okButtonProps={itemSelected.buttonProps}
           onClose={() => { this.setState({ isEventModalOpen: false }) }}
         />}
 
