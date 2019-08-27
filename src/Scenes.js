@@ -42,6 +42,7 @@ export default class Scenes extends Component {
     await this.validateAuth();
     // await this.preLoadingAssets();
     await this.setPassiveMessageSettings();
+    await this.handleAppReview();
     Dimensions.addEventListener('change', this.setOrientation);
     this.checkUpdates();
   }
@@ -58,6 +59,13 @@ export default class Scenes extends Component {
     const passiveMessage = await AsyncStorage.getItem('passiveMessage');
     const passiveMessageBoolean = passiveMessage !== null ? passiveMessage === 'true' : true;
     store.dispatch(userActions.setCurrentPassiveMessageSettings({ show: passiveMessageBoolean }));
+  }
+
+  handleAppReview = async () => {
+    const showReview = await AsyncStorage.getItem('showReview');
+    if(showReview === 'true') {
+        AsyncStorage.setItem('showReview', 'showReview');
+    }
   }
 
   preLoadingAssets = async () => {
