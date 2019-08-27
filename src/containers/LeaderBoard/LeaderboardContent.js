@@ -51,6 +51,8 @@ export default class LeaderBoardContent extends PureComponent {
     isLoadingProfile: false
   }
 
+  isSuperEventLeaderBoard;
+
   fetchNextPage = async () => {
     const { loadMoreLeadersAsync, leaderboardParams } = this.props;
     await loadMoreLeadersAsync(leaderboardParams);
@@ -100,17 +102,22 @@ export default class LeaderBoardContent extends PureComponent {
     }
   }
 
-  _keyExtractor = (item, index) => uuid();
+  _keyExtractor = (item, index) => index.toString();
   _renderItem = ({ item }) => {
-    const { profile } = this.props;
+    const { profile, leaders: { meta: { total_super_event_achievements } } } = this.props;
     const style = item.user_id === profile.id ? { backgroundColor: Palette.white.alpha(0.7).css() } : {};
+
+    const secondsOrEventsCompletedsData = this.isSuperEventLeaderBoard ?
+      `${item.super_event_achievements_count}/${total_super_event_achievements}`
+      :
+      `${new Date(item.time_elapsed).getSeconds()}s`
 
     return (
       <LeaderRow
         style={style}
         playerName={normalize.normalizeAllCapLetter(item.username)}
         grade={item.contents_learnt}
-        seconds={`${new Date(item.time_elapsed).getSeconds()}s`}
+        seconds={secondsOrEventsCompletedsData}
         onPress={() => this.onPressProfile(item)}
       />
     )
@@ -122,6 +129,7 @@ export default class LeaderBoardContent extends PureComponent {
         meta: { user_data: userLeader }
       },
       loading,
+      closeModal,
     } = this.props;
     const { isLoadingProfile } = this.state;
 
@@ -131,6 +139,8 @@ export default class LeaderBoardContent extends PureComponent {
         width: '100%',
       }
     })
+
+    this.isSuperEventLeaderBoard = !!closeModal;
 
     if (loading || isLoadingProfile) return <Preloader notFullScreen/>;
 

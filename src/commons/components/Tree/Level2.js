@@ -193,7 +193,6 @@ export default class Level2 extends Component {
   }
 
   setTreeHeigth = (level1Height) => {
-  console.log("TCL: Level2 -> setTreeHeigth -> level1Height", level1Height)
   const { setHeightTreeContainer  } = this.props;
   const branchHeight = Math.round(70 / aspectSimpleBranch);
   setHeightTreeContainer(level1Height + branchHeight);

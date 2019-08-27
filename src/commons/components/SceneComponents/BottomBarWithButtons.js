@@ -138,6 +138,12 @@ class BottomBarWithButtons extends Component {
     await getEventsWeekAsync();
   }
 
+  shouldComponentUpdate(newProps){
+    const currentCount = this.getNotificationsCount(this.props);
+    const newCount = this.getNotificationsCount(newProps);
+    return currentCount != newCount;
+  }
+
   pressTaskButton = () => {
     Actions.tasks();
   };
@@ -181,10 +187,14 @@ class BottomBarWithButtons extends Component {
     );
   };
 
-  renderBadge = () => {
-    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, contentsToLearn: { meta: { total_items = 0 } }, eventsWeek } = this.props;
+  getNotificationsCount(props) {
+    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, contentsToLearn: { meta: { total_items = 0 } }, eventsWeek } = props;
 
-    const counterNotifications = total_count + recommendation_contents_pending + total_items + eventsUtils.filterValidEvents(eventsWeek).length;
+    return total_count + recommendation_contents_pending + total_items + eventsUtils.filterValidEvents(eventsWeek).length;
+  }
+
+  renderBadge = () => {
+    const counterNotifications = this.getNotificationsCount(this.props);
 
     if (counterNotifications == 0) return null;
 

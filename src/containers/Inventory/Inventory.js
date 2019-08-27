@@ -58,19 +58,8 @@ const Container = styled(TouchableOpacity)`
   margin-vertical: 5;
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};
-  ${props => {
-      if (props.inactive) {
-        return css`
-          border: solid 0px #40582D;
-          border-radius: 13px;
-        `
-      }else {
-        return css`
-          border: solid 5px #FFFF;
-        `
-      }
-    }
-  }
+  border: solid 0px #40582D;
+  border-radius: 13px;
   overflow: hidden;
 `;
 

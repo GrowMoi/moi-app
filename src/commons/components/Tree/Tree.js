@@ -95,6 +95,7 @@ export default class Tree extends Component {
     this.getTreeLevel();
     this.setState({ loading: false });
     this.handleVideoFirstLogin();
+    this.handleShowReview();
   }
 
   async componentWillReceiveProps(newProps) {
@@ -130,6 +131,13 @@ export default class Tree extends Component {
 
   showVideo = (show = true) => {
     this.setState({ modalVisible: show });
+  }
+
+  handleShowReview = async () => {
+    const showReview = await AsyncStorage.getItem('showReview');
+    if(showReview === 'showReview') {
+      this.setState({ showLeftRewiewModal: true });
+    }
   }
 
   onPlaybackStatusUpdate = async (playbackStatus) => {
@@ -272,25 +280,33 @@ export default class Tree extends Component {
     }
   }
 
+  handleShowReviewNextLaunch = async () => {
+      const showReview = await AsyncStorage.getItem('showReview');
+      if(!showReview) {
+          AsyncStorage.setItem('showReview', 'true');
+      }
+  }
+
   showModalNewAchievements = (achievements) => {
     this.setState({ showModalNewAchievements: true, achievements: achievements });
+    this.handleShowReviewNextLaunch();
   }
 
   hideModalNewAchievements = () => {
     if (!this.state.showEventCompleted) {
       this.removeQuizResult();
-      this.setState({ showLeftRewiewModal: true });
     }
     this.setState({ showModalNewAchievements: false });
   }
 
   showEventCompletedModal = (title, type) => {
     this.setState({ showEventCompleted: true, eventTitle: title, eventType: type });
+    this.handleShowReviewNextLaunch();
   }
 
   hideEventCompletedModal = () => {
     this.removeQuizResult();
-    this.setState({ showEventCompleted: false, showLeftRewiewModal: true });
+    this.setState({ showEventCompleted: false });
   }
 
   removeQuizResult() {
@@ -325,7 +341,8 @@ export default class Tree extends Component {
     }
   }
 
-  redirectToStore = () => {
+  redirectToStore = async () => {
+    AsyncStorage.setItem('showReview', 'appReviewd');
     let marketUrl = 'market://details?id=com.moisociallearning.moiapp';
     if (Platform.OS === 'ios') {
         marketUrl = 'itms://itunes.apple.com/us/app/apple-store/com.growmoisociallearning.moiapp?mt=8';
@@ -333,6 +350,11 @@ export default class Tree extends Component {
     Linking.canOpenURL(marketUrl).then(supported => {
         supported && Linking.openURL(marketUrl);
     }, (err) => console.log(err));
+  }
+
+  onCloseLeftReviewModal = async () => {
+    await AsyncStorage.removeItem('showReview');
+    this.setState({ showLeftRewiewModal: false });
   }
 
 
@@ -374,10 +396,10 @@ export default class Tree extends Component {
         {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} eventType={eventType} onHideModal={this.hideEventCompletedModal} />}
         {showLeftRewiewModal &&<ModalAlert
           width={width}
-          item={generateAlertData('Que te parecio esta experiencia', 'Seras redireccionado a la tienda para dejarnos un reivew.')}
+          item={generateAlertData('¿Te gusta jugar con Moi?', 'Dejanos un comentario y cuentanos tu experiencia.')}
           okButtonProps={this.generateButtonProps('Dejar review', this.redirectToStore)}
           cancelButtonProps={{title: 'Más tarde'}}
-          onClose={() => { this.setState({ showLeftRewiewModal: false }) }}
+          onClose={this.onCloseLeftReviewModal}
         />}
         {!modalVisible &&
           <Zoom
