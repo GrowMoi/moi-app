@@ -10,7 +10,29 @@ export default {
     '2.0.3.0': { position: { right: 20, bottom: 1 }, floweredBranches: [{uri: 'fondo_rama002'}, {uri: 'fondo_rama004'}] },
     '2.0.3.0.4.0': { position: { right: 20, bottom: 7 }, floweredBranches: [] },
     '2.0.3.0.4.0.5.0': { position: { right: 50, bottom: 32 }, floweredBranches: [{uri: 'fondo_rama006'}, {uri: 'fondo007'}] },
-    '2.0.3.0.4.0.5.0.6.0': { position: { right: 9, top: 20 }, floweredBranches: [{uri: 'fondo015'}] },
+    '2.0.3.0.4.0.5.0.6.0': { position: { left: 15, top: 25 }, floweredBranches: [{uri: 'fondo015'}] },
+
+    '2.0.3.0.4.0.5.0.6.0.7.0': { position: { right: 10, bottom: 12 }, floweredBranches: [] },
+
+    '2.0.3.0.4.0.5.0.6.0.7.1': { position: { right: 15, top: 6 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.1.8.0': { position: { right: 30, bottom: 35 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.1.8.1': { position: { right: 23, bottom: 23 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.1.8.2': { position: { left: 16, top: 10 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.1.8.2.9.0': { position: { left: 16, top: 8 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.1.8.3': { position: { left: 15, bottom: 27 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.1.8.4': { position: { left: 25, bottom: 25 }, floweredBranches: [] },
+
+    '2.0.3.0.4.0.5.0.6.0.7.2': { position: { right: 28, bottom: 0 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.2.8.0': { position: { right: 14, bottom: 7 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.2.8.1': { position: { right: 10, bottom: 40 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.2.8.2': { position: { right: 20, bottom: 45 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.0.7.2.8.2.9.0': { position: { right: 28, bottom: 0 }, floweredBranches: [] },
+
+    '2.0.3.0.4.0.5.0.6.0.7.3': { position: { right: 25, bottom: 14 }, floweredBranches: [] },
+
+    '2.0.3.0.4.0.5.0.6.2.7.0': { position: { right: 10, bottom: 12 }, floweredBranches: [] },
+    '2.0.3.0.4.0.5.0.6.2.7.1': { position: { right: 13, bottom: 0 }, floweredBranches: [] },
+
     '2.0.3.0.4.0.5.1.6.0.7.0': { position: { left: 11, bottom: 43 }, floweredBranches: [{uri: 'fondo018'}] },
     '2.0.3.0.4.0.5.1.6.0.7.0.8.0': { position: { left: 3, bottom: 60 }, floweredBranches: [{uri: 'fondo025'}] },
     '2.0.3.0.4.0.5.1.6.0.7.0.8.0.9.0': { position: { left: 7, bottom: 26 }, floweredBranches: [{uri: 'fondo027'}] },
