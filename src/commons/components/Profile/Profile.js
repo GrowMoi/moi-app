@@ -83,8 +83,8 @@ class ProfileAvatar extends Component {
     const MASK_WIDTH = this.adjustedMaskWidth;
     const MASK_HEIGHT = getHeightAspectRatio(mask.width, mask.height, MASK_WIDTH);
 
-    return (
-      <ProfileContainer width={width} round={round}>
+    const profilePhoto = (
+      <React.Fragment>
         <MaskContainer
           height={MASK_HEIGHT}
           width={MASK_WIDTH}
@@ -102,6 +102,16 @@ class ProfileAvatar extends Component {
           <BackgroundImage />
         </MaskContainer>
         <Frame source={{ uri: 'profile_frame' }}/>
+      </React.Fragment>
+    )
+
+    const placeholder = (
+      <Frame source={{ uri: 'profile_photo' }} />
+    )
+
+    return (
+      <ProfileContainer width={width} round={round}>
+        {userImageUri ? profilePhoto : placeholder}
       </ProfileContainer>
     );
   }

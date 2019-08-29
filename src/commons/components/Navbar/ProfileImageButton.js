@@ -20,7 +20,7 @@ export default class ProfileImageButton extends Component {
         soundName="profile"
         onPress={() => Actions.profile()}
       >
-        <ProfileAvatar width={Size.hamburgerSize} userImageUri={profile.image}
+        <ProfileAvatar width={Size.profileAvatarSize} userImageUri={profile.image}
         />
       </TouchableOpacityWithSound>
     );

@@ -35,6 +35,7 @@ export default {
   hamburgerContainerWidth: isTablet ? 80 : 60,
   hamburgerContainerHeigth: isTablet ? 48 : 38,
   hamburgerSize: isTablet ? 43 : 30,
+  profileAvatarSize: isTablet ? 35 : 30,
   borderRadiusProfileIcon: isTablet ? 25 : 15,
 
   //bottom bar buttons
