@@ -197,6 +197,8 @@ PODS:
     - RNSound/Core (= 0.10.12)
   - RNSound/Core (0.10.12):
     - React/Core
+  - RNViewShot (2.6.0):
+    - React
   - UMBarCodeScannerInterface (3.0.0)
   - UMCameraInterface (3.0.0)
   - UMConstantsInterface (3.0.0)
@@ -249,6 +251,7 @@ DEPENDENCIES:
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNSound (from `../node_modules/react-native-sound`)
+  - RNViewShot (from `../node_modules/react-native-view-shot`)
   - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
   - UMCameraInterface (from `../node_modules/unimodules-camera-interface/ios`)
   - UMConstantsInterface (from `../node_modules/unimodules-constants-interface/ios`)
@@ -345,6 +348,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNSound:
     :path: "../node_modules/react-native-sound"
+  RNViewShot:
+    :path: "../node_modules/react-native-view-shot"
   UMBarCodeScannerInterface:
     :path: !ruby/object:Pathname
     path: "../node_modules/unimodules-barcode-scanner-interface/ios"
@@ -432,6 +437,7 @@ SPEC CHECKSUMS:
   react-native-orientation: f1caf84d65f1a4fd4511a18f2b924e634ad7a628
   RNCMaskedView: b79e193409a90bf6b5170d421684f437ff4e2278
   RNSound: a1d01988e043aed5dbb476c2152b5ffb02446750
+  RNViewShot: 05672e0b3c36cd70633466614b4451869a70c6c7
   UMBarCodeScannerInterface: 84ea2d6b58ff0dc27ef9b68bab71286be18ee020
   UMCameraInterface: 26b26005d1756a0d5f4f04f1e168e39ea9154535
   UMConstantsInterface: 038bacb19de12b6fd328c589122c8dc977cccf61
@@ -446,6 +452,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 8664abd37a00715727e60df9ecd65e42ba47b548
   yoga: 92b2102c3d373d1a790db4ab761d2b0ffc634f64
 
-PODFILE CHECKSUM: 059e6b707e89f1ba79848945e065a23565867fee
+PODFILE CHECKSUM: 9ffd497e1fadc2aa802e742a95730ddd1c9061b2
 
 COCOAPODS: 1.7.5
