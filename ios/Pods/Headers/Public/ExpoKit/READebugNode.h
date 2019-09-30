@@ -1,1 +1,5 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Reanimated/Nodes/READebugNode.h
+#import "REANode.h"
+
+@interface READebugNode : REANode
+
+@end

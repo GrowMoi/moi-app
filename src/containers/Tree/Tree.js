@@ -35,13 +35,8 @@ const TopNavbar = styled(Navbar)`
   position: relative;
   z-index: 2;
 `
-@connect(state => ({
-  scene: state.routes.scene,
-  showPassiveMessage: state.user.showPassiveMessage,
-}), {
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-})
-export default class TreeScene extends Component {
+
+class TreeScene extends Component {
   state = {
     isOpenPassiveMessage: false,
   }
@@ -74,3 +69,17 @@ export default class TreeScene extends Component {
 TreeScene.propTypes = {
   title: PropTypes.string,
 };
+
+const mapStateToProps = (state) => ({
+  scene: state.routes.scene,
+  showPassiveMessage: state.user.showPassiveMessage,
+})
+
+const mapDispatchToProps = {
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TreeScene)

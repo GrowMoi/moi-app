@@ -44,28 +44,27 @@ RNSVGFontData *RNSVGFontData_Defaults;
     return RNSVGFontData_Defaults;
 }
 
-+ (double)toAbsoluteWithNSString:(NSString *)string
-                           scale:(double)scale
-                        fontSize:(double)fontSize {
++ (CGFloat)toAbsoluteWithNSString:(NSString *)string
+                        fontSize:(CGFloat)fontSize {
     return [RNSVGPropHelper fromRelativeWithNSString:string
                                          relative:0
-                                           offset:0
-                                            scale:scale
                                          fontSize:fontSize];
 }
 
 + (instancetype)initWithNSDictionary:(NSDictionary *)font
-                              parent:(RNSVGFontData *)parent
-                               scale:(double)scale {
+                              parent:(RNSVGFontData *)parent {
     RNSVGFontData *data = [RNSVGFontData alloc];
-    double parentFontSize = parent->fontSize;
+    CGFloat parentFontSize = parent->fontSize;
     if ([font objectForKey:FONT_SIZE]) {
-        NSString *string = [font objectForKey:FONT_SIZE];
-        data->fontSize = [RNSVGPropHelper fromRelativeWithNSString:string
+        id fontSize = [font objectForKey:FONT_SIZE];
+        if ([fontSize isKindOfClass:NSNumber.class]) {
+            NSNumber* fs = fontSize;
+            data->fontSize = (CGFloat)[fs doubleValue];
+        } else {
+            data->fontSize = [RNSVGPropHelper fromRelativeWithNSString:fontSize
                                                        relative:parentFontSize
-                                                         offset:0
-                                                          scale:scale
                                                        fontSize:parentFontSize];
+        }
     }
     else {
         data->fontSize = parentFontSize;
@@ -84,19 +83,42 @@ RNSVGFontData *RNSVGFontData_Defaults;
     data->textAnchor = anchor ? RNSVGTextAnchorFromString(anchor) : parent->textAnchor;
     NSString* decoration = [font objectForKey:TEXT_DECORATION];
     data->textDecoration = decoration ? RNSVGTextDecorationFromString(decoration) : parent->textDecoration;
-    NSString* kerning = [font objectForKey:KERNING];
+
+    CGFloat fontSize = data->fontSize;
+    id kerning = [font objectForKey:KERNING];
     data->manualKerning = (kerning || parent->manualKerning );
-    data->kerning = kerning ? [RNSVGFontData toAbsoluteWithNSString:kerning
-                                                         scale:scale
-                                                      fontSize:data->fontSize ] : parent->kerning;
-    NSString* wordSpacing = [font objectForKey:WORD_SPACING];
-    data->wordSpacing = wordSpacing ? [RNSVGFontData toAbsoluteWithNSString:wordSpacing
-                                                                 scale:scale
-                                                              fontSize:data->fontSize ] : parent->wordSpacing;
-    NSString* letterSpacing = [font objectForKey:LETTER_SPACING];
-    data->letterSpacing = letterSpacing ? [RNSVGFontData toAbsoluteWithNSString:letterSpacing
-                                                                     scale:scale
-                                                                  fontSize:data->fontSize ] : parent->letterSpacing;
+    if ([kerning isKindOfClass:NSNumber.class]) {
+        NSNumber* kern = kerning;
+        data->kerning = (CGFloat)[kern doubleValue];
+    } else {
+        data->kerning = kerning ?
+        [RNSVGFontData toAbsoluteWithNSString:kerning
+                                     fontSize:fontSize]
+        : parent->kerning;
+    }
+
+    id wordSpacing = [font objectForKey:WORD_SPACING];
+    if ([wordSpacing isKindOfClass:NSNumber.class]) {
+        NSNumber* ws = wordSpacing;
+        data->wordSpacing = (CGFloat)[ws doubleValue];
+    } else {
+        data->wordSpacing = wordSpacing ?
+        [RNSVGFontData toAbsoluteWithNSString:wordSpacing
+                                     fontSize:fontSize]
+        : parent->wordSpacing;
+    }
+
+    id letterSpacing = [font objectForKey:LETTER_SPACING];
+    if ([letterSpacing isKindOfClass:NSNumber.class]) {
+        NSNumber* ls = letterSpacing;
+        data->wordSpacing = (CGFloat)[ls doubleValue];
+    } else {
+        data->letterSpacing = letterSpacing ?
+        [RNSVGFontData toAbsoluteWithNSString:letterSpacing
+                                     fontSize:fontSize]
+        : parent->letterSpacing;
+    }
+
     return data;
 }
 

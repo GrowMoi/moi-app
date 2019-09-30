@@ -24,18 +24,7 @@ import profilesActions from '../../actions/profileActions';
 import treeActions from '../../actions/treeActions';
 import userActions from '../../actions/userActions';
 
-@connect(store => ({
-  device: store.device,
-  search: store.search,
-  scene: store.routes.scene,
-  showPassiveMessage: store.user.showPassiveMessage,
-}), {
-  getUsersAsync: searchActions.getUsersAsync,
-  getPublicProfileAsync: profilesActions.loadProfileAsync,
-  loadTreeAsync: treeActions.loadTreeAsync,
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-})
-export default class SearchFriends extends PureComponent {
+class SearchFriends extends PureComponent {
   state = {
     loading: false,
     page: 0,
@@ -181,3 +170,20 @@ export default class SearchFriends extends PureComponent {
     )
   }
 };
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+  search: state.search,
+  scene: state.routes.scene,
+  showPassiveMessage: state.user.showPassiveMessage,
+})
+
+const mapDispatchToProps = {
+  getUsersAsync: searchActions.getUsersAsync,
+  getPublicProfileAsync: profilesActions.loadProfileAsync,
+  loadTreeAsync: treeActions.loadTreeAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchFriends)

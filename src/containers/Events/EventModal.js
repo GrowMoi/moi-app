@@ -22,14 +22,7 @@ const Overlay = styled(View)`
 const succesDescriptionEvent = 'Te uniste al evento con éxito, los contenidos que debes aprender están en la pestaña Tareas';
 const succesDescriptionSuperEvent = 'Te uniste al super evento con éxito.';
 
-@connect(store => ({}),
-  {
-    takeEventAsync: userActions.takeEventAsync,
-    takeSuperEventAsync: userActions.takeSuperEventAsync,
-    getContentsToLearnAsync: userActions.getContentsToLearnAsync,
-    getEventsWeekAsync: userActions.getEventsWeekAsync,
-  })
-export default class EventModal extends Component {
+class EventModal extends Component {
   state = {
     showAlert: false,
     selectedEvent: null,
@@ -144,3 +137,12 @@ export default class EventModal extends Component {
     );
   }
 };
+
+const mapDispatchToProps = {
+  takeEventAsync: userActions.takeEventAsync,
+  takeSuperEventAsync: userActions.takeSuperEventAsync,
+  getContentsToLearnAsync: userActions.getContentsToLearnAsync,
+  getEventsWeekAsync: userActions.getEventsWeekAsync,
+}
+
+export default connect(null, mapDispatchToProps)(EventModal)

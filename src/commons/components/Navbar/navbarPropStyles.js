@@ -1,7 +1,6 @@
 import React from 'react';
-import { Icon } from 'expo';
-import { Platform, Dimensions, TouchableOpacity } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Ionicons } from '@expo/vector-icons';
+import { Platform, TouchableOpacity } from 'react-native';
 import { Font } from '../../styles';
 import styled from 'styled-components/native';
 import ProfileImageButton from './ProfileImageButton';
@@ -29,7 +28,7 @@ export const HamburgerButton = () => (
   <IconContainer onPress={() => {
       store.dispatch(sideActions.sideMenuOpen());
     }}>
-    <Icon.Ionicons color="#FFF" name="md-menu" size={Size.hamburgerSize} />
+    <Ionicons color="#FFF" name="md-menu" size={Size.hamburgerSize} />
   </IconContainer>
 ); //eslint-disable-line
 

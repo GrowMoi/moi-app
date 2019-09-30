@@ -10,11 +10,7 @@ import { TextBody } from '../../../commons/components/Typography';
 import Badge from '../../../commons/components/Badge/Badge';
 import userActions from '../../../actions/userActions';
 
-@connect(state => ({
-  contentsToLearn: state.user.contentsToLearn,
-}), {
-    getMoreContentsToLearnAsync: userActions.getMoreContentsToLearnAsync,
-})
+
 class ContentsToLearnTabContainer extends PureComponent {
   state = {
     open: false,
@@ -118,4 +114,13 @@ const styles = StyleSheet.create(
   }
 )
 
-export default ContentsToLearnTabContainer;
+const mapStateToProps = (state) => ({
+  contentsToLearn: state.user.contentsToLearn,
+})
+
+const mapDispatchToProps = {
+  getMoreContentsToLearnAsync: userActions.getMoreContentsToLearnAsync,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContentsToLearnTabContainer);

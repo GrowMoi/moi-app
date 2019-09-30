@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, AsyncStorage, PixelRatio, Platform, Linking } from 'react-native';
-import { takeSnapshotAsync } from 'expo';
+import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import ViewTransformer from 'react-native-view-transformer-next';
@@ -43,23 +43,7 @@ const MacetaContainer = styled(View)`
   right: 0;
   bottom: 0;
 `;
-
-@connect(store => ({
-  device: store.device,
-  userTree: store.tree.userTree,
-  user: store.user.userData,
-  quizResult: store.user.quizResult,
-}), {
-    loadTreeAsync: treeActions.loadTreeAsync,
-    getUserProfileAsync: userActions.getUserProfileAsync,
-    getAchievementsAsync: userActions.getAchievementsAsync,
-    setZoomTreeInfo: treeActions.setZoomTreeInfo,
-    setZoomScale: treeActions.setZoomScaleTree,
-    setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-    uploadTreeImageAsync: userActions.uploadTreeImageAsync,
-    removeQuizResult: userActions.removeQuizResult,
-  })
-export default class Tree extends Component {
+class Tree extends Component {
 
   treeView = null;
 
@@ -461,3 +445,26 @@ Tree.propTypes = {
   device: PropTypes.any,
   userTree: PropTypes.object,
 };
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+  userTree: state.tree.userTree,
+  user: state.user.userData,
+  quizResult: state.user.quizResult,
+})
+
+const mapDispatchToProps = {
+  loadTreeAsync: treeActions.loadTreeAsync,
+  getUserProfileAsync: userActions.getUserProfileAsync,
+  getAchievementsAsync: userActions.getAchievementsAsync,
+  setZoomTreeInfo: treeActions.setZoomTreeInfo,
+  setZoomScale: treeActions.setZoomScaleTree,
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+  uploadTreeImageAsync: userActions.uploadTreeImageAsync,
+  removeQuizResult: userActions.removeQuizResult,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Tree)

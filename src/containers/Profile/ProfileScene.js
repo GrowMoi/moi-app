@@ -16,17 +16,7 @@ import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAl
 // Redux Actions
 import userActions from './../../actions/userActions';
 
-@connect(store => ({
-  user: store.user.userData,
-  tree: store.tree.userTree,
-  profile: store.user.profile,
-  scene: store.routes.scene,
-  showPassiveMessage: store.user.showPassiveMessage,
-}), {
-  signOutAsync: userActions.signOutAsync,
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-})
-export default class ProfileScene extends Component {
+class ProfileScene extends Component {
   scrollRef = null;
 
   editProfile = () => {
@@ -83,3 +73,21 @@ export default class ProfileScene extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  user: state.user.userData,
+  tree: state.tree.userTree,
+  profile: state.user.profile,
+  scene: state.routes.scene,
+  showPassiveMessage: state.user.showPassiveMessage,
+})
+
+const mapDispatchToProps = {
+  signOutAsync: userActions.signOutAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileScene)

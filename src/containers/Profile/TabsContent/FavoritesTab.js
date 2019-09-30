@@ -35,13 +35,7 @@ const styles = StyleSheet.create({
   contentContainer: {},
 });
 
-@connect(store => ({
-  favorites: store.user.favorites,
-  device: store.device,
-}), {
-  loadAllFavorites: userActions.loadAllFavorites,
-  getMoreFavoritesAsync: userActions.getMoreFavoritesAsync,
-})
+
 class FavoritesTab extends PureComponent {
   state = {
     dataLoaded: false,
@@ -139,4 +133,17 @@ FavoritesTab.propTypes = {
   favorites: PropTypes.any,
 };
 
-export default FavoritesTab;
+const mapStateToProps = (state) => ({
+  favorites: state.user.favorites,
+  device: state.device,
+})
+
+const mapDispatchToProps = {
+  loadAllFavorites: userActions.loadAllFavorites,
+  getMoreFavoritesAsync: userActions.getMoreFavoritesAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(FavoritesTab);

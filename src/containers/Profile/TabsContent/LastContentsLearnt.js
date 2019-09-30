@@ -33,10 +33,7 @@ const styles = StyleSheet.create({
   contentContainer: {},
 });
 
-@connect(store => ({
-  profile: store.user.profile,
-  device: store.device,
-}))
+
 class LastContentsLearnt extends Component {
   state = {
     dataLoaded: false,
@@ -105,8 +102,13 @@ class LastContentsLearnt extends Component {
   }
 };
 
+const mapStateToProps = (state) => ({
+  profile: state.user.profile,
+  device: state.device,
+})
+
 LastContentsLearnt.propTypes = {
   profile: PropTypes.any,
 };
 
-export default LastContentsLearnt;
+export default connect(mapStateToProps)(LastContentsLearnt);

@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A00B8FEB226990D700DA9CDC /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FDB226990D500DA9CDC /* intro.mp3 */; };
-		A00B8FEC226990D700DA9CDC /* btn_profile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FDC226990D500DA9CDC /* btn_profile.mp3 */; };
-		A00B8FED226990D700DA9CDC /* btn_next.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FDD226990D500DA9CDC /* btn_next.mp3 */; };
-		A00B8FEE226990D700DA9CDC /* recompensa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FDE226990D500DA9CDC /* recompensa.mp3 */; };
-		A00B8FEF226990D700DA9CDC /* btn_learn_content.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FDF226990D500DA9CDC /* btn_learn_content.mp3 */; };
-		A00B8FF0226990D700DA9CDC /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE0226990D500DA9CDC /* test.mp3 */; };
-		A00B8FF1226990D700DA9CDC /* btn_amigos.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE1226990D500DA9CDC /* btn_amigos.mp3 */; };
-		A00B8FF2226990D700DA9CDC /* fondo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE2226990D600DA9CDC /* fondo.mp3 */; };
-		A00B8FF3226990D700DA9CDC /* btn_show_tasks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE3226990D600DA9CDC /* btn_show_tasks.mp3 */; };
-		A00B8FF4226990D700DA9CDC /* read_content.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE4226990D600DA9CDC /* read_content.mp3 */; };
-		A00B8FF5226990D700DA9CDC /* btn_inventory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE5226990D600DA9CDC /* btn_inventory.mp3 */; };
-		A00B8FF6226990D700DA9CDC /* btn_settings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE6226990D600DA9CDC /* btn_settings.mp3 */; };
-		A00B8FF7226990D700DA9CDC /* btn_recomendation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE7226990D600DA9CDC /* btn_recomendation.mp3 */; };
-		A00B8FF8226990D700DA9CDC /* btn_select_option.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE8226990D600DA9CDC /* btn_select_option.mp3 */; };
-		A00B8FF9226990D700DA9CDC /* tree_actions.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FE9226990D700DA9CDC /* tree_actions.mp3 */; };
-		A00B8FFA226990D700DA9CDC /* btn_search.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A00B8FEA226990D700DA9CDC /* btn_search.mp3 */; };
-		AA848CCC2295A21F00E7292C /* Medias.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA848CCB2295A21F00E7292C /* Medias.xcassets */; };
+		7552FE1D233530D2007B2F7F /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE0D233530D1007B2F7F /* test.mp3 */; };
+		7552FE1E233530D2007B2F7F /* btn_search.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE0E233530D1007B2F7F /* btn_search.mp3 */; };
+		7552FE1F233530D2007B2F7F /* btn_amigos.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE0F233530D1007B2F7F /* btn_amigos.mp3 */; };
+		7552FE20233530D2007B2F7F /* btn_inventory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE10233530D1007B2F7F /* btn_inventory.mp3 */; };
+		7552FE21233530D2007B2F7F /* btn_settings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE11233530D1007B2F7F /* btn_settings.mp3 */; };
+		7552FE22233530D2007B2F7F /* btn_learn_content.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE12233530D1007B2F7F /* btn_learn_content.mp3 */; };
+		7552FE23233530D2007B2F7F /* btn_recomendation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE13233530D1007B2F7F /* btn_recomendation.mp3 */; };
+		7552FE24233530D2007B2F7F /* fondo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE14233530D1007B2F7F /* fondo.mp3 */; };
+		7552FE25233530D2007B2F7F /* btn_next.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE15233530D1007B2F7F /* btn_next.mp3 */; };
+		7552FE26233530D2007B2F7F /* recompensa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE16233530D1007B2F7F /* recompensa.mp3 */; };
+		7552FE27233530D2007B2F7F /* tree_actions.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE17233530D1007B2F7F /* tree_actions.mp3 */; };
+		7552FE28233530D2007B2F7F /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE18233530D1007B2F7F /* intro.mp3 */; };
+		7552FE29233530D2007B2F7F /* read_content.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE19233530D1007B2F7F /* read_content.mp3 */; };
+		7552FE2A233530D2007B2F7F /* btn_select_option.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE1A233530D2007B2F7F /* btn_select_option.mp3 */; };
+		7552FE2B233530D2007B2F7F /* btn_show_tasks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE1B233530D2007B2F7F /* btn_show_tasks.mp3 */; };
+		7552FE2C233530D2007B2F7F /* btn_profile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE1C233530D2007B2F7F /* btn_profile.mp3 */; };
+		7552FE2E233531E2007B2F7F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7552FE2D233531E2007B2F7F /* Media.xcassets */; };
 		B501732B1DC01252003445D9 /* EXShell.plist in Resources */ = {isa = PBXBuildFile; fileRef = B501732A1DC01252003445D9 /* EXShell.plist */; };
 		B56386491DB9693800A0598C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56386481DB9693800A0598C /* AppDelegate.m */; };
 		B56386511DB9693800A0598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56386501DB9693800A0598C /* Assets.xcassets */; };
@@ -40,24 +40,24 @@
 
 /* Begin PBXFileReference section */
 		2C1548D9E4CB1AEFA5CCAE6D /* Pods-moi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moi/Pods-moi.debug.xcconfig"; sourceTree = "<group>"; };
-		A00B8FDB226990D500DA9CDC /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = intro.mp3; path = ../android/app/src/main/res/raw/intro.mp3; sourceTree = "<group>"; };
-		A00B8FDC226990D500DA9CDC /* btn_profile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_profile.mp3; path = ../android/app/src/main/res/raw/btn_profile.mp3; sourceTree = "<group>"; };
-		A00B8FDD226990D500DA9CDC /* btn_next.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_next.mp3; path = ../android/app/src/main/res/raw/btn_next.mp3; sourceTree = "<group>"; };
-		A00B8FDE226990D500DA9CDC /* recompensa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = recompensa.mp3; path = ../android/app/src/main/res/raw/recompensa.mp3; sourceTree = "<group>"; };
-		A00B8FDF226990D500DA9CDC /* btn_learn_content.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_learn_content.mp3; path = ../android/app/src/main/res/raw/btn_learn_content.mp3; sourceTree = "<group>"; };
-		A00B8FE0226990D500DA9CDC /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = test.mp3; path = ../android/app/src/main/res/raw/test.mp3; sourceTree = "<group>"; };
-		A00B8FE1226990D500DA9CDC /* btn_amigos.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_amigos.mp3; path = ../android/app/src/main/res/raw/btn_amigos.mp3; sourceTree = "<group>"; };
-		A00B8FE2226990D600DA9CDC /* fondo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fondo.mp3; path = ../android/app/src/main/res/raw/fondo.mp3; sourceTree = "<group>"; };
-		A00B8FE3226990D600DA9CDC /* btn_show_tasks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_show_tasks.mp3; path = ../android/app/src/main/res/raw/btn_show_tasks.mp3; sourceTree = "<group>"; };
-		A00B8FE4226990D600DA9CDC /* read_content.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = read_content.mp3; path = ../android/app/src/main/res/raw/read_content.mp3; sourceTree = "<group>"; };
-		A00B8FE5226990D600DA9CDC /* btn_inventory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_inventory.mp3; path = ../android/app/src/main/res/raw/btn_inventory.mp3; sourceTree = "<group>"; };
-		A00B8FE6226990D600DA9CDC /* btn_settings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_settings.mp3; path = ../android/app/src/main/res/raw/btn_settings.mp3; sourceTree = "<group>"; };
-		A00B8FE7226990D600DA9CDC /* btn_recomendation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_recomendation.mp3; path = ../android/app/src/main/res/raw/btn_recomendation.mp3; sourceTree = "<group>"; };
-		A00B8FE8226990D600DA9CDC /* btn_select_option.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_select_option.mp3; path = ../android/app/src/main/res/raw/btn_select_option.mp3; sourceTree = "<group>"; };
-		A00B8FE9226990D700DA9CDC /* tree_actions.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tree_actions.mp3; path = ../android/app/src/main/res/raw/tree_actions.mp3; sourceTree = "<group>"; };
-		A00B8FEA226990D700DA9CDC /* btn_search.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_search.mp3; path = ../android/app/src/main/res/raw/btn_search.mp3; sourceTree = "<group>"; };
+		7552FE0D233530D1007B2F7F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = test.mp3; path = ../android/app/src/main/res/raw/test.mp3; sourceTree = "<group>"; };
+		7552FE0E233530D1007B2F7F /* btn_search.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_search.mp3; path = ../android/app/src/main/res/raw/btn_search.mp3; sourceTree = "<group>"; };
+		7552FE0F233530D1007B2F7F /* btn_amigos.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_amigos.mp3; path = ../android/app/src/main/res/raw/btn_amigos.mp3; sourceTree = "<group>"; };
+		7552FE10233530D1007B2F7F /* btn_inventory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_inventory.mp3; path = ../android/app/src/main/res/raw/btn_inventory.mp3; sourceTree = "<group>"; };
+		7552FE11233530D1007B2F7F /* btn_settings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_settings.mp3; path = ../android/app/src/main/res/raw/btn_settings.mp3; sourceTree = "<group>"; };
+		7552FE12233530D1007B2F7F /* btn_learn_content.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_learn_content.mp3; path = ../android/app/src/main/res/raw/btn_learn_content.mp3; sourceTree = "<group>"; };
+		7552FE13233530D1007B2F7F /* btn_recomendation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_recomendation.mp3; path = ../android/app/src/main/res/raw/btn_recomendation.mp3; sourceTree = "<group>"; };
+		7552FE14233530D1007B2F7F /* fondo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fondo.mp3; path = ../android/app/src/main/res/raw/fondo.mp3; sourceTree = "<group>"; };
+		7552FE15233530D1007B2F7F /* btn_next.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_next.mp3; path = ../android/app/src/main/res/raw/btn_next.mp3; sourceTree = "<group>"; };
+		7552FE16233530D1007B2F7F /* recompensa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = recompensa.mp3; path = ../android/app/src/main/res/raw/recompensa.mp3; sourceTree = "<group>"; };
+		7552FE17233530D1007B2F7F /* tree_actions.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tree_actions.mp3; path = ../android/app/src/main/res/raw/tree_actions.mp3; sourceTree = "<group>"; };
+		7552FE18233530D1007B2F7F /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = intro.mp3; path = ../android/app/src/main/res/raw/intro.mp3; sourceTree = "<group>"; };
+		7552FE19233530D1007B2F7F /* read_content.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = read_content.mp3; path = ../android/app/src/main/res/raw/read_content.mp3; sourceTree = "<group>"; };
+		7552FE1A233530D2007B2F7F /* btn_select_option.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_select_option.mp3; path = ../android/app/src/main/res/raw/btn_select_option.mp3; sourceTree = "<group>"; };
+		7552FE1B233530D2007B2F7F /* btn_show_tasks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_show_tasks.mp3; path = ../android/app/src/main/res/raw/btn_show_tasks.mp3; sourceTree = "<group>"; };
+		7552FE1C233530D2007B2F7F /* btn_profile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_profile.mp3; path = ../android/app/src/main/res/raw/btn_profile.mp3; sourceTree = "<group>"; };
+		7552FE2D233531E2007B2F7F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		A47FE4D7F70906B7DC8CE39B /* Pods-moi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moi.release.xcconfig"; path = "Pods/Target Support Files/Pods-moi/Pods-moi.release.xcconfig"; sourceTree = "<group>"; };
-		AA848CCB2295A21F00E7292C /* Medias.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Medias.xcassets; sourceTree = "<group>"; };
 		B501732A1DC01252003445D9 /* EXShell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EXShell.plist; sourceTree = "<group>"; };
 		B56386411DB9693800A0598C /* moi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56386471DB9693800A0598C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -107,27 +107,26 @@
 		B56386381DB9693800A0598C = {
 			isa = PBXGroup;
 			children = (
-				A00B8FE1226990D500DA9CDC /* btn_amigos.mp3 */,
-				A00B8FE5226990D600DA9CDC /* btn_inventory.mp3 */,
-				A00B8FDF226990D500DA9CDC /* btn_learn_content.mp3 */,
-				A00B8FDD226990D500DA9CDC /* btn_next.mp3 */,
-				A00B8FDC226990D500DA9CDC /* btn_profile.mp3 */,
-				A00B8FE7226990D600DA9CDC /* btn_recomendation.mp3 */,
-				A00B8FEA226990D700DA9CDC /* btn_search.mp3 */,
-				A00B8FE8226990D600DA9CDC /* btn_select_option.mp3 */,
-				A00B8FE6226990D600DA9CDC /* btn_settings.mp3 */,
-				A00B8FE3226990D600DA9CDC /* btn_show_tasks.mp3 */,
-				A00B8FE2226990D600DA9CDC /* fondo.mp3 */,
-				A00B8FDB226990D500DA9CDC /* intro.mp3 */,
-				A00B8FE4226990D600DA9CDC /* read_content.mp3 */,
-				A00B8FDE226990D500DA9CDC /* recompensa.mp3 */,
-				A00B8FE0226990D500DA9CDC /* test.mp3 */,
-				A00B8FE9226990D700DA9CDC /* tree_actions.mp3 */,
+				7552FE0F233530D1007B2F7F /* btn_amigos.mp3 */,
+				7552FE10233530D1007B2F7F /* btn_inventory.mp3 */,
+				7552FE12233530D1007B2F7F /* btn_learn_content.mp3 */,
+				7552FE15233530D1007B2F7F /* btn_next.mp3 */,
+				7552FE1C233530D2007B2F7F /* btn_profile.mp3 */,
+				7552FE13233530D1007B2F7F /* btn_recomendation.mp3 */,
+				7552FE0E233530D1007B2F7F /* btn_search.mp3 */,
+				7552FE1A233530D2007B2F7F /* btn_select_option.mp3 */,
+				7552FE11233530D1007B2F7F /* btn_settings.mp3 */,
+				7552FE1B233530D2007B2F7F /* btn_show_tasks.mp3 */,
+				7552FE14233530D1007B2F7F /* fondo.mp3 */,
+				7552FE18233530D1007B2F7F /* intro.mp3 */,
+				7552FE19233530D1007B2F7F /* read_content.mp3 */,
+				7552FE16233530D1007B2F7F /* recompensa.mp3 */,
+				7552FE0D233530D1007B2F7F /* test.mp3 */,
+				7552FE17233530D1007B2F7F /* tree_actions.mp3 */,
 				B56386431DB9693800A0598C /* moi */,
 				B56386421DB9693800A0598C /* Products */,
 				5B29BC350A332C58878A9F13 /* Pods */,
 				1A42804E64B7E9E0AB8B6799 /* Frameworks */,
-				D8E80FEAFCFA490EB3DA7112 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,8 +144,8 @@
 				B56386471DB9693800A0598C /* AppDelegate.h */,
 				B56386481DB9693800A0598C /* AppDelegate.m */,
 				B56386501DB9693800A0598C /* Assets.xcassets */,
-				AA848CCB2295A21F00E7292C /* Medias.xcassets */,
 				B563865B1DB96A5E00A0598C /* Supporting */,
+				7552FE2D233531E2007B2F7F /* Media.xcassets */,
 			);
 			path = moi;
 			sourceTree = "<group>";
@@ -166,13 +165,6 @@
 				B563865E1DB96A5E00A0598C /* main.m */,
 			);
 			path = Supporting;
-			sourceTree = "<group>";
-		};
-		D8E80FEAFCFA490EB3DA7112 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,7 +197,7 @@
 		B56386391DB9693800A0598C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 900;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "650 Industries, Inc.";
 				TargetAttributes = {
 					B56386401DB9693800A0598C = {
@@ -220,6 +212,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -238,32 +231,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A00B8FF5226990D700DA9CDC /* btn_inventory.mp3 in Resources */,
+				7552FE26233530D2007B2F7F /* recompensa.mp3 in Resources */,
+				7552FE1E233530D2007B2F7F /* btn_search.mp3 in Resources */,
+				7552FE2E233531E2007B2F7F /* Media.xcassets in Resources */,
+				7552FE29233530D2007B2F7F /* read_content.mp3 in Resources */,
+				7552FE27233530D2007B2F7F /* tree_actions.mp3 in Resources */,
 				B5693E911FABD46800307FA4 /* launch_background_image.png in Resources */,
 				B501732B1DC01252003445D9 /* EXShell.plist in Resources */,
-				A00B8FEC226990D700DA9CDC /* btn_profile.mp3 in Resources */,
+				7552FE2C233530D2007B2F7F /* btn_profile.mp3 in Resources */,
+				7552FE22233530D2007B2F7F /* btn_learn_content.mp3 in Resources */,
+				7552FE1F233530D2007B2F7F /* btn_amigos.mp3 in Resources */,
+				7552FE21233530D2007B2F7F /* btn_settings.mp3 in Resources */,
+				7552FE2B233530D2007B2F7F /* btn_show_tasks.mp3 in Resources */,
 				B5CFBF4F1EDE419400B4BE24 /* EXBuildConstants.plist in Resources */,
 				B56386671DB9994300A0598C /* EXSDKVersions.plist in Resources */,
-				AA848CCC2295A21F00E7292C /* Medias.xcassets in Resources */,
+				7552FE20233530D2007B2F7F /* btn_inventory.mp3 in Resources */,
+				7552FE28233530D2007B2F7F /* intro.mp3 in Resources */,
+				7552FE2A233530D2007B2F7F /* btn_select_option.mp3 in Resources */,
 				B5693E921FABD46800307FA4 /* launch_icon.png in Resources */,
 				B5693E8E1FABD16A00307FA4 /* LaunchScreen.xib in Resources */,
-				A00B8FEE226990D700DA9CDC /* recompensa.mp3 in Resources */,
-				A00B8FF4226990D700DA9CDC /* read_content.mp3 in Resources */,
-				A00B8FEF226990D700DA9CDC /* btn_learn_content.mp3 in Resources */,
+				7552FE1D233530D2007B2F7F /* test.mp3 in Resources */,
+				7552FE24233530D2007B2F7F /* fondo.mp3 in Resources */,
 				B5DB04801F3A684600E91581 /* shell-app-manifest.json in Resources */,
-				A00B8FED226990D700DA9CDC /* btn_next.mp3 in Resources */,
-				A00B8FF8226990D700DA9CDC /* btn_select_option.mp3 in Resources */,
-				A00B8FF9226990D700DA9CDC /* tree_actions.mp3 in Resources */,
-				A00B8FF0226990D700DA9CDC /* test.mp3 in Resources */,
-				A00B8FFA226990D700DA9CDC /* btn_search.mp3 in Resources */,
-				A00B8FF2226990D700DA9CDC /* fondo.mp3 in Resources */,
+				7552FE25233530D2007B2F7F /* btn_next.mp3 in Resources */,
 				B5DB04811F3A684600E91581 /* shell-app.bundle in Resources */,
+				7552FE23233530D2007B2F7F /* btn_recomendation.mp3 in Resources */,
 				B56386511DB9693800A0598C /* Assets.xcassets in Resources */,
-				A00B8FF3226990D700DA9CDC /* btn_show_tasks.mp3 in Resources */,
-				A00B8FF7226990D700DA9CDC /* btn_recomendation.mp3 in Resources */,
-				A00B8FF6226990D700DA9CDC /* btn_settings.mp3 in Resources */,
-				A00B8FEB226990D700DA9CDC /* intro.mp3 in Resources */,
-				A00B8FF1226990D700DA9CDC /* btn_amigos.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +275,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -eo pipefail\n\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\n  echo \"Skipping asset bundling in debug mode.\"\n  exit 0\nfi\n\npushd \"${SRCROOT}/..\"\nvalue=\"$(cat ~/.expo/PATH)\"\ndest=\"$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\nPATH=\"$PATH:$value\" expo bundle-assets --platform ios --dest \"$dest\"\npopd\n";
+			shellScript = "set -eo pipefail\n\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\n  echo \"Skipping asset bundling in debug mode.\"\n  exit 0\nfi\n\npushd \"${SRCROOT}/..\"\nexport PATH=\"$(if [ -f ~/.expo/PATH ]; then echo $PATH:$(cat ~/.expo/PATH); else echo $PATH; fi)\"\ndest=\"$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\nexpo bundle-assets --platform ios --dest \"$dest\"\npopd\n";
 		};
 		23539343DCC44EF8449429EE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -308,16 +301,14 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-moi/Pods-moi-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-moi/Pods-moi-resources.sh",
 				"${PODS_ROOT}/Amplitude-iOS/Amplitude/api.amplitude.com.der",
 				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoCaLimitedRsaCertificationAuthority.der",
 				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoRsaCA.der",
 				"${PODS_ROOT}/Amplitude-iOS/Amplitude/ComodoRsaDomainValidationCA.der",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-				"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks/GoogleAuthUtilities.framework/Resources/GTMOAuth2ViewTouch.xib",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Stripe/Stripe.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -326,14 +317,12 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoRsaCA.der",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoRsaDomainValidationCA.der",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Stripe.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-moi/Pods-moi-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-moi/Pods-moi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B5722AD01DFB7E3F0084848F /* Prepare Expo */ = {
@@ -348,7 +337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "set -eo pipefail\n\npushd \"${SRCROOT}/..\"\nvalue=\"$(cat ~/.expo/PATH)\"\nPATH=\"$PATH:$value\" expo prepare-detached-build --platform ios\npopd\n";
+			shellScript = "set -eo pipefail\n\nexport PATH=\"$(if [ -f ~/.expo/PATH ]; then echo $PATH:$(cat ~/.expo/PATH); else echo $PATH; fi)\"\nexpo prepare-detached-build --platform ios \"${SRCROOT}/..\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -412,7 +401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -460,7 +449,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -475,7 +464,7 @@
 				DEVELOPMENT_TEAM = SH8S5MHA9P;
 				INFOPLIST_FILE = "$(SRCROOT)/moi/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.growmoisociallearning.moiapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moisociallearning.moiapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -489,7 +478,7 @@
 				DEVELOPMENT_TEAM = SH8S5MHA9P;
 				INFOPLIST_FILE = "$(SRCROOT)/moi/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.growmoisociallearning.moiapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moisociallearning.moiapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

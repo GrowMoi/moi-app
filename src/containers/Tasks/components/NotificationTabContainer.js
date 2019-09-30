@@ -12,15 +12,6 @@ import eventsUtils from '../../Events/events-utils';
 // Actions
 import userActions from '../../../actions/userActions';
 
-@connect(state => ({
-  data: state.user.notifications,
-  events: state.user.eventsWeek,
-}), {
-    getNotificationsAsync: userActions.getNotificationsAsync,
-    loadMoreNotificationsAsync: userActions.loadMoreNotificationsAsync,
-    readNotificationAsync: userActions.readNotificationAsync,
-    deleteNotification: userActions.deleteNotification,
-  })
 class NotificationTabContainer extends PureComponent {
   state = {
     open: false,
@@ -174,5 +165,17 @@ const styles = StyleSheet.create(
   }
 )
 
+const mapStateToProps = (state) => ({
+  data: state.user.notifications,
+  events: state.user.eventsWeek,
+})
 
-export default NotificationTabContainer;
+const mapDispatchToProps = {
+  getNotificationsAsync: userActions.getNotificationsAsync,
+  loadMoreNotificationsAsync: userActions.loadMoreNotificationsAsync,
+  readNotificationAsync: userActions.readNotificationAsync,
+  deleteNotification: userActions.deleteNotification,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NotificationTabContainer);

@@ -3,7 +3,8 @@ import { View, Text, ImageBackground, Alert, TouchableOpacity } from 'react-nati
 import styled, { css } from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import { ImagePicker, Permissions } from 'expo';
+import * as Permissions from 'expo-permissions';
+import * as ImagePicker from 'expo-image-picker';
 import uuid from 'uuid';
 import ModalOptions from '../ModalOptions/ModalOptions';
 import Palette from '../../styles/palette';

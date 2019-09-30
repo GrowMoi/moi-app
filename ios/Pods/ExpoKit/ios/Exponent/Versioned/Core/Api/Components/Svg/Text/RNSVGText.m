@@ -15,129 +15,218 @@
 
 @implementation RNSVGText
 {
-    RNSVGText *_textRoot;
     RNSVGGlyphContext *_glyphContext;
+    NSString *_alignmentBaseline;
+    NSString *_baselineShift;
+    CGFloat cachedAdvance;
 }
 
-- (void)renderLayerTo:(CGContextRef)context
+- (void)invalidate
+{
+    if (self.dirty || self.merging) {
+        return;
+    }
+    [super invalidate];
+    [self clearChildCache];
+}
+
+- (void)clearPath
+{
+    [super clearPath];
+    cachedAdvance = NAN;
+}
+
+- (void)setTextLength:(RNSVGLength *)textLength
+{
+    if ([textLength isEqualTo:_textLength]) {
+        return;
+    }
+    [self invalidate];
+    _textLength = textLength;
+}
+
+- (void)setBaselineShift:(NSString *)baselineShift
+{
+    if ([baselineShift isEqualToString:_baselineShift]) {
+        return;
+    }
+    [self invalidate];
+    _baselineShift = baselineShift;
+}
+
+- (void)setLengthAdjust:(NSString *)lengthAdjust
+{
+    if ([lengthAdjust isEqualToString:_lengthAdjust]) {
+        return;
+    }
+    [self invalidate];
+    _lengthAdjust = lengthAdjust;
+}
+
+- (void)setAlignmentBaseline:(NSString *)alignmentBaseline
+{
+    if ([alignmentBaseline isEqualToString:_alignmentBaseline]) {
+        return;
+    }
+    [self invalidate];
+    _alignmentBaseline = alignmentBaseline;
+}
+
+- (void)setDeltaX:(NSArray<RNSVGLength *> *)deltaX
+{
+    if (deltaX == _deltaX) {
+        return;
+    }
+    [self invalidate];
+    _deltaX = deltaX;
+}
+
+- (void)setDeltaY:(NSArray<RNSVGLength *> *)deltaY
+{
+    if (deltaY == _deltaY) {
+        return;
+    }
+    [self invalidate];
+    _deltaY = deltaY;
+}
+
+- (void)setPositionX:(NSArray<RNSVGLength *>*)positionX
+{
+    if (positionX == _positionX) {
+        return;
+    }
+    [self invalidate];
+    _positionX = positionX;
+}
+
+- (void)setPositionY:(NSArray<RNSVGLength *>*)positionY
+{
+    if (positionY == _positionY) {
+        return;
+    }
+    [self invalidate];
+    _positionY = positionY;
+}
+
+- (void)setRotate:(NSArray<RNSVGLength *> *)rotate
+{
+    if (rotate == _rotate) {
+        return;
+    }
+    [self invalidate];
+    _rotate = rotate;
+}
+
+- (void)renderLayerTo:(CGContextRef)context rect:(CGRect)rect
 {
     [self clip:context];
     CGContextSaveGState(context);
     [self setupGlyphContext:context];
-
-    CGPathRef path = [self getGroupPath:context];
-    [self renderGroupTo:context];
-    [self releaseCachedPath];
+    [self renderGroupTo:context rect:rect];
     CGContextRestoreGState(context);
-
-    CGPathRef transformedPath = CGPathCreateCopyByTransformingPath(path, &CGAffineTransformIdentity);
-    [self setHitArea:transformedPath];
-    CGPathRelease(transformedPath);
 }
 
 - (void)setupGlyphContext:(CGContextRef)context
 {
-    _glyphContext = [[RNSVGGlyphContext alloc] initWithScale:1 width:[self getContextWidth]
-                                                   height:[self getContextHeight]];
-}
-
-// release the cached CGPathRef for RNSVGTSpan
-- (void)releaseCachedPath
-{
-    [self traverseSubviews:^BOOL(__kindof RNSVGNode *node) {
-        RNSVGText *text = node;
-        [text releaseCachedPath];
-        return YES;
-    }];
+    CGRect bounds = CGContextGetClipBoundingBox(context);
+    CGSize size = bounds.size;
+    _glyphContext = [[RNSVGGlyphContext alloc] initWithWidth:size.width
+                                                      height:size.height];
 }
 
 - (CGPathRef)getGroupPath:(CGContextRef)context
 {
+    CGPathRef path = self.path;
+    if (path) {
+        return path;
+    }
     [self pushGlyphContext];
-    CGPathRef groupPath = [super getPath:context];
+    path = [super getPath:context];
     [self popGlyphContext];
-
-    return groupPath;
+    self.path = path;
+    return path;
 }
 
 - (CGPathRef)getPath:(CGContextRef)context
 {
+    CGPathRef path = self.path;
+    if (path) {
+        return path;
+    }
     [self setupGlyphContext:context];
-    CGPathRef groupPath = [self getGroupPath:context];
-    [self releaseCachedPath];
-
-    return (CGPathRef)CFAutorelease(CGPathCreateCopyByTransformingPath(groupPath, &CGAffineTransformIdentity));
+    return [self getGroupPath:context];
 }
 
-- (void)renderGroupTo:(CGContextRef)context
+- (void)renderGroupTo:(CGContextRef)context rect:(CGRect)rect
 {
     [self pushGlyphContext];
-    [super renderGroupTo:context];
+    [super renderGroupTo:context rect:rect];
     [self popGlyphContext];
 }
 
-- (RNSVGText *)getTextRoot
+// TODO: Optimisation required
+- (RNSVGText *)textRoot
 {
-    if (!_textRoot) {
-        _textRoot = self;
-        while (_textRoot && [_textRoot class] != [RNSVGText class]) {
-            if (![_textRoot isKindOfClass:[RNSVGText class]]) {
-                //todo: throw exception here
-                break;
-            }
-            _textRoot = (RNSVGText*)[_textRoot superview];
+    RNSVGText *root = self;
+    while (root && [root class] != [RNSVGText class]) {
+        if (![root isKindOfClass:[RNSVGText class]]) {
+            //todo: throw exception here
+            break;
         }
+        root = (RNSVGText*)[root superview];
     }
 
-    return _textRoot;
+    return root;
 }
 
-- (NSString*) getAlignmentBaseline
+- (NSString *)alignmentBaseline
 {
-    if (self.alignmentBaseline != nil) {
-        return self.alignmentBaseline;
+    if (_alignmentBaseline != nil) {
+        return _alignmentBaseline;
     }
-    UIView* parent = [self superview];
+
+    UIView* parent = self.superview;
     while (parent != nil) {
         if ([parent isKindOfClass:[RNSVGText class]]) {
             RNSVGText* node = (RNSVGText*)parent;
             NSString* baseline = node.alignmentBaseline;
             if (baseline != nil) {
-                self.alignmentBaseline = baseline;
+                _alignmentBaseline = baseline;
                 return baseline;
             }
         }
         parent = [parent superview];
     }
-    if (self.alignmentBaseline == nil) {
-        self.alignmentBaseline = RNSVGAlignmentBaselineStrings[0];
+
+    if (_alignmentBaseline == nil) {
+        _alignmentBaseline = RNSVGAlignmentBaselineStrings[0];
     }
-    return self.alignmentBaseline;
+    return _alignmentBaseline;
 }
 
-- (NSString*) getBaselineShift
+- (NSString *)baselineShift
 {
-    if (self.baselineShift != nil) {
-        return self.baselineShift;
+    if (_baselineShift != nil) {
+        return _baselineShift;
     }
-    if (self.baselineShift == nil) {
-        UIView* parent = [self superview];
-        while (parent != nil) {
-            if ([parent isKindOfClass:[RNSVGText class]]) {
-                RNSVGText* node = (RNSVGText*)parent;
-                NSString* baselineShift = node.baselineShift;
-                if (baselineShift != nil) {
-                    self.baselineShift = baselineShift;
-                    return baselineShift;
-                }
+
+    UIView* parent = [self superview];
+    while (parent != nil) {
+        if ([parent isKindOfClass:[RNSVGText class]]) {
+            RNSVGText* node = (RNSVGText*)parent;
+            NSString* baselineShift = node.baselineShift;
+            if (baselineShift != nil) {
+                _baselineShift = baselineShift;
+                return baselineShift;
             }
-            parent = [parent superview];
         }
+        parent = [parent superview];
     }
-    if (self.baselineShift == nil) {
-        self.baselineShift = @"";
-    }
-    return self.baselineShift;
+
+    // set default value
+    _baselineShift = @"";
+
+    return _baselineShift;
 }
 
 - (RNSVGGlyphContext *)getGlyphContext
@@ -147,23 +236,58 @@
 
 - (void)pushGlyphContext
 {
-    [[[self getTextRoot] getGlyphContext] pushContext:self
-                                                              font:self.font
-                                                                 x:self.positionX
-                                                                 y:self.positionY
-                                                            deltaX:self.deltaX
-                                                            deltaY:self.deltaY
-                                                            rotate:self.rotate];
+    [[self.textRoot getGlyphContext] pushContext:self
+                                            font:self.font
+                                               x:self.positionX
+                                               y:self.positionY
+                                          deltaX:self.deltaX
+                                          deltaY:self.deltaY
+                                          rotate:self.rotate];
 }
 
 - (void)popGlyphContext
 {
-    [[[self getTextRoot] getGlyphContext] popContext];
+    [[self.textRoot getGlyphContext] popContext];
 }
 
 - (CTFontRef)getFontFromContext
 {
-    return [[[self getTextRoot] getGlyphContext] getGlyphFont];
+    return [[self.textRoot getGlyphContext] getGlyphFont];
+}
+
+- (RNSVGText*)getTextAnchorRoot
+{
+    RNSVGGlyphContext* gc = [self.textRoot getGlyphContext];
+    NSArray* font = [gc getFontContext];
+    RNSVGText* node = self;
+    UIView* parent = [self superview];
+    for (NSInteger i = [font count] - 1; i >= 0; i--) {
+        RNSVGFontData* fontData = [font objectAtIndex:i];
+        if (![parent isKindOfClass:[RNSVGText class]] ||
+            fontData->textAnchor == RNSVGTextAnchorStart ||
+            node.positionX != nil) {
+            return node;
+        }
+        node = (RNSVGText*) parent;
+        parent = [node superview];
+    }
+    return node;
+}
+
+- (CGFloat)getSubtreeTextChunksTotalAdvance
+{
+    if (!isnan(cachedAdvance)) {
+        return cachedAdvance;
+    }
+    CGFloat advance = 0;
+    for (UIView *node in self.subviews) {
+        if ([node isKindOfClass:[RNSVGText class]]) {
+            RNSVGText *text = (RNSVGText*)node;
+            advance += [text getSubtreeTextChunksTotalAdvance];
+        }
+    }
+    cachedAdvance = advance;
+    return advance;
 }
 
 @end

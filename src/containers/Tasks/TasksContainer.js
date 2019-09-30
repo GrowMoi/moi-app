@@ -23,20 +23,7 @@ import EventModal from '../Events/EventModal';
 import LeaderBoardModal from '../LeaderBoard/LeaderboardModal';
 import leaderboardActions from '../../actions/leaderboardActions';
 
-@connect(store => ({
-  device: store.device,
-  neuronSelected: store.neuron.neuronSelected,
-  leaders: store.leaderboard.leaders,
-  profile: store.user.profile,
-}), {
-    loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
-    getUserNotesAsync: userActions.getStoreNotesAsync,
-    loadAllFavorites: userActions.loadAllFavorites,
-    getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
-    getNotificationsAsync: userActions.getNotificationsAsync,
-    getEventsWeekAsync: userActions.getEventsWeekAsync,
-    getLeaderboardAsync: leaderboardActions.getLeadersAsync,
-  })
+
 class TasksContainer extends Component {
   state = {
     loading: false,
@@ -277,4 +264,24 @@ const styles = StyleSheet.create({
   },
 })
 
-export default TasksContainer;
+const mapStateToProps = (state) => ({
+  device: state.device,
+  neuronSelected: state.neuron.neuronSelected,
+  leaders: state.leaderboard.leaders,
+  profile: state.user.profile,
+})
+
+const mapDispatchToProps = {
+  loadUserContentTasksAsync: userActions.loadUserContentTasksAsync,
+  getUserNotesAsync: userActions.getStoreNotesAsync,
+  loadAllFavorites: userActions.loadAllFavorites,
+  getTutorRecomendationAsync: tutorActions.getTutorRecomendationsAsync,
+  getNotificationsAsync: userActions.getNotificationsAsync,
+  getEventsWeekAsync: userActions.getEventsWeekAsync,
+  getLeaderboardAsync: leaderboardActions.getLeadersAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TasksContainer);

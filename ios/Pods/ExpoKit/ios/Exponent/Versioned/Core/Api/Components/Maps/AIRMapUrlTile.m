@@ -11,8 +11,43 @@
 
 @implementation AIRMapUrlTile {
     BOOL _urlTemplateSet;
+    BOOL _tileSizeSet;
 }
 
+- (void)setShouldReplaceMapContent:(BOOL)shouldReplaceMapContent
+{
+  _shouldReplaceMapContent = shouldReplaceMapContent;
+  if(self.tileOverlay) {
+    self.tileOverlay.canReplaceMapContent = _shouldReplaceMapContent;
+  }
+  [self update];
+}
+
+- (void)setMaximumZ:(NSUInteger)maximumZ
+{
+  _maximumZ = maximumZ;
+  if(self.tileOverlay) {
+    self.tileOverlay.maximumZ = _maximumZ;
+  }
+  [self update];
+}
+
+- (void)setMinimumZ:(NSUInteger)minimumZ
+{
+  _minimumZ = minimumZ;
+  if(self.tileOverlay) {
+    self.tileOverlay.minimumZ = _minimumZ;
+  }
+  [self update];
+}
+
+- (void)setFlipY:(BOOL)flipY
+{
+  _flipY = flipY;
+  if (self.tileOverlay) {
+    self.tileOverlay.geometryFlipped = _flipY;
+  }
+}
 
 - (void)setUrlTemplate:(NSString *)urlTemplate{
     _urlTemplate = urlTemplate;
@@ -21,13 +56,31 @@
     [self update];
 }
 
+- (void)setTileSize:(CGFloat)tileSize{
+    _tileSize = tileSize;
+    _tileSizeSet = YES;
+    [self createTileOverlayAndRendererIfPossible];
+    [self update];
+}
+
 - (void) createTileOverlayAndRendererIfPossible
 {
     if (!_urlTemplateSet) return;
     self.tileOverlay = [[MKTileOverlay alloc] initWithURLTemplate:self.urlTemplate];
-    self.tileOverlay.canReplaceMapContent = YES;
+
+    self.tileOverlay.canReplaceMapContent = self.shouldReplaceMapContent;
+
+    if(self.minimumZ) {
+        self.tileOverlay.minimumZ = self.minimumZ;
+    }
     if (self.maximumZ) {
         self.tileOverlay.maximumZ = self.maximumZ;
+    }
+    if (self.flipY) {
+        self.tileOverlay.geometryFlipped = self.flipY;
+    }
+    if (_tileSizeSet) {
+        self.tileOverlay.tileSize = CGSizeMake(self.tileSize, self.tileSize);
     }
     self.renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:self.tileOverlay];
 }

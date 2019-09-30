@@ -15,9 +15,7 @@ const Overlay = styled(View)`
   background-color: ${Palette.black.alpha(0.7).css()};
 `;
 
-@connect(store => ({
-  device: store.device,
-}))
+
 class LeaderBoardModal extends Component {
   state = {
     loading: false,
@@ -47,4 +45,8 @@ class LeaderBoardModal extends Component {
   }
 }
 
-export default LeaderBoardModal;
+const mapStateToProps = (state) => ({
+  device: state.device,
+})
+
+export default connect(mapStateToProps)(LeaderBoardModal);

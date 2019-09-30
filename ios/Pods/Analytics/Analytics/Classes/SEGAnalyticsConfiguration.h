@@ -61,6 +61,18 @@ typedef NSMutableURLRequest *_Nonnull (^SEGRequestFactory)(NSURL *_Nonnull);
  */
 @property (nonatomic, assign) NSUInteger flushAt;
 
+/**
+ * The amount of time to wait before each tick of the flush timer.
+ * Smaller values will make events delivered in a more real-time manner and also use more battery.
+ * A value smaller than 10 seconds will seriously degrade overall performance.
+ * 30 seconds by default.
+ */
+@property (nonatomic, assign) NSTimeInterval flushInterval;
+
+/**
+ * The maximum number of items to queue before starting to drop old ones. This should be a value greater than zero, the behaviour is undefined otherwise. `1000` by default.
+ */
+@property (nonatomic, assign) NSUInteger maxQueueSize;
 
 /**
  * Whether the analytics client should automatically make a track call for application lifecycle events, such as "Application Installed", "Application Updated" and "Application Opened".
@@ -127,5 +139,31 @@ typedef NSMutableURLRequest *_Nonnull (^SEGRequestFactory)(NSURL *_Nonnull);
  * Leave this nil for iOS extensions, otherwise set to UIApplication.sharedApplication.
  */
 @property (nonatomic, strong, nullable) id<SEGApplicationProtocol> application;
+
+/**
+ * A dictionary of filters to redact payloads before they are sent.
+ * This is an experimental feature that currently only applies to Deep Links.
+ * It is subject to change to allow for more flexible customizations in the future.
+ *
+ * The key of this dictionary should be a regular expression string pattern,
+ * and the value should be a regular expression substitution template.
+ *
+ * By default, this contains a Facebook auth token filter, configured as such:
+ * @code
+ * @"(fb\\d+://authorize#access_token=)([^ ]+)": @"$1((redacted/fb-auth-token))"
+ * @endcode
+ *
+ * This will replace any matching occurences to a redacted version:
+ * @code
+ * "fb123456789://authorize#access_token=secretsecretsecretsecret&some=data"
+ * @endcode
+ *
+ * Becomes:
+ * @code
+ * "fb123456789://authorize#access_token=((redacted/fb-auth-token))"
+ * @endcode
+ *
+ */
+@property (nonatomic, strong, nonnull) NSDictionary<NSString*, NSString*>* payloadFilters;
 
 @end

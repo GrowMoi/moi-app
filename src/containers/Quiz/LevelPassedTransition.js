@@ -26,71 +26,75 @@ const TextContainer = styled(View)`
   align-self: stretch;
 `;
 
-@connect(store => ({
-    userTree: store.tree.userTree,
-    quizResult: store.user.quizResult,
-}),
-    {
-        loadTreeAsync: treeActions.loadTreeAsync,
-    })
-export default class LevelPassedTransition extends Component {
-    state = {
-        showAnimation: true,
-        showLevel: false,
-        currentLevel: null,
-    };
+class LevelPassedTransition extends Component {
+  state = {
+    showAnimation: true,
+    showLevel: false,
+    currentLevel: null,
+  };
 
-    prevLevel;
+  prevLevel;
 
-    componentWillMount() {
-        const { userTree } = this.props;
-        this.prevLevel = userTree.meta.depth;
+  componentWillMount() {
+    const { userTree } = this.props;
+    this.prevLevel = userTree.meta.depth;
+  }
+
+  async componentDidMount() {
+    const { loadTreeAsync } = this.props;
+    const res = await loadTreeAsync(null, true);
+    this.setState({ currentLevel: res.data.meta.depth });
+  }
+
+  validateQuizResults() {
+    const { quizResult: { achievements = [], event = {}, super_event = {} } } = this.props;
+    // return achievements.length > 0 || event.completed || super_event.completed;
+    return achievements.length > 0;
+  }
+
+  render() {
+    const { showAnimation, showLevel, currentLevel } = this.state;
+
+    if (!currentLevel) {
+        return <Preloader />;
     }
 
-    async componentDidMount() {
-        const { loadTreeAsync } = this.props;
-        const res = await loadTreeAsync(null, true);
-        this.setState({ currentLevel: res.data.meta.depth });
+    if (currentLevel === this.prevLevel && !this.validateQuizResults()) {
+        Actions.tree();
+        return null;
     }
 
-    validateQuizResults() {
-      const { quizResult: { achievements = [], event = {}, super_event = {} } } = this.props;
-      // return achievements.length > 0 || event.completed || super_event.completed;
-      return achievements.length > 0;
-    }
-
-    render() {
-        const { showAnimation, showLevel, currentLevel } = this.state;
-
-        if (!currentLevel) {
-            return <Preloader />;
-        }
-
-        if (currentLevel === this.prevLevel && !this.validateQuizResults()) {
+    return (
+      <AnimationContainer>
+        {showAnimation && (<ReadingAnimation
+          ref={ref => this.readingAnim = ref}
+          onFinishAnimation={() => {
+            // this.setState({ showLevel: true });
+            // setTimeout(() => {
             Actions.tree();
-            return null;
-        }
+            // }, 1000);
+          }}
+        />)}
+        {showLevel && (<Animatable.View animation="zoomOut" easing="ease-in">
+          <Header customSize={80} bolder>{`Nivel ${currentLevel}`}</Header>
+        </Animatable.View>)}
+      </AnimationContainer>
+    );
+  }
+}
 
-        return (
-            <AnimationContainer>
-                {showAnimation && (<ReadingAnimation
-                    ref={ref => this.readingAnim = ref}
-                    onFinishAnimation={() => {
-                        // this.setState({ showLevel: true });
-                        // setTimeout(() => {
-                        Actions.tree();
-                        // }, 1000);
-                    }}
-                />)}
-                {showLevel && (<Animatable.View animation="zoomOut" easing="ease-in">
-                    <Header customSize={80} bolder>{`Nivel ${currentLevel}`}</Header>
-                </Animatable.View>)}
-            </AnimationContainer>
-        );
-    }
+const mapStateToProps = (state) => ({
+  userTree: state.tree.userTree,
+  quizResult: state.user.quizResult,
+})
+
+const mapDispatchToProps = {
+  loadTreeAsync: treeActions.loadTreeAsync,
 }
 
 LevelPassedTransition.propTypes = {
-    device: PropTypes.any,
-    userTree: PropTypes.object,
+  device: PropTypes.any,
+  userTree: PropTypes.object,
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(LevelPassedTransition)

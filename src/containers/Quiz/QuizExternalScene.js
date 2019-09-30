@@ -24,12 +24,7 @@ const QuizSceneContainer = styled(View)`
   justify-content: center;
 `;
 
-@connect(store => ({
-  quiz: store.user.externalQuiz,
-}), {
-  getExternalQuizAsync: userActions.loadExternalQuizAsync,
-})
-export default class QuizTutorScene extends Component {
+class QuizTutorScene extends Component {
   state = {
     currentScene: 'intro',
     results: [],
@@ -120,3 +115,15 @@ QuizTutorScene.propTypes = {
   quiz: PropTypes.object,
 };
 
+const mapStateToProps = (state) => ({
+  quiz: state.user.externalQuiz,
+})
+
+const mapDispatchToProps = {
+  getExternalQuizAsync: userActions.loadExternalQuizAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QuizTutorScene)

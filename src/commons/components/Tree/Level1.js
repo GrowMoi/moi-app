@@ -33,13 +33,7 @@ const LevelContainer = styled(View)`
   align-items: center;
 `;
 
-@connect(state => ({
-  label: state.neuron.currentlyPressed,
-  device: state.device,
-}), {
-  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-})
-export default class Level1 extends Component {
+class Level1 extends Component {
 
   static defaultProps = {
     width: 50,
@@ -126,3 +120,17 @@ export default class Level1 extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  label: state.neuron.currentlyPressed,
+  device: state.device,
+})
+
+const mapDispatchToProps = {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Level1)

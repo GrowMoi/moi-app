@@ -1,1 +1,5 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Components/Maps/AIRMapOverlayManager.h
+#import <React/RCTViewManager.h>
+
+@interface AIRMapOverlayManager : RCTViewManager
+
+@end

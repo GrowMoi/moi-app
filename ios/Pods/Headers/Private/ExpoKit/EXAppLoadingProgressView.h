@@ -1,1 +1,10 @@
-../../../ExpoKit/ios/Exponent/Kernel/Views/Loading/EXAppLoadingProgressView.h
+
+#import <UIKit/UIKit.h>
+
+@class EXLoadingProgress;
+
+@interface EXAppLoadingProgressView : UIView
+
+- (void)updateStatusWithProgress:(EXLoadingProgress *)progress;
+
+@end

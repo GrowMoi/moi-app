@@ -9,13 +9,6 @@ import userActions from '../../actions/userActions';
 import TasksContainer from './TasksContainer';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 
-@connect(store => ({
-  device: store.device,
-  scene: store.routes.scene,
-  showPassiveMessage: store.user.showPassiveMessage,
-}), {
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-})
 class Tasks extends Component {
   render() {
     const { device, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
@@ -46,9 +39,24 @@ class Tasks extends Component {
   }
 }
 
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+  scene: state.routes.scene,
+  showPassiveMessage: state.user.showPassiveMessage,
+})
+
+const mapDispatchToProps = {
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+}
+
+
 Tasks.propTypes = {
   device: PropTypes.object,
   neuron_id: PropTypes.number,
 };
 
-export default Tasks;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Tasks);

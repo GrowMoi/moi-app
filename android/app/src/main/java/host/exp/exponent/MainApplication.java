@@ -1,21 +1,26 @@
 package host.exp.exponent;
 
-
 import com.facebook.react.ReactPackage;
+
+import org.unimodules.core.interfaces.Package;
 
 import java.util.Arrays;
 import java.util.List;
 
-import expolib_v1.okhttp3.OkHttpClient;
+import expo.loaders.provider.interfaces.AppLoaderPackagesProviderInterface;
+import host.exp.exponent.generated.BasePackageList;
+import okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
-import org.reactnative.maskedview.RNCMaskedViewPackage;
-import com.github.yamill.orientation.OrientationPackage;
+import fr.greweb.reactnativeviewshot.RNViewShotPackage;
+import com.horcrux.svg.SvgPackage;
 import com.zmxv.RNSound.RNSoundPackage;
+import com.github.yamill.orientation.OrientationPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
+import org.reactnative.maskedview.RNCMaskedViewPackage;
 
-public class MainApplication extends ExpoApplication {
+public class MainApplication extends ExpoApplication implements AppLoaderPackagesProviderInterface<ReactPackage> {
 
   @Override
   public boolean isDebug() {
@@ -30,21 +35,22 @@ public class MainApplication extends ExpoApplication {
 
         // Needed for `react-native link`
         // new MainReactPackage(),
-            new RNCMaskedViewPackage(),
-            new OrientationPackage(),
+            new RNViewShotPackage(),
+            new SvgPackage(),
             new RNSoundPackage(),
-            new LottiePackage()
+            new OrientationPackage(),
+            new LottiePackage(),
+            new RNCMaskedViewPackage()
     );
+  }
+
+  public List<Package> getExpoPackages() {
+    return new BasePackageList().getPackageList();
   }
 
   @Override
   public String gcmSenderId() {
     return getString(R.string.gcm_defaultSenderId);
-  }
-
-  @Override
-  public boolean shouldUseInternetKernel() {
-    return BuildVariantConstants.USE_INTERNET_KERNEL;
   }
 
   public static OkHttpClient.Builder okHttpClientBuilder(OkHttpClient.Builder builder) {

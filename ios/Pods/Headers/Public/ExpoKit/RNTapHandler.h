@@ -1,1 +1,12 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Components/GestureHandler/Handlers/RNTapHandler.h
+//
+//  RNTapHandler.h
+//  RNGestureHandler
+//
+//  Created by Krzysztof Magiera on 12/10/2017.
+//  Copyright © 2017 Software Mansion. All rights reserved.
+//
+
+#import "RNGestureHandler.h"
+
+@interface RNTapGestureHandler : RNGestureHandler
+@end

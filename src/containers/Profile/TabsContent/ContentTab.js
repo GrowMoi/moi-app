@@ -34,9 +34,6 @@ const styles = StyleSheet.create({
   contentContainer: {},
 });
 
-@connect(store => ({
-  device: store.device,
-}))
 class ContentTab extends PureComponent {
   state = {
     dataLoaded: false,
@@ -109,4 +106,8 @@ ContentTab.propTypes = {
   onEndReached: PropTypes.func,
 };
 
-export default ContentTab;
+const mapStateToProps = (state) => ({
+  device: state.device,
+})
+
+export default connect(mapStateToProps)(ContentTab);

@@ -10,12 +10,7 @@ import { connect } from 'react-redux';
 // Actions
 import userActions from '../../../actions/userActions';
 
-@connect(state => ({
-  data: state.user.notes,
-}), {
-  getMoreStoreNotesAsync: userActions.getMoreStoreNotesAsync,
-})
-export default class NotesTabContainer extends Component {
+class NotesTabContainer extends Component {
   state = {
     open: false,
   }
@@ -94,3 +89,16 @@ const styles = StyleSheet.create(
     },
   }
 )
+
+const mapStateToProps = (state) => ({
+  data: state.user.notes,
+})
+
+const mapDispatchToProps = {
+  getMoreStoreNotesAsync: userActions.getMoreStoreNotesAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NotesTabContainer)

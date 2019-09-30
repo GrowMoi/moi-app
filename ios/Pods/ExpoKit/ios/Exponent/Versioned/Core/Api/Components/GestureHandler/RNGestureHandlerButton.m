@@ -33,9 +33,30 @@
  */
 @implementation RNGestureHandlerButton
 
+- (instancetype)init
+{
+  self = [super init];
+  if (self) {
+    _hitTestEdgeInsets = UIEdgeInsetsZero;
+#if !TARGET_OS_TV
+    [self setExclusiveTouch:YES];
+#endif
+  }
+  return self;
+}
+
 - (BOOL)shouldHandleTouch:(UIView *)view
 {
     return [view isKindOfClass:[UIControl class]] || [view.gestureRecognizers count] > 0;
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+{
+  if (UIEdgeInsetsEqualToEdgeInsets(self.hitTestEdgeInsets, UIEdgeInsetsZero)) {
+    return [super pointInside:point withEvent:event];
+  }
+  CGRect hitFrame = UIEdgeInsetsInsetRect(self.bounds, self.hitTestEdgeInsets);
+  return CGRectContainsPoint(hitFrame, point);
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event

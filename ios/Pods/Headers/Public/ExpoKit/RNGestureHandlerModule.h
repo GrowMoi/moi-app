@@ -1,1 +1,8 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Components/GestureHandler/RNGestureHandlerModule.h
+#import <React/RCTEventEmitter.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTUIManager.h>
+
+@interface RNGestureHandlerModule : RCTEventEmitter <RCTBridgeModule>
+
+@end
+  

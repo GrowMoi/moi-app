@@ -8,18 +8,15 @@ import {
   Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
-import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 import Options from './Options';
 import MoIcon from '../MoIcon/MoIcon';
 import TreeScreenShot from '../TreeScreenShot/TreeScreenShot';
-import { Title, Header } from '../Typography';
+import { Title } from '../Typography';
 import { Size, Palette } from '../../styles';
 import { DRAWER_OFFSET, PORTRAIT } from '../../../constants';
-import * as routeTypes from '../../../routeTypes'
-import { normalizeAllCapLetter } from '../../utils';
 import UserInfo from './UserInfo';
 
 const SideMenuContainer = styled(ImageBackground)`
@@ -74,14 +71,7 @@ const styles = StyleSheet.create({
   },
 });
 
-@connect(store => ({
-  device: store.device,
-  userTree: store.tree.userTree,
-  user: store.user.userData,
-  profile: store.user.profile,
-  achievements: store.user.achievements,
-}))
-export default class SideMenu extends Component {
+class SideMenu extends Component {
   static propTypes = {
     device: PropTypes.any,
     userTree: PropTypes.any,
@@ -193,3 +183,13 @@ export default class SideMenu extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  device: state.device,
+  userTree: state.tree.userTree,
+  user: state.user.userData,
+  profile: state.user.profile,
+  achievements: state.user.achievements,
+})
+
+export default connect(mapStateToProps)(SideMenu)

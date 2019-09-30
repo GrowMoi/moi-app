@@ -8,13 +8,8 @@ import LeaderBoardContent from './LeaderboardContent';
 // Actions
 import leaderboardActions from '../../actions/leaderboardActions';
 
-@connect(state => ({
-  leaders: state.leaderboard.leaders,
-  profile: state.user.profile,
-}), {
-    getLeaderboardAsync: leaderboardActions.getLeadersAsync,
-  })
-export default class LeaderBoard extends PureComponent {
+
+class LeaderBoard extends PureComponent {
   state = {
     isLoadingLeaders: true,
   }
@@ -43,3 +38,18 @@ export default class LeaderBoard extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  leaders: state.leaderboard.leaders,
+  profile: state.user.profile,
+})
+
+const mapDispatchToProps = {
+  getLeaderboardAsync: leaderboardActions.getLeadersAsync,
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LeaderBoard)

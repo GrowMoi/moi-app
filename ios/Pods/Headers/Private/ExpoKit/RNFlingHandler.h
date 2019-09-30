@@ -1,1 +1,4 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Components/GestureHandler/Handlers/RNFlingHandler.h
+#import "RNGestureHandler.h"
+
+@interface RNFlingGestureHandler : RNGestureHandler
+@end

@@ -10,12 +10,7 @@ import { connect } from 'react-redux';
 // Actions
 import tutorActions from '../../../actions/tutorActions';
 
-@connect(state => ({
-  data: state.tutor.recomendations,
-}), {
-  getMoreRecomendationsAsync: tutorActions.getMoreRecomendationsAsync,
-})
-export default class RecomendationsTabContainer extends Component {
+class RecomendationsTabContainer extends Component {
   state = {
     open: false,
   }
@@ -93,3 +88,13 @@ const styles = StyleSheet.create(
     },
   }
 )
+
+const mapStateToProps = (state) => ({
+  data: state.tutor.recomendations,
+})
+
+const mapDispatchToProps = {
+  getMoreRecomendationsAsync: tutorActions.getMoreRecomendationsAsync,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecomendationsTabContainer)

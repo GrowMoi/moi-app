@@ -1,1 +1,10 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Components/GestureHandler/RNGestureHandlerState.h
+#import <Foundation/Foundation.h>
+
+typedef NS_ENUM(NSInteger, RNGestureHandlerState) {
+    RNGestureHandlerStateUndetermined = 0,
+    RNGestureHandlerStateFailed,
+    RNGestureHandlerStateBegan,
+    RNGestureHandlerStateCancelled,
+    RNGestureHandlerStateActive,
+    RNGestureHandlerStateEnd,
+};

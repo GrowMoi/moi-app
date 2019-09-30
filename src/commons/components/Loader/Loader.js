@@ -43,9 +43,8 @@ export default class Loader extends Component {
   getMinSize = () => this.screenWidth < this.screenHeight ? this.screenWidth - (this.screenWidth * 0.05) : this.screenHeight;
   isLandscape = () => this.screenWidth > this.screenHeight;
 
-  componentWillMount() {
+  componentDidMount() {
     Orientation.lockToPortrait();
-    // this.setState({ showDefaultSpash: false });
     this.props.onInit();
   }
 

@@ -1,1 +1,4 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Reanimated/Nodes/REAAlwaysNode.h
+#import "REANode.h"
+
+@interface REAAlwaysNode : REANode <REAFinalNode>
+@end

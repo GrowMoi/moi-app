@@ -57,15 +57,8 @@ const StyledButton = styled(Button)`
   align-self: flex-end;
 `;
 
-@connect(store => ({
-  user: store.user.userData,
-  profile: store.user.profile,
-}), {
-  logoutAsync: userActions.logoutAsync,
-  updateUserAccountAsync: userActions.updateUserAccountAsync,
-  getUserProfileAsync: userActions.getUserProfileAsync
-})
-export default class EditProfileScene extends Component {
+
+class EditProfileScene extends Component {
   logout = () => {
     const { logoutAsync } = this.props;
     logoutAsync();
@@ -136,3 +129,19 @@ export default class EditProfileScene extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  user: state.user.userData,
+  profile: state.user.profile,
+})
+
+const mapDispatchToProps = {
+  logoutAsync: userActions.logoutAsync,
+  updateUserAccountAsync: userActions.updateUserAccountAsync,
+  getUserProfileAsync: userActions.getUserProfileAsync
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditProfileScene)

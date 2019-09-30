@@ -10,12 +10,7 @@ import { connect } from 'react-redux';
 // Actions
 import userActions from '../../../actions/userActions';
 
-@connect(state => ({
-  data: state.user.favorites,
-}), {
-  getMoreFavoritesAsync: userActions.getMoreFavoritesAsync,
-})
-export default class FavoritesTabContainer extends Component {
+class FavoritesTabContainer extends Component {
   state = {
     open: false,
   }
@@ -102,3 +97,14 @@ const styles = StyleSheet.create(
     },
   }
 )
+
+const mapStateToProps = (state) => ({
+  data: state.user.favorites,
+})
+
+const mapDispatchToProps = {
+  getMoreFavoritesAsync: userActions.getMoreFavoritesAsync,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritesTabContainer)

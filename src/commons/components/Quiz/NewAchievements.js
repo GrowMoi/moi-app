@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import Alert from '../Alert/Alert';
 import GenericAlert from '../Alert/GenericAlert';
 
-@connect(store => ({
-  profile: store.user.profile,
-}), {})
-export default class NewAchievementsModal extends Component {
+class NewAchievementsModal extends Component {
   state = {
     currentAchievement: 0,
   }
@@ -53,7 +50,13 @@ export default class NewAchievementsModal extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  profile: state.user.profile,
+})
+
 NewAchievementsModal.propTypes = {
   achievemtens: PropTypes.any,
   hideModal: PropTypes.func,
 };
+
+export default connect(mapStateToProps)(NewAchievementsModal)

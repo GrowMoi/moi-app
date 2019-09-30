@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { View, ImageBackground } from 'react-native';
-import { Size, Palette } from '../../styles';
+import { Size } from '../../styles';
 import { getHeightAspectRatio } from '../../utils';
 
 const Container = styled(View)`
@@ -29,11 +29,7 @@ const ContentScreen = styled(ImageBackground)`
   padding-right: ${Size.paddingRight};
 `;
 
-@connect(store => ({
-  achievements: store.user.achievements,
-  device: store.device,
-}))
-export default class ContentBox extends Component {
+class ContentBox extends Component {
   get currentAchievement() {
     const { achievements } = this.props;
 
@@ -77,6 +73,11 @@ export default class ContentBox extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  achievements: state.user.achievements,
+  device: state.device,
+})
+
 ContentBox.propTypes = {
   children: PropTypes.any,
   contentContainerStyle: PropTypes.any,
@@ -85,3 +86,7 @@ ContentBox.propTypes = {
     PropTypes.array,
   ]),
 };
+
+export default connect(
+  mapStateToProps,
+)(ContentBox)

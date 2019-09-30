@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { LinearGradient } from 'expo';
+import { LinearGradient } from 'expo-linear-gradient';
+import { width as DeviceWidth } from 'react-native-device-detection'
 
 export default class ContentContainer extends Component {
   render() {
-    const { width, height, children, horizontalGradient, colorsMargin, colorsContent, style } = this.props;
+    const { width = (DeviceWidth - 20), height = 200, children, horizontalGradient, colorsMargin, colorsContent, style } = this.props;
 
     const start = {
       x: 0,

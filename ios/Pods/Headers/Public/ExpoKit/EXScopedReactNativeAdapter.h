@@ -1,1 +1,7 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/UniversalModules/EXScopedReactNativeAdapter.h
+// Copyright © 2018 650 Industries. All rights reserved.
+
+#import <UMReactNativeAdapter/UMReactNativeAdapter.h>
+
+@interface EXScopedReactNativeAdapter : UMReactNativeAdapter
+
+@end

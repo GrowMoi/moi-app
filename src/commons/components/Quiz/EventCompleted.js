@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 import Alert from '../Alert/Alert';
 import GenericAlert from '../Alert/GenericAlert';
 import { normalize } from '../../utils';
-
-@connect(store => ({
-  profile: store.user.profile,
-}), {})
-export default class EventCompletedModal extends Component {
+class EventCompletedModal extends Component {
 
   get alertDescription() {
     const { eventTitle, eventType, profile: {username} } = this.props;
@@ -31,7 +27,15 @@ export default class EventCompletedModal extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  profile: state.user.profile,
+})
+
 EventCompletedModal.propTypes = {
   titleEvent: PropTypes.any,
   onHideModal: PropTypes.func,
 };
+
+export default connect(
+  mapStateToProps
+)(EventCompletedModal)

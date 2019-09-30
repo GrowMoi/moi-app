@@ -14,6 +14,7 @@
 #import "SEGMiddleware.h"
 #import "SEGContext.h"
 #import "SEGIntegrationsManager.h"
+#import "Internal/SEGUtils.h"
 
 static SEGAnalytics *__sharedInstance = nil;
 
@@ -200,7 +201,7 @@ NSString *const SEGBuildKeyV2 = @"SEGBuildKeyV2";
     NSCAssert2(userId.length > 0 || traits.count > 0, @"either userId (%@) or traits (%@) must be provided.", userId, traits);
     [self run:SEGEventTypeIdentify payload:
                                        [[SEGIdentifyPayload alloc] initWithUserId:userId
-                                                                      anonymousId:nil
+                                                                      anonymousId:[options objectForKey:@"anonymousId"]
                                                                            traits:SEGCoerceDictionary(traits)
                                                                           context:SEGCoerceDictionary([options objectForKey:@"context"])
                                                                      integrations:[options objectForKey:@"integrations"]]];
@@ -344,6 +345,8 @@ NSString *const SEGBuildKeyV2 = @"SEGBuildKeyV2";
         [properties addEntriesFromDictionary:activity.userInfo];
         properties[@"url"] = activity.webpageURL.absoluteString;
         properties[@"title"] = activity.title ?: @"";
+        properties = [SEGUtils traverseJSON:properties
+                      andReplaceWithFilters:self.configuration.payloadFilters];
         [self track:@"Deep Link Opened" properties:[properties copy]];
     }
 }
@@ -351,7 +354,8 @@ NSString *const SEGBuildKeyV2 = @"SEGBuildKeyV2";
 - (void)openURL:(NSURL *)url options:(NSDictionary *)options
 {
     SEGOpenURLPayload *payload = [[SEGOpenURLPayload alloc] init];
-    payload.url = url;
+    payload.url = [NSURL URLWithString:[SEGUtils traverseJSON:url.absoluteString
+                                        andReplaceWithFilters:self.configuration.payloadFilters]];
     payload.options = options;
     [self run:SEGEventTypeOpenURL payload:payload];
 
@@ -362,6 +366,8 @@ NSString *const SEGBuildKeyV2 = @"SEGBuildKeyV2";
     NSMutableDictionary *properties = [NSMutableDictionary dictionaryWithCapacity:options.count + 2];
     [properties addEntriesFromDictionary:options];
     properties[@"url"] = url.absoluteString;
+    properties = [SEGUtils traverseJSON:properties
+                  andReplaceWithFilters:self.configuration.payloadFilters];
     [self track:@"Deep Link Opened" properties:[properties copy]];
 }
 
@@ -410,7 +416,9 @@ NSString *const SEGBuildKeyV2 = @"SEGBuildKeyV2";
 
 + (NSString *)version
 {
-    return @"3.6.9";
+    // this has to match the actual version, NOT what's in info.plist
+    // because Apple only accepts X.X.X as versions in the review process.
+    return @"3.7.0";
 }
 
 #pragma mark - Helpers

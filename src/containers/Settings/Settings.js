@@ -35,17 +35,7 @@ const labelPreferences = {
   'como-funciona': '¿Cómo funciona?',
 };
 
-@connect(store => ({
-  device: store.device,
-  userData: store.user.userData,
-  settings: store.user.settings,
-  passiveMessageSettings: store.user.passiveMessageSettings,
-}), {
-  setCurrentSettings: userActions.setCurrentSettings,
-  updateSettingsAsync: userActions.updateSettingsAsync,
-  setCurrentPassiveMessageSettings: userActions.setCurrentPassiveMessageSettings,
-})
-export default class Settings extends Component {
+class Settings extends Component {
   state = {
     updating: false,
     passiveMessage: false,
@@ -163,3 +153,19 @@ Settings.propTypes = {
   userData: PropTypes.object,
   device: PropTypes.object,
 };
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+  userData: state.user.userData,
+  settings: state.user.settings,
+  passiveMessageSettings: state.user.passiveMessageSettings,
+})
+
+const mapDispatchToProps = {
+  setCurrentSettings: userActions.setCurrentSettings,
+  updateSettingsAsync: userActions.updateSettingsAsync,
+  setCurrentPassiveMessageSettings: userActions.setCurrentPassiveMessageSettings,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)

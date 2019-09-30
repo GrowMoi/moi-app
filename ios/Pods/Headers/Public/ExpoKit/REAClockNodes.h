@@ -1,1 +1,16 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Reanimated/Nodes/REAClockNodes.h
+#import "REANode.h"
+
+@interface REAClockNode : REANode
+@end
+
+@interface REAClockOpNode : REANode
+@end
+
+@interface REAClockStartNode : REAClockOpNode
+@end
+
+@interface REAClockStopNode : REAClockOpNode
+@end
+
+@interface REAClockTestNode : REAClockOpNode
+@end

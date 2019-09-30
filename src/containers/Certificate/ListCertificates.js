@@ -49,10 +49,7 @@ const Zoom = styled(ViewTransformer)`
   width: 100%;
 `;
 
-@connect(store => ({}),
-  {
-    getLatestCertificatesAsync: userActions.getLatestCertificatesAsync,
-  })
+
 class ListCertificates extends Component {
   state = {
     latestCertificates: [],
@@ -139,4 +136,8 @@ class ListCertificates extends Component {
   }
 }
 
-export default ListCertificates;
+const mapDispatchToProps = {
+  getLatestCertificatesAsync: userActions.getLatestCertificatesAsync,
+}
+
+export default connect(null, mapDispatchToProps)(ListCertificates);

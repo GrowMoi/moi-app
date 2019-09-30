@@ -114,20 +114,6 @@ const BlueButton = styled(Image)`
   left: 16;
 `;
 
-@connect(store => ({
-  notifications: store.user.notifications,
-  details: store.tutor.details,
-  scene: store.routes.scene,
-  contentsToLearn: store.user.contentsToLearn,
-  eventsWeek: store.user.eventsWeek,
-
-}), {
-    getNotificationsAsync: userActions.getNotificationsAsync,
-    setReloadRandomContents: userActions.setReloadRandomContents,
-    getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
-    getContentsToLearnAsync: userActions.getContentsToLearnAsync,
-    getEventsWeekAsync: userActions.getEventsWeekAsync,
-  })
 class BottomBarWithButtons extends Component {
 
   async componentWillMount() {
@@ -283,6 +269,23 @@ class BottomBarWithButtons extends Component {
   };
 }
 
+const mapStateToProps = (state) => ({
+  notifications: state.user.notifications,
+  details: state.tutor.details,
+  scene: state.routes.scene,
+  contentsToLearn: state.user.contentsToLearn,
+  eventsWeek: state.user.eventsWeek,
+})
+
+const mapDispatchToProps = {
+  getNotificationsAsync: userActions.getNotificationsAsync,
+  setReloadRandomContents: userActions.setReloadRandomContents,
+  getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
+  getContentsToLearnAsync: userActions.getContentsToLearnAsync,
+  getEventsWeekAsync: userActions.getEventsWeekAsync,
+}
+
+
 BottomBarWithButtons.defaultProps = {
   width: 320,
   readButton: true,
@@ -294,4 +297,4 @@ BottomBarWithButtons.propTypes = {
   readButton: PropTypes.bool,
 };
 
-export default BottomBarWithButtons;
+export default connect(mapStateToProps, mapDispatchToProps)(BottomBarWithButtons);

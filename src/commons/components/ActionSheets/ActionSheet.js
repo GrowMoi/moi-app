@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'expo';
+import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity, Animated, Platform, Modal, ScrollView } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
 import { Palette, Size } from '../../styles';
 import MoiModal from '../../../containers/Modal/MoiModal';
 
-const Overlay = styled(TouchableOpacity)`
+const Overlay = styled(props => <TouchableOpacity {...props}/>)`
   background-color: ${Palette.black.alpha(0.2).css()};
   justify-content: ${Platform.OS === 'android' ? 'center' : 'flex-end'};
   align-self: stretch;
@@ -35,7 +35,7 @@ const Option = styled(TouchableOpacity)`
   justify-content: flex-start;
 `;
 
-const OptionIcon = styled(Icon.Ionicons)`
+const OptionIcon = styled(Ionicons)`
   margin-right: 10;
 `;
 

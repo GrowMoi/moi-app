@@ -1,1 +1,6 @@
-../../../../../node_modules/expo-file-system/ios/EXFileSystem/EXFileSystemLocalFileHandler.h
+
+#import <EXFileSystem/EXFileSystem.h>
+
+@interface EXFileSystemLocalFileHandler : NSObject <EXFileSystemHandler>
+
+@end

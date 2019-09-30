@@ -1,1 +1,5 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Reanimated/Nodes/REABezierNode.h
+#import "REANode.h"
+
+@interface REABezierNode : REANode
+
+@end

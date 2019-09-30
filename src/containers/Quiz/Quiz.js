@@ -31,19 +31,7 @@ const QuizSceneContainer = styled(View)`
   justify-content: center;
 `;
 
-@connect(store => ({
-  quiz: store.user.quiz,
-  device: store.device,
-  scene: store.routes.scene,
-  showPassiveMessage: store.user.showPassiveMessage,
-}), {
-  learnContentsAsync: userActions.learnContentsAsync,
-  evaluateFinalTestAsync: userActions.evaluateFinalTestAsync,
-  saveResultFinalTest: userActions.saveResultFinalTest,
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
-})
-export default class QuizScene extends Component {
+class QuizScene extends Component {
   state = {
     currentScene: 'intro',
     results: [],
@@ -216,4 +204,21 @@ export default class QuizScene extends Component {
 QuizScene.propTypes = {
   quiz: PropTypes.object,
 };
+
+const mapStateToProps = (state) => ({
+  quiz: state.user.quiz,
+  device: state.device,
+  scene: state.routes.scene,
+  showPassiveMessage: state.user.showPassiveMessage,
+})
+
+const mapDispatchToProps = {
+   learnContentsAsync: userActions.learnContentsAsync,
+  evaluateFinalTestAsync: userActions.evaluateFinalTestAsync,
+  saveResultFinalTest: userActions.saveResultFinalTest,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizScene)
 

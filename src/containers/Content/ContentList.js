@@ -21,15 +21,7 @@ import userActions from '../../actions/userActions';
 import { generateAlertData } from '../../commons/components/Alert/alertUtils';
 import ModalAlert from '../../commons/components/Alert/ModalAlert';
 
-@connect(state => ({
-  device: state.device,
-  showPassiveMessage: state.user.showPassiveMessage,
-  neuronSelected: state.neuron.neuronSelected,
-}), {
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-  getEventsTodayAsync: userActions.getEventsTodayAsync,
-})
-export default class ContentListScene extends PureComponent {
+class ContentListScene extends PureComponent {
   state = {
     isFirstTimeEvents: false,
     events: [],
@@ -164,9 +156,22 @@ export default class ContentListScene extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  device: state.device,
+  showPassiveMessage: state.user.showPassiveMessage,
+  neuronSelected: state.neuron.neuronSelected,
+})
+
+const mapDispatchToProps = {
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+  getEventsTodayAsync: userActions.getEventsTodayAsync,
+}
+
 ContentListScene.propTypes = {
   title: PropTypes.string,
   neuronSelected: PropTypes.object,
   neuron_id: PropTypes.number,
   device: PropTypes.object,
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContentListScene)

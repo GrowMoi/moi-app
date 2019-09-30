@@ -2,6 +2,7 @@
 #import "EXBuildConstants.h"
 #import "EXEnvironment.h"
 #import "EXErrorRecoveryManager.h"
+#import "EXUserNotificationManager.h"
 #import "EXKernel.h"
 #import "EXAppLoader.h"
 #import "EXKernelDevKeyCommands.h"
@@ -14,7 +15,7 @@
 #import "EXReactAppManager+Private.h"
 #import "EXVersionManager.h"
 #import "EXVersions.h"
-#import <EXCore/EXModuleRegistryProvider.h>
+#import <UMCore/UMModuleRegistryProvider.h>
 
 #import <React/RCTBridge.h>
 #import <React/RCTRootView.h>
@@ -69,6 +70,7 @@ typedef void (^SDK21RCTSourceLoadBlock)(NSError *error, NSData *source, int64_t 
   if (self = [super init]) {
     _appRecord = record;
     _initialProps = initialProps;
+    _isHeadless = NO;
   }
   return self;
 }
@@ -111,10 +113,15 @@ typedef void (^SDK21RCTSourceLoadBlock)(NSError *error, NSData *source, int64_t 
                        logThreshold:[self logLevel]
                        ];
     _reactBridge = [[bridgeClass alloc] initWithDelegate:self launchOptions:[self launchOptionsForBridge]];
-    _reactRootView = [[rootViewClass alloc] initWithBridge:_reactBridge
-                                                moduleName:[self applicationKeyForRootView]
-                                         initialProperties:[self initialPropertiesForRootView]];
-    
+
+    if (!_isHeadless) {
+      // We don't want to run the whole JS app if app launches in the background,
+      // so we're omitting creation of RCTRootView that triggers runApplication and sets up React view hierarchy.
+      _reactRootView = [[rootViewClass alloc] initWithBridge:_reactBridge
+                                                  moduleName:[self applicationKeyForRootView]
+                                           initialProperties:[self initialPropertiesForRootView]];
+    }
+
     [_delegate reactAppManagerIsReadyForLoad:self];
     
     NSAssert([_reactBridge isLoading], @"React bridge should be loading once initialized");
@@ -273,6 +280,8 @@ typedef void (^SDK21RCTSourceLoadBlock)(NSError *error, NSData *source, int64_t 
                                @"expoRuntimeVersion": [EXBuildConstants sharedInstance].expoRuntimeVersion,
                                @"manifest": _appRecord.appLoader.manifest,
                                @"appOwnership": [self _appOwnership],
+                               @"isHeadless": @(_isHeadless),
+                               @"supportedExpoSdks": [EXVersions sharedInstance].versions[@"sdkVersions"],
                              },
                            @"exceptionsManagerDelegate": _exceptionHandler,
                            @"initialUri": RCTNullIfNil([EXKernelLinkingManager initialUriWithManifestUrl:_appRecord.appLoader.manifestUrl]),
@@ -280,7 +289,7 @@ typedef void (^SDK21RCTSourceLoadBlock)(NSError *error, NSData *source, int64_t 
                            @"isStandardDevMenuAllowed": @(isStandardDevMenuAllowed),
                            @"testEnvironment": @([EXEnvironment sharedEnvironment].testEnvironment),
                            @"services": [EXKernel sharedInstance].serviceRegistry.allServices,
-                           @"singletonModules": [EXModuleRegistryProvider singletonModules],
+                           @"singletonModules": [UMModuleRegistryProvider singletonModules],
                            @"moduleRegistryDelegateClass": RCTNullIfNil([self moduleRegistryDelegateClass]),
                            };
   return [self.versionManager extraModulesWithParams:params];
@@ -515,7 +524,7 @@ typedef void (^SDK21RCTSourceLoadBlock)(NSError *error, NSData *source, int64_t 
 - (NSComparisonResult)_compareVersionTo:(NSUInteger)version
 {
   // Unversioned projects are always considered to be on the latest version
-  if (!_validatedVersion || _validatedVersion.length == 0) {
+  if (!_validatedVersion || _validatedVersion.length == 0 || [_validatedVersion isEqualToString:@"UNVERSIONED"]) {
     return NSOrderedDescending;
   }
   
@@ -582,7 +591,11 @@ typedef void (^SDK21RCTSourceLoadBlock)(NSError *error, NSData *source, int64_t 
   if (_initialProps) {
     [expProps addEntriesFromDictionary:_initialProps];
   }
-  
+  EXPendingNotification *initialNotification = [[EXKernel sharedInstance].serviceRegistry.notificationsManager initialNotificationForExperience:_appRecord.experienceId];
+  if (initialNotification) {
+    expProps[@"notification"] = initialNotification.properties;
+  }
+
   expProps[@"manifest"] = _appRecord.appLoader.manifest;
   if (_appRecord.appLoader.manifestUrl) {
     expProps[@"initialUri"] = [_appRecord.appLoader.manifestUrl absoluteString];

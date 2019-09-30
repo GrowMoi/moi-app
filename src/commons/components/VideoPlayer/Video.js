@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Modal, Platform } from 'react-native';
-import { Video as ExpoVideo, ScreenOrientation } from 'expo';
+import { ScreenOrientation } from 'expo';
+import { Video as ExpoVideo } from 'expo-av';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
@@ -72,10 +73,10 @@ class Video extends Component {
                 rate={1.0}
                 volume={1.0}
                 isMuted={false}
-                isPortrait={false}
                 resizeMode={ExpoVideo.RESIZE_MODE_CONTAIN}
                 onPlaybackStatusUpdate={onPlaybackStatusUpdate}
-                switchToLandscape={()=>ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE)}
+                // isPortrait={false}
+                // switchToLandscape={() => ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE)}
                 shouldPlay
                 style={{
                   width,

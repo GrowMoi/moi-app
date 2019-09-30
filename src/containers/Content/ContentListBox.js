@@ -9,13 +9,7 @@ import userActions from '../../actions/userActions';
 const MILLISECONDS = 60;
 const ContentPreviewWithSound = withSound(ContentPreview);
 
-@connect(store => ({
-  device: store.device,
-  scene: store.routes.scene,
-}), {
-  getEventsTodayAsync: userActions.getEventsTodayAsync,
-})
-export default class ContentListBox extends Component {
+class ContentListBox extends Component {
   widthContentPreview;
 
   componentWillMount() {
@@ -90,3 +84,17 @@ export default class ContentListBox extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+  scene: state.routes.scene,
+})
+
+const mapDispatchToProps = {
+  getEventsTodayAsync: userActions.getEventsTodayAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ContentListBox)

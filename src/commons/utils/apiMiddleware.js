@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native';
 import * as actionTypes from '../../actions/actionTypes';
 
-const HEADERS = ['access-token', 'token-type', 'client', 'expiry', 'uid'];
+let HEADERS = ['access-token', 'token-type', 'client', 'expiry', 'uid'];
 
 const tokenMiddleware = args => store => next => async (action) => {
   if (!action) { action = { type: '' }; }

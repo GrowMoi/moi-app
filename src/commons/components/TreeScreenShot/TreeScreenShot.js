@@ -29,10 +29,7 @@ const ProfileImage = styled(Image)`
   height: ${props => props.height};
 `;
 
-@connect(store => ({
-  device: store.device,
-}))
-export default class TreeScreenShot extends Component {
+class TreeScreenShot extends Component {
   state = {
     imageWidth: 375,
     imageHeight: 667,
@@ -98,3 +95,10 @@ TreeScreenShot.propTypes = {
   treeBackground: PropTypes.any,
   profileImage: PropTypes.string,
 };
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+})
+
+export default connect(mapStateToProps)(TreeScreenShot)
+

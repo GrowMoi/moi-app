@@ -1,1 +1,10 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Screens/RNSScreenContainer.h
+#import <React/RCTViewManager.h>
+
+@protocol RNSScreenContainerDelegate
+
+- (void)markChildUpdated;
+
+@end
+
+@interface RNSScreenContainerView : UIView <RNSScreenContainerDelegate>
+@end

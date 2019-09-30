@@ -26,13 +26,7 @@ const onPressNeuron = (measure, _data) => {
 const playContent = () => {
 
 }
-
-@connect(state => ({
-  label: state.neuron.currentlyPressed,
-}), {
-  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-})
-export default class NeuronsLayer extends Component {
+class NeuronsLayer extends Component {
   size = { max: 15, min: 8 }
   branches = [];
 
@@ -110,6 +104,13 @@ export default class NeuronsLayer extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  label: state.neuron.currentlyPressed,
+})
+
+const mapDispatchToProps = {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+}
 
 NeuronsLayer.propTypes = {
   data: PropTypes.object,
@@ -120,3 +121,8 @@ NeuronsLayer.propTypes = {
     height: PropTypes.number,
   }),
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NeuronsLayer)

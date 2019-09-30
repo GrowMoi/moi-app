@@ -9,17 +9,7 @@ import deviceUtils from '../../utils/device-utils';
 
 const isTablet = deviceUtils.isTablet();
 
-@connect(state => ({
-  label: state.neuron.currentlyPressed,
-  tree: state.tree.userTree,
-  device: state.device,
-  zoomInfo: state.tree.zoomInfo,
-  zoomScale: state.tree.zoomScale,
-}), {
-    setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-    loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
-  })
-export default class LabelsLayer extends Component {
+class LabelsLayer extends Component {
 
   state = {
     loading: false,
@@ -97,3 +87,18 @@ export default class LabelsLayer extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  label: state.neuron.currentlyPressed,
+  tree: state.tree.userTree,
+  device: state.device,
+  zoomInfo: state.tree.zoomInfo,
+  zoomScale: state.tree.zoomScale,
+})
+
+const mapDispatchToProps = {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LabelsLayer)

@@ -14,15 +14,6 @@ import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
 
 
-@connect(store => ({
-  randomNeuronSelected: store.neuron.randomNeuronSelected,
-  device: store.device,
-  reloadRandomContents: store.user.reloadRandomContents,
-}), {
-  loadRecomendedContents: neuronActions.loadRecomendedContents,
-  loadRandomNeuronContentByIdAsync: neuronActions.loadRandomNeuronContentByIdAsync,
-  setReloadRandomContents: userActions.setReloadRandomContents,
-})
 class RandomContents extends Component {
   state = {
     loading: true,
@@ -109,6 +100,7 @@ class RandomContents extends Component {
   }
 }
 
+
 RandomContents.propTypes = {
   randomNeuronSelected: PropTypes.object,
   device: PropTypes.object,
@@ -116,4 +108,16 @@ RandomContents.propTypes = {
   neuron_id: PropTypes.number,
 };
 
-export default RandomContents;
+const mapStateToProps = (state) => ({
+  randomNeuronSelected: state.neuron.randomNeuronSelected,
+  device: state.device,
+  reloadRandomContents: state.user.reloadRandomContents,
+})
+
+const mapDispatchToProps = {
+  loadRecomendedContents: neuronActions.loadRecomendedContents,
+  loadRandomNeuronContentByIdAsync: neuronActions.loadRandomNeuronContentByIdAsync,
+  setReloadRandomContents: userActions.setReloadRandomContents,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RandomContents);

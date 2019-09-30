@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, ImageBackground, TouchableHighlight, Image, PixelRatio } from 'react-native';
-import { takeSnapshotAsync } from 'expo';
+import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
 import ChartLearnedContent from './ChartLearnedContent';
@@ -84,16 +84,6 @@ const InnerTextBox = styled(View)`
   padding-right: 10;
 `;
 
-@connect(store => ({
-  device: store.device,
-  profile: store.user.profile,
-  finalTestResult: store.user.finalTestResult,
-}),
-  {
-    saveResultFinalTest: userActions.saveResultFinalTest,
-    uploadImageAsync: userActions.uploadImageAsync,
-    saveCertificateAsync: userActions.saveCertificateAsync,
-  })
 class Certificate extends Component {
 
   certificateView = null;
@@ -274,4 +264,20 @@ Certificate.defaultProps = {
   visible: false,
 }
 
-export default Certificate;
+const mapStateToProps = (state) => ({
+  device: state.device,
+  profile: state.user.profile,
+  finalTestResult: state.user.finalTestResult,
+})
+
+const mapDispatchToProps = {
+  saveResultFinalTest: userActions.saveResultFinalTest,
+  uploadImageAsync: userActions.uploadImageAsync,
+  saveCertificateAsync: userActions.saveCertificateAsync,
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Certificate);

@@ -16,7 +16,7 @@ import LeaderBoard from './containers/LeaderBoard/Leaderboard';
 import Search from './containers/Search/Search';
 import SearchFriends from './containers/Search/SearchFriends';
 import Inventory from './containers/Inventory/Inventory';
-// import TabIcon from '../src/commons/components/TabIcon/TabIcon';
+import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles, { HamburgerButton } from './commons/components/Navbar/navbarPropStyles';
 import withSound from './commons/utils/withSound';
 // import Test from './commons/components/Test';
@@ -32,7 +32,7 @@ export const backButtonWithSound = (action) => {
 const backButton = () => backButtonWithSound(Actions.pop);
 const backButtonQuiz = () => backButtonWithSound(Actions.tree);
 const backButtonTutorQuiz = () =>  backButtonWithSound(Actions.pop);
-// const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
+const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
 
 const routes = Actions.create(
   <Scene key="root">

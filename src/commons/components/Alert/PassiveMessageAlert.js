@@ -9,11 +9,7 @@ const MoiPassiveMessageModal = styled(MoiAlert)`
   flex: 1;
 `
 
-@connect(store => ({
-  sideMenu: store.sideMenu,
-  passiveMessageSettings: store.user.passiveMessageSettings,
-}))
-export default class PassiveMessageAlert extends Component {
+class PassiveMessageAlert extends Component {
   render() {
     const { isOpenPassiveMessage = false, touchableProps = {}, message, passiveMessageSettings: { show }, sideMenu: { menuIsOpen } } = this.props
 
@@ -28,3 +24,10 @@ export default class PassiveMessageAlert extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  sideMenu: state.sideMenu,
+  passiveMessageSettings: state.user.passiveMessageSettings,
+})
+
+export default connect(mapStateToProps)(PassiveMessageAlert)

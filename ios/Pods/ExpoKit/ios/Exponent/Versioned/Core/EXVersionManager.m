@@ -10,6 +10,7 @@
 #import "EXScopedBridgeModule.h"
 #import "EXStatusBarManager.h"
 #import "EXUnversioned.h"
+#import "EXScopedFileSystemModule.h"
 #import "EXTest.h"
 
 #import <React/RCTAssert.h>
@@ -26,9 +27,10 @@
 
 #import <objc/message.h>
 
-#import <EXCore/EXModuleRegistry.h>
-#import <EXCore/EXModuleRegistryDelegate.h>
-#import <EXReactNativeAdapter/EXNativeModulesProxy.h>
+#import <UMFileSystemInterface/UMFileSystemInterface.h>
+#import <UMCore/UMModuleRegistry.h>
+#import <UMCore/UMModuleRegistryDelegate.h>
+#import <UMReactNativeAdapter/UMNativeModulesProxy.h>
 #import "EXScopedModuleRegistryAdapter.h"
 #import "EXScopedModuleRegistryDelegate.h"
 
@@ -72,6 +74,12 @@ void EXRegisterScopedModule(Class moduleClass, ...)
     EXScopedModuleClasses[moduleClassName] = unversionedKernelServiceClassNames;
   }
 }
+
+@interface RCTBridgeHack <NSObject>
+
+- (void)reload;
+
+@end
 
 @interface EXVersionManager ()
 
@@ -155,9 +163,7 @@ void EXRegisterScopedModule(Class moduleClass, ...)
     }
     items[@"dev-hmr"] =  hmrItem;
   }
-  if (devSettings.isJSCSamplingProfilerAvailable && isDevModeEnabled) {
-    items[@"dev-jsc-profiler"] = @{ @"label": @"Start / Stop JS Sampling Profiler", @"isEnabled": @YES };
-  }
+
   id perfMonitor = [self _moduleInstanceForBridge:bridge named:@"PerfMonitor"];
   if (perfMonitor) {
     items[@"dev-perf-monitor"] = @{
@@ -174,7 +180,9 @@ void EXRegisterScopedModule(Class moduleClass, ...)
   RCTAssertMainQueue();
   RCTDevSettings *devSettings = [self _moduleInstanceForBridge:bridge named:@"DevSettings"];
   if ([key isEqualToString:@"dev-reload"]) {
-    [bridge reload];
+    // bridge could be an RCTBridge of any version and we need to cast it since ARC needs to know
+    // the return type
+    [(RCTBridgeHack *)bridge reload];
   } else if ([key isEqualToString:@"dev-remote-debug"]) {
     devSettings.isDebuggingRemotely = !devSettings.isDebuggingRemotely;
   } else if ([key isEqualToString:@"dev-live-reload"]) {
@@ -183,8 +191,6 @@ void EXRegisterScopedModule(Class moduleClass, ...)
     devSettings.isProfilingEnabled = !devSettings.isProfilingEnabled;
   } else if ([key isEqualToString:@"dev-hmr"]) {
     devSettings.isHotLoadingEnabled = !devSettings.isHotLoadingEnabled;
-  } else if ([key isEqualToString:@"dev-jsc-profiler"]) {
-    [devSettings toggleJSCSamplingProfiler];
   } else if ([key isEqualToString:@"dev-inspector"]) {
     [devSettings toggleElementInspector];
   } else if ([key isEqualToString:@"dev-perf-monitor"]) {
@@ -274,8 +280,7 @@ void EXRegisterScopedModule(Class moduleClass, ...)
   NSDictionary *manifest = params[@"manifest"];
   NSString *experienceId = manifest[@"id"];
   NSDictionary *services = params[@"services"];
-  NSString *localStorageDirectory = [[EXFileSystem documentDirectoryForExperienceId:experienceId] stringByAppendingPathComponent:EX_UNVERSIONED(@"RCTAsyncLocalStorage")];
-  BOOL isOpeningHomeInProductionMode = params[@"browserModuleClass"] && params[@"releaseChannel"];
+  BOOL isOpeningHomeInProductionMode = params[@"browserModuleClass"] && !manifest[@"developer"];
 
   NSMutableArray *extraModules = [NSMutableArray arrayWithArray:
                                   @[
@@ -283,7 +288,6 @@ void EXRegisterScopedModule(Class moduleClass, ...)
                                     [[EXDevSettings alloc] initWithExperienceId:experienceId isDevelopment:(!isOpeningHomeInProductionMode && isDeveloper)],
                                     [[EXDisabledDevLoadingView alloc] init],
                                     [[EXStatusBarManager alloc] init],
-                                    [[RCTAsyncLocalStorage alloc] initWithStorageDirectory:localStorageDirectory],
                                     ]];
   
   // add scoped modules
@@ -325,21 +329,24 @@ void EXRegisterScopedModule(Class moduleClass, ...)
     [extraModules addObject:[[EXDisabledRedBox alloc] init]];
   }
 
-  EXModuleRegistryProvider *moduleRegistryProvider = [[EXModuleRegistryProvider alloc] initWithSingletonModules:params[@"singletonModules"]];
+  UMModuleRegistryProvider *moduleRegistryProvider = [[UMModuleRegistryProvider alloc] initWithSingletonModules:params[@"singletonModules"]];
 
   Class resolverClass = [EXScopedModuleRegistryDelegate class];
   if (params[@"moduleRegistryDelegateClass"] && params[@"moduleRegistryDelegateClass"] != [NSNull null]) {
     resolverClass = params[@"moduleRegistryDelegateClass"];
   }
 
-  id<EXModuleRegistryDelegate> moduleRegistryDelegate = [[resolverClass alloc] initWithParams:params];
+  id<UMModuleRegistryDelegate> moduleRegistryDelegate = [[resolverClass alloc] initWithParams:params];
   [moduleRegistryProvider setModuleRegistryDelegate:moduleRegistryDelegate];
 
   EXScopedModuleRegistryAdapter *moduleRegistryAdapter = [[EXScopedModuleRegistryAdapter alloc] initWithModuleRegistryProvider:moduleRegistryProvider];
-
-  NSArray<id<RCTBridgeModule>> *expoModules = [moduleRegistryAdapter extraModulesForParams:params andExperience:experienceId withScopedModulesArray:extraModules withKernelServices:services];
-
+  UMModuleRegistry *moduleRegistry = [moduleRegistryAdapter moduleRegistryForParams:params forExperienceId:experienceId withKernelServices:services];
+  NSArray<id<RCTBridgeModule>> *expoModules = [moduleRegistryAdapter extraModulesForModuleRegistry:moduleRegistry];
   [extraModules addObjectsFromArray:expoModules];
+
+  id<UMFileSystemInterface> fileSystemModule = [moduleRegistry getModuleImplementingProtocol:@protocol(UMFileSystemInterface)];
+  NSString *localStorageDirectory = [fileSystemModule.documentDirectory stringByAppendingPathComponent:EX_UNVERSIONED(@"RCTAsyncLocalStorage")];
+  [extraModules addObject:[[RCTAsyncLocalStorage alloc] initWithStorageDirectory:localStorageDirectory]];
 
   return extraModules;
 }
@@ -360,6 +367,8 @@ void EXRegisterScopedModule(Class moduleClass, ...)
       Class scopedModuleClass = NSClassFromString(scopedModuleClassName);
       if (moduleServices.count > 1) {
         scopedModule = [[scopedModuleClass alloc] initWithExperienceId:experienceId kernelServiceDelegates:moduleServices params:params];
+      } else if (moduleServices.count == 0) {
+        scopedModule = [[scopedModuleClass alloc] initWithExperienceId:experienceId kernelServiceDelegate:nil params:params];
       } else {
         scopedModule = [[scopedModuleClass alloc] initWithExperienceId:experienceId kernelServiceDelegate:moduleServices[[moduleServices allKeys][0]] params:params];
       }

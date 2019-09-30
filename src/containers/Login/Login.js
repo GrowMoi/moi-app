@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
+import { width } from 'react-native-device-detection';
 import {
   Image,
   StatusBar,
@@ -36,11 +37,13 @@ const LoginContainer = styled(View)`
 const bgTreeWidth = 522;
 const bgTreeHeight = 650;
 const BackgroundTree = styled(Image)`
-  width: ${props => props.width};
-  height: ${props => getHeightAspectRatio(bgTreeWidth, bgTreeHeight, props.width)};
+  width: ${props => {
+    return props.width || width
+  }};
+  height: ${props => getHeightAspectRatio(bgTreeWidth, bgTreeHeight, (props.width || width))};
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
 `;
 
 const FormContainer = styled(KeyboardAvoidingView)`
@@ -74,17 +77,7 @@ const ContainerLoginImages = styled(View)`
 `;
 const AnimatableContainerLoginKeys = Animatable.createAnimatableComponent(ContainerLoginImages);
 
-@connect(store => ({
-  user: store.user.userData,
-  device: store.device,
-  showPassiveMessage: store.user.showPassiveMessage,
-}), {
-  loginAsync: userActions.loginAsync,
-  validateToken: userActions.validateToken,
-  signOutAsync: userActions.signOutAsync,
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-})
-export default class Login extends PureComponent {
+class Login extends PureComponent {
   state = {
     login: '',
     authorization_key: '',
@@ -251,3 +244,22 @@ Login.propTypes = {
   user: PropTypes.object,
   device: PropTypes.object,
 };
+
+
+const mapStateToProps = (state) => ({
+  user: state.user.userData,
+  device: state.device,
+  showPassiveMessage: state.user.showPassiveMessage,
+})
+
+const mapDispatchToProps = {
+  loginAsync: userActions.loginAsync,
+  validateToken: userActions.validateToken,
+  signOutAsync: userActions.signOutAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login)

@@ -21,7 +21,7 @@ const ProfileContainer = styled(View)`
   ${rounded}
 `;
 
-const BackgroundImage = styled.View`
+const BackgroundImage = styled(View)`
   background-color: #f7fcff;
   width: 100%;
   height: 100%

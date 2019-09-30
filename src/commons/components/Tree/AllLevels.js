@@ -39,13 +39,7 @@ const Levels = styled(View)`
   overflow: visible;
 `;
 
-@connect(state => ({
-  label: state.neuron.currentlyPressed,
-  device: state.device,
-}), {
-  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
-})
-export default class AllLevels extends Component {
+class AllLevels extends Component {
 
   componentWillMount() {
     const { setHeightTreeContainer  } = this.props;
@@ -131,3 +125,17 @@ export default class AllLevels extends Component {
 AllLevels.propTypes = {
   userTree: PropTypes.object,
 };
+
+const mapStateToProps = (state) => ({
+  label: state.neuron.currentlyPressed,
+  device: state.device,
+})
+
+const mapDispatchToProps = {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+}
+
+export default connect (
+  mapStateToProps,
+  mapDispatchToProps
+)(AllLevels)

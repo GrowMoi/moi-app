@@ -1,1 +1,5 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Reanimated/Nodes/REABlockNode.h
+#import "REANode.h"
+
+@interface REABlockNode : REANode
+
+@end

@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
-import { Dimensions } from 'react-native';
 import * as actionTypes from '../actions/actionTypes';
-import { LANDSCAPE, PORTRAIT } from '../constants';
 
 const initialState = {
   dimensions: {
@@ -13,14 +11,11 @@ const initialState = {
 };
 
 const dimensions = (state = initialState.dimensions, action) => {
-  const { width, height } = Dimensions.get('window');
-  const orientation = width >= height ? LANDSCAPE : PORTRAIT;
-
   switch (action.type) {
     case actionTypes.SET_DEVICE_DIMENSIONS:
-      return getDeviceDimentions();
+      return {...state, ...(action.payload || {})};
     case actionTypes.RESET_DATA:
-      return getDeviceDimentions();
+      return {...state, ...(action.payload || {})};
     default:
       return state;
   }
@@ -34,16 +29,6 @@ const heightPercent =  (state = initialState.heightPercent, action) => {
       return state;
   }
 };
-
-function getDeviceDimentions() {
-  const { width, height } = Dimensions.get('window');
-  const orientation = width >= height ? LANDSCAPE : PORTRAIT;
-  return {
-    width,
-    height,
-    orientation,
-  };
-}
 
 export default combineReducers({
   dimensions,

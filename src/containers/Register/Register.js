@@ -81,15 +81,7 @@ const requiredFields = ['username', 'email', 'school'];
 
 let currentFields = [];
 
-@connect(store => ({
-  device: store.device,
-  user: store.user.userData,
-}), {
-  registerAsync: userActions.registerAsync,
-  loginAsync: userActions.loginAsync,
-  validateToken: userActions.validateToken,//no
-})
-export default class Register extends Component {
+class Register extends Component {
     state = {
         username: '',
         email: '',
@@ -376,3 +368,16 @@ export default class Register extends Component {
 Register.propTypes = {
     device: PropTypes.object,
 };
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+  user: state.user.userData,
+})
+
+const mapDispatchToProps = {
+  registerAsync: userActions.registerAsync,
+  loginAsync: userActions.loginAsync,
+  validateToken: userActions.validateToken,//no
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

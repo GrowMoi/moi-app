@@ -31,7 +31,16 @@ const TreeBase = styled(Image)`
   align-items: center;
 `;
 
-const FloweredBranch = TreeBase.extend``;
+const FloweredBranch = styled(View)`
+  position: absolute;
+  bottom: ${BOTTOM_POSITON};
+  width: ${props => props.width};
+  height: ${props => getHeightAspectRatio(treeBaseWidth, treeBaseHeight, props.width)};
+  z-index: ${props => props.zIndex || 0};
+  overflow: visible;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Levels = styled(View)`
   align-items: center;

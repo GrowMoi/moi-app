@@ -22,11 +22,6 @@ const BackgroundImage = styled(Image)`
   height: ${Size.navbarHeight};
 `;
 
-const mapStateToProps = state => ({
-  device: state.device,
-});
-
-@connect(mapStateToProps)
 class Navbar extends Component {
   static propTypes = {
     device: PropTypes.any,
@@ -54,4 +49,11 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = state => ({
+  device: state.device,
+});
+
+
+export default connect(
+  mapStateToProps,
+)(Navbar);

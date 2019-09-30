@@ -1,1 +1,9 @@
-../../../../../node_modules/expo-permissions/ios/EXPermissions/EXCameraPermissionRequester.h
+// Copyright 2016-present 650 Industries. All rights reserved.
+
+#import <EXPermissions/EXPermissions.h>
+
+@interface EXCameraPermissionRequester : NSObject <EXPermissionRequester>
+
++ (NSDictionary *)permissions;
+
+@end

@@ -10,12 +10,7 @@ import { connect } from 'react-redux';
 // Actions
 import userActions from '../../../actions/userActions';
 
-@connect(state => ({
-  data: state.user.tasks,
-}), {
-  getMoreTasksAsync: userActions.getMoreUserContentTaskAsync,
-})
-export default class TaskTabContainer extends Component {
+class TaskTabContainer extends Component {
   state = {
     open: false,
   }
@@ -95,3 +90,16 @@ const styles = StyleSheet.create(
     },
   }
 )
+
+const mapStateToProps = (state) => ({
+  data: state.user.tasks,
+})
+
+const mapDispatchToProps = {
+  getMoreTasksAsync: userActions.getMoreUserContentTaskAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TaskTabContainer)

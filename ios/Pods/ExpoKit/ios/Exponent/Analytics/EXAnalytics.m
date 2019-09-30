@@ -6,9 +6,11 @@
 #import "EXKernel.h"
 #import "ExpoKit.h"
 
-#import "Amplitude.h"
+#define HAS_AMPLITUDE __has_include(<Amplitude-iOS/Amplitude.h>)
 
-NSString * const kEXAnalyticsDisabledConfigKey = @"EXAnalyticsDisabled";
+#if HAS_AMPLITUDE
+#import <Amplitude-iOS/Amplitude.h>
+#endif
 
 @import UIKit;
 
@@ -39,6 +41,7 @@ NSString * const kEXAnalyticsDisabledConfigKey = @"EXAnalyticsDisabled";
   if ([self _isAnalyticsDisabled]) {
     return;
   }
+  #if HAS_AMPLITUDE
   if ([EXBuildConstants sharedInstance].isDevKernel) {
     if ([ExpoKit sharedInstance].applicationKeys[@"AMPLITUDE_DEV_KEY"]) {
       [[Amplitude instance] initializeApiKey:[ExpoKit sharedInstance].applicationKeys[@"AMPLITUDE_DEV_KEY"]];
@@ -48,11 +51,16 @@ NSString * const kEXAnalyticsDisabledConfigKey = @"EXAnalyticsDisabled";
       [[Amplitude instance] initializeApiKey:[ExpoKit sharedInstance].applicationKeys[@"AMPLITUDE_KEY"]];
     }
   }
+  #endif
 }
 
 + (BOOL)_isAnalyticsDisabled
 {
-  return [[[NSBundle mainBundle].infoDictionary objectForKey:kEXAnalyticsDisabledConfigKey] boolValue];
+#ifdef EX_DETACHED
+  return YES;
+#else
+  return NO;
+#endif
 }
 
 - (instancetype)init
@@ -122,7 +130,9 @@ NSString * const kEXAnalyticsDisabledConfigKey = @"EXAnalyticsDisabled";
     // if not detached, and some other event besides LOAD_EXPERIENCE, omit
     return;
   }
+  #if HAS_AMPLITUDE
   [[Amplitude instance] logEvent:eventId withEventProperties:props];
+  #endif
 }
 
 - (void)setVisibleRoute:(EXKernelRoute)route

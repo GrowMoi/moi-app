@@ -11,10 +11,8 @@ import {
   PixelRatio,
   Share,
 } from 'react-native';
-import {
-  WebBrowser,
-  takeSnapshotAsync
-} from 'expo';
+import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
+import * as WebBrowser from 'expo-web-browser';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -114,29 +112,7 @@ const styles = StyleSheet.create({
   },
 });
 
-@connect(store => ({
-  contentSelected: store.neuron.contentSelected,
-  currentNeuron: store.neuron.neuronSelected,
-  device: store.device,
-  quiz: store.user.quiz,
-  scene: store.routes.scene,
-  showPassiveMessage: store.user.showPassiveMessage,
-}), {
-  loadContentByIdAsync: neuronActions.loadContentByIdAsync,
-  storeTaskAsync: userActions.storeTaskAsync,
-  readContentAsync: userActions.readContentAsync,
-  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
-  storeNotesAsync: userActions.storeNotesAsync,
-  storeAsFavoriteAsync: userActions.storeAsFavoriteAsync,
-  getContentsToLearnAsync: userActions.getContentsToLearnAsync,
-  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
-  playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
-  uploadImageAsync: userActions.uploadImageAsync,
-  generateShareDataAsync: userActions.generateShareDataAsync,
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-  getNeuronInfoByIdAsync: neuronActions.getNeuronInfoByIdAsync,
-})
-export default class SingleContentScene extends Component {
+class SingleContentScene extends Component {
   state = {
     loading: false,
     videoModalVisible: false,
@@ -157,6 +133,9 @@ export default class SingleContentScene extends Component {
     const { loadContentByIdAsync, content_id, neuron_id, parentContent, getNeuronInfoByIdAsync, contentType } = this.props;
     const neuronId = fromReadContent && parentContent ? parentContent.neuronId : neuron_id;
     const contentId = fromReadContent && parentContent ? parentContent.contentId : content_id;
+
+
+    console.log('Initial load content')
 
     this.toggleLoading(true);
 
@@ -379,6 +358,8 @@ export default class SingleContentScene extends Component {
   render() {
     const { contentSelected: content, device, scene, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
+    // console.log(this.props.state);
+
     const {
       loading,
       actionSheetsVisible,
@@ -525,6 +506,32 @@ export default class SingleContentScene extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  contentSelected: state.neuron.contentSelected,
+  currentNeuron: state.neuron.neuronSelected,
+  device: state.device,
+  quiz: state.user.quiz,
+  scene: state.routes.scene,
+  showPassiveMessage: state.user.showPassiveMessage,
+  state,
+})
+
+const mapDispatchToProps = {
+  loadContentByIdAsync: neuronActions.loadContentByIdAsync,
+  storeTaskAsync: userActions.storeTaskAsync,
+  readContentAsync: userActions.readContentAsync,
+  loadNeuronByIdAsync: neuronActions.loadNeuronByIdAsync,
+  storeNotesAsync: userActions.storeNotesAsync,
+  storeAsFavoriteAsync: userActions.storeAsFavoriteAsync,
+  getContentsToLearnAsync: userActions.getContentsToLearnAsync,
+  stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
+  playCurrentBackgroundAudio: neuronActions.playCurrentBackgroundAudio,
+  uploadImageAsync: userActions.uploadImageAsync,
+  generateShareDataAsync: userActions.generateShareDataAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+  getNeuronInfoByIdAsync: neuronActions.getNeuronInfoByIdAsync,
+}
+
 SingleContentScene.propTypes = {
   title: PropTypes.string,
   contentSelected: PropTypes.object,
@@ -533,3 +540,8 @@ SingleContentScene.propTypes = {
   fromEvent: PropTypes.bool,
   parentContent: PropTypes.object,
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SingleContentScene)

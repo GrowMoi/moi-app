@@ -76,20 +76,7 @@ const ItemBackground = styled(ImageBackground)`
   justify-content: center;
 `
 
-@connect(state => ({
-  device: state.device,
-  achievements: state.user.achievements,
-  finalTestResult: state.user.finalTestResult,
-  scene: state.routes.scene,
-  showPassiveMessage: state.user.showPassiveMessage,
-}), {
-    getAchievementsAsync: userActions.getAchievementsAsync,
-    updateAchievementsAsync: userActions.updateAchievementsAsync,
-    loadFinalTestAsync: userActions.loadFinalTestAsync,
-    getEventsAsync: userActions.getEventsAsync,
-    showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-  })
-export default class Inventory extends Component {
+class Inventory extends Component {
   state = {
     modalVisible: false,
     currentVineta: null,
@@ -444,3 +431,22 @@ export default class Inventory extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+  achievements: state.user.achievements,
+  finalTestResult: state.user.finalTestResult,
+  scene: state.routes.scene,
+  showPassiveMessage: state.user.showPassiveMessage,
+})
+
+const mapDispatchToProps = {
+  getAchievementsAsync: userActions.getAchievementsAsync,
+  updateAchievementsAsync: userActions.updateAchievementsAsync,
+  loadFinalTestAsync: userActions.loadFinalTestAsync,
+  getEventsAsync: userActions.getEventsAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inventory)

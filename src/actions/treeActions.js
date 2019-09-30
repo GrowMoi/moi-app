@@ -1,7 +1,7 @@
 import api from '../api';
 import * as actionTypes from './actionTypes';
 import allLevels from '../mocks/allLevels';
-import env from '../../environment';
+// import env from '../../environment';
 import { setHeaders } from './headerActions';
 
 const loadUserTree = tree => ({
@@ -10,10 +10,10 @@ const loadUserTree = tree => ({
 });
 
 const loadTreeAsync = (username, isPublic = false) => async (dispatch, getState) => {
-  if (env.MOCK_LEVELS) {
-    dispatch(loadUserTree(allLevels));
-    return allLevels;
-  }
+  // if (env.MOCK_LEVELS) {
+  //   dispatch(loadUserTree(allLevels));
+  //   return allLevels;
+  // }
 
   const currentUsername = username || getState().user.userData.profile.username;
   try {

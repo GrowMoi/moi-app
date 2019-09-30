@@ -14,8 +14,7 @@ const Bar = styled(Image)`
   bottom: -2;
 `;
 
-@connect(store => ({ device: store.device }))
-export default class BottomBar extends Component {
+class BottomBar extends Component {
   static propTypes = {
     device: PropTypes.object,
   }
@@ -27,3 +26,9 @@ export default class BottomBar extends Component {
     return (<Bar width={width} source={{uri: currentImage}} resizeMode='stretch' />);
   }
 }
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+})
+
+export default connect(mapStateToProps)(BottomBar)

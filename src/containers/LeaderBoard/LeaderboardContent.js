@@ -37,16 +37,7 @@ const ContentFooter = styled(View)`
   align-items: center;
 `;
 
-@connect(state => ({
-  leaders: state.leaderboard.leaders,
-  profile: state.user.profile,
-}), {
-    getLeaderboardAsync: leaderboardActions.getLeadersAsync,
-    loadMoreLeadersAsync: leaderboardActions.loadMoreLeadersAsync,
-    getPublicProfileAsync: profilesActions.loadProfileAsync,
-    loadTreeAsync: treeActions.loadTreeAsync,
-  })
-export default class LeaderBoardContent extends PureComponent {
+class LeaderBoardContent extends PureComponent {
   state = {
     isLoadingProfile: false
   }
@@ -171,3 +162,20 @@ export default class LeaderBoardContent extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  leaders: state.leaderboard.leaders,
+  profile: state.user.profile,
+})
+
+const mapDispatchToProps = {
+  getLeaderboardAsync: leaderboardActions.getLeadersAsync,
+  loadMoreLeadersAsync: leaderboardActions.loadMoreLeadersAsync,
+  getPublicProfileAsync: profilesActions.loadProfileAsync,
+  loadTreeAsync: treeActions.loadTreeAsync,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LeaderBoardContent)

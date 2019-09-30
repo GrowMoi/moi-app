@@ -121,13 +121,7 @@ const levelConfig = {
     },
   },
 };
-
-@connect(state => ({
-  label: state.neuron.currentlyPressed,
-}), {
-  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo
-})
-export default class Level2 extends Component {
+class Level2 extends Component {
 
   hideWoodLabel = () => {
     const { setNeuronLabelInfo } = this.props;
@@ -226,3 +220,16 @@ Level2.propTypes = {
   width: PropTypes.number,
   userTree: PropTypes.object,
 };
+
+const mapStateToProps = (state) => ({
+  label: state.neuron.currentlyPressed,
+})
+
+const mapDispatchToProps = {
+  setNeuronLabelInfo: neuronActions.setNeuronLabelInfo
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Level2)

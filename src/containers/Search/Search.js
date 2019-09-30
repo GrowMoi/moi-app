@@ -19,16 +19,7 @@ import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import searchActions from '../../actions/searchActions';
 import userActions from '../../actions/userActions';
 
-@connect(store => ({
-  device: store.device,
-  search: store.search,
-  scene: store.routes.scene,
-  showPassiveMessage: store.user.showPassiveMessage,
-}), {
-  getContentsAsync: searchActions.getContentsAsync,
-  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
-})
-export default class Search extends PureComponent {
+class Search extends PureComponent {
   state = {
     loading: false,
     page: 0,
@@ -130,3 +121,17 @@ export default class Search extends PureComponent {
     )
   }
 };
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+  search: state.search,
+  scene: state.routes.scene,
+  showPassiveMessage: state.user.showPassiveMessage,
+})
+
+const mapDispatchToProps = {
+  getContentsAsync: searchActions.getContentsAsync,
+  showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

@@ -7,11 +7,11 @@
 #import "EXKernelServiceRegistry.h"
 #import "EXKernelUtil.h"
 #import "EXViewController.h"
+#import "EXPendingNotification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 FOUNDATION_EXPORT NSString *kEXKernelErrorDomain;
-FOUNDATION_EXPORT const NSUInteger kEXErrorCodeAppForbidden;
 
 typedef NS_ENUM(NSInteger, EXKernelErrorCode) {
   EXKernelErrorCodeModuleDeallocated,
@@ -35,17 +35,15 @@ FOUNDATION_EXPORT NSString * const kEXKernelClearJSCacheUserDefaultsKey;
 - (void)reloadAppFromCacheWithExperienceId:(NSString *)experienceId; // called by Updates.reloadFromCache
 
 /**
- *  Send a notification to a given experience id.
+ *  Send a given notification.
+ *  Returns whether the notification has been successfully sent to a running experience.
  */
-- (void)sendNotification: (NSDictionary *)notifBody
-      toExperienceWithId: (NSString *)experienceId
-          fromBackground: (BOOL)isFromBackground
-                isRemote: (BOOL)isRemote;
+- (BOOL)sendNotification:(EXPendingNotification *)notification;
 
 /**
  *  Initial props to pass to an app based on LaunchOptions from UIApplicationDelegate.
  */
-- (NSDictionary *)initialAppPropsFromLaunchOptions:(NSDictionary *)launchOptions;
+- (nullable NSDictionary *)initialAppPropsFromLaunchOptions:(NSDictionary *)launchOptions;
 
 /**
  *  Find and return the (potentially versioned) native module instance belonging to the

@@ -1,1 +1,14 @@
-../../../../../node_modules/@react-native-community/masked-view/ios/RNCMaskedView.h
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+#import <UIKit/UIKit.h>
+
+#import <React/RCTView.h>
+
+@interface RNCMaskedView : RCTView
+
+@end

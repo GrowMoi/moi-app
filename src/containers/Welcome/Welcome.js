@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components/native';
 import { Actions } from 'react-native-router-flux';
-import { LinearGradient } from 'expo';
+import { LinearGradient } from 'expo-linear-gradient';
 
 class Welcome extends Component {
   goToHome = () => Actions.tabbars();

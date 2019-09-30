@@ -1,1 +1,10 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Components/GoogleMaps/AIRGoogleMapOverlayManager.h
+//
+//  AIRGoogleMapOverlayManager.h
+//  Created by Taro Matsuzawa on 3/5/17.
+//
+
+#import <Foundation/Foundation.h>
+#import <React/RCTViewManager.h>
+
+@interface AIRGoogleMapOverlayManager : RCTViewManager
+@end

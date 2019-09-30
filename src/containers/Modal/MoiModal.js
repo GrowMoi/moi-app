@@ -1,13 +1,10 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import { View, Modal } from 'react-native';
 import { connect } from 'react-redux';
 import deviceUtils from '../../commons/utils/device-utils';
-import Modal from 'expo/src/modal/Modal';
 
-@connect(state => ({
-  device: state.device,
-}))
-export default class MoiModal extends PureComponent {
+
+class MoiModal extends PureComponent {
   get heigthModal() {
     const { device } = this.props;
     const isAndroidLandscape = deviceUtils.isAndroidLandscape(device.dimensions);
@@ -26,3 +23,9 @@ export default class MoiModal extends PureComponent {
     );
   }
 };
+
+const mapStateToProps = (state) => ({
+  device: state.device,
+})
+
+export default connect(mapStateToProps)(MoiModal)

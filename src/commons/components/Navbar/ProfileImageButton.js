@@ -7,10 +7,7 @@ import withSound from '../../utils/withSound';
 import { Size } from '../../styles';
 import ProfileAvatar from '../Profile/Profile'
 
-@connect(store => ({
-  profile: store.user.profile,
-}), {})
-export default class ProfileImageButton extends Component {
+class ProfileImageButton extends Component {
 
   renderProfileIconWithSound = (profile) => {
     const TouchableOpacityWithSound = withSound(TouchableOpacity);
@@ -31,3 +28,9 @@ export default class ProfileImageButton extends Component {
     return this.renderProfileIconWithSound(profile);
   }
 }
+
+const mapStateToProps = state => ({
+  profile: state.user.profile,
+})
+
+export default connect(mapStateToProps)(ProfileImageButton)

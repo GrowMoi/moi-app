@@ -5,18 +5,14 @@
 #import "EXAnalytics.h"
 #import "EXBuildConstants.h"
 #import "EXEnvironment.h"
-#import "EXFacebook.h"
 #import "EXGoogleAuthManager.h"
 #import "EXKernel.h"
 #import "EXKernelUtil.h"
 #import "EXKernelLinkingManager.h"
 #import "EXReactAppExceptionHandler.h"
 #import "EXRemoteNotificationManager.h"
-#import "EXLocalNotificationManager.h"
-#import "EXBranchManager.h"
 
 #import <Crashlytics/Crashlytics.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 
 NSString * const EXAppDidRegisterForRemoteNotificationsNotification = @"kEXAppDidRegisterForRemoteNotificationsNotification";
@@ -89,19 +85,10 @@ NSString * const EXAppDidRegisterUserNotificationSettingsNotification = @"kEXApp
 
 - (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  if (@available(iOS 10, *)) {
-    [DDLog addLogger:[DDOSLogger sharedInstance]];
-  } else {
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-  }
+  [DDLog addLogger:[DDOSLogger sharedInstance]];
+  
 
   RCTSetFatalHandler(handleFatalReactError);
-
-  if ([EXFacebook facebookAppIdFromNSBundle]) {
-    [[FBSDKApplicationDelegate sharedInstance] application:application
-                             didFinishLaunchingWithOptions:launchOptions];
-  }
 
   // init analytics
   [EXAnalytics sharedInstance];
@@ -117,10 +104,10 @@ NSString * const EXAppDidRegisterUserNotificationSettingsNotification = @"kEXApp
     }
   }
 
+  [UNUserNotificationCenter currentNotificationCenter].delegate = (id<UNUserNotificationCenterDelegate>) [EXKernel sharedInstance].serviceRegistry.notificationsManager;
   // This is safe to call; if the app doesn't have permission to display user-facing notifications
   // then registering for a push token is a no-op
   [[EXKernel sharedInstance].serviceRegistry.remoteNotificationManager registerForRemoteNotifications];
-  [[EXKernel sharedInstance].serviceRegistry.branchManager application:application didFinishLaunchingWithOptions:launchOptions];
   _launchOptions = launchOptions;
 }
 
@@ -152,22 +139,22 @@ NSString * const EXAppDidRegisterUserNotificationSettingsNotification = @"kEXApp
   [[NSNotificationCenter defaultCenter] postNotificationName:EXAppDidRegisterForRemoteNotificationsNotification object:nil];
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification
-{
-  BOOL isFromBackground = !(application.applicationState == UIApplicationStateActive);
-  [[EXKernel sharedInstance].serviceRegistry.remoteNotificationManager handleRemoteNotification:notification fromBackground:isFromBackground];
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+
+  // Here background task execution should go.
+
+  completionHandler(UIBackgroundFetchResultNoData);
 }
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-  BOOL isFromBackground = !(application.applicationState == UIApplicationStateActive);
-  [[EXLocalNotificationManager sharedInstance] handleLocalNotification:notification fromBackground:isFromBackground];
-}
-
+// TODO: Remove once SDK31 is phased out
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(nonnull UIUserNotificationSettings *)notificationSettings
 {
   [[NSNotificationCenter defaultCenter] postNotificationName:EXAppDidRegisterUserNotificationSettingsNotification object:nil];
 }
+#pragma clang diagnostic pop
 
 #pragma mark - deep linking hooks
 
@@ -178,35 +165,11 @@ NSString * const EXAppDidRegisterUserNotificationSettingsNotification = @"kEXApp
     return YES;
   }
 
-  if ([EXFacebook facebookAppIdFromNSBundle]) {
-    if ([[FBSDKApplicationDelegate sharedInstance] application:application
-                                                       openURL:url
-                                             sourceApplication:sourceApplication
-                                                    annotation:annotation]) {
-      return YES;
-    }
-  }
-
-  if ([[EXKernel sharedInstance].serviceRegistry.branchManager
-       application:application
-       openURL:url
-       sourceApplication:sourceApplication
-       annotation:annotation]) {
-    return YES;
-  }
-
   return [EXKernelLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray * _Nullable))restorationHandler
 {
-  if ([[EXKernel sharedInstance].serviceRegistry.branchManager
-       application:application
-       continueUserActivity:userActivity
-       restorationHandler:restorationHandler]) {
-    return YES;
-  }
-  
   if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
     NSURL *webpageURL = userActivity.webpageURL;
     if ([EXEnvironment sharedEnvironment].isDetached) {
@@ -225,7 +188,7 @@ NSString * const EXAppDidRegisterUserNotificationSettingsNotification = @"kEXApp
         [EXKernelLinkingManager application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
         return YES;
       } else {
-        [application openURL:webpageURL];
+        [application openURL:webpageURL options:@{} completionHandler:nil];
         return YES;
       }
     }

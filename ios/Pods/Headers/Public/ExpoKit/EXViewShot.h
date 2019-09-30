@@ -1,1 +1,6 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/EXViewShot.h
+
+#import <React/RCTBridgeModule.h>
+
+@interface EXViewShot : NSObject <RCTBridgeModule>
+
+@end

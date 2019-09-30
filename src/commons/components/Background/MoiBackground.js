@@ -13,13 +13,7 @@ position: relative;
   height: ${props => props.heightPercent + '%'};
 `;
 
-@connect(store => ({
-  device: store.device
-}),
-{
-  setHeightPercent: setHeightPercent,
-})
-export default class MoiBackground extends Component {
+class MoiBackground extends Component {
 
   shouldSetHeightPercent = true;
 
@@ -38,6 +32,7 @@ export default class MoiBackground extends Component {
   render() {
     const { device, style } = this.props;
     const { orientation } = device.dimensions;
+
     const currentImage = orientation === LANDSCAPE ? 'background_tree_landscape' : 'background_tree_portrait';
     const percentHeight = this.getPercentHeight();
 
@@ -49,8 +44,21 @@ export default class MoiBackground extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  device: state.device,
+})
+
+const mapDispatchToProps = {
+  setHeightPercent: setHeightPercent,
+}
+
 MoiBackground.propTypes = {
   children: PropTypes.any,
   device: PropTypes.object,
   style: PropTypes.any,
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MoiBackground);

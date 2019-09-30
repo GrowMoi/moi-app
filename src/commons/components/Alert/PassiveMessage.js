@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Image } from 'react-native'
-import { LinearGradient } from 'expo'
+import { LinearGradient } from 'expo-linear-gradient'
 import styled, { css } from 'styled-components/native'
 import { TextBody, Header, Title } from '../Typography'
 import * as Animatable from 'react-native-animatable';

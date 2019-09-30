@@ -1,1 +1,6 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/Api/Reanimated/Nodes/REASetNode.h
+#import "REANode.h"
+
+@interface REASetNode : REANode
+
+@end
+

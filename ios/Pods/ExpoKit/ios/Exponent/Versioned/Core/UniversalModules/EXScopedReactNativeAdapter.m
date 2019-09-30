@@ -3,46 +3,25 @@
 #import "EXScopedReactNativeAdapter.h"
 #import "EXUnversioned.h"
 
-@interface EXReactNativeAdapter (Protected)
+@interface UMReactNativeAdapter (Protected)
 
-- (void)handleAppStateDidChange:(NSNotification *)notification;
-
-@end
-
-@interface EXScopedReactNativeAdapter ()
-
-// property inherited from EXReactNativeAdapter
-@property (nonatomic, assign) BOOL isForegrounded;
+- (void)startObserving;
 
 @end
 
 @implementation EXScopedReactNativeAdapter
 
-@dynamic isForegrounded;
-
 - (void)setBridge:(RCTBridge *)bridge
 {
-  [super setBridge:bridge];
-
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(handleAppStateDidChange:)
-                                               name:EX_UNVERSIONED(@"EXKernelBridgeDidForegroundNotification")
-                                             object:self.bridge];
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(handleAppStateDidChange:)
-                                               name:EX_UNVERSIONED(@"EXKernelBridgeDidBackgroundNotification")
-                                             object:self.bridge];
+  if (bridge) {
+    [super setBridge:bridge];
+    [self setAppStateToForeground];
+  }
 }
 
-- (void)handleAppStateDidChange:(NSNotification *)notification
+- (void)startObserving
 {
-  if (!self.isForegrounded && [notification.name isEqualToString:EX_UNVERSIONED(@"EXKernelBridgeDidForegroundNotification")]) {
-    [self setAppStateToForeground];
-  } else if (self.isForegrounded && [notification.name isEqualToString:EX_UNVERSIONED(@"EXKernelBridgeDidBackgroundNotification")]) {
-    [self setAppStateToBackground];
-  } else {
-    [super handleAppStateDidChange:notification];
-  }
+  // EXAppState and EXKernel handle this for us
 }
 
 @end

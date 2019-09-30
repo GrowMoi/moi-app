@@ -31,17 +31,15 @@
 ##### Expo Universal Modules #####
 
 -keepclassmembers class * {
-  @expo.core.interfaces.ExpoProp *;
-}
--keepclassmembers class * {
-  @expo.core.interfaces.ExpoMethod *;
-}
-
--keepclassmembers class * {
   @**.expo.core.interfaces.ExpoProp *;
 }
 -keepclassmembers class * {
   @**.expo.core.interfaces.ExpoMethod *;
+}
+
+-keep @**.expo.core.interfaces.DoNotStrip class *
+-keepclassmembers class * {
+  @**.expo.core.interfaces.DoNotStrip *;
 }
 
 ##### React Native #####
@@ -74,6 +72,7 @@
 -keep class **.facebook.** { *; }
 -keep class abi** { *; }
 -keep class versioned** { *; }
+-keep class expo.modules** { *; }
 
 ##### Butterknife #####
 -keep class butterknife.** { *; }

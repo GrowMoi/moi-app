@@ -1,47 +1,44 @@
 {
   "expo": {
-    "version": "0.7.2",
-    "sdkVersion": "30.0.0",
-    "slug": "moi",
     "name": "Moi",
+    "slug": "moi",
+    "privacy": "public",
+    "sdkVersion": "34.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "cover"
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0,
-      "checkAutomatically":  "ON_ERROR_RECOVERY",
-      "enabled": false
-    },
-    "packagerOpts": {
-      "assetExts": [
-        "ttf",
-        "otf"
-      ]
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "assets/images/***/*"
+      "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.growmoisociallearning.moiapp",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.moisociallearning.moiapp",
       "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json",
-      "buildNumber": "1"
-    },
-    "android": {
-      "package": "com.moisociallearning.moiapp",
-      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
-      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json",
-      "permissions": [
-        "CAMERA"
-      ]
+      "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json"
     },
     "isDetached": true,
     "detach": {
-      "scheme": "exp7b71e38c6d4c49f7a48f85925ea68e4b",
-      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.8.4-sdk30.0.0-3de13133-1adc-4ba1-8569-a84011e570b4.tar.gz",
-      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.8.1-sdk30.0.0-271c32ab-0715-4dfb-8270-ecead3679bb4.tar.gz"
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.12.4-sdk34.0.0-ee3e7450-9ec2-4836-8c8c-335483e62917.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.12.2-sdk34.0.0-767c7d3b-87b6-4f80-a9af-92ce67e2a49d.tar.gz"
     },
-    "scheme": "expe1d3413d6d34426fa93c22dc0b382003"
+    "scheme": "expcb94a1b685d94c71b27eedc762636f73",
+    "android": {
+      "package": "com.moisociallearning.moiapp",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+    }
   }
 }
