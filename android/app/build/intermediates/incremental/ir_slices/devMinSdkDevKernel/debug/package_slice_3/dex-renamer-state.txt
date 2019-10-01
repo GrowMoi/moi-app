@@ -1,4 +1,0 @@
-#Sun Oct 14 23:47:49 ECT 2018
-base.0=/Users/macbook/Documents/PROYECTOS/moi-app/android/app/build/intermediates/transforms/dexMerger/devMinSdkDevKernel/debug/3
-path.0=classes.dex
-renamed.0=classes.dex
