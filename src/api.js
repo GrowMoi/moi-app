@@ -179,8 +179,6 @@ const api = {
     async getRecommendedContentsOfMaxContent(neuronId = 1, kind) {
       const endpoint = `/api/neurons/${neuronId}/recommended_contents/${kind}`
 
-      console.log(endpoint);
-
       try {
         const res = await client.get(endpoint);
         return res

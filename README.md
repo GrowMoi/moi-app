@@ -27,7 +27,7 @@ Moi Social learning app with technologies based in React Native.
 #### Project
 * Install packages with `yarn` or `npm i` (It is preferred to use yarn)
 * `react-native link`
-* `npm i react-native-svg` ⚠️ Install this dependency after linking with react-native link. Its a necesary to work for now. ⚠️
+* `expo install react-native-svg` ⚠️ Install this dependency after linking with react-native link. Its a necesary to work for now. ⚠️
 
 #### iOS
 * `cd ios/`
