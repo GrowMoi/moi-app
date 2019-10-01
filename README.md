@@ -25,7 +25,7 @@ Moi Social learning app with technologies based in React Native.
 * react-native-debugger `brew update && brew cask install react-native-debugger`
 
 #### Project
-* Install packages with `yarn` or `npm i` (It is preferred to use yarn)
+* Install packages with `yarn` (It is preferred to use yarn)
 * `react-native link`
 * `expo install react-native-svg` ⚠️ Install this dependency after linking with react-native link. Its a necesary to work for now. ⚠️
 
