@@ -93,7 +93,7 @@ export default class ModalAlert extends Component {
         <Overlay noOverlay={noOverlay}>
           <View style={{ width: modalWidth, height: modalHeight, padding: 5, paddingTop: 10, alignItems: 'center' }}>
             <CloseIcon onPress={onClose} />
-            <ContentContainer style={{ width: modalWidth - 25, height: modalHeight - 10 }} colorsMargin={colorsMargin} colorsContent={colorsContent}>
+            <ContentContainer width={modalWidth - 25} height={modalHeight - 10} colorsMargin={colorsMargin} colorsContent={colorsContent}>
               <ContentSection>
                 <Header bolder center style={{ marginTop: 5, marginBottom: 10 }}>{itemTitle}</Header>
               </ContentSection>

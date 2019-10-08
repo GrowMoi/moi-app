@@ -49,7 +49,7 @@ export const GenericAlert = ({
   return (
     <Container>
       <CloseIcon onPress={onCancel} style={{ top: -10 }} />
-      <ContentContainer style={{ width: 300, height: 'auto' }} colorsMargin={colorsMargin} colorsContent={colorsContent}>
+      <ContentContainer width={300} colorsMargin={colorsMargin} colorsContent={colorsContent}>
         <ContentBox>
           <Title center book color='white'>{message}</Title>
           <Description>
