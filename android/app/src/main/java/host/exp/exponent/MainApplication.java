@@ -9,12 +9,12 @@ import java.util.List;
 
 import expo.loaders.provider.interfaces.AppLoaderPackagesProviderInterface;
 import host.exp.exponent.generated.BasePackageList;
-import okhttp3.OkHttpClient;
+//import okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
-import fr.greweb.reactnativeviewshot.RNViewShotPackage;
-import com.horcrux.svg.SvgPackage;
+//import fr.greweb.reactnativeviewshot.RNViewShotPackage;
+//import com.horcrux.svg.SvgPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
@@ -35,8 +35,8 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
 
         // Needed for `react-native link`
         // new MainReactPackage(),
-            new RNViewShotPackage(),
-            new SvgPackage(),
+//            new RNViewShotPackage(),
+//            new SvgPackage(),
             new RNSoundPackage(),
             new OrientationPackage(),
             new LottiePackage(),
@@ -53,8 +53,8 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
     return getString(R.string.gcm_defaultSenderId);
   }
 
-  public static OkHttpClient.Builder okHttpClientBuilder(OkHttpClient.Builder builder) {
-    // Customize/override OkHttp client here
-    return builder;
-  }
+//  public static OkHttpClient.Builder okHttpClientBuilder(OkHttpClient.Builder builder) {
+//    // Customize/override OkHttp client here
+//    return builder;
+//  }
 }
