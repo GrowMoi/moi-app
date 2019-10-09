@@ -120,7 +120,7 @@ class EventModal extends Component {
           {!showAlert ?
             <View style={{ width: this.modalSize.width, height: this.modalSize.height, padding: 5, paddingTop: 10, alignItems: 'center' }}>
               <CloseIcon onPress={this.onPress} />
-              <ContentContainer style={{ width: this.modalSize.width - 25, height: this.modalSize.height - 10 }} colorsMargin={this.colorsModal.margin} colorsContent={this.colorsModal.content} horizontalGradient={false}>
+              <ContentContainer width={this.modalSize.width - 25} height={this.modalSize.height - 10} colorsMargin={this.colorsModal.margin} colorsContent={this.colorsModal.content} horizontalGradient={false}>
                 {!selectedEvent && <Header bolder>Eventos</Header>}
                 {selectedEvent ? <EventInfo event={selectedEvent} onTakeEvent={this.takeEvent} /> : <ListEvents events={events} width={this.eventModalWidth} height= {this.modalSize.height * 0.7} onSelectEvent={this.onSelectEvent} />}
               </ContentContainer>
