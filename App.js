@@ -20,6 +20,7 @@ import userActions from './src/actions/userActions';
 import UserInactivity from 'react-native-user-inactivity';
 import { TIME_FOR_INACTIVITY } from './src/constants';
 import Loader from './src/commons/components/Loader/Loader';
+import CustomSplash from './src/commons/components/CustomSplash/CustomSplash'
 import AppContainer from './src/containers/App/AppContainer'
 
 // addLocaleData([...en, ...es]);
@@ -35,6 +36,7 @@ class App extends Component {
     locale: this.deviceLocale,
     assetsLoaded: false,
     appIsReady: false,
+    showCustomSplash: false,
     showMainApp: false,
   }
 
@@ -117,16 +119,22 @@ class App extends Component {
   }
 
   render() {
-    const { appIsReady, assetsLoaded, showMainApp, locale } = this.state;
+    const { appIsReady, assetsLoaded, showMainApp, showCustomSplash } = this.state;
 
     if (!appIsReady) {
       return (
         <AppLoading
           startAsync={this.validateAuth}
-          onFinish={() => this.setState({ appIsReady: true })}
+          onFinish={() => this.setState({ appIsReady: true, showCustomSplash: true })}
           onError={console.warn}
         />
       );
+    }
+
+    if (appIsReady && showCustomSplash) {
+      return (
+        <CustomSplash onFinish={() => this.setState({ showCustomSplash: false })}/>
+      )
     }
 
     if (showMainApp) {
