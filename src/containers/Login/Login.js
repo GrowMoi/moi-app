@@ -97,8 +97,6 @@ class Login extends PureComponent {
   componentDidMount() {
     const { user, netInfo } = this.props;
     // console.log('USER AUTHENTICATE', user.authenticate)
-
-    console.log('componentDidMount() Login', netInfo)
     if (user.authenticate && netInfo.isConnected) Actions.tree();
   }
 
