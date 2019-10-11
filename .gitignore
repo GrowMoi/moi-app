@@ -24,5 +24,8 @@ ios/*.app.dSYM.zip
 .env.*
 ios/build/
 android/build/
+android/app/build
 *.patch
 ios/Pods/*
+android/.idea/
+android/.gradle/
