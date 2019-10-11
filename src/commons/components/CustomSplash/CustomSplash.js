@@ -13,15 +13,24 @@ const Background = styled(ImageBackground)`
 
 export default class TempSplash extends Component {
 
-  render() {
-    const { onFinish, wait = 1000 } = this.props;
+  async componentDidMount() {
+    const { onFinish, startAsync, onError } = this.props;
 
-    setTimeout(() => {
-      if (onFinish) {
-        onFinish();
+    if (startAsync) {
+      try {
+        const result = await startAsync()
+        if (onFinish) {
+          onFinish(result);
+        }
+      } catch (error) {
+        if (onError) {
+          onError(error);
+        }
       }
-    }, wait);
+    }
+  }
 
+  render() {
     return (
       <Background
         source={{ uri: "splashv2" }}

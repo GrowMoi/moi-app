@@ -133,7 +133,11 @@ class App extends Component {
 
     if (appIsReady && showCustomSplash) {
       return (
-        <CustomSplash onFinish={() => this.setState({ showCustomSplash: false })}/>
+        <CustomSplash
+          startAsync={this.validateAuth}
+          onFinish={() => this.setState({ showCustomSplash: false })}
+          onError={console.warn}
+        />
       )
     }
 
