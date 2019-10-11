@@ -94,17 +94,37 @@ class Login extends PureComponent {
     }));
   }
 
-  componentWillMount() {
-    const { user } = this.props;
+  componentDidMount() {
+    const { user, netInfo } = this.props;
     // console.log('USER AUTHENTICATE', user.authenticate)
-    if (user.authenticate) Actions.tree();
+
+    console.log('componentDidMount() Login', netInfo)
+    if (user.authenticate && netInfo.isConnected) Actions.tree();
+  }
+
+  componentWillReceiveProps() {
+    const { user, netInfo } = this.props
+
+    if(netInfo.isConnected) {
+      Alert.alert('Conexión Restablecida', 'La conexión a internet ha sido restablecida')
+      if(user.authenticate) {
+        Actions.tree();
+      }
+    }
+
   }
 
   submit = async () => {
     const { login, authorization_key } = this.state;
-    const { loginAsync } = this.props;
+    const { loginAsync, netInfo } = this.props;
 
     this.setState({ validating: true });
+
+    if(!(netInfo || {}).isConnected) {
+      Alert.alert('Para ingresar a moi tienes que tener una conexión a internet')
+      this.setState({ validating: false });
+      return null;
+    }
 
     try {
       await loginAsync({ login, authorization_key });
@@ -140,9 +160,9 @@ class Login extends PureComponent {
   }
 
   render() {
-    const { device, showPassiveMessage, showPassiveMessageAsync } = this.props;
+    const { dimensions, showPassiveMessage, showPassiveMessageAsync, user, netInfo } = this.props;
     const { showingSelectionKey, authorization_key: key, login, validating } = this.state;
-    const { width } = device.dimensions;
+    const { width } = dimensions;
 
     return (
       <TouchableWithoutFeedback
@@ -242,13 +262,13 @@ class Login extends PureComponent {
 
 Login.propTypes = {
   user: PropTypes.object,
-  device: PropTypes.object,
 };
 
 
 const mapStateToProps = (state) => ({
   user: state.user.userData,
-  device: state.device,
+  netInfo: state.device.netInfo,
+  dimensions: state.device.dimensions,
   showPassiveMessage: state.user.showPassiveMessage,
 })
 
