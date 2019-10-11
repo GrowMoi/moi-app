@@ -16,4 +16,11 @@ export const setDeviceDimensions = (options) => {
   };
 }
 
+export const setNetInfo = (netInfo) => {
+  return {
+    type: actionTypes.SET_CONNECTION_INFO,
+    payload: netInfo,
+  };
+}
+
 export const setHeightPercent = (percennt) => ({ type: actionTypes.SET_HEIGTH_PERCENT, payload: percennt });
