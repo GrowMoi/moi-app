@@ -8,6 +8,7 @@ const initialState = {
     orientation: null,
   },
   heightPercent: null,
+  netInfo: null,
 };
 
 const dimensions = (state = initialState.dimensions, action) => {
@@ -30,7 +31,17 @@ const heightPercent =  (state = initialState.heightPercent, action) => {
   }
 };
 
+const netInfo =  (state = initialState.netInfo, action) => {
+  switch (action.type) {
+    case actionTypes.SET_CONNECTION_INFO:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   dimensions,
   heightPercent,
+  netInfo,
 });

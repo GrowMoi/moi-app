@@ -4,10 +4,11 @@ import { AppLoading, Updates } from 'expo';
 import * as Localization from 'expo-localization';
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import * as Font from 'expo-font';
-import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView } from 'react-native';
+import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert } from 'react-native';
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
+import NetInfo from "@react-native-community/netinfo";
 
 import routes from './src/routes';
 import messages from './src/messages';
@@ -15,13 +16,14 @@ import store from './src/store';
 import { flattenMessages, cacheImages } from './src/commons/utils';
 import allImages from './assets/images';
 import fonts from './assets/fonts';
-import { setDeviceDimensions } from './src/actions/deviceActions';
+import { setDeviceDimensions, setNetInfo } from './src/actions/deviceActions';
 import userActions from './src/actions/userActions';
 import UserInactivity from 'react-native-user-inactivity';
 import { TIME_FOR_INACTIVITY } from './src/constants';
 import Loader from './src/commons/components/Loader/Loader';
 import CustomSplash from './src/commons/components/CustomSplash/CustomSplash'
 import AppContainer from './src/containers/App/AppContainer'
+import { Actions, ActionConst } from 'react-native-router-flux';
 
 // addLocaleData([...en, ...es]);
 
@@ -38,6 +40,8 @@ class App extends Component {
     appIsReady: false,
     showCustomSplash: false,
     showMainApp: false,
+    netInfo: null,
+    isShowingAlert: false,
   }
 
   async componentWillMount() {
@@ -47,8 +51,45 @@ class App extends Component {
     this.checkUpdates();
   }
 
+  componentDidMount() {
+    this.subscribeNetInfo();
+  }
+
+  subscribeNetInfo = () => {
+    this.unsubscribeNetInfo = NetInfo.addEventListener(state => {
+
+      if(state.isConnected) {
+        store.dispatch(setNetInfo(state))
+        this.setState({ netInfo: state })
+      }
+
+      if(!state.isConnected && !this.state.isShowingAlert) {
+        store.dispatch(setNetInfo(state))
+        this.setState(
+          prevState => ({ netInfo: state, isShowingAlert: true }),
+          () => {
+            Alert.alert(
+              'Tienes problemas de conexión',
+              'Asegurate de estar conectado a una red estable de internet, para disfrutar la experiencia',
+              [
+                {text: 'Intentar nuevamente', onPress: () => {
+                  this.setState(() => ({ showMainApp: false, isShowingAlert: false }),
+                  () => {
+                    Actions.login({ type: ActionConst.RESET });
+                  });
+                }},
+              ],
+              {cancelable: false},
+            )
+          }
+        );
+      }
+    });
+  }
+
   componentWillUnmount() {
     Dimensions.removeEventListener('change', this.setOrientation);
+    this.unsubscribeNetInfo();
   }
 
   setOrientation = (options) => {

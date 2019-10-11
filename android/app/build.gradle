@@ -120,6 +120,7 @@ apply from: 'expo.gradle'
 apply from: "../../node_modules/react-native-unimodules/gradle.groovy"
 
 dependencies {
+    implementation project(':@react-native-community_netinfo')
     implementation project(':react-native-view-shot')
     implementation project(':react-native-svg')
     implementation project(':react-native-sound')
