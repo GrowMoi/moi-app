@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { View } from 'react-native';
 
+
 // Components
 import Navbar from '../../commons/components/Navbar/Navbar';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -36,34 +37,26 @@ const TopNavbar = styled(Navbar)`
   z-index: 2;
 `
 
-class TreeScene extends Component {
-  state = {
-    isOpenPassiveMessage: false,
-  }
+const TreeScene = ({ scene, showPassiveMessage, showPassiveMessageAsync }) =>  {
+  return (
+    <Background>
+      <ContentScreen>
+        <Tree />
+      </ContentScreen>
+      <TopNavbar />
+      <BottomBar />
 
-  render() {
-    const { scene, showPassiveMessage, showPassiveMessageAsync } = this.props
-
-    return (
-      <Background>
-        <ContentScreen>
-          <Tree />
-        </ContentScreen>
-        <TopNavbar />
-        <BottomBar />
-
-        <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && scene.name === 'tree'}
-          touchableProps={{
-            onPress: () => {
-              showPassiveMessageAsync(false);
-            }
-          }}
-          message='El mundo del conocimiento espera por ti. Da clic en un fruto gris para conocer sus contenidos'
-        />
-      </Background>
-    );
-  }
+      <PassiveMessageAlert
+        isOpenPassiveMessage={showPassiveMessage && scene.name === 'tree'}
+        touchableProps={{
+          onPress: () => {
+            showPassiveMessageAsync(false);
+          }
+        }}
+        message='El mundo del conocimiento espera por ti. Da clic en un fruto gris para conocer sus contenidos'
+      />
+    </Background>
+  );
 }
 
 TreeScene.propTypes = {
