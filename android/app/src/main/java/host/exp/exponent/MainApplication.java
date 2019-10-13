@@ -13,7 +13,7 @@ import host.exp.exponent.generated.BasePackageList;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
-import com.reactnativecommunity.netinfo.NetInfoPackage;
+//import com.reactnativecommunity.netinfo.NetInfoPackage;
 //import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 //import com.horcrux.svg.SvgPackage;
 import com.zmxv.RNSound.RNSoundPackage;
@@ -36,7 +36,7 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
 
         // Needed for `react-native link`
         // new MainReactPackage(),
-            new NetInfoPackage(),
+            //new NetInfoPackage(),
 //            new RNViewShotPackage(),
 //            new SvgPackage(),
             new RNSoundPackage(),

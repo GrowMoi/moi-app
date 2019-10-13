@@ -8,7 +8,7 @@ import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert } from 'r
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
-import NetInfo from "@react-native-community/netinfo";
+import { NetInfo } from "react-native";
 
 import routes from './src/routes';
 import messages from './src/messages';
@@ -56,17 +56,17 @@ class App extends Component {
   }
 
   subscribeNetInfo = () => {
-    this.unsubscribeNetInfo = NetInfo.addEventListener(state => {
-
-      if(state.isConnected) {
-        store.dispatch(setNetInfo(state))
-        this.setState({ netInfo: state })
+    this.unsubscribeNetInfo = NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
+      const netInfo = {isConnected};
+      if(netInfo.isConnected) {
+        store.dispatch(setNetInfo(netInfo))
+        this.setState({ netInfo: netInfo })
       }
 
-      if(!state.isConnected && !this.state.isShowingAlert) {
-        store.dispatch(setNetInfo(state))
+      if(!netInfo.isConnected && !this.state.isShowingAlert) {
+        store.dispatch(setNetInfo(netInfo))
         this.setState(
-          prevState => ({ netInfo: state, isShowingAlert: true }),
+          prevState => ({ netInfo: netInfo, isShowingAlert: true }),
           () => {
             Alert.alert(
               'Tienes problemas de conexión',
@@ -89,7 +89,7 @@ class App extends Component {
 
   componentWillUnmount() {
     Dimensions.removeEventListener('change', this.setOrientation);
-    this.unsubscribeNetInfo();
+    NetInfo.isConnected.removeEventListener('connectionChange', this.unsubscribeNetInfo);
   }
 
   setOrientation = (options) => {
@@ -133,6 +133,7 @@ class App extends Component {
     } catch (error) {
       console.log('AUTH NOT VALID', error.message);
       await store.dispatch(userActions.resetData());
+      store.dispatch(setNetInfo(this.state.netInfo))
     }
 
     this.setOrientation();
