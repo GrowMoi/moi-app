@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { AppLoading, Updates } from 'expo';
+import { AppLoading, Updates, SplashScreen } from 'expo';
 import * as Localization from 'expo-localization';
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import * as Font from 'expo-font';
-import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert } from 'react-native';
+import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert, View, Image } from 'react-native';
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
@@ -37,8 +37,8 @@ class App extends Component {
   state = {
     locale: this.deviceLocale,
     assetsLoaded: false,
+    isSplashReady: false,
     appIsReady: false,
-    showCustomSplash: false,
     showMainApp: false,
     netInfo: null,
     isShowingAlert: false,
@@ -52,6 +52,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    SplashScreen.preventAutoHide();
     this.subscribeNetInfo();
   }
 
@@ -149,6 +150,11 @@ class App extends Component {
     this.setState({ showMainApp: true });
   }
 
+  _cacheResourcesAsync = async () => {
+    SplashScreen.hide();
+    this.setState({ appIsReady: true });
+  };
+
   async checkUpdates() {
     try {
       const update = await Updates.checkForUpdateAsync();
@@ -161,26 +167,29 @@ class App extends Component {
   }
 
   render() {
-    const { appIsReady, assetsLoaded, showMainApp, showCustomSplash } = this.state;
+    const { appIsReady, assetsLoaded, showMainApp, isSplashReady } = this.state;
 
-    if (!appIsReady) {
+    if (!isSplashReady) {
       return (
         <AppLoading
           startAsync={this.validateAuth}
-          onFinish={() => this.setState({ appIsReady: true, showCustomSplash: true })}
+          onFinish={() => this.setState({ isSplashReady: true })}
           onError={console.warn}
+          autoHideSplash={false}
         />
       );
     }
 
-    if (appIsReady && showCustomSplash) {
+    if (!appIsReady) {
       return (
-        <CustomSplash
-          startAsync={this.validateAuth}
-          onFinish={() => this.setState({ showCustomSplash: false })}
-          onError={console.warn}
-        />
-      )
+        <View style={{ flex: 1 }}>
+          <CustomSplash
+            startAsync={this.validateAuth}
+            onFinish={this._cacheResourcesAsync}
+            onError={console.warn}
+          />
+        </View>
+      );
     }
 
     if (showMainApp) {
