@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { object } from '../commons/utils';
 import * as actionTypes from '../actions/actionTypes';
 
-const initialState = {
+export const initialState = {
   userData: {
     profile: {},
     headers: {},

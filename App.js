@@ -40,12 +40,14 @@ class App extends Component {
     isSplashReady: false,
     appIsReady: false,
     showMainApp: false,
-    netInfo: null,
+    netInfo: {},
     isShowingAlert: false,
   }
 
   async componentWillMount() {
     Dimensions.addEventListener('change', this.setOrientation);
+    NetInfo.isConnected.addEventListener('connectionChange', this.handleStatusConnection);
+
     await this.setPassiveMessageSettings();
     await this.handleAppReview();
     this.checkUpdates();
@@ -53,44 +55,41 @@ class App extends Component {
 
   componentDidMount() {
     SplashScreen.preventAutoHide();
-    this.subscribeNetInfo();
   }
 
-  subscribeNetInfo = () => {
-    this.unsubscribeNetInfo = NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
-      const netInfo = {isConnected};
-      if(netInfo.isConnected) {
-        store.dispatch(setNetInfo(netInfo))
-        this.setState({ netInfo: netInfo })
-      }
+  handleStatusConnection = (isConnected) => {
+    const netInfo = {isConnected};
+    if(netInfo.isConnected) {
+      store.dispatch(setNetInfo(netInfo))
+      this.setState({ netInfo: netInfo })
+    }
 
-      if(!netInfo.isConnected && !this.state.isShowingAlert) {
-        store.dispatch(setNetInfo(netInfo))
-        this.setState(
-          prevState => ({ netInfo: netInfo, isShowingAlert: true }),
-          () => {
-            Alert.alert(
-              'Tienes problemas de conexión',
-              'Asegurate de estar conectado a una red estable de internet, para disfrutar la experiencia',
-              [
-                {text: 'Intentar nuevamente', onPress: () => {
-                  this.setState(() => ({ showMainApp: false, isShowingAlert: false }),
-                  () => {
-                    Actions.login({ type: ActionConst.RESET });
-                  });
-                }},
-              ],
-              {cancelable: false},
-            )
-          }
-        );
-      }
-    });
+    if(!netInfo.isConnected && !this.state.isShowingAlert) {
+      store.dispatch(setNetInfo(netInfo))
+      this.setState(
+        prevState => ({ netInfo: netInfo, isShowingAlert: true }),
+        () => {
+          Alert.alert(
+            'Tienes problemas de conexión',
+            'Asegurate de estar conectado a una red estable de internet, para disfrutar la experiencia',
+            [
+              {text: 'Intentar nuevamente', onPress: () => {
+                this.setState(() => ({ showMainApp: false, isShowingAlert: false }),
+                () => {
+                  Actions.login({ type: ActionConst.RESET });
+                });
+              }},
+            ],
+            {cancelable: false},
+          )
+        }
+      );
+    }
   }
 
   componentWillUnmount() {
     Dimensions.removeEventListener('change', this.setOrientation);
-    NetInfo.isConnected.removeEventListener('connectionChange', this.unsubscribeNetInfo);
+    NetInfo.isConnected.removeEventListener('connectionChange', this.handleStatusConnection);
   }
 
   setOrientation = (options) => {

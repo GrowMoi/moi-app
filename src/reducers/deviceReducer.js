@@ -8,7 +8,7 @@ const initialState = {
     orientation: null,
   },
   heightPercent: null,
-  netInfo: null,
+  netInfo: {},
 };
 
 const dimensions = (state = initialState.dimensions, action) => {

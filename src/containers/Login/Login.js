@@ -13,9 +13,11 @@ import {
   View,
   Alert,
   TouchableWithoutFeedback,
+  NetInfo,
 } from 'react-native';
 
 import userActions from './../../actions/userActions';
+import { setNetInfo } from '../../actions/deviceActions'
 import { WoodTitle } from '../../commons/components/SceneComponents';
 import { getHeightAspectRatio } from '../../commons/utils';
 import Input from '../../commons/components/Input/Input';
@@ -95,15 +97,19 @@ class Login extends PureComponent {
   }
 
   componentDidMount() {
-    const { user, netInfo } = this.props;
+    const { user, netInfo = {}, setNetworkConnection } = this.props;
     // console.log('USER AUTHENTICATE', user.authenticate)
+    NetInfo.isConnected.fetch().then(isConnected => {
+      setNetworkConnection({ isConnected });
+    });
+
     if (user.authenticate && netInfo.isConnected) Actions.tree();
   }
 
-  componentWillReceiveProps() {
-    const { user, netInfo } = this.props
+  componentWillReceiveProps(nextProps) {
+    const { user, netInfo = {} } = this.props
 
-    if(netInfo.isConnected) {
+    if(netInfo.isConnected !== !!((nextProps || {}).netInfo || {}).isConnected) {
       Alert.alert('Conexión Restablecida', 'La conexión a internet ha sido restablecida')
       if(user.authenticate) {
         Actions.tree();
@@ -114,14 +120,14 @@ class Login extends PureComponent {
 
   submit = async () => {
     const { login, authorization_key } = this.state;
-    const { loginAsync, netInfo } = this.props;
+    const { loginAsync, netInfo = {} } = this.props;
 
     this.setState({ validating: true });
 
     if(!(netInfo || {}).isConnected) {
       Alert.alert('Para ingresar a moi tienes que tener una conexión a internet')
       this.setState({ validating: false });
-      return null;
+      return;
     }
 
     try {
@@ -142,6 +148,13 @@ class Login extends PureComponent {
   }
 
   showSelectionKey = () => {
+    const { netInfo = {} } = this.props;
+
+    if(!netInfo.isConnected) {
+      Alert.alert('Para ingresar a moi tienes que tener una conexión a internet')
+      return;
+    }
+
     this.setState({ showingSelectionKey: true });
   }
 
@@ -220,6 +233,7 @@ class Login extends PureComponent {
                   <ButtonsContainer>
                     <Animatable.View animation="bounceInLeft" easing="ease-in">
                       <Button
+                        disabled={!netInfo.isConnected}
                         style={{ width: Size.buttonWidth, marginRight: Size.spaceMedium }}
                         title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
                         onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
@@ -275,6 +289,7 @@ const mapDispatchToProps = {
   validateToken: userActions.validateToken,
   signOutAsync: userActions.signOutAsync,
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+  setNetworkConnection: setNetInfo,
 }
 
 export default connect(
