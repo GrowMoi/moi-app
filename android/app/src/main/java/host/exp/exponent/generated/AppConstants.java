@@ -15,7 +15,7 @@ public class AppConstants {
   public static String INITIAL_URL = "exp://exp.host/@mvinan/moi";
   public static final String SHELL_APP_SCHEME = "expcb94a1b685d94c71b27eedc762636f73";
   public static final String RELEASE_CHANNEL = "default";
-  public static boolean SHOW_LOADING_VIEW_IN_SHELL_APP = true;
+  public static boolean SHOW_LOADING_VIEW_IN_SHELL_APP = false;
   public static boolean ARE_REMOTE_UPDATES_ENABLED = true;
   public static final List<Constants.EmbeddedResponse> EMBEDDED_RESPONSES;
   public static boolean FCM_ENABLED = false;
@@ -23,8 +23,8 @@ public class AppConstants {
   static {
     List<Constants.EmbeddedResponse> embeddedResponses = new ArrayList<>();
 
-    
-        
+
+
         // ADD EMBEDDED RESPONSES HERE
         // START EMBEDDED RESPONSES
         embeddedResponses.add(new Constants.EmbeddedResponse("https://exp.host/@mvinan/moi", "assets://shell-app-manifest.json", "application/json"));
