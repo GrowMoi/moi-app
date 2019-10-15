@@ -11,6 +11,7 @@ import tutor from './tutorReducer';
 import sideMenu from './sideReducer';
 // ... other reducers
 import * as actionTypes from '../actions/actionTypes';
+import { object } from '../commons/utils';
 
 const appReducer = combineReducers({
   routes,
@@ -28,7 +29,12 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
   if (action.type === actionTypes.RESET_DATA) {
-    state = undefined
+    const config = object.buildObjectWithSpecificKeys(state, [
+      'device.dimensions',
+      'device.netInfo'
+    ]);
+
+    state = config
   }
 
   return appReducer(state, action)

@@ -133,7 +133,6 @@ class App extends Component {
     } catch (error) {
       console.log('AUTH NOT VALID', error.message);
       await store.dispatch(userActions.resetData());
-      store.dispatch(setNetInfo(this.state.netInfo))
     }
 
     this.setOrientation();

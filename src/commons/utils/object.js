@@ -25,9 +25,36 @@ function removeDuplicates(myArr = [], prop = '') {
   });
 }
 
+function generateRecursiveObject(mainObject, keysStr, result = {}) {
+  if (keysStr && keysStr.length) {
+    const currentArrayKeys = keysStr.split('.');
+    const currentKey = currentArrayKeys.shift()
+    const currentValue = mainObject[currentKey]
+
+    if (currentValue) {
+      if (currentArrayKeys && currentArrayKeys.length) {
+        if (!result[currentKey]) {
+          result[currentKey] = {}
+        }
+      } else {
+        result[currentKey] = currentValue;
+      }
+    }
+    generateRecursiveObject(currentValue, currentArrayKeys.join('.'), result[currentKey])
+  }
+}
+
+function buildObjectWithSpecificKeys(mainObject, keys = []) {
+  const result = {}
+  for(let i = 0; i < keys.length; i ++) {
+    generateRecursiveObject(mainObject, keys[i], result);
+  }
+  return result;
+}
 
 export default {
   isEmpty,
   sortObjectsByKey,
   removeDuplicates,
+  buildObjectWithSpecificKeys,
 };

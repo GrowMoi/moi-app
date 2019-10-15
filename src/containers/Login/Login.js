@@ -108,8 +108,11 @@ class Login extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { user, netInfo = {} } = this.props
+    const incomingNetinfo = ((nextProps || {}).netInfo || {})
+    const hasValue = netInfo.isConnected && incomingNetinfo.isConnected
+    const isDifferent = netInfo.isConnected !== !!incomingNetinfo.isConnected
 
-    if(netInfo.isConnected !== !!((nextProps || {}).netInfo || {}).isConnected) {
+    if(hasValue && isDifferent) {
       Alert.alert('Conexión Restablecida', 'La conexión a internet ha sido restablecida')
       if(user.authenticate) {
         Actions.tree();
