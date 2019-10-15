@@ -26,6 +26,7 @@ ios/build/
 android/build/
 android/app/build
 android/app/release
+android/local.properties
 *.patch
 ios/Pods/*
 android/.idea/
