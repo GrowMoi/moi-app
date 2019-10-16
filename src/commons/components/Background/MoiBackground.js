@@ -6,16 +6,27 @@ import styled from 'styled-components/native';
 import { LANDSCAPE } from '../../../constants';
 import { setHeightPercent } from '../../../actions/deviceActions';
 import deviceUtils from '../../utils/device-utils';
+import Orientation from 'react-native-orientation';
 
 const Background = styled(ImageBackground)`
 position: relative;
   width: 100%;
-  height: ${props => props.heightPercent + '%'};
+  height: 100%;
 `;
+
+// const Background = styled(ImageBackground)`
+// position: relative;
+//   width: 100%;
+//   height: ${props => props.heightPercent + '%'};
+// `;
 
 class MoiBackground extends Component {
 
   shouldSetHeightPercent = true;
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
+  }
 
   getPercentHeight() {
     const { device } = this.props;
@@ -33,11 +44,12 @@ class MoiBackground extends Component {
     const { device, style } = this.props;
     const { orientation } = device.dimensions;
 
-    const currentImage = orientation === LANDSCAPE ? 'background_tree_landscape' : 'background_tree_portrait';
+    //FIXME: temporarily blocked landscape, change this.
+    // const currentImage = orientation === LANDSCAPE ? 'background_tree_landscape' : 'background_tree_portrait';
     const percentHeight = this.getPercentHeight();
 
     return (
-      <Background style={style} heightPercent={percentHeight} source={{ uri: currentImage }} resizeMode='stretch'>
+      <Background style={style} heightPercent={percentHeight} source={{ uri: 'background_tree_portrait' }} resizeMode='stretch'>
         {this.props.children}
       </Background>
     );

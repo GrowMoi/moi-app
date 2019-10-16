@@ -8,7 +8,8 @@ import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert, View, Im
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
-//import { NetInfo } from "react-native";
+import { NetInfo } from "react-native";
+import Orientation from 'react-native-orientation'
 
 import routes from './src/routes';
 import messages from './src/messages';
@@ -54,6 +55,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    Orientation.lockToPortrait();
     SplashScreen.preventAutoHide();
   }
 
