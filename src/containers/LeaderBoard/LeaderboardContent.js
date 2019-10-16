@@ -94,7 +94,7 @@ class LeaderBoardContent extends PureComponent {
   }
 
   _keyExtractor = (item, index) => index.toString();
-  _renderItem = ({ item }) => {
+  _renderItem = ({ item, index }) => {
     const { profile, leaders: { meta: { total_super_event_achievements } } } = this.props;
     const style = item.user_id === profile.id ? { backgroundColor: Palette.white.alpha(0.7).css() } : {};
 
@@ -105,6 +105,7 @@ class LeaderBoardContent extends PureComponent {
 
     return (
       <LeaderRow
+        position={index + 1}
         style={style}
         playerName={normalize.normalizeAllCapLetter(item.username)}
         grade={item.contents_learnt}
@@ -152,6 +153,7 @@ class LeaderBoardContent extends PureComponent {
           <ContentFooter>
             <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
             <LeaderRow
+              position={userLeader.position}
               playerName={normalize.normalizeAllCapLetter(userLeader.username)}
               grade={userLeader.contents_learnt}
               seconds={`${new Date(userLeader.time_elapsed).getSeconds()}s`}

@@ -6,7 +6,6 @@ import { Header, TextBody } from '../Typography';
 import MoIcon from '../MoIcon/MoIcon';
 
 const Container = styled(TouchableOpacity)`
-  flex: 1;
   height: ${Size.heigthLeaderRow};
   background-color: ${Palette.white.alpha(0.4).css()};
   align-self: stretch;
@@ -23,6 +22,10 @@ const Container = styled(TouchableOpacity)`
   shadow-radius: 2;
 `;
 
+const Position = styled(TextBody)`
+  flex: 0.3;
+`;
+
 const Icon = styled(MoIcon)`
   flex-grow: 0;
   margin-right: 10;
@@ -33,16 +36,17 @@ const PlayerName = styled(Header)`
 `
 
 const Grade = styled(TextBody)`
-  flex: 1;
+  flex: 0.7;
 `;
 
 const Seconds = styled(TextBody)`
   width: 35;
 `;
 
-const LeaderRow = ({ playerName, grade, seconds, style, onPress = () => null }) => {
+const LeaderRow = ({ playerName, grade, seconds, style, position, onPress = () => null }) => {
   return (
     <Container style={style} onPress={onPress}>
+      <Position>{position}</Position>
       <Icon name='profile' size={30}/>
       <PlayerName numberOfLines={1} inverted heavy>{playerName}</PlayerName>
       <Grade inverted bolder>{grade}</Grade>
