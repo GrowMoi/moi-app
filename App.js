@@ -8,7 +8,7 @@ import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert, View, Im
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
-import { NetInfo } from "react-native";
+//import { NetInfo } from "react-native";
 
 import routes from './src/routes';
 import messages from './src/messages';
@@ -46,7 +46,7 @@ class App extends Component {
 
   async componentWillMount() {
     Dimensions.addEventListener('change', this.setOrientation);
-    NetInfo.isConnected.addEventListener('connectionChange', this.handleStatusConnection);
+    //NetInfo.isConnected.addEventListener('connectionChange', this.handleStatusConnection);
 
     await this.setPassiveMessageSettings();
     await this.handleAppReview();
@@ -57,39 +57,39 @@ class App extends Component {
     SplashScreen.preventAutoHide();
   }
 
-  handleStatusConnection = (isConnected) => {
-    const netInfo = {isConnected};
-    if(netInfo.isConnected) {
-      store.dispatch(setNetInfo(netInfo))
-      this.setState({ netInfo: netInfo })
-    }
+  // handleStatusConnection = (isConnected) => {
+  //   const netInfo = {isConnected};
+  //   if(netInfo.isConnected) {
+  //     store.dispatch(setNetInfo(netInfo))
+  //     this.setState({ netInfo: netInfo })
+  //   }
 
-    if(!netInfo.isConnected && !this.state.isShowingAlert) {
-      store.dispatch(setNetInfo(netInfo))
-      this.setState(
-        prevState => ({ netInfo: netInfo, isShowingAlert: true }),
-        () => {
-          Alert.alert(
-            'Tienes problemas de conexión',
-            'Asegurate de estar conectado a una red estable de internet, para disfrutar la experiencia',
-            [
-              {text: 'Intentar nuevamente', onPress: () => {
-                this.setState(() => ({ showMainApp: false, isShowingAlert: false }),
-                () => {
-                  Actions.login({ type: ActionConst.RESET });
-                });
-              }},
-            ],
-            {cancelable: false},
-          )
-        }
-      );
-    }
-  }
+  //   if(!netInfo.isConnected && !this.state.isShowingAlert) {
+  //     store.dispatch(setNetInfo(netInfo))
+  //     this.setState(
+  //       prevState => ({ netInfo: netInfo, isShowingAlert: true }),
+  //       () => {
+  //         Alert.alert(
+  //           'Tienes problemas de conexión',
+  //           'Asegurate de estar conectado a una red estable de internet, para disfrutar la experiencia',
+  //           [
+  //             {text: 'Intentar nuevamente', onPress: () => {
+  //               this.setState(() => ({ showMainApp: false, isShowingAlert: false }),
+  //               () => {
+  //                 Actions.login({ type: ActionConst.RESET });
+  //               });
+  //             }},
+  //           ],
+  //           {cancelable: false},
+  //         )
+  //       }
+  //     );
+  //   }
+  // }
 
   componentWillUnmount() {
     Dimensions.removeEventListener('change', this.setOrientation);
-    NetInfo.isConnected.removeEventListener('connectionChange', this.handleStatusConnection);
+    //NetInfo.isConnected.removeEventListener('connectionChange', this.handleStatusConnection);
   }
 
   setOrientation = (options) => {

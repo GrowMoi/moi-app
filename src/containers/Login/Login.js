@@ -13,7 +13,7 @@ import {
   View,
   Alert,
   TouchableWithoutFeedback,
-  NetInfo,
+  //NetInfo,
 } from 'react-native';
 
 import userActions from './../../actions/userActions';
@@ -97,28 +97,30 @@ class Login extends PureComponent {
   }
 
   componentDidMount() {
-    const { user, netInfo = {}, setNetworkConnection } = this.props;
+    //const { user, netInfo = {}, setNetworkConnection } = this.props;
     // console.log('USER AUTHENTICATE', user.authenticate)
-    NetInfo.isConnected.fetch().then(isConnected => {
-      setNetworkConnection({ isConnected });
-    });
+    // NetInfo.isConnected.fetch().then(isConnected => {
+    //   setNetworkConnection({ isConnected });
+    // });
 
-    if (user.authenticate && netInfo.isConnected) Actions.tree();
+    //if (user.authenticate && netInfo.isConnected) Actions.tree();
+
+    const { user } = this.props;
+    if (user.authenticate) Actions.tree();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { user, netInfo = {} } = this.props
-    const incomingNetinfo = ((nextProps || {}).netInfo || {})
-    const isDifferent = netInfo.isConnected !== !!incomingNetinfo.isConnected
+  // componentWillReceiveProps(nextProps) {
+  //   const { user, netInfo = {} } = this.props
+  //   const incomingNetinfo = ((nextProps || {}).netInfo || {})
+  //   const isDifferent = netInfo.isConnected !== !!incomingNetinfo.isConnected
 
-    if(isDifferent) {
-      Alert.alert('Conexión Restablecida', 'La conexión a internet ha sido restablecida')
-      if(user.authenticate) {
-        Actions.tree();
-      }
-    }
-
-  }
+  //   if(isDifferent) {
+  //     Alert.alert('Conexión Restablecida', 'La conexión a internet ha sido restablecida')
+  //     if(user.authenticate) {
+  //       Actions.tree();
+  //     }
+  //   }
+  // }
 
   submit = async () => {
     const { login, authorization_key } = this.state;
@@ -126,11 +128,11 @@ class Login extends PureComponent {
 
     this.setState({ validating: true });
 
-    if(!(netInfo || {}).isConnected) {
-      Alert.alert('Para ingresar a moi tienes que tener una conexión a internet')
-      this.setState({ validating: false });
-      return;
-    }
+    // if(!(netInfo || {}).isConnected) {
+    //   Alert.alert('Para ingresar a moi tienes que tener una conexión a internet')
+    //   this.setState({ validating: false });
+    //   return;
+    // }
 
     try {
       await loginAsync({ login, authorization_key });
@@ -150,12 +152,11 @@ class Login extends PureComponent {
   }
 
   showSelectionKey = () => {
-    const { netInfo = {} } = this.props;
-
-    if(!netInfo.isConnected) {
-      Alert.alert('Para ingresar a moi tienes que tener una conexión a internet')
-      return;
-    }
+    //const { netInfo = {} } = this.props;
+    // if(!netInfo.isConnected) {
+    //   Alert.alert('Para ingresar a moi tienes que tener una conexión a internet')
+    //   return;
+    // }
 
     this.setState({ showingSelectionKey: true });
   }
@@ -173,7 +174,8 @@ class Login extends PureComponent {
   }
 
   render() {
-    const { dimensions, showPassiveMessage, showPassiveMessageAsync, user, netInfo } = this.props;
+    //const { dimensions, showPassiveMessage, showPassiveMessageAsync, user, netInfo } = this.props;
+    const { dimensions, showPassiveMessage, showPassiveMessageAsync, user } = this.props;
     const { showingSelectionKey, authorization_key: key, login, validating } = this.state;
     const { width } = dimensions;
 
@@ -235,7 +237,7 @@ class Login extends PureComponent {
                   <ButtonsContainer>
                     <Animatable.View animation="bounceInLeft" easing="ease-in">
                       <Button
-                        disabled={!netInfo.isConnected}
+                        // disabled={!netInfo.isConnected}
                         style={{ width: Size.buttonWidth, marginRight: Size.spaceMedium }}
                         title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
                         onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
