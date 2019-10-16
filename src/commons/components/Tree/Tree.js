@@ -311,7 +311,7 @@ class Tree extends Component {
 
   get sizeTreeScreenShot() {
     const { device: { dimensions: { width, height, orientation } } } = this.props;
-    const size = orientation === PORTRAIT ? width : height;
+    const size = orientation === PORTRAIT ? width : width;
     return size * (isTablet ? 0.9 : 1);
   }
 

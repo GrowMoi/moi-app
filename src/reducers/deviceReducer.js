@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 import * as actionTypes from '../actions/actionTypes';
+import { Dimensions } from 'react-native'
 
 const initialState = {
   dimensions: {
-    width: null,
-    height: null,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
     orientation: null,
   },
   heightPercent: null,
