@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { View } from 'react-native';
+import Orientation from 'react-native-orientation'
 
 
 // Components
@@ -38,6 +39,8 @@ const TopNavbar = styled(Navbar)`
 `
 
 const TreeScene = ({ scene, showPassiveMessage, showPassiveMessageAsync }) =>  {
+  Orientation.lockToPortrait();
+
   return (
     <Background>
       <ContentScreen>
@@ -53,7 +56,7 @@ const TreeScene = ({ scene, showPassiveMessage, showPassiveMessageAsync }) =>  {
             showPassiveMessageAsync(false);
           }
         }}
-        message='El mundo del conocimiento espera por ti. Da clic en un fruto gris para conocer sus contenidos'
+        message='El mundo del conocimiento espera por ti. Da click en un fruto gris para conocer sus contenidos'
       />
     </Background>
   );

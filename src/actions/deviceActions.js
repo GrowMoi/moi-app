@@ -3,7 +3,9 @@ import * as actionTypes from './actionTypes';
 import { PORTRAIT, LANDSCAPE } from '../constants'
 
 export const setDeviceDimensions = (options) => {
-  const { width, height } = (options || {}).base === 'window' ? Dimensions.get('window') : Dimensions.get('screen');
+  const { width, height } = (options || {}).base === 'window' ? Dimensions.get('window') : Dimensions.get('window');
+
+  //FIXME: add support for landscape
   const orientation = width >= height ? LANDSCAPE : PORTRAIT;
 
   return {
@@ -11,7 +13,7 @@ export const setDeviceDimensions = (options) => {
     payload: {
       width,
       height,
-      orientation,
+      orientation: PORTRAIT,
     },
   };
 }
