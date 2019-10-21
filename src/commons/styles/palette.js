@@ -7,6 +7,8 @@ export const colors = {
   white: chroma('white'),
   black: chroma('black'),
   gray: chroma('#818180'),
+  lightBlue: chroma('#04aff1'),
+  darkenLightBlue: chroma('#01ccf1'),
   darkGreen: chroma('#888a4e'),
   lightGray: chroma('#b7b7b3'),
   darkenGreen: chroma('#6d893a'),

@@ -8,9 +8,12 @@ const InputContainer = styled(View)`
 `;
 
 const StyledInput = styled(TextInput)`
+  background-color: ${props => props.inputBackground};
+  border-top-left-radius: 20;
+  border-bottom-left-radius: 10;
+  border-top-right-radius: 15;
+  border-bottom-right-radius: 20;
   border-color: transparent;
-  border-bottom-width: ${props => `${props.borderWidth}px`};
-  border-bottom-color: ${props => props.borderColor};
   padding-vertical: ${Size.spaceSmall};
   padding-horizontal: ${Size.spaceXSmall};
   color: ${props => props.textColor};
@@ -33,6 +36,7 @@ Input.defaultProps = {
   borderWidth: 1,
   borderColor: Palette.white,
   textColor: Palette.white,
+  inputBackground: Palette.colors.lightBlue,
 };
 
 export default Input;

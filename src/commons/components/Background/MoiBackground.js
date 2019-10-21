@@ -49,7 +49,7 @@ class MoiBackground extends Component {
     const percentHeight = this.getPercentHeight();
 
     return (
-      <Background style={style} heightPercent={percentHeight} source={{ uri: 'background_tree_portrait' }} resizeMode='stretch'>
+      <Background style={style} heightPercent={percentHeight} source={{ uri: 'background_tree_dark_portrait' }} resizeMode='stretch'>
         {this.props.children}
       </Background>
     );

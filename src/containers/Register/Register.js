@@ -243,10 +243,6 @@ class Register extends Component {
             >
                 <MoiBackground>
                     <RegisterContainer>
-                        <BackgroundTree
-                            source={{uri: 'fondo_arbol'}}
-                            width={width}
-                        />
                         {!loading && <FormContainer
                             behavior="padding"
                             width={width - Size.spaceXLarge}
@@ -256,7 +252,7 @@ class Register extends Component {
                                 <StatusBar hidden />
 
                                 <Animatable.View animation="bounceInDown" easing="ease-in">
-                                    <WoodTitle title='Registro' />
+                                    <WoodTitle title='REGISTRO' />
                                 </Animatable.View>
 
                                 <Form>

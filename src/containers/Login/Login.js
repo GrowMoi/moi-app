@@ -198,7 +198,7 @@ class Login extends PureComponent {
                 <StatusBar hidden/>
 
                 <Animatable.View animation="bounceInDown" easing="ease-in">
-                  <WoodTitle title='Login' />
+                  <WoodTitle title='LOGIN' />
                 </Animatable.View>
 
                 <Form>
