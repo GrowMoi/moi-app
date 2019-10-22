@@ -12,8 +12,11 @@ import Spinner from '../MoIcon/Spinner';
 const StyledButton = styled(View)`
   padding-horizontal: ${props => props.containsImage ? 0 : Size.spaceSmall};
   padding-vertical: ${props => props.containsImage ? 0 : Size.spaceSmall};
-  background-color: ${props => props.containsImage ? 'transparent' : (!props.disabled ? colors.creamButton : colors.darkGreen)};
-  border-radius: 3px;
+  background-color: ${props => props.containsImage ? 'transparent' : (!props.disabled ? colors.blue : colors.grayBlue)};
+  border-top-left-radius: 8;
+  border-bottom-left-radius: 15;
+  border-top-right-radius: 15;
+  border-bottom-right-radius: 8;
   justify-content: center;
   align-items: center;
   shadow-offset: 0px 0px;

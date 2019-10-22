@@ -28,7 +28,7 @@ const StyledHeader = styled(Text)`
     else if (props.color) return props.color;
     else if (props.secondary) return Palette.neutral;
     else if (props.highlight) return Palette.accent;
-    return Palette.dark;
+    return Palette.white;
   }};
   text-align: ${(props) => {
     if(props.center) return 'center';
