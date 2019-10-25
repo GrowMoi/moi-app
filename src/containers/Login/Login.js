@@ -4,9 +4,7 @@ import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
-import { width } from 'react-native-device-detection';
 import {
-  Image,
   StatusBar,
   KeyboardAvoidingView,
   Keyboard,
@@ -19,7 +17,6 @@ import {
 import userActions from './../../actions/userActions';
 import { setNetInfo } from '../../actions/deviceActions'
 import { WoodTitle } from '../../commons/components/SceneComponents';
-import { getHeightAspectRatio } from '../../commons/utils';
 import Input from '../../commons/components/Input/Input';
 import { Size } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
@@ -34,18 +31,6 @@ const LoginContainer = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
-`;
-
-const bgTreeWidth = 522;
-const bgTreeHeight = 650;
-const BackgroundTree = styled(Image)`
-  width: ${props => {
-    return props.width || width
-  }};
-  height: ${props => getHeightAspectRatio(bgTreeWidth, bgTreeHeight, (props.width || width))};
-  position: absolute;
-  bottom: 0;
-  left: 0;
 `;
 
 const FormContainer = styled(KeyboardAvoidingView)`
@@ -185,10 +170,6 @@ class Login extends PureComponent {
       >
         <MoiBackground>
           <LoginContainer>
-            <BackgroundTree
-              source={{uri: 'fondo_arbol'}}
-              width={width}
-            />
             <FormContainer
               behavior="padding"
               width={width - Size.spaceXLarge}
