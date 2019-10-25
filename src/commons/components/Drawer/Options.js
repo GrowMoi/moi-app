@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { Header } from '../Typography';
 import { Size } from '../../styles';
 import withSound from '../../utils/withSound';
 import { Palette } from '../../styles'
+import { Feather } from '@expo/vector-icons';
 import chroma from 'chroma-js'
 
 
@@ -22,16 +23,18 @@ const Item = styled(TouchableOpacity)`
 
 const ButtonForm = styled(View)`
   padding-vertical: 10px;
-  padding-horizontal: 15px;
-  border-radius: 10px;
-  background-color: ${chroma('#dbd05c').alpha(0.6)};
-  shadow-color: black;
-  height: 45;
-  shadow-offset: 1px 3px;
-  shadow-opacity: 0.2;
-  shadow-radius: 3px;
-  justify-content: center;
+  width: 100%;
+  justify-content: flex-start;
+  flex-direction: row;
+  background-color: transparent;
+  align-items: center;
 `
+const styles = StyleSheet.create({
+  icon: {
+    marginHorizontal: 10,
+    color: Palette.colors.darkBlue
+  },
+})
 
 const ItemWithSound = ({ option, index }) => {
   const WithSound = withSound(Item);
@@ -42,7 +45,8 @@ const ItemWithSound = ({ option, index }) => {
       onPress={() => { if(option.onPress) option.onPress(option, index) }}
     >
       <ButtonForm>
-        <Header small color={Palette.colors.dark} heavy>{option.label}</Header>
+        <Feather style={styles.icon} name={option.icon} size={20}  />
+        <Header small color={Palette.colors.darkBlue} heavy>{option.label}</Header>
       </ButtonForm>
     </WithSound>
   )

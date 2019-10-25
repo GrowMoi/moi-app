@@ -7,6 +7,7 @@ import MoIcon from '../MoIcon/MoIcon'
 import { colors } from '../../styles/palette'
 import { normalize } from '../../utils'
 import ProfileAvatar from '../Profile/Profile'
+import { Size, Palette } from '../../styles';
 
 //Styles
 const Container = styled(View)`
@@ -16,7 +17,7 @@ const Container = styled(View)`
   justify-content: flex-start;
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-color: ${colors.greenSubList};
+  border-color: ${colors.blueSubList};
 `
 
 const Avatar = styled(View)`
@@ -27,23 +28,27 @@ const Info = styled(View)`
 `
 
 const Username = styled(Header)`
+  color: ${Palette.colors.darkBlue}
   margin-bottom: 10px;
   width: 140px;
 `
 
+const Level = styled(TextBody)`
+  color: ${Palette.colors.darkBlue}
+`
 
 //Component
-const UserInfo = ({ name = '', level = 0, avatarImage = '' }) => {
+const UserInfo = ({ name = '', level = 0, avatarImage = '', showAvatar = true, style }) => {
   const _name = normalize.normalizeFirstCapLetter(name)
   return (
-    <Container>
-      <Avatar>
+    <Container style={style}>
+      {showAvatar &&<Avatar>
         <ProfileAvatar userImageUri={avatarImage} width={50} />
-      </Avatar>
+      </Avatar>}
 
       <Info>
         <Username numberOfLines={1} small heavy>{_name}</Username>
-        <TextBody small heavy>Nivel: {level}</TextBody>
+        <Level small heavy>Nivel: {level}</Level>
       </Info>
     </Container>
   )

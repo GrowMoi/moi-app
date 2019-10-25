@@ -5,14 +5,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
-  Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import Options from './Options';
-import MoIcon from '../MoIcon/MoIcon';
 import TreeScreenShot from '../TreeScreenShot/TreeScreenShot';
 import { Title } from '../Typography';
 import { Size, Palette } from '../../styles';
@@ -42,7 +40,7 @@ const SideBarMenuHeader = styled(View)`
   padding-right: 10;
   padding-bottom: ${Size.spaceSmall};
   border-bottom-width: 1;
-  border-bottom-color: ${Palette.white.alpha(0.1).css()};
+  border-bottom-color: ${Palette.colors.darkBlue.alpha(0.1).css()};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -55,7 +53,7 @@ const TreContainer = styled(View)`
 `;
 
 const CloseIcon = styled(Ionicons)`
-  color: white;
+  color: ${Palette.colors.darkBlue};
 `
 
 const CloseButton = styled(TouchableOpacity)`
@@ -69,6 +67,9 @@ const styles = StyleSheet.create({
   ScrollViewContainer: {
     flex: 1,
   },
+  title: {
+    color: Palette.colors.darkBlue
+  }
 });
 
 class SideMenu extends Component {
@@ -92,6 +93,7 @@ class SideMenu extends Component {
       {
         id: 'inventory',
         label: 'Inventario',
+        icon: 'award',
         onPress: (option) => {
           if(onPressOption) onPressOption(option);
         }
@@ -99,6 +101,7 @@ class SideMenu extends Component {
       {
         id: 'settings',
         label: 'Configuración',
+        icon: 'settings',
         onPress: (option) => {
           if(onPressOption) onPressOption(option);
         }
@@ -106,6 +109,7 @@ class SideMenu extends Component {
       {
         id: 'leaderboard',
         label: 'Leaderboard',
+        icon: 'list',
         onPress: (option) => {
           if(onPressOption) onPressOption(option);
         }
@@ -113,6 +117,7 @@ class SideMenu extends Component {
       {
         id: 'searchFriends',
         label: 'Buscar Amigos',
+        icon: 'users',
         onPress: (option) => {
           if(onPressOption) onPressOption(option);
         }
@@ -143,9 +148,8 @@ class SideMenu extends Component {
         source={{uri: currentBox}}
       >
         <SideBarMenuHeader>
-          <MoIcon name='treeIcon' size={28} />
           <SideBarTitleContainer>
-            <Title inverted bolder>Menú</Title>
+            <Title inverted bolder style={styles.title}>Menú</Title>
           </SideBarTitleContainer>
 
           <CloseButton onPress={() => { if(onClose) onClose() }}>
@@ -158,7 +162,7 @@ class SideMenu extends Component {
           showsVerticalScrollIndicator
         >
           <UserInfo
-            avatarImage={profile.image}
+            showAvatar={false}
             name={profile.name || profile.username || ''}
             level={treeIsLoaded ? userTree.meta.depth : 0}
           />
