@@ -88,7 +88,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 28 Platform (2)" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-integration:1.3@jar" level="project" />
@@ -305,68 +305,6 @@
     <orderEntry type="library" name="Gradle: com.crashlytics.sdk.android:answers:1.3.6@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.fabric.sdk.android:fabric:1.3.10@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.crashlytics.sdk.android:beta:1.1.4@aar" level="project" />
-    <orderEntry type="module" module-name="expo-constants" />
-    <orderEntry type="module" module-name="unimodules-image-loader-interface" />
-    <orderEntry type="module" module-name="expo-permissions" />
-    <orderEntry type="module" module-name="react-native-view-shot" />
-    <orderEntry type="module" module-name="react-native-orientation" />
-    <orderEntry type="module" module-name="expo-image-picker" />
-    <orderEntry type="module" module-name="expo-av" />
-    <orderEntry type="module" module-name="expo-web-browser" />
-    <orderEntry type="module" module-name="expo-file-system" />
-    <orderEntry type="module" module-name="expo-location" />
-    <orderEntry type="module" module-name="unimodules-react-native-adapter" />
-    <orderEntry type="module" module-name="unimodules-core" />
-    <orderEntry type="module" module-name="expo-app-loader-provider" />
-    <orderEntry type="module" module-name="expo-font" />
-    <orderEntry type="module" module-name="expo-keep-awake" />
-    <orderEntry type="module" module-name="expo-linear-gradient" />
-    <orderEntry type="module" module-name="expo-localization" />
-    <orderEntry type="module" module-name="expo-sqlite" />
-    <orderEntry type="module" module-name="unimodules-barcode-scanner-interface" />
-    <orderEntry type="module" module-name="unimodules-camera-interface" />
-    <orderEntry type="module" module-name="unimodules-constants-interface" />
-    <orderEntry type="module" module-name="unimodules-face-detector-interface" />
-    <orderEntry type="module" module-name="unimodules-file-system-interface" />
-    <orderEntry type="module" module-name="unimodules-font-interface" />
-    <orderEntry type="module" module-name="unimodules-permissions-interface" />
-    <orderEntry type="module" module-name="unimodules-sensors-interface" />
-    <orderEntry type="module" module-name="unimodules-task-manager-interface" />
-    <orderEntry type="module" module-name="react-native-svg" />
-    <orderEntry type="module" module-name="react-native-sound" />
-    <orderEntry type="module" module-name="lottie-react-native" />
-    <orderEntry type="module" module-name="@react-native-community_masked-view" />
-    <orderEntry type="module" module-name="expo-constants" />
-    <orderEntry type="module" module-name="unimodules-image-loader-interface" />
-    <orderEntry type="module" module-name="expo-permissions" />
-    <orderEntry type="module" module-name="react-native-view-shot" />
-    <orderEntry type="module" module-name="react-native-orientation" />
-    <orderEntry type="module" module-name="expo-image-picker" />
-    <orderEntry type="module" module-name="expo-av" />
-    <orderEntry type="module" module-name="expo-web-browser" />
-    <orderEntry type="module" module-name="expo-file-system" />
-    <orderEntry type="module" module-name="expo-location" />
-    <orderEntry type="module" module-name="unimodules-react-native-adapter" />
-    <orderEntry type="module" module-name="unimodules-core" />
-    <orderEntry type="module" module-name="expo-app-loader-provider" />
-    <orderEntry type="module" module-name="expo-font" />
-    <orderEntry type="module" module-name="expo-keep-awake" />
-    <orderEntry type="module" module-name="expo-linear-gradient" />
-    <orderEntry type="module" module-name="expo-localization" />
-    <orderEntry type="module" module-name="expo-sqlite" />
-    <orderEntry type="module" module-name="unimodules-barcode-scanner-interface" />
-    <orderEntry type="module" module-name="unimodules-camera-interface" />
-    <orderEntry type="module" module-name="unimodules-constants-interface" />
-    <orderEntry type="module" module-name="unimodules-face-detector-interface" />
-    <orderEntry type="module" module-name="unimodules-file-system-interface" />
-    <orderEntry type="module" module-name="unimodules-font-interface" />
-    <orderEntry type="module" module-name="unimodules-permissions-interface" />
-    <orderEntry type="module" module-name="unimodules-sensors-interface" />
-    <orderEntry type="module" module-name="unimodules-task-manager-interface" />
-    <orderEntry type="module" module-name="react-native-svg" />
-    <orderEntry type="module" module-name="react-native-sound" />
-    <orderEntry type="module" module-name="lottie-react-native" />
-    <orderEntry type="module" module-name="@react-native-community_masked-view" />
     <orderEntry type="module" module-name="expo-constants" />
     <orderEntry type="module" module-name="unimodules-image-loader-interface" />
     <orderEntry type="module" module-name="expo-permissions" />

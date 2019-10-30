@@ -1,7 +1,17 @@
-import { isIphoneX } from 'react-native-device-detection';
 import deviceUtils from '../utils/device-utils';
+import React, {Platform, Dimensions} from 'react-native';
 
+const windowSize = Dimensions.get('window');
 const isTablet = deviceUtils.isTablet();
+
+
+let isPhoneFiveInch;
+let isPhoneSixInch;
+if ( Platform.OS === 'ios' && !Platform.isTVOS ) {
+    isPhoneFiveInch = windowSize.height === 812 || windowSize.width === 812 ? true : false;
+    isPhoneSixInch = windowSize.height === 896 || windowSize.width === 896 ? true : false;
+}
+
 
 export default {
   fontBody: isTablet ? 22 : 15,
@@ -24,9 +34,9 @@ export default {
   spaceMediumLarge: isTablet ? 100 : 60,
   spaceXLarge: 80,
 
-  navbarHeight: isIphoneX ? 70 : isTablet ? 55 : 45,
+  navbarHeight: isPhoneFiveInch ? 70 : isPhoneSixInch ? 80 : isTablet ? 55 : 45,
   bottomBarHeight: isTablet ? 35 : 20,
-  mavbarTopSpace: isIphoneX ? 23 : 0,
+  mavbarTopSpace: isPhoneFiveInch ? 23 : isPhoneSixInch ? 30 : 0,
   paddingLeft: isTablet ? 50 : 20,
   paddingRight: isTablet ? 40 : 10,
   paddingTop: isTablet ? 60 : 30,

@@ -170,6 +170,10 @@ export default class Neuron extends Component {
         {...neuronProps}
       >
         <TouchableWithoutFeedback
+          style={{
+            width: neuronSize,
+            height: neuronSize,
+          }}
           onPressOut={this.onPressOut}
           onPressIn={this.onPressIn}
           onPress={this.onPressNeuron}
