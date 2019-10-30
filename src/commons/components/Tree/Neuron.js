@@ -10,7 +10,7 @@ import {
 import styled, { css } from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 
-import { math } from '../../utils';
+import { math, neuron } from '../../utils';
 import { Sound } from '../SoundPlayer';
 
 export const NeuronContainer = styled(View)`
@@ -170,6 +170,10 @@ export default class Neuron extends Component {
         {...neuronProps}
       >
         <TouchableWithoutFeedback
+          style={{
+            width: neuronSize,
+            height: neuronSize,
+          }}
           onPressOut={this.onPressOut}
           onPressIn={this.onPressIn}
           onPress={this.onPressNeuron}
