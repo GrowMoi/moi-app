@@ -23,7 +23,7 @@ const Container = styled(TouchableOpacity)`
 `;
 
 const Position = styled(TextBody)`
-  flex: 0.3;
+  flex: 0.4;
 `;
 
 const Icon = styled(MoIcon)`
@@ -36,7 +36,7 @@ const PlayerName = styled(Header)`
 `
 
 const Grade = styled(TextBody)`
-  flex: 0.7;
+  flex: 0.6;
 `;
 
 const Seconds = styled(TextBody)`
