@@ -18,6 +18,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
+      "enabled": false,
+      "checkAutomatically": "ON_ERROR_RECOVERY",
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
