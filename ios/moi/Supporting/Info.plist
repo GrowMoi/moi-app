@@ -61,7 +61,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>Allow Moi to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow Moi to use your camera</string>
+	<string>Permite a Moi usar tu cámara para colocar una fotografía personalizada en tu perfil.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Allow Moi to access your contacts</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -73,7 +73,7 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give Moi permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Give Moi permission to access your photos</string>
+	<string>Puedes darle a Moi los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow Moi to access your reminders</string>
 	<key>UILaunchStoryboardName</key>
