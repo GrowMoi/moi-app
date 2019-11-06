@@ -28,7 +28,7 @@ export const HamburgerButton = () => (
   <IconContainer onPress={() => {
       store.dispatch(sideActions.sideMenuOpen());
     }}>
-    <Ionicons color="#FFF" name="md-menu" size={Size.hamburgerSize} />
+    <Ionicons color="#1e5eae" name="md-menu" size={Size.hamburgerSize} />
   </IconContainer>
 ); //eslint-disable-line
 
@@ -45,10 +45,11 @@ export default {
   },
 
   titleStyle: {
-    color: '#FFF',
+    color: '#1e5eae',
     fontSize: Size.fontHeader,
     width: '55%',
-    fontFamily: Font.museo('bolder'),
+    textTransform: 'uppercase',
+    fontFamily: Font.museo('book'),
     ...Platform.select({
       ios: {
         top: Size.mavbarTopSpace - 25 ,
