@@ -10,7 +10,7 @@ import {
 import styled, { css } from 'styled-components/native';
 import * as Animatable from 'react-native-animatable';
 
-import { math } from '../../utils';
+import { math, neuron } from '../../utils';
 import { Sound } from '../SoundPlayer';
 
 export const NeuronContainer = styled(View)`
