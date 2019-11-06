@@ -1,4 +1,4 @@
-# MoiApp
+# Moi Pacifico
 ## Managed workflow wit expo SDK-34
 
 Moi Social learning app with technologies based in React Native.
@@ -35,5 +35,9 @@ Moi Social learning app with technologies based in React Native.
 * `cd ..`
 * `yarn start -c`
 *  open your's project `xcworkspace` file in Xcode and compile
+
+#### Add the moi-pacifico symbolic link if not exists
+* `cd ios/`
+* `ln -s moi moi-pacifico`
 
 [More info for developing with expo in iOS](https://docs.expo.io/versions/v34.0.0/workflow/ios-simulator/)

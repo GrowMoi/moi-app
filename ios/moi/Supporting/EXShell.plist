@@ -9,7 +9,7 @@
 	<key>isShell</key>
 	<true/>
 	<key>manifestUrl</key>
-	<string>exp://exp.host/@moi/moi</string>
+	<string>exp://exp.host/@moi/moi-pacifico</string>
 	<key>releaseChannel</key>
 	<string>default</string>
 </dict>
