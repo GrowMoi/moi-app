@@ -12,11 +12,11 @@ import host.exp.exponent.Constants;
 public class AppConstants {
 
   public static final String VERSION_NAME = "1.0.0";
-  public static String INITIAL_URL = "exp://exp.host/@mvinan/moi";
+  public static String INITIAL_URL = "exp://exp.host/@moi/moi";
   public static final String SHELL_APP_SCHEME = "expcb94a1b685d94c71b27eedc762636f73";
   public static final String RELEASE_CHANNEL = "default";
   public static boolean SHOW_LOADING_VIEW_IN_SHELL_APP = false;
-  public static boolean ARE_REMOTE_UPDATES_ENABLED = true;
+  public static boolean ARE_REMOTE_UPDATES_ENABLED = false;
   public static final List<Constants.EmbeddedResponse> EMBEDDED_RESPONSES;
   public static boolean FCM_ENABLED = false;
 
@@ -25,9 +25,9 @@ public class AppConstants {
 
 
 
-        
-        
-        
+
+
+
         
         // ADD EMBEDDED RESPONSES HERE
         // START EMBEDDED RESPONSES
