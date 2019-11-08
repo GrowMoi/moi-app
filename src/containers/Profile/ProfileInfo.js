@@ -34,6 +34,17 @@ const Container = styled(ContentBox)`
   justify-content: center;
 `;
 
+const EditContainer = styled(View)`
+  height: 50%;
+  margin:auto;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top-left-radius: 21;
+  border-top-right-radius: 23;
+  border-bottom-right-radius: 13;
+  border-bottom-left-radius: 20;
+`;
+
 const ContentContainer = styled(View)`
   width: ${isTablet ? '90%' : '98%'};
   height:${isTablet ? '97%' : '100%'};
@@ -44,7 +55,8 @@ const HeaderProfile = styled(View)`
   justify-content: flex-start;
   flex-direction: row;
   align-self: stretch;
-  margin-bottom: 15;
+  margin-bottom: 2;
+  margin-left: 10;
   z-index: 10;
 `;
 
@@ -57,10 +69,15 @@ const NameContainer = styled(View)`
 `;
 
 const PersonalInfo = styled(View)`
-  background-color: ${Palette.white.alpha(0.2).css()};
-  border-radius: 5px;
-  border-color: #87a749;
-  border-width: 1px;
+  background-color: #01ccf1;
+  border-top-left-radius: 21;
+  border-top-right-radius: 17;
+  border-bottom-right-radius: 28;
+  border-bottom-left-radius: 10;
+  border-bottom-color: #679657;
+  border-left-color: #679657;
+  border-bottom-width: 2px;
+  border-left-width:2px;
   padding-horizontal: ${Size.spaceSmall};
   padding-vertical: ${Size.spaceSmall};
   flex-direction: row;
@@ -71,16 +88,16 @@ const DescriptionContainer = styled(View)`
   flex: 1;
 `;
 
-const TabContainer = styled(View)`
-  flex: 1;
-`;
-
 const paddingScrollContainer = 50;
 const styles = StyleSheet.create({
   scrollContainer: {
     alignSelf: 'center',
     width: '100%',
   },
+  infoStyles: {
+    marginLeft: 5,
+    color:'#013b5b'
+  }
 });
 
 const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady = () => {} }) => {
@@ -99,26 +116,27 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
       <ContentContainer>
       <ScrollView contentContainerStyle={styles.scrollContainer} ref={(e) => { onProfileInfoReady(e) }} >
         <HeaderProfile>
-          <ProfileAvatar width={65} userImageUri={profile.image}/>
+          <ProfileAvatar width={50} userImageUri={profile.image}/>
           <NameContainer>
-            <Title style={{ flex: 1 }} numberOfLines={1} heavy>{userName}</Title>
-            {!isShared &&
-              <Button onPress={onClickEdit && onClickEdit} title='Editar' rightIcon='md-create' />
-            }
+            <Title color='white' style={{ flex: 1}} numberOfLines={1} lighter>{userName}</Title>
           </NameContainer>
         </HeaderProfile>
 
-        <Line />
+        <Line style={{borderWidth: 1, borderColor:'013b5b', margin:10}}/>
 
         <PersonalInfo>
           <DescriptionContainer>
-            <Header inverted heavy small>Edad: {profile.age || '-'}</Header>
-            <Header inverted heavy small>Curso: {'-'}</Header>
-            <Header inverted heavy small>Nivel: {level || '-'}</Header>
-            <Header inverted heavy small>Escuela: {profile.school || '-'}</Header>
-            <Header inverted heavy small>Ciudad: {profile.city || '-'}</Header>
-            <Header inverted heavy small>País: {profile.country || '-'}</Header>
+            <Header style={{marginBottom: 10, color:'#013b5b'}} condensed small>Descripción personal</Header>
+            <Header style={ styles.infoStyles } condensed small>Edad: {profile.age || '-'}</Header>
+            <Header style={ styles.infoStyles } condensed small>Curso: {'-'}</Header>
+            <Header style={ styles.infoStyles } condensed small>Nivel: {level || '-'}</Header>
           </DescriptionContainer>
+          <EditContainer>
+            {!isShared &&
+              <Button onPress={onClickEdit && onClickEdit} title='Editar' rightIcon='md-create' />
+            }
+          </EditContainer>
+
         </PersonalInfo>
 
         {profile.tree_image_app && (

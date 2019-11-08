@@ -90,7 +90,7 @@ class ProfileAvatar extends Component {
           width={MASK_WIDTH}
           maskElement={
             <MaskImageContainer>
-              <MaskImage  height={MASK_HEIGHT} width={MASK_WIDTH} source={{uri: 'profile_mask'}} />
+              <MaskImage  height={MASK_HEIGHT} width={MASK_WIDTH} source={{uri: ''}} />
             </MaskImageContainer>
           }
           >
@@ -101,7 +101,7 @@ class ProfileAvatar extends Component {
             />
           <BackgroundImage />
         </MaskContainer>
-        <Frame source={{ uri: 'profile_frame' }}/>
+        <Frame source={{ uri: 'profile_photo' }}/>
       </React.Fragment>
     )
 
