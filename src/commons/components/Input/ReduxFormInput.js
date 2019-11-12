@@ -18,7 +18,7 @@ const StyledInput = styled(TextInput)`
   padding-horizontal: ${Size.spaceXSmall};
   color: ${props => props.textColor};
   margin-bottom: ${Size.spaceMedium};
-  background-color: #b9d280;
+  background-color: #00aeee;
   border-radius: 5;
   flex: 1;
   ${props => props.rightIcon && css`
