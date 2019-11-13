@@ -69,13 +69,13 @@ const NameContainer = styled(View)`
 `;
 
 const PersonalInfo = styled(View)`
-  background-color: #01ccf1;
+  background-color: ${Palette.colors.darkenLightBlue};
   border-top-left-radius: 21;
   border-top-right-radius: 17;
   border-bottom-right-radius: 28;
   border-bottom-left-radius: 10;
-  border-bottom-color: #679657;
-  border-left-color: #679657;
+  border-bottom-color: #02a3b9;
+  border-left-color: #02a3b9;
   border-bottom-width: 2px;
   border-left-width:2px;
   padding-horizontal: ${Size.spaceSmall};
@@ -118,15 +118,15 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
         <HeaderProfile>
           <ProfileAvatar width={50} userImageUri={profile.image}/>
           <NameContainer>
-            <Title color='white' style={{ flex: 1}} numberOfLines={1} lighter>{userName}</Title>
+            <Title color={Palette.colors.white} style={{ flex: 1}} numberOfLines={1} lighter>{userName}</Title>
           </NameContainer>
         </HeaderProfile>
 
-        <Line style={{borderWidth: 1, borderColor:'013b5b', margin:10}}/>
+        <Line style={{borderWidth: 1, borderColor: Palette.colors.darkBlue, margin:10}}/>
 
         <PersonalInfo>
           <DescriptionContainer>
-            <Header style={{marginBottom: 10, color:'#013b5b'}} condensed small>Descripción personal</Header>
+            <Header style={{marginBottom: 10, color: Palette.colors.darkBlue}} condensed small>Descripción personal</Header>
             <Header style={ styles.infoStyles } condensed small>Edad: {profile.age || '-'}</Header>
             <Header style={ styles.infoStyles } condensed small>Curso: {'-'}</Header>
             <Header style={ styles.infoStyles } condensed small>Nivel: {level || '-'}</Header>

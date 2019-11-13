@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
 
 const FormBox = styled(KeyboardAvoidingView)`
   border-radius: 5;
-  border-color: #01ccf1;
+  border-color: ${Palette.colors.darkenLightBlue};
   border-width: 2;
-  background-color: #01ccf1;
+  background-color: ${Palette.colors.darkenLightBlue};
   padding-horizontal: 5;
   padding-vertical: 5;
   margin-top: 20;

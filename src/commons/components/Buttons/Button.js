@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { TouchableWithoutFeedback, View, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
-import { Size } from '../../styles';
+import { Size, Palette } from '../../styles';
 import { colors } from '../../styles/palette';
 import { Header } from '../Typography';
 import Spinner from '../MoIcon/Spinner';
@@ -71,11 +71,11 @@ class Button extends Component {
 
     const CreamButton = (
       <AnimatableComponent ref={this.handleButtonRef} disabled={disabled} style={{ ...style, transform: [{ scale: 1 }] }} containsImage={!!image} >
-        {!image && leftIcon && <LeftIcon name={leftIcon} size={20} color="#4b4a21" />}
+        {!image && leftIcon && <LeftIcon name={leftIcon} size={20} color={Palette.colors.white} />}
 
         {currentText}
 
-        {!image && rightIcon && <RightIcon name={rightIcon} size={20} color="#4b4a21" />}
+        {!image && rightIcon && <RightIcon name={rightIcon} size={20} color={Palette.colors.white} />}
       </AnimatableComponent>
     );
 
