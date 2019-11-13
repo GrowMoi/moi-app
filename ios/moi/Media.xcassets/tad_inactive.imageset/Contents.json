@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "item_container_disabled.png",
+      "filename" : "tad_inactive.png",
       "scale" : "1x"
     },
     {

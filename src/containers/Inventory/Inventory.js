@@ -45,8 +45,10 @@ const isTablet = deviceUtils.isTablet();
 
 const StyledContentBox = styled(ContentBox)`
   margin-bottom: ${Size.spaceMedium};
-  padding-left: 10;
-  padding-right: 12;
+  margin-left: 25;
+  margin-right: 10;
+  width: 90%
+  overflow: hidden;
 `;
 
 const width = 108;
@@ -56,10 +58,9 @@ const Container = styled(TouchableOpacity)`
   align-items: center;
   margin-horizontal: 5;
   margin-vertical: 5;
+  overflow: hidden;
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};
-  border: solid 0px #40582D;
-  border-radius: 13px;
   overflow: hidden;
 `;
 
@@ -269,7 +270,7 @@ class Inventory extends Component {
   _keyExtractor = (item, index) => index.toString();
 
   get itemWidth() {
-    return isTablet ? 125 : 90;
+    return isTablet ? 125 : 100;
   }
 
   _renderMainItem = ({ item }) => {

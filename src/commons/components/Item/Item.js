@@ -19,8 +19,6 @@ const Container = styled(ImageBackground)`
   align-items: center;
   margin-horizontal: 5;
   margin-vertical: 5;
-  border: solid 0px #40582D;
-  border-radius: 13px;
   overflow: hidden;
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(width, height, props.width)};
@@ -28,14 +26,15 @@ const Container = styled(ImageBackground)`
       if (props.active) {
         return css`
           border: solid 5px #FFFF;
+          
         `
       }
     }
   }
 `;
 
-const itemWidth = 70;
-const itemHeight = 70;
+const itemWidth = 100;
+const itemHeight = 100;
 const ItemImage = styled(Image)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(itemWidth, itemHeight, props.width)};
@@ -71,7 +70,7 @@ class Item extends Component {
   }
 
   render() {
-    const { type = 1, width = 90, active, disabled } = this.props;
+    const { type = 1, width = 100, active, disabled } = this.props;
 
     const paddingForItem = 30;
     const renderTypeItem = resources.getItem(type);

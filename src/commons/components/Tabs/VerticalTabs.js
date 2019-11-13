@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ImageBackground } from 'react-native';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { TextBody } from '../Typography';
@@ -8,9 +9,9 @@ import deviceUtils from '../../utils/device-utils';
 const isTablet = deviceUtils.isTablet();
 
 const TabsContainer = styled(View)`
-  padding-top: 5;
+  
   height: 103%;
-  width: 89%;
+  width: 160%;
 `;
 
 const TabLabel = styled(View)`
@@ -21,29 +22,35 @@ const TabLabel = styled(View)`
   ` : css`
     position: absolute;
     top: -10;
-    right: -32;
   `}
 `;
 
 const LabelText = styled(TouchableOpacity)`
-  padding-top: 4;
-  background-color: ${({ selected }) => (selected ? '#62692e' : '#828c3d')};
+  margin-top: 10;
+  background-color: ${({ selected }) => (selected ? '#0D5FA1' : '#3CBCCB')};
   border-top-width: ${({ selected }) => (selected ? 1 : 3)};
   border-left-width: ${({ selected }) => (selected ? 1 : 3)};
   border-right-width: ${({ selected }) => (selected ? 1 : 3)};
-  border-color: #102b1b;
+  border-color: ${({ selected }) => (selected ? '#3CBCCB': '#0D5FA1')};
   border-top-left-radius: 8;
   border-top-right-radius: 8;
+ left: 100
 `;
 
 const StyledContentBox = styled(ContentBox)`
-  margin-top: 0;
-  padding-bottom: 30;
+  margin: 0;
+  padding: 0;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-bottom: 5%;
+  height: 80%
   ${props => props.horizontalTabs ? css`
-    width: 99%;
+    width: 55%;
   ` : css`
-    margin-left: -30;
-    width: 90%;
+    padding-left: -30;
+    margin: 0
+    width: 55%;
+    heigth: 80%;
   `}
 `;
 
@@ -101,7 +108,7 @@ export default class VerticalTabs extends Component {
     const { currentTab } = this.state;
     const { data, horizontalTabs = false } = this.props;
 
-    return (<TabsContainer >
+    return (<TabsContainer>
       {horizontalTabs && this.renderTabsLabel()}
       <StyledContentBox image={'wood_frame'} horizontalTabs={horizontalTabs}>
         {data.length && data.map((d, i) => {
