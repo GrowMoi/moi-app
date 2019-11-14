@@ -377,7 +377,7 @@ const updateAchievementsAsync = id => async (dispatch) => {
     const { headers } = res;
 
     await dispatch(setHeaders(headers));
-    dispatch(getAchievementsAsync());
+    await dispatch(getAchievementsAsync());
   } catch (error) {
     // console.log(error);
     Alert.alert('Error', 'Ups, tuvimos un error al intentar actualizar este item, intentalo más tarde por favor');

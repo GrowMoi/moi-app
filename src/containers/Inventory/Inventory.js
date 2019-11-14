@@ -86,39 +86,31 @@ class Inventory extends Component {
     events: [],
   }
 
-  columnsNumber;
-  allEvents;
-
-  async componentDidMount() {
-    this.generateNumberOfColumns()
-    this.showLoading();
-    await this.getEventItems();
-    this.showLoading(false);
-  }
-
-  generateNumberOfColumns() {
+  get columnsNumber() {
     const { device: { dimensions: { orientation } } } = this.props;
     const defaultColumns = isTablet ? 3 : 2;
     const additionalColumns = orientation === PORTRAIT ? 0 : 1;
-    this.columnsNumber = defaultColumns + additionalColumns;
+    return defaultColumns + additionalColumns;
   }
 
   updateItem = ({ id, name }) => async () => {
     const { updateAchievementsAsync } = this.props;
-    this.showLoading();
 
     if (id) {
       try {
+        console.log('updating item: init try')
+        this.showLoading();
         await updateAchievementsAsync(id);
         this.showLoading(false);
+        console.log('updating item: finish try')
       } catch (error) {
+        this.showLoading(false);
         this.showErrorMessage();
       }
     }
   }
 
   showErrorMessage() {
-    this.showLoading(false);
     this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde', () => Actions.pop());
   }
 
@@ -155,31 +147,17 @@ class Inventory extends Component {
       return
     }
 
-    if (item.number === 1) {
-      this.showVideo();
-      return;
-    }
-    else if (item.number === 6) {
-      this.showVideo(true, vineta_4);
-      return;
-    }
-    else if (item.number === 7) {
-      this.showVideo(true, vineta_3);
-      return;
-    }
-    else if (item.number === 9) {
-      this.showVideo(true, vineta_2);
-      return;
-    } else if (item.number === 10) {
-      this.setState({ isEventModalOpen: true, itemSelected: {
-        item: generateAlertData(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', source.source),
+    if (item.number === 10) {
+      this.setState({
+        isEventModalOpen: true,
+        itemSelected: {
+          item: generateAlertData(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', source.source),
         buttonProps: this.generateButtonProps('OK', this.goFinalQuiz) }
       });
       return;
     }
 
     let currentStatus = {};
-
     if (item.active) {
       currentStatus = {
         status: 'Habilitado',
@@ -205,56 +183,56 @@ class Inventory extends Component {
       },
       {
         disabled: true,
-        description: 'Aprende 20 contenidos de color amarillo para ganar este item',
-        name: 'Contenidos color Amarillo',
+        description: 'Han sido aprendidos 16 contenidos de la rama ¿Cómo haces para alcanzar tus sueños?',
+        name: 'Contenidos aprendidos rama ¿Cómo haces para alcanzar tus sueños?',
         number: 2
       },
+      // {
+      //   disabled: true,
+      //   description: 'Aprende 20 contenidos de color rojo para ganar este item',
+      //   name: 'Contenidos color Rojo',
+      //   number: 3
+      // },
       {
         disabled: true,
-        description: 'Aprende 20 contenidos de color rojo para ganar este item',
-        name: 'Contenidos color Rojo',
-        number: 3
-      },
-      {
-        disabled: true,
-        description: 'Aprende 20 contenidos de color azul',
-        name: 'Contenidos color Azul',
+        description: 'Han sido aprendidos 16 contenidos de la rama ¿Qué herramienta te ayuda para cumplir tus sueños?',
+        name: 'Contenidos aprendidos rama ¿Qué herramienta te ayuda para cumplir tus sueños?',
         number: 4
       },
       {
         disabled: true,
-        description: 'Aprende 20 contenidos de color verde para ganar este item',
-        name: 'Contenidos color verde',
+        description: 'Han sido aprendidos 16 contenidos de la rama ¿Qué necesitas para alcanzar tus sueños?',
+        name: 'Contenidos aprendidos rama ¿Qué necesitas para alcanzar tus sueños?',
         number: 5
       },
       {
         disabled: true,
-        description: 'Despliega 50 pruebas para ganar este item',
-        name: 'Despliega 50 pruebas',
+        description: 'Todos los contenidos han sido aprendidos',
+        name: 'Contenidos aprendidos en total',
         number: 6
       },
       {
         disabled: true,
-        description: 'Aprende un contenido en cada fruto para ganar este item',
-        name: 'Contenidos de cada fruto',
+        description: 'Al menos un contenido ha sido aprendido en cada neurona pública',
+        name: 'Contenidos aprendidos en cada neurona pública',
         number: 7
       },
       {
         disabled: true,
-        description: 'Aprende todos los contenidos para ganar este item',
-        name: 'Aprende todos los contenidos',
+        description: 'Han sido completados 4 test sin errores',
+        name: 'Tests sin errores',
         number: 8
       },
       {
         disabled: true,
-        description: 'Completa 4 pruebas sin errores (16 preguntas sin errores) para ganar este item',
-        name: 'Completa 4 pruebas',
+        description: 'Han sido desplegados 8 test sin errores',
+        name: 'Tests desplegados',
         number: 9
       },
       {
         disabled: true,
-        description: 'Alcanzar el nivel 9 para ganar este item',
-        name: 'Final del juego',
+        description: 'El usuario ha llegado al nivel 9',
+        name: 'Tests Final',
         number: 10
       }
     ];
@@ -285,71 +263,45 @@ class Inventory extends Component {
     )
   }
 
-  _renderEventsItem = ({ item }) => {
-    const width = this.itemWidth;
-    const box = resources.getBox(!item.completed)
-    return (
-      <Container
-        onPress={() => this.setState({ isEventModalOpen: true, itemSelected: {item} })}
-        activeOpacity={0.8}
-        width={width}
-        inactive={!item.completed}
-      >
-        <ItemBackground
-          width={width}
-          source={{ uri: box }}>
-          <EventImage
-            source={{ uri: item.completed ? item.image : item.inactive_image }}
-            width={item.completed ?  width + 10: width - 40}
-          />
-        </ItemBackground>
-      </Container>
-    );
-  }
+  // _renderEventsItem = ({ item }) => {
+  //   const width = this.itemWidth;
+  //   const box = resources.getBox(!item.completed)
+  //   return (
+  //     <Container
+  //       onPress={() => this.setState({ isEventModalOpen: true, itemSelected: {item} })}
+  //       activeOpacity={0.8}
+  //       width={width}
+  //       inactive={!item.completed}
+  //     >
+  //       <ItemBackground
+  //         width={width}
+  //         source={{ uri: box }}>
+  //         <EventImage
+  //           source={{ uri: item.completed ? item.image : item.inactive_image }}
+  //           width={item.completed ?  width + 10: width - 40}
+  //         />
+  //       </ItemBackground>
+  //     </Container>
+  //   );
+  // }
 
-  _renderItem = ({ item }) => {
-    if ((Object.keys(item || {}) || []).includes('completed')) {
-      return this._renderEventsItem({ item });
-    }
+  // _renderSection = ({ data }) => {
 
-    return this._renderMainItem({ item });
-  }
-
-  _renderSection = ({ section, index }) => {
-    const data = section.data[0];
-
-    return (
-      <View style={{ flex: 1 }}>
-        {/* {data.key === 'events' && <Line style={{marginTop:10, marginBottom:10}}  size={5}/> } */}
-        <FlatList
-          data={data.list}
-          ListEmptyComponent={
-            <TextBody center>No tienes logros ganados aún</TextBody>
-          }
-          renderItem={this._renderItem}
-          keyExtractor={this._keyExtractor}
-          numColumns={this.columnsNumber}
-          columnWrapperStyle={{ justifyContent: 'center' }}
-          key={index}
-        />
-      </View>
-    );
-  };
-
-  async getEventItems() {
-    const { getEventsAsync } = this.props;
-    let events = await getEventsAsync();
-    const decoratedEvents = eventsUtils.addCompletedKeyEvents(events.events)
-    events.events = decoratedEvents
-    const allEvents = this.mergeAllEvents(events);
-    this.setState({ events: eventsUtils.normalizeEvents(allEvents) });
-  }
-
-  mergeAllEvents(events) {
-    let allEvents = [];
-    Object.values(events).forEach((event) => allEvents = [...allEvents, ...event])
-    return allEvents;
-  }
+  //   return (
+  //     <View style={{ flex: 1 }}>
+  //       <FlatList
+  //         data={data}
+  //         ListEmptyComponent={
+  //           <TextBody center>No tienes logros ganados aún</TextBody>
+  //         }
+  //         renderItem={this._renderItem}
+  //         keyExtractor={this._keyExtractor}
+  //         numColumns={this.columnsNumber}
+  //         // columnWrapperStyle={{ justifyContent: 'center' }}
+  //       />
+  //     </View>
+  //   );
+  // };
 
   renderTabs() {
     const ContentCertificate = <ListCertificates key={1} />;
@@ -366,7 +318,6 @@ class Inventory extends Component {
 
   renderItems() {
     const { achievements = [] } = this.props;
-    const { events } = this.state;
 
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
     const allAchievements = this.addDisabledAchievements(sortedAchievements);
@@ -374,15 +325,18 @@ class Inventory extends Component {
     if (this.state.loading) return <Preloader key={0} />;
 
     return (
-      <SectionList
-        renderItem={this._renderSection}
-        sections={[
-          { title: '', data: [{ key: 'items', list: [...allAchievements, ...events] }] },
-          // {title: '', data: [{key: 'events', list: allEvents}]},
-        ]}
-        keyExtractor={(item, index) => item.name + index}
-        key={0}
-      />
+      <View style={{ flex: 1 }} key={0}>
+        <FlatList
+          data={allAchievements}
+          ListEmptyComponent={
+            <TextBody center>No tienes logros ganados aún</TextBody>
+          }
+          renderItem={this._renderMainItem}
+          keyExtractor={this._keyExtractor}
+          numColumns={this.columnsNumber}
+          columnWrapperStyle={{ justifyContent: 'center' }}
+        />
+      </View>
     );
   }
 
@@ -445,7 +399,6 @@ const mapDispatchToProps = {
   getAchievementsAsync: userActions.getAchievementsAsync,
   updateAchievementsAsync: userActions.updateAchievementsAsync,
   loadFinalTestAsync: userActions.loadFinalTestAsync,
-  getEventsAsync: userActions.getEventsAsync,
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
 }
 
