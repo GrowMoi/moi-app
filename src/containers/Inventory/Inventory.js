@@ -79,8 +79,6 @@ const ItemBackground = styled(ImageBackground)`
 
 class Inventory extends Component {
   state = {
-    modalVisible: false,
-    currentVineta: null,
     itemSelected: {},
     loading: false,
     events: [],
@@ -97,12 +95,11 @@ class Inventory extends Component {
     const { updateAchievementsAsync } = this.props;
 
     if (id) {
+      this.showLoading();
+
       try {
-        console.log('updating item: init try')
-        this.showLoading();
         await updateAchievementsAsync(id);
         this.showLoading(false);
-        console.log('updating item: finish try')
       } catch (error) {
         this.showLoading(false);
         this.showErrorMessage();
@@ -116,10 +113,6 @@ class Inventory extends Component {
 
   showLoading(isVisible = true) {
     this.setState({ loading: isVisible });
-  }
-
-  showVideo = (show = true, vineta = vineta_1) => {
-    this.setState({ modalVisible: show, currentVineta: vineta });
   }
 
   goFinalQuiz = async () => {
@@ -322,7 +315,7 @@ class Inventory extends Component {
     const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
     const allAchievements = this.addDisabledAchievements(sortedAchievements);
 
-    if (this.state.loading) return <Preloader key={0} />;
+    if (this.state.loading) return <Preloader notFullScreen key={0} />;
 
     return (
       <View style={{ flex: 1 }} key={0}>
@@ -341,7 +334,7 @@ class Inventory extends Component {
   }
 
   render() {
-    const { modalVisible, currentVineta, itemSelected, isEventModalOpen } = this.state;
+    const { itemSelected, isEventModalOpen } = this.state;
     const { device: { dimensions: { width, height } }, finalTestResult, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const videoDimensions = {
@@ -363,18 +356,10 @@ class Inventory extends Component {
           onClose={() => { this.setState({ isEventModalOpen: false }) }}
         />}
 
-        {modalVisible && <Video
-          videoDimensions={videoDimensions}
-          source={currentVineta}
-          dismiss={() => this.showVideo(false)}
-          visible={modalVisible}
-          width={width}
-        />}
-
         {finalTestResult && <Certificate />}
         <BottomBar />
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !modalVisible && !isEventModalOpen}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !isEventModalOpen}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);

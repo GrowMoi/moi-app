@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import { Palette } from '../../styles'
 import loadingGif from '../../../../assets/images/spiner-moi.gif';
@@ -11,7 +11,6 @@ const PreloaderContainer = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${Palette.dark.alpha(0.2).css()};
 `;
 
 const Loader = styled(Image)`
