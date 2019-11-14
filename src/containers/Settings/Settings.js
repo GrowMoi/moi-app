@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, Alert } from 'react-native';
+import { ScrollView, Alert, View } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 
@@ -9,7 +9,7 @@ import MoiBackground from '../../commons/components/Background/MoiBackground';
 import { BottomBar, InterestBox } from '../../commons/components/SceneComponents';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { ContentBox } from '../../commons/components/ContentComponents';
-import { Size } from '../../commons/styles';
+import { Size, Palette } from '../../commons/styles';
 import HeaderLevels from './HeaderLevels';
 import RowLevel from './RowLevel';
 import preferencesActions from '../../actions/contentPreferencesActions';
@@ -19,11 +19,8 @@ import InterestButton from './InterestButton';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Button from '../../commons/components/Buttons/Button';
 import { Line } from '../../commons/components/SceneComponents';
+import { getHeightAspectRatio } from '../../commons/utils';
 
-
-const StyledContentBox = styled(ContentBox)`
-  margin-bottom: ${Size.spaceMedium};
-`;
 
 const StyledLine = styled(Line)`
 `;
@@ -34,6 +31,19 @@ const labelPreferences = {
   'quien-cuando-donde': '¿Quién, Cuándo, Dónde?',
   'como-funciona': '¿Cómo funciona?',
 };
+
+const Container = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: ${Size.navbarHeight + Size.spaceXSmall};
+  padding-bottom: ${Size.paddingBottom};
+  padding-top: ${Size.paddingTop};
+  padding-left: ${Size.paddingLeft};
+  padding-right: ${Size.paddingRight};
+`
 
 class Settings extends Component {
   state = {
@@ -116,7 +126,7 @@ class Settings extends Component {
 
     return (
       <MoiBackground>
-        <StyledContentBox>
+        <Container>
           <ScrollView contentContainerStyle={containerStyles}>
             <SettingsSection title='Levels'>
               <HeaderLevels />
@@ -128,20 +138,20 @@ class Settings extends Component {
                   {...row}
                 />
               ))}
-              <StyledLine size={2} style={{ marginTop: 20 }}/>
+              <StyledLine size={2} style={{ marginTop: 20 }} color={Palette.colors.lightenDarkBlue}/>
               <RowLevel
                   title={'Mensages pasivos'}
                   toggleSwitch={this.toggleSwitch}
                   toggle={passiveMessage}
                 />
-                <StyledLine size={2} />
+                <StyledLine size={2} color={Palette.colors.lightenDarkBlue}/>
             </SettingsSection>
 
           </ScrollView>
 
           <Button style={{ width: '80%' }} title='Guardar Preferencias' onPress={this.saveSettings}/>
           {this.state.updating && <Preloader />}
-        </StyledContentBox>
+        </Container>
         <Navbar />
         <BottomBar width={device.dimensions.width} />
       </MoiBackground>

@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { View } from 'react-native';
+import { Palette } from '../../commons/styles';
 import { Description, TextBody } from '../../commons/components/Typography';
 
 const HeaderContainer = styled(View)`
   flex-flow: row nowrap;
-  background-color: #839c55;
+  background-color: ${Palette.colors.lightenDarkBlue};
   height: 20;
   width: 190;
   align-self: flex-end;
@@ -27,11 +28,11 @@ const TextLevelsWrapper = styled(View)`
 const HeaderLevels = () => {
   return (
     <HeaderContainer>
-      <Description heavy>Level</Description>
+      <Description heavy inverted>Level</Description>
       <TextLevelsWrapper>
-        <TextBody heavy small>1</TextBody>
-        <TextBody heavy small>2</TextBody>
-        <TextBody heavy small>3</TextBody>
+        <TextBody heavy small inverted>1</TextBody>
+        <TextBody heavy small inverted>2</TextBody>
+        <TextBody heavy small inverted>3</TextBody>
       </TextLevelsWrapper>
     </HeaderContainer>
   );

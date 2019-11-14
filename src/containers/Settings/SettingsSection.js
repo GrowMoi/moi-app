@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import styled from 'styled-components/native';
 import { Header } from '../../commons/components/Typography';
 import { Line } from '../../commons/components/SceneComponents';
-import { Size } from '../../commons/styles';
+import { Size, Palette } from '../../commons/styles';
 
 const SectionContent = styled(View)`
   margin-bottom: ${Size.spaceMedium};
@@ -26,7 +26,7 @@ const StyledSettingsSection = styled(View)`
 const SettingsSection = ({ children, title }) => (
   <StyledSettingsSection>
     <Header heavy>{title}</Header>
-    <StyledLine size={2} />
+    <StyledLine size={2} color={Palette.colors.darkBlue}/>
     <SectionContent>
       {children}
     </SectionContent>
