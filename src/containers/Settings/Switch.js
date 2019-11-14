@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Image, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { Header } from '../../commons/components/Typography';
-import { Size } from '../../commons/styles';
+import { Size, Palette } from '../../commons/styles';
 
 const ContainerSwitch = styled(View)`
     flex: 1;
@@ -17,7 +17,7 @@ const LineSwitch = styled(View)`
     left:1;
     border-width: 2;
     border-radius: 3;
-    border-color: #354516;
+    border-color: ${Palette.colors.lightenDarkBlue};
 `;
 
 const TextContainer = styled(View)`
@@ -38,7 +38,7 @@ const IconContainer = styled(View)`
 `;
 
 const IconSwitch = styled(Image)`
-    height: ${Size.lineSwitchHeigth + 6};
+    height: ${Size.lineSwitchHeigth + 10};
     width: 29;
 `;
 
@@ -46,7 +46,7 @@ const IconSwitch = styled(Image)`
 const Switch = ({ toggleValue, onPress }) => {
     const styleIcon = toggleValue ? { right: -3 } : { left: -5 };
     const styleText = toggleValue ? { left: 0 } : { right: 0 };
-    const styleLine = toggleValue ? { backgroundColor: '#4a5922' } : { backgroundColor: 'transparent' };
+    const styleLine = toggleValue ? { backgroundColor: `${Palette.colors.lightenDarkBlue}` } : { backgroundColor: 'transparent' };
     const stichText = toggleValue ? 'ON' : 'OFF';
 
 

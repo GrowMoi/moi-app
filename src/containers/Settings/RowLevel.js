@@ -13,6 +13,9 @@ const Row = styled(ImageBackground)`
   align-items: center;
   height: ${Size.heigthRowLevel};
   justify-content: center;
+  padding-top: 2;
+  margin-top: 5;
+  margin-bottom: 5;
 `;
 
 const RowContainer = styled(View)`
@@ -39,7 +42,7 @@ const RowLevel = ({ title, onValueChange, kind, level, toggle = null, toggleSwit
     <Row source={toggle === null ? {uri: 'row_levels'} : null} resizeMode='stretch'>
       <RowContainer>
         <DescriptionContainer>
-          <Description ellipsizeMode='tail' numberOfLines={1} color={colors.cream.css()}>{title}</Description>
+          <Description ellipsizeMode='tail' numberOfLines={1} color={colors.white}>{title}</Description>
         </DescriptionContainer>
         <SliderContainer>
           {levelToShow !== null && <SliderLevels value={levelToShow} onSlidingComplete={currentLevel => {

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-native-slider';
+import { colors } from '../../../commons/styles/palette';
 //TODO: remove this
 import thumbImage from '../../../../assets/images/buttons/slider_button.png';
 
 const SliderLevels = ({ value, ...rest }) => {
-  const thumbStyle = { backgroundColor: 'transparent', top: 4, left: -5 };
-  const trackStyle = { backgroundColor: '#4a5922', height: 15, borderColor: '#354516', borderWidth: 2, borderRadius: 3 };
+  const thumbStyle = { backgroundColor: 'transparent', top: 1, left: -7 };
+  const trackStyle = { backgroundColor: `${colors.lightenDarkBlue}`, height: 15, borderColor: `${colors.lightenDarkBlue}`, borderWidth: 2, borderRadius: 3 };
   const sliderStyle = { height: 30 };
   return (
     <Slider value={value}
