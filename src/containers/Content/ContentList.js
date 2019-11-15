@@ -112,7 +112,7 @@ class ContentListScene extends PureComponent {
           width={device.dimensions.width}
         />
 
-        {showEvents && (
+        {/* {showEvents && (
           this.existContentsToRead && (
             <EventModal
               width={device.dimensions.width}
@@ -121,7 +121,7 @@ class ContentListScene extends PureComponent {
                 this.setState({ events: [] })
               }}/>
           )
-        )}
+        )} */}
 
         <PassiveMessageAlert
           isOpenPassiveMessage={showPassiveMessage}

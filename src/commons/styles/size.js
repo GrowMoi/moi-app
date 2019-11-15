@@ -31,7 +31,7 @@ export default {
   spaceSmall: 10,
   spaceMedium: 20,
   spaceLarge: 40,
-  spaceMediumLarge: isTablet ? 100 : 60,
+  spaceMediumLarge: isTablet ? 120 : 60,
   spaceXLarge: 80,
 
   navbarHeight: isPhoneFiveInch ? 70 : isPhoneSixInch ? 80 : isTablet ? 55 : 45,
