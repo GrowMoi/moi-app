@@ -121,8 +121,8 @@ export default class Branches extends Component {
     const branches = root.children.map((child, i) => {
       if (i === 0) return this.renderBranchByDirection('left', child, i);
       else if (i === 1) return this.renderBranchByDirection('leftCenter', child, i);
-      else if (i === 2) return this.renderBranchByDirection('rightCenter', child, i);
-      else if (i === 3) return this.renderBranchByDirection('right', child, i);
+      // else if (i === 2) return this.renderBranchByDirection('rightCenter', child, i);
+      else if (i === 2) return this.renderBranchByDirection('right', child, i);
     });
 
     return branches;

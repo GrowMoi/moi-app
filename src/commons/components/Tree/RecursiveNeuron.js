@@ -52,7 +52,9 @@ class _RecursiveNeuron extends Component {
     // console.log(newPath);
 
     const neuronPosition = newPath in configs ? configs[newPath].position : {};
-
+    //FIXME: delete once complete reposition of neurons
+    // console.log('Path', newPath)
+    // console.log('Neuron', neuron)
     if (neuron.children && neuron.children.length) {
       children = neuron.children.map((child, childIndex) => {
         if (level === maxLevel) return null;
