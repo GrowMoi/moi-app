@@ -21,12 +21,6 @@ import { BottomBar, Line } from '../../commons/components/SceneComponents';
 import Item from '../../commons/components/Item/Item';
 import { TextBody } from '../../commons/components/Typography';
 
-// Viñetas
-import vineta_1 from '../../../assets/videos/vineta_1.mp4';
-import vineta_2 from '../../../assets/videos/vineta_2.mp4';
-import vineta_3 from '../../../assets/videos/vineta_3.mp4';
-import vineta_4 from '../../../assets/videos/vineta_4.mp4';
-
 import userActions from '../../actions/userActions';
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Certificate from '../Certificate/Certificate';
