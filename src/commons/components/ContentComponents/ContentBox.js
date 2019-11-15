@@ -64,7 +64,7 @@ class ContentBox extends Component {
           style={style}
           resizeMode='stretch'
           width={(width - padding)}
-          source={{uri: image ? image : this.getCurrentBox()}}
+          source={{uri: image }}
           {...rest}>
           {this.props.children}
         </ContentScreen>
