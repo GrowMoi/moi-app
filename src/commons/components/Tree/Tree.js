@@ -9,8 +9,6 @@ import { Actions } from 'react-native-router-flux';
 import { Maceta } from '../SceneComponents';
 import treeActions from '../../../actions/treeActions';
 import Preloader from '../Preloader/Preloader';
-import { Video } from '../../../commons/components/VideoPlayer';
-import vineta_1 from '../../../../assets/videos/vineta_1.mp4';
 import LabelsLayer from './LabelsLayer'
 
 // Levels
@@ -78,7 +76,6 @@ class Tree extends Component {
     await this.initialActions();
     this.getTreeLevel();
     this.setState({ loading: false });
-    this.handleVideoFirstLogin();
     this.handleShowReview();
   }
 
@@ -102,15 +99,6 @@ class Tree extends Component {
   setTitleView() {
     const { user } = this.props;
     Actions.refresh({ title: user.profile.username });
-  }
-
-  handleVideoFirstLogin = async () => {
-    const { userTree } = this.props;
-
-    if (!userTree.tree) return;
-
-    const videoShown = await AsyncStorage.getItem('videoShown');
-    if (!videoShown && userTree.tree.root.learnt_contents === 0) this.showVideo();
   }
 
   showVideo = (show = true) => {
@@ -418,16 +406,6 @@ class Tree extends Component {
           </Zoom>
         }
         {(!modalVisible && showLabelLayer) && <LabelsLayer />}
-        {modalVisible && <Video
-          videoDimensions={videoDimensions}
-          source={vineta_1}
-          dismiss={() => this.showVideo(false)}
-          visible={modalVisible}
-          width={width}
-          onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
-          showCloseIcon={false}
-          skipButton
-        />}
       </TreeContainer>
     );
   }
