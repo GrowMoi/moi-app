@@ -177,9 +177,9 @@ class Level2 extends Component {
         return this.renderTreeBranch('left', data, index);
       case 1:
         return this.renderTreeBranch('leftCenter', data, index);
+      // case 2:
+      //   return this.renderTreeBranch('rightCenter', data, index);
       case 2:
-        return this.renderTreeBranch('rightCenter', data, index);
-      case 3:
         return this.renderTreeBranch('right', data, index);
       default:
         return null;

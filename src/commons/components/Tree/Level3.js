@@ -249,8 +249,8 @@ export default class Level3 extends Component {
     const neurons = tree.root.children.map((child, i) => {
       if (i === 0) return renderNeuron('left', child, i);
       else if (i === 1) return renderNeuron('leftCenter', child, i);
-      else if (i === 2) return renderNeuron('rightCenter', child, i);
-      else if (i === 3) return renderNeuron('right', child, i);
+      // else if (i === 2) return renderNeuron('rightCenter', child, i);
+      else if (i === 2) return renderNeuron('right', child, i);
     });
 
     return neurons;

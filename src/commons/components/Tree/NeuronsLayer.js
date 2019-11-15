@@ -85,8 +85,8 @@ class NeuronsLayer extends Component {
     const neurons = root.children.map((child, i) => {
       if (i === 0) return this.renderNeuronByDirection('left', child, i);
       else if (i === 1) return this.renderNeuronByDirection('leftCenter', child, i);
-      else if (i === 2) return this.renderNeuronByDirection('rightCenter', child, i);
-      else if (i === 3) return this.renderNeuronByDirection('right', child, i);
+      // else if (i === 2) return this.renderNeuronByDirection('rightCenter', child, i);
+      else if (i === 2) return this.renderNeuronByDirection('right', child, i);
     });
 
     return neurons;
