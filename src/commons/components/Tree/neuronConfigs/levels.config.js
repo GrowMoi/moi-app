@@ -289,9 +289,9 @@ export default {
 
     '2.0.3.0': { position: { left: 22, bottom: 20 }, floweredBranches: [{uri: 'fondo060'}, {uri: 'fondo082'}, {uri: 'fondo_rama079'}, {uri: 'fondo_rama080'}] },
 
-    '2.0.3.0.4.0': { position: { left: 15, bottom: 13 }, floweredBranches: [{uri: 'fondo_rama083'}, {uri: 'fondo_rama061'}] },
-    '2.0.3.0.4.0.5.0': { position: { left: 32, bottom: 20 }, floweredBranches: [{uri: 'fondo088'}, {uri: 'fondo062'}] },
-    '2.0.3.0.4.0.5.1': { position: { right: 45, bottom: 25 }, floweredBranches: [{uri: 'fondo088'}, {uri: 'fondo062'}] },
+    '2.0.3.0.4.0': { position: { left: 15, bottom: 20 }, floweredBranches: [{uri: 'fondo_rama083'}, {uri: 'fondo_rama061'}] },
+    '2.0.3.0.4.0.5.0': { position: { left: 25, bottom: 40 }, floweredBranches: [{uri: 'fondo088'}, {uri: 'fondo062'}] },
+    '2.0.3.0.4.0.5.1': { position: { left: 60, bottom: 50 }, floweredBranches: [{uri: 'fondo088'}, {uri: 'fondo062'}, {uri: 'fondo091'}, {uri: 'fondo092'}, {uri: 'fondo093'}] },
     '2.0.3.0.4.0.5.0.6.0': { position: { bottom: 39, right: 1 }, floweredBranches: [{uri: 'fondo094'}, {uri: 'fondo073'} ] },
     '2.0.3.0.4.0.5.0.6.1': { position: { bottom: 49, left: 14 }, floweredBranches: [{uri: 'fondo095'}, {uri: 'fondo070'}] },
 
@@ -303,7 +303,7 @@ export default {
     '2.0.3.0.4.1.5.1.6.0': { position: { left: 4, bottom: 65 }, floweredBranches: [{uri: 'fondo097'}] },
 
     '2.0.3.1': { position: { left: 34, top: 1 }, floweredBranches: [{uri: 'fondo081'}] },
-    '2.0.3.1.4.0': { position: { left: 17, bottom: 7 }, floweredBranches: [] },
+    '2.0.3.1.4.0': { position: { left: 45, bottom: 25 }, floweredBranches: [{uri: 'fondo_rama084'}, {uri: 'fondo085'}, {uri: 'fondo_rama086'}, {uri: 'fondo_rama087'}, {uri: 'fondo089'}] },
     '2.0.3.1.4.0.5.0': { position: { left: 23, bottom: 20 }, floweredBranches: [] },
     '2.0.3.1.4.0.5.0.6.0': { position: { left: 29, bottom: 100 }, floweredBranches: [{uri: 'fondo100'}] },
     '2.0.3.1.4.0.5.1': { position: { left: 34, bottom: 34 }, floweredBranches: [] },
