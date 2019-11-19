@@ -115,7 +115,7 @@ class QuizScene extends Component {
   get renderIntroScene() {
     return (
       <ComplementaryScene
-        title='Has leído 4 contenidos'
+        title='Has leído 3 contenidos'
         text='¿Por qué no probamos si de verdad has aprendido?'
         onNext={() => this.jumpToScene('quiz')}
       />
