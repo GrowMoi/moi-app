@@ -101,12 +101,12 @@ class ProfileAvatar extends Component {
             />
           <BackgroundImage />
         </MaskContainer>
-        <Frame source={{ uri: 'profile_photo' }}/>
+        <Frame source={{ uri: 'profile' }}/>
       </React.Fragment>
     )
 
     const placeholder = (
-      <Frame source={{ uri: 'profile_photo' }} />
+      <Frame source={{ uri: 'profile' }} />
     )
 
     return (
