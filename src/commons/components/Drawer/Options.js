@@ -6,15 +6,18 @@ import { Header } from '../Typography';
 import { Size } from '../../styles';
 import withSound from '../../utils/withSound';
 import { Palette } from '../../styles'
+import { colors } from '../../styles/palette'
 import { Feather } from '@expo/vector-icons';
 import chroma from 'chroma-js'
 
 
 const ContainerOptions = styled(View)`
-  flex: 1;
-  padding-horizontal: ${Size.spaceMedium};
-  padding-vertical: ${Size.spaceXSmall};
   z-index: 10;
+  padding-horizontal: ${Size.spaceMedium};
+  justify-content: flex-start;
+  border-bottom-width: 1px;
+  padding-bottom: 10;
+  border-color: ${colors.blueSubList};
 `;
 
 const Item = styled(TouchableOpacity)`

@@ -28,6 +28,7 @@ const SideMenuContainer = styled(ImageBackground)`
   shadow-radius: 2.5;
   shadow-opacity: 0.7;
   shadow-color: ${Palette.black.alpha(0.4)};
+  border-right-color: ${Palette.colors.darkBlue};
 `;
 
 const SideBarTitleContainer = styled(View)`
@@ -48,8 +49,8 @@ const SideBarMenuHeader = styled(View)`
 
 const TreContainer = styled(View)`
   align-self: center;
-  bottom: 0;
-  margin-top: 40;
+  width: 80%;
+  margin-top: 20;
 `;
 
 const CloseIcon = styled(Ionicons)`
@@ -178,7 +179,6 @@ class SideMenu extends Component {
                 height={Size.heigthTreeContainer}
                 treeBackground={'background_tree_drawer'}
                 profileImage={profile.tree_image_app}
-                frame={'menu_side_frame'}
               />
             </TouchableOpacity>
           </TreContainer>
