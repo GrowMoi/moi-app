@@ -71,11 +71,11 @@ class Button extends Component {
 
     const CreamButton = (
       <AnimatableComponent ref={this.handleButtonRef} disabled={disabled} style={{ ...style, transform: [{ scale: 1 }] }} containsImage={!!image} >
-        {!image && leftIcon && <LeftIcon name={leftIcon} size={20} color={Palette.colors.white} />}
+        {!image && leftIcon && <LeftIcon name={leftIcon} size={20} color={Palette.colors.white.css()} />}
 
         {currentText}
 
-        {!image && rightIcon && <RightIcon name={rightIcon} size={20} color={Palette.colors.white} />}
+        {!image && rightIcon && <RightIcon name={rightIcon} size={20} color={Palette.colors.white.css()} />}
       </AnimatableComponent>
     );
 

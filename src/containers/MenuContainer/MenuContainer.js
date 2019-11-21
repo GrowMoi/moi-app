@@ -154,7 +154,7 @@ const RestContainer = styled(Animated.View)`
   position: absolute;
   left: 0;
   top: 0;
-  background-color: ${colors.cream};
+  background-color: ${colors.blue};
   height: 100%;
   width: 100%;
 `

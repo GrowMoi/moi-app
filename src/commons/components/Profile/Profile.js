@@ -4,6 +4,7 @@ import { View, Image } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import MaskedView from '@react-native-community/masked-view';
 import { getHeightAspectRatio  } from '../../utils'
+import { connect } from 'react-redux'
 
 const rounded = ({ round }) => {
   return round && css`
@@ -76,8 +77,17 @@ class ProfileAvatar extends Component {
     return width - REDUCE_FRAME_IN_PIXELS;
   }
 
+  get currentAchievement() {
+    const { achievements } = this.props;
+
+    const [achievement] = (achievements || []).filter(item => item.active);
+
+    console.log(achievements);
+    return achievement;
+  }
+
   render() {
-    const { width, userImageUri, round, ...rest } = this.props
+    const { width, userImageUri, round, achievements, ...rest } = this.props
     const { mask } = this.state
     const sourceImage = {uri: userImageUri ? userImageUri : 'profile_mask' };
     const MASK_WIDTH = this.adjustedMaskWidth;
@@ -90,7 +100,7 @@ class ProfileAvatar extends Component {
           width={MASK_WIDTH}
           maskElement={
             <MaskImageContainer>
-              <MaskImage  height={MASK_HEIGHT} width={MASK_WIDTH} source={{uri: ''}} />
+              <MaskImage  height={MASK_HEIGHT} width={MASK_WIDTH} source={{uri: 'profile_mask'}} />
             </MaskImageContainer>
           }
           >
@@ -101,12 +111,12 @@ class ProfileAvatar extends Component {
             />
           <BackgroundImage />
         </MaskContainer>
-        <Frame source={{ uri: 'profile' }}/>
+        <Frame source={{ uri: 'profile_frame' }}/>
       </React.Fragment>
     )
 
     const placeholder = (
-      <Frame source={{ uri: 'profile' }} />
+      <Frame source={{ uri: 'profile_photo' }} />
     )
 
     return (
@@ -125,4 +135,8 @@ ProfileAvatar.defaultProps = {
   width: 70,
 };
 
-export default ProfileAvatar;
+const mapStateToProps = state => ({
+  achievements: state.user.achievements,
+})
+
+export default connect(mapStateToProps)(ProfileAvatar);
