@@ -22,6 +22,7 @@ import Item from '../../commons/components/Item/Item';
 import { TextBody } from '../../commons/components/Typography';
 
 import userActions from '../../actions/userActions';
+import profileActions from '../../actions/profileActions'
 import Preloader from '../../commons/components/Preloader/Preloader';
 import Certificate from '../Certificate/Certificate';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
@@ -86,13 +87,14 @@ class Inventory extends Component {
   }
 
   updateItem = ({ id, name }) => async () => {
-    const { updateAchievementsAsync } = this.props;
+    const { updateAchievementsAsync, getUserProfileAsync, profile } = this.props;
 
     if (id) {
       this.showLoading();
 
       try {
         await updateAchievementsAsync(id);
+        await getUserProfileAsync(profile.id);
         this.showLoading(false);
       } catch (error) {
         this.showLoading(false);
@@ -372,6 +374,7 @@ const mapStateToProps = (state) => ({
   finalTestResult: state.user.finalTestResult,
   scene: state.routes.scene,
   showPassiveMessage: state.user.showPassiveMessage,
+  profile: state.user.profile,
 })
 
 const mapDispatchToProps = {
@@ -379,6 +382,7 @@ const mapDispatchToProps = {
   updateAchievementsAsync: userActions.updateAchievementsAsync,
   loadFinalTestAsync: userActions.loadFinalTestAsync,
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+  getUserProfileAsync: userActions.getUserProfileAsync,
 }
 
 
