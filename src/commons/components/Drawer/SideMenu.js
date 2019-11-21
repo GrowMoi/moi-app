@@ -28,7 +28,6 @@ const SideMenuContainer = styled(ImageBackground)`
   shadow-radius: 2.5;
   shadow-opacity: 0.7;
   shadow-color: ${Palette.black.alpha(0.4)};
-  border-right-color: ${Palette.colors.darkBlue};
 `;
 
 const SideBarTitleContainer = styled(View)`
@@ -49,8 +48,8 @@ const SideBarMenuHeader = styled(View)`
 
 const TreContainer = styled(View)`
   align-self: center;
-  width: 80%;
-  margin-top: 20;
+  bottom: 0;
+  margin-top: 40;
 `;
 
 const CloseIcon = styled(Ionicons)`
@@ -78,13 +77,6 @@ class SideMenu extends Component {
     device: PropTypes.any,
     userTree: PropTypes.any,
     user: PropTypes.object,
-  }
-
-   get currentAchievement() {
-    const { achievements } = this.props;
-
-    const [achievement] = (achievements || []).filter(item => item.active);
-    return achievement;
   }
 
   get options() {
@@ -136,12 +128,6 @@ class SideMenu extends Component {
     const treeIsLoaded = 'tree' in userTree;
 
     let currentBox = 'regular_box';
-    const currentAchievement = (this.currentAchievement || {}).number;
-    if(currentAchievement === 2) currentBox = 'amarillo_box';
-    else if(currentAchievement === 3) currentBox = 'fuccia_box';
-    else if(currentAchievement === 4) currentBox = 'azul_box';
-    else if(currentAchievement === 5) currentBox = 'verde_box';
-    else if(currentAchievement === 8) currentBox = 'lila_box';
 
     return (
       <SideMenuContainer
@@ -179,6 +165,7 @@ class SideMenu extends Component {
                 height={Size.heigthTreeContainer}
                 treeBackground={'background_tree_drawer'}
                 profileImage={profile.tree_image_app}
+                frame={'menu_side_frame'}
               />
             </TouchableOpacity>
           </TreContainer>
