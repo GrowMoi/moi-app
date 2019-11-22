@@ -74,7 +74,7 @@ const Shadow = styled(View)`
   position: absolute;
   bottom: 0;
   height: 5;
-  backgroundColor: #1f5eae;
+  backgroundColor: #117485;
   width: 100%;
 `
 
@@ -82,7 +82,7 @@ const ShadowLeft = styled(View)`
   position: absolute;
   left: 0;
   width: 5;
-  backgroundColor: #1f5eae;
+  backgroundColor: #117485;
   height: 100%;
 `
 
@@ -91,7 +91,7 @@ const Content = styled(View)`
   height: 100%;
   width: 100%;
   border-radius: 10;
-  border-color: #1f5eae;
+  border-color: #117485;
   border-width: 2;
   overflow: hidden;
 `
