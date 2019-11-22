@@ -105,7 +105,7 @@ class EditProfileScene extends Component {
           <ContentBox>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
               <HeaderProfile>
-                <Profile userImageUri={profile.image}/>
+                <Profile userImageUri={profile.image || profile.avatar}/>
                 <NameContainer>
                   <Title numberOfLines={2} style={{ flex: 1 }} heavy>{userName}</Title>
                   <PhotoPicker cancelLabel={'Cancelar'}
