@@ -51,6 +51,9 @@ const TreContainer = styled(View)`
   align-self: center;
   width: 80%;
   margin-top: 20;
+  margin-bottom: 40;
+  flex: 1;
+  justify-content: flex-end;
 `;
 
 const CloseIcon = styled(Ionicons)`
