@@ -39,13 +39,6 @@ class ContentBox extends Component {
 
   getCurrentBox() {
      let currentBox = 'regular_box';
-    // const currentAchievement = (this.currentAchievement || {}).number;
-    // if(currentAchievement === 2) currentBox = 'amarillo_box';
-    // else if(currentAchievement === 3) currentBox = 'fuccia_box';
-    // else if(currentAchievement === 4) currentBox = 'azul_box';
-    // else if(currentAchievement === 5) currentBox = 'verde_box';
-    // else if(currentAchievement === 8) currentBox = 'lila_box';
-
     return currentBox;
   }
 

@@ -74,7 +74,7 @@ const Shadow = styled(View)`
   position: absolute;
   bottom: 0;
   height: 5;
-  backgroundColor: #ce7903;
+  backgroundColor: #117485;
   width: 100%;
 `
 
@@ -82,7 +82,7 @@ const ShadowLeft = styled(View)`
   position: absolute;
   left: 0;
   width: 5;
-  backgroundColor: #ce7903;
+  backgroundColor: #117485;
   height: 100%;
 `
 
@@ -91,7 +91,7 @@ const Content = styled(View)`
   height: 100%;
   width: 100%;
   border-radius: 10;
-  border-color: #614c16;
+  border-color: #117485;
   border-width: 2;
   overflow: hidden;
 `
@@ -123,8 +123,8 @@ export default class PassiveMessage extends Component {
       <Container position={position} style={this.props.style}>
         <AnimatableContent animation="fadeIn" easing="ease-in-out">
           <Content>
-            <Background colors={['#f8c570', '#d5a305']} />
-            <Pattern source={{uri: 'yellow_pattern'}} resizeMode='cover'/>
+            <Background colors={['#1d90c4', '#1d90c4']} />
+            {/* <Pattern source={{uri: 'yellow_pattern'}} resizeMode='cover'/> */}
             <TextContainer>
               <Header style={{ color: 'white' }} small heavy >{children}</Header>
             </TextContainer>
