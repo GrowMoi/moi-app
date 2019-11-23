@@ -7,6 +7,7 @@ import styled, { css } from 'styled-components/native';
 import { TextBody, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 import size from '../../styles/size';
+import deviceUtils from '../../utils/device-utils'
 
 const deviceHeight = Dimensions.get('window').height
 
@@ -27,7 +28,7 @@ const RowContainer = styled(View)`
   padding-vertical: ${Size.spaceSmall};
   border-color: ${(props) => {
     if (props.inverted) return 'transparent';
-    return Palette.white.alpha(0.2).css();
+    return Palette.white.alpha(0.5).css();
   }};
   width: 100%;
   ${props => props.big && css`
@@ -111,7 +112,7 @@ export default class ContentPreview extends PureComponent {
 
     const content = (
       <Content key='row-description'>
-        <Header ellipsizeMode='tail' numberOfLines={3} customSize={size.fontContentMinimized} bolder>{title}</Header>
+        <Header ellipsizeMode='tail' numberOfLines={3} customSize={big ? size.fontContentMinimizedBig : size.fontContentMinimized} bolder>{title}</Header>
         {/* <TextBody small secondary>{subtitle}</TextBody> */}
         {/* <TextBody small ellipsizeMode='tail' numberOfLines={4}>{description}</TextBody> */}
       </Content>

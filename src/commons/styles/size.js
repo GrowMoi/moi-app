@@ -26,6 +26,7 @@ export default {
   fontHeaderSuperSmall: isTablet ? 19 : 12,
 
   fontContentMinimized: isTablet ? 23 : 18,
+  fontContentMinimizedBig: isTablet ? 35 : 20,
 
   spaceXSmall: 5,
   spaceSmall: 10,
