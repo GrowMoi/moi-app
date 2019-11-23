@@ -19,7 +19,7 @@ import neuronActions from '../../../actions/neuronActions';
 const ContainerSwiper = styled(View)`
   width: ${props => props.size.width};
   height: ${props => props.size.height};
-  background-color: ${Palette.primary};
+  background-color: ${Palette.colors.blue};
 `;
 
 const Overlay = styled(View)`

@@ -36,6 +36,7 @@ import ActionSheet from '../../commons/components/ActionSheets/ActionSheet';
 import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingAnimation';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 import * as constants from '../../constants';
+import deviceUtils from '../../commons/utils/device-utils'
 
 // Redux
 import neuronActions from '../../actions/neuronActions';
@@ -43,6 +44,7 @@ import userActions from '../../actions/userActions';
 import { backButtonWithSound } from '../../routes';
 
 const { width } = Dimensions.get('window');
+const isTablet = deviceUtils.isTablet();
 
 const HeaderContent = styled(View)`
   margin-vertical: ${Size.spaceSmall};
@@ -133,9 +135,6 @@ class SingleContentScene extends Component {
     const { loadContentByIdAsync, content_id, neuron_id, parentContent, getNeuronInfoByIdAsync, contentType } = this.props;
     const neuronId = fromReadContent && parentContent ? parentContent.neuronId : neuron_id;
     const contentId = fromReadContent && parentContent ? parentContent.contentId : content_id;
-
-
-    console.log('Initial load content')
 
     this.toggleLoading(true);
 
@@ -390,7 +389,7 @@ class SingleContentScene extends Component {
           <MoiBackground>
           {(loading && !reading) && <Preloader />}
           {!loading && isShowingContent && (
-              <ContentBox>
+            <ContentBox>
               <KeyboardAvoidingView keyboardVerticalOffset={50} behavior="padding">
                   <ScrollView contentContainerStyle={styles.scrollContainer}>
 
@@ -402,7 +401,7 @@ class SingleContentScene extends Component {
                       showsPagination
                       loop
                       autoplay
-                      size={{ height: 200, width: (width - Size.spaceXLarge) }}
+                      size={{ height: isTablet ? 350 : 200, width: (width - Size.spaceXLarge) }}
                       images={content.media}
                   />
 
