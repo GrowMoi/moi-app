@@ -36,8 +36,8 @@ const ButtonView = styled(View)`
  width: 45%;
 `;
 
-const colorsMargin = ['#344F39', '#344F39'];
-const colorsContent = ['#74AD50', '#74AD50'];
+const colorsMargin = ['#0060a4', '#0060a4'];
+const colorsContent = ['#00aff1', '#00aff1'];
 
 export default class ModalAlert extends Component {
   get modalSize() {
