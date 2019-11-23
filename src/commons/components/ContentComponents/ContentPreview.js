@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import { View, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { View, Image, TouchableOpacity, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { TextBody, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 import size from '../../styles/size';
+
+const deviceHeight = Dimensions.get('window').height
 
 const RowContainer = styled(View)`
   flex-direction: row;
@@ -27,6 +29,10 @@ const RowContainer = styled(View)`
     if (props.inverted) return 'transparent';
     return Palette.white.alpha(0.2).css();
   }};
+  width: 100%;
+  ${props => props.big && css`
+    height: ${deviceHeight / 4};
+  `}
   border-width: 1;
 `;
 
@@ -35,8 +41,8 @@ const imageHeight = 120;
 const aspect = imageWidth / imageHeight;
 const ContentImage = styled(Image)`
   width: ${props => props.width};
-  height: ${props => Math.round(props.width / aspect)};
-  background-color: ${Palette.dark};
+  height: ${props => props.height || Math.round(props.width / aspect)};
+  background-color: ${Palette.colors.blue};
 `;
 
 const Content = styled(View)`
@@ -53,7 +59,7 @@ const CloseAction = styled(TouchableOpacity)`
   width: 20;
   height: 20;
   border-radius: 10;
-  background-color: ${Palette.dark};
+  background-color: ${Palette.colors.blue};
   align-items: center;
   justify-content: center;
 `;
@@ -101,7 +107,7 @@ export default class ContentPreview extends PureComponent {
   handleViewRef = ref => this.contentRow = ref;
 
   rowContent = () => {
-    const { inverted, title, subtitle, description, source, width, closeButton } = this.props;
+    const { inverted, title, subtitle, description, source, width, closeButton, big } = this.props;
 
     const content = (
       <Content key='row-description'>
@@ -111,12 +117,19 @@ export default class ContentPreview extends PureComponent {
       </Content>
     );
 
+    const bigImage = big ? {
+      width: '50%',
+      height: '100%'
+    } : {}
+
     const image = (
       <ContentImage
         width={width}
         key='row-image'
         resizeMode='cover'
-        source={source} />
+        source={source}
+        {...bigImage}
+      />
     );
 
     const contentOrder = inverted ? [content, image] : [image, content];
@@ -136,7 +149,7 @@ export default class ContentPreview extends PureComponent {
   }
 
   render() {
-    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false, learnt = false, onPressIn = ()=>{}, width } = this.props;
+    const { inverted, id, closeButton, onPressCloseButton, animationDelay = 0, withoutAnimation = false, learnt = false, onPressIn = ()=>{}, width, big } = this.props;
     const closeAction = closeButton && (
       <CloseAction onPress={() => onPressCloseButton && onPressCloseButton(id)}>
         <Ionicons name='md-close' size={15} color={Palette.white.css()}/>
@@ -145,8 +158,8 @@ export default class ContentPreview extends PureComponent {
 
     const content = (
       <TouchableWithoutFeedback onPress={this.onPressRow} onPressIn={onPressIn}>
-        <Animatable.View ref={this.handleViewRef} style={{ alignSelf: 'stretch' }}>
-          <RowContainer id={id} inverted={inverted}>
+        <Animatable.View ref={this.handleViewRef} style={{ alignSelf: 'stretch', width: '100%' }}>
+          <RowContainer big={big} id={id} inverted={inverted}>
             {closeAction}
             {this.rowContent()}
             {learnt && (

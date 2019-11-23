@@ -51,6 +51,7 @@ class ContentListBox extends Component {
 
     return (
       <ContentPreviewWithSound
+        big
         soundName="selectOption"
         learnt={item.learnt}
         animationDelay={delay}
@@ -73,13 +74,9 @@ class ContentListBox extends Component {
 
     return (
       <ContentBox>
-        <FlatList
-          contentContainerStyle={containerStyles}
-          data={contents}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-          numColumns={1}
-        />
+        {contents.map((item, index) => {
+          return (this._renderItem({ item, index }))
+        })}
       </ContentBox>
     )
   }

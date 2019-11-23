@@ -62,30 +62,29 @@ class RandomContents extends Component {
 
     const contentBox = !loading && (
       <ContentBox>
-        <ScrollView contentContainerStyle={containerStyles}>
-          {((randomNeuronSelected || {}).contents || []).map((content, i) => {
-              const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind || '')}?`;
-              const oddInverted = i % 2 === 1;
+        {((randomNeuronSelected || {}).contents || []).map((content, i) => {
+            const normalizeKind = `¿${normalize.normalizeFirstCapLetter(content.kind || '')}?`;
+            const oddInverted = i % 2 === 1;
 
-              const MILLISECONDS = 100;
-              const delay = MILLISECONDS * i;
+            const MILLISECONDS = 100;
+            const delay = MILLISECONDS * i;
 
-              return (
-                <ContentPreview
-                  id={content.id}
-                  animationDelay={delay}
-                  width={widthContentPreview}
-                  onPress={e => this.onPressRowcontent(e, content)}
-                  inverted={oddInverted}
-                  key={content.id}
-                  title={content.title}
-                  subtitle={normalizeKind}
-                  source={{ uri: (content.media || [])[0] }}
-                />
-              );
-            })
-          }
-        </ScrollView>
+            return (
+              <ContentPreview
+                big
+                id={content.id}
+                animationDelay={delay}
+                width={widthContentPreview}
+                onPress={e => this.onPressRowcontent(e, content)}
+                inverted={oddInverted}
+                key={content.id}
+                title={content.title}
+                subtitle={normalizeKind}
+                source={{ uri: (content.media || [])[0] }}
+              />
+            );
+          })
+        }
       </ContentBox>
     );
 
