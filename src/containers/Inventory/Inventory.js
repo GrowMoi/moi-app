@@ -11,6 +11,7 @@ import {
   Alert,
   ImageBackground,
   Text,
+  Dimensions,
 } from 'react-native';
 
 import { Video } from '../../commons/components/VideoPlayer';
@@ -334,7 +335,6 @@ class Inventory extends Component {
     const { itemSelected, isEventModalOpen } = this.state;
     const { device: { dimensions: { width, height } }, finalTestResult, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
-    console.log('Final Test Result', finalTestResult)
     const videoDimensions = {
       width: 1280,
       height: 720

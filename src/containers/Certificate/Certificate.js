@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, ImageBackground, TouchableHighlight, Image, PixelRatio } from 'react-native';
+import { Dimensions, View, Text, ImageBackground, TouchableHighlight, Image, PixelRatio } from 'react-native';
 import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
@@ -105,7 +105,7 @@ class Certificate extends Component {
 
     setTimeout(() => {
       this.showCertificate()
-    }, 500)
+    }, 800)
   }
 
   componentWillUnmount() {
@@ -153,12 +153,13 @@ class Certificate extends Component {
   }
 
   render() {
-    const { animationType, modalProps, finalTestResult, device: { dimensions: { width, height } }, style, profile } = this.props;
+    const { animationType, modalProps, finalTestResult, style, profile } = this.props;
     const { loading, showModal } = this.state;
 
     // const showModal = !!finalTestResult;
 
-    console.log('Certificate', finalTestResult)
+    const width = Dimensions.get('screen').width;
+    const height = Dimensions.get('screen').height;
 
     return (
       <MoiModal {...modalProps}
@@ -181,12 +182,12 @@ class Certificate extends Component {
             />
           </CloseContainer>
 
-          <Background ref={view => { this.certificateView = view; }} style={style} width={width} height={height} source={{ uri: 'marco_exterior_h' }} resizeMode='stretch'>
+          <Background ref={view => { this.certificateView = view; }} style={style} width={width} height={height} source={{ uri: 'marco_profile_tab_contents' }} resizeMode='stretch'>
 
             <BackgroundCertificate
               width={width}
               height={height}
-              source={{ uri: 'fondo' }}
+              source={{ uri: 'background_tree_landscape' }}
               resizeMode='stretch'
             >
 
@@ -198,38 +199,35 @@ class Certificate extends Component {
                 <View style={{ width: '100%', height: size.heigthBody, flexDirection: 'row' }}>
                   <View style={{ flex: 1 }}>
                     <TextBox>
-                      <Header customSize={size.certificateFont}>{profile.username}</Header>
+                      <Header heavy color={'#000'} customSize={size.certificateFont}>{profile.username}</Header>
                     </TextBox>
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5 }}>
                       <TextBox style={{ width: '100%', height: 'auto', flexDirection: 'row' }}>
                         <InnerTextBox>
-                          <Header customSize={size.certificateFont}>{profile.age}</Header>
-                          <Header customSize={size.certificateFont}>Edad</Header>
+                          <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.age}</Header>
+                          <Header bolder color={'#000'} customSize={size.certificateFont}>Edad</Header>
                         </InnerTextBox>
                         <InnerTextBox >
-                          <Header customSize={size.certificateFont}>{profile.country}</Header>
-                          <Header customSize={size.certificateFont}>Pais</Header>
+                          <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.country}</Header>
+                          <Header bolder color={'#000'} customSize={size.certificateFont}>Pais</Header>
                         </InnerTextBox>
                       </TextBox>
                     </View>
                     <TextBox>
-                      <Header customSize={size.certificateFont}>{profile.school}</Header>
-                      <Header customSize={size.certificateFont}>Escuela</Header>
+                      <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.school}</Header>
+                      <Header bolder color={'#000'} customSize={size.certificateFont}>Escuela</Header>
                     </TextBox>
                   </View>
 
                   <View style={{ flex: 1 }}>
                     <Background
-                      source={{ uri: 'fondo' }}
+                      style={{ borderRadius: 20 }}
+                      source={{ uri: 'background_profile' }}
                       resizeMode='stretch' >
-                      <Background
-                        source={{ uri: 'marco' }}
-                        resizeMode='stretch' >
                         <Image
                           style={{ width: "100%", height: "100%", marginTop: -4 }}
                           source={{ uri: profile.tree_image_app }}
-                          resizeMode='stretch' />
-                      </Background>
+                          resizeMode='contain' />
                     </Background>
                   </View>
                 </View>
@@ -249,7 +247,7 @@ class Certificate extends Component {
                   <Header color="#219fd1" customSize={size.certificateFont}>{this.getPercentajeCorrectAnswers(finalTestResult).toFixed(1)}% último test</Header>
                   <View style={{ flexDirection: 'row' }}>
                     <Header color="#219fd1" customSize={size.certificateFont - 2} bolder>{finalTestResult.time} </Header>
-                    <Header color="#219fd1" customSize={size.certificateFont - 2}>tiempo de lectura promedio</Header>
+                    <Header color="#219fd1" customSize={size.certificateFont - 2}>lectura promedio</Header>
                   </View>
                 </View>
               </SectionContainer>

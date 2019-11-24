@@ -11,8 +11,6 @@ import userActions from '../../actions/userActions';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import ComplementaryScene from './ComplementaryQuizScene';
 import Preloader from '../../commons/components/Preloader/Preloader';
-import { Video } from '../../commons/components/VideoPlayer';
-import creditos from '../../../assets/videos/creditos.mp4';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import { Sound } from '../../commons/components/SoundPlayer';
 import LevelPassedTransition from './LevelPassedTransition';
