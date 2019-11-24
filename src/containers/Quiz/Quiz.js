@@ -15,6 +15,7 @@ import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAl
 import { Sound } from '../../commons/components/SoundPlayer';
 import LevelPassedTransition from './LevelPassedTransition';
 import neuronActions from '../../actions/neuronActions';
+import _ from 'lodash'
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -156,12 +157,12 @@ class QuizScene extends Component {
             {currentScene === 'intro' && this.renderIntroScene}
             {currentScene === 'quiz' && !loading &&
               <Quiz onQuizComplete={this.quizFinished}>
-                {quiz.questions.map(question => (
+                {(quiz.questions || []).map(question => (
                   <Question
                     key={`question-${question.content_id}`}
                     contentId={question.content_id}
                     title={question.title}
-                    options={question.possible_answers}
+                    options={_.shuffle(question.possible_answers)}
                     buttonTitle='Siguiente'
                     mediaUrl={question.media_url}
                   />

@@ -23,6 +23,7 @@
     "expo-web-browser": "~6.0.0",
     "expokit": "34.0.2",
     "intl": "^1.2.5",
+    "lodash": "^4.17.15",
     "lottie-react-native": "^2.5.11",
     "prop-types": "^15.6.1",
     "react": "16.8.3",
