@@ -111,7 +111,7 @@ export default class ContentPreview extends PureComponent {
 
     const content = (
       <Content key='row-description'>
-        <Header ellipsizeMode='tail' numberOfLines={3} customSize={big ? size.fontContentMinimizedBig : size.fontContentMinimized} bolder>{title}</Header>
+        <Header ellipsizeMode='tail' numberOfLines={big ? 6 : 3} customSize={big ? size.fontContentMinimizedBig : size.fontContentMinimized} bolder>{title}</Header>
         {/* <TextBody small secondary>{subtitle}</TextBody> */}
         {/* <TextBody small ellipsizeMode='tail' numberOfLines={4}>{description}</TextBody> */}
       </Content>
