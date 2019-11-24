@@ -39,6 +39,7 @@ class QuizScene extends Component {
     modalVisible: false,
     resultFinalTest: null,
     showLevelPassedAnimation: false,
+    questionsLength: null,
   }
 
   soundQuizFinishedPlayed;
@@ -51,9 +52,9 @@ class QuizScene extends Component {
     }
   }
 
-  showVideo = (show = true) => {
-    this.setState({ modalVisible: show});
-  }
+  // showVideo = (show = true) => {
+  //   this.setState({ modalVisible: show});
+  // }
 
   saveResultFinalTest = () => {
     const { saveResultFinalTest } = this.props;
@@ -62,7 +63,7 @@ class QuizScene extends Component {
 
   onPlaybackStatusUpdate = async (playbackStatus) => {
       if(playbackStatus.didJustFinish) {
-        this.showVideo(false);
+        // this.showVideo(false);
         this.saveResultFinalTest();
         Actions.inventory({ type: 'reset' });
       }
@@ -76,8 +77,8 @@ class QuizScene extends Component {
       content_id: answer.content_id,
     }));
     const formatedAnswers = JSON.stringify(allAnswers);
-    this.setState({ loading: true });
-    const isFinalTest = quiz.questions.length === 21;
+    this.setState({ loading: true, questionsLength: quiz.questions.length });
+    const isFinalTest = quiz.questions.length > 10;
     const evaluateQuiz = isFinalTest ? evaluateFinalTestAsync : learnContentsAsync;
     const res = await evaluateQuiz(quiz.id, formatedAnswers);
     this.setState({ loading: false });
@@ -96,16 +97,13 @@ class QuizScene extends Component {
   }
 
   validateResultFinalTest = (data) => {
-     const correctResults = data.result.filter(response => response.correct);
-
-     const percentajeCorrects = (correctResults.length * 100) / 21;
-     if(percentajeCorrects > 70) {
-      this.setState({resultFinalTest: data});
-      this.showVideo(true);
-     } else {
-      Actions.inventory({ type: 'reset' });
-     }
-
+    this.setState(
+      () => ({resultFinalTest: data, questionsLength: null }),
+      () => {
+        this.saveResultFinalTest();
+        Actions.inventory({ type: 'reset' });
+      }
+    );
   }
 
   jumpToScene = (key) => {
@@ -113,9 +111,10 @@ class QuizScene extends Component {
   }
 
   get renderIntroScene() {
+    const { quizTitle = '' } = this.props;
     return (
       <ComplementaryScene
-        title='Has leído 3 contenidos'
+        title={quizTitle || 'Has leído 3 contenidos'}
         text='¿Por qué no probamos si de verdad has aprendido?'
         onNext={() => this.jumpToScene('quiz')}
       />
@@ -176,7 +175,7 @@ class QuizScene extends Component {
         )}
         <Navbar />
         <BottomBar />
-        {modalVisible && <Video
+        {/* {modalVisible && <Video
           videoDimensions={videoDimensions}
           source={creditos}
           dismiss={() => this.showVideo(false)}
@@ -185,7 +184,7 @@ class QuizScene extends Component {
           onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
           showCloseIcon={false}
           skipButton
-        />}
+        />} */}
         {showLevelPassedAnimation && <LevelPassedTransition/>}
         <PassiveMessageAlert
           isOpenPassiveMessage={showPassiveMessage && scene.name === 'quiz' &&  !loading}
@@ -213,7 +212,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-   learnContentsAsync: userActions.learnContentsAsync,
+  learnContentsAsync: userActions.learnContentsAsync,
   evaluateFinalTestAsync: userActions.evaluateFinalTestAsync,
   saveResultFinalTest: userActions.saveResultFinalTest,
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,

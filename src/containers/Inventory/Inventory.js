@@ -10,6 +10,7 @@ import {
   Image,
   Alert,
   ImageBackground,
+  Text,
 } from 'react-native';
 
 import { Video } from '../../commons/components/VideoPlayer';
@@ -115,7 +116,7 @@ class Inventory extends Component {
     const { loadFinalTestAsync } = this.props;
     this.showLoading();
     await loadFinalTestAsync();
-    Actions.quiz();
+    Actions.quiz({ quizTitle: 'Test Final' });
     this.showLoading(false);
   }
 
@@ -333,6 +334,7 @@ class Inventory extends Component {
     const { itemSelected, isEventModalOpen } = this.state;
     const { device: { dimensions: { width, height } }, finalTestResult, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
+    console.log('Final Test Result', finalTestResult)
     const videoDimensions = {
       width: 1280,
       height: 720
@@ -352,7 +354,7 @@ class Inventory extends Component {
           onClose={() => { this.setState({ isEventModalOpen: false }) }}
         />}
 
-        {finalTestResult && <Certificate />}
+        {!!finalTestResult && (<Certificate />)}
         <BottomBar />
         <PassiveMessageAlert
           isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !isEventModalOpen}

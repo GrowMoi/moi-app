@@ -91,6 +91,7 @@ class Certificate extends Component {
 
   state = {
     loading: false,
+    showModal: false,
   }
 
   constructor(props) {
@@ -101,12 +102,20 @@ class Certificate extends Component {
   componentWillMount() {
     this.currentOrientation = Orientation.getInitialOrientation();
     Orientation.lockToLandscape();
+
+    setTimeout(() => {
+      this.showCertificate()
+    }, 500)
   }
 
   componentWillUnmount() {
     if (this.currentOrientation === 'PORTRAIT') {
       Orientation.lockToPortrait();
     }
+  }
+
+  showCertificate = () => {
+    this.setState({ showModal: true })
   }
 
   showLoading(isVisible = true) {
@@ -145,9 +154,11 @@ class Certificate extends Component {
 
   render() {
     const { animationType, modalProps, finalTestResult, device: { dimensions: { width, height } }, style, profile } = this.props;
-    const { loading } = this.state;
+    const { loading, showModal } = this.state;
 
-    const showModal = !!finalTestResult;
+    // const showModal = !!finalTestResult;
+
+    console.log('Certificate', finalTestResult)
 
     return (
       <MoiModal {...modalProps}
@@ -170,7 +181,7 @@ class Certificate extends Component {
             />
           </CloseContainer>
 
-          <Background  ref={view => { this.certificateView = view; }} style={style} width={width} height={height} source={{ uri: 'marco_exterior_h' }} resizeMode='stretch'>
+          <Background ref={view => { this.certificateView = view; }} style={style} width={width} height={height} source={{ uri: 'marco_exterior_h' }} resizeMode='stretch'>
 
             <BackgroundCertificate
               width={width}

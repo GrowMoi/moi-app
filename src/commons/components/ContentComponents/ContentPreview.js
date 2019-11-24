@@ -7,7 +7,6 @@ import styled, { css } from 'styled-components/native';
 import { TextBody, Header } from '../Typography';
 import { Size, Palette } from '../../styles';
 import size from '../../styles/size';
-import deviceUtils from '../../utils/device-utils'
 
 const deviceHeight = Dimensions.get('window').height
 

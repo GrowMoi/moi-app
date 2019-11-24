@@ -21,16 +21,16 @@ import navbarPropStyles, { HamburgerButton } from './commons/components/Navbar/n
 import withSound from './commons/utils/withSound';
 // import Test from './commons/components/Test';
 
-export const backButtonWithSound = (action) => {
+export const backButtonWithSound = (action, params) => {
   const BackButtonWithSound = withSound(BackButton);
 
   return (
-    <BackButtonWithSound style={{ left: -5, top: 3 }} onPress={() => action()} soundName="next" />
+    <BackButtonWithSound style={{ left: -5, top: 3 }} onPress={() => action(params)} soundName="next" />
   );
 }
 
 const backButton = () => backButtonWithSound(Actions.pop);
-const backButtonQuiz = () => backButtonWithSound(Actions.tree);
+const backButtonQuiz = () => backButtonWithSound(Actions.tree, { type: 'reset' });
 const backButtonTutorQuiz = () =>  backButtonWithSound(Actions.pop);
 const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
 
