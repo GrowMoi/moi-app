@@ -24,7 +24,7 @@ export default class ContentContainer extends Component {
         start={start}
         end={end}
         style={{ padding: 5, alignItems: 'center', borderRadius: 10, width: width, height: height }}>
-        <View style={{ width: width - 10, height: height - 10, borderRadius: 10, borderWidth: 1, borderColor: '#E3BB83' }}>
+        <View style={{ width: width - 10, minHeight: height - 10, borderRadius: 10, borderWidth: 1, borderColor: '#E3BB83' }}>
           <LinearGradient
             colors={colorsContent}
             start={start}

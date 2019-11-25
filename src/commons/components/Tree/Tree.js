@@ -236,7 +236,9 @@ class Tree extends Component {
   validateResultQuiz() {
     const { quizResult: { achievements = [], event = {}, super_event = {} } } = this.props;
     if (achievements.length > 0) {
-      this.showModalNewAchievements(achievements);
+      setTimeout(() => {
+        this.showModalNewAchievements(achievements);
+      }, 500)
     }
 
     if (event.completed) {
@@ -365,7 +367,7 @@ class Tree extends Component {
       <TreeContainer>
         <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
-        {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} eventType={eventType} onHideModal={this.hideEventCompletedModal} />}
+        {/* {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} eventType={eventType} onHideModal={this.hideEventCompletedModal} />} */}
         {showLeftRewiewModal &&<ModalAlert
           width={width}
           item={generateAlertData('¿Te gusta jugar con Moi?', 'Dejanos un comentario y cuentanos tu experiencia.')}

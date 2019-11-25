@@ -110,8 +110,8 @@ class Level1 extends Component {
               id={tree.root.id}
               contentsLearned={contentsLearned}
               totalContents={totalContents}
-              size={{ max: 80, min: 50 }}
-              position={{ top: -25, left: -8 }}
+              size={{ max: 50, min: 45 }}
+              position={{ bottom: -37, left: 5 }}
             />
           </View>
           </TreeLevel>

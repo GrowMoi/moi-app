@@ -34,8 +34,8 @@ const Buttons = styled(View)`
   padding-horizontal: 20;
 `;
 
-const colorsMargin = ['#344F39', '#344F39'];
-const colorsContent = ['#74AD50', '#74AD50'];
+const colorsMargin = ['#0160a4', '#0160a4'];
+const colorsContent = ['#00aff1', '#00aff1'];
 
 export const GenericAlert = ({
   onNext,
@@ -44,12 +44,14 @@ export const GenericAlert = ({
   nextText = 'Aceptar',
   cancelText = 'Cancelar',
   description = '',
+  width = 300,
+  height,
 }) => {
 
   return (
     <Container>
       <CloseIcon onPress={onCancel} style={{ top: -10 }} />
-      <ContentContainer width={300} colorsMargin={colorsMargin} colorsContent={colorsContent}>
+      <ContentContainer width={width} height={height} colorsMargin={colorsMargin} colorsContent={colorsContent}>
         <ContentBox>
           <Title center book color='white'>{message}</Title>
           <Description>
