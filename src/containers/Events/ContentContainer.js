@@ -18,18 +18,17 @@ export default class ContentContainer extends Component {
     };
 
     return (
-
       <LinearGradient
         colors={colorsMargin}
         start={start}
         end={end}
-        style={{ padding: 5, alignItems: 'center', borderRadius: 10, width: width, height: height }}>
+        style={{ padding: 5, alignItems: 'center', borderRadius: 10, width: width, minHeight: height }}>
         <View style={{ width: width - 10, minHeight: height - 10, borderRadius: 10, borderWidth: 1, borderColor: '#E3BB83' }}>
           <LinearGradient
             colors={colorsContent}
             start={start}
             end={end}
-            style={{ padding: 5, alignItems: 'center', borderRadius: 10, width: width - 10, height: height - 10, ...style }}>
+            style={{ padding: 5, alignItems: 'center', borderRadius: 10, width: width - 10, minHeight: height - 10, ...style }}>
             {children}
           </LinearGradient>
         </View>

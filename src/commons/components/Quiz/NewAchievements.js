@@ -7,6 +7,11 @@ import GenericAlert from '../Alert/GenericAlert';
 class NewAchievementsModal extends Component {
   state = {
     currentAchievement: 0,
+    showModal: false,
+  }
+
+  componentDidMount() {
+    setTimeout(() => { this.setState({ showModal: true }) }, 100)
   }
 
   formatContent = () => {
@@ -38,7 +43,7 @@ class NewAchievementsModal extends Component {
 
   render() {
     return (
-      <Alert open>
+      <Alert open={this.state.showModal}>
         <GenericAlert
           message='Nuevo logro obtenido!'
           description={this.formatContent()}

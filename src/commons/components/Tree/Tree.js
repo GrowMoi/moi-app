@@ -77,6 +77,12 @@ class Tree extends Component {
     this.getTreeLevel();
     this.setState({ loading: false });
     this.handleShowReview();
+
+    const { quizResult } = this.props
+    const {showModalNewAchievements } = this.state
+    if(!!quizResult && !showModalNewAchievements) {
+      this.validateResultQuiz()
+    }
   }
 
   async componentWillReceiveProps(newProps) {
@@ -236,21 +242,23 @@ class Tree extends Component {
   validateResultQuiz() {
     const { quizResult: { achievements = [], event = {}, super_event = {} } } = this.props;
     if (achievements.length > 0) {
-      setTimeout(() => {
-        this.showModalNewAchievements(achievements);
-      }, 500)
+      this.showModalNewAchievements(achievements);
+      return;
     }
 
     if (event.completed) {
       this.showEventCompletedModal(event.info.title, 'evento');
+      return;
     }
 
     if (super_event.completed) {
       this.showEventCompletedModal(super_event.info.event_achievement.title, 'super evento');
+      return;
     }
 
     if (achievements.length === 0 && !event.completed) {
       this.removeQuizResult();
+      return;
     }
   }
 
@@ -334,11 +342,7 @@ class Tree extends Component {
 
   render() {
     const { loading, level, zoomScale, hasUserTree, modalVisible, showModalNewAchievements, showEventCompleted, eventTitle, eventType, achievements, showLabelLayer, treeHeight, showLeftRewiewModal } = this.state;
-    const { device: { dimensions: { width, height, orientation } }, quizResult } = this.props;
-
-    if (quizResult && (!showModalNewAchievements && !showEventCompleted)) {
-      this.validateResultQuiz();
-    }
+    const { device: { dimensions: { width, height, orientation } } } = this.props;
 
     const showAchievementsModal = !modalVisible && showModalNewAchievements;
     const showEventCompletedModal = !modalVisible && !showModalNewAchievements && showEventCompleted;
@@ -368,13 +372,13 @@ class Tree extends Component {
         <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />
         {showAchievementsModal && <NewAchievementsModal achievements={achievements} onHideModal={this.hideModalNewAchievements} />}
         {/* {showEventCompletedModal && <EventCompletedModal eventTitle={eventTitle} eventType={eventType} onHideModal={this.hideEventCompletedModal} />} */}
-        {showLeftRewiewModal &&<ModalAlert
+        {/* {showLeftRewiewModal &&<ModalAlert
           width={width}
           item={generateAlertData('¿Te gusta jugar con Moi?', 'Dejanos un comentario y cuentanos tu experiencia.')}
           okButtonProps={this.generateButtonProps('Dejar review', this.redirectToStore)}
           cancelButtonProps={{title: 'Más tarde'}}
           onClose={this.onCloseLeftReviewModal}
-        />}
+        />} */}
         {!modalVisible &&
           <Zoom
             flex={Platform.OS === 'android' ? 10 : 1}

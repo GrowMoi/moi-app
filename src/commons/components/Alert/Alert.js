@@ -17,7 +17,7 @@ export default class Alert extends Component {
   }
 
   render() {
-    const { open, children, touchableProps = {}, animationType='slide', noOverlay=false } = this.props;
+    const { open, children, touchableProps = {}, animationType='fade', noOverlay=false } = this.props;
 
     return (
       <MoiModal

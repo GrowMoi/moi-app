@@ -9,9 +9,11 @@ import { Title, TextBody } from '../Typography';
 import Button from '../Buttons/Button';
 import CloseIcon from '../../../containers/Events/CloseIcon';
 import ContentContainer from '../../../containers/Events/ContentContainer';
+import { deviceUtils } from '../../utils'
+const isTablet = deviceUtils.isTablet();
 
 const Container = styled(View)`
-  width: 325;
+  width: ${isTablet ? 400 : 325};
   align-items: center;
 `;
 
@@ -44,7 +46,7 @@ export const GenericAlert = ({
   nextText = 'Aceptar',
   cancelText = 'Cancelar',
   description = '',
-  width = 300,
+  width = isTablet ? 400 : 300,
   height,
 }) => {
 
