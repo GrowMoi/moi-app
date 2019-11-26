@@ -473,7 +473,7 @@ class SingleContentScene extends Component {
               </ContentBox>
               )}
           {!loading && <BottomBarWithButtons
-              readButton={!(content.learnt || content.read) || fromEvent}
+              readButton={!(content.learnt || content.read)}
               onPressReadButton={() => {
                 if(content.neuron_can_read) {
                   this.readContent(content.neuron_id, content.id)
