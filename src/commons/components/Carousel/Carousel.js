@@ -8,10 +8,13 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4'
 import Swiper from 'react-native-swiper';
+import { Video } from 'expo-av';
+import VideoPlayer from 'expo-video-player'
 import ContentImage from './ContentImage';
 import MoiModal from '../../../containers/Modal/MoiModal';
 import { Palette, Size } from '../../styles';
 import { colors } from '../../styles/palette';
+import moiVideos from '../../../../assets/videos';
 
 // Actions
 import neuronActions from '../../../actions/neuronActions';
@@ -49,29 +52,46 @@ export default class Carousel extends Component {
     fullScreenImage: false,
     expandedImage: {},
     type: '',
+    videoId: '',
   }
 
-  openImage = ({attrs, type}) => {
-    this.setState({ fullScreenImage: true, expandedImage: attrs, type });
+  openImage = ({attrs, item = {} }) => {
+    const { type, videoId } = item;
+    this.setState({ fullScreenImage: true, expandedImage: attrs, type, videoId });
   }
 
   dismiss = () => {
-    this.setState({ fullScreenImage: false, expandedImage: {}, type: '' });
+    this.setState({ fullScreenImage: false, expandedImage: {}, type: '', videoId: '' });
+  }
+
+  getVideoId(url){
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
   }
 
   render() {
     const {
       size,
       images,
+      videos,
       ...rest
     } = this.props;
 
-    const { fullScreenImage, expandedImage, type } = this.state;
+    const { fullScreenImage, expandedImage, type, videoId } = this.state;
 
     const imagesFormatted = (images || []).map(imageUrl => ({
-      url: imageUrl,
+      imageUrl,
       type: 'image',
     }))
+
+    const videosFormatted = (videos || []).map(video => ({
+      imageUrl: video.thumbnail.startsWith('//') ? `https:${video.thumbnail}` : video.thumbnail,
+      videoId: this.getVideoId(video.url) || '',
+      type: 'video',
+    }));
+
+    const media = imagesFormatted.concat(videosFormatted);
 
     return (
       <ContainerSwiper size={size}>
@@ -81,13 +101,13 @@ export default class Carousel extends Component {
           nextButton={<Entypo name='chevron-right' size={35} color={colors.lightGray.css()} />}
           prevButton={<Entypo name='chevron-left' size={35} color={colors.lightGray.css()} />}
         >
-          {(imagesFormatted || []).map(d => {
+          {(media || []).map(d => {
             return <ContentImage
               key={uuid()}
-              onPressImage={(attrs) => this.openImage({ attrs, type: d.type })}
+              onPressImage={(attrs) => this.openImage({ attrs, item: d })}
               size={size}
               data={d}
-              source={{ uri: d.url }}
+              source={{ uri: d.imageUrl }}
             />
           })}
         </Swiper>
@@ -112,6 +132,17 @@ export default class Carousel extends Component {
                 style={{ width: '100%', height: '100%' }}
               />
             </Zoom>}
+            {type === 'video' &&
+              <VideoPlayer
+                videoProps={{
+                  shouldPlay: true,
+                  resizeMode: Video.RESIZE_MODE_CONTAIN,
+                  source: moiVideos[videoId],
+                }}
+                inFullscreen={true}
+                showFullscreenButton={false}
+              />
+            }
           </Overlay>
         </MoiModal>
       </ContainerSwiper>
@@ -126,10 +157,12 @@ Carousel.defaultProps = {
     height: 200,
   },
   images: [],
+  videos: [],
 };
 
 
 Carousel.propTypes = {
   size: PropTypes.any,
+  images: PropTypes.array,
   images: PropTypes.array,
 };

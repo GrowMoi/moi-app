@@ -409,6 +409,7 @@ class SingleContentScene extends Component {
                       autoplay
                       size={{ height: isTablet ? 350 : 200, width: (width - Size.spaceXLarge) }}
                       images={content.media}
+                      videos={content.videos}
                   />
 
                   <ActionsHeader>
