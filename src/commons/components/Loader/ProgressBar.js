@@ -7,7 +7,7 @@ import { Size } from '../../styles';
 
 const BackgroundBar = styled(View)`
   width: ${props => props.width};
-  background-color: #336869;
+  background-color: #79d9f4;
   border-radius: 5;
   height: ${size.bottomBarHeight};
   align-items: center;
@@ -94,7 +94,7 @@ export default class ProgressBar extends Component {
 
     return (
       <BackgroundBar width={width}>
-        <Animated.View style={{ backgroundColor: '#BEF649', borderRadius: 5, height: size.bottomBarHeight, position: 'absolute', left: 0, ...style }} />
+        <Animated.View style={{ backgroundColor: '#0a9fdf', borderRadius: 5, height: size.bottomBarHeight, position: 'absolute', left: 0, ...style }} />
         <Text style={{ fontSize: Size.fontBarLoader, fontWeight: '700', fontStyle: 'italic', color: progress <= 50 ? 'white' : '#366D68' }}>{`${progress}%`}</Text>
       </BackgroundBar>
     );

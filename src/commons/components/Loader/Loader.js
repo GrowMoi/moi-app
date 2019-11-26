@@ -82,8 +82,8 @@ export default class Loader extends Component {
     return (
       <Background source={{ uri: 'splash' }} resizeMode='stretch'>
         <Background source={{ uri: 'fondo_blanco' }} resizeMode='stretch'>
-          <AnimatedTree width={this.getMinSize()} isLandscape={this.isLandscape()} generateTopPosition={this.getPositionBasedOnPercent} />
-          <LogoMoi source={{ uri: 'logo_moi' }} resizeMode='stretch' width={this.widthLogo} topPosition={this.getPositionBasedOnPercent(78)} />
+          {/* <AnimatedTree width={this.getMinSize()} isLandscape={this.isLandscape()} generateTopPosition={this.getPositionBasedOnPercent} /> */}
+          {/* <LogoMoi source={{ uri: 'logo_moi' }} resizeMode='stretch' width={this.widthLogo} topPosition={this.getPositionBasedOnPercent(78)} /> */}
           <TextContainer width={this.widthProgressBar} topPosition={this.topPositionText}>
             <Text style={{ fontSize: size.fontSizeLoginImage, color: '#30225E' }}>
               {/* change text */}
