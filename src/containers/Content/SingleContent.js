@@ -37,11 +37,13 @@ import ReadingAnimation from '../../commons/components/ReadingAnimation/ReadingA
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert'
 import * as constants from '../../constants';
 import deviceUtils from '../../commons/utils/device-utils'
+import { AlertCantReadContent } from './AlertCantReadContent';
+import { backButtonWithSound } from '../../routes';
+import * as routeTypes from '../../routeTypes'
 
-// Redux
+
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
-import { backButtonWithSound } from '../../routes';
 
 const { width } = Dimensions.get('window');
 const isTablet = deviceUtils.isTablet();
@@ -125,6 +127,7 @@ class SingleContentScene extends Component {
     animationFinished: false,
     hasTest: false,
     isShowingContent: true,
+    alertCantReadIsVisible: false,
   }
 
   componentDidMount() {
@@ -354,10 +357,12 @@ class SingleContentScene extends Component {
     return 'data:image/png;base64,' + base64Image.replace(/(?:\r\n|\r|\n)/g, '')
   }
 
+  showAlertCantRead(isVisible = true) {
+    this.setState({ alertCantReadIsVisible: isVisible });
+  }
+
   render() {
     const { contentSelected: content, device, scene, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
-
-    // console.log(this.props.state);
 
     const {
       loading,
@@ -365,6 +370,7 @@ class SingleContentScene extends Component {
       favorite,
       reading,
       isShowingContent,
+      alertCantReadIsVisible,
     } = this.state;
 
     const options = [
@@ -435,8 +441,8 @@ class SingleContentScene extends Component {
                       <Header inverted bolder>Notas</Header>
                       <TextLeftBorder>
                       <NoteInput
-                          text={content.user_notes}
-                          onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
+                        text={content.user_notes}
+                        onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
                       />
                       </TextLeftBorder>
                   </Section>
@@ -467,7 +473,13 @@ class SingleContentScene extends Component {
               )}
           {!loading && <BottomBarWithButtons
               readButton={!(content.learnt || content.read) || fromEvent}
-              onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
+              onPressReadButton={() => {
+                if(content.neuron_can_read) {
+                  this.readContent(content.neuron_id, content.id)
+                } else {
+                  this.showAlertCantRead()
+                }
+              }}
               width={device.dimensions.width}
           />}
           {/* Animation */}
@@ -489,11 +501,17 @@ class SingleContentScene extends Component {
           />
           <Navbar/>
 
+          <AlertCantReadContent
+            open={alertCantReadIsVisible}
+            onCancel={() => { this.showAlertCantRead(false) }}
+            onNext={() => { Actions[routeTypes.TREE]({ type: ActionConst.RESET }) }}
+          />
+
           <PassiveMessageAlert
               isOpenPassiveMessage={showPassiveMessage && scene.name === 'singleContent'}
               touchableProps={{
                 onPress: () => {
-                    showPassiveMessageAsync(false);
+                  showPassiveMessageAsync(false);
                 }
               }}
               message='Cuando termines de leer la explicación, presiona el botón

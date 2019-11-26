@@ -63,10 +63,10 @@ export const GenericAlert = ({
       </ContentContainer>
 
       <Buttons>
-        <View style={{ width: '45%' }}>
+        <View style={{ width: '46%' }}>
           {(onNext && typeof onNext === 'function') && <Button style={{ width: '100%' }} title={nextText} onPress={onNext} />}
         </View>
-        <View style={{ width: '45%' }}>
+        <View style={{ width: '46%' }}>
           {(onCancel && typeof onCancel === 'function') && <Button style={{ width: '100%' }} title={cancelText} onPress={onCancel} />}
         </View>
       </Buttons>
