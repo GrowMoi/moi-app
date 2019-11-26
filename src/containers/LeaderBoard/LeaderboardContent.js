@@ -144,7 +144,7 @@ class LeaderBoardContent extends PureComponent {
               style={{ height: '80%' }}
               contentContainerStyle={styles.contentContainer}
               onEndReached={this.fetchNextPage}
-              onEndReachedThreshold={0}
+              onEndReachedThreshold={1}
               data={allLeaders}
               renderItem={this._renderItem}
               keyExtractor={this._keyExtractor}
