@@ -88,7 +88,7 @@ export default class Loader extends Component {
             <Text style={{ fontSize: size.fontSizeLoginImage, color: '#30225E' }}>
               {/* change text */}
               {/* If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill. */}
-              Moi social learning
+              Banco Pacífico
             </Text>
           </TextContainer>
           <ProgressBar width={this.widthProgressBar} {...this.props} />
