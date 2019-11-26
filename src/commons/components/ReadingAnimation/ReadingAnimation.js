@@ -1,6 +1,6 @@
 import React from 'react';
 import LottieView from 'lottie-react-native';
-import { View, Animated, Easing } from 'react-native';
+import { View, Animated, Easing, Modal } from 'react-native';
 import { math } from '../../utils';
 
 import articulation from '../../../../assets/animations/articulation.json';
@@ -15,6 +15,7 @@ class ReadingAnimation extends React.Component {
   state = {
     progress: new Animated.Value(0),
     animationN: 0,
+    modalIsShowing: false,
   }
 
   animatedTiming = () => {
@@ -27,9 +28,13 @@ class ReadingAnimation extends React.Component {
 
   componentDidMount() {
     const { onFinishAnimation } = this.props;
-    this.animatedTiming().start(() => {
-      if(onFinishAnimation && typeof onFinishAnimation === 'function') onFinishAnimation();
-    });
+
+    setTimeout(() => {
+      this.setState(() => ({ modalIsShowing: true }))
+      this.animatedTiming().start(() => {
+        if(onFinishAnimation && typeof onFinishAnimation === 'function') onFinishAnimation();
+      });
+    }, 500)
   }
 
   reset = () => {
@@ -58,22 +63,24 @@ class ReadingAnimation extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, position: 'absolute', top: 15, left:0, height: '100%', width: '100%' }}>
-        <LottieView
-          ref={ref => { this.anim = ref }}
-          source={confusion}
-          resizeMode='contain'
-          progress={this.state.progress}
-          loop
-          style={{
-            flex: 1,
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            transform: [{scale: 1.3}]
-          }}
-        />
-      </View>
+      <Modal visible={this.state.modalIsShowing} transparent={true}>
+        <View style={{ flex: 1, position: 'absolute', top: 0, left:0, height: '100%', width: '100%' }}>
+          <LottieView
+            ref={ref => { this.anim = ref }}
+            source={confusion}
+            resizeMode='contain'
+            progress={this.state.progress}
+            loop
+            style={{
+              flex: 1,
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              transform: [{scale: 1.3}]
+            }}
+          />
+        </View>
+      </Modal>
     );
   }
 }

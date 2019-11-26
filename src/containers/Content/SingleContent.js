@@ -485,10 +485,10 @@ class SingleContentScene extends Component {
           />}
           {/* Animation */}
           {reading && (
-              <ReadingAnimation
+            <ReadingAnimation
               ref={ref => this.readingAnim = ref}
               onFinishAnimation={() => {
-                  this.afterFinishAnimation(content.neuron_id);
+                this.afterFinishAnimation(content.neuron_id);
               }}
               />
           )}

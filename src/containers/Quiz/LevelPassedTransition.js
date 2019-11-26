@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet, AsyncStorage, PixelRatio, ImageEditor, ImageStore, Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 import treeActions from '../../actions/treeActions';
 import { Header } from '../../commons/components/Typography';
@@ -56,12 +56,12 @@ class LevelPassedTransition extends Component {
     const { showAnimation, showLevel, currentLevel } = this.state;
 
     if (!currentLevel) {
-        return <Preloader />;
+      return <Preloader />;
     }
 
     if (currentLevel === this.prevLevel && !this.validateQuizResults()) {
-        Actions.tree();
-        return null;
+      Actions.tree({ type: ActionConst.RESET });
+      return null;
     }
 
     return (
@@ -71,13 +71,13 @@ class LevelPassedTransition extends Component {
           onFinishAnimation={() => {
             // this.setState({ showLevel: true });
             // setTimeout(() => {
-            Actions.tree();
+            Actions.tree({ type: ActionConst.RESET });
             // }, 1000);
           }}
         />)}
-        {showLevel && (<Animatable.View animation="zoomOut" easing="ease-in">
+        {/* {showLevel && (<Animatable.View animation="zoomOut" easing="ease-in">
           <Header customSize={80} bolder>{`Nivel ${currentLevel}`}</Header>
-        </Animatable.View>)}
+        </Animatable.View>)} */}
       </AnimationContainer>
     );
   }
