@@ -38,9 +38,9 @@ const api = {
       const res = await client.post(endpoint, { login, authorization_key });
       return res;
     },
-    async register({ username, email, age, school, country, city, authorization_key }) {
+    async register({ username, email, age, school, country, city, authorization_key, gender }) {
       const endpoint = '/api/auth/user';
-      const res = await client.post(endpoint, { username, email, age, school, country, city, authorization_key });
+      const res = await client.post(endpoint, { username, email, age, school, country, city, authorization_key, gender });
       return res;
     },
     async validation() {

@@ -130,9 +130,9 @@ const loginAsync = ({ login, authorization_key: authorizationKey }) => async (di
 
 };
 
-const registerAsync = ({ username, email, age, school, country, city, authorization_key: authorizationKey, onPressAlert }) => async (dispatch) => {
+const registerAsync = ({ username, email, age, school, country, city, authorization_key: authorizationKey, onPressAlert, gender }) => async (dispatch) => {
   try {
-    const res = await api.user.register({ username, email, age, school, country, city, authorization_key: authorizationKey });
+    const res = await api.user.register({ username, email, age, school, country, city, authorization_key: authorizationKey, gender });
     const { data: { data: user }, headers } = res;
 
     await dispatch(setHeaders(headers));

@@ -96,6 +96,8 @@ class Register extends Component {
         validForm: false,
         loading: false,
         showSelectYear: false,
+        showSelectGender: false,
+        gender: '',
     }
 
     handleFormContainer = ref => this.formContainer = ref;
@@ -157,8 +159,21 @@ class Register extends Component {
       return currentYear - Number(year);
     }
 
+    convertGenderToValue = (gender) => {
+      if(typeof gender === 'string') {
+        switch (gender) {
+          case 'Femenino':
+            return 'F';
+          case 'Masculino':
+            return 'M';
+          default:
+            break;
+        }
+      }
+    }
+
     submit = async () => {
-        const { username, email, year, school, country, city, authorization_key } = this.state;
+        const { username, email, year, school, country, city, authorization_key, gender } = this.state;
 
         if(!authorization_key) {
             Alert.alert('Necesita seleccionar una imagen');
@@ -168,7 +183,6 @@ class Register extends Component {
         const { registerAsync, loginAsync } = this.props;
 
         this.setState({ validating: true });
-
         try {
           await registerAsync({
             username,
@@ -178,6 +192,7 @@ class Register extends Component {
             country,
             city,
             authorization_key,
+            gender: this.convertGenderToValue(gender),
             onPressAlert: async () => {
               this.setState({ loading: true });
 
@@ -223,17 +238,44 @@ class Register extends Component {
       this.toggleSelectYearDropdown();
     }
 
+    toggleSelectGenderDropdown = () => {
+      this.setState((prevState) => ({ showSelectGender: !prevState.showSelectGender }))
+    }
+
     generateYears() {
       const currentYear = (new Date()).getFullYear();
       const years = array.range(1990, currentYear, 1);
       return years.map(year => ({label: year.toString(), fn: this.onSelectYear}));
     }
 
+    onSelectGender = (gender) => {
+      this.setState({ gender })
+      this.toggleSelectGenderDropdown()
+    }
+
+    get genders() {
+      const genders = ['Femenino', 'Masculino']
+      return genders.map(gender => ({ label: gender, fn: this.onSelectGender }))
+    }
+
     render() {
         const { device } = this.props;
-        const { showingSelectionKey, authorization_key: key, validating, validForm, loading, showSelectYear } = this.state;
-
-        const { username, email, year, school, country, city } = this.state;
+        const {
+          showingSelectionKey,
+          authorization_key: key,
+          validating,
+          validForm,
+          loading,
+          showSelectYear,
+          showSelectGender,
+          username,
+          email,
+          year,
+          school,
+          country,
+          city,
+          gender,
+        } = this.state;
 
         const { width } = device.dimensions;
 
@@ -279,6 +321,14 @@ class Register extends Component {
                                                     pointerEvents="none"
                                                     editable={false}
                                                     value={year}
+                                                  />
+                                                </TouchableOpacity>
+                                                <TouchableOpacity onPress={this.toggleSelectGenderDropdown} activeOpacity={1}>
+                                                  <Input
+                                                    placeholder='Elige tu genero'
+                                                    pointerEvents="none"
+                                                    editable={false}
+                                                    value={gender}
                                                   />
                                                 </TouchableOpacity>
                                                 <Input
@@ -352,7 +402,13 @@ class Register extends Component {
                           visible={showSelectYear}
                           options={this.generateYears()}
                           dismiss={this.toggleSelectYearDropdown}
-                      />
+                        />
+                        <ActionSheet
+                          hasCancelOption
+                          visible={showSelectGender}
+                          options={this.genders}
+                          dismiss={this.toggleSelectGenderDropdown}
+                        />
                         {loading && <Preloader />}
                     </RegisterContainer>
                 </MoiBackground>
