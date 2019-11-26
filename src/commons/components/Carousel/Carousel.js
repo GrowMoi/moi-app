@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import uuid from 'uuid/v4'
 import Swiper from 'react-native-swiper';
 import { Video } from 'expo-av';
-import VideoPlayer from 'expo-video-player'
+import SimpleVideoPlayer from '../../components/SimpleVideoPlayer/VideoPlayer';
 import ContentImage from './ContentImage';
 import MoiModal from '../../../containers/Modal/MoiModal';
 import { Palette, Size } from '../../styles';
@@ -133,12 +133,9 @@ export default class Carousel extends Component {
               />
             </Zoom>}
             {type === 'video' &&
-              <VideoPlayer
-                videoProps={{
-                  shouldPlay: true,
-                  resizeMode: Video.RESIZE_MODE_CONTAIN,
-                  source: moiVideos[videoId],
-                }}
+              <SimpleVideoPlayer
+                resizeMode={Video.RESIZE_MODE_CONTAIN}
+                source={moiVideos[videoId]}
                 inFullscreen={true}
                 showFullscreenButton={false}
               />
