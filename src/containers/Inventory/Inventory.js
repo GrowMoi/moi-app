@@ -37,6 +37,7 @@ import resources from '../../commons/components/Item/resources';
 import eventsUtils from '../Events/events-utils';
 import ModalAlert from '../../commons/components/Alert/ModalAlert';
 import { generateAlertData } from '../../commons/components/Alert/alertUtils';
+import { normalize } from '../../commons/utils'
 
 const isTablet = deviceUtils.isTablet();
 
@@ -239,7 +240,7 @@ class Inventory extends Component {
   _keyExtractor = (item, index) => index.toString();
 
   get itemWidth() {
-    return isTablet ? 125 : 100;
+    return isTablet ? normalize.normalizePixelRatio(50) : 100;
   }
 
   _renderMainItem = ({ item }) => {

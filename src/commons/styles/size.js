@@ -1,5 +1,6 @@
 import deviceUtils from '../utils/device-utils';
 import React, {Platform, Dimensions} from 'react-native';
+import { normalize } from '../utils'
 
 const windowSize = Dimensions.get('window');
 const isTablet = deviceUtils.isTablet();
@@ -11,7 +12,6 @@ if ( Platform.OS === 'ios' && !Platform.isTVOS ) {
     isPhoneFiveInch = windowSize.height === 812 || windowSize.width === 812 ? true : false;
     isPhoneSixInch = windowSize.height === 896 || windowSize.width === 896 ? true : false;
 }
-
 
 export default {
   fontBody: isTablet ? 22 : 15,
@@ -26,7 +26,7 @@ export default {
   fontHeaderSuperSmall: isTablet ? 19 : 12,
 
   fontContentMinimized: isTablet ? 23 : 18,
-  fontContentMinimizedBig: isTablet ? 35 : 20,
+  fontContentMinimizedBig: isTablet ? normalize.normalizePixelRatio(15) : 20,
 
   spaceXSmall: 5,
   spaceSmall: 10,

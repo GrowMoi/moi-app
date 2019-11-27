@@ -175,7 +175,6 @@ class Certificate extends Component {
             style={style}
             onPress={this.removeResultFinalTest} >
             <CloseIcon
-              onPress={this.removeResultFinalTest}
               source={{ uri: 'boton_salir_h' }}
               style={style}
               resizeMode='stretch'

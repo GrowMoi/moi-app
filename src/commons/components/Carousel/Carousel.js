@@ -70,6 +70,10 @@ export default class Carousel extends Component {
     return (match&&match[7].length==11)? match[7] : false;
   }
 
+  componentWillUpdate() {
+    console.log(this.state);
+  }
+
   render() {
     const {
       size,
