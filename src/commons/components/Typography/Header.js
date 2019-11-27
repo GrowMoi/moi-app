@@ -17,11 +17,11 @@ const StyledHeader = styled(Text)`
   }};
   background-color: transparent;
   font-family: ${(props) => {
-    if (props.bolder) return Font.museo('bolder');
-    else if (props.heavy) return Font.museo('heavy');
-    else if (props.condensed) return Font.museo('condensed');
-    else if (props.lighter) return Font.museo('lighter');
-    return Font.museo();
+    if (props.bolder) return Font.futura('bolder');
+    else if (props.heavy) return Font.futura('heavy');
+    else if (props.condensed) return Font.futura('condensed');
+    else if (props.lighter) return Font.futura();
+    return Font.futura();
   }};
   color: ${(props) => {
     if (props.inverted) return Palette.invertedText;

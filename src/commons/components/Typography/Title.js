@@ -7,10 +7,10 @@ const StyledTitle = styled(Text)`
   background-color: transparent;
   font-size: ${props => props.small ? Size.fontTitleSmall : Size.fontTitle};
   font-family: ${(props) => {
-    if (props.bolder) return Font.museo('bolder');
-    else if (props.heavy) return Font.museo('heavy');
-    else if (props.book) return Font.museo('book');
-    return Font.museo();
+    if (props.bolder) return Font.futura('bolder');
+    else if (props.heavy) return Font.futura('heavy');
+    else if (props.book) return Font.futura('condensed');
+    return Font.futura();
   }};
   color: ${(props) => {
     if (props.inverted) return Palette.invertedText;

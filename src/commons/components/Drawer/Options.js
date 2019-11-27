@@ -49,7 +49,7 @@ const ItemWithSound = ({ option, index }) => {
     >
       <ButtonForm>
         <Feather style={styles.icon} name={option.icon} size={20}  />
-        <Header small color={Palette.colors.darkBlue} heavy>{option.label}</Header>
+        <Header small bolder color={Palette.colors.darkBlue}>{option.label}</Header>
       </ButtonForm>
     </WithSound>
   )
