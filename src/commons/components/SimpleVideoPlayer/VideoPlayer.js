@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Video } from 'expo-av';
 import VideoPlayer from 'expo-video-player'
+// import { Dimensions } from 'react-native'
 import Sound from '../SoundPlayer/Sound';
+// import { getHeightAspectRatio } from '../../utils';
 
-class SimpleVideoPlayer extends Component {
 
+// const VIDEO_WIDTH = 640
+// const VIDEO_HEIGHT = 360
+// const width = Dimensions.get('window').width
+// const height = getHeightAspectRatio(VIDEO_WIDTH, VIDEO_HEIGHT, width)
+
+class SimpleVideoPlayer extends PureComponent {
   componentDidMount() {
     Sound.pause();
   }

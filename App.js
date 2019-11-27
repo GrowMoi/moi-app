@@ -25,6 +25,7 @@ import Loader from './src/commons/components/Loader/Loader';
 import CustomSplash from './src/commons/components/CustomSplash/CustomSplash'
 import AppContainer from './src/containers/App/AppContainer'
 import { Actions, ActionConst } from 'react-native-router-flux';
+import allVideos from './assets/videos'
 
 // addLocaleData([...en, ...es]);
 
@@ -112,7 +113,8 @@ class App extends Component {
   }
 
   preLoadingAssets = async () => {
-    const cacheImgs = await cacheImages(allImages);
+    const videos = Object.keys(allVideos).map(key => allVideos[key])
+    const cacheImgs = await cacheImages([...allImages, ...videos]);
     await Font.loadAsync(allFonts);
 
     await Promise.all(cacheImgs);

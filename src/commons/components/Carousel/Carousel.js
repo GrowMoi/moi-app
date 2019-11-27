@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import { Entypo } from '@expo/vector-icons';
-import { View, ActivityIndicator, Image } from 'react-native';
+import { View, ActivityIndicator, Image, Dimensions } from 'react-native';
 import ViewTransformer from 'react-native-view-transformer-next';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import PropTypes from 'prop-types';
@@ -19,6 +19,9 @@ import moiVideos from '../../../../assets/videos';
 // Actions
 import neuronActions from '../../../actions/neuronActions';
 
+const width = Dimensions.get('window').width
+const height = Dimensions.get('window').height
+
 const ContainerSwiper = styled(View)`
   width: ${props => props.size.width};
   height: ${props => props.size.height};
@@ -27,6 +30,13 @@ const ContainerSwiper = styled(View)`
 
 const Overlay = styled(View)`
   flex: 1;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: ${width};
+  height: ${height};
   justify-content: center;
   align-items: center;
   background-color: ${Palette.black.alpha(0.7).css()};
@@ -47,7 +57,7 @@ const Zoom = styled(ViewTransformer)`
   width: 100%;
 `;
 
-export default class Carousel extends Component {
+export default class Carousel extends PureComponent {
   state = {
     fullScreenImage: false,
     expandedImage: {},
@@ -115,9 +125,9 @@ export default class Carousel extends Component {
           nextButton={<Entypo name='chevron-right' size={35} color={colors.lightGray.css()} />}
           prevButton={<Entypo name='chevron-left' size={35} color={colors.lightGray.css()} />}
         >
-          {(media || []).map(d => {
+          {(media || []).map((d, i) => {
             return <ContentImage
-              key={uuid()}
+              key={i}
               onPressImage={(attrs) => this.openImage({ attrs, item: d })}
               size={size}
               data={d}

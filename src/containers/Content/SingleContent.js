@@ -364,7 +364,7 @@ class SingleContentScene extends PureComponent {
 
   render() {
     const { contentSelected: content, device, scene, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
-
+    console.log('Single Content Render')
     const {
       loading,
       actionSheetsVisible,
