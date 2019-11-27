@@ -377,7 +377,7 @@ class Register extends Component {
                                     <ButtonsContainer>
                                         <Animatable.View animation="bounceInLeft" easing="ease-in">
                                             <Button
-                                                style={{ width: 130, marginRight: Size.spaceMedium }}
+                                                style={{ width: 150, marginRight: Size.spaceMedium }}
                                                 title='Atras'
                                                 onPress={!showingSelectionKey ? this.returnToLogin : this.returnToFillFields}
                                             />
@@ -386,7 +386,7 @@ class Register extends Component {
                                         <Animatable.View animation="bounceInRight" easing="ease-in">
                                             <Button
                                                 loading={validating}
-                                                style={{ width: 130 }}
+                                                style={{ width: 150 }}
                                                 title={!showingSelectionKey ? 'Siguiente' : 'Registrarse'}
                                                 disabled={!validForm}
                                                 onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}

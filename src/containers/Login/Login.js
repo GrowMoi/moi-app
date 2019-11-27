@@ -220,7 +220,7 @@ class Login extends PureComponent {
                       <Button
                         // disabled={!netInfo.isConnected}
                         style={{ width: Size.buttonWidth, marginRight: Size.spaceMedium }}
-                        title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
+                        title={!showingSelectionKey ? 'Registro' : 'Atras' }
                         onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
                       />
                     </Animatable.View>

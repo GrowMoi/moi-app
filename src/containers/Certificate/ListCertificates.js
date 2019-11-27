@@ -14,7 +14,7 @@ import deviceUtils from '../../commons/utils/device-utils';
 
 const isTablet = deviceUtils.isTablet();
 
-const imageWidth = 190;
+const imageWidth = 175;
 const imageHeight = 130;
 const aspect = imageWidth / imageHeight;
 

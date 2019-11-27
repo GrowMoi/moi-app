@@ -223,7 +223,7 @@ class Inventory extends Component {
       },
       {
         disabled: true,
-        description: 'El usuario ha llegado al nivel 9',
+        description: 'El usuario ha llegado al nivel maximo',
         name: 'Tests Final',
         number: 10
       }
@@ -355,10 +355,10 @@ class Inventory extends Component {
           onClose={() => { this.setState({ isEventModalOpen: false }) }}
         />}
 
-        {!!finalTestResult && (<Certificate />)}
+        {!!finalTestResult ? (<Certificate />) : null}
         <BottomBar />
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !isEventModalOpen}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !finalTestResult && !isEventModalOpen}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);

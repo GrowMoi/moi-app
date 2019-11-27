@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Dimensions, View, Text, ImageBackground, TouchableHighlight, Image, PixelRatio } from 'react-native';
-import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
+import { Dimensions, View, Text, ImageBackground, TouchableOpacity, Image, PixelRatio } from 'react-native';
+import ViewShot, { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
 import ChartLearnedContent from './ChartLearnedContent';
@@ -20,7 +20,7 @@ const Overlay = styled(View)`
   background-color: transparent;
 `;
 
-const CloseContainer = styled(TouchableHighlight)`
+const CloseContainer = styled(TouchableOpacity)`
   position: absolute;
   top: 3;
   right: 5;
@@ -31,7 +31,7 @@ const CloseContainer = styled(TouchableHighlight)`
 `;
 
 const SectionContainer = styled(View)`
-  flex: ${props => props.flex};
+  flex: ${props => props.flex || 1};
   padding: 20px;
   justify-content: center;
   align-items: center;
@@ -86,7 +86,7 @@ const InnerTextBox = styled(View)`
 
 class Certificate extends Component {
 
-  certificateView = null;
+  certificateView = React.createRef();
   currentOrientation;
 
   state = {
@@ -94,18 +94,15 @@ class Certificate extends Component {
     showModal: false,
   }
 
-  constructor(props) {
-    super(props);
-    this.removeResultFinalTest = this.removeResultFinalTest.bind(this);
-  }
-
   componentWillMount() {
     this.currentOrientation = Orientation.getInitialOrientation();
     Orientation.lockToLandscape();
+  }
 
+  componentDidMount() {
     setTimeout(() => {
       this.showCertificate()
-    }, 800)
+    }, 150)
   }
 
   componentWillUnmount() {
@@ -115,32 +112,30 @@ class Certificate extends Component {
   }
 
   showCertificate = () => {
-    this.setState({ showModal: true })
+    this.setState(
+      () => ({ showModal: true }),
+      () => {
+        this.captureCertificate()
+      }
+    )
   }
 
   showLoading(isVisible = true) {
     this.setState({ loading: isVisible });
   }
 
-  async removeResultFinalTest() {
-    const { device: { dimensions: { width, height } }, saveResultFinalTest, uploadImageAsync, saveCertificateAsync } = this.props;
-    const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
+  captureCertificate = async () => {
+    const { uploadImageAsync, saveCertificateAsync } = this.props;
+    this.setState({ loading: true });
+    try {
+      const resultScreenShot = await this.certificateView.current.capture()
+      const uploadedRes = await uploadImageAsync(this.normalizeBase64Image(resultScreenShot));
+      await saveCertificateAsync(uploadedRes.secure_url);
 
-    const resultScreenShot = await takeSnapshotAsync(this.certificateView, {
-      result: 'base64',
-      height: height / pixelRatio,
-      width: width / pixelRatio,
-      quality: 1,
-      format: 'png',
-    });
-
-    this.showLoading();
-
-    const uploadedRes = await uploadImageAsync(this.normalizeBase64Image(resultScreenShot));
-    await saveCertificateAsync(uploadedRes.secure_url);
-
-    this.showLoading(false);
-    saveResultFinalTest(null);
+    } catch (error) {
+      console.log('Error', error)
+    }
+    this.setState({ loading: false });
   }
 
   getPercentajeCorrectAnswers(data) {
@@ -152,14 +147,24 @@ class Certificate extends Component {
     return 'data:image/png;base64,' + base64Image.replace(/(?:\r\n|\r|\n)/g, '')
   }
 
+  closeCertificate = () => {
+    const { saveResultFinalTest } = this.props;
+    this.setState(
+      () => ({ showModal: false }),
+      () => {
+        saveResultFinalTest(null)
+      }
+    )
+  }
+
   render() {
-    const { animationType, modalProps, finalTestResult, style, profile } = this.props;
+    const { animationType = 'fade', modalProps, profile, finalTestResult = {}, saveResultFinalTest } = this.props;
     const { loading, showModal } = this.state;
 
-    // const showModal = !!finalTestResult;
-
+    const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
     const width = Dimensions.get('screen').width;
     const height = Dimensions.get('screen').height;
+
 
     return (
       <MoiModal {...modalProps}
@@ -171,93 +176,101 @@ class Certificate extends Component {
         {loading && <Preloader notFullScreen style={{ position: "absolute", width: width, height: height, zIndex: 10 }} />}
 
         <Overlay>
-          <CloseContainer
-            style={style}
-            onPress={this.removeResultFinalTest} >
+          <CloseContainer onPress={this.closeCertificate}>
             <CloseIcon
               source={{ uri: 'boton_salir_h' }}
-              style={style}
               resizeMode='stretch'
             />
           </CloseContainer>
 
-          <Background ref={view => { this.certificateView = view; }} style={style} width={width} height={height} source={{ uri: 'marco_profile_tab_contents' }} resizeMode='stretch'>
+          <ViewShot
+            style={{ width, height }}
+            options={{
+              result: 'base64',
+              height: height / pixelRatio,
+              width: width / pixelRatio,
+              quality: 1,
+              format: 'png',
+            }}
+            ref={this.certificateView}>
+            <Background collapsable={false} ref={this.certificateView} width={width} height={height} source={{ uri: 'marco_profile_tab_contents' }} resizeMode='stretch'>
 
-            <BackgroundCertificate
-              width={width}
-              height={height}
-              source={{ uri: 'background_tree_landscape' }}
-              resizeMode='stretch'
-            >
+              <BackgroundCertificate
+                width={width}
+                height={height}
+                source={{ uri: 'background_tree_landscape' }}
+                resizeMode='stretch'
+              >
 
-              <SectionContainer flex={1}>
-                <TitleImage source={{ uri: 'title' }} width={width} resizeMode='contain' />
-              </SectionContainer>
+                <SectionContainer flex={1}>
+                  <TitleImage source={{ uri: 'title' }} width={width} resizeMode='contain' />
+                </SectionContainer>
 
-              <SectionContainer flex={5} style={{ paddingLeft: "12%", paddingRight: "12%" }}>
-                <View style={{ width: '100%', height: size.heigthBody, flexDirection: 'row' }}>
-                  <View style={{ flex: 1 }}>
-                    <TextBox>
-                      <Header heavy color={'#000'} customSize={size.certificateFont}>{profile.username}</Header>
-                    </TextBox>
-                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5 }}>
-                      <TextBox style={{ width: '100%', height: 'auto', flexDirection: 'row' }}>
-                        <InnerTextBox>
-                          <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.age}</Header>
-                          <Header bolder color={'#000'} customSize={size.certificateFont}>Edad</Header>
-                        </InnerTextBox>
-                        <InnerTextBox >
-                          <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.country}</Header>
-                          <Header bolder color={'#000'} customSize={size.certificateFont}>Pais</Header>
-                        </InnerTextBox>
+                <SectionContainer flex={5} style={{ paddingLeft: "12%", paddingRight: "12%" }}>
+                  <View style={{ width: '100%', height: size.heigthBody, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}>
+                      <TextBox>
+                        <Header heavy color={'#000'} customSize={size.certificateFont}>{profile.username}</Header>
+                      </TextBox>
+                      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5 }}>
+                        <TextBox style={{ width: '100%', height: 'auto', flexDirection: 'row' }}>
+                          <InnerTextBox>
+                            <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.age}</Header>
+                            <Header bolder color={'#000'} customSize={size.certificateFont}>Edad</Header>
+                          </InnerTextBox>
+                          <InnerTextBox >
+                            <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.country}</Header>
+                            <Header bolder color={'#000'} customSize={size.certificateFont}>Pais</Header>
+                          </InnerTextBox>
+                        </TextBox>
+                      </View>
+                      <TextBox>
+                        <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.school}</Header>
+                        <Header bolder color={'#000'} customSize={size.certificateFont}>Escuela</Header>
                       </TextBox>
                     </View>
-                    <TextBox>
-                      <Header bolder color={'#000'} customSize={size.certificateFont}>{profile.school}</Header>
-                      <Header bolder color={'#000'} customSize={size.certificateFont}>Escuela</Header>
-                    </TextBox>
+
+                    <View style={{ flex: 1 }}>
+                      <Background
+                        style={{ borderRadius: 20 }}
+                        source={{ uri: 'background_profile' }}
+                        resizeMode='stretch' >
+                          <Image
+                            style={{ width: "100%", height: "100%", marginTop: -4 }}
+                            source={{ uri: profile.tree_image_app }}
+                            resizeMode='stretch' />
+                      </Background>
+                    </View>
+                  </View>
+                </SectionContainer>
+
+                <SectionContainer flex={1} style={{ flexDirection: 'row', backgroundColor: "#fff" }}>
+                  <View style={{ flex: 1.5 }}>
+                    <ChartLearnedContent learnContensByBrach={finalTestResult.contents_learnt_by_branch} learnContens={finalTestResult.current_learnt_contents} />
                   </View>
 
-                  <View style={{ flex: 1 }}>
-                    <Background
-                      style={{ borderRadius: 20 }}
-                      source={{ uri: 'background_profile' }}
-                      resizeMode='stretch' >
-                        <Image
-                          style={{ width: "100%", height: "100%", marginTop: -4 }}
-                          source={{ uri: profile.tree_image_app }}
-                          resizeMode='contain' />
-                    </Background>
+                  <View style={{ flex: 4, justifyContent: 'center' }}>
+                    <Header style={{ width: '100%', textAlign: 'center' }} color="#219fd1" customSize={size.certificateFont + 8} bolder>{finalTestResult.current_learnt_contents} contenidos aprendidos</Header>
+                    <Header style={{ width: '100%', textAlign: 'center' }} color="#219fd1" customSize={size.certificateFont}>{((finalTestResult.current_learnt_contents * 100) / finalTestResult.total_approved_contents).toFixed(1)}% crecimiento del arbol</Header>
                   </View>
-                </View>
-              </SectionContainer>
 
-              <SectionContainer flex={1} style={{ flexDirection: 'row', backgroundColor: "#fff" }}>
-                <View style={{ flex: 1.5 }}>
-                  <ChartLearnedContent learnContensByBrach={finalTestResult.contents_learnt_by_branch} learnContens={finalTestResult.current_learnt_contents} />
-                </View>
-
-                <View style={{ flex: 4, justifyContent: 'center' }}>
-                  <Header style={{ width: '100%', textAlign: 'center' }} color="#219fd1" customSize={size.certificateFont + 8} bolder>{finalTestResult.current_learnt_contents} contenidos aprendidos</Header>
-                  <Header style={{ width: '100%', textAlign: 'center' }} color="#219fd1" customSize={size.certificateFont}>{((finalTestResult.current_learnt_contents * 100) / finalTestResult.total_approved_contents).toFixed(1)}% crecimiento del arbol</Header>
-                </View>
-
-                <View style={{ flex: 2.3, justifyContent: 'center' }}>
-                  <Header color="#219fd1" customSize={size.certificateFont}>{this.getPercentajeCorrectAnswers(finalTestResult).toFixed(1)}% último test</Header>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Header color="#219fd1" customSize={size.certificateFont - 2} bolder>{finalTestResult.time} </Header>
-                    <Header color="#219fd1" customSize={size.certificateFont - 2}>lectura promedio</Header>
+                  <View style={{ flex: 2.3, justifyContent: 'center' }}>
+                    <Header color="#219fd1" customSize={size.certificateFont}>{this.getPercentajeCorrectAnswers(finalTestResult).toFixed(1)}% último test</Header>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Header color="#219fd1" customSize={size.certificateFont - 2} bolder>{finalTestResult.time} </Header>
+                      <Header color="#219fd1" customSize={size.certificateFont - 2}>lectura promedio</Header>
+                    </View>
                   </View>
+                </SectionContainer>
+
+                <View style={{ marginBottom: -19, height: 20 }}>
+                  <Header style={{ color: 'white', fontWeight: '500', textAlign: 'center' }} small>Para mas informacion, visite growmoi.com</Header>
                 </View>
-              </SectionContainer>
 
-              <View style={{ marginBottom: -19, height: 20 }}>
-                <Header style={{ color: 'white', fontWeight: '500', textAlign: 'center' }} small>Para mas informacion, visite growmoi.com</Header>
-              </View>
+              </BackgroundCertificate>
 
-            </BackgroundCertificate>
-
-          </Background>
+            </Background>
+          </ViewShot>
 
         </Overlay>
 
