@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Alert,
@@ -38,14 +38,13 @@ import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAl
 import * as constants from '../../constants';
 import deviceUtils from '../../commons/utils/device-utils'
 import { AlertCantReadContent } from './AlertCantReadContent';
-import { backButtonWithSound } from '../../routes';
 import * as routeTypes from '../../routeTypes'
-
 
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
+import backButtonWithSound from '../../commons/components/Buttons/backButtonWithSound';
 
-const { width } = Dimensions.get('window');
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = Dimensions.get('window');
 const isTablet = deviceUtils.isTablet();
 
 const HeaderContent = styled(View)`
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class SingleContentScene extends PureComponent {
+class SingleContentScene extends Component {
   state = {
     loading: false,
     videoModalVisible: false,
@@ -339,14 +338,12 @@ class SingleContentScene extends PureComponent {
   }
 
   async takeScreenShotTree() {
-    const { device: { dimensions: { width, height } } } = this.props;
-
     const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
 
     const resultScreenShot = await takeSnapshotAsync(this.contentView, {
       result: 'base64',
-      height: height / pixelRatio,
-      width: width / pixelRatio,
+      height: DEVICE_HEIGHT / pixelRatio,
+      width: DEVICE_WIDTH / pixelRatio,
       quality: 1,
       format: 'png',
     });
@@ -363,8 +360,8 @@ class SingleContentScene extends PureComponent {
   }
 
   render() {
-    const { contentSelected: content, device, scene, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
-    console.log('Single Content Render')
+    const { contentSelected: content, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
+    console.log('Single Content Render' , this.props)
     const {
       loading,
       actionSheetsVisible,
@@ -410,7 +407,7 @@ class SingleContentScene extends PureComponent {
                     showsPagination
                     loop
                     autoplay
-                    size={{ height: isTablet ? 350 : 200, width: (width - Size.spaceXLarge) }}
+                    size={{ height: isTablet ? 350 : 200, width: (DEVICE_WIDTH - Size.spaceXLarge) }}
                     images={content.media}
                     videos={content.videos}
                   />
@@ -484,7 +481,7 @@ class SingleContentScene extends PureComponent {
                   this.showAlertCantRead()
                 }
               }}
-              width={device.dimensions.width}
+              width={DEVICE_WIDTH}
           />}
           {/* Animation */}
           {reading && (
@@ -497,22 +494,22 @@ class SingleContentScene extends PureComponent {
           )}
 
           {/* Action Sheets */}
-          <ActionSheet
-              hasCancelOption
-              visible={actionSheetsVisible}
-              options={options}
-              dismiss={this.dismissActionSheets}
-          />
+          {actionSheetsVisible && <ActionSheet
+            hasCancelOption
+            visible={actionSheetsVisible}
+            options={options}
+            dismiss={this.dismissActionSheets}
+          />}
           <Navbar/>
 
-          <AlertCantReadContent
+          {alertCantReadIsVisible && <AlertCantReadContent
             open={alertCantReadIsVisible}
             onCancel={() => { this.showAlertCantRead(false) }}
             onNext={() => { Actions[routeTypes.TREE]({ type: ActionConst.RESET }) }}
-          />
+          />}
 
-          <PassiveMessageAlert
-              isOpenPassiveMessage={showPassiveMessage && scene.name === 'singleContent' && !isFullScreen}
+          {showPassiveMessage && this.props.name === 'singleContent' && !isFullScreen && <PassiveMessageAlert
+              isOpenPassiveMessage={showPassiveMessage && this.props.name === 'singleContent' && !isFullScreen}
               touchableProps={{
                 onPress: () => {
                   showPassiveMessageAsync(false);
@@ -520,7 +517,7 @@ class SingleContentScene extends PureComponent {
               }}
               message='Cuando termines de leer la explicación, presiona el botón
               celeste para enviar la pregunta al test'
-          />
+          />}
           </MoiBackground>
       </View>
     );
@@ -530,9 +527,8 @@ class SingleContentScene extends PureComponent {
 const mapStateToProps = (state) => ({
   contentSelected: state.neuron.contentSelected,
   currentNeuron: state.neuron.neuronSelected,
-  device: state.device,
   quiz: state.user.quiz,
-  scene: state.routes.scene,
+  // scene: state.routes.scene,
   showPassiveMessage: state.user.showPassiveMessage,
   state,
 })
@@ -556,7 +552,6 @@ const mapDispatchToProps = {
 SingleContentScene.propTypes = {
   title: PropTypes.string,
   contentSelected: PropTypes.object,
-  device: PropTypes.object,
   storeTaskAsync: PropTypes.func,
   fromEvent: PropTypes.bool,
   parentContent: PropTypes.object,

@@ -12,7 +12,9 @@ class AppContainer extends Component {
   render() {
     return (
       <Container>
-        <RouterWithRedux scenes={this.props.scenes} />
+        <RouterWithRedux>
+          {this.props.scenes()}
+        </RouterWithRedux>
         <MenuContainer />
       </Container>
     )

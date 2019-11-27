@@ -12,13 +12,14 @@ const routeMiddleware = args => store => next => async (action) => {
 
     // if (previousAudio && previousAudio.previousScene === 'tree') return;
 
+    if(currentScene === 'modal' || currentScene === 'videoPlayer') return;
     store.dispatch(neuronActions.setCurrentBackgroundAudio({
       ...sounds[currentScene],
       scene: currentScene,
       previousScene
     }));
 
-    const currentAudio = store.getState().tree.audio;
+    const currentAudio = await store.getState().tree.audio;
     if (currentAudio) {
       if (sounds.playIn[currentAudio.soundName].includes(currentScene) !== sounds.playIn[currentAudio.soundName].includes(previousScene)) {
         await Sound.play(currentAudio.payload);
@@ -31,7 +32,7 @@ const routeMiddleware = args => store => next => async (action) => {
     Sound.stop();
   }
   else if (action.type === actionTypes.PLAY_CURRENT_AUDIO) {
-    const currentAudio = store.getState().tree.audio;
+    const currentAudio = await store.getState().tree.audio;
     if (currentAudio) {
       await Sound.play(currentAudio.payload);
     }

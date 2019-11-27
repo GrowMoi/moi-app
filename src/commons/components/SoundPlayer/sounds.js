@@ -131,6 +131,7 @@ export default sounds = {
         'editProfile',
         'publicProfile',
         'randomContents',
+        'videoPlayer',
       ],
       test: ['quiz', 'tutorQuiz'],
       fondo: ['tree'],

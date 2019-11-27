@@ -18,6 +18,7 @@ import moiVideos from '../../../../assets/videos';
 
 // Actions
 import neuronActions from '../../../actions/neuronActions';
+import { Actions } from 'react-native-router-flux';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
@@ -67,11 +68,21 @@ export default class Carousel extends PureComponent {
 
   openImage = ({attrs, item = {} }) => {
     const { type, videoId } = item;
+      this.setState(
+        () => ({ fullScreenImage: true, expandedImage: attrs, type, videoId }),
+        () => {
+          this.sendStatusFullScreen();
 
-    this.setState(
-      () => ({ fullScreenImage: true, expandedImage: attrs, type, videoId }),
-      () => { this.sendStatusFullScreen() }
-    );
+          if(type == 'video') {
+            Actions.videoPlayer({
+              attrs,
+              item,
+              sourceVideo: moiVideos[videoId],
+            })
+          }
+        }
+      );
+
   }
 
   dismiss = () => {
@@ -137,7 +148,7 @@ export default class Carousel extends PureComponent {
         </Swiper>
 
         <MoiModal
-          visible={fullScreenImage}
+          visible={fullScreenImage && (type === 'image')}
           animationType='fade'
           transparent
           supportedOrientations={['portrait']}
@@ -156,14 +167,14 @@ export default class Carousel extends PureComponent {
                 style={{ width: '100%', height: '100%' }}
               />
             </Zoom>}
-            {type === 'video' &&
+            {/* {type === 'video' &&
               <SimpleVideoPlayer
                 resizeMode={Video.RESIZE_MODE_CONTAIN}
                 source={moiVideos[videoId]}
                 inFullscreen={true}
                 showFullscreenButton={false}
               />
-            }
+            } */}
           </Overlay>
         </MoiModal>
       </ContainerSwiper>

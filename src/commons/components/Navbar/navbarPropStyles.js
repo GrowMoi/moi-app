@@ -36,6 +36,11 @@ export default {
   navigationBarStyle: {
     backgroundColor: 'transparent',
     borderBottomWidth: 0,
+    ...Platform.select({
+      android: {
+        paddingTop: 5,
+      }
+    }),
   },
 
   rightButtonStyle: {
@@ -49,7 +54,7 @@ export default {
     fontSize: Size.fontHeader,
     width: '55%',
     textTransform: 'uppercase',
-    fontFamily: Font.museo('book'),
+    fontFamily: Font.futura('heavy'),
     ...Platform.select({
       ios: {
         top: Size.mavbarTopSpace - 25 ,

@@ -97,6 +97,7 @@ class ContentListScene extends PureComponent {
       paddingHorizontal: Size.spaceSmall,
     };
 
+    console.log('RENDER CONTENT LIST')
     return (
       <MoiBackground>
         <ContentListBox

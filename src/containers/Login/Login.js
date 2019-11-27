@@ -159,7 +159,6 @@ class Login extends PureComponent {
   }
 
   render() {
-    //const { dimensions, showPassiveMessage, showPassiveMessageAsync, user, netInfo } = this.props;
     const { dimensions, showPassiveMessage, showPassiveMessageAsync, user } = this.props;
     const { showingSelectionKey, authorization_key: key, login, validating } = this.state;
     const { width } = dimensions;
