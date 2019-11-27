@@ -87,7 +87,7 @@ class ContentListScene extends PureComponent {
   }
 
   render() {
-    const { device, neuron_id, showPassiveMessage, showPassiveMessageAsync, neuronSelected } = this.props;
+    const { device, neuron_id, showPassiveMessage, showPassiveMessageAsync, neuronSelected, scene } = this.props;
     const { events, isFirstTimeEvents, isAlertOpen, showNoMoreContentsModal } = this.state
 
     const showEvents = events && events.length > 0 && isFirstTimeEvents;
@@ -124,7 +124,7 @@ class ContentListScene extends PureComponent {
         )} */}
 
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'content'}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);
@@ -160,6 +160,7 @@ const mapStateToProps = (state) => ({
   device: state.device,
   showPassiveMessage: state.user.showPassiveMessage,
   neuronSelected: state.neuron.neuronSelected,
+  scene: state.routes.scene,
 })
 
 const mapDispatchToProps = {

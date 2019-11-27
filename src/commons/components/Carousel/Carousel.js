@@ -57,11 +57,18 @@ export default class Carousel extends Component {
 
   openImage = ({attrs, item = {} }) => {
     const { type, videoId } = item;
-    this.setState({ fullScreenImage: true, expandedImage: attrs, type, videoId });
+
+    this.setState(
+      () => ({ fullScreenImage: true, expandedImage: attrs, type, videoId }),
+      () => { this.sendStatusFullScreen() }
+    );
   }
 
   dismiss = () => {
-    this.setState({ fullScreenImage: false, expandedImage: {}, type: '', videoId: '' });
+    this.setState(
+      () => ({ fullScreenImage: false, expandedImage: {}, type: '', videoId: '' }),
+      () => { this.sendStatusFullScreen() }
+    );
   }
 
   getVideoId(url){
@@ -70,8 +77,11 @@ export default class Carousel extends Component {
     return (match&&match[7].length==11)? match[7] : false;
   }
 
-  componentWillUpdate() {
-    console.log(this.state);
+  sendStatusFullScreen = () => {
+    const { onFullScreenImage } = this.props
+    if(onFullScreenImage) {
+      onFullScreenImage(this.state.fullScreenImage)
+    }
   }
 
   render() {
@@ -89,8 +99,8 @@ export default class Carousel extends Component {
       type: 'image',
     }))
 
-    const videosFormatted = (videos || []).map(video => ({
-      imageUrl: video.thumbnail.startsWith('//') ? `https:${video.thumbnail}` : video.thumbnail,
+    const videosFormatted = (videos || []).map((video = {}) => ({
+      imageUrl: (video.thumbnail || '').startsWith('//') ? `https:${video.thumbnail}` : video.thumbnail,
       videoId: this.getVideoId(video.url) || '',
       type: 'video',
     }));

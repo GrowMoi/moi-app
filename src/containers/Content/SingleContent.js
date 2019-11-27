@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Alert,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class SingleContentScene extends Component {
+class SingleContentScene extends PureComponent {
   state = {
     loading: false,
     videoModalVisible: false,
@@ -128,6 +128,7 @@ class SingleContentScene extends Component {
     hasTest: false,
     isShowingContent: true,
     alertCantReadIsVisible: false,
+    isFullScreen: false,
   }
 
   componentDidMount() {
@@ -371,6 +372,7 @@ class SingleContentScene extends Component {
       reading,
       isShowingContent,
       alertCantReadIsVisible,
+      isFullScreen,
     } = this.state;
 
     const options = [
@@ -404,12 +406,13 @@ class SingleContentScene extends Component {
                   </HeaderContent>
 
                   <Carousel
-                      showsPagination
-                      loop
-                      autoplay
-                      size={{ height: isTablet ? 350 : 200, width: (width - Size.spaceXLarge) }}
-                      images={content.media}
-                      videos={content.videos}
+                    onFullScreenImage={(isFullScreen) => {this.setState({ isFullScreen })}}
+                    showsPagination
+                    loop
+                    autoplay
+                    size={{ height: isTablet ? 350 : 200, width: (width - Size.spaceXLarge) }}
+                    images={content.media}
+                    videos={content.videos}
                   />
 
                   <ActionsHeader>
@@ -509,7 +512,7 @@ class SingleContentScene extends Component {
           />
 
           <PassiveMessageAlert
-              isOpenPassiveMessage={showPassiveMessage && scene.name === 'singleContent'}
+              isOpenPassiveMessage={showPassiveMessage && scene.name === 'singleContent' && !isFullScreen}
               touchableProps={{
                 onPress: () => {
                   showPassiveMessageAsync(false);
