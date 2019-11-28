@@ -21,7 +21,8 @@ export default {
   fontTitleSmall: isTablet ? 22 : 17,
   fontDescription: isTablet ? 15 : 11,
 
-  fontHeader: isTablet ? 25 : 20,
+  fontNavbar: normalize.normalizePixelRatio(10),
+  fontHeader: isTablet ?  normalize.normalizePixelRatio(15) : 20,
   fontHeaderSmall: isTablet ? 22 : 15 ,
   fontHeaderSuperSmall: isTablet ? 19 : 12,
 

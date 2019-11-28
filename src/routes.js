@@ -99,13 +99,6 @@ const routes = () => {
             title='Contenido Individual'
             renderRightButton={null}
           />
-          {/* <Scene
-            key={'videoPlayer'}
-            // type={ActionConst.RESET}
-            title="Video Player"
-            component={VideoScene}
-            renderBackButton={null}
-          /> */}
           <Scene
             key={'tasks'}
             title="Tareas"

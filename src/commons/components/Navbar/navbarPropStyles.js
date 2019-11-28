@@ -51,7 +51,7 @@ export default {
 
   titleStyle: {
     color: '#1e5eae',
-    fontSize: Size.fontHeader,
+    fontSize: Size.fontNavbar,
     width: '55%',
     textTransform: 'uppercase',
     fontFamily: Font.futura('heavy'),
