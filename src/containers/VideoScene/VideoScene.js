@@ -37,7 +37,7 @@ class VideoScene extends PureComponent {
   }
 
   dismiss = () => {
-    Actions.singleContent({ videoIsClosed: true })
+    Actions.pop()
   }
 
   render() {
