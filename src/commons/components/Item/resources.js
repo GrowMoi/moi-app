@@ -6,7 +6,7 @@ const items = {
   },
   2: {
     source: 'inventario2',
-    inactive: 'inventario_branch_inactive',
+    inactive: 'inventario2_inactive',
     disabled: 'inventario_branch_disabled',
   },
   3: {
@@ -16,12 +16,12 @@ const items = {
   },
   4: {
     source: 'inventario4',
-    inactive: 'inventario_branch_inactive',
+    inactive: 'inventario4_inactive',
     disabled: 'inventario_branch_disabled',
   },
   5: {
     source: 'inventario5',
-    inactive: 'inventario_branch_inactive',
+    inactive: 'inventario5_inactive',
     disabled: 'inventario_branch_disabled',
   },
   6: {

@@ -361,7 +361,6 @@ class SingleContentScene extends Component {
 
   render() {
     const { contentSelected: content, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
-    console.log('Single Content Render' , this.props)
     const {
       loading,
       actionSheetsVisible,

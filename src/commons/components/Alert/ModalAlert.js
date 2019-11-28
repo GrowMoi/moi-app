@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Palette, Size } from '../../styles';
 import { Header } from '../../components/Typography';
 import { normalize } from '../../utils';
@@ -17,9 +17,7 @@ const Overlay = styled(View)`
 `;
 
 const ContentSection = styled(View)`
-  ${props => props.flex ?
-    'flex: ' + props.flex :
-    'height: auto'}
+  ${props => props.flex && css`flex: ${props.flex || 1}`}
   justify-content: center;
 `;
 
@@ -91,18 +89,18 @@ export default class ModalAlert extends Component {
         hardwareAccelerated
       >
         <Overlay noOverlay={noOverlay}>
-          <View style={{ width: modalWidth, height: modalHeight, padding: 5, paddingTop: 10, alignItems: 'center' }}>
+          <View style={{ width: modalWidth, minHeight: modalHeight, padding: 5, paddingTop: 10, paddingBottom: 10, alignItems: 'center' }}>
             <CloseIcon onPress={onClose} />
             <ContentContainer width={modalWidth - 25} height={modalHeight - 10} colorsMargin={colorsMargin} colorsContent={colorsContent}>
               <ContentSection>
                 <Header bolder center style={{ marginTop: 5, marginBottom: 10 }}>{itemTitle}</Header>
               </ContentSection>
 
-              {image ? <ContentSection flex={4}>
+              {image ? <ContentSection>
                 <Image source={{ uri: image }} style={imageStyle} />
               </ContentSection> : null}
 
-              <ContentSection flex={2}>
+              <ContentSection>
                 <Header small ellipsizeMode='tail' numberOfLines={3} center style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}>{itemDescription}</Header>
               </ContentSection>
             </ContentContainer>

@@ -175,7 +175,7 @@ class Inventory extends Component {
       },
       {
         disabled: true,
-        description: 'Han sido aprendidos 16 contenidos de la rama ¿Cómo haces para alcanzar tus sueños?',
+        description: 'Han sido aprendidos 9 contenidos de la rama ¿Cómo haces para alcanzar tus sueños?',
         name: 'Contenidos aprendidos rama ¿Cómo haces para alcanzar tus sueños?',
         number: 2
       },
@@ -187,13 +187,13 @@ class Inventory extends Component {
       // },
       {
         disabled: true,
-        description: 'Han sido aprendidos 16 contenidos de la rama ¿Qué herramienta te ayuda para cumplir tus sueños?',
+        description: 'Han sido aprendidos 9 contenidos de la rama ¿Qué herramienta te ayuda para cumplir tus sueños?',
         name: 'Contenidos aprendidos rama ¿Qué herramienta te ayuda para cumplir tus sueños?',
         number: 4
       },
       {
         disabled: true,
-        description: 'Han sido aprendidos 16 contenidos de la rama ¿Qué necesitas para alcanzar tus sueños?',
+        description: 'Han sido aprendidos 9 contenidos de la rama ¿Qué necesitas para alcanzar tus sueños?',
         name: 'Contenidos aprendidos rama ¿Qué necesitas para alcanzar tus sueños?',
         number: 5
       },
