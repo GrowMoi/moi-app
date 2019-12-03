@@ -102,6 +102,18 @@ class Register extends Component {
 
     handleFormContainer = ref => this.formContainer = ref;
 
+    onChangeUsernameInput = (id, text) => {
+      const regex = /[a-zA-Z0-9_]/g;
+      const char = text.charAt(text.length - 1);
+      const isValid = regex.test(char);
+      if (isValid) {
+        this.onChangeInput(id, text);
+      } else {
+        Alert.alert('Nombre de usuario solo puede contener caracteres alfanuméricos');
+        return;
+      }
+    }
+
     onChangeInput = (id, text) => {
         const inputText = text.trim();
         if (inputText) {
@@ -306,10 +318,10 @@ class Register extends Component {
                                                     keyboardType='default'
                                                     autoCorrect={false}
                                                     value={username}
-                                                    onChangeText={text => this.onChangeInput('username', text)}
+                                                    onChangeText={text => this.onChangeUsernameInput('username', text)}
                                                 />
                                                 <Input
-                                                    placeholder='correo electronico'
+                                                    placeholder='correo electrónico'
                                                     keyboardType='email-address'
                                                     autoCorrect={false}
                                                     value={email}
@@ -325,7 +337,7 @@ class Register extends Component {
                                                 </TouchableOpacity>
                                                 <TouchableOpacity onPress={this.toggleSelectGenderDropdown} activeOpacity={1}>
                                                   <Input
-                                                    placeholder='Elige tu genero'
+                                                    placeholder='elige tu género'
                                                     pointerEvents="none"
                                                     editable={false}
                                                     value={gender}
