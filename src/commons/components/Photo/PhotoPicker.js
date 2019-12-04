@@ -61,6 +61,7 @@ export default class PhotoPicker extends Component {
   state = {
     image: null,
     isModalOpen: false,
+    selectedAction: null
   }
 
   _setModalVisible = visible => {
@@ -117,13 +118,17 @@ export default class PhotoPicker extends Component {
     const { takePhotoLabel = 'Take a Photo', pickPhotoLabel = 'Pick a Photo' } = this.props;
 
     return [
-      {key: 'takePhoto', label: takePhotoLabel, id: uuid.v4(), fn: async () => {
-        this._setModalVisible(false);
-        await this._takePhoto();
+      {key: 'takePhoto', label: takePhotoLabel, id: uuid.v4(), fn: () => {
+        this.setState({
+          isModalOpen: false,
+          selectedAction: this._takePhoto
+        });
       }},
-      {key: 'galleryPhoto', label: pickPhotoLabel, id: uuid.v4(), fn: async () => {
-        this._setModalVisible(false);
-        await this._pickPhoto();
+      {key: 'galleryPhoto', label: pickPhotoLabel, id: uuid.v4(), fn: () => {
+        this.setState({
+          isModalOpen: false,
+          selectedAction: this._pickPhoto
+        });
       }},
     ]
   }
@@ -167,6 +172,12 @@ export default class PhotoPicker extends Component {
           options={this.options}
           cancelLabel={cancelLabel}
           onCloseRequest={() => this._setModalVisible(false)}
+          onDismiss={async () => {
+            const {selectedAction} = this.state
+            if (selectedAction) {
+              await selectedAction();
+            }
+          }}
         />
       </Preview>
     )

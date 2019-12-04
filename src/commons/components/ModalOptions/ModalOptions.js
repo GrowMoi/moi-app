@@ -17,6 +17,7 @@ class ModalOptions extends Component {
       animationType,
       transparent,
       isOpen,
+      onDismiss = () => null,
       options,
       cancelLabel,
     } = this.props
@@ -27,7 +28,8 @@ class ModalOptions extends Component {
       <MoiModal
         visible={isOpen}
         animationType={animationType}
-        transparent={transparent}>
+        transparent={transparent}
+        onDismiss={onDismiss}>
 
         <TouchableOpacity
           style={[styles.root, bgOpacity]}
