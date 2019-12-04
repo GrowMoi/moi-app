@@ -40,16 +40,37 @@ class MoiBackground extends Component {
     return isAndroidLandscape ? heightPercent : 100;
   }
 
+  get currentBackground() {
+    const { userTree } = this.props
+    const { meta: { depth } = {} } = userTree
+
+    const background_tree_portrait = 'background_tree_portrait'
+    switch (depth) {
+      case 1:
+        return `${background_tree_portrait}_sierra`;
+      case 2:
+        return `${background_tree_portrait}_sierra`;
+      case 3:
+        return `${background_tree_portrait}_amazonia`;
+      case 4:
+        return `${background_tree_portrait}_costa`;
+      case 5:
+        return `${background_tree_portrait}_insular`;
+      default:
+        return 'background_tree_dark_portrait';
+    }
+  }
+
   render() {
     const { device, style } = this.props;
-    const { orientation } = device.dimensions;
+    // const { orientation } = device.dimensions;
 
     //FIXME: temporarily blocked landscape, change this.
     // const currentImage = orientation === LANDSCAPE ? 'background_tree_landscape' : 'background_tree_portrait';
     const percentHeight = this.getPercentHeight();
 
     return (
-      <Background style={style} heightPercent={percentHeight} source={{ uri: 'background_tree_dark_portrait' }} resizeMode='stretch'>
+      <Background style={style} heightPercent={percentHeight} source={{ uri: this.currentBackground }} resizeMode='stretch'>
         {this.props.children}
       </Background>
     );
@@ -58,6 +79,7 @@ class MoiBackground extends Component {
 
 const mapStateToProps = state => ({
   device: state.device,
+  userTree: state.tree.userTree,
 })
 
 const mapDispatchToProps = {
