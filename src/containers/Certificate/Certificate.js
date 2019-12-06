@@ -241,7 +241,7 @@ class Certificate extends Component {
                           <Image
                             style={{ width: "100%", height: "100%", marginTop: -4 }}
                             source={{ uri: profile.tree_image_app }}
-                            resizeMode='stretch' />
+                            resizeMode='contain' />
                       </Background>
                     </View>
                   </View>
