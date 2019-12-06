@@ -124,6 +124,27 @@ class SideMenu extends Component {
     return options
   }
 
+  get currentTreeBackground() {
+    const { userTree } = this.props
+    const { meta: { depth } = {} } = userTree
+
+    const BG_ASSET_BASE_NAME = 'paisaje'
+    switch (depth) {
+      case 1:
+        return `${BG_ASSET_BASE_NAME}_sierra`;
+      case 2:
+        return `${BG_ASSET_BASE_NAME}_sierra`;
+      case 3:
+        return `${BG_ASSET_BASE_NAME}_amazonia`;
+      case 4:
+        return `${BG_ASSET_BASE_NAME}_costa`;
+      case 5:
+        return `${BG_ASSET_BASE_NAME}_insular`;
+      default:
+        return 'background_tree_drawer';
+    }
+  }
+
   render() {
     const { device, userTree, user, profile, data, onPressOption, width, onClose } = this.props;
     const { orientation } = device.dimensions;
@@ -167,7 +188,7 @@ class SideMenu extends Component {
               <TreeScreenShot
                 width={width}
                 height={Size.heigthTreeContainer}
-                treeBackground={'background_tree_drawer'}
+                treeBackground={this.currentTreeBackground}
                 profileImage={profile.tree_image_app}
               />
             </TouchableOpacity>

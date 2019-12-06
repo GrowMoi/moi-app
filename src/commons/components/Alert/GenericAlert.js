@@ -3,8 +3,6 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 // Components
-import { Palette } from '../../styles';
-import Profile from '../Profile/Profile';
 import { Title, TextBody } from '../Typography';
 import Button from '../Buttons/Button';
 import CloseIcon from '../../../containers/Events/CloseIcon';
@@ -48,6 +46,8 @@ export const GenericAlert = ({
   description = '',
   width = isTablet ? 400 : 300,
   height,
+  nextProps = {},
+  cancelProps = {},
 }) => {
 
   return (
@@ -55,7 +55,7 @@ export const GenericAlert = ({
       <CloseIcon onPress={onCancel} style={{ top: -10 }} />
       <ContentContainer width={width} height={height} colorsMargin={colorsMargin} colorsContent={colorsContent}>
         <ContentBox>
-          <Title center book color='white'>{message}</Title>
+          <Title center bolder color='white'>{message}</Title>
           <Description>
             {description && <TextBody inverted center>{description}</TextBody>}
           </Description>
@@ -64,10 +64,10 @@ export const GenericAlert = ({
 
       <Buttons>
         <View style={{ width: '46%' }}>
-          {(onNext && typeof onNext === 'function') && <Button style={{ width: '100%' }} title={nextText} onPress={onNext} />}
+          {(onNext && typeof onNext === 'function') && <Button style={{ width: '100%' }} title={nextText} onPress={onNext} {...nextProps} />}
         </View>
         <View style={{ width: '46%' }}>
-          {(onCancel && typeof onCancel === 'function') && <Button style={{ width: '100%' }} title={cancelText} onPress={onCancel} />}
+          {(onCancel && typeof onCancel === 'function') && <Button style={{ width: '100%' }} title={cancelText} onPress={onCancel} {...cancelProps}/>}
         </View>
       </Buttons>
     </Container>

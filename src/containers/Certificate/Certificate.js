@@ -46,8 +46,12 @@ const CloseIcon = styled(ImageBackground)`
 const Background = styled(ImageBackground)`
   width: 100%;
   height: 100%;
-  flex: 1;
 `;
+
+const GeneralBackground = styled(ImageBackground)`
+  width: 100%;
+  height: 100%;
+`
 
 const BackgroundCertificate = styled(ImageBackground)`
   position: absolute;
@@ -95,20 +99,20 @@ class Certificate extends Component {
   }
 
   componentWillMount() {
-    this.currentOrientation = Orientation.getInitialOrientation();
-    Orientation.lockToLandscape();
+    // this.currentOrientation = Orientation.getInitialOrientation();
+    // Orientation.lockToLandscape();
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.showCertificate()
-    }, 150)
+    }, 250)
   }
 
   componentWillUnmount() {
-    if (this.currentOrientation === 'PORTRAIT') {
-      Orientation.lockToPortrait();
-    }
+    // if (this.currentOrientation === 'PORTRAIT') {
+    //   Orientation.lockToPortrait();
+    // }
   }
 
   showCertificate = () => {
@@ -165,7 +169,6 @@ class Certificate extends Component {
     const width = Dimensions.get('screen').width;
     const height = Dimensions.get('screen').height;
 
-
     return (
       <MoiModal {...modalProps}
         animationType={animationType}
@@ -193,7 +196,7 @@ class Certificate extends Component {
               format: 'png',
             }}
             ref={this.certificateView}>
-            <Background collapsable={false} ref={this.certificateView} width={width} height={height} source={{ uri: 'marco_profile_tab_contents' }} resizeMode='stretch'>
+            <GeneralBackground collapsable={false} ref={this.certificateView} width={width} height={height} source={{ uri: 'marco_profile_tab_contents' }} resizeMode='stretch'>
 
               <BackgroundCertificate
                 width={width}
@@ -269,7 +272,7 @@ class Certificate extends Component {
 
               </BackgroundCertificate>
 
-            </Background>
+            </GeneralBackground>
           </ViewShot>
 
         </Overlay>
