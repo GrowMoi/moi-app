@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import Orientation from 'react-native-orientation';
 import {
   View,
   FlatList,
@@ -82,11 +83,26 @@ class Inventory extends Component {
     events: [],
   }
 
+  componentDidMount() {
+    const { finalTestResult } = this.props;
+    if(!!finalTestResult) {
+      Orientation.lockToLandscape();
+    }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if(!!props.finalTestResult) {
+      Orientation.lockToLandscape();
+    } else {
+      Orientation.lockToPortrait();
+    }
+
+    return null;
+  }
+
   get columnsNumber() {
-    const { device: { dimensions: { orientation } } } = this.props;
     const defaultColumns = isTablet ? 3 : 2;
-    const additionalColumns = orientation === PORTRAIT ? 0 : 1;
-    return defaultColumns + additionalColumns;
+    return defaultColumns;
   }
 
   updateItem = ({ id, name }) => async () => {
@@ -334,12 +350,8 @@ class Inventory extends Component {
 
   render() {
     const { itemSelected, isEventModalOpen } = this.state;
-    const { device: { dimensions: { width, height } }, finalTestResult, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
-
-    const videoDimensions = {
-      width: 1280,
-      height: 720
-    };
+    const { finalTestResult, showPassiveMessage, showPassiveMessageAsync, name } = this.props;
+    const DEVICE_WIDTH = Dimensions.get('window').width;
 
     return (
       <MoiBackground>
@@ -349,7 +361,7 @@ class Inventory extends Component {
         </StyledContentBox>
 
         {isEventModalOpen && <ModalAlert
-          width={width}
+          width={DEVICE_WIDTH}
           item={itemSelected.item}
           okButtonProps={itemSelected.buttonProps}
           onClose={() => { this.setState({ isEventModalOpen: false }) }}
@@ -358,7 +370,7 @@ class Inventory extends Component {
         {!!finalTestResult ? (<Certificate />) : null}
         <BottomBar />
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !finalTestResult && !isEventModalOpen}
+          isOpenPassiveMessage={showPassiveMessage && name === 'inventory' && !finalTestResult && !isEventModalOpen}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);
@@ -372,10 +384,8 @@ class Inventory extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  device: state.device,
   achievements: state.user.achievements,
   finalTestResult: state.user.finalTestResult,
-  scene: state.routes.scene,
   showPassiveMessage: state.user.showPassiveMessage,
   profile: state.user.profile,
 })

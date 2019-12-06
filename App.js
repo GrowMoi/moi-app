@@ -56,7 +56,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    Orientation.lockToPortrait();
+    // Orientation.lockToPortrait();
     SplashScreen.preventAutoHide();
   }
 

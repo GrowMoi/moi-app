@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { object } from '../commons/utils';
 import * as actionTypes from '../actions/actionTypes';
-import ftest from '../mocks/quiz-results'
 
 export const initialState = {
   userData: {
@@ -33,7 +32,7 @@ export const initialState = {
   },
   events: [],
   eventsWeek: [],
-  quizResult: ftest,
+  quizResult: null,
   contentsToLearn: {
     contents: {},
     meta: {},
