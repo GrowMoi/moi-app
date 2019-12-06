@@ -5,7 +5,7 @@ import { Palette } from '../../styles';
 import MoiModal from '../../../containers/Modal/MoiModal';
 
 const Overlay = styled(View)`
-  flex: 1;
+  height: 100%;
   justify-content: center;
   align-items: center;
   background-color: ${props => props.noOverlay ? 'transparent' : Palette.black.alpha(0.7).css()};
