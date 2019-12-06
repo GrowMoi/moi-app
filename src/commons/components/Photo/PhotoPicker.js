@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, Alert, TouchableOpacity, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
@@ -118,17 +118,23 @@ export default class PhotoPicker extends Component {
     const { takePhotoLabel = 'Take a Photo', pickPhotoLabel = 'Pick a Photo' } = this.props;
 
     return [
-      {key: 'takePhoto', label: takePhotoLabel, id: uuid.v4(), fn: () => {
+      {key: 'takePhoto', label: takePhotoLabel, id: uuid.v4(), fn: async () => {
         this.setState({
           isModalOpen: false,
           selectedAction: this._takePhoto
         });
+        if (Platform.OS === 'android') {
+          await this._takePhoto();
+        }
       }},
-      {key: 'galleryPhoto', label: pickPhotoLabel, id: uuid.v4(), fn: () => {
+      {key: 'galleryPhoto', label: pickPhotoLabel, id: uuid.v4(), fn: async () => {
         this.setState({
           isModalOpen: false,
           selectedAction: this._pickPhoto
         });
+        if (Platform.OS === 'android') {
+          await this._pickPhoto();
+        }
       }},
     ]
   }
