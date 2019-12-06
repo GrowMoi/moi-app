@@ -164,7 +164,7 @@ class SearchFriends extends PureComponent {
               showPassiveMessageAsync(false);
             }
           }}
-          message='Busca a tus amigos por su nombre. Podrás conocer su árbol y su progreso en Moi'
+          message='Busca a tus amigos por su nombre. Podrás conocer su árbol y su progreso'
         />
       </MoiBackground>
     )

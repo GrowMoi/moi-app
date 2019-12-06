@@ -138,7 +138,7 @@ const registerAsync = ({ username, email, age, school, country, city, authorizat
     await dispatch(setHeaders(headers));
 
     Alert.alert(
-      `Bienvenido ${username} a Moi`,
+      `Bienvenido ${username} a Mi Aula BdP`,
       'Te haz registrado con exito!',
       [
         { text: 'Vamos a aprender!', onPress: () => onPressAlert && onPressAlert() }

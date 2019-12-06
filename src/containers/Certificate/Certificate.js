@@ -267,7 +267,7 @@ class Certificate extends Component {
                 </SectionContainer>
 
                 <View style={{ marginBottom: -19, height: 20 }}>
-                  <Header style={{ color: 'white', fontWeight: '500', textAlign: 'center' }} small>Para mas informacion, visite growmoi.com</Header>
+                  <Header style={{ color: 'white', fontWeight: '500', textAlign: 'center' }} small>-</Header>
                 </View>
 
               </BackgroundCertificate>

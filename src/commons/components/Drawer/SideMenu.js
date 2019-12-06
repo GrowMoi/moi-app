@@ -131,9 +131,9 @@ class SideMenu extends Component {
     const BG_ASSET_BASE_NAME = 'paisaje'
     switch (depth) {
       case 1:
-        return `${BG_ASSET_BASE_NAME}_sierra`;
+        return `${BG_ASSET_BASE_NAME}_sierrra`;
       case 2:
-        return `${BG_ASSET_BASE_NAME}_sierra`;
+        return `${BG_ASSET_BASE_NAME}_sierrra`;
       case 3:
         return `${BG_ASSET_BASE_NAME}_amazonia`;
       case 4:
