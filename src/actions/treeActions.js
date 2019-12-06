@@ -38,8 +38,13 @@ const setZoomTreeInfo = (zoomTreeInfo = {}) => dispatch => {
   dispatch({ type: actionTypes.SET_ZOOM_TREE_INFO, payload: zoomTreeInfo });
 }
 
+const setTreeLoaderStatus = (loaded = false) => dispatch => {
+  dispatch({ type: actionTypes.SET_TREE_LOADER_STATUS, payload: loaded });
+}
+
 export default {
   loadTreeAsync,
   setZoomScaleTree,
   setZoomTreeInfo,
+  setTreeLoaderStatus,
 };

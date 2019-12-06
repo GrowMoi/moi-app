@@ -78,10 +78,14 @@ class Tree extends Component {
     this.setState({ loading: false });
     this.handleShowReview();
 
-    const { quizResult } = this.props
-    const {showModalNewAchievements } = this.state
+    const { quizResult, setTreeLoaderStatus } = this.props
+    const {showModalNewAchievements, loading, hasUserTree } = this.state
     if(!!quizResult && !showModalNewAchievements) {
       this.validateResultQuiz()
+    }
+    const isTreeLoaded = !(loading && !hasUserTree)
+    if (isTreeLoaded) {
+      setTreeLoaderStatus(true);
     }
   }
 
@@ -366,7 +370,7 @@ class Tree extends Component {
         flex: 1,
       };
 
-    if (loading && !hasUserTree) { return <Preloader />; }
+      if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
         <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />
@@ -444,6 +448,7 @@ const mapDispatchToProps = {
   setZoomTreeInfo: treeActions.setZoomTreeInfo,
   setZoomScale: treeActions.setZoomScaleTree,
   setNeuronLabelInfo: neuronActions.setNeuronLabelInfo,
+  setTreeLoaderStatus: treeActions.setTreeLoaderStatus,
   uploadTreeImageAsync: userActions.uploadTreeImageAsync,
   removeQuizResult: userActions.removeQuizResult,
 }

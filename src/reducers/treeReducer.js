@@ -10,6 +10,7 @@ const initialState = {
     translateY: 0,
   },
   zoomScale: 1,
+  treeLoaded: false,
 };
 
 const userTree = (state = initialState.userTree, action = {}) => {
@@ -50,11 +51,21 @@ const zoomScale = (state = initialState.zoomScale, action) => {
   }
 }
 
+const treeLoaded = (state = initialState.treeLoaded, action) => {
+  switch (action.type) {
+    case actionTypes.SET_TREE_LOADER_STATUS:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const tree = combineReducers({
   userTree,
   audio,
   zoomInfo,
   zoomScale,
+  treeLoaded,
 });
 
 export default tree;

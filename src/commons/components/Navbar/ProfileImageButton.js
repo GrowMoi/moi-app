@@ -9,28 +9,33 @@ import ProfileAvatar from '../Profile/Profile'
 
 class ProfileImageButton extends Component {
 
-  renderProfileIconWithSound = (profile) => {
+  renderProfileIconWithSound = (profile, treeLoaded) => {
     const TouchableOpacityWithSound = withSound(TouchableOpacity);
+    let profileImage = profile.avatar;
+    if (treeLoaded) {
+      profileImage = profile.image;
+    }
 
     return (
       <TouchableOpacityWithSound
         soundName="profile"
         onPress={() => Actions.profile()}
       >
-        <ProfileAvatar width={Size.profileAvatarSize} userImageUri={profile.image || profile.avatar}
+        <ProfileAvatar width={Size.profileAvatarSize} userImageUri={profileImage}
         />
       </TouchableOpacityWithSound>
     );
   }
 
   render() {
-    const { profile } = this.props;
-    return this.renderProfileIconWithSound(profile);
+    const { profile, treeLoaded } = this.props;
+    return this.renderProfileIconWithSound(profile, treeLoaded);
   }
 }
 
 const mapStateToProps = state => ({
   profile: state.user.profile,
+  treeLoaded: state.tree.treeLoaded,
 })
 
 export default connect(mapStateToProps)(ProfileImageButton)
