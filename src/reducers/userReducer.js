@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { object } from '../commons/utils';
 import * as actionTypes from '../actions/actionTypes';
+import qr from '../mocks/quiz-results'
 
 export const initialState = {
   userData: {
@@ -17,7 +18,7 @@ export const initialState = {
   achievements: [],
   settings: [],
   passiveMessageSettings: {
-      show: true,
+    show: true,
   },
   showPassiveMessage: false,
   notifications: {
@@ -32,7 +33,7 @@ export const initialState = {
   },
   events: [],
   eventsWeek: [],
-  quizResult: null,
+  quizResult: qr,
   contentsToLearn: {
     contents: {},
     meta: {},

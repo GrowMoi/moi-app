@@ -19,8 +19,6 @@ import allImages from './assets/images';
 import fonts from './assets/fonts';
 import { setDeviceDimensions, setNetInfo } from './src/actions/deviceActions';
 import userActions from './src/actions/userActions';
-import UserInactivity from 'react-native-user-inactivity';
-import { TIME_FOR_INACTIVITY } from './src/constants';
 import Loader from './src/commons/components/Loader/Loader';
 import CustomSplash from './src/commons/components/CustomSplash/CustomSplash'
 import AppContainer from './src/containers/App/AppContainer'
@@ -143,10 +141,6 @@ class App extends Component {
     return Promise.resolve()
   }
 
-  showPassiveMessage = async () => {
-    await store.dispatch(userActions.showPassiveMessageAsync());
-  }
-
   onAppReady = () => {
     console.log('APP READY!')
     this.setState({ showMainApp: true });
@@ -197,17 +191,7 @@ class App extends Component {
     if (showMainApp) {
       return (
         <Provider store={store}>
-          <UserInactivity
-            timeForInactivity={TIME_FOR_INACTIVITY}
-            onAction={(isActive) => {
-              if(!isActive) {
-                Keyboard.dismiss()
-                this.showPassiveMessage();
-              }
-            }}
-          >
-            <AppContainer scenes={routes} />
-          </UserInactivity>
+          <AppContainer scenes={routes} />
         </Provider>
       );
     }

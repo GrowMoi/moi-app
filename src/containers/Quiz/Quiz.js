@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
+import Orientation from 'react-native-orientation';
 import styled from 'styled-components/native';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBar } from '../../commons/components/SceneComponents';
@@ -30,7 +31,7 @@ const QuizSceneContainer = styled(View)`
   justify-content: center;
 `;
 
-class QuizScene extends Component {
+class QuizScene extends PureComponent {
   state = {
     currentScene: 'intro',
     results: [],
@@ -100,7 +101,7 @@ class QuizScene extends Component {
       () => ({resultFinalTest: data, questionsLength: null }),
       () => {
         this.saveResultFinalTest();
-        Actions.inventory({ type: 'reset' });
+        Actions.certificate();
       }
     );
   }
@@ -143,7 +144,7 @@ class QuizScene extends Component {
 
   render() {
     const { currentScene, loading, modalVisible, showLevelPassedAnimation } = this.state;
-    const { quiz, device: { dimensions: { width } }, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
+    const { quiz, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
     const videoDimensions = {
       width: 1280,
@@ -169,7 +170,7 @@ class QuizScene extends Component {
                 ))}
               </Quiz>}
             {currentScene === 'results' && this.renderFinalScene}
-            {loading && <Preloader />}
+            {loading && <Preloader notFullScreen/>}
           </QuizSceneContainer>
         )}
         <Navbar />

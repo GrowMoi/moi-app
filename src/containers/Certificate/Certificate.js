@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Dimensions, View, Text, ImageBackground, TouchableOpacity, Image, PixelRatio } from 'react-native';
+import { Dimensions, View, Text, ImageBackground, TouchableOpacity, Image, PixelRatio, UIManager, LayoutAnimation } from 'react-native';
 import ViewShot, { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 import styled from 'styled-components/native';
 import Orientation from 'react-native-orientation';
@@ -12,12 +12,13 @@ import size from '../../commons/styles/size';
 
 // Actions
 import userActions from '../../actions/userActions';
+import { Actions } from 'react-native-router-flux';
 
 const Overlay = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: rgba(0,0,0,0.5);
 `;
 
 const CloseContainer = styled(TouchableOpacity)`
@@ -27,7 +28,6 @@ const CloseContainer = styled(TouchableOpacity)`
   width: 35;
   height: 35;
   zIndex: 1;
-  background-color: transparent;
 `;
 
 const SectionContainer = styled(View)`
@@ -88,7 +88,7 @@ const InnerTextBox = styled(View)`
   padding-right: 10;
 `;
 
-class Certificate extends Component {
+class Certificate extends PureComponent {
 
   certificateView = React.createRef();
   currentOrientation;
@@ -99,20 +99,20 @@ class Certificate extends Component {
   }
 
   componentWillMount() {
-    // this.currentOrientation = Orientation.getInitialOrientation();
-    // Orientation.lockToLandscape();
+    this.currentOrientation = Orientation.getInitialOrientation();
+    Orientation.lockToLandscape();
   }
 
   componentDidMount() {
+    this.showPassiveMessages(false);
     setTimeout(() => {
       this.showCertificate()
-    }, 250)
+    }, 100)
   }
 
-  componentWillUnmount() {
-    // if (this.currentOrientation === 'PORTRAIT') {
-    //   Orientation.lockToPortrait();
-    // }
+  showPassiveMessages = (show = false) => {
+    const { passiveMessageSettings, setCurrentPassiveMessageSettings } = this.props;
+    setCurrentPassiveMessageSettings({ ...passiveMessageSettings, show })
   }
 
   showCertificate = () => {
@@ -142,8 +142,8 @@ class Certificate extends Component {
     this.setState({ loading: false });
   }
 
-  getPercentajeCorrectAnswers(data) {
-    const correctResults = data.result.filter(response => response.correct);
+  getPercentajeCorrectAnswers(data = {}) {
+    const correctResults = (data.result || []).filter(response => response.correct);
     return (correctResults.length * 100) / 21;
   }
 
@@ -153,16 +153,21 @@ class Certificate extends Component {
 
   closeCertificate = () => {
     const { saveResultFinalTest } = this.props;
+    saveResultFinalTest(null)
     this.setState(
       () => ({ showModal: false }),
       () => {
-        saveResultFinalTest(null)
+        setTimeout(() => {
+          this.showPassiveMessages(true)
+          Orientation.lockToPortrait();
+          Actions.inventory({ type: 'reset' });
+        }, 100)
       }
     )
   }
 
   render() {
-    const { animationType = 'fade', modalProps, profile, finalTestResult = {}, saveResultFinalTest } = this.props;
+    const { animationType = 'fade', profile, finalTestResult = {}, saveResultFinalTest } = this.props;
     const { loading, showModal } = this.state;
 
     const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
@@ -170,7 +175,7 @@ class Certificate extends Component {
     const height = Dimensions.get('screen').height;
 
     return (
-      <MoiModal {...modalProps}
+      <MoiModal
         animationType={animationType}
         visible={showModal}
         transparent={true}
@@ -249,18 +254,18 @@ class Certificate extends Component {
 
                 <SectionContainer flex={1} style={{ flexDirection: 'row', backgroundColor: "#fff" }}>
                   <View style={{ flex: 1.5 }}>
-                    <ChartLearnedContent learnContensByBrach={finalTestResult.contents_learnt_by_branch} learnContens={finalTestResult.current_learnt_contents} />
+                    <ChartLearnedContent learnContensByBrach={(finalTestResult || {}).contents_learnt_by_branch} learnContens={(finalTestResult || {}).current_learnt_contents} />
                   </View>
 
                   <View style={{ flex: 4, justifyContent: 'center' }}>
-                    <Header style={{ width: '100%', textAlign: 'center' }} color="#219fd1" customSize={size.certificateFont + 8} bolder>{finalTestResult.current_learnt_contents} contenidos aprendidos</Header>
-                    <Header style={{ width: '100%', textAlign: 'center' }} color="#219fd1" customSize={size.certificateFont}>{((finalTestResult.current_learnt_contents * 100) / finalTestResult.total_approved_contents).toFixed(1)}% crecimiento del arbol</Header>
+                    <Header style={{ width: '100%', textAlign: 'center' }} color="#219fd1" customSize={size.certificateFont + 8} bolder>{(finalTestResult || {}).current_learnt_contents} contenidos aprendidos</Header>
+                    <Header style={{ width: '100%', textAlign: 'center' }} color="#219fd1" customSize={size.certificateFont}>{(((finalTestResult || {}).current_learnt_contents * 100) / (finalTestResult || {}).total_approved_contents).toFixed(1)}% crecimiento del arbol</Header>
                   </View>
 
                   <View style={{ flex: 2.3, justifyContent: 'center' }}>
-                    <Header color="#219fd1" customSize={size.certificateFont}>{this.getPercentajeCorrectAnswers(finalTestResult).toFixed(1)}% último test</Header>
+                    <Header color="#219fd1" customSize={size.certificateFont}>{this.getPercentajeCorrectAnswers((finalTestResult || {})).toFixed(1)}% último test</Header>
                     <View style={{ flexDirection: 'row' }}>
-                      <Header color="#219fd1" customSize={size.certificateFont - 2} bolder>{finalTestResult.time} </Header>
+                      <Header color="#219fd1" customSize={size.certificateFont - 2} bolder>{(finalTestResult || {}).time} </Header>
                       <Header color="#219fd1" customSize={size.certificateFont - 2}>lectura promedio</Header>
                     </View>
                   </View>
@@ -292,12 +297,14 @@ const mapStateToProps = (state) => ({
   device: state.device,
   profile: state.user.profile,
   finalTestResult: state.user.finalTestResult,
+  passiveMessageSettings: state.user.passiveMessageSettings,
 })
 
 const mapDispatchToProps = {
   saveResultFinalTest: userActions.saveResultFinalTest,
   uploadImageAsync: userActions.uploadImageAsync,
   saveCertificateAsync: userActions.saveCertificateAsync,
+  setCurrentPassiveMessageSettings: userActions.setCurrentPassiveMessageSettings,
 }
 
 

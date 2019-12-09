@@ -13,6 +13,7 @@ import {
   ImageBackground,
   Text,
   Dimensions,
+  Platform,
 } from 'react-native';
 
 import { Video } from '../../commons/components/VideoPlayer';
@@ -83,18 +84,28 @@ class Inventory extends Component {
     events: [],
   }
 
-  componentDidMount() {
-    const { finalTestResult } = this.props;
-    if(!!finalTestResult) {
-      Orientation.lockToLandscape();
-    }
-  }
+  // componentDidMount() {
+  //   const { finalTestResult } = this.props;
+  //   if(!!finalTestResult) {
+  //     Orientation.lockToLandscape();
+  //   }
+  // }
+
+  // componentDidMount() {
+    // console.log('Component Did Mount')
+    // const { finalTestResult } = this.props;
+    // if(!finalTestResult) {
+    //   Orientation.lockToPortrait();
+    // }
+  // }
 
   static getDerivedStateFromProps(props, state) {
-    if(!!props.finalTestResult) {
-      Orientation.lockToLandscape();
-    } else {
-      Orientation.lockToPortrait();
+    if(Platform.OS === 'android') {
+      if(!!props.finalTestResult) {
+        Orientation.lockToLandscape();
+      } else {
+        Orientation.lockToPortrait();
+      }
     }
 
     return null;
@@ -350,7 +361,7 @@ class Inventory extends Component {
 
   render() {
     const { itemSelected, isEventModalOpen } = this.state;
-    const { finalTestResult, showPassiveMessage, showPassiveMessageAsync, name } = this.props;
+    const { finalTestResult, showPassiveMessage, showPassiveMessageAsync, scene } = this.props;
     const DEVICE_WIDTH = Dimensions.get('window').width;
 
     return (
@@ -367,10 +378,10 @@ class Inventory extends Component {
           onClose={() => { this.setState({ isEventModalOpen: false }) }}
         />}
 
-        {!!finalTestResult ? (<Certificate />) : null}
+        {/* {!!finalTestResult ? (<Certificate />) : null} */}
         <BottomBar />
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && name === 'inventory' && !finalTestResult && !isEventModalOpen}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'inventory' && !finalTestResult && !isEventModalOpen}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);
@@ -388,6 +399,7 @@ const mapStateToProps = (state) => ({
   finalTestResult: state.user.finalTestResult,
   showPassiveMessage: state.user.showPassiveMessage,
   profile: state.user.profile,
+  scene: state.routes.scene,
 })
 
 const mapDispatchToProps = {

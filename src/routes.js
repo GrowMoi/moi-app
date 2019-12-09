@@ -22,6 +22,7 @@ import VideoScene from './containers/VideoScene/VideoScene';
 import { Actions, Scene, ActionConst, Modal } from 'react-native-router-flux';
 import backButtonWithSound from './commons/components/Buttons/backButtonWithSound';
 import UserInactivity from 'react-native-user-inactivity';
+import Certificate from './containers/Certificate/Certificate';
 
 // import Test from './commons/components/Test';
 
@@ -160,6 +161,7 @@ const routes = () => {
             {...navbarPropStyles}
           />
         </Scene>
+      <Scene key='certificate' component={Certificate} />
       <Scene key='videoPlayer' component={VideoScene} />
     </Scene>
   )
