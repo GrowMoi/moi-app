@@ -31,7 +31,7 @@
 			<string>OAuthRedirect</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.moisociallearning.moiapp</string>
+				<string>com.miaulabancodp.mabdp</string>
 			</array>
 		</dict>
 	</array>

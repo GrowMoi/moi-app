@@ -29,11 +29,11 @@ android {
   }
 
   defaultConfig {
-    applicationId 'com.moisociallearning.moiapp'
+    applicationId 'com.miaulabancodp.mabdp'
     minSdkVersion safeExtGet("minSdkVersion", 21)
     targetSdkVersion safeExtGet("targetSdkVersion", 28)
-    versionCode 11
-    versionName '0.4.0'
+    versionCode 1
+    versionName '1.0.5'
     ndk {
       // We use different `abiFilters` for distributing
       // to be able to bundle old, incompatible SDKs.

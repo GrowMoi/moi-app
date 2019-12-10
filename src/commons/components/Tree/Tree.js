@@ -329,7 +329,7 @@ class Tree extends Component {
 
   redirectToStore = async () => {
     AsyncStorage.setItem('showReview', 'appReviewd');
-    let marketUrl = 'market://details?id=com.moisociallearning.moiapp';
+    let marketUrl = 'market://details?id=com.miaulabancodp.mabdp';
     if (Platform.OS === 'ios') {
         marketUrl = 'itms://itunes.apple.com/us/app/apple-store/com.growmoisociallearning.moiapp?mt=8';
     }
