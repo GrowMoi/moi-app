@@ -27,7 +27,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.moisociallearning.moiapp",
+      "bundleIdentifier": "com.miaulabancodp.mabdp",
       "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
       "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json"
     },
@@ -38,7 +38,7 @@
     },
     "scheme": "expcb94a1b685d94c71b27eedc762636f73",
     "android": {
-      "package": "com.moisociallearning.moiapp",
+      "package": "com.miaulabancodp.mabdp",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     }
