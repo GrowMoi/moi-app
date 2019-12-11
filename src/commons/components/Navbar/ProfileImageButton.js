@@ -29,8 +29,7 @@ class ProfileImageButton extends Component {
 }
 
 const mapStateToProps = state => ({
-  profile: state.user.profile,
-  treeLoaded: state.tree.treeLoaded,
+  profile: state.user.profile
 })
 
 export default connect(mapStateToProps)(ProfileImageButton)

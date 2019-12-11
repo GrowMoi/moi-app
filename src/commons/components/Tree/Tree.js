@@ -370,7 +370,7 @@ class Tree extends Component {
         flex: 1,
       };
 
-      if (loading && !hasUserTree) { return <Preloader />; }
+    if (loading && !hasUserTree) { return <Preloader />; }
     return (
       <TreeContainer>
         <AnimatedNubes deviceWidth={width} deviceHeight={height} orientation={orientation} />

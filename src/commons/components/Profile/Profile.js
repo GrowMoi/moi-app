@@ -4,6 +4,7 @@ import { View, Image } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import MaskedView from '@react-native-community/masked-view';
 import { getHeightAspectRatio  } from '../../utils'
+import ProfileImage from'./ProfileImage';
 
 const rounded = ({ round }) => {
   return round && css`
@@ -21,45 +22,12 @@ const ProfileContainer = styled(View)`
   ${rounded}
 `;
 
-const BackgroundImage = styled(View)`
-  background-color: #f7fcff;
-  width: 100%;
-  height: 100%
-  position: absolute;
-  top: 0;
-  left: 0;
-`
-
-const ProfileImage = styled(Image)`
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-`;
-
 const Frame = styled.Image`
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-`
-
-const MaskContainer = styled(MaskedView)`
-  height: ${props => props.height || 0};
-  width: ${props => props.width || 0};
-  flexDirection: row;
-`
-
-const MaskImageContainer = styled(View)`
-  flex: 1;
-`
-
-const MaskImage = styled(Image)`
-  height: ${props => props.height || 0};
-  width: ${props => props.width || 0};
 `
 
 class ProfileAvatar extends Component {
@@ -86,25 +54,11 @@ class ProfileAvatar extends Component {
     const sourceImage = {uri: userImageUri ? userImageUri : avatar };
 
     const profilePhoto = (
-      <React.Fragment>
-        <MaskContainer
-          height={MASK_HEIGHT}
-          width={MASK_WIDTH}
-          maskElement={
-            <MaskImageContainer>
-              <MaskImage  height={MASK_HEIGHT} width={MASK_WIDTH} source={{uri: 'profile_mask'}} />
-            </MaskImageContainer>
-          }
-          >
-          <ProfileImage
-            {...rest}
-            source={sourceImage}
-            resizeMode='cover'
-            />
-          <BackgroundImage />
-        </MaskContainer>
-        <Frame source={{ uri: 'profile_frame' }}/>
-      </React.Fragment>
+      <ProfileImage
+        height={MASK_HEIGHT}
+        width={MASK_WIDTH}
+        sourceImage={sourceImage}
+        {...rest}/>
     )
 
     const placeholder = (
