@@ -63,13 +63,13 @@ const routes = () => {
           <Scene
             key={'settings'}
             type={ActionConst.REPLACE}
-            title='Settings'
+            title='Configuraciones'
             component={Settings}
             {...navbarPropStyles} />
           <Scene
             key={'leaderboard'}
             type={ActionConst.REPLACE}
-            title='Leaderboard'
+            title='Tabla de Posiciones'
             component={LeaderBoard}
             {...navbarPropStyles} />
           <Scene

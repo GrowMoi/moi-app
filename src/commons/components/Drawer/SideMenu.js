@@ -97,7 +97,7 @@ class SideMenu extends Component {
       },
       {
         id: 'settings',
-        label: 'Configuración',
+        label: 'Configuraciones',
         icon: 'settings',
         onPress: (option) => {
           if(onPressOption) onPressOption(option);
@@ -105,7 +105,7 @@ class SideMenu extends Component {
       },
       {
         id: 'leaderboard',
-        label: 'Leaderboard',
+        label: 'Tabla de Posiciones',
         icon: 'list',
         onPress: (option) => {
           if(onPressOption) onPressOption(option);
