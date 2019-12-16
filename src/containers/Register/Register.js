@@ -256,7 +256,7 @@ class Register extends Component {
 
     generateYears() {
       const currentYear = (new Date()).getFullYear();
-      const years = array.range(1990, currentYear, 1);
+      const years = array.range(2001, currentYear, 1);
       return years.map(year => ({label: year.toString(), fn: this.onSelectYear}));
     }
 
