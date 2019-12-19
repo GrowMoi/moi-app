@@ -31,6 +31,14 @@ const QuizSceneContainer = styled(View)`
   justify-content: center;
 `;
 
+const Overlay = styled(View)`
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.6);
+`;
+
 class QuizScene extends PureComponent {
   state = {
     currentScene: 'intro',
@@ -153,48 +161,50 @@ class QuizScene extends PureComponent {
 
     return (
       <Background>
-        {quiz && Object.keys(quiz).length && (
-          <QuizSceneContainer>
-            {currentScene === 'intro' && this.renderIntroScene}
-            {currentScene === 'quiz' && !loading &&
-              <Quiz onQuizComplete={this.quizFinished}>
-                {(quiz.questions || []).map(question => (
-                  <Question
-                    key={`question-${question.content_id}`}
-                    contentId={question.content_id}
-                    title={question.title}
-                    options={_.shuffle(question.possible_answers)}
-                    buttonTitle='Siguiente'
-                    mediaUrl={question.media_url}
-                  />
-                ))}
-              </Quiz>}
-            {currentScene === 'results' && this.renderFinalScene}
-            {loading && <Preloader notFullScreen/>}
-          </QuizSceneContainer>
-        )}
-        <Navbar />
-        <BottomBar />
-        {/* {modalVisible && <Video
-          videoDimensions={videoDimensions}
-          source={creditos}
-          dismiss={() => this.showVideo(false)}
-          visible={modalVisible}
-          width={width}
-          onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
-          showCloseIcon={false}
-          skipButton
-        />} */}
-        {showLevelPassedAnimation && <LevelPassedTransition/>}
-        <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage && scene.name === 'quiz' &&  !loading}
-          touchableProps={{
-            onPress: () => {
-              showPassiveMessageAsync(false);
-            }
-          }}
-          message='Elige una alternativa y presiona la flecha para continuar'
-        />
+        <Overlay>
+          {quiz && Object.keys(quiz).length && (
+            <QuizSceneContainer>
+              {currentScene === 'intro' && this.renderIntroScene}
+              {currentScene === 'quiz' && !loading &&
+                <Quiz onQuizComplete={this.quizFinished}>
+                  {(quiz.questions || []).map(question => (
+                    <Question
+                      key={`question-${question.content_id}`}
+                      contentId={question.content_id}
+                      title={question.title}
+                      options={_.shuffle(question.possible_answers)}
+                      buttonTitle='Siguiente'
+                      mediaUrl={question.media_url}
+                    />
+                  ))}
+                </Quiz>}
+              {currentScene === 'results' && this.renderFinalScene}
+              {loading && <Preloader notFullScreen/>}
+            </QuizSceneContainer>
+          )}
+          <Navbar />
+          <BottomBar />
+          {/* {modalVisible && <Video
+            videoDimensions={videoDimensions}
+            source={creditos}
+            dismiss={() => this.showVideo(false)}
+            visible={modalVisible}
+            width={width}
+            onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
+            showCloseIcon={false}
+            skipButton
+          />} */}
+          {showLevelPassedAnimation && <LevelPassedTransition/>}
+          <PassiveMessageAlert
+            isOpenPassiveMessage={showPassiveMessage && scene.name === 'quiz' &&  !loading}
+            touchableProps={{
+              onPress: () => {
+                showPassiveMessageAsync(false);
+              }
+            }}
+            message='Elige una alternativa y presiona la flecha para continuar'
+          />
+        </Overlay>
       </Background>
     );
   }
