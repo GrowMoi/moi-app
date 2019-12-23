@@ -64,7 +64,7 @@ class LabelsLayer extends Component {
     }
 
     return (
-      <View style={{ flex: 1, position: 'absolute', top: 0, left: 0 }}>
+      <View style={{ flex: 1, position: 'absolute', top: 1, left: 1 }}>
         {label.pageX && label.pageY &&
           <WoodLabel
             text={label.title}

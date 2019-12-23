@@ -158,7 +158,7 @@ class Tree extends Component {
       this.canPlaySound = true;
       setNeuronLabelInfo({});
       this.setState({ showLabelLayer: true });
-    }, 1000);
+    }, 500);
   }
 
   selectCurrentLevel = (userTree) => {
@@ -331,7 +331,7 @@ class Tree extends Component {
     AsyncStorage.setItem('showReview', 'appReviewd');
     let marketUrl = 'market://details?id=com.miaulabancodp.mabdp';
     if (Platform.OS === 'ios') {
-        marketUrl = 'itms://itunes.apple.com/us/app/apple-store/com.growmoisociallearning.moiapp?mt=8';
+        marketUrl = 'itms://itunes.apple.com/us/app/apple-store/com.miaulabancodp.mabdp?mt=8';
     }
     Linking.canOpenURL(marketUrl).then(supported => {
         supported && Linking.openURL(marketUrl);
@@ -349,7 +349,7 @@ class Tree extends Component {
     const { device: { dimensions: { width, height, orientation } } } = this.props;
 
     const showAchievementsModal = !modalVisible && showModalNewAchievements;
-    const showEventCompletedModal = !modalVisible && !showModalNewAchievements && showEventCompleted;
+    // const showEventCompletedModal = !modalVisible && !showModalNewAchievements && showEventCompleted;
 
     const videoDimensions = {
       width: 1280,

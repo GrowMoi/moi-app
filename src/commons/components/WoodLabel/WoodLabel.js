@@ -47,6 +47,10 @@ const LabelContainer = Animatable.createAnimatableComponent(Container);
 
 class WoodLabel extends PureComponent {
   storeRef = ref => this.woodContainer = ref
+  state = {
+    size: null,
+    prevSize: null,
+  }
 
   componentDidMount() {
     // this.woodContainer.bounceInUp(400);
@@ -54,39 +58,47 @@ class WoodLabel extends PureComponent {
 
   componentWillUnmount() {
     // this.woodContainer.bounceInDown(200);
+    this.setState({ size: null })
   }
 
   render() {
     const { text = '', onPress = () => null, style } = this.props;
+    const { size } = this.state
+    const boxHeight = ((size || {}).height || 0)
+    const minHeightLabel = 45
+    const topPositionBox = boxHeight > minHeightLabel ? (boxHeight > 90 ? boxHeight/1.5 : boxHeight/2) : 0
 
     const fontSize = 10;
-    const boxHeight = 33;
     const boxWidth = 80;
-    const fontHeight = 15;
     const fontPositionTop = 0;
-    const paddingHorizontal = 1;
-    const paddingVertical = 10;
+    const paddingHorizontal = 20;
+    const paddingVertical = 15;
 
     return (
-      <Container ref={this.storeRef} style={{...style, height: boxHeight, width: boxWidth}}>
+      <Container
+        ref={this.storeRef}
+        style={{...style, width: boxWidth, top: style.top - topPositionBox, opacity: (size || {}).height > 0 ? 1 : 0 }}
+        onLayout={(event) => {
+          let {x, y, width, height} = event.nativeEvent.layout;
+          this.setState({ size: { x, y, width, height } })
+        }}
+      >
         <TouchableOpacity onPress={onPress}>
-          <Box
-              height={boxHeight}
-              width={boxWidth}
-              source={{uri: 'wood_texture'}}
-              resizeMode='contain'
-              paddingHorizontal={paddingHorizontal}
-              paddingVertical={paddingVertical}
-            >
+          {!!this.state.size && <Box
+            source={{uri: 'wood_texture'}}
+            resizeMode='stretch'
+            paddingHorizontal={paddingHorizontal}
+            paddingVertical={paddingVertical}
+          >
             <TextContainer>
               <TextLabel
                 customSize={fontSize}
                 allowFontScaling
-                style={{ height: fontHeight, top: fontPositionTop }}
-                numberOfLines={1}>{text}</TextLabel>
+                style={{ top: fontPositionTop }}
+              >{text}</TextLabel>
               {/* <BackButton reverse onPress={onPress}/> */}
             </TextContainer>
-          </Box>
+          </Box>}
         </TouchableOpacity>
       </Container>
     );

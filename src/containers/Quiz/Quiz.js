@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import Orientation from 'react-native-orientation';
 import styled from 'styled-components/native';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBar } from '../../commons/components/SceneComponents';
