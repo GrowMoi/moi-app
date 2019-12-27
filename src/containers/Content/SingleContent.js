@@ -515,7 +515,7 @@ class SingleContentScene extends Component {
                 }
               }}
               message='Cuando termines de leer la explicación, presiona el botón
-              celeste para enviar la pregunta al test'
+              amarillo para enviar la pregunta al test'
           />}
           </MoiBackground>
       </View>
