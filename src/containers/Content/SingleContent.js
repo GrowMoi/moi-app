@@ -234,19 +234,24 @@ class SingleContentScene extends Component {
   shareContent = async (neuronId, contentId, contentTitle, descriptionContent) => {
     const { uploadImageAsync, generateShareDataAsync } = this.props;
 
-    const screenShot = await this.takeScreenShotTree();
-    const uploadRes = await uploadImageAsync(screenShot);
-    const contentUri = `${constants.WEB_URL_BASE}/#/neuron/${neuronId}/content/${contentId}`;
-    const { social_sharing: {public_url} } = await generateShareDataAsync(contentTitle, descriptionContent ? descriptionContent : 'desc', contentUri, uploadRes.secure_url);
+    // const screenShot = await this.takeScreenShotTree();
+    // const uploadRes = await uploadImageAsync(screenShot);
+    // const contentUri = `${constants.WEB_URL_BASE}/#/neuron/${neuronId}/content/${contentId}`;
+    const contentUri = `http://miaulabdp.com`;
+    // const { social_sharing: {public_url} } = await generateShareDataAsync(contentTitle, descriptionContent ? descriptionContent : 'desc', contentUri, uploadRes.secure_url);
 
-    const shareImageBase64 = {
-        title: contentTitle,
-        message: public_url,
-        url: public_url,
-        subject: contentTitle
-    };
-    await Share.share(shareImageBase64);
-	this.dismissActionSheets();
+    // const shareImageBase64 = {
+    //     title: contentTitle,
+    //     message: public_url,
+    //     url: public_url,
+    //     subject: contentTitle
+    // };
+    try {
+      await Share.share({ message: `Conoce más en ${contentUri}` });
+    } catch (error) {
+      console.log(error)
+    }
+	  this.dismissActionSheets();
   }
 
   afterFinishAnimation = async (neuronId) => {
