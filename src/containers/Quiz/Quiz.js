@@ -53,6 +53,7 @@ class QuizScene extends PureComponent {
 
   componentDidMount() {
     const { quiz } = this.props;
+    console.log('Quiz', quiz)
     this.soundQuizFinishedPlayed = false;
     if(quiz.questions.length === 21) {
       this.jumpToScene('quiz');

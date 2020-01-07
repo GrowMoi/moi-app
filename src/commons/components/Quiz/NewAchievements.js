@@ -5,9 +5,10 @@ import Alert from '../Alert/Alert';
 import GenericAlert from '../Alert/GenericAlert';
 import userActions from '../../../actions/userActions';
 import { Actions } from 'react-native-router-flux';
+import { ACHIEVEMENT_FINAL_QUIZ_NUMBER } from '../../../constants'
 
 class NewAchievementsModal extends Component {
-  testAchievementNumber = 7
+  testAchievementNumber = ACHIEVEMENT_FINAL_QUIZ_NUMBER
   state = {
     currentAchievement: 0,
     showModal: false,
@@ -72,10 +73,13 @@ class NewAchievementsModal extends Component {
   }
 
   goToFinalQuiz = async() => {
-    const { loadFinalTestAsync, onHideModal } = this.props
+    const { loadFinalTestAsync, onHideModal, userTree = {}, } = this.props
+    const finalTestId = ((userTree.meta || {}).final_test || {}).id
+
     this.setState({ loading: true })
+    console.log('test ID go to Final quiz', finalTestId)
     try {
-      await loadFinalTestAsync();
+      await loadFinalTestAsync(finalTestId);
       this.setState(
         () => ({ loading: false }),
         () => {
@@ -118,6 +122,7 @@ class NewAchievementsModal extends Component {
 
 const mapStateToProps = (state) => ({
   profile: state.user.profile,
+  userTree: state.tree.userTree,
 })
 
 const mapDispatchToProps = {

@@ -525,13 +525,20 @@ const evaluateQuizAsync = (quizId, playerId, answers) => async (dispatch) => {
   }
 };
 
-const loadFinalTestAsync = () => async (dispatch) => {
-  try {
-    const res = await api.players.getFinalTest();
-    const { data, headers } = res;
+const loadFinalTestAsync = (testId) => async (dispatch) => {
 
-    dispatch(storeQuiz(data.questions));
-    dispatch(setHeaders(headers));
+  try {
+    let res = {};
+    if(!!testId) {
+      const resQuestionsById = await api.players.getTestById(testId)
+      //FIXME: la data del GET llega distinta a la data del POST
+      res = { data: { questions: resQuestionsById.data }, headers: resQuestionsById.headers }
+    } else {
+      res = await api.players.getFinalTest();
+    }
+
+    dispatch(storeQuiz(res.data.questions));
+    dispatch(setHeaders(res.headers));
     return res;
   } catch (error) {
     throw new Error(error);

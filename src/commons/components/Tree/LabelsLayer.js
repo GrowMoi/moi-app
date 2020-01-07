@@ -6,6 +6,7 @@ import WoodLabel from '../WoodLabel/WoodLabel';
 import neuronActions from '../../../actions/neuronActions'
 import Preloader from '../Preloader/Preloader';
 import deviceUtils from '../../utils/device-utils';
+import { ActionConst } from 'react-native-router-flux'
 
 const isTablet = deviceUtils.isTablet();
 
@@ -24,7 +25,7 @@ class LabelsLayer extends Component {
     const { label } = this.props;
 
     await this.getCurrentContents(label.id);
-    Actions.content({ title: label.title, neuron_id: label.id });
+    Actions.content({ title: label.title, neuron_id: label.id, type: ActionConst.RESET });
   }
 
   getCurrentContents = async (neuronId) => {

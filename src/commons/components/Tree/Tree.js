@@ -23,7 +23,7 @@ import { Sound } from '../SoundPlayer';
 import NewAchievementsModal from '../Quiz/NewAchievements';
 import EventCompletedModal from '../Quiz/EventCompleted';
 import deviceUtils from '../../utils/device-utils';
-import { PORTRAIT } from '../../../constants';
+import { PORTRAIT, ACHIEVEMENT_FINAL_QUIZ_NUMBER } from '../../../constants';
 import { generateAlertData } from '../Alert/alertUtils';
 import ModalAlert from '../Alert/ModalAlert';
 
@@ -78,11 +78,23 @@ class Tree extends Component {
     this.setState({ loading: false });
     this.handleShowReview();
 
-    const { quizResult, setTreeLoaderStatus } = this.props
+    const { quizResult, setTreeLoaderStatus, userTree = {}, user = {} } = this.props
     const {showModalNewAchievements, loading, hasUserTree } = this.state
+
+    // Validate and show final quiz modal
+    const finalTestId = ((userTree.meta || {}).final_test || {}).id
+    if(!!finalTestId) {
+      const finalTestAchievement = ((user.profile || {}).achievements || []).filter(achiev => ACHIEVEMENT_FINAL_QUIZ_NUMBER === achiev.number)
+
+      if(finalTestAchievement.length > 0) {
+        this.showModalNewAchievements(finalTestAchievement, false)
+      }
+    }
+
     if(!!quizResult && !showModalNewAchievements) {
       this.validateResultQuiz()
     }
+
     const isTreeLoaded = !(loading && !hasUserTree)
     if (isTreeLoaded) {
       setTreeLoaderStatus(true);
@@ -267,15 +279,15 @@ class Tree extends Component {
   }
 
   handleShowReviewNextLaunch = async () => {
-      const showReview = await AsyncStorage.getItem('showReview');
-      if(!showReview) {
-          AsyncStorage.setItem('showReview', 'true');
-      }
+    const showReview = await AsyncStorage.getItem('showReview');
+    if(!showReview) {
+      AsyncStorage.setItem('showReview', 'true');
+    }
   }
 
-  showModalNewAchievements = (achievements) => {
+  showModalNewAchievements = (achievements, review = true) => {
     this.setState({ showModalNewAchievements: true, achievements: achievements });
-    this.handleShowReviewNextLaunch();
+    if(review) { this.handleShowReviewNextLaunch(); }
   }
 
   hideModalNewAchievements = () => {

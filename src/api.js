@@ -291,6 +291,12 @@ const api = {
       return res;
     },
 
+    async getTestById(testId) {
+      const endpoint = `/api/users/final_test/${testId}`
+      const res = await client.get(endpoint)
+      return res
+    },
+
     async evaluateFinalTest(finalTestId, answers) {
       const endpoint = `/api/users/final_test/${finalTestId}/answer`;
       const res = await client.post(
