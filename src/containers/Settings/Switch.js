@@ -55,7 +55,7 @@ const Switch = ({ toggleValue, onPress }) => {
         <ContainerSwitch>
             <LineSwitch style={styleLine}>
                 <TextContainer style={styleText}>
-                    <Header customSize={Size.fontDescription} inverted={!!toggleValue} >{stichText}</Header>
+                    {/* <Header customSize={Size.fontDescription} inverted={!!toggleValue} >{stichText}</Header> */}
                 </TextContainer>
             </LineSwitch>
 

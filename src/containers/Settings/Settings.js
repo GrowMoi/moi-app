@@ -128,7 +128,7 @@ class Settings extends Component {
       <MoiBackground>
         <Container>
           <ScrollView contentContainerStyle={containerStyles}>
-            <SettingsSection title='Levels'>
+            <SettingsSection title='Niveles'>
               <HeaderLevels />
               {(settings || []).map((row, i) => (
                 <RowLevel
