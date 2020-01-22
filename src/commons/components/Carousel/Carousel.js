@@ -110,6 +110,8 @@ export default class Carousel extends PureComponent {
       size,
       images,
       videos,
+      image,
+      resizeMode,
       ...rest
     } = this.props;
 
@@ -139,6 +141,7 @@ export default class Carousel extends PureComponent {
           {(media || []).map((d, i) => {
             return <ContentImage
               key={i}
+              resizeMode={resizeMode}
               onPressImage={(attrs) => this.openImage({ attrs, item: d })}
               size={size}
               data={d}

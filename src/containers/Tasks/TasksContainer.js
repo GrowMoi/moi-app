@@ -135,6 +135,8 @@ class TasksContainer extends Component {
   correspondingAlert = () => {
     const { itemSelected } = this.state;
 
+    console.log(itemSelected.type, itemSelected)
+
     if (itemSelected.type === 'tutor_quiz') {
       const tutorMessage = `El tutor ${(itemSelected.tutor || {}).name || ''} ha creado un test para ti`;
       const tutorDescription = itemSelected.description;
@@ -163,7 +165,7 @@ class TasksContainer extends Component {
           message={itemSelected.title}
           description={itemSelected.description}
           onCancel={this.closeAlert}
-          media={itemSelected.media[0]}
+          media={itemSelected.media}
           cancelText='Ok'
         />
       )

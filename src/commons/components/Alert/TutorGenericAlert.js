@@ -10,6 +10,7 @@ import Button from '../Buttons/Button';
 
 // Utils
 import { getHeightAspectRatio } from '../../utils';
+import Carousel from '../Carousel/Carousel';
 
 const Container = styled(View)`
   width: 300;
@@ -67,9 +68,17 @@ export const TutorGenericAlert = ({
         <Description marginBottom={!!media}>
           {description && <TextBody inverted center>{description}</TextBody>}
         </Description>
-        {media && (
+        {/* {media && (
           <Img source={{ uri: media }} resizeMode='contain' />
-        )}
+        )} */}
+        <Carousel
+          showsPagination
+          loop
+          autoplay
+          resizeMode='contain'
+          size={{ width: '100%', height: 150 }}
+          images={media}
+        />
       </ContentBox>
 
       <Buttons>
