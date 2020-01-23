@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ImageBackground, ScrollView } from 'react-native'
+import { View, ImageBackground, ScrollView, Linking } from 'react-native'
 import styled, { css } from 'styled-components/native'
 
 // Components
@@ -51,6 +51,16 @@ const Img = styled(ImageBackground)`
   background-color: white;
 `;
 
+const VideoContainer = styled(View)`
+  padding-vertical: 10;
+  background-color: #035faf;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10;
+  margin-top: 5;
+`
+
 export const TutorGenericAlert = ({
   onNext,
   onCancel,
@@ -59,26 +69,35 @@ export const TutorGenericAlert = ({
   cancelText='Cancelar',
   description='',
   media = '',
+  videoUrl = ''
 }) => {
 
   return (
     <Container>
       <ContentBox>
         <Title center book color='white'>{message}</Title>
-        <Description marginBottom={!!media}>
+        <Description marginBottom={!!media.length}>
           {description && <TextBody inverted center>{description}</TextBody>}
         </Description>
-        {/* {media && (
-          <Img source={{ uri: media }} resizeMode='contain' />
-        )} */}
-        <Carousel
+        {!!videoUrl && <VideoContainer>
+          <TextBody
+          style={{ color: 'white' }}
+          onPress={() => {
+            if(videoUrl) {
+              Linking.canOpenURL(videoUrl).then(supported => {
+                supported && Linking.openURL(videoUrl);
+              }, (err) => console.log(err));
+            }
+          }}>Abrir link a video</TextBody>
+        </VideoContainer>}
+        {((media || []).length > 0) && <Carousel
           showsPagination
           loop
           autoplay
           resizeMode='contain'
           size={{ width: '100%', height: 150 }}
           images={media}
-        />
+        />}
       </ContentBox>
 
       <Buttons>

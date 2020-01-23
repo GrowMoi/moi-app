@@ -133,7 +133,7 @@ class TasksContainer extends Component {
   }
 
   correspondingAlert = () => {
-    const { itemSelected } = this.state;
+    const { itemSelected = {} } = this.state;
 
     console.log(itemSelected.type, itemSelected)
 
@@ -167,6 +167,7 @@ class TasksContainer extends Component {
           onCancel={this.closeAlert}
           media={itemSelected.media}
           cancelText='Ok'
+          videoUrl={((itemSelected || {}).videos[0]) || ''}
         />
       )
     }

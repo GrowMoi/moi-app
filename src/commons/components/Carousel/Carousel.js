@@ -111,7 +111,7 @@ export default class Carousel extends PureComponent {
       images,
       videos,
       image,
-      resizeMode,
+      resizeMode = 'cover',
       ...rest
     } = this.props;
 
