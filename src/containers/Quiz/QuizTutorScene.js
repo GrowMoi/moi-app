@@ -66,13 +66,11 @@ class QuizTutorScene extends Component {
 
     const correctResults = results.filter(response => response.correct);
     const message = `Respondiste ${correctResults.length} de ${results.length} preguntas correctamente`;
-    const caption = `Tu tiempo fue de: ${quiz.time}`;
 
     return (
       <ComplementaryScene
         title='RESULTADO'
         text={message}
-        caption={caption}
         onNext={Actions.pop}
         onNextText='Entendido'
       />
