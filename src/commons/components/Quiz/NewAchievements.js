@@ -56,7 +56,7 @@ class NewAchievementsModal extends Component {
     }
 
     return 'Felicitaciones ' + profile.username + '! Acabas de completar ' + this.currentAchiv.name + '. ' +
-      'Activa este item en el inventario y disfruta de tus logros aprendiendo con Moi';
+      'Activa este item en el inventario y disfruta de tus logros aprendiendo con Mi Aula BdP';
   }
 
   textButton = () => {
