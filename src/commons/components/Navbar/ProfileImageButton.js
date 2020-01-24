@@ -16,7 +16,7 @@ class ProfileImageButton extends Component {
         soundName="profile"
         onPress={() => Actions.profile()}
       >
-        <ProfileAvatar width={Size.profileAvatarSize} userImageUri={profile.image || profile.avatar}
+        <ProfileAvatar width={Size.profileAvatarSize} userImageUri={profile.avatar || profile.image}
         />
       </TouchableOpacityWithSound>
     );

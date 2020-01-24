@@ -40,8 +40,13 @@ class QuizTutorScene extends Component {
     const { getExternalQuizAsync, quizId, playerId } = this.props;
 
     if(quizId && playerId) {
-      await getExternalQuizAsync(quizId, playerId);
+      try {
+        await getExternalQuizAsync(quizId, playerId);
+      } catch (error) {
+        console.log(error)
+      }
     }
+
     this.setState({ loading: false });
   }
 
@@ -87,7 +92,12 @@ class QuizTutorScene extends Component {
     }));
 
     this.setState({ loading: true });
-    const res = await evaluateQuizAsync(quiz_id, player_id, allAnswers);
+    let res;
+    try {
+      res = await evaluateQuizAsync(quiz_id, player_id, allAnswers);
+    } catch (error) {
+      console.log(error)
+    }
     this.setState({ loading: false });
 
     const { data } = res;
@@ -109,7 +119,6 @@ class QuizTutorScene extends Component {
 
     return (
       <Background>
-        {loading && <Preloader/>}
         {!loading && quiz && Object.keys(quiz).length && (
           <QuizSceneContainer>
             {currentScene === 'intro' && this.renderIntroScene}

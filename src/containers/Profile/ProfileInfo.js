@@ -116,7 +116,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
       <ContentContainer>
       <ScrollView contentContainerStyle={styles.scrollContainer} ref={(e) => { onProfileInfoReady(e) }} >
         <HeaderProfile>
-          <ProfileAvatar width={50} userImageUri={profile.image || profile.avatar}/>
+          <ProfileAvatar width={50} userImageUri={profile.avatar || profile.image}/>
           <NameContainer>
             <Title color={Palette.colors.white} style={{ flex: 1}} numberOfLines={1} lighter>{userName}</Title>
           </NameContainer>
