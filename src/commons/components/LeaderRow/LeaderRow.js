@@ -7,7 +7,7 @@ import MoIcon from '../MoIcon/MoIcon';
 
 const Container = styled(TouchableOpacity)`
   height: ${Size.heigthLeaderRow};
-  background-color: ${Palette.white.alpha(0.4).css()};
+  backgroundColor: rgba(85,75,67,0.9);
   align-self: stretch;
   margin-horizontal: 10;
   margin-vertical: 5;
@@ -24,6 +24,7 @@ const Container = styled(TouchableOpacity)`
 
 const Position = styled(TextBody)`
   flex: 0.4;
+  color:white;
 `;
 
 const Icon = styled(MoIcon)`

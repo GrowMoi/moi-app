@@ -126,7 +126,7 @@ class NotificationTabContainer extends PureComponent {
               data={[...data.notifications, ...this.events]}
               keyExtractor={this._keyExtractor}
               onEndReached={this.handleLoadMore}
-              onEndReachedThreshold={0}
+              onEndReachedThreshold={1}
               renderItem={this._renderItem}
               ListEmptyComponent={
                 <TextBody style={styles.emptyText} center>{`No tienes ${(title || '').toLowerCase()}.`}</TextBody>
