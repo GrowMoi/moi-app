@@ -83,6 +83,11 @@ const setNotifications = (notifications) => ({
   payload: notifications,
 })
 
+const setNotificationDetails = (details) => ({
+  type: actionTypes.SET_NOTIFICATION_DETAILS,
+  payload: details,
+})
+
 const setNotes = (notes) => ({
   type: actionTypes.SET_USER_NOTES,
   payload: notes,
@@ -472,6 +477,23 @@ const getNotificationsAsync = (page = 1) => async (dispatch) => {
   }
 }
 
+const getNotificationDetailsAsync = () => async (dispatch) => {
+  try {
+    const res = await api.notifications.getNotificationDetails();
+    await dispatch(setHeaders(res.headers));
+    const data = res.data || {};
+    const {
+      contents_to_learn: contentsToLearn = 0,
+      notifications = 0
+    } = data;
+    const total = contentsToLearn + notifications;
+    dispatch(setNotificationDetails({ ...res.data, contentsToLearn, total}));
+    return res.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 const loadMoreNotificationsAsync = () => async (dispatch, getState) => {
 
   const notificationsState = getState().user.notifications;
@@ -744,6 +766,7 @@ export default {
   showPassiveMessageAsync,
   updateSettingsAsync,
   getNotificationsAsync,
+  getNotificationDetailsAsync,
   getStoreNotesAsync,
   getMoreStoreNotesAsync,
   loadMoreNotificationsAsync,

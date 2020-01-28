@@ -25,6 +25,11 @@ export const initialState = {
     meta: {},
     page: 1,
   },
+  notificationDetails: {
+    contentsToLearn: 0,
+    notifications: 0,
+    total: 0,
+  },
   notes: {
     content_notes: {},
     meta: {},
@@ -220,6 +225,21 @@ const notifications = (state = initialState.notifications, action) => {
   }
 }
 
+const notificationDetails = (state = initialState.notificationDetails, action) => {
+  switch (action.type) {
+    case actionTypes.SET_NOTIFICATION_DETAILS:
+      const { contentsToLearn, notifications, total } = action.payload;
+      return {
+        contentsToLearn,
+        notifications,
+        total,
+      };
+
+    default:
+      return state;
+  }
+}
+
 const notes = (state = initialState.notes, action) => {
   switch (action.type) {
     case actionTypes.SET_USER_NOTES:
@@ -301,6 +321,7 @@ const user = combineReducers({
   passiveMessageSettings,
   showPassiveMessage,
   notifications,
+  notificationDetails,
   notes,
   finalTestResult,
   reloadRandomContents,

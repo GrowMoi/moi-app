@@ -117,7 +117,15 @@ const BlueButton = styled(Image)`
 class BottomBarWithButtons extends Component {
 
   async componentWillMount() {
-    const { getNotificationsAsync, getTutorDetailsAsync, getContentsToLearnAsync, getEventsWeekAsync } = this.props;
+    const {
+      getNotificationsAsync,
+      getTutorDetailsAsync,
+      getContentsToLearnAsync,
+      getEventsWeekAsync,
+      getNotificationDetailsAsync
+    } = this.props;
+
+    await getNotificationDetailsAsync();
     await getNotificationsAsync();
     await getTutorDetailsAsync();
     await getContentsToLearnAsync();
@@ -174,9 +182,8 @@ class BottomBarWithButtons extends Component {
   };
 
   getNotificationsCount(props) {
-    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, contentsToLearn: { meta: { total_items = 0 } }, eventsWeek } = props;
-
-    return total_count + recommendation_contents_pending + total_items + eventsUtils.filterValidEvents(eventsWeek).length;
+    const { notificationDetails } = props;
+    return notificationDetails.total;
   }
 
   renderBadge = () => {
@@ -271,6 +278,7 @@ class BottomBarWithButtons extends Component {
 
 const mapStateToProps = (state) => ({
   notifications: state.user.notifications,
+  notificationDetails: state.user.notificationDetails,
   details: state.tutor.details,
   scene: state.routes.scene,
   contentsToLearn: state.user.contentsToLearn,
@@ -279,6 +287,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getNotificationsAsync: userActions.getNotificationsAsync,
+  getNotificationDetailsAsync: userActions.getNotificationDetailsAsync,
   setReloadRandomContents: userActions.setReloadRandomContents,
   getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
   getContentsToLearnAsync: userActions.getContentsToLearnAsync,

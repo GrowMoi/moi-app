@@ -244,9 +244,14 @@ const api = {
       const res = await client.get(endpoint, { params: { page } });
       return res;
     },
+    async getNotificationDetails() {
+      const endpoint = '/api/notifications/details';
+      const res = await client.get(endpoint);
+      return res;
+    },
     async readNotificationById(id) {
       const endpoint = `/api/notifications/${id}/read_notifications`;
-      const res = await client.post(endpoint, { id });
+      const res = await client.get(endpoint);
       return res;
     }
   },

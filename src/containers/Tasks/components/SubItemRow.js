@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 1,
+    zIndex: 1,
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
@@ -73,12 +74,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 2,
     right: 3,
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   closeImage: {
     width: 20,
+    height: 20,
   },
   titleContainer: {
     flex: 1,
