@@ -61,8 +61,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   renderBadge() {
-    const { data: { meta: { total_count = 0 } } } = this.props;
-    const totalNotifications = total_count + this.events.length;
+    const { notificationDetails: { notifications: totalNotifications } } = this.props;
     if (totalNotifications === 0) return null;
 
     return (
@@ -168,6 +167,7 @@ const styles = StyleSheet.create(
 const mapStateToProps = (state) => ({
   data: state.user.notifications,
   events: state.user.eventsWeek,
+  notificationDetails: state.user.notificationDetails,
 })
 
 const mapDispatchToProps = {

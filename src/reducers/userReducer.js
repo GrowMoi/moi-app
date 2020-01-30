@@ -227,14 +227,24 @@ const notifications = (state = initialState.notifications, action) => {
 
 const notificationDetails = (state = initialState.notificationDetails, action) => {
   switch (action.type) {
-    case actionTypes.SET_NOTIFICATION_DETAILS:
+    case actionTypes.SET_NOTIFICATION_DETAILS: {
       const { contentsToLearn, notifications, total } = action.payload;
       return {
         contentsToLearn,
         notifications,
         total,
       };
-
+    }
+    case actionTypes.DECREASE_NOTIFICATION_DETAILS_COUNTER: {
+      const { notifications, total } = state;
+      const notificationsCounterUpdated = notifications > 0 ? notifications - 1 : 0;
+      const totalCounterUpdated = total > 0 ? total - 1 : 0;
+      return {
+        ...state,
+        notifications: notificationsCounterUpdated,
+        total: totalCounterUpdated,
+      };
+    }
     default:
       return state;
   }

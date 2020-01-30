@@ -520,6 +520,7 @@ const readNotificationAsync = (id) => async (dispatch) => {
 
 const deleteNotification = (id) => (dispatch) => {
   dispatch({ type: actionTypes.DELETE_NOTIFICATIONS, payload: id });
+  dispatch({ type: actionTypes.DECREASE_NOTIFICATION_DETAILS_COUNTER });
 }
 
 const loadExternalQuizAsync = (quizId, playerId) => async (dispatch) => {

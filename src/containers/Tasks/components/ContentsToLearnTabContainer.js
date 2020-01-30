@@ -37,12 +37,13 @@ class ContentsToLearnTabContainer extends PureComponent {
   }
 
   renderBadge() {
-    const { contentsToLearn: { meta: { total_items } } } = this.props;
-    if (total_items === 0) return null;
+
+    const { notificationDetails: { contentsToLearn: totalContentsToLearn } } = this.props;
+    if (totalContentsToLearn === 0) return null;
 
     return (
       <View style={{ position: 'absolute', zIndex: 8, top: -8, right: Size.paddingRightBadge }}>
-        <Badge value={total_items}
+        <Badge value={totalContentsToLearn}
           size={Size.badgeTaskSize} />
       </View>
     );
@@ -116,6 +117,7 @@ const styles = StyleSheet.create(
 
 const mapStateToProps = (state) => ({
   contentsToLearn: state.user.contentsToLearn,
+  notificationDetails: state.user.notificationDetails,
 })
 
 const mapDispatchToProps = {
