@@ -111,8 +111,8 @@ class App extends Component {
   }
 
   preLoadingAssets = async () => {
-    const videos = Object.keys(allVideos).map(key => allVideos[key])
-    const cacheImgs = await cacheImages([...allImages, ...videos]);
+    // const videos = Object.keys(allVideos).map(key => allVideos[key])
+    const cacheImgs = await cacheImages([...allImages]);
     await Font.loadAsync(allFonts);
 
     await Promise.all(cacheImgs);

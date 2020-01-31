@@ -184,16 +184,6 @@ class QuizScene extends PureComponent {
           )}
           <Navbar />
           <BottomBar />
-          {/* {modalVisible && <Video
-            videoDimensions={videoDimensions}
-            source={creditos}
-            dismiss={() => this.showVideo(false)}
-            visible={modalVisible}
-            width={width}
-            onPlaybackStatusUpdate={this.onPlaybackStatusUpdate}
-            showCloseIcon={false}
-            skipButton
-          />} */}
           {showLevelPassedAnimation && <LevelPassedTransition/>}
           <PassiveMessageAlert
             isOpenPassiveMessage={showPassiveMessage && scene.name === 'quiz' &&  !loading}
