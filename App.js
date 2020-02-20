@@ -4,7 +4,7 @@ import { AppLoading, Updates, SplashScreen } from 'expo';
 import * as Localization from 'expo-localization';
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import * as Font from 'expo-font';
-import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert, View, Image } from 'react-native';
+import { Dimensions, AsyncStorage, View } from 'react-native';
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
@@ -19,6 +19,7 @@ import allImages from './assets/images';
 import fonts from './assets/fonts';
 import { setDeviceDimensions, setNetInfo } from './src/actions/deviceActions';
 import userActions from './src/actions/userActions';
+import quizActions from './src/actions/quizActions';
 import Loader from './src/commons/components/Loader/Loader';
 import CustomSplash from './src/commons/components/CustomSplash/CustomSplash'
 import AppContainer from './src/containers/App/AppContainer'
@@ -53,10 +54,27 @@ class App extends Component {
     this.checkUpdates();
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // Orientation.lockToPortrait();
+     await this._retrieveQuizId();
     SplashScreen.preventAutoHide();
   }
+
+  _retrieveQuizId = async () => {
+    try {
+      const quizId = await AsyncStorage.getItem('QUIZ_ID');
+
+      if (!!quizId) {
+        const currentLearnResponse = await store.dispatch(quizActions.cancelCurrentLearn(quizId));
+        if(currentLearnResponse.status === 200) {
+          AsyncStorage.removeItem('QUIZ_ID');
+        }
+      }
+    } catch (error) {
+      // Error retrieving data
+      console.log('Retrieve quiz id Error', error);
+    }
+  };
 
   // handleStatusConnection = (isConnected) => {
   //   const netInfo = {isConnected};

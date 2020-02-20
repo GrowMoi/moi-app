@@ -23,11 +23,17 @@ import { Actions, Scene, ActionConst, Modal } from 'react-native-router-flux';
 import backButtonWithSound from './commons/components/Buttons/backButtonWithSound';
 import UserInactivity from 'react-native-user-inactivity';
 import Certificate from './containers/Certificate/Certificate';
+import CancelQuizButton from './commons/components/Buttons/CancelQuizButton'
+import Test from './commons/components/Test'
 
 // import Test from './commons/components/Test';
 
 const backButton = () => backButtonWithSound(Actions.pop);
-const backButtonQuiz = () => backButtonWithSound(Actions.tree, { type: 'reset' });
+const backButtonQuiz = () => {
+  return (
+    backButtonWithSound(Actions.tree, { type: 'reset' })
+  )
+};
 const backButtonTutorQuiz = () =>  backButtonWithSound(Actions.pop);
 const SearchIcon = ({ selected, title }) => <TabIcon name='search' selected={selected} title={title} size={35} />; //eslint-disable-line
 
@@ -38,6 +44,9 @@ const routes = () => {
           {/* <Scene
             key='test'
             component={Test}
+            {...navbarPropStyles}
+            renderLeftButton={null}
+            renderRightButton={null}
           /> */}
           <Scene
             key={'login'}
@@ -142,7 +151,8 @@ const routes = () => {
             component={QuizScene}
             title='Test'
             {...navbarPropStyles}
-            renderBackButton={backButtonQuiz}
+            renderBackButton={null}
+            renderLeftButton={null}
             renderRightButton={null}
           />
           <Scene

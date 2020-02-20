@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, AppState, AsyncStorage } from 'react-native';
 import styled from 'styled-components/native';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBar } from '../../commons/components/SceneComponents';
@@ -15,7 +15,10 @@ import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAl
 import { Sound } from '../../commons/components/SoundPlayer';
 import LevelPassedTransition from './LevelPassedTransition';
 import neuronActions from '../../actions/neuronActions';
+import CancelQuizButton from '../../commons/components/Buttons/CancelQuizButton'
+import * as routeTypes from '../../routeTypes'
 import _ from 'lodash'
+import quizActions from '../../actions/quizActions';
 
 const Background = styled(MoiBackground)`
   flex: 1;
@@ -35,8 +38,10 @@ const Overlay = styled(View)`
   align-items: center;
   width: 100%;
   justify-content: center;
+  position: relative;
   background-color: rgba(0,0,0,0.6);
 `;
+
 
 class QuizScene extends PureComponent {
   state = {
@@ -47,17 +52,64 @@ class QuizScene extends PureComponent {
     resultFinalTest: null,
     showLevelPassedAnimation: false,
     questionsLength: null,
+    appState: AppState.currentState,
+    isCancelingQuiz: false,
   }
 
   soundQuizFinishedPlayed;
 
+  _storeQuizId = async () => {
+    try {
+      await AsyncStorage.setItem('QUIZ_ID', (this.props.quiz || {}).id);
+    } catch (error) {
+      // Error saving data
+    }
+  };
+
   componentDidMount() {
     const { quiz } = this.props;
-    console.log('Quiz', quiz)
+    AppState.addEventListener('change', this._handleAppStateChange)
+    this._storeQuizId()
+
     this.soundQuizFinishedPlayed = false;
     if(quiz.questions.length === 21) {
       this.jumpToScene('quiz');
     }
+  }
+
+  async componentWillUnmount() {
+    AppState.removeEventListener('change', this._handleAppStateChange)
+
+    try {
+      await AsyncStorage.removeItem('QUIZ_ID');
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  _handleAppStateChange = async (nextAppState) => {
+    const { cancelCurrentLearn, quiz } = this.props;
+
+    if (this.state.appState.match(/background/) && nextAppState.match(/active/)) {
+      try {
+        this.setState({ isCancelingQuiz: true });
+        const res = await cancelCurrentLearn(quiz.id);
+        if(res.status === 200) {
+          this.setState(
+            prevState => ({ isCancelingQuiz: false }),
+            Actions[routeTypes.TREE]({ type: 'reset' })
+          );
+        }
+      } catch (error) {
+        this.setState(
+          prevState => ({ isCancelingQuiz: false }),
+          Actions[routeTypes.TREE]({ type: 'reset' })
+        );
+        console.log('Error', error)
+      }
+    }
+
+    this.setState({appState: nextAppState});
   }
 
   // showVideo = (show = true) => {
@@ -70,11 +122,11 @@ class QuizScene extends PureComponent {
   }
 
   onPlaybackStatusUpdate = async (playbackStatus) => {
-      if(playbackStatus.didJustFinish) {
-        // this.showVideo(false);
-        this.saveResultFinalTest();
-        Actions.inventory({ type: 'reset' });
-      }
+    if(playbackStatus.didJustFinish) {
+      // this.showVideo(false);
+      this.saveResultFinalTest();
+      Actions.inventory({ type: 'reset' });
+    }
   }
 
   quizFinished = async (answers) => {
@@ -182,6 +234,15 @@ class QuizScene extends PureComponent {
               {loading && <Preloader notFullScreen/>}
             </QuizSceneContainer>
           )}
+          <CancelQuizButton
+            onChange={({ isCanceling, status }) => {
+              if(status === 'OK') {
+                Actions[routeTypes.TREE]({ type: 'reset' })
+              }
+            }}
+            testId={quiz.id}
+            style={{ position: 'absolute', top: 90, right: 12, zIndex: 999 }}
+          />
           <Navbar />
           <BottomBar />
           {showLevelPassedAnimation && <LevelPassedTransition/>}
@@ -195,6 +256,7 @@ class QuizScene extends PureComponent {
             message='Elige una alternativa y presiona la flecha para continuar'
           />
         </Overlay>
+        {this.state.isCancelingQuiz && <Preloader />}
       </Background>
     );
   }
@@ -217,6 +279,7 @@ const mapDispatchToProps = {
   saveResultFinalTest: userActions.saveResultFinalTest,
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
   stopCurrentBackgroundAudio: neuronActions.stopCurrentBackgroundAudio,
+  cancelCurrentLearn: quizActions.cancelCurrentLearn,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizScene)

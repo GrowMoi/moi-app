@@ -21,11 +21,8 @@ import neuronActions from '../../../actions/neuronActions';
 import { AnimatedNubes } from './AnimatedNubes';
 import { Sound } from '../SoundPlayer';
 import NewAchievementsModal from '../Quiz/NewAchievements';
-import EventCompletedModal from '../Quiz/EventCompleted';
 import deviceUtils from '../../utils/device-utils';
 import { PORTRAIT, ACHIEVEMENT_FINAL_QUIZ_NUMBER } from '../../../constants';
-import { generateAlertData } from '../Alert/alertUtils';
-import ModalAlert from '../Alert/ModalAlert';
 
 const isTablet = deviceUtils.isTablet();
 
@@ -80,7 +77,6 @@ class Tree extends Component {
 
     const { quizResult, setTreeLoaderStatus, userTree = {}, user = {} } = this.props
     const {showModalNewAchievements, loading, hasUserTree } = this.state
-
     // Validate and show final quiz modal
     const finalTestId = ((userTree.meta || {}).final_test || {}).id
     if(!!finalTestId) {

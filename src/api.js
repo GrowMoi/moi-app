@@ -331,6 +331,12 @@ const api = {
       );
       return res;
     },
+
+    async cancelCurrentLearn(testId) {
+      const endpoint = '/api/learn/cancel';
+      const res = await client.post(endpoint, { test_id: testId });
+      return res;
+    }
   },
 
   events: {
