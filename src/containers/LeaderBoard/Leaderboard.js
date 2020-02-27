@@ -4,35 +4,56 @@ import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import LeaderBoardContent from './LeaderboardContent';
+import styled from 'styled-components/native'
+import { ContentBox } from '../../commons/components/ContentComponents';
+import VerticalTabs from '../../commons/components/Tabs/VerticalTabs'
 
 // Actions
 import leaderboardActions from '../../actions/leaderboardActions';
 
 
-class LeaderBoard extends PureComponent {
-  state = {
-    isLoadingLeaders: true,
-  }
+const StyledContentBox = styled(ContentBox)`
+  align-items: center;
+  justify-content: center;
+`
 
-  async componentDidMount() {
-    const { getLeaderboardAsync, profile } = this.props;
-    const leaderboardParams = {
-      user_id: profile.id
-    };
-    await getLeaderboardAsync(leaderboardParams, 1);
-    this.setState({isLoadingLeaders: false});
+class LeaderBoard extends PureComponent {
+
+  _renderTabs() {
+    const { profile } = this.props;
+
+    const ContentSortByCity = <LeaderBoardContent key="sortedBy-city" sortBy='city' leaderboardParams={{ user_id: profile.id }} />
+    const ContentSortByAge = <LeaderBoardContent key="sortedBy-age" sortBy='age' leaderboardParams={{ user_id: profile.id }} />
+    const ContentSortBySchool = <LeaderBoardContent key="sortedBy-school" sortBy='school' leaderboardParams={{ user_id: profile.id }} />
+
+    const tabsData = [
+      { label: 'Ciudad', content: ContentSortByCity },
+      { label: 'Edad', content: ContentSortByAge },
+      { label: 'Escuela', content: ContentSortBySchool },
+    ]
+
+    return (
+      <VerticalTabs data={tabsData} horizontalTabs />
+    )
   }
 
   render() {
-    const { isLoadingLeaders } = this.state;
-    const { profile } = this.props;
-    const leaderboardParams = {
-      user_id: profile.id
-    };
     return (
       <MoiBackground>
         <Navbar />
-        <LeaderBoardContent loading={isLoadingLeaders} leaderboardParams={leaderboardParams}/>
+        <StyledContentBox image={'leaderboard_frame'}>
+          {/* <LeaderBoardContent loading={isLoadingLeaders} leaderboardParams={leaderboardParams}/> */}
+          {this._renderTabs()}
+        </StyledContentBox>
+        {/* <ContentFooter>
+          <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
+          <LeaderRow
+            position={userLeader.position}
+            playerName={normalize.normalizeAllCapLetter(userLeader.username)}
+            grade={userLeader.contents_learnt}
+            seconds={`${new Date(userLeader.time_elapsed).getSeconds()}s`}
+          />
+        </ContentFooter> */}
         <BottomBar />
       </MoiBackground>
     );

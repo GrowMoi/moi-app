@@ -21,7 +21,7 @@ const isTablet = deviceUtils.isTablet();
 
 const ContentContainer = styled(View)`
   width: ${isTablet ? '85%' : '96%'};
-  height:${isTablet ? '90%' : '98%'};
+  height:${isTablet ? '90%' : '100%'};
   padding-right: 8;
   padding-top: 10;
 `;
@@ -32,17 +32,27 @@ const StyledContentBox = styled(ContentBox)`
 `;
 
 const ContentFooter = styled(View)`
-  height: 67;
+  height: 70;
   justify-content: center;
   align-items: center;
 `;
 
 class LeaderBoardContent extends PureComponent {
   state = {
-    isLoadingProfile: false
+    isLoadingProfile: false,
+    loading: true,
   }
 
   isSuperEventLeaderBoard;
+
+  async componentDidMount() {
+    const { getLeaderboardAsync, profile } = this.props;
+    const leaderboardParams = {
+      user_id: profile.id
+    };
+    await getLeaderboardAsync(leaderboardParams, 1);
+    this.setState({loading: false});
+  }
 
   fetchNextPage = async () => {
     const { loadMoreLeadersAsync, leaderboardParams } = this.props;
@@ -120,10 +130,9 @@ class LeaderBoardContent extends PureComponent {
         leaders: allLeaders,
         meta: { user_data: userLeader }
       },
-      loading,
       closeModal,
     } = this.props;
-    const { isLoadingProfile } = this.state;
+    const { isLoadingProfile, loading } = this.state;
 
     const styles = StyleSheet.create({
       contentContainer: {
@@ -134,33 +143,23 @@ class LeaderBoardContent extends PureComponent {
 
     this.isSuperEventLeaderBoard = !!closeModal;
 
-    if (loading || isLoadingProfile) return <Preloader notFullScreen/>;
+    if(loading) return <Preloader notFullScreen/>;
 
     return (
-      <StyledContentBox image={'leaderboard_frame'}>
-        <ContentContainer>
-          {(allLeaders || []).length > 0 && (
-            <FlatList
-              style={{ height: '80%' }}
-              contentContainerStyle={styles.contentContainer}
-              onEndReached={this.fetchNextPage}
-              onEndReachedThreshold={1}
-              data={allLeaders}
-              renderItem={this._renderItem}
-              keyExtractor={this._keyExtractor}
-            />
-          )}
-          <ContentFooter>
-            <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
-            <LeaderRow
-              position={userLeader.position}
-              playerName={normalize.normalizeAllCapLetter(userLeader.username)}
-              grade={userLeader.contents_learnt}
-              seconds={`${new Date(userLeader.time_elapsed).getSeconds()}s`}
-            />
-          </ContentFooter>
-        </ContentContainer>
-      </StyledContentBox>
+      <ContentContainer>
+        {(allLeaders || []).length > 0 && (
+          <FlatList
+            style={{ height: '80%', top: -20 }}
+            contentContainerStyle={styles.contentContainer}
+            onEndReached={this.fetchNextPage}
+            onEndReachedThreshold={1}
+            data={allLeaders}
+            renderItem={this._renderItem}
+            keyExtractor={this._keyExtractor}
+          />
+        )}
+        {isLoadingProfile && <Preloader />}
+      </ContentContainer>
     );
   }
 }

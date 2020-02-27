@@ -9,7 +9,6 @@ import deviceUtils from '../../utils/device-utils';
 const isTablet = deviceUtils.isTablet();
 
 const TabsContainer = styled(View)`
-  
   height: 103%;
   width: 160%;
 `;
@@ -34,7 +33,7 @@ const LabelText = styled(TouchableOpacity)`
   border-color: ${({ selected }) => (selected ? '#3CBCCB': '#0D5FA1')};
   border-top-left-radius: 8;
   border-top-right-radius: 8;
- left: 100
+  left: 100
 `;
 
 const StyledContentBox = styled(ContentBox)`

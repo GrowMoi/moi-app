@@ -7,9 +7,9 @@ export const setLeaders = (leaderboardData) => ({
   payload: leaderboardData,
 });
 
-const getLeadersAsync = (params, page = 1) => async (dispatch) => {
+const getLeadersAsync = (params, page = 1, sortBy) => async (dispatch) => {
   try {
-    const res = await api.leaderboard.getLeaderboard(params, page);
+    const res = await api.leaderboard.getLeaderboard(params, page, sortBy);
 
     await dispatch(setHeaders(res.headers));
     dispatch(setLeaders({ ...res.data, page }));
@@ -18,7 +18,7 @@ const getLeadersAsync = (params, page = 1) => async (dispatch) => {
   }
 };
 
-const loadMoreLeadersAsync = (params) => async (dispatch, getState) => {
+const loadMoreLeadersAsync = (params) => async (dispatch, getState, sortBy) => {
 
   const leadersState = getState().leaderboard.leaders;
   const currentPage = (leadersState || {}).page;
@@ -26,7 +26,7 @@ const loadMoreLeadersAsync = (params) => async (dispatch, getState) => {
   const totalPages = (leadersState.meta || {}).total_pages || 1;
 
   if(nextPage <= totalPages) {
-    await dispatch(getLeadersAsync(params, nextPage));
+    await dispatch(getLeadersAsync(params, nextPage, sortBy));
   }
 }
 
