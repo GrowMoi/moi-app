@@ -45,15 +45,6 @@ class LeaderBoard extends PureComponent {
           {/* <LeaderBoardContent loading={isLoadingLeaders} leaderboardParams={leaderboardParams}/> */}
           {this._renderTabs()}
         </StyledContentBox>
-        {/* <ContentFooter>
-          <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
-          <LeaderRow
-            position={userLeader.position}
-            playerName={normalize.normalizeAllCapLetter(userLeader.username)}
-            grade={userLeader.contents_learnt}
-            seconds={`${new Date(userLeader.time_elapsed).getSeconds()}s`}
-          />
-        </ContentFooter> */}
         <BottomBar />
       </MoiBackground>
     );

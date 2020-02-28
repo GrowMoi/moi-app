@@ -24,15 +24,10 @@ const ContentContainer = styled(View)`
   height:${isTablet ? '90%' : '100%'};
   padding-right: 8;
   padding-top: 10;
-`;
-
-const StyledContentBox = styled(ContentBox)`
-  align-items: center;
-  justify-content: center;
+  position: relative;
 `;
 
 const ContentFooter = styled(View)`
-  height: 70;
   justify-content: center;
   align-items: center;
 `;
@@ -159,6 +154,15 @@ class LeaderBoardContent extends PureComponent {
           />
         )}
         {isLoadingProfile && <Preloader />}
+        <ContentFooter>
+          <FontAwesome name='ellipsis-h' size={15} color={Palette.white.css()}/>
+          <LeaderRow
+            position={userLeader.position}
+            playerName={normalize.normalizeAllCapLetter(userLeader.username)}
+            grade={userLeader.contents_learnt}
+            seconds={`${new Date(userLeader.time_elapsed).getSeconds()}s`}
+          />
+        </ContentFooter>
       </ContentContainer>
     );
   }
