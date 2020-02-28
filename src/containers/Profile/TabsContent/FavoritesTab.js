@@ -112,7 +112,7 @@ class FavoritesTab extends PureComponent {
               data={data.content_tasks.content_tasks}
               onEndReached={this.getMoreFavorites}
               renderItem={this._renderItem}
-              onEndReachedThreshold={0.4}
+              onEndReachedThreshold={1}
               keyExtractor={this._keyExtractor}
               numColumns={2}
             />

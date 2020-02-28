@@ -11,6 +11,7 @@ import Preloader from '../../../commons/components/Preloader/Preloader';
 import { TextBody } from '../../../commons/components/Typography';
 import { ContentImagePreview } from '../../../commons/components/ContentComponents';
 import userActions from '../../../actions/userActions';
+import SubItem from '../../Tasks/components/SubItem'
 
 const Container = styled(View)`
   flex: 1;
@@ -56,12 +57,14 @@ class ContentTab extends PureComponent {
     const widthImagePreview = dimensions.width > 320 ? 150 : 130;
 
     return (
-      <ContentImagePreview
-        touchProps={{
+      <SubItem
+        clickItem={{
           onPress: () => (onClickItem ? onClickItem(item) : null),
         }}
-        data={item}
-        width={widthImagePreview}
+        title={item.title}
+        source={item.media[0]}
+        fontSize={13}
+        style={{ width: '47%', height: 110, marginLeft: 6 }}
       />
     );
   }
@@ -84,7 +87,7 @@ class ContentTab extends PureComponent {
               data={dataSource}
               onEndReached={onEndReached}
               renderItem={this._renderItem}
-              onEndReachedThreshold={0}
+              onEndReachedThreshold={1}
               keyExtractor={this._keyExtractor}
               numColumns={2}
             />

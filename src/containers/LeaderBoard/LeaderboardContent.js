@@ -25,6 +25,7 @@ const ContentContainer = styled(View)`
   padding-right: 8;
   padding-top: 10;
   position: relative;
+  justify-content: center;
 `;
 
 const ContentFooter = styled(View)`
@@ -141,7 +142,7 @@ class LeaderBoardContent extends PureComponent {
       <ContentContainer>
         {(allLeaders || []).length > 0 && (
           <FlatList
-            style={{ height: '80%', top: -20 }}
+            style={{ height: '90%', top: -20 }}
             contentContainerStyle={styles.contentContainer}
             onEndReached={this.fetchNextPage}
             onEndReachedThreshold={1}

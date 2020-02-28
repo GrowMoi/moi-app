@@ -63,7 +63,7 @@ class ProfileScene extends Component {
           isOpenPassiveMessage={showPassiveMessage && scene.name === 'profile'}
           touchableProps={{
             onPress: () => {
-                showPassiveMessageAsync(false);
+              showPassiveMessageAsync(false);
             }
           }}
           message='Este es tu perfil personal. Edita tu información, revisa tus logros y la tabla de posiciones y busca a tus amigos
