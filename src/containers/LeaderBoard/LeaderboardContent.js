@@ -41,10 +41,7 @@ class LeaderBoardContent extends PureComponent {
   isSuperEventLeaderBoard;
 
   async componentDidMount() {
-    const { getLeaderboardAsync, profile } = this.props;
-    const leaderboardParams = {
-      user_id: profile.id
-    };
+    const { getLeaderboardAsync, leaderboardParams } = this.props;
     await getLeaderboardAsync(leaderboardParams, 1);
     this.setState({loading: false});
   }

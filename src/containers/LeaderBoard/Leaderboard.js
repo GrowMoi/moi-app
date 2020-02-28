@@ -22,9 +22,9 @@ class LeaderBoard extends PureComponent {
   _renderTabs() {
     const { profile } = this.props;
 
-    const ContentSortByCity = <LeaderBoardContent key="sortedBy-city" sortBy='city' leaderboardParams={{ user_id: profile.id }} />
-    const ContentSortByAge = <LeaderBoardContent key="sortedBy-age" sortBy='age' leaderboardParams={{ user_id: profile.id }} />
-    const ContentSortBySchool = <LeaderBoardContent key="sortedBy-school" sortBy='school' leaderboardParams={{ user_id: profile.id }} />
+    const ContentSortByCity = <LeaderBoardContent key="sortedBy-city" leaderboardParams={{ user_id: profile.id, sort_by: 'city' }} />
+    const ContentSortByAge = <LeaderBoardContent key="sortedBy-age" leaderboardParams={{ user_id: profile.id, sort_by: 'age' }} />
+    const ContentSortBySchool = <LeaderBoardContent key="sortedBy-school" leaderboardParams={{ user_id: profile.id, sort_by: 'school' }} />
 
     const tabsData = [
       { label: 'Ciudad', content: ContentSortByCity },
@@ -42,7 +42,6 @@ class LeaderBoard extends PureComponent {
       <MoiBackground>
         <Navbar />
         <StyledContentBox image={'leaderboard_frame'}>
-          {/* <LeaderBoardContent loading={isLoadingLeaders} leaderboardParams={leaderboardParams}/> */}
           {this._renderTabs()}
         </StyledContentBox>
         <BottomBar />

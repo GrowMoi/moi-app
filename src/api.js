@@ -130,6 +130,8 @@ const api = {
       const defaultParams = { page };
       const endpoint = '/api/leaderboard';
       const res = await client.get(endpoint, { params: {...defaultParams, ...newParams }});
+
+      console.log(res)
       return res;
     },
     async getLeaderboardSuperEvent(user_id, event_id) {
