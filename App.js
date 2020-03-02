@@ -54,9 +54,9 @@ class App extends Component {
     this.checkUpdates();
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     // Orientation.lockToPortrait();
-     await this._retrieveQuizId();
+    this._retrieveQuizId();
     SplashScreen.preventAutoHide();
   }
 

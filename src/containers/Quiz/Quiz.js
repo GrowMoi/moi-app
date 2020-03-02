@@ -241,7 +241,7 @@ class QuizScene extends PureComponent {
               }
             }}
             testId={quiz.id}
-            style={{ position: 'absolute', top: 90, right: 12, zIndex: 999 }}
+            style={{ position: 'absolute', bottom: 50, left: 10, zIndex: 999 }}
           />
           <Navbar />
           <BottomBar />
