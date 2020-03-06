@@ -18,6 +18,7 @@ const TabLabel = styled(View)`
     flex-direction: row;
     padding-left: ${isTablet ? 80 : 22};
     margin-bottom: -1;
+    left: 30;
   ` : css`
     position: absolute;
     top: -10;
