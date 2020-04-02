@@ -9,6 +9,7 @@ import leaderboard from './leaderboardReducer';
 import search from './searchReducer';
 import tutor from './tutorReducer';
 import sideMenu from './sideReducer';
+import usersChat from './chatReducer';
 // ... other reducers
 import * as actionTypes from '../actions/actionTypes';
 import { object } from '../commons/utils';
@@ -24,6 +25,7 @@ const appReducer = combineReducers({
   search,
   tutor,
   sideMenu,
+  usersChat,
   // ... other reducers
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 import {
@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
   Image,
+  Modal,
 } from 'react-native';
 
 // Components
@@ -21,6 +22,8 @@ import ProfileAvatar from '../../commons/components/Profile/Profile';
 import TreeScreenShot from '../../commons/components/TreeScreenShot/TreeScreenShot';
 import { getHeightAspectRatio } from '../../commons/utils';
 import deviceUtils from '../../commons/utils/device-utils';
+import { connect } from 'react-redux';
+import * as usersChatActions from '../../actions/chatActions'
 
 const isTablet = deviceUtils.isTablet();
 const { width } = Dimensions.get('window');
@@ -100,7 +103,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady = () => {} }) => {
+const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady = () => {}, showChatModal }) => {
   if(data === undefined) return null;
 
   const { profile, level } = data;
@@ -114,41 +117,45 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
   return (
     <Container>
       <ContentContainer>
-      <ScrollView contentContainerStyle={styles.scrollContainer} ref={(e) => { onProfileInfoReady(e) }} >
-        <HeaderProfile>
-          <ProfileAvatar width={50} userImageUri={profile.avatar || profile.image}/>
-          <NameContainer>
-            <Title color={Palette.colors.white} style={{ flex: 1}} numberOfLines={1} lighter>{userName}</Title>
-          </NameContainer>
-        </HeaderProfile>
+        <ScrollView contentContainerStyle={styles.scrollContainer} ref={(e) => { onProfileInfoReady(e) }} >
+          <HeaderProfile>
+            <ProfileAvatar width={50} userImageUri={profile.avatar || profile.image}/>
+            <NameContainer>
+              <Title color={Palette.colors.white} style={{ flex: 1}} numberOfLines={1} lighter>{userName}</Title>
+            </NameContainer>
+            {isShared && (
+              <Button onPress={() => showChatModal()} title="Mensaje"/>
+            )}
+          </HeaderProfile>
 
-        <Line style={{borderWidth: 1, borderColor: Palette.colors.darkBlue, margin:10}}/>
+          <Line style={{borderWidth: 1, borderColor: Palette.colors.darkBlue, margin:10}}/>
 
-        <PersonalInfo>
-          <DescriptionContainer>
-            <Header style={{marginBottom: 10, color: Palette.colors.darkBlue}} condensed small>Descripción personal</Header>
-            <Header style={ styles.infoStyles } condensed small>Edad: {profile.age || '-'}</Header>
-            <Header style={ styles.infoStyles } condensed small>Curso: {'-'}</Header>
-            <Header style={ styles.infoStyles } condensed small>Nivel: {level || '-'}</Header>
-          </DescriptionContainer>
-          <EditContainer>
-            {!isShared &&
-              <Button onPress={onClickEdit && onClickEdit} title='Editar' rightIcon='md-create' />
-            }
-          </EditContainer>
+          <PersonalInfo>
+            <DescriptionContainer>
+              <Header style={{marginBottom: 10, color: Palette.colors.darkBlue}} condensed small>Descripción personal</Header>
+              <Header style={ styles.infoStyles } condensed small>Edad: {profile.age || '-'}</Header>
+              <Header style={ styles.infoStyles } condensed small>Curso: {'-'}</Header>
+              <Header style={ styles.infoStyles } condensed small>Nivel: {level || '-'}</Header>
+            </DescriptionContainer>
+            <EditContainer>
+              {!isShared &&
+                <Button onPress={onClickEdit && onClickEdit} title='Editar' rightIcon='md-create' />
+              }
+            </EditContainer>
 
-        </PersonalInfo>
+          </PersonalInfo>
 
-        {profile.tree_image_app && (
-          <TreeScreenShot width={width - 100} height={isTablet ? heightBackgroundProfile : heightBackgroundProfile + 40} treeBackground={'background_profile'} profileImage={profile.tree_image_app} style={{marginVertical : 10}}/>
-        )}
+          {profile.tree_image_app && (
+            <TreeScreenShot width={width - 100} height={isTablet ? heightBackgroundProfile : heightBackgroundProfile + 40} treeBackground={'background_profile'} profileImage={profile.tree_image_app} style={{marginVertical : 10}}/>
+          )}
 
-        {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} transparent/>}
+          {Object.keys(tabsData).length > 0 && <Tabs data={tabsData} transparent/>}
 
-        {!isShared &&
-          <Button style={{ marginTop: 20, marginBottom: 20 }} onPress={onClickSignOut && onClickSignOut} title='Cerrar mi sesión' rightIcon='md-log-out' />
-        }
-      </ScrollView>
+          {!isShared &&
+            <Button style={{ marginTop: 20, marginBottom: 20 }} onPress={onClickSignOut && onClickSignOut} title='Cerrar mi sesión' rightIcon='md-log-out' />
+          }
+        </ScrollView>
+
       </ContentContainer>
     </Container>
   );
@@ -164,4 +171,8 @@ ProfileInfo.propTypes = {
   onClickEdit: PropTypes.func,
 };
 
-export default ProfileInfo;
+const mapDispatchToProps = {
+  showChatModal: usersChatActions.showChatModal,
+}
+
+export default connect(null, mapDispatchToProps)(ProfileInfo);

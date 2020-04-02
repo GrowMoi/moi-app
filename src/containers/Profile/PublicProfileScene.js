@@ -19,6 +19,7 @@ import ContentTab from './TabsContent/ContentTab';
 
 // Redux Actions
 import neuronActions from './../../actions/neuronActions';
+import UsersChatModal from '../../commons/components/UsersChatModal/UsersChatModal';
 
 export default class PublicProfileScene extends Component {
   onClickItem = async(item) => {
@@ -61,6 +62,7 @@ export default class PublicProfileScene extends Component {
           data={profileInfo}
           tabsData={tabsData}
         />
+        <UsersChatModal />
         <BottomBar />
       </Moibackground>
     );
