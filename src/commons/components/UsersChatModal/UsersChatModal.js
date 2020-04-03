@@ -82,8 +82,18 @@ const StyledCloseButton = styled(CloseButton)`
   justify-content: center;
 `
 
-const UsersChatModal = ({ hiddenChatModal, chatIsVisible }) => {
+const InputMessage = ({ onPressSend }) => {
   const [message, setMessage] = useState('')
+
+  return (
+    <BottomMessage>
+      <InputBox onChangeText={(txt) => { setMessage(txt) }}/>
+      <Button onPress={() => { if(message) onPressSend(message) }} title="Enviar"/>
+    </BottomMessage>
+  )
+}
+
+const UsersChatModal = ({ hiddenChatModal, chatIsVisible }) => {
   return (
     <Modal
       animationType="fade"
@@ -97,10 +107,7 @@ const UsersChatModal = ({ hiddenChatModal, chatIsVisible }) => {
 
           </MessagesBox>
 
-          <BottomMessage>
-            <InputBox onChangeText={(txt) => { setMessage(txt) }}/>
-            <Button onPress={() => console.log('Message', message)} title="Enviar"/>
-          </BottomMessage>
+          <InputMessage onPressSend={(message) => { console.log('Send Message', message) }} />
 
           <StyledCloseButton onPress={hiddenChatModal} />
         </ChatBox>
