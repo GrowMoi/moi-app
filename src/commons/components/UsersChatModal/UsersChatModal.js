@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import styled from 'styled-components/native';
 // import button_close_img from '../../../../assets/images/miscelaneous/button_close.png'
@@ -83,6 +83,7 @@ const StyledCloseButton = styled(CloseButton)`
 `
 
 const UsersChatModal = ({ hiddenChatModal, chatIsVisible }) => {
+  const [message, setMessage] = useState('')
   return (
     <Modal
       animationType="fade"
@@ -97,8 +98,8 @@ const UsersChatModal = ({ hiddenChatModal, chatIsVisible }) => {
           </MessagesBox>
 
           <BottomMessage>
-            <InputBox />
-            <Button onPress={() => console.log('Button Press')} title="Enviar"/>
+            <InputBox onChangeText={(txt) => { setMessage(txt) }}/>
+            <Button onPress={() => console.log('Message', message)} title="Enviar"/>
           </BottomMessage>
 
           <StyledCloseButton onPress={hiddenChatModal} />
