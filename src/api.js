@@ -10,6 +10,8 @@ export const cloudinaryClient = axios.create({
   baseURL: constants.CLOUDINARY_BASE,
 });
 
+client.defaults.timeout = 3000;
+
 const api = {
   neuron: {
     async getNeuronById(id = 1) {
