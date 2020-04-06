@@ -14,31 +14,22 @@ export default class Spinner extends Component {
   spinValue = new Animated.Value(0);
 
   componentDidMount() {
-    this.animate();
+    this.spin()
   }
 
-  componentWillUnmount() {
-    this.animation.stop();
-  }
-
-  get animation() {
+  spin = () => {
     const { duration = 2000 } = this.props;
 
-    return (
-      Animated.timing(
-        this.spinValue,
-        {
-          toValue: 1,
-          duration: duration,
-          easing: Easing.linear,
-          useNativeDriver: true
-        }
-      )
-    );
-  }
-
-  animate = () => {
-    this.animation.start(() => this.animate());
+    this.spinValue.setValue(0)
+    Animated.timing(
+      this.spinValue,
+      {
+        toValue: 1,
+        duration: duration,
+        easing: Easing.linear,
+        useNativeDriver: true
+      }
+    ).start(() => this.spin())
   }
 
   render() {

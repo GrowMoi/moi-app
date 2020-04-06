@@ -20,7 +20,7 @@ export default class TempSplash extends Component {
       try {
         const result = await startAsync()
         if (onFinish) {
-          onFinish(result);
+          await onFinish(result);
         }
       } catch (error) {
         if (onError) {

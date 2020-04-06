@@ -238,6 +238,7 @@ class Login extends PureComponent {
                     <Animatable.View animation="bounceInLeft" easing="ease-in">
                       <Button
                         // disabled={!netInfo.isConnected}
+                        disabled={validating}
                         style={{ width: Size.buttonWidth, marginRight: Size.spaceMedium }}
                         title={!showingSelectionKey ? 'Registrarse' : 'Atras' }
                         onPress={!showingSelectionKey ? this.goRegister : this.returnToUsername}
