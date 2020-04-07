@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as constants from './constants';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 import rateLimit from 'axios-rate-limit';
 
 export const client = axios.create({
@@ -12,9 +12,21 @@ export const cloudinaryClient = axios.create({
   baseURL: constants.CLOUDINARY_BASE,
 });
 
-const http = rateLimit(client, { maxRequests: 2, perMilliseconds: 1000, maxRPS: 2 })
+client.interceptors.response.use(
+  (config) => {
+    return config
+  },
+  (error) => {
+    console.log('Error', error)
+    setTimeout(() => {
+      Alert.alert('Ha tardado demasiado en encontrar lo que buscabas, revisa tu conexión a internet por favor.');
+    }, 1000)
+    console.log()
+    return Promise.reject(error);
+  }
+)
 
-client.interceptors
+const http = rateLimit(client, { maxRequests: 2, perMilliseconds: 1000, maxRPS: 2 })
 
 const api = {
   neuron: {
@@ -207,7 +219,7 @@ const api = {
       const endpoint = '/api/tree';
 
       try {
-        const res = await http.get(endpoint, { params: { username } }, { timeout: 6000 });
+        const res = await client.get(endpoint, { params: { username }, timeout: 60000 });
         return res;
       } catch (error) {
         throw new Error(error);

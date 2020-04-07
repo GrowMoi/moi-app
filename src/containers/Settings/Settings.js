@@ -80,7 +80,6 @@ class Settings extends Component {
         }
       }]);
     } catch (error) {
-
       Alert.alert('Error', 'Lametamos el problema, no se pudieron guardar las preferencias', [{
         text: 'Aceptar', onPress: () => {
           this.setState({ updating: false });

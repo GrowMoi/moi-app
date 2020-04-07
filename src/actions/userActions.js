@@ -147,7 +147,7 @@ const registerAsync = ({ username, email, age, school, country, city, authorizat
     );
     return user;
   } catch (error) {
-    Alert.alert('Ups!, Lo sentimos ha ocurrido un error al registrarse, intentalo más tarde');
+    // Alert.alert('Ups!, Lo sentimos ha ocurrido un error al registrarse, intentalo más tarde');
     throw new Error(error);
   }
 
@@ -380,7 +380,7 @@ const updateAchievementsAsync = id => async (dispatch) => {
     dispatch(getAchievementsAsync());
   } catch (error) {
     // console.log(error);
-    Alert.alert('Error', 'Ups, tuvimos un error al intentar actualizar este item, intentalo más tarde por favor');
+    // Alert.alert('Error', 'Ups, tuvimos un error al intentar actualizar este item, intentalo más tarde por favor');
   }
 
   return res;

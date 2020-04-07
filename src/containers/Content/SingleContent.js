@@ -298,7 +298,7 @@ class SingleContentScene extends Component {
       false,
       () => {
         setTimeout(() => {
-          this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde')
+          // this.showAlert('Ha ocurrido un error por favor intentelo de nuevo mas tarde')
         }, 200)
       }
     );
