@@ -1,22 +1,26 @@
 import axios from 'axios';
 import * as constants from './constants';
 import { AsyncStorage } from 'react-native';
+import rateLimit from 'axios-rate-limit';
 
 export const client = axios.create({
   baseURL: constants.URL_BASE,
+  timeout: 3000,
 });
 
 export const cloudinaryClient = axios.create({
   baseURL: constants.CLOUDINARY_BASE,
 });
 
-client.defaults.timeout = 3000;
+const http = rateLimit(client, { maxRequests: 2, perMilliseconds: 1000, maxRPS: 2 })
+
+client.interceptors
 
 const api = {
   neuron: {
     async getNeuronById(id = 1) {
       const endpoint = `/api/neurons/${id}`;
-      const res = await client.get(endpoint);
+      const res = await http.get(endpoint);
       return res;
     },
   },
@@ -24,12 +28,12 @@ const api = {
   search: {
     async getContents(page = 1, query) {
       const endpoint = '/api/search';
-      const res = await client.get(endpoint, { params: { page, query } });
+      const res = await http.get(endpoint, { params: { page, query } });
       return res;
     },
     async getUsers(page = 1, query) {
       const endpoint = '/api/users/search';
-      const res = await client.get(endpoint, { params: { page, query } });
+      const res = await http.get(endpoint, { params: { page, query } });
       return res;
     },
   },
@@ -37,17 +41,17 @@ const api = {
   user: {
     async signIn({ login, authorization_key }) {
       const endpoint = '/api/auth/user/key_authorize';
-      const res = await client.post(endpoint, { login, authorization_key });
+      const res = await http.post(endpoint, { login, authorization_key });
       return res;
     },
     async register({ username, email, age, school, country, city, authorization_key }) {
       const endpoint = '/api/auth/user';
-      const res = await client.post(endpoint, { username, email, age, school, country, city, authorization_key });
+      const res = await http.post(endpoint, { username, email, age, school, country, city, authorization_key });
       return res;
     },
     async validation() {
       const endpoint = '/api/auth/user/validate_token';
-      let headers = client.defaults.headers.common;
+      let headers = http.defaults.headers.common;
 
       const AUTH_HEADERS = ['access-token', 'token-type', 'client', 'expiry', 'uid'];
 
@@ -68,7 +72,7 @@ const api = {
       }
 
       try {
-        const res = await client.get(endpoint, headers);
+        const res = await http.get(endpoint, headers);
         return res;
       } catch (error) {
 
@@ -77,52 +81,52 @@ const api = {
     },
     async signOut() {
       const endpoint = '/api/auth/user/sign_out';
-      const res = await client.delete(endpoint);
+      const res = await http.delete(endpoint);
       return res;
     },
     async contentTasks(page = 1) {
       const endpoint = '/api/users/content_tasks';
-      const res = await client.get(endpoint, { page });
+      const res = await http.get(endpoint, { page });
       return res;
     },
     async getFavorites(page) {
       const endpoint = '/api/users/content_favorites';
-      const res = await client.get(endpoint, { params: { page } });
+      const res = await http.get(endpoint, { params: { page } });
       return res;
     },
     async getProfile(id) {
       const endpoint = `/api/users/${id}/profile`;
-      const res = await client.get(endpoint);
+      const res = await http.get(endpoint);
       return res;
     },
     async updateUserAccount(data) {
       const endpoint = '/api/users/account';
-      const res = await client.put(endpoint, { ...data });
+      const res = await http.put(endpoint, { ...data });
       return res;
     },
     async getAchievements() {
       const endpoint = '/api/users/achievements';
-      const res = await client.get(endpoint);
+      const res = await http.get(endpoint);
       return res;
     },
     async updateAchievements(id) {
       const endpoint = `/api/users/achievements/${id}/active`;
-      const res = await client.put(endpoint, { id });
+      const res = await http.put(endpoint, { id });
       return res;
     },
     async getNotes(page) {
       const endpoint = '/api/users/content_notes';
-      const res = await client.get(endpoint, { params: { page } });
+      const res = await http.get(endpoint, { params: { page } });
       return res;
     },
     async updateUserProfileImage(imageBase64) {
       const endpoint = '/api/users/user_image';
-      const res = await client.put(endpoint, { image: imageBase64 });
+      const res = await http.put(endpoint, { image: imageBase64 });
       return res;
     },
     async getContentsToLearn(page) {
       const endpoint = '/api/users/contents_to_learn';
-      const res = await client.get(endpoint, { params: { page } });
+      const res = await http.get(endpoint, { params: { page } });
       return res;
     },
   },
@@ -131,12 +135,12 @@ const api = {
     async getLeaderboard(newParams, page = 1) {
       const defaultParams = { page };
       const endpoint = '/api/leaderboard';
-      const res = await client.get(endpoint, { params: {...defaultParams, ...newParams }});
+      const res = await http.get(endpoint, { params: {...defaultParams, ...newParams }});
       return res;
     },
     async getLeaderboardSuperEvent(user_id, event_id) {
       const endpoint = `/api/leaderboard?event_id=${event_id}&page=1&per_page=20&user_id=${user_id}`;
-      const res = await client.get(endpoint);
+      const res = await http.get(endpoint);
       return res;
     },
   },
@@ -144,23 +148,23 @@ const api = {
   contents: {
     async getContentById(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}`;
-      const res = await client.get(endpoint);
+      const res = await http.get(endpoint);
       return res;
     },
     async storeTask(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/tasks`;
-      const res = await client.post(endpoint, { id: contentId });
+      const res = await http.post(endpoint, { id: contentId });
       return res;
     },
     async storeAsFavorite(neuronId, contentId) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/favorites`;
-      const res = await client.post(endpoint, { id: contentId });
+      const res = await http.post(endpoint, { id: contentId });
       return res;
     },
     async readContent(neuronId = 1, contentId = 1) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/read`;
       try {
-        const res = await client.post(endpoint, { neuron_id: neuronId, content_id: contentId });
+        const res = await http.post(endpoint, { neuron_id: neuronId, content_id: contentId });
         return res;
       } catch (error) {
         throw new Error(error);
@@ -168,13 +172,13 @@ const api = {
     },
     async storeNotes(neuronId = 1, contentId = 1, notes) {
       const endpoint = `/api/neurons/${neuronId}/contents/${contentId}/notes`;
-      const res = await client.post(endpoint, { note: notes });
+      const res = await http.post(endpoint, { note: notes });
       return res;
     },
 
     async getRecomendedContents() {
       const endpoint = '/api/users/recommended_neurons';
-      const res = await client.get(endpoint);
+      const res = await http.get(endpoint);
       return res;
     },
 
@@ -182,7 +186,7 @@ const api = {
       const endpoint = `/api/neurons/${neuronId}/recommended_contents/${kind}`
 
       try {
-        const res = await client.get(endpoint);
+        const res = await http.get(endpoint);
         return res
       } catch (error) {
         throw new Error(error)
@@ -193,7 +197,7 @@ const api = {
   preferences: {
     async update(kind, level) {
       const endpoint = `/api/content_preferences/${kind}`;
-      const res = await client.put(endpoint, { kind, level });
+      const res = await http.put(endpoint, { kind, level });
       return res;
     },
   },
@@ -203,7 +207,7 @@ const api = {
       const endpoint = '/api/tree';
 
       try {
-        const res = await client.get(endpoint, { params: { username } });
+        const res = await http.get(endpoint, { params: { username } }, { timeout: 6000 });
         return res;
       } catch (error) {
         throw new Error(error);
@@ -216,7 +220,7 @@ const api = {
       const endpoint = '/api/users/tree_image';
 
       try {
-        const res = await client.put(endpoint, { image_app: image });
+        const res = await http.put(endpoint, { image_app: image });
         return res;
       } catch (error) {
         throw new Error(error);
@@ -227,7 +231,7 @@ const api = {
   learn: {
     async learn(testId = 1, answers = '') {
       const endpoint = '/api/learn';
-      const res = await client.post(endpoint, { test_id: testId, answers });
+      const res = await http.post(endpoint, { test_id: testId, answers });
       return res;
     },
   },
@@ -235,7 +239,7 @@ const api = {
   profiles: {
     async getProfile(username) {
       const endpoint = '/api/users/profile';
-      const res = await client.get(endpoint, { params: { username } });
+      const res = await http.get(endpoint, { params: { username } });
       return res;
     },
   },
@@ -243,12 +247,12 @@ const api = {
   notifications: {
     async getNotifications(page = 1) {
       const endpoint = '/api/notifications';
-      const res = await client.get(endpoint, { params: { page } });
+      const res = await http.get(endpoint, { params: { page } });
       return res;
     },
     async readNotificationById(id) {
       const endpoint = `/api/notifications/${id}/read_notifications`;
-      const res = await client.post(endpoint, { id });
+      const res = await http.post(endpoint, { id });
       return res;
     }
   },
@@ -256,12 +260,12 @@ const api = {
   tutors: {
     async getRecomendations(page = 1, data_format = 'contents') {
       const endpoint = '/api/tutors/recommendations';
-      const res = await client.get(endpoint, { params: { page, data_format } })
+      const res = await http.get(endpoint, { params: { page, data_format } })
       return res;
     },
     async getDetails() {
       const endpoint = '/api/tutors/details';
-      const res = await client.get(endpoint)
+      const res = await http.get(endpoint)
       return res;
     }
   },
@@ -269,14 +273,14 @@ const api = {
   players: {
     async getQuizForPlayer(quizId, playerId) {
       const endpoint = `/api/quizzes/${quizId}/players/${playerId}`;
-      const res = await client.get(endpoint, { params: { quiz_id: quizId, player_id: playerId } });
+      const res = await http.get(endpoint, { params: { quiz_id: quizId, player_id: playerId } });
       return res;
     },
 
     async evaluateQuiz(quizId, playerId, answers) {
       const endpoint = `/api/quizzes/${quizId}/players/${playerId}/answer`;
 
-      const res = await client.post(
+      const res = await http.post(
         endpoint,
         {
           quiz_id: quizId,
@@ -289,13 +293,13 @@ const api = {
 
     async getFinalTest() {
       const endpoint = `/api/users/final_test`;
-      const res = await client.post(endpoint, {});
+      const res = await http.post(endpoint, {});
       return res;
     },
 
     async evaluateFinalTest(finalTestId, answers) {
       const endpoint = `/api/users/final_test/${finalTestId}/answer`;
-      const res = await client.post(
+      const res = await http.post(
         endpoint,
         {
           id: finalTestId,
@@ -307,7 +311,7 @@ const api = {
 
     async saveCertificate(certificateURL) {
       const endpoint = '/api/users/certificates';
-      const res = await client.post(
+      const res = await http.post(
         endpoint,
         {
           media_url: certificateURL
@@ -317,7 +321,7 @@ const api = {
     },
     async getLatestCertificates() {
       const endpoint = '/api/users/certificates?page=1';
-      const res = await client.get(
+      const res = await http.get(
         endpoint
       );
       return res;
@@ -327,7 +331,7 @@ const api = {
   events: {
     async getEventsToday() {
       const endpoint = '/api/events/today';
-      const res = await client.get(
+      const res = await http.get(
         endpoint
       );
       return res;
@@ -335,7 +339,7 @@ const api = {
 
     async getEventsWeek() {
       const endpoint = '/api/events/week';
-      const res = await client.get(
+      const res = await http.get(
         endpoint
       );
       return res;
@@ -343,7 +347,7 @@ const api = {
 
     async getEvents() {
       const endpoint = '/api/events';
-      const res = await client.get(
+      const res = await http.get(
         endpoint
       );
       return res;
@@ -351,19 +355,19 @@ const api = {
 
     async takeEvent(eventId) {
       const endpoint = `/api/users/events/${eventId}/take`;
-      const res = await client.post(endpoint, { id: eventId });
+      const res = await http.post(endpoint, { id: eventId });
       return res;
     },
 
     async takeSuperEvent(eventId) {
       const endpoint = `/api/users/events/${eventId}/take_super_event`;
-      const res = await client.post(endpoint, { id: eventId });
+      const res = await http.post(endpoint, { id: eventId });
       return res;
     },
 
     async getEventInProgress() {
       const endpoint = '/api/users/event_in_progress';
-      const res = await client.get(
+      const res = await http.get(
         endpoint,
         {}
       );
@@ -374,7 +378,7 @@ const api = {
   sharings: {
     async sharings(titulo, descripcion, uri, imagen_url) {
       const endpoint = '/api/sharings';
-      const res = await client.post(
+      const res = await http.post(
         endpoint,
         {
           titulo,
