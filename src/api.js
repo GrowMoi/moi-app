@@ -5,7 +5,7 @@ import rateLimit from 'axios-rate-limit';
 
 export const client = axios.create({
   baseURL: constants.URL_BASE,
-  timeout: 3000,
+  timeout: 500,
 });
 
 export const cloudinaryClient = axios.create({
@@ -17,11 +17,12 @@ client.interceptors.response.use(
     return config
   },
   (error) => {
-    console.log('Error', error)
-    setTimeout(() => {
-      Alert.alert('Ha tardado demasiado en encontrar lo que buscabas, revisa tu conexión a internet por favor.');
-    }, 1000)
-    console.log()
+    const regex = /^(?=.*\btimeout\b)(?=.*\bexceeded\b).*$/gi;
+    if(regex.test(error.message)) {
+      setTimeout(() => {
+        Alert.alert('Ha tardado demasiado en encontrar lo que buscabas, revisa tu conexión a internet por favor.');
+      }, 1000)
+    }
     return Promise.reject(error);
   }
 )
