@@ -137,15 +137,19 @@ class Login extends PureComponent {
     try {
       await loginAsync({ login, authorization_key });
     } catch (error) {
+      const unauthorizedRegex = /401/gi
       const { user: { authenticate } } = this.props
       if(!authenticate) {
         const animationTime = 800;
         this.formContainer.shake(animationTime);
         this.setState({ validating: false });
 
-        setTimeout(() => {
-          Alert.alert('Credenciales Incorrectas');
-        }, animationTime / 2);
+        if(unauthorizedRegex.test(error.message)) {
+
+          setTimeout(() => {
+            Alert.alert('Credenciales Incorrectas');
+          }, animationTime / 2);
+        }
       };
     }
 
@@ -250,7 +254,7 @@ class Login extends PureComponent {
                         loading={validating}
                         style={{ width: Size.buttonWidth }}
                         title={!showingSelectionKey ? 'Siguiente' : 'Login'}
-                        disabled={!((login.trim()).length > 0)}
+                        disabled={!((login.trim()).length > 0) || validating}
                         onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
                       />
                     </Animatable.View>

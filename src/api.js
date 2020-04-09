@@ -5,7 +5,7 @@ import rateLimit from 'axios-rate-limit';
 
 export const client = axios.create({
   baseURL: constants.URL_BASE,
-  timeout: 500,
+  timeout: 3000,
 });
 
 export const cloudinaryClient = axios.create({
