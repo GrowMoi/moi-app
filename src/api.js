@@ -1,33 +1,5 @@
-import axios from 'axios';
-import * as constants from './constants';
-import { AsyncStorage, Alert } from 'react-native';
-import rateLimit from 'axios-rate-limit';
-
-export const client = axios.create({
-  baseURL: constants.URL_BASE,
-  timeout: 3000,
-});
-
-export const cloudinaryClient = axios.create({
-  baseURL: constants.CLOUDINARY_BASE,
-});
-
-client.interceptors.response.use(
-  (config) => {
-    return config
-  },
-  (error) => {
-    const regex = /^(?=.*\btimeout\b)(?=.*\bexceeded\b).*$/gi;
-    if(regex.test(error.message)) {
-      setTimeout(() => {
-        Alert.alert('Ha tardado demasiado en encontrar lo que buscabas, revisa tu conexión a internet por favor.');
-      }, 1000)
-    }
-    return Promise.reject(error);
-  }
-)
-
-const http = rateLimit(client, { maxRequests: 2, perMilliseconds: 1000, maxRPS: 2 })
+import { AsyncStorage } from 'react-native';
+import client, { http, cloudinaryClient } from './axios-client';
 
 const api = {
   neuron: {

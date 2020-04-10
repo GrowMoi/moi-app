@@ -8,7 +8,7 @@ import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert, View, Im
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
-import { NetInfo } from "react-native";
+// import { NetInfo } from "react-native";
 import Orientation from 'react-native-orientation'
 
 import routes from './src/routes';
@@ -47,7 +47,6 @@ class App extends Component {
 
   async componentWillMount() {
     Dimensions.addEventListener('change', this.setOrientation);
-    //NetInfo.isConnected.addEventListener('connectionChange', this.handleStatusConnection);
 
     await this.setPassiveMessageSettings();
     await this.handleAppReview();

@@ -37,7 +37,7 @@ class ContentsToLearnTabContainer extends PureComponent {
   }
 
   renderBadge() {
-    const { contentsToLearn: { meta: { total_items } } } = this.props;
+    const { contentsToLearn: { meta: { total_items } = {} } = {} } = this.props;
     if (total_items === 0) return null;
 
     return (

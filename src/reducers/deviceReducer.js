@@ -10,6 +10,7 @@ const initialState = {
   },
   heightPercent: null,
   netInfo: {},
+  networkAlert: false,
 };
 
 const dimensions = (state = initialState.dimensions, action) => {
@@ -32,7 +33,7 @@ const heightPercent =  (state = initialState.heightPercent, action) => {
   }
 };
 
-const netInfo =  (state = initialState.netInfo, action) => {
+const netInfo = (state = initialState.netInfo, action) => {
   switch (action.type) {
     case actionTypes.SET_CONNECTION_INFO:
       return action.payload;
@@ -41,8 +42,20 @@ const netInfo =  (state = initialState.netInfo, action) => {
   }
 };
 
+const networkAlert = (state = initialState.networkAlert, action = {}) => {
+  switch (action.type) {
+    case actionTypes.SHOW_NETWORK_ALERT:
+      return true;
+    case actionTypes.HIDDEN_NETWORK_ALERT:
+      return false;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   dimensions,
   heightPercent,
   netInfo,
+  networkAlert,
 });

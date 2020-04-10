@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 // other imports...
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import { client } from './api';
+import client from './axios-client';
 
 // devise redux axios
 import apiMiddleware from './commons/utils/apiMiddleware';

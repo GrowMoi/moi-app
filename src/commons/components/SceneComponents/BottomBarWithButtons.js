@@ -174,7 +174,7 @@ class BottomBarWithButtons extends Component {
   };
 
   getNotificationsCount(props) {
-    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, contentsToLearn: { meta: { total_items = 0 } }, eventsWeek } = props;
+    const { notifications: { meta: { total_count = 0 } }, details: { recommendation_contents_pending = 0 }, contentsToLearn: { meta: { total_items = 0 } = {} } = {}, eventsWeek } = props;
 
     return total_count + recommendation_contents_pending + total_items + eventsUtils.filterValidEvents(eventsWeek).length;
   }
