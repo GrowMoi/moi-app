@@ -1,7 +1,8 @@
 import { Dimensions, Alert } from 'react-native'
 import * as actionTypes from './actionTypes';
 import { PORTRAIT, LANDSCAPE } from '../constants'
-import store from '../store'
+import store from '../store';
+import { Actions } from 'react-native-router-flux';
 
 export const hiddenNetworkAlert = () => ({
   type: actionTypes.HIDDEN_NETWORK_ALERT,
@@ -36,18 +37,22 @@ export const setNetInfo = (netInfo) => {
 export const networkAlert = (visible) => (dispatch, getState) => {
   if(!getState().device.networkAlert && visible) {
     dispatch(showNetworkAlert());
+    Actions.resetScene({ type: 'reset' });
+
     setTimeout(() => {
       Alert.alert(
         'Error de Red',
         'Ha tardado demasiado en encontrar lo que buscabas, revisa tu conexión a internet por favor.',
         [
           {text: 'Ok', onPress:() => {
-            dispatch(hiddenNetworkAlert())
+            // to exec something
           }}
         ]
       )
     }, 1000)
   }
 }
+
+export const networkAlertDispatched = (visible) => store.dispatch(networkAlert(visible))
 
 export const setHeightPercent = (percennt) => ({ type: actionTypes.SET_HEIGTH_PERCENT, payload: percennt });

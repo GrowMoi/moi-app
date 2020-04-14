@@ -64,11 +64,11 @@ class Tree extends Component {
   }
 
   initialActions = async () => {
-    const { loadTreeAsync, getUserProfileAsync, getAchievementsAsync, user } = this.props;
+    const { loadTreeAsync, getUserProfileAsync, getAchievementsAsync, user = {} } = this.props;
 
     await Promise.all([
       loadTreeAsync(),
-      getUserProfileAsync(user.profile.id),
+      getUserProfileAsync((user.profile || {}).id),
       getAchievementsAsync(),
     ]);
   }
@@ -96,7 +96,7 @@ class Tree extends Component {
   }
 
   getLearntContents(userTree) {
-    return (userTree || this.props.userTree).meta.current_learnt_contents;
+    return ((userTree || this.props.userTree).meta || {}).current_learnt_contents;
   }
 
   setTitleView() {
@@ -163,8 +163,8 @@ class Tree extends Component {
     }, 1000);
   }
 
-  selectCurrentLevel = (userTree) => {
-    const level = userTree.meta.depth;
+  selectCurrentLevel = (userTree = {}) => {
+    const level = (userTree.meta || {}).depth;
     const levelData = { userTree };
 
     const levels = {
@@ -199,7 +199,7 @@ class Tree extends Component {
   }
 
   getTreeLevel = () => {
-    const { userTree, setZoomScale } = this.props;
+    const { userTree = {}, setZoomScale } = this.props;
 
     if (userTree.meta) {
       const currentLevel = this.selectCurrentLevel(userTree);

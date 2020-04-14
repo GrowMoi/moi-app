@@ -8,13 +8,13 @@ import { Text, Dimensions, AsyncStorage, Keyboard, SafeAreaView, Alert, View, Im
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
-// import { NetInfo } from "react-native";
 import Orientation from 'react-native-orientation'
 
 import routes from './src/routes';
 import messages from './src/messages';
 import store from './src/store';
-import { flattenMessages, cacheImages } from './src/commons/utils';
+import { cacheImages } from './src/commons/utils';
+import validateAuth from './src/commons/utils/validation';
 import allImages from './assets/images';
 import fonts from './assets/fonts';
 import { setDeviceDimensions, setNetInfo } from './src/actions/deviceActions';
@@ -128,16 +128,9 @@ class App extends Component {
     return locale;
   }
 
-  validateAuth = async () => {
-    try {
-      await store.dispatch(userActions.validateToken());
-    } catch (error) {
-      console.log('AUTH NOT VALID', error.message);
-      await store.dispatch(userActions.resetData());
-    }
-
+  validateAuthentication = async () => {
     this.setOrientation();
-    return Promise.resolve()
+    await validateAuth();
   }
 
   showPassiveMessage = async () => {
@@ -171,7 +164,7 @@ class App extends Component {
     if (!isSplashReady) {
       return (
         <AppLoading
-          startAsync={this.validateAuth}
+          startAsync={this.validateAuthentication}
           onFinish={() => this.setState({ isSplashReady: true })}
           onError={console.warn}
           autoHideSplash={false}
@@ -183,7 +176,7 @@ class App extends Component {
       return (
         <View style={{ flex: 1 }}>
           <CustomSplash
-            startAsync={this.validateAuth}
+            startAsync={this.validateAuthentication}
             onFinish={this._cacheResourcesAsync}
             onError={console.warn}
           />

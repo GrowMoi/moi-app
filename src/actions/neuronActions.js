@@ -38,7 +38,7 @@ const removeCurrentAudioBg = () => ({
 const stopCurrentBackgroundAudio = () => async (dispatch) => dispatch(stopAudio());
 const playCurrentBackgroundAudio = () => async (dispatch) => dispatch(playAudio());
 const setCurrentBackgroundAudio = (audio) => (dispatch) => {
-  if(sounds.playIn[audio.soundName].includes(audio.scene) !==  sounds.playIn[audio.soundName].includes(audio.previousScene)) {
+  if((sounds.playIn[audio.soundName] || []).includes(audio.scene) !==  (sounds.playIn[audio.soundName] || []).includes(audio.previousScene)) {
     dispatch(setCurrentAudioBg(audio));
    }
 };

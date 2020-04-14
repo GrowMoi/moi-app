@@ -45,7 +45,7 @@ export default class Loader extends Component {
 
   componentDidMount() {
     Orientation.lockToPortrait();
-    this.props.onInit();
+    if(this.props.onInit) this.props.onInit();
   }
 
   getPositionBasedOnPercent(percent) {

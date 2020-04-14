@@ -41,6 +41,7 @@ class Preloader extends Component {
       </PreloaderContainer>
     );
 
+    if(!modalIsVisible) return null;
     if(notFullScreen) return loader;
     return (
       <PreloaderContainer style={style}>

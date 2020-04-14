@@ -73,14 +73,9 @@ class QuizTutorScene extends Component {
     );
   }
 
-  evaluateQuizAsync = (answers) => {
-    console.log(answers);
-  };
-
   render() {
     const { currentScene, loading } = this.state;
     const { quiz } = this.props;
-    console.log('QUIZ', quiz);
 
     return (
       <Background>

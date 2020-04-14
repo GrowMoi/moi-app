@@ -1,8 +1,7 @@
 import axios from 'axios';
 import * as constants from './constants';
 import rateLimit from 'axios-rate-limit';
-import { networkAlert } from './actions/deviceActions'
-import store from './store'
+import { networkAlertDispatched } from './actions/deviceActions'
 
 const client = axios.create({
   baseURL: constants.URL_BASE,
@@ -20,7 +19,7 @@ client.interceptors.response.use(
   (error) => {
     const regex = /^(?=.*\btimeout\b)(?=.*\bexceeded\b).*$/gi;
     if(regex.test(error.message)) {
-      store.dispatch(networkAlert(true))
+      networkAlertDispatched(true)
     }
     return Promise.reject(error);
   }

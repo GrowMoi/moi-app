@@ -19,6 +19,7 @@ import Inventory from './containers/Inventory/Inventory';
 import TabIcon from '../src/commons/components/TabIcon/TabIcon';
 import navbarPropStyles, { HamburgerButton } from './commons/components/Navbar/navbarPropStyles';
 import withSound from './commons/utils/withSound';
+import ResetScene from './containers/Reset/ResetScene';
 // import Test from './commons/components/Test';
 
 export const backButtonWithSound = (action) => {
@@ -52,6 +53,13 @@ const routes = Actions.create(
       key={'register'}
       component={Register}
       {...navbarPropStyles}
+      renderLeftButton={null}
+      renderRightButton={null}
+    />
+    <Scene
+      {...navbarPropStyles}
+      key={'resetScene'}
+      component={ResetScene}
       renderLeftButton={null}
       renderRightButton={null}
     />
