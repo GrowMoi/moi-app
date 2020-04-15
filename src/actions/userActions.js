@@ -3,6 +3,7 @@ import { Alert, AsyncStorage } from 'react-native';
 import api from '../api';
 import * as actionTypes from './actionTypes';
 import { setHeaders } from './headerActions';
+import _ from 'lodash';
 import neuronActions from './neuronActions'
 import * as routeTypes from '../routeTypes'
 
@@ -148,8 +149,37 @@ const registerAsync = ({ username, email, age, school, country, city, authorizat
     return user;
   } catch (error) {
     // Alert.alert('Ups!, Lo sentimos ha ocurrido un error al registrarse, intentalo más tarde');
+    const errors = error.response.data.errors;
+    const fullMessages = _.uniq(errors.full_messages);
+
+    Alert.alert(
+      'Tienes errores en tu registro, revísalos e intenta nuevamente',
+      fullMessages.join('\n'),
+    )
     throw new Error(error);
   }
+
+  // api.user.register({ username, email, age, school, country, city, authorization_key: authorizationKey })
+  //   .then(async (res) => {
+  //     const { data: { data: user }, headers } = res;
+  //     await dispatch(setHeaders(headers));
+
+  //     Alert.alert(
+  //       `Bienvenido ${username} a Moi`,
+  //       'Te haz registrado con exito!',
+  //       [
+  //         { text: 'Vamos a aprender!', onPress: () => onPressAlert && onPressAlert() }
+  //       ],
+  //       { cancelable: false },
+  //     );
+
+  //     console.log('RESPONSE', res)
+  //     return user;
+  //   })
+  //   .catch(error => {
+  //     console.log('ERROR RESPONSE', error.response)
+  //     throw new Error(error);
+  //   })
 
 };
 

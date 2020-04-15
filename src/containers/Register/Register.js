@@ -158,56 +158,56 @@ class Register extends Component {
     }
 
     submit = async () => {
-        const { username, email, year, school, country, city, authorization_key } = this.state;
+      const { username, email, year, school, country, city, authorization_key } = this.state;
 
-        if(!authorization_key) {
-            Alert.alert('Necesita seleccionar una imagen');
-            return;
-        }
+      if(!authorization_key) {
+          Alert.alert('Necesita seleccionar una imagen');
+          return;
+      }
 
-        const { registerAsync, loginAsync } = this.props;
+      const { registerAsync, loginAsync } = this.props;
 
-        this.setState({ validating: true });
+      this.setState({ validating: true });
 
-        try {
-          await registerAsync({
-            username,
-            email,
-            age: this.generateAge(year),
-            school,
-            country,
-            city,
-            authorization_key,
-            onPressAlert: async () => {
-              this.setState({ loading: true });
+      try {
+        await registerAsync({
+          username,
+          email,
+          age: this.generateAge(year),
+          school,
+          country,
+          city,
+          authorization_key,
+          onPressAlert: async () => {
+            this.setState({ loading: true });
 
-              try {
-                await loginAsync({ login: username, authorization_key });
-              } catch (error) {
-                console.log('Error to login after to register', error.message);
-                Alert.alert(error.message);
-              }
-
-              this.setState({ loading: false });
+            try {
+              await loginAsync({ login: username, authorization_key });
+            } catch (error) {
+              console.log('Error to login after to register', error.message);
+              Alert.alert(error.message);
             }
-          });
-        } catch (error) {
-          console.log('Error to register', error.message)
-        }
 
-        this.setState({ validating: false });
+            this.setState({ loading: false });
+          }
+        })
+      } catch (error) {
+        console.log('error', error)
+      }
+
+      this.setState({ validating: false });
     }
 
     showSelectionKey = () => {
-        this.setState({ showingSelectionKey: true });
+      this.setState({ showingSelectionKey: true });
     }
 
     onPressLoginImage = (data, key) => {
-        this.setState({ authorization_key: key });
+      this.setState({ authorization_key: key });
     }
 
     returnToFillFields = () => {
-        this.setState({ showingSelectionKey: false });
+      this.setState({ showingSelectionKey: false });
     }
 
     returnToLogin = () => {
@@ -340,11 +340,11 @@ class Register extends Component {
 
                                         <Animatable.View animation="bounceInRight" easing="ease-in">
                                             <Button
-                                                loading={validating}
-                                                style={{ width: 130 }}
-                                                title={!showingSelectionKey ? 'Siguiente' : 'Registrarse'}
-                                                disabled={!validForm}
-                                                onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
+                                              loading={validating}
+                                              style={{ width: 130 }}
+                                              title={!showingSelectionKey ? 'Siguiente' : 'Registrarse'}
+                                              disabled={!validForm || validating}
+                                              onPress={!showingSelectionKey ? this.showSelectionKey : this.submit}
                                             />
                                         </Animatable.View>
                                     </ButtonsContainer>
