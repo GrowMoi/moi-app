@@ -109,6 +109,7 @@ class Login extends PureComponent {
     try {
       await loginAsync({ login, authorization_key });
     } catch (error) {
+      console.log(error)
       const unauthorizedRegex = /401/gi
       const { user: { authenticate } } = this.props
       if(!authenticate) {
@@ -117,7 +118,6 @@ class Login extends PureComponent {
         this.setState({ validating: false });
 
         if(unauthorizedRegex.test(error.message)) {
-
           setTimeout(() => {
             Alert.alert('Credenciales Incorrectas');
           }, animationTime / 2);
