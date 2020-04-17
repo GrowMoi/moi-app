@@ -105,11 +105,11 @@ class Register extends Component {
     onChangeUsernameInput = (id, text) => {
       const regex = /[a-zA-Z0-9_]/g;
       const char = text.charAt(text.length - 1);
-      const isValid = regex.test(char);
+      const isValid = char === '' ? true : regex.test(char);
       if (isValid) {
         this.onChangeInput(id, text);
       } else {
-        Alert.alert('Nombre de usuario solo puede contener caracteres alfanuméricos');
+        Alert.alert('Nombre de usuario no debe contener caracteres especiales');
         return;
       }
     }
