@@ -34,10 +34,9 @@ export const setNetInfo = (netInfo) => {
   };
 }
 
-export const networkAlert = (visible) => (dispatch, getState) => {
+export const networkAlert = (visible, options) => (dispatch, getState) => {
   if(!getState().device.networkAlert && visible) {
     dispatch(showNetworkAlert());
-    Actions.resetScene({ type: 'reset' });
 
     setTimeout(() => {
       Alert.alert(
@@ -46,6 +45,7 @@ export const networkAlert = (visible) => (dispatch, getState) => {
         [
           {text: 'Ok', onPress:() => {
             // to exec something
+            Actions.resetScene({ type: 'reset' });
           }}
         ]
       )
