@@ -100,6 +100,18 @@ class Register extends Component {
 
     handleFormContainer = ref => this.formContainer = ref;
 
+    onChangeUsernameInput = (id, text) => {
+      const regex = /[a-zA-Z0-9_]/g;
+      const char = text.charAt(text.length - 1);
+      const isValid = char === '' ? true : regex.test(char);
+      if (isValid) {
+        this.onChangeInput(id, text);
+      } else {
+        Alert.alert('Nombre de usuario no debe contener caracteres especiales');
+        return;
+      }
+    }
+
     onChangeInput = (id, text) => {
         const inputText = text.trim();
         if (inputText) {
@@ -268,10 +280,10 @@ class Register extends Component {
                                                     keyboardType='default'
                                                     autoCorrect={false}
                                                     value={username}
-                                                    onChangeText={text => this.onChangeInput('username', text)}
+                                                    onChangeText={text => this.onChangeUsernameInput('username', text)}
                                                 />
                                                 <Input
-                                                    placeholder='correo electronico'
+                                                    placeholder='correo electrónico'
                                                     keyboardType='email-address'
                                                     autoCorrect={false}
                                                     value={email}
