@@ -106,7 +106,7 @@ class Search extends PureComponent {
         {contentBox}
         {loading && <Preloader />}
         <Navbar />
-        <BottomBarWithButtons width={device.dimensions.width} />
+        <BottomBarWithButtons readButton={false} width={device.dimensions.width} />
 
         <PassiveMessageAlert
           isOpenPassiveMessage={showPassiveMessage && scene.name === 'search'}

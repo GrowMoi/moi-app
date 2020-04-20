@@ -24,7 +24,7 @@ class Tasks extends Component {
       <MoiBackground>
         {contentBox}
         <Navbar />
-        <BottomBarWithButtons width={device.dimensions.width} />
+        <BottomBarWithButtons readButton={false} width={device.dimensions.width} />
 
         <PassiveMessageAlert
             isOpenPassiveMessage={showPassiveMessage && scene.name === routeTypes.TASKS}

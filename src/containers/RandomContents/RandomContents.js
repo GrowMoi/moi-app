@@ -93,7 +93,7 @@ class RandomContents extends Component {
         {contentBox}
         {loading && <Preloader />}
         <Navbar />
-        <BottomBarWithButtons width={device.dimensions.width} />
+        <BottomBarWithButtons readButton={false} width={device.dimensions.width} />
       </MoiBackground>
     );
   }
