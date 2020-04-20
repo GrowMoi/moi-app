@@ -8,6 +8,7 @@ import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import userActions from '../../actions/userActions';
 import TasksContainer from './TasksContainer';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
+import * as routeTypes from '../../routeTypes'
 
 class Tasks extends Component {
   render() {
@@ -26,7 +27,7 @@ class Tasks extends Component {
         <BottomBarWithButtons width={device.dimensions.width} />
 
         <PassiveMessageAlert
-            isOpenPassiveMessage={showPassiveMessage && scene.name === 'tasks'}
+            isOpenPassiveMessage={showPassiveMessage && scene.name === routeTypes.TASKS}
             touchableProps={{
               onPress: () => {
                 showPassiveMessageAsync(false);

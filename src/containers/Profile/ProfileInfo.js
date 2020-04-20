@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 import {
@@ -6,14 +6,13 @@ import {
   StyleSheet,
   Dimensions,
   ScrollView,
-  Image,
-  Modal,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux'
 
 // Components
 import { ContentBox } from '../../commons/components/ContentComponents';
 import { Line } from '../../commons/components/SceneComponents';
-import { TextBody, Title, Header } from '../../commons/components/Typography';
+import { Title, Header } from '../../commons/components/Typography';
 import { normalizeAllCapLetter } from '../../commons/utils/normalize';
 import { Size, Palette } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
@@ -22,8 +21,7 @@ import ProfileAvatar from '../../commons/components/Profile/Profile';
 import TreeScreenShot from '../../commons/components/TreeScreenShot/TreeScreenShot';
 import { getHeightAspectRatio } from '../../commons/utils';
 import deviceUtils from '../../commons/utils/device-utils';
-import { connect } from 'react-redux';
-import * as usersChatActions from '../../actions/chatActions'
+import * as routeTypes from '../../routeTypes';
 
 const isTablet = deviceUtils.isTablet();
 const { width } = Dimensions.get('window');
@@ -91,7 +89,6 @@ const DescriptionContainer = styled(View)`
   flex: 1;
 `;
 
-const paddingScrollContainer = 50;
 const styles = StyleSheet.create({
   scrollContainer: {
     alignSelf: 'center',
@@ -103,7 +100,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady = () => {}, showChatModal }) => {
+const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady = () => {} }) => {
   if(data === undefined) return null;
 
   const { profile, level } = data;
@@ -124,7 +121,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
               <Title color={Palette.colors.white} style={{ flex: 1}} numberOfLines={1} lighter>{userName}</Title>
             </NameContainer>
             {isShared && (
-              <Button onPress={() => showChatModal()} title="Mensaje"/>
+              <Button onPress={() => Actions[routeTypes.TASKS]()} title="Mensaje"/>
             )}
           </HeaderProfile>
 
@@ -171,8 +168,4 @@ ProfileInfo.propTypes = {
   onClickEdit: PropTypes.func,
 };
 
-const mapDispatchToProps = {
-  showChatModal: usersChatActions.showChatModal,
-}
-
-export default connect(null, mapDispatchToProps)(ProfileInfo);
+export default ProfileInfo;
