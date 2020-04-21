@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import styled from 'styled-components/native';
 // import button_close_img from '../../../../assets/images/miscelaneous/button_close.png'
@@ -93,7 +93,23 @@ const InputMessage = ({ onPressSend }) => {
   )
 }
 
-const UsersChatModal = ({ hiddenChatModal, chatIsVisible }) => {
+const UsersChatModal = ({ hiddenChatModal, chatIsVisible, currentChatData, getMessages }) => {
+  const getChatMessages = useCallback(
+    () => {
+      getMessages({
+        receiver_id: currentChatData.receiver_id,
+        user_id: currentChatData.user_id,
+      })
+    },
+    [currentChatData.receiver_id, currentChatData.user_id]
+  );
+
+  useEffect(() => {
+    if(chatIsVisible) {
+      getChatMessages();
+    }
+  }, [chatIsVisible])
+
   return (
     <Modal
       animationType="fade"
@@ -120,11 +136,13 @@ const UsersChatModal = ({ hiddenChatModal, chatIsVisible }) => {
 const mapStateToProps = (state) => {
   return {
     chatIsVisible: state.usersChat.chat.chatIsVisible,
+    currentChatData: state.usersChat.chat.current,
   }
 }
 
 const mapDispatchToProps = {
   hiddenChatModal: usersChatActions.hiddenChatModal,
+  getMessages: usersChatActions.getMessages,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersChatModal);

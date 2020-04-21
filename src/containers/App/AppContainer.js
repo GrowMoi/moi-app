@@ -6,6 +6,7 @@ import MenuContainer from '../MenuContainer/MenuContainer'
 import { TIME_FOR_INACTIVITY } from '../../constants';
 import userActions from '../../actions/userActions'
 import UserInactivity from 'react-native-user-inactivity';
+import UsersChatModal from '../../commons/components/UsersChatModal/UsersChatModal'
 
 
 
@@ -23,7 +24,7 @@ class AppContainer extends Component {
     const { activeMessages } = this.props;
     return (
       <Container>
-         <UserInactivity
+        <UserInactivity
             isActive={activeMessages}
             timeForInactivity={TIME_FOR_INACTIVITY}
             onAction={(isActive) => {
@@ -36,6 +37,7 @@ class AppContainer extends Component {
             <RouterWithRedux>
               {this.props.scenes()}
             </RouterWithRedux>
+            <UsersChatModal />
           </UserInactivity>
         <MenuContainer />
       </Container>

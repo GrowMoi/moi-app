@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components/native';
-import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Dimensions,
-  Image
-} from 'react-native';
 
 // Components
 import Navbar from '../../commons/components/Navbar/Navbar';
@@ -16,10 +7,6 @@ import Moibackground from '../../commons/components/Background/MoiBackground';
 import { BottomBar } from '../../commons/components/SceneComponents';
 import ProfileInfo from './ProfileInfo';
 import ContentTab from './TabsContent/ContentTab';
-
-// Redux Actions
-import neuronActions from './../../actions/neuronActions';
-import UsersChatModal from '../../commons/components/UsersChatModal/UsersChatModal';
 
 export default class PublicProfileScene extends Component {
   onClickItem = async(item) => {
@@ -62,7 +49,6 @@ export default class PublicProfileScene extends Component {
           data={profileInfo}
           tabsData={tabsData}
         />
-        <UsersChatModal />
         <BottomBar />
       </Moibackground>
     );

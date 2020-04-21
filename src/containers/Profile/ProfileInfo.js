@@ -123,7 +123,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
             {isShared && (
               <Button
                 onPress={() => {
-                  Actions[routeTypes.TASKS]({ wantSendMessage: { data }, fromScene: routeTypes.PROFILE })
+                  Actions[routeTypes.TASKS]({ receiver_data: { data }, fromScene: routeTypes.PROFILE })
                 }}
                 title="Mensaje"
               />

@@ -123,6 +123,14 @@ const api = {
       const res = await client.get(endpoint, { params: { page } });
       return res;
     },
+    async getChatMessages({ receiver_id, user_id }) {
+      const endpoint = '/api/chats/user/' + receiver_id;
+      try {
+        return await client.get(endpoint, { params: { user_id } })
+      } catch (error) {
+        throw new Error(error)
+      }
+    }
   },
 
   leaderboard: {
