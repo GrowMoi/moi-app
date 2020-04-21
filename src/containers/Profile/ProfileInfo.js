@@ -121,7 +121,12 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
               <Title color={Palette.colors.white} style={{ flex: 1}} numberOfLines={1} lighter>{userName}</Title>
             </NameContainer>
             {isShared && (
-              <Button onPress={() => Actions[routeTypes.TASKS]()} title="Mensaje"/>
+              <Button
+                onPress={() => {
+                  Actions[routeTypes.TASKS]({ wantSendMessage: { data }, fromScene: routeTypes.PROFILE })
+                }}
+                title="Mensaje"
+              />
             )}
           </HeaderProfile>
 

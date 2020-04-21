@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -8,36 +8,39 @@ import { BottomBarWithButtons } from '../../commons/components/SceneComponents';
 import userActions from '../../actions/userActions';
 import TasksContainer from './TasksContainer';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
-import * as routeTypes from '../../routeTypes'
+import * as chatActions from '../../actions/chatActions';
+import * as routeTypes from '../../routeTypes';
 
-class Tasks extends Component {
-  render() {
-    const { device, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
+const Tasks = ({ device, scene, showPassiveMessage, showPassiveMessageAsync, fromScene, showChatModal, ...rest }) => {
+  useEffect(() => {
+    if(fromScene === routeTypes.PROFILE) {
+      showChatModal();
+    };
+  }, [])
 
-    const contentBox = (
-      <ContentBox>
-        <TasksContainer />
-      </ContentBox>
-    );
+  const contentBox = (
+    <ContentBox>
+      <TasksContainer />
+    </ContentBox>
+  );
 
-    return (
-      <MoiBackground>
-        {contentBox}
-        <Navbar />
-        <BottomBarWithButtons readButton={false} width={device.dimensions.width} />
+  return (
+    <MoiBackground>
+      {contentBox}
+      <Navbar />
+      <BottomBarWithButtons readButton={false} width={device.dimensions.width} />
+      <PassiveMessageAlert
+          isOpenPassiveMessage={showPassiveMessage && scene.name === routeTypes.TASKS}
+          touchableProps={{
+            onPress: () => {
+              showPassiveMessageAsync(false);
+            }
+          }}
+          message='Revisa y completa tus tareas para recibir distintas recompensas'
+        />
+    </MoiBackground>
+  );
 
-        <PassiveMessageAlert
-            isOpenPassiveMessage={showPassiveMessage && scene.name === routeTypes.TASKS}
-            touchableProps={{
-              onPress: () => {
-                showPassiveMessageAsync(false);
-              }
-            }}
-            message='Revisa y completa tus tareas para recibir distintas recompensas'
-          />
-      </MoiBackground>
-    );
-  }
 }
 
 
@@ -49,6 +52,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
+  showChatModal: chatActions.showChatModal,
 }
 
 
