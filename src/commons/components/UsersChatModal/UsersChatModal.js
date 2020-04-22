@@ -58,6 +58,7 @@ const InputBox = styled(TextInput)`
   padding-horizontal: 5px;
   height: 45px;
   margin-right: 10px;
+  font-size: 16px;
   flex: 1;
   background-color: rgb(57, 175, 242);
   border-radius: 2px;
@@ -143,6 +144,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   hiddenChatModal: usersChatActions.hiddenChatModal,
   getMessages: usersChatActions.getMessages,
+  sendMessage: usersChatActions.sendMessage,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersChatModal);

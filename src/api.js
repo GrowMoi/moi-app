@@ -130,6 +130,14 @@ const api = {
       } catch (error) {
         throw new Error(error)
       }
+    },
+    async sendChatMessage({ receiver_id, message }) {
+      const endpoint = '/api/chats';
+      try {
+        return await client.post(endpoint, { receiver_id, message });
+      } catch (error) {
+        throw new Error(error);
+      }
     }
   },
 
