@@ -25,6 +25,7 @@ class Preloader extends Component {
 
   componentWillUnmount() {
     this.setState({ modalIsVisible: false });
+    if(this.props.onDismiss) this.props.onDismiss();
   }
 
   render() {

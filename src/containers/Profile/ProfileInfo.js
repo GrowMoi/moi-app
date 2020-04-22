@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 import {
@@ -22,6 +22,8 @@ import TreeScreenShot from '../../commons/components/TreeScreenShot/TreeScreenSh
 import { getHeightAspectRatio } from '../../commons/utils';
 import deviceUtils from '../../commons/utils/device-utils';
 import * as routeTypes from '../../routeTypes';
+import * as userChatActions from '../../actions/chatActions';
+import { connect } from 'react-redux'
 
 const isTablet = deviceUtils.isTablet();
 const { width } = Dimensions.get('window');
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady = () => {} }) => {
+const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSignOut, onProfileInfoReady = () => {}, showChatModal, user }) => {
   if(data === undefined) return null;
 
   const { profile, level } = data;
@@ -110,6 +112,16 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
   let userName = '-';
   if (profile.name) userName = normalizeAllCapLetter(profile.name);
   else if (profile.username) userName = normalizeAllCapLetter(profile.username);
+
+  const showChat = useCallback(
+    () => {
+      showChatModal({
+        receiver_id: ((data || {}).profile || {}).id,
+        user_id: user.id,
+      });
+    },
+    [((data || {}).profile || {}).id],
+  )
 
   return (
     <Container>
@@ -123,6 +135,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
             {isShared && (
               <Button
                 onPress={() => {
+                  showChat();
                   Actions[routeTypes.TASKS]({ receiver_data: { data }, fromScene: routeTypes.PROFILE })
                 }}
                 title="Mensaje"
@@ -173,4 +186,12 @@ ProfileInfo.propTypes = {
   onClickEdit: PropTypes.func,
 };
 
-export default ProfileInfo;
+const mapStateToProps = (state) => ({
+  user: state.user.profile
+})
+
+const mapDispatchToProps = {
+  showChatModal: userChatActions.showChatModal,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileInfo);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
@@ -11,25 +11,13 @@ import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAl
 import * as chatActions from '../../actions/chatActions';
 import * as routeTypes from '../../routeTypes';
 
-const Tasks = ({ device, scene, showPassiveMessage, showPassiveMessageAsync, fromScene, showChatModal, receiver_data, profile }) => {
-  useEffect(() => {
-    if(fromScene === routeTypes.PROFILE && !!receiver_data) {
-      showChatModal({
-        receiver_id: ((receiver_data.data || {}).profile || {}).id,
-        user_id: profile.id,
-      });
-    };
-  }, [])
-
-  const contentBox = (
-    <ContentBox>
-      <TasksContainer />
-    </ContentBox>
-  );
-
+const Tasks = ({ device, scene, showPassiveMessage, showPassiveMessageAsync }) => {
   return (
     <MoiBackground>
-      {contentBox}
+      <ContentBox>
+        <TasksContainer />
+      </ContentBox>
+
       <Navbar />
       <BottomBarWithButtons readButton={false} width={device.dimensions.width} />
       <PassiveMessageAlert

@@ -16,6 +16,10 @@ export const hiddenChatModal = () => dispatch => {
 }
 
 export const getMessages = ({ receiver_id, user_id }) => async dispatch => {
+  dispatch({
+    type: actionTypes.FETCHING_CHAT_MESSAGES,
+  })
+
   try {
     const res = await api.user.getChatMessages({ receiver_id, user_id });
 
@@ -26,13 +30,17 @@ export const getMessages = ({ receiver_id, user_id }) => async dispatch => {
     return res
   } catch (error) {
     // Alert.alert('Ocurrio un error al obtener los mensajes del chat.')
+    dispatch({
+      type: actionTypes.ERROR_USER_CHAT,
+      payload: error.message,
+    })
     throw new Error(error)
   }
 }
 
 export const sendMessage = ({ message, receiver_id }) => async dispatch => {
   try {
-    const res = await api.user.sendMessage({ message, receiver_id })
+    const res = await api.user.sendChatMessage({ message, receiver_id })
     dispatch({
       type: actionTypes.SEND_CHAT_MESSAGE,
     })

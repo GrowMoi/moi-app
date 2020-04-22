@@ -7,7 +7,9 @@ const initialState = {
     receiver_id: null,
     user_id: null,
     messages: [],
-  }
+  },
+  loading: false,
+  error: null,
 };
 
 const chat = (state = initialState, action) => {
@@ -24,7 +26,11 @@ const chat = (state = initialState, action) => {
     case actionTypes.HIDDEN_CHAT_MODAL:
       return { ...state, chatIsVisible: false, current: { ...initialState.current } };
     case actionTypes.GET_CURRENT_CHAT_MESSAGES:
-      return { ...state, current: { ...state.current, messages: action.payload } }
+      return { ...state, current: { ...state.current, messages: action.payload }, loading: false, error: null }
+    case actionTypes.FETCHING_CHAT_MESSAGES:
+      return { ...state, loading: true };
+    case actionTypes.ERROR_USER_CHAT:
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }

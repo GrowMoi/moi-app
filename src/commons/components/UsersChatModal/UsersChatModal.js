@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
+import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, Text } from 'react-native';
 import styled from 'styled-components/native';
 // import button_close_img from '../../../../assets/images/miscelaneous/button_close.png'
 import { connect } from 'react-redux';
@@ -94,7 +94,15 @@ const InputMessage = ({ onPressSend }) => {
   )
 }
 
-const UsersChatModal = ({ hiddenChatModal, chatIsVisible, currentChatData, getMessages }) => {
+const UsersChatModal = ({
+  hiddenChatModal,
+  chatIsVisible,
+  currentChatData,
+  getMessages,
+  sendMessage,
+  messagesIsLoading,
+}) => {
+
   const getChatMessages = useCallback(
     () => {
       getMessages({
@@ -111,6 +119,8 @@ const UsersChatModal = ({ hiddenChatModal, chatIsVisible, currentChatData, getMe
     }
   }, [chatIsVisible])
 
+  console.log("USERS CHAT MODAL: currentChat", currentChatData)
+
   return (
     <Modal
       animationType="fade"
@@ -120,12 +130,10 @@ const UsersChatModal = ({ hiddenChatModal, chatIsVisible, currentChatData, getMe
       <Container>
         <ChatBox behavior="height">
           <MessagesBox>
-
-
+            <Text>{messagesIsLoading.toString()}</Text>
           </MessagesBox>
 
-          <InputMessage onPressSend={(message) => { console.log('Send Message', message) }} />
-
+          <InputMessage onPressSend={(message) => { sendMessage({ message, receiver_id: currentChatData.receiver_id }) }} />
           <StyledCloseButton onPress={hiddenChatModal} />
         </ChatBox>
       </Container>
@@ -138,6 +146,8 @@ const mapStateToProps = (state) => {
   return {
     chatIsVisible: state.usersChat.chat.chatIsVisible,
     currentChatData: state.usersChat.chat.current,
+    messagesIsLoading: state.usersChat.chat.loading,
+    error: state.usersChat.chat.error,
   }
 }
 

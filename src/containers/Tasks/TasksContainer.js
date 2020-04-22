@@ -188,7 +188,7 @@ class TasksContainer extends Component {
   }
 
   render() {
-    const { device: { dimensions: { width } }, leaders, profile } = this.props;
+    const { device: { dimensions: { width } }, leaders, profile, onDismissLoader } = this.props;
     const { loading, isAlertOpen, isEventModalOpen, itemSelected, isLeaderboardModalOpen, superEvent } = this.state;
     const leaderboardParams = {
       user_id: profile.id,
@@ -230,7 +230,7 @@ class TasksContainer extends Component {
               disableScroll={this.enableMainScroll(false)}
             />
           </View>}
-          {loading && <Preloader />}
+          {loading && <Preloader onDismiss={() => { if(onDismissLoader) onDismissLoader() }}/>}
         </ScrollView>
 
         {isEventModalOpen &&
