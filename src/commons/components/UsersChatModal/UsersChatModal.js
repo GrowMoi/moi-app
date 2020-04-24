@@ -4,8 +4,9 @@ import styled from 'styled-components/native';
 // import button_close_img from '../../../../assets/images/miscelaneous/button_close.png'
 import { connect } from 'react-redux';
 import * as usersChatActions from '../../../actions/chatActions'
-import Constants from 'expo-constants'
 import Button from '../Buttons/Button';
+import Preloader from '../Preloader/Preloader';
+import ChatBubble from './ChatBubble'
 
 const Container = styled(View)`
   width: 100%;
@@ -45,6 +46,7 @@ const MessagesBox = styled(View)`
   border-bottom-right-radius: 30px;
   border-top-left-radius: 30px;
   margin-bottom: 10px;
+  padding: 10px;
 `
 
 const BottomMessage = styled(View)`
@@ -88,10 +90,26 @@ const InputMessage = ({ onPressSend }) => {
 
   return (
     <BottomMessage>
-      <InputBox onChangeText={(txt) => { setMessage(txt) }}/>
-      <Button onPress={() => { if(message) onPressSend(message) }} title="Enviar"/>
+      <InputBox
+        value={message}
+        onChangeText={(txt) => { setMessage(txt) }}
+      />
+      <Button
+        onPress={() => {
+          if(message) {
+            onPressSend(message);
+            setMessage('')
+          }
+        }}
+        title="Enviar"
+      />
     </BottomMessage>
   )
+}
+
+const ChatList = () => {
+  // TODO: create a chat list component with flat list.
+  return null;
 }
 
 const UsersChatModal = ({
@@ -101,8 +119,8 @@ const UsersChatModal = ({
   getMessages,
   sendMessage,
   messagesIsLoading,
+  currentMessageState,
 }) => {
-
   const getChatMessages = useCallback(
     () => {
       getMessages({
@@ -119,8 +137,6 @@ const UsersChatModal = ({
     }
   }, [chatIsVisible])
 
-  console.log("USERS CHAT MODAL: currentChat", currentChatData)
-
   return (
     <Modal
       animationType="fade"
@@ -130,7 +146,20 @@ const UsersChatModal = ({
       <Container>
         <ChatBox behavior="height">
           <MessagesBox>
-            <Text>{messagesIsLoading.toString()}</Text>
+            {messagesIsLoading && <Preloader notFullScreen/>}
+            {!messagesIsLoading && Object.keys(currentChatData.messages).map((messageId) => {
+              const message = currentChatData.messages[messageId];
+              const waitingToSend = currentMessageState.message.id === messageId && currentMessageState.waiting;
+              return (
+                <ChatBubble
+                  waiting={waitingToSend}
+                  kind={message.kind}
+                  key={message.id}
+                >
+                  {message.message}
+                </ChatBubble>
+              )
+            })}
           </MessagesBox>
 
           <InputMessage onPressSend={(message) => { sendMessage({ message, receiver_id: currentChatData.receiver_id }) }} />
@@ -148,6 +177,7 @@ const mapStateToProps = (state) => {
     currentChatData: state.usersChat.chat.current,
     messagesIsLoading: state.usersChat.chat.loading,
     error: state.usersChat.chat.error,
+    currentMessageState: state.usersChat.currentMessageState,
   }
 }
 

@@ -230,7 +230,7 @@ class TasksContainer extends Component {
               disableScroll={this.enableMainScroll(false)}
             />
           </View>}
-          {loading && <Preloader onDismiss={() => { if(onDismissLoader) onDismissLoader() }}/>}
+          {loading && <Preloader notFullScreen />}
         </ScrollView>
 
         {isEventModalOpen &&

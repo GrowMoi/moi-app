@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import { Alert } from 'react-native';
 import api from '../api';
+import _ from 'lodash';
 
 export const showChatModal = (options = {}) => dispatch => {
   dispatch({
@@ -23,9 +24,15 @@ export const getMessages = ({ receiver_id, user_id }) => async dispatch => {
   try {
     const res = await api.user.getChatMessages({ receiver_id, user_id });
 
+    const userChats = ((res.data || {}).user_chats || []);
+    const formattedChats = {};
+    userChats.forEach(chat => {
+      formattedChats[chat.id] = chat;
+    });
+
     dispatch({
       type: actionTypes.GET_CURRENT_CHAT_MESSAGES,
-      payload: ((res.data || {}).user_chats || []),
+      payload: formattedChats,
     })
     return res
   } catch (error) {
@@ -38,15 +45,48 @@ export const getMessages = ({ receiver_id, user_id }) => async dispatch => {
   }
 }
 
-export const sendMessage = ({ message, receiver_id }) => async dispatch => {
+export const sendMessage = ({ message, receiver_id }) => async (dispatch, getState) => {
+  const user = getState().user.profile;
+  const messagesInfo = getState().usersChat.chat.current.messages;
+  const tempID = _.uniqueId('temp_');
+
+  const tempMessage = {
+    "chat_with": (messagesInfo[0] || {}).chat_with,
+    "created_at": "2020-04-23T08:29:31.513-05:00",
+    "id": tempID,
+    "kind": "outgoing",
+    "message": message,
+    "receiver_id": receiver_id,
+    "sender_id": user.id,
+    "sender_user": {
+      "avatar": user.avatar,
+      "email": user.email,
+      "id": user.id,
+      "image": user.image,
+      "name": user.name,
+      "username": user.username,
+    },
+  }
+
+  dispatch({
+    type: actionTypes.WAITING_TO_SEND_MESSAGE,
+    payload: tempMessage,
+  });
+
   try {
     const res = await api.user.sendChatMessage({ message, receiver_id })
+
     dispatch({
       type: actionTypes.SEND_CHAT_MESSAGE,
-    })
+      payload: { message: res.data.user_chat, tempMessageID: tempID },
+    });
 
     return res;
   } catch (error) {
+    dispatch({
+      type: actionTypes.ERROR_TO_SEND_MESSAGE,
+      payload: { error: error.message, tempMessageID: tempID },
+    })
     throw new Error(error);
   }
 }
