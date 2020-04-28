@@ -24,7 +24,8 @@ const Container = styled(View)`
 
 const Message = styled(Text)`
   color: white;
-  padding: 10px;
+  padding-vertical: 10px;
+  padding-horizontal: 15px;
   padding-bottom: 15px;
   max-width: 80%;
   background-color: ${props => props.kind === KIND_INCOMING_MESSAGE ? '#1e61a1' : '#2d90c3'};
@@ -41,24 +42,46 @@ const Message = styled(Text)`
 const WaitingIcon = styled(EvilIcons)`
   position: absolute;
   bottom: 1px;
-  right: 0;
+  right: 2;
   color: white;
+`
+
+const Footer = styled(View)`
+  position: absolute;
+  bottom: 2px;
+  flex-direction: row;
+  ${props => {
+    if(props.kind === KIND_INCOMING_MESSAGE) {
+      return css`
+        left: 6;
+      `
+    } else {
+      return css`
+        right: 3;
+      `
+    }
+  }}
 `
 
 const CheckIcon = styled(AntDesign)`
-  position: absolute;
-  bottom: 2px;
-  right: 0;
   color: white;
 `
 
-const ChatBubble = ({ children, kind, waiting }) => {
+const DateText = styled(Text)`
+  font-size: 8px;
+  color: white;
+`
+
+const ChatBubble = ({ children, kind, waiting, date }) => {
   return (
     <Container kind={kind}>
       <Message kind={kind}>{children}</Message>
-      {kind === KIND_OUT_MESSAGE && (
-        waiting ? <WaitingIcon name='clock' /> : <CheckIcon name='check' />
-      )}
+      <Footer kind={kind}>
+        {date && <DateText>{date}</DateText>}
+        {kind === KIND_OUT_MESSAGE && (
+          waiting ? <WaitingIcon name='clock' /> : <CheckIcon name='check' size={8}/>
+        )}
+      </Footer>
     </Container>
   )
 }

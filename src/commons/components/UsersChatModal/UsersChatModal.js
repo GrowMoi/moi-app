@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, Text } from 'react-native';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, FlatList } from 'react-native';
 import styled from 'styled-components/native';
-// import button_close_img from '../../../../assets/images/miscelaneous/button_close.png'
 import { connect } from 'react-redux';
+import moment from 'moment'
 import * as usersChatActions from '../../../actions/chatActions'
 import Button from '../Buttons/Button';
 import Preloader from '../Preloader/Preloader';
 import ChatBubble from './ChatBubble'
+import { TextBody } from '../Typography'
 
 const Container = styled(View)`
   width: 100%;
@@ -67,6 +68,14 @@ const InputBox = styled(TextInput)`
   color: white;
 `
 
+const EmptyList = styled(View)`
+  align-items: center;
+`
+const EmptyText = styled(TextBody)`
+  text-align: center;
+  color: white;
+`
+
 const CloseButton = ({ onPress = () => null, style }) => {
   return (
     <TouchableOpacity style={style} onPress={onPress}>
@@ -107,11 +116,6 @@ const InputMessage = ({ onPressSend }) => {
   )
 }
 
-const ChatList = () => {
-  // TODO: create a chat list component with flat list.
-  return null;
-}
-
 const UsersChatModal = ({
   hiddenChatModal,
   chatIsVisible,
@@ -121,9 +125,11 @@ const UsersChatModal = ({
   messagesIsLoading,
   currentMessageState,
 }) => {
+  const refList = useRef(null)
+
   const getChatMessages = useCallback(
-    () => {
-      getMessages({
+    async () => {
+      return await getMessages({
         receiver_id: currentChatData.receiver_id,
         user_id: currentChatData.user_id,
       })
@@ -137,6 +143,8 @@ const UsersChatModal = ({
     }
   }, [chatIsVisible])
 
+  const keyMessages = Object.keys(currentChatData.messages);
+  const isInverted = keyMessages.length > 0;
   return (
     <Modal
       animationType="fade"
@@ -147,22 +155,46 @@ const UsersChatModal = ({
         <ChatBox behavior="height">
           <MessagesBox>
             {messagesIsLoading && <Preloader notFullScreen/>}
-            {!messagesIsLoading && Object.keys(currentChatData.messages).map((messageId) => {
-              const message = currentChatData.messages[messageId];
-              const waitingToSend = currentMessageState.message.id === messageId && currentMessageState.waiting;
-              return (
-                <ChatBubble
-                  waiting={waitingToSend}
-                  kind={message.kind}
-                  key={message.id}
-                >
-                  {message.message}
-                </ChatBubble>
-              )
-            })}
+            <FlatList
+              inverted={isInverted}
+              ref={refList}
+              data={(
+                keyMessages
+                  .map(id => currentChatData.messages[id])
+                  .reverse()
+              )}
+              keyExtractor={(item) => `message-${item.id}` }
+              ListEmptyComponent={() => {
+                if(!messagesIsLoading) {
+                  return (
+                    <EmptyList>
+                      <EmptyText>Escribe un mensaje para iniciar una conversación</EmptyText>
+                    </EmptyList>
+                  )
+                }
+
+                return null
+              }}
+              renderItem={({ item }) => {
+                const waitingToSend = currentMessageState.message.id === item.id && currentMessageState.waiting;
+
+                return (
+                  <ChatBubble
+                    waiting={waitingToSend}
+                    kind={item.kind}
+                    key={item.id}
+                    date={moment(item.created_at).format('HH:mm')}
+                  >
+                    {item.message}
+                  </ChatBubble>
+                )
+              }}
+            />
           </MessagesBox>
 
-          <InputMessage onPressSend={(message) => { sendMessage({ message, receiver_id: currentChatData.receiver_id }) }} />
+          <InputMessage onPressSend={async (message) => {
+            sendMessage({ message, receiver_id: currentChatData.receiver_id })
+          }} />
           <StyledCloseButton onPress={hiddenChatModal} />
         </ChatBox>
       </Container>

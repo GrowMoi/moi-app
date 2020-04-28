@@ -49,10 +49,12 @@ export const sendMessage = ({ message, receiver_id }) => async (dispatch, getSta
   const user = getState().user.profile;
   const messagesInfo = getState().usersChat.chat.current.messages;
   const tempID = _.uniqueId('temp_');
+  const date = new Date();
+  const time = date.getTime();
 
   const tempMessage = {
     "chat_with": (messagesInfo[0] || {}).chat_with,
-    "created_at": "2020-04-23T08:29:31.513-05:00",
+    "created_at": time,
     "id": tempID,
     "kind": "outgoing",
     "message": message,
