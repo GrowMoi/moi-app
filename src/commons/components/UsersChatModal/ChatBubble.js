@@ -40,9 +40,6 @@ const Message = styled(Text)`
 `
 
 const WaitingIcon = styled(EvilIcons)`
-  position: absolute;
-  bottom: 1px;
-  right: 2;
   color: white;
 `
 
@@ -79,7 +76,7 @@ const ChatBubble = ({ children, kind, waiting, date }) => {
       <Footer kind={kind}>
         {date && <DateText>{date}</DateText>}
         {kind === KIND_OUT_MESSAGE && (
-          waiting ? <WaitingIcon name='clock' /> : <CheckIcon name='check' size={8}/>
+          waiting ? <WaitingIcon name='clock' size={8}/> : <CheckIcon name='check' size={8}/>
         )}
       </Footer>
     </Container>

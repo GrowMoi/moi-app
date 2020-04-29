@@ -5,6 +5,8 @@ import * as Localization from 'expo-localization';
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import * as Font from 'expo-font';
 import { Dimensions, AsyncStorage, View } from 'react-native';
+import 'moment/locale/es'
+import * as moment from 'moment'
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
@@ -26,6 +28,7 @@ import AppContainer from './src/containers/App/AppContainer'
 import { Actions, ActionConst } from 'react-native-router-flux';
 import allVideos from './assets/videos'
 
+moment.locale('es');
 // addLocaleData([...en, ...es]);
 
 const allFonts = {

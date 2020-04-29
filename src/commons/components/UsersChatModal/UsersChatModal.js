@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, FlatList } from 'react-native';
+import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, SectionList, Text, FlatList } from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import moment from 'moment'
-import * as usersChatActions from '../../../actions/chatActions'
+import _ from 'lodash';
+import moment from 'moment';
+import * as usersChatActions from '../../../actions/chatActions';
 import Button from '../Buttons/Button';
 import Preloader from '../Preloader/Preloader';
 import ChatBubble from './ChatBubble'
-import { TextBody } from '../Typography'
+import { TextBody } from '../Typography';
 
 const Container = styled(View)`
   width: 100%;
@@ -116,6 +117,41 @@ const InputMessage = ({ onPressSend }) => {
   )
 }
 
+const BubbleWithTitle = styled(View)`
+`
+
+const TitleContainer = styled(View)`
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: row;
+  padding: 5px;
+  margin-top: 10px;
+`;
+
+const SectionTitle = styled(Text)`
+  color: #1d6991;
+  font-weight: bold;
+`
+
+const Line = styled(View)`
+  height: 1px;
+  flex: 1;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #1d6991;
+`
+
+const DayTitle = ({ children }) => {
+  return(
+    <TitleContainer>
+      <Line />
+      <SectionTitle>{children}</SectionTitle>
+      <Line />
+    </TitleContainer>
+  )
+}
+
 const UsersChatModal = ({
   hiddenChatModal,
   chatIsVisible,
@@ -125,7 +161,9 @@ const UsersChatModal = ({
   messagesIsLoading,
   currentMessageState,
 }) => {
-  const refList = useRef(null)
+  const keyMessages = Object.keys(currentChatData.messages);
+  const isInverted = keyMessages.length > 0;
+  const messages = keyMessages.map(id => currentChatData.messages[id]);
 
   const getChatMessages = useCallback(
     async () => {
@@ -143,8 +181,17 @@ const UsersChatModal = ({
     }
   }, [chatIsVisible])
 
-  const keyMessages = Object.keys(currentChatData.messages);
-  const isInverted = keyMessages.length > 0;
+  const groupsByDate = _.groupBy(messages, function (message) {
+    return moment(message.created_at).startOf('day').format();
+  })
+
+  const groupMessages = [];
+  Object.keys(groupsByDate).forEach(date => {
+    const messagesByDate = groupsByDate[date];
+    const messagessOfDay = { title: moment(date).format('dddd MMM D'), data: messagesByDate }
+    groupMessages.push(messagessOfDay);
+  });
+
   return (
     <Modal
       animationType="fade"
@@ -157,13 +204,8 @@ const UsersChatModal = ({
             {messagesIsLoading && <Preloader notFullScreen/>}
             <FlatList
               inverted={isInverted}
-              ref={refList}
-              data={(
-                keyMessages
-                  .map(id => currentChatData.messages[id])
-                  .reverse()
-              )}
-              keyExtractor={(item) => `message-${item.id}` }
+              data={groupMessages.reverse()}
+              keyExtractor={(item) => `message-${item.title}` }
               ListEmptyComponent={() => {
                 if(!messagesIsLoading) {
                   return (
@@ -175,19 +217,35 @@ const UsersChatModal = ({
 
                 return null
               }}
-              renderItem={({ item }) => {
-                const waitingToSend = currentMessageState.message.id === item.id && currentMessageState.waiting;
-
-                return (
-                  <ChatBubble
-                    waiting={waitingToSend}
-                    kind={item.kind}
-                    key={item.id}
-                    date={moment(item.created_at).format('HH:mm')}
-                  >
-                    {item.message}
-                  </ChatBubble>
-                )
+              renderItem={({ item: items }) => {
+                return items.data.map((item, i) => {
+                  const waitingToSend = currentMessageState.message.id === item.id && currentMessageState.waiting;
+                  if(i === 0) {
+                    return (
+                      <BubbleWithTitle key={item.id}>
+                        <DayTitle>{items.title}</DayTitle>
+                        <ChatBubble
+                          waiting={waitingToSend}
+                          kind={item.kind}
+                          key={item.id}
+                          date={moment(item.created_at).format('HH:mm')}
+                        >
+                          {item.message}
+                        </ChatBubble>
+                      </BubbleWithTitle>
+                    )
+                  }
+                  return (
+                    <ChatBubble
+                      waiting={waitingToSend}
+                      kind={item.kind}
+                      key={item.id}
+                      date={moment(item.created_at).format('HH:mm')}
+                    >
+                      {item.message}
+                    </ChatBubble>
+                  )
+                }).reverse()
               }}
             />
           </MessagesBox>
