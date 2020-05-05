@@ -27,6 +27,9 @@ import CustomSplash from './src/commons/components/CustomSplash/CustomSplash'
 import AppContainer from './src/containers/App/AppContainer'
 import { Actions, ActionConst } from 'react-native-router-flux';
 import allVideos from './assets/videos'
+import PusherService from './src/commons/utils/pusherService';
+
+PusherService.initClient();
 
 moment.locale('es');
 // addLocaleData([...en, ...es]);
