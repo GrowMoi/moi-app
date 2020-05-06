@@ -17,13 +17,25 @@ class PusherService {
     }
   }
 
-  static listen() {
-    // TODO
-
+  static listen(options, callback) {
+    const { channelName, eventName } = options || {};
+    if (this.pusherClient && this.pusherClient.subscribe) {
+      const channel = this.pusherClient.subscribe(channelName);
+      channel.bind('pusher:subscription_succeeded', () => {
+        channel.bind(eventName, callback);
+      });
+    } else {
+      console.error('Pucher client error');
+    }
   }
 
-  static unlisten() {
-    // TODO
+  static unlisten(options) {
+    const { channelName } = options || {};
+    if (this.pusherClient && this.pusherClient.unsubscribe) {
+      this.pusherClient.unsubscribe(channelName);
+    } else {
+      console.error('Pucher client error');
+    }
   }
 
 }
