@@ -22,14 +22,14 @@ class NotificationTabContainer extends PureComponent {
     // this.getData();
   }
 
-  getData = async () => {
-    const { getNotificationsAsync } = this.props;
-    try {
-      await getNotificationsAsync();
-    } catch (error) {
-      // console.log(error);
-    }
-  }
+  // getData = async () => {
+  //   const { getNotificationsAsync } = this.props;
+  //   try {
+  //     await getNotificationsAsync();
+  //   } catch (error) {
+  //     // console.log(error);
+  //   }
+  // }
 
   openContainer = () => {
     this.setState(prevState => ({ open: !prevState.open }));
@@ -91,7 +91,13 @@ class NotificationTabContainer extends PureComponent {
     if (isEvent) {
       title = this.isSuperEvent(item) ? 'Super Evento' : 'Eventos';
       description = this.isSuperEvent(item) ? '' : `(${item[0]})`;
-    } else {
+    } else if (item.type === 'user_chat') {
+      const prefix = item.chat.kind === 'outgoing' ? 'Yo' : 'mensaje:';
+
+      title = `Chat con: ${item.chat.chat_with}`;
+      description = `${prefix}: ${item.chat.message}`;
+    }
+    else {
       title = item.title;
       description = item.description;
     }
@@ -114,6 +120,8 @@ class NotificationTabContainer extends PureComponent {
   render() {
     const { title, icon, data } = this.props;
     const { open } = this.state;
+
+    console.log(data);
 
     return (
       <View style={styles.tasks}>
