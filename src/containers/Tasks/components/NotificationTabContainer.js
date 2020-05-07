@@ -95,7 +95,7 @@ class NotificationTabContainer extends PureComponent {
       const prefix = item.chat.kind === 'outgoing' ? 'Yo' : 'mensaje:';
 
       title = `Chat con: ${item.chat.chat_with}`;
-      description = `${prefix}: ${item.chat.message}`;
+      description = item.chat.message === 'start' ? '' : `${prefix}: ${item.chat.message}`;
     }
     else {
       title = item.title;
