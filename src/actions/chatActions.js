@@ -45,7 +45,7 @@ export const getMessages = ({ receiver_id, user_id }) => async dispatch => {
   }
 }
 
-export const sendMessage = ({ message, receiver_id }) => async (dispatch, getState) => {
+export const sendMessage = ({ message, receiver_id, room_chat_id }) => async (dispatch, getState) => {
   const user = getState().user.profile;
   const messagesInfo = getState().usersChat.chat.current.messages;
   const tempID = _.uniqueId('temp_');
@@ -56,10 +56,11 @@ export const sendMessage = ({ message, receiver_id }) => async (dispatch, getSta
     "chat_with": (messagesInfo[0] || {}).chat_with,
     "created_at": time,
     "id": tempID,
-    "kind": "outgoing",
+    "kind": 'outgoing',
     "message": message,
     "receiver_id": receiver_id,
     "sender_id": user.id,
+    "room_chat_id": room_chat_id,
     "sender_user": {
       "avatar": user.avatar,
       "email": user.email,
@@ -68,6 +69,7 @@ export const sendMessage = ({ message, receiver_id }) => async (dispatch, getSta
       "name": user.name,
       "username": user.username,
     },
+    "type": 'user',
   }
 
   dispatch({
@@ -76,7 +78,7 @@ export const sendMessage = ({ message, receiver_id }) => async (dispatch, getSta
   });
 
   try {
-    const res = await api.user.sendChatMessage({ message, receiver_id })
+    const res = await api.user.sendChatMessage({ message, receiver_id, room_chat_id })
 
     dispatch({
       type: actionTypes.SEND_CHAT_MESSAGE,
@@ -90,5 +92,26 @@ export const sendMessage = ({ message, receiver_id }) => async (dispatch, getSta
       payload: { error: error.message, tempMessageID: tempID },
     })
     throw new Error(error);
+  }
+}
+
+export const startChat = (receiver_id) => async dispatch => {
+  dispatch({
+    type: actionTypes.STARTING_CHAT,
+  });
+
+  try {
+    const res = await api.user.startChat({ receiver_id });
+    dispatch({
+      type: actionTypes.START_CHAT,
+      payload: res.data,
+    });
+    return res;
+  } catch (error) {
+    dispatch({
+      type: actionTypes.ERROR_TO_START_CHAT,
+      payload: error.message,
+    });
+    return error
   }
 }

@@ -6,6 +6,7 @@ const initialState = {
     chatIsVisible: false,
     current: {
       receiver_id: null,
+      room_chat_id: null,
       user_id: null,
       messages: [],
     },
@@ -22,6 +23,14 @@ const initialState = {
 
 const chat = (state = initialState.chat, action) => {
   switch (action.type) {
+    case actionTypes.START_CHAT:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          room_chat_id: action.payload.id,
+        }
+      }
     case actionTypes.SHOW_CHAT_MODAL:
       return {
         ...state,

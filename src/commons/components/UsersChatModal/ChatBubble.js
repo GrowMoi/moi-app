@@ -37,6 +37,11 @@ const Message = styled(Text)`
     }
     return css`text-align: left;`
   }}
+  ${props => {
+    if(props.waiting) {
+      return css`opacity: 0.5;`
+    }
+  }}
 `
 
 const WaitingIcon = styled(EvilIcons)`
@@ -72,7 +77,7 @@ const DateText = styled(Text)`
 const ChatBubble = ({ children, kind, waiting, date }) => {
   return (
     <Container kind={kind}>
-      <Message kind={kind}>{children}</Message>
+      <Message kind={kind} waiting={waiting}>{children}</Message>
       <Footer kind={kind}>
         {date && <DateText>{date}</DateText>}
         {kind === KIND_OUT_MESSAGE && (

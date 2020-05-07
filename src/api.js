@@ -131,14 +131,23 @@ const api = {
         throw new Error(error)
       }
     },
-    async sendChatMessage({ receiver_id, message }) {
+    async sendChatMessage({ receiver_id, message, room_chat_id }) {
       const endpoint = '/api/chats';
       try {
-        return await client.post(endpoint, { receiver_id, message });
+        return await client.post(endpoint, { receiver_id, message, room_chat_id });
       } catch (error) {
         throw new Error(error);
       }
-    }
+    },
+    async startChat({ receiver_id }) {
+      const endpoint = `/api/chats/start/${receiver_id}`;
+      try {
+        const res = await client.post(endpoint, {});
+        return res;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
   },
 
   leaderboard: {

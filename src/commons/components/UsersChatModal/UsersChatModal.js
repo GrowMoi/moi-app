@@ -10,6 +10,8 @@ import Preloader from '../Preloader/Preloader';
 import ChatBubble from './ChatBubble'
 import { TextBody } from '../Typography';
 
+const MESSAGE_TYPE_USER = 'user';
+
 const Container = styled(View)`
   width: 100%;
   height: 100%;
@@ -160,13 +162,26 @@ const UsersChatModal = ({
   sendMessage,
   messagesIsLoading,
   currentMessageState,
+  startChat,
 }) => {
   const keyMessages = Object.keys(currentChatData.messages);
   const isInverted = keyMessages.length > 0;
-  const messages = keyMessages.map(id => currentChatData.messages[id]);
+  const messages = keyMessages.map(id => currentChatData.messages[id])
+    .filter(msm => msm.type === MESSAGE_TYPE_USER)
+  const openFromProfile = true;
 
   const getChatMessages = useCallback(
     async () => {
+      //TODO: agregar el roomID en el store al iniciar el chat.
+      //TODO: al obtener los mensajes agregar el roomID en el store si tenemos mensajes.
+      //TODO: Eliminar los mensajes de inicio al iniciar el chat.
+      //TODO: al enviar un mensaje, agregar el parametro roomID en el flujo de redux, acciones, reducer, etc.
+      //TODO: al enviar un mensaje, cojer el roomID del store enviarlo.
+
+      if(openFromProfile) {
+        await startChat(currentChatData.receiver_id)
+      }
+
       return await getMessages({
         receiver_id: currentChatData.receiver_id,
         user_id: currentChatData.user_id,
@@ -251,7 +266,11 @@ const UsersChatModal = ({
           </MessagesBox>
 
           <InputMessage onPressSend={async (message) => {
-            sendMessage({ message, receiver_id: currentChatData.receiver_id })
+            sendMessage({
+              message,
+              receiver_id: currentChatData.receiver_id,
+              room_chat_id: currentChatData.room_chat_id || messages[messages.length - 1].room_chat_id,
+            })
           }} />
           <StyledCloseButton onPress={hiddenChatModal} />
         </ChatBox>
@@ -275,6 +294,7 @@ const mapDispatchToProps = {
   hiddenChatModal: usersChatActions.hiddenChatModal,
   getMessages: usersChatActions.getMessages,
   sendMessage: usersChatActions.sendMessage,
+  startChat: usersChatActions.startChat,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersChatModal);
