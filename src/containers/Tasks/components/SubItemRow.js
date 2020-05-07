@@ -10,7 +10,7 @@ const SubItemRow = (props) => {
     <View style={styles.rowContainer}>
       <View style={styles.titleContainer}>
         <Header customSize={Size.fontContentMinimized} ellipsizeMode='tail' numberOfLines={2}>{props.title}</Header>
-        <TextBody ellipsizeMode='tail' numberOfLines={2}>{props.description}</TextBody>
+        <TextBody inverted={props.descriptionInverted} ellipsizeMode='tail' numberOfLines={2}>{props.description}</TextBody>
       </View>
     </View>
   );

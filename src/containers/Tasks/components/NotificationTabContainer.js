@@ -104,6 +104,7 @@ class NotificationTabContainer extends PureComponent {
 
     return (
       <SubItemRow
+        descriptionInverted
         title={title}
         clickClose={isEvent ? null : () => this.onCloseNotification(item)}
         onPress={() => onClickItem(isEvent ? item[1] : item)}
