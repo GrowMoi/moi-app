@@ -115,3 +115,26 @@ export const startChat = (receiver_id) => async dispatch => {
     return error
   }
 }
+
+export const leaveChat = (room_chat_id) => async dispatch => {
+  dispatch({
+    type: actionTypes.LEAVING_CHAT,
+  });
+
+  try {
+    const res = await api.user.leaveChat({ room_chat_id });
+    dispatch({
+      type: actionTypes.LEFT_CHAT,
+      payload: res.data,
+    });
+
+    return res;
+  } catch (error){
+    dispatch({
+      type: actionTypes.ERROR_LEAVING,
+      payload: error,
+    });
+
+    throw error
+  }
+}

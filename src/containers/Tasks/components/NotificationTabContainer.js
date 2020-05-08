@@ -13,6 +13,8 @@ import eventsUtils from '../../Events/events-utils';
 import userActions from '../../../actions/userActions';
 import * as userChatActions from '../../../actions/chatActions'
 
+const NOTIFICATION_TYPE_USER_CHAT = 'user_chat';
+
 class NotificationTabContainer extends PureComponent {
   state = {
     open: false,
@@ -39,16 +41,25 @@ class NotificationTabContainer extends PureComponent {
   _keyExtractor = (item, index) => uuid();
 
   onCloseNotification = async (item) => {
-    const { readNotificationAsync, deleteNotification } = this.props;
+    const { readNotificationAsync, deleteNotification, leaveChat } = this.props;
 
-    try {
-      const { data = {} } = await readNotificationAsync(item.id);
-      if (data.deleted) {
+    if(item.type === NOTIFICATION_TYPE_USER_CHAT) {
+      try {
+        await leaveChat(item.id);
         deleteNotification(item.id);
+      } catch (error) {
+        console.log(error);
       }
+    } else {
+      try {
+        const { data = {} } = await readNotificationAsync(item.id);
+        if (data.deleted) {
+          deleteNotification(item.id);
+        }
 
-    } catch (error) {
-      console.log(error);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
@@ -92,7 +103,7 @@ class NotificationTabContainer extends PureComponent {
     if (isEvent) {
       title = this.isSuperEvent(item) ? 'Super Evento' : 'Eventos';
       description = this.isSuperEvent(item) ? '' : `(${item[0]})`;
-    } else if (item.type === 'user_chat') {
+    } else if (item.type === NOTIFICATION_TYPE_USER_CHAT) {
       const prefix = item.chat.kind === 'outgoing' ? 'Yo' : 'mensaje:';
 
       title = `Chat con: ${item.chat.chat_with}`;
@@ -109,7 +120,7 @@ class NotificationTabContainer extends PureComponent {
         title={title}
         clickClose={isEvent ? null : () => this.onCloseNotification(item)}
         onPress={() => {
-          if(item.type === 'user_chat') {
+          if(item.type === NOTIFICATION_TYPE_USER_CHAT) {
             showChatModal({
               receiver_id: item.chat.receiver_id,
               user_id: item.chat.sender_id,
@@ -193,6 +204,7 @@ const mapDispatchToProps = {
   readNotificationAsync: userActions.readNotificationAsync,
   deleteNotification: userActions.deleteNotification,
   showChatModal: userChatActions.showChatModal,
+  leaveChat: userChatActions.leaveChat,
 }
 
 

@@ -67,3 +67,6 @@ export const ERROR_TO_SEND_MESSAGE = 'ERROR_TO_SEND_MESSAGE';
 export const START_CHAT = 'START_CHAT';
 export const STARTING_CHAT = 'STARTING_CHAT';
 export const ERROR_TO_START_CHAT = 'ERROR_TO_START_CHAT';
+export const LEAVING_CHAT = 'LEAVING_CHAT';
+export const LEFT_CHAT = 'LEFT_CHAT';
+export const ERROR_LEAVING = 'ERROR_LEAVING';

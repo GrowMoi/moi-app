@@ -148,6 +148,15 @@ const api = {
         throw new Error(error);
       }
     },
+    async leaveChat({ room_chat_id }) {
+      const endpoint = `/api/chats/leave/${room_chat_id}`;
+      try {
+        const res = await client.put(endpoint, {})
+        return res;
+      } catch (error) {
+        throw error
+      }
+    },
   },
 
   leaderboard: {
