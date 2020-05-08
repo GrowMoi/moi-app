@@ -164,35 +164,30 @@ const UsersChatModal = ({
   currentMessageState,
   startChat,
 }) => {
+  const [loading, setLoading] = useState(true)
   const keyMessages = Object.keys(currentChatData.messages);
-  const isInverted = keyMessages.length > 0;
   const messages = keyMessages.map(id => currentChatData.messages[id])
-    .filter(msm => msm.type === MESSAGE_TYPE_USER)
+    .filter(msm => msm.type === MESSAGE_TYPE_USER);
+
+  const isInverted = messages.length > 0;
   const openFromProfile = true;
-
-  const getChatMessages = useCallback(
-    async () => {
-      //TODO: agregar el roomID en el store al iniciar el chat.
-      //TODO: al obtener los mensajes agregar el roomID en el store si tenemos mensajes.
-      //TODO: Eliminar los mensajes de inicio al iniciar el chat.
-      //TODO: al enviar un mensaje, agregar el parametro roomID en el flujo de redux, acciones, reducer, etc.
-      //TODO: al enviar un mensaje, cojer el roomID del store enviarlo.
-
-      if(openFromProfile) {
-        await startChat(currentChatData.receiver_id)
-      }
-
-      return await getMessages({
-        receiver_id: currentChatData.receiver_id,
-        user_id: currentChatData.user_id,
-      })
-    },
-    [currentChatData.receiver_id, currentChatData.user_id]
-  );
 
   useEffect(() => {
     if(chatIsVisible) {
-      getChatMessages();
+      const getChatMessages = async () => {
+        if(openFromProfile) {
+          await startChat(currentChatData.receiver_id)
+        }
+
+        await getMessages({
+          receiver_id: currentChatData.receiver_id,
+          user_id: currentChatData.user_id,
+        })
+
+        setLoading(false);
+      }
+
+      getChatMessages()
     }
   }, [chatIsVisible])
 
@@ -212,6 +207,9 @@ const UsersChatModal = ({
       animationType="fade"
       visible={chatIsVisible}
       transparent={true}
+      onDismiss={() => {
+        setLoading(true);
+      }}
     >
       <Container>
         <ChatBox behavior="height">
@@ -222,10 +220,10 @@ const UsersChatModal = ({
               data={groupMessages.reverse()}
               keyExtractor={(item) => `message-${item.title}` }
               ListEmptyComponent={() => {
-                if(!messagesIsLoading) {
+                if((!messagesIsLoading && messages.length === 0)) {
                   return (
                     <EmptyList>
-                      <EmptyText>Escribe un mensaje para iniciar una conversación</EmptyText>
+                      {!loading && <EmptyText>Escribe un mensaje para iniciar una conversación</EmptyText>}
                     </EmptyList>
                   )
                 }

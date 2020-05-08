@@ -11,6 +11,7 @@ import eventsUtils from '../../Events/events-utils';
 
 // Actions
 import userActions from '../../../actions/userActions';
+import * as userChatActions from '../../../actions/chatActions'
 
 class NotificationTabContainer extends PureComponent {
   state = {
@@ -81,7 +82,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   _renderItem = ({ item }) => {
-    const { onClickItem = () => null } = this.props;
+    const { onClickItem = () => null, showChatModal } = this.props;
 
     const isEvent = this.isEvent(item);
 
@@ -107,7 +108,16 @@ class NotificationTabContainer extends PureComponent {
         descriptionInverted
         title={title}
         clickClose={isEvent ? null : () => this.onCloseNotification(item)}
-        onPress={() => onClickItem(isEvent ? item[1] : item)}
+        onPress={() => {
+          if(item.type === 'user_chat') {
+            showChatModal({
+              receiver_id: item.chat.receiver_id,
+              user_id: item.chat.sender_id,
+            })
+          } else {
+            onClickItem(isEvent ? item[1] : item)
+          }
+        }}
         description={description}
       />
     );
@@ -121,8 +131,6 @@ class NotificationTabContainer extends PureComponent {
   render() {
     const { title, icon, data } = this.props;
     const { open } = this.state;
-
-    console.log(data);
 
     return (
       <View style={styles.tasks}>
@@ -184,6 +192,7 @@ const mapDispatchToProps = {
   loadMoreNotificationsAsync: userActions.loadMoreNotificationsAsync,
   readNotificationAsync: userActions.readNotificationAsync,
   deleteNotification: userActions.deleteNotification,
+  showChatModal: userChatActions.showChatModal,
 }
 
 
