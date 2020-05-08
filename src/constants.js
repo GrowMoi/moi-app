@@ -7,3 +7,4 @@ export const URL_BASE = __DEV__ ? 'https://backend.miaulabdp.com' : 'https://bac
 export const WEB_URL_BASE = __DEV__ ? 'https://aula.miaulabdp.com' : 'https://aula.miaulabdp.com';
 export const CLOUDINARY_BASE = 'https://api.cloudinary.com';
 export const ACHIEVEMENT_FINAL_QUIZ_NUMBER = 7;
+export const PUSHER_KEY =  __DEV__ ? '2fd9acbd37b06708983b' : ''; // TODO Add production key

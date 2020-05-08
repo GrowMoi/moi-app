@@ -22,8 +22,7 @@ import TutorGenericAlert from '../../commons/components/Alert/TutorGenericAlert'
 import EventModal from '../Events/EventModal';
 import LeaderBoardModal from '../LeaderBoard/LeaderboardModal';
 import leaderboardActions from '../../actions/leaderboardActions';
-
-
+import PusherService from '../../commons/utils/pusherService';
 class TasksContainer extends Component {
   state = {
     loading: false,
@@ -34,7 +33,17 @@ class TasksContainer extends Component {
     superEvent: {},
   }
 
+  onChatMessageReceived(data) {
+    // TODO
+  }
+
   componentDidMount() {
+    const { profile } = this.props;
+    const userChatNotificationChannel = {
+      channelName: `userchatsnotifications.${profile.id}`,
+      eventName: 'newmessage',
+    }
+    PusherService.listen(userChatNotificationChannel, this.onChatMessageReceived)
     this.getData();
   }
 
@@ -167,6 +176,11 @@ class TasksContainer extends Component {
           cancelText='Ok'
           videoUrl={((itemSelected || {}).videos[0]) || ''}
         />
+      )
+    } else if (itemSelected.type ===  'user_chat') {
+      // TODO
+      return (
+        <View></View>
       )
     }
     else {

@@ -75,6 +75,10 @@ class NotificationTabContainer extends PureComponent {
     return Array.isArray(item);
   }
 
+  isChat = item => {
+    return item.type === 'user_chat';
+  }
+
   isSuperEvent = item => {
     return item[0] === 'super_event';
   }
@@ -83,6 +87,7 @@ class NotificationTabContainer extends PureComponent {
     const { onClickItem = () => null, showChatModal } = this.props;
 
     const isEvent = this.isEvent(item);
+    const isChat = this.isChat(item);
 
     let title;
     let description;
@@ -90,13 +95,14 @@ class NotificationTabContainer extends PureComponent {
     if (isEvent) {
       title = this.isSuperEvent(item) ? 'Super Evento' : 'Eventos';
       description = this.isSuperEvent(item) ? '' : `(${item[0]})`;
-    } else if (item.type === NOTIFICATION_TYPE_USER_CHAT) {
-      const prefix = item.chat.kind === 'outgoing' ? 'Yo' : 'mensaje:';
-
-      title = `Chat con: ${item.chat.chat_with}`;
-      description = item.chat.message === 'start' ? '' : `${prefix}: ${item.chat.message}`;
-    }
-    else {
+    } else if (isChat) {
+      const chatData = item.chat || {};
+      const receiverName = chatData.chat_with;
+      title = `Chat con ${receiverName}`;
+      const lastSender = (chatData.kind === 'outgoing') ? 'Yo' : `${receiverName}`;
+      const lastMessage = chatData.message;
+      description = `${lastSender}: ${lastMessage}`;
+    } else {
       title = item.title;
       description = item.description;
     }
