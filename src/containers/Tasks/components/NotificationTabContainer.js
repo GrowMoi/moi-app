@@ -13,8 +13,6 @@ import eventsUtils from '../../Events/events-utils';
 import userActions from '../../../actions/userActions';
 import * as userChatActions from '../../../actions/chatActions'
 
-const NOTIFICATION_TYPE_USER_CHAT = 'user_chat';
-
 class NotificationTabContainer extends PureComponent {
   state = {
     open: false,
@@ -29,8 +27,9 @@ class NotificationTabContainer extends PureComponent {
 
   onCloseNotification = async (item) => {
     const { readNotificationAsync, deleteNotification, leaveChat } = this.props;
+    const isChat = this.isChat(item);
 
-    if(item.type === NOTIFICATION_TYPE_USER_CHAT) {
+    if(isChat) {
       try {
         await leaveChat(item.id);
         deleteNotification(item.id);
@@ -101,7 +100,7 @@ class NotificationTabContainer extends PureComponent {
       title = `Chat con ${receiverName}`;
       const lastSender = (chatData.kind === 'outgoing') ? 'Yo' : `${receiverName}`;
       const lastMessage = chatData.message;
-      description = `${lastSender}: ${lastMessage}`;
+      description = chatData.type === 'system' ? '' : `${lastSender}: ${lastMessage}`;
     } else {
       title = item.title;
       description = item.description;
@@ -113,7 +112,7 @@ class NotificationTabContainer extends PureComponent {
         title={title}
         clickClose={isEvent ? null : () => this.onCloseNotification(item)}
         onPress={() => {
-          if(item.type === NOTIFICATION_TYPE_USER_CHAT) {
+          if(isChat) {
             showChatModal({
               receiver_id: item.chat.receiver_id,
               user_id: item.chat.sender_id,
