@@ -21,19 +21,6 @@ class NotificationTabContainer extends PureComponent {
     isLoading: false,
   }
 
-  componentDidMount() {
-    // this.getData();
-  }
-
-  // getData = async () => {
-  //   const { getNotificationsAsync } = this.props;
-  //   try {
-  //     await getNotificationsAsync();
-  //   } catch (error) {
-  //     // console.log(error);
-  //   }
-  // }
-
   openContainer = () => {
     this.setState(prevState => ({ open: !prevState.open }));
   }

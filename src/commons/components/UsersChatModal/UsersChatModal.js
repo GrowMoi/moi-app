@@ -170,12 +170,12 @@ const UsersChatModal = ({
     .filter(msm => msm.type === MESSAGE_TYPE_USER);
 
   const isInverted = messages.length > 0;
-  const openFromProfile = true;
+  const openedFromProfile = currentChatData.openedFromProfile;
 
   useEffect(() => {
     if(chatIsVisible) {
       const getChatMessages = async () => {
-        if(openFromProfile) {
+        if(openedFromProfile) {
           await startChat(currentChatData.receiver_id)
         }
 

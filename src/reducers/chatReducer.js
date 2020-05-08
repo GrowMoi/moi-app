@@ -5,6 +5,7 @@ const initialState = {
   chat: {
     chatIsVisible: false,
     current: {
+      openedFromProfile: false,
       receiver_id: null,
       room_chat_id: null,
       user_id: null,
@@ -37,8 +38,7 @@ const chat = (state = initialState.chat, action) => {
         chatIsVisible: true,
         current: {
           ...state.current,
-          receiver_id: action.payload.receiver_id,
-          user_id: action.payload.user_id,
+          ...action.payload,
         }
       };
     case actionTypes.HIDDEN_CHAT_MODAL:

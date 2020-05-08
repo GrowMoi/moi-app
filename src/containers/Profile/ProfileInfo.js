@@ -118,6 +118,7 @@ const ProfileInfo = ({ data, isShared = false, onClickEdit, tabsData, onClickSig
       showChatModal({
         receiver_id: ((data || {}).profile || {}).id,
         user_id: user.id,
+        openedFromProfile: true,
       });
     },
     [((data || {}).profile || {}).id],
