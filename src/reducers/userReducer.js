@@ -245,6 +245,16 @@ const notificationDetails = (state = initialState.notificationDetails, action) =
         total: totalCounterUpdated,
       };
     }
+    case actionTypes.INCREASE_NOTIFICATION_DETAILS_COUNTER: {
+      const { notifications, total } = state;
+      const notificationsCounterUpdated = notifications >= 0 ? notifications + 1 : notifications;
+      const totalCounterUpdated = total >= 0 ? total + 1 : total;
+      return {
+        ...state,
+        notifications: notificationsCounterUpdated,
+        total: totalCounterUpdated,
+      };
+    }
     default:
       return state;
   }

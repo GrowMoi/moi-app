@@ -34,7 +34,9 @@ class TasksContainer extends Component {
   }
 
   onChatMessageReceived(data) {
-    // TODO
+    // TODO Move this to another side
+    const { increaseNotificationCounter } = this.props;
+    if (increaseNotificationCounter) increaseNotificationCounter();
   }
 
   componentDidMount() {
@@ -43,7 +45,8 @@ class TasksContainer extends Component {
       channelName: `userchatsnotifications.${profile.id}`,
       eventName: 'newmessage',
     }
-    PusherService.listen(userChatNotificationChannel, this.onChatMessageReceived)
+
+    PusherService.listen(userChatNotificationChannel, (data) => this.onChatMessageReceived(data))
     this.getData();
   }
 
@@ -294,6 +297,7 @@ const mapDispatchToProps = {
   getNotificationsAsync: userActions.getNotificationsAsync,
   getEventsWeekAsync: userActions.getEventsWeekAsync,
   getLeaderboardAsync: leaderboardActions.getLeadersAsync,
+  increaseNotificationCounter: userActions.increaseNotificationCounter,
 }
 
 export default connect(

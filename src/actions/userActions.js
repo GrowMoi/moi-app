@@ -523,6 +523,10 @@ const deleteNotification = (id) => (dispatch) => {
   dispatch({ type: actionTypes.DECREASE_NOTIFICATION_DETAILS_COUNTER });
 }
 
+const increaseNotificationCounter =() => (dispatch) => {
+  dispatch({ type: actionTypes.INCREASE_NOTIFICATION_DETAILS_COUNTER });
+}
+
 const loadExternalQuizAsync = (quizId, playerId) => async (dispatch) => {
   try {
     const res = await api.players.getQuizForPlayer(quizId, playerId);
@@ -794,4 +798,5 @@ export default {
   getContentsToLearnAsync,
   getMoreContentsToLearnAsync,
   resetData,
+  increaseNotificationCounter,
 };
