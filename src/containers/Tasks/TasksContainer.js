@@ -22,7 +22,7 @@ import TutorGenericAlert from '../../commons/components/Alert/TutorGenericAlert'
 import EventModal from '../Events/EventModal';
 import LeaderBoardModal from '../LeaderBoard/LeaderboardModal';
 import leaderboardActions from '../../actions/leaderboardActions';
-import PusherService from '../../commons/utils/pusherService';
+
 class TasksContainer extends Component {
   state = {
     loading: false,
@@ -33,20 +33,7 @@ class TasksContainer extends Component {
     superEvent: {},
   }
 
-  onChatMessageReceived(data) {
-    // TODO Move this to another side
-    const { increaseNotificationCounter } = this.props;
-    if (increaseNotificationCounter) increaseNotificationCounter();
-  }
-
   componentDidMount() {
-    const { profile } = this.props;
-    const userChatNotificationChannel = {
-      channelName: `userchatsnotifications.${profile.id}`,
-      eventName: 'newmessage',
-    }
-
-    PusherService.listen(userChatNotificationChannel, (data) => this.onChatMessageReceived(data))
     this.getData();
   }
 
@@ -297,7 +284,6 @@ const mapDispatchToProps = {
   getNotificationsAsync: userActions.getNotificationsAsync,
   getEventsWeekAsync: userActions.getEventsWeekAsync,
   getLeaderboardAsync: leaderboardActions.getLeadersAsync,
-  increaseNotificationCounter: userActions.increaseNotificationCounter,
 }
 
 export default connect(

@@ -12,7 +12,7 @@ import tutorActions from '../../../actions/tutorActions';
 import withSound from '../../utils/withSound';
 import { Size } from '../../styles';
 import deviceUtils from '../../utils/device-utils';
-import eventsUtils from '../../../containers/Events/events-utils';
+import PusherService from '../../utils/pusherService';
 
 const wCommonBtn = 194;
 const hCommonBtn = 73;
@@ -132,6 +132,15 @@ class BottomBarWithButtons extends Component {
     await getEventsWeekAsync();
   }
 
+  componentDidMount() {
+    const { profile } = this.props;
+    const userChatNotificationChannel = {
+      channelName: `userchatsnotifications.${profile.id}`,
+      eventName: 'newmessage',
+    }
+    PusherService.listen(userChatNotificationChannel, (data) => this.onChatMessageReceived(data))
+  }
+
   shouldComponentUpdate(newProps){
     const currentCount = this.getNotificationsCount(this.props);
     const newCount = this.getNotificationsCount(newProps);
@@ -197,6 +206,11 @@ class BottomBarWithButtons extends Component {
           size={Size.badgeTaskSize} />
       </View>
     );
+  }
+
+  onChatMessageReceived(data) {
+    const { increaseNotificationCounter } = this.props;
+    if (increaseNotificationCounter) increaseNotificationCounter();
   }
 
   get separatorWidth () {
@@ -283,6 +297,7 @@ const mapStateToProps = (state) => ({
   scene: state.routes.scene,
   contentsToLearn: state.user.contentsToLearn,
   eventsWeek: state.user.eventsWeek,
+  profile: state.user.profile,
 })
 
 const mapDispatchToProps = {
@@ -292,6 +307,7 @@ const mapDispatchToProps = {
   getTutorDetailsAsync: tutorActions.getTutorDetailsAsync,
   getContentsToLearnAsync: userActions.getContentsToLearnAsync,
   getEventsWeekAsync: userActions.getEventsWeekAsync,
+  increaseNotificationCounter: userActions.increaseNotificationCounter,
 }
 
 
