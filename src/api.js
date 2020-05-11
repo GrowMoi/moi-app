@@ -124,9 +124,9 @@ const api = {
       return res;
     },
     async getChatMessages({ receiver_id, user_id }) {
-      const endpoint = `/api/chats/user/${receiver_id}`;
+      const endpoint = `/api/chats/user/${user_id}`;
       try {
-        return await client.get(endpoint, { params: { user_id  } })
+        return await client.get(endpoint, { params: { user_id: receiver_id  } })
       } catch (error) {
         throw new Error(error)
       }
