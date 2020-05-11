@@ -77,6 +77,17 @@ const chat = (state = initialState.chat, action) => {
     case actionTypes.ERROR_TO_SEND_MESSAGE:
       delete state.current.messages[action.payload.tempMessageID]
       return state;
+    case actionTypes.PUSH_CHAT_MESSAGE:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          messages: {
+            ...state.current.messages,
+            [action.payload.id]: action.payload,
+          }
+        }
+      };
     default:
       return state;
   }

@@ -9,6 +9,7 @@ import Button from '../Buttons/Button';
 import Preloader from '../Preloader/Preloader';
 import ChatBubble from './ChatBubble'
 import { TextBody } from '../Typography';
+import PusherService from '../../utils/pusherService';
 
 const MESSAGE_TYPE_USER = 'user';
 
@@ -163,6 +164,8 @@ const UsersChatModal = ({
   messagesIsLoading,
   currentMessageState,
   startChat,
+  pushMessage,
+  profile,
 }) => {
   const [loading, setLoading] = useState(true)
   const keyMessages = Object.keys(currentChatData.messages);
@@ -188,6 +191,17 @@ const UsersChatModal = ({
       }
 
       getChatMessages()
+
+      const userChatNotificationChannel = {
+        channelName: `userchatsnotifications.${profile.id}`,
+        eventName: 'newmessage',
+        action: {
+          id: 'ChatModalCb',
+          callback: pushMessage
+        }
+      }
+
+      PusherService.listen(userChatNotificationChannel);
     }
   }, [chatIsVisible])
 
@@ -285,6 +299,7 @@ const mapStateToProps = (state) => {
     messagesIsLoading: state.usersChat.chat.loading,
     error: state.usersChat.chat.error,
     currentMessageState: state.usersChat.currentMessageState,
+    profile: state.user.profile,
   }
 }
 
@@ -293,6 +308,7 @@ const mapDispatchToProps = {
   getMessages: usersChatActions.getMessages,
   sendMessage: usersChatActions.sendMessage,
   startChat: usersChatActions.startChat,
+  pushMessage: usersChatActions.pushMessage,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersChatModal);

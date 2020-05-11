@@ -138,3 +138,10 @@ export const leaveChat = (room_chat_id) => async dispatch => {
     throw error
   }
 }
+
+export const pushMessage = (chatMessagePayload) => dispatch => {
+  dispatch({
+    type: actionTypes.PUSH_CHAT_MESSAGE,
+    payload: chatMessagePayload,
+  });
+}

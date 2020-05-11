@@ -71,3 +71,4 @@ export const ERROR_TO_START_CHAT = 'ERROR_TO_START_CHAT';
 export const LEAVING_CHAT = 'LEAVING_CHAT';
 export const LEFT_CHAT = 'LEFT_CHAT';
 export const ERROR_LEAVING = 'ERROR_LEAVING';
+export const PUSH_CHAT_MESSAGE = 'PUSH_CHAT_MESSAGE';

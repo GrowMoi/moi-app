@@ -137,8 +137,14 @@ class BottomBarWithButtons extends Component {
     const userChatNotificationChannel = {
       channelName: `userchatsnotifications.${profile.id}`,
       eventName: 'newmessage',
+      action: {
+        id: 'BottomBarCb',
+        callback: (data) => {
+          this.onChatMessageReceived(data)
+        }
+      }
     }
-    PusherService.listen(userChatNotificationChannel, (data) => this.onChatMessageReceived(data))
+    PusherService.listen(userChatNotificationChannel)
   }
 
   shouldComponentUpdate(newProps){
