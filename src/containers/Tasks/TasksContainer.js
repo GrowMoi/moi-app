@@ -167,13 +167,7 @@ class TasksContainer extends Component {
           videoUrl={((itemSelected || {}).videos[0]) || ''}
         />
       )
-    } else if (itemSelected.type ===  'user_chat') {
-      // TODO
-      return (
-        <View></View>
-      )
-    }
-    else {
+    } else {
       return (
         <GenericAlert
           message={itemSelected.title}
