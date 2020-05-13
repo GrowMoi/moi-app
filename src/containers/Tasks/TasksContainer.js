@@ -29,7 +29,6 @@ class TasksContainer extends Component {
     isAlertOpen: false,
     alertType: false,
     itemSelected: {},
-    enableScroll: true,
     superEvent: {},
   }
 
@@ -179,8 +178,10 @@ class TasksContainer extends Component {
     }
   }
 
-  enableMainScroll = (scrollEnabled) => () => {
-    this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
+  enableMainScroll = (scrollEnabled = true) => {
+    if(this.scrollRef) {
+      this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
+    }
   }
 
   render() {
@@ -194,7 +195,10 @@ class TasksContainer extends Component {
     return (
       <View style={styles.container}>
         <Header title='Mis Tareas' />
-        <ScrollView ref={(e) => { this.scrollRef = e }}>
+        <ScrollView
+          style={{flexGrow: 1}}
+          ref={(e) => { this.scrollRef = e }}
+        >
           {!loading && <View style={styles.scrollContainer}>
             <NotesTabContainer
               title='Notas'
@@ -205,8 +209,8 @@ class TasksContainer extends Component {
               title='Contenidos por aprender'
               icon='calendar'
               onClickItem={(item) => this.onPressNotification(item)}
-              enableScroll={this.enableMainScroll(true)}
-              disableScroll={this.enableMainScroll(false)}
+              enableScroll={() => this.enableMainScroll(true)}
+              disableScroll={() => this.enableMainScroll(false)}
             />
             <TaskTabContainer
               title='Contenidos Guardados'
@@ -214,6 +218,8 @@ class TasksContainer extends Component {
               onClickItem={item => this.onPressItem(item)}
             />
             <NotificationTabContainer
+              onTouchStart={() => { this.enableMainScroll(false)}}
+              onMomentumScrollEnd={() => { this.enableMainScroll(true) }}
               title='Notificaciones'
               icon='bell'
               onClickItem={(item) => this.onPressNotification(item)}
@@ -222,8 +228,8 @@ class TasksContainer extends Component {
               title='Favoritos'
               icon='star'
               onClickItem={item => this.onPressItem(item)}
-              enableScroll={this.enableMainScroll(true)}
-              disableScroll={this.enableMainScroll(false)}
+              enableScroll={() => this.enableMainScroll(true)}
+              disableScroll={() => this.enableMainScroll(false)}
             />
           </View>}
           {loading && <Preloader notFullScreen />}

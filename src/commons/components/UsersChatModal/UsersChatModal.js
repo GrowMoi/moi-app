@@ -1,5 +1,17 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Modal, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, SectionList, Text, FlatList } from 'react-native';
+import {
+  Modal,
+  View,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  KeyboardAvoidingView,
+  SectionList,
+  Text,
+  FlatList,
+  Dimensions,
+  Platform,
+} from 'react-native';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -11,17 +23,19 @@ import ChatBubble from './ChatBubble'
 import { TextBody } from '../Typography';
 import PusherService from '../../utils/pusherService';
 
+const { width, height } = Dimensions.get('screen');
+
 const MESSAGE_TYPE_USER = 'user';
 
 const Container = styled(View)`
-  width: 100%;
-  height: 100%;
+  width: ${width};
+  height: ${height};
   background: rgba(0,0,0,0.8);
   align-items: flex-start;
   justify-content: flex-start;
   padding-horizontal: 20px;
-  padding-bottom: 40px;
-  padding-top: 50px;
+  padding-bottom: ${Platform.OS === 'ios' ? '40px' : '20px'};
+  padding-top: ${Platform.OS === 'ios' ? '50px' : '20px'};
 `
 
 const ChatBox = styled(KeyboardAvoidingView)`

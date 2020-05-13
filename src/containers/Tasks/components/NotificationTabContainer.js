@@ -83,7 +83,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   _renderItem = ({ item }) => {
-    const { onClickItem = () => null, showChatModal } = this.props;
+    const { onClickItem = () => null, showChatModal, onMomentumScrollEnd } = this.props;
 
     const isEvent = this.isEvent(item);
     const isChat = this.isChat(item);
@@ -117,6 +117,7 @@ class NotificationTabContainer extends PureComponent {
               receiver_id: item.chat.receiver_id,
               user_id: item.chat.sender_id,
             })
+            if(onMomentumScrollEnd) onMomentumScrollEnd();
           } else {
             onClickItem(isEvent ? item[1] : item)
           }
@@ -132,7 +133,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   render() {
-    const { title, icon, data } = this.props;
+    const { title, icon, data, onTouchStart, onMomentumScrollEnd } = this.props;
     const { open } = this.state;
 
     return (
@@ -150,6 +151,12 @@ class NotificationTabContainer extends PureComponent {
               ListEmptyComponent={
                 <TextBody style={styles.emptyText} center>{`No tienes ${(title || '').toLowerCase()}.`}</TextBody>
               }
+              onTouchStart={() => {
+                if(onTouchStart) onTouchStart()
+              }}
+              onScrollEndDrag={() => {
+                if(onMomentumScrollEnd) onMomentumScrollEnd();
+              }}
             />
           </View>
         )}
@@ -168,6 +175,7 @@ const styles = StyleSheet.create(
     },
     subItemContainer: {
       backgroundColor: Palette.tasksSubList,
+      position: 'relative',
       width: '95%',
       marginRight: 5,
       marginLeft: 5,
@@ -179,7 +187,6 @@ const styles = StyleSheet.create(
       borderTopRightRadius: 10,
       paddingTop: 10,
       paddingBottom: 10,
-      zIndex: -9
     },
   }
 )
