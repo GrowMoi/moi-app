@@ -41,7 +41,7 @@ const Container = styled(View)`
 const ChatBox = styled(KeyboardAvoidingView)`
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 95%;
   background-color: rgba(57, 175, 242, 0.5);
   border-color: #1d61a1;
   border-width: 10px;
