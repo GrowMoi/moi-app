@@ -83,7 +83,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   _renderItem = ({ item }) => {
-    const { onClickItem = () => null, showChatModal, onMomentumScrollEnd } = this.props;
+    const { onClickItem = () => null, showChatModal, onMomentumScrollEnd, profile } = this.props;
 
     const isEvent = this.isEvent(item);
     const isChat = this.isChat(item);
@@ -113,9 +113,12 @@ class NotificationTabContainer extends PureComponent {
         clickClose={isEvent ? null : () => this.onCloseNotification(item)}
         onPress={() => {
           if(isChat) {
+            const receiverId = profile.id === item.chat.sender_id ?
+              item.chat.receiver_id :
+              item.chat.sender_id;
             showChatModal({
-              receiver_id: item.chat.receiver_id,
-              user_id: item.chat.sender_id,
+              receiver_id: receiverId,
+              user_id: profile.id,
             })
             if(onMomentumScrollEnd) onMomentumScrollEnd();
           } else {
@@ -195,6 +198,7 @@ const mapStateToProps = (state) => ({
   data: state.user.notifications,
   events: state.user.eventsWeek,
   notificationDetails: state.user.notificationDetails,
+  profile: state.user.profile,
 })
 
 const mapDispatchToProps = {

@@ -179,7 +179,6 @@ const UsersChatModal = ({
   currentMessageState,
   startChat,
   pushMessage,
-  profile,
 }) => {
   const [loading, setLoading] = useState(true)
   const keyMessages = Object.keys(currentChatData.messages);
@@ -207,7 +206,7 @@ const UsersChatModal = ({
       getChatMessages()
 
       const userChatNotificationChannel = {
-        channelName: `userchatsnotifications.${profile.id}`,
+        channelName: `userchatsnotifications.${currentChatData.user_id}`,
         eventName: 'newmessage',
         action: {
           id: 'ChatModalCb',
@@ -313,7 +312,6 @@ const mapStateToProps = (state) => {
     messagesIsLoading: state.usersChat.chat.loading,
     error: state.usersChat.chat.error,
     currentMessageState: state.usersChat.currentMessageState,
-    profile: state.user.profile,
   }
 }
 
