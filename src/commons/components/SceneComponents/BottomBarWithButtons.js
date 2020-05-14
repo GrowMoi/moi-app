@@ -216,8 +216,7 @@ class BottomBarWithButtons extends Component {
   }
 
   onChatMessageReceived(data) {
-    const { increaseNotificationCounter, pushMessage } = this.props;
-    pushMessage(data);
+    const { increaseNotificationCounter } = this.props;
     increaseNotificationCounter();
   }
 
@@ -316,7 +315,6 @@ const mapDispatchToProps = {
   getContentsToLearnAsync: userActions.getContentsToLearnAsync,
   getEventsWeekAsync: userActions.getEventsWeekAsync,
   increaseNotificationCounter: userActions.increaseNotificationCounter,
-  pushMessage: usersChatActions.pushMessage,
 }
 
 
