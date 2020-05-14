@@ -82,6 +82,19 @@ class NotificationTabContainer extends PureComponent {
     return item[0] === 'super_event';
   }
 
+  formaLastChatMessageMeta = (item) => {
+    const chatData = item.chat || {};
+    const receiverName = chatData.chat_with;
+    const title = `Chat con ${receiverName}`;
+    const lastSender = (chatData.kind === 'outgoing') ? 'Yo' : `${receiverName}`;
+    const lastMessage = chatData.message;
+    const description = chatData.type === 'system' ? '' : `${lastSender}: ${lastMessage}`;
+    return {
+      title,
+      description
+    }
+  }
+
   _renderItem = ({ item }) => {
     const { onClickItem = () => null, showChatModal, onMomentumScrollEnd, profile } = this.props;
 
@@ -95,12 +108,9 @@ class NotificationTabContainer extends PureComponent {
       title = this.isSuperEvent(item) ? 'Super Evento' : 'Eventos';
       description = this.isSuperEvent(item) ? '' : `(${item[0]})`;
     } else if (isChat) {
-      const chatData = item.chat || {};
-      const receiverName = chatData.chat_with;
-      title = `Chat con ${receiverName}`;
-      const lastSender = (chatData.kind === 'outgoing') ? 'Yo' : `${receiverName}`;
-      const lastMessage = chatData.message;
-      description = chatData.type === 'system' ? '' : `${lastSender}: ${lastMessage}`;
+      const meta = this.formaLastChatMessageMeta(item);
+      title = meta.title;
+      description = meta.description;
     } else {
       title = item.title;
       description = item.description;

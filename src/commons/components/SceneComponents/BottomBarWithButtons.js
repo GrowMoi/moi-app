@@ -8,6 +8,7 @@ import { isIphoneX } from 'react-native-device-detection';
 import { getHeightAspectRatio } from '../../utils';
 import Badge from '../Badge/Badge';
 import userActions from '../../../actions/userActions';
+import * as usersChatActions from '../../../actions/chatActions';
 import tutorActions from '../../../actions/tutorActions';
 import withSound from '../../utils/withSound';
 import { Size } from '../../styles';
@@ -215,8 +216,9 @@ class BottomBarWithButtons extends Component {
   }
 
   onChatMessageReceived(data) {
-    const { increaseNotificationCounter } = this.props;
-    if (increaseNotificationCounter) increaseNotificationCounter();
+    const { increaseNotificationCounter, pushMessage } = this.props;
+    pushMessage(data);
+    increaseNotificationCounter();
   }
 
   get separatorWidth () {
@@ -314,6 +316,7 @@ const mapDispatchToProps = {
   getContentsToLearnAsync: userActions.getContentsToLearnAsync,
   getEventsWeekAsync: userActions.getEventsWeekAsync,
   increaseNotificationCounter: userActions.increaseNotificationCounter,
+  pushMessage: usersChatActions.pushMessage,
 }
 
 
