@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Moicon it should render Touchable structure with onPress prop exist 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  collapsable={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "position": "relative",
+        },
+        undefined,
+      ]
+    }
+  >
+    <Image
+      fadeDuration={0}
+      resizeMode="contain"
+      size={60}
+      source={1}
+      style={
+        Array [
+          Object {
+            "height": 60,
+            "width": 60,
+          },
+          undefined,
+        ]
+      }
+      type="square"
+    />
+  </View>
+</View>
+`;
+
+exports[`Moicon it should render correctly with default props 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "position": "relative",
+      },
+      undefined,
+    ]
+  }
+>
+  <Styled(Image)
+    fadeDuration={0}
+    resizeMode="contain"
+    size={60}
+    source={1}
+    type="landscape"
+  />
+</View>
+`;
+
+exports[`Moicon it should render without name prop 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "position": "relative",
+      },
+      undefined,
+    ]
+  }
+>
+  <Image
+    fadeDuration={0}
+    resizeMode="contain"
+    size={60}
+    source={1}
+    style={
+      Array [
+        Object {
+          "height": 60,
+          "width": 60,
+        },
+        undefined,
+      ]
+    }
+    type="square"
+  />
+</View>
+`;
