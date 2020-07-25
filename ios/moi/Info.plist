@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -38,7 +38,13 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Allow Moi to use your location</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Permite a Mi aula BDP acceder a tu microfono</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Permite a Mi aula BDP usar la libreria de tus fotos para guardar una</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Puedes darle a Mi aula BDP los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -50,8 +56,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

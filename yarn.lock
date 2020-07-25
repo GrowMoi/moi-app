@@ -3860,13 +3860,6 @@ expo@~38.0.1:
     unimodules-task-manager-interface "~5.2.1"
     uuid "^3.4.0"
 
-expokit@34.0.2:
-  version "34.0.2"
-  resolved "https://registry.yarnpkg.com/expokit/-/expokit-34.0.2.tgz#54173bb138fd0cedcc6785dbab7eb05469e416e7"
-  integrity sha512-CZanrZiwWtI4plxgh37Rc9aqGMQ8swVBXA4hx7xDUn1x9Spyxq+ZUguyk8pzFA1++Ih1XdWuxgxvljM5fBQMNA==
-  dependencies:
-    jsc-android "^245459.0.0"
-
 extend-shallow@^1.1.2:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/extend-shallow/-/extend-shallow-1.1.4.tgz#19d6bf94dfc09d76ba711f39b872d21ff4dd9071"
