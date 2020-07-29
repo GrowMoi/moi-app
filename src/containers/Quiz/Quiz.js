@@ -60,7 +60,7 @@ class QuizScene extends PureComponent {
 
   _storeQuizId = async () => {
     try {
-      await AsyncStorage.setItem('QUIZ_ID', (this.props.quiz || {}).id);
+      await AsyncStorage.setItem('QUIZ_ID', `${(this.props.quiz || {}).id}`);
     } catch (error) {
       // Error saving data
     }
