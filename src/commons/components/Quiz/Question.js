@@ -20,15 +20,15 @@ const QuizPickerContainer = styled(ScrollView)`
 const Thumbnail = styled(Image)`
   align-self: stretch;
   width: 70%;
-  height: ${props => deviceUtils.isTablet() ? 250 : 160}
-  border-radius: 2;
-  margin-top: 10;
+  height: ${props => deviceUtils.isTablet() ? '250px' : '160px'}
+  border-radius: 2px;
+  margin-top: 10px;
   background-color: gray;
   margin-left: 5%;
 `;
 
 const ButtonContainer = styled(View)`
-  margin-top: 15;
+  margin-top: 15px;
   justify-content: flex-end;
   flex-direction: row;
   align-self: stretch;
@@ -69,7 +69,7 @@ export default class Question extends Component {
 
     return (
       <Container>
-        <Header center customSize={deviceUtils.isTablet() ? 30 : 15} bolder inverted>{title}</Header>
+        <Header center customSize={deviceUtils.isTablet() ? '30px' : '15px'} bolder inverted>{title}</Header>
         <ThumbnailContainer>
           {mediaUrl && <Thumbnail source={{ uri: mediaUrl }} />}
         </ThumbnailContainer>

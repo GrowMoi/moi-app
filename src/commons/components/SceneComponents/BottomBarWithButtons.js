@@ -19,11 +19,11 @@ const wCommonBtn = 194;
 const hCommonBtn = 73;
 
 const Separator = styled(View)`
-  width: ${props => props.width};
+  width: ${props => `${props.width}px`};
 `;
 
 const Button = styled(ImageBackground)`
-  width: ${props => props.width};
+  width: ${props => `${props.width}px`};
   height: ${props => getHeightAspectRatio(wCommonBtn, hCommonBtn, props.width)};
   flex-direction: row;
   bottom: ${props => props.bottom || 1};

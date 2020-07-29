@@ -9,21 +9,21 @@ import deviceUtils from '../../utils/device-utils'
 
 const ContainerAnswers = styled(View)`
   align-self: stretch;
-  margin-vertical: 20;
+  margin-vertical: 20px;
 `;
 
 const Answer = styled(TouchableOpacity)`
   background-color: ${palette.white};
-  padding-horizontal: ${10};
-  padding-vertical: ${() => deviceUtils.isTablet() ? 20 : 15};
-  margin-bottom: 15;
+  padding-horizontal: 10px;
+  padding-vertical: ${() => deviceUtils.isTablet() ? '20px' : '15px'};
+  margin-bottom: 15px;
   shadow-color: ${palette.dark};
   shadow-opacity: 0.5;
   shadow-offset: -2px 2px;
-  shadow-radius: 2;
-  border-radius: 2;
+  shadow-radius: 2px;
+  border-radius: 2px;
   border-left-color: ${props => props.selected ? colors.lightGreen : 'transparent'};
-  border-left-width: 5;
+  border-left-width: 5px;
 `;
 
 export default class QuizPicker extends Component {
