@@ -59,13 +59,13 @@ const Icon = styled(Ionicons)`
 const Section = styled(View)`
   margin-bottom: ${(props) => {
     if (props.notBottomSpace) return 0;
-    return Size.spaceLarge;
+    return `${Size.spaceLarge}px`;
   }};
 `;
 
 const TextLeftBorder = styled(View)`
-  padding-left: ${Size.spaceSmall};
-  margin-left: ${Size.spaceSmall};
+  padding-left: ${Size.spaceSmall}px;
+  margin-left: ${Size.spaceSmall}px;
   border-color: transparent;
   border-left-width: 1;
   border-left-color: ${Palette.white.alpha(0.3).css()};

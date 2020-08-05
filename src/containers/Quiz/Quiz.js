@@ -206,11 +206,6 @@ class QuizScene extends PureComponent {
     const { currentScene, loading, modalVisible, showLevelPassedAnimation } = this.state;
     const { quiz, scene, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
-    const videoDimensions = {
-      width: 1280,
-      height: 720
-    };
-
     return (
       <Background>
         <Overlay>
