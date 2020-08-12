@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>Mi Aula BdP</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -38,13 +38,13 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow Moi to use your location</string>
+	<string>Allow Mi Aula BdP to use your location</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Permite a Mi aula BDP acceder a tu microfono</string>
+	<string>Permite a Mi Aula BdP acceder a tu microfono</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Permite a Mi aula BDP usar la libreria de tus fotos para guardar una</string>
+	<string>Permite a Mi Aula BdP usar la libreria de tus fotos para guardar una</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Puedes darle a Mi aula BDP los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
+	<string>Puedes darle a Mi Aula BdP los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
