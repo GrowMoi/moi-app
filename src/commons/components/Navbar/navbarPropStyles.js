@@ -5,6 +5,8 @@ import { Font } from '../../styles';
 import styled from 'styled-components/native';
 import ProfileImageButton from './ProfileImageButton';
 import { Size } from '../../styles';
+import deviceUtils from '../../utils/device-utils';
+
 
 //REDUX
 import store from '../../../store'
@@ -57,7 +59,7 @@ export default {
     fontFamily: Font.futura('heavy'),
     ...Platform.select({
       ios: {
-        top: Size.mavbarTopSpace - 25 ,
+        top: deviceUtils.isIphoneX() ? 10 : Size.mavbarTopSpace - 25,
       },
       android: {
         top: -10,
