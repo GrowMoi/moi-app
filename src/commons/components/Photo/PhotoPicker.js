@@ -75,7 +75,8 @@ export default class PhotoPicker extends Component {
     if(cameraStatus === 'granted' && rollStatus === 'granted') {
       try {
         const result = await ImagePicker.launchCameraAsync({
-          allowsEditing: true,
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowsEditing: false,
           aspect: [4, 3],
           base64: true
         });
@@ -93,7 +94,8 @@ export default class PhotoPicker extends Component {
     if(rollStatus === 'granted') {
       try {
         const result = await ImagePicker.launchImageLibraryAsync({
-          allowsEditing: true,
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowsEditing: false,
           aspect: [4, 3],
           base64: true
         });
