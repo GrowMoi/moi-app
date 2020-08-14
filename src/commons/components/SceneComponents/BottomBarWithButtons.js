@@ -73,7 +73,7 @@ const BottomBar = styled(ImageBackground)`
   }};
   bottom: ${props => {
     if(deviceUtils.isIphoneX()){
-      return 20;
+      return 16;
     }
 
     return 0;
