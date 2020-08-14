@@ -38,13 +38,15 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow Mi Aula BdP to use your location</string>
+	<string>Permite a Mi Aula BdP usar la localización</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Permite a Mi Aula BdP acceder a tu microfono</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Permite a Mi Aula BdP usar la libreria de tus fotos para guardar una</string>
+	<string>Puedes darle a Mi Aula BdP los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Puedes darle a Mi Aula BdP los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Puedes darle a Mi Aula BdP el permiso a tu cámara para subir una foto personalizada a tu perfil</string>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

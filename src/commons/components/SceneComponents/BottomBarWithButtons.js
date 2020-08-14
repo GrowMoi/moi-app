@@ -61,12 +61,23 @@ const bottomBarHeight = 85;
 const BottomBarContainer = styled(View)`
   width: ${props => props.width};
   height: ${props => getHeightAspectRatio(bottomBarWidth, bottomBarHeight, props.width) + 10};
-  background-color: #888B48;
 `;
 
 const BottomBar = styled(ImageBackground)`
   width: ${props => props.width};
-  height: ${Size.bottomBarButtonsHeigth};
+  height: ${props => {
+    if(deviceUtils.isIphoneX()) {
+      return 70;
+    }
+    return Size.bottomBarButtonsHeigth
+  }};
+  bottom: ${props => {
+    if(deviceUtils.isIphoneX()){
+      return 20;
+    }
+
+    return 0;
+  }};
   flex-direction: row;
   overflow: visible;
 `;
@@ -83,7 +94,6 @@ const ButtonsContainer = styled(View)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
 `;
 
 const taskWidthBtn = 603;

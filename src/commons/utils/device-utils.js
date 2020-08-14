@@ -1,4 +1,4 @@
-import { isAndroid, isTablet } from 'react-native-device-detection';
+import { isAndroid, isTablet, isIphoneX } from 'react-native-device-detection';
 import { PixelRatio } from 'react-native';
 import { LANDSCAPE } from '../../constants';
 
@@ -31,6 +31,10 @@ const deviceUtils = {
     } else {
       return true;
     }
+  },
+
+  isIphoneX: () => {
+    return isIphoneX
   }
 }
 
