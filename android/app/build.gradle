@@ -131,11 +131,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.moi"
+        applicationId "com.miaulabancodp.mabdp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.1"
+        versionCode 12
+        versionName "1.7.0"
     }
     splits {
         abi {
