@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar it should render as expected with connected redux state 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "height": 45,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": -2,
+      },
+      undefined,
+    ]
+  }
+>
+  <StatusBar
+    animated={false}
+    hidden={true}
+    showHideTransition="fade"
+  />
+  <Styled(Image)
+    resizeMode="stretch"
+    source={1}
+    width={320}
+  />
+</View>
+`;

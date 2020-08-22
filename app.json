@@ -1,0 +1,29 @@
+{
+  "name": "moi",
+  "displayName": "moi",
+  "expo": {
+    "name": "Moi",
+    "slug": "moi",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "orientation": "portrait",
+    "updates": {
+      "enabled": false,
+      "checkAutomatically": "ON_ERROR_RECOVERY",
+      "fallbackToCacheTimeout": 0
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.moisociallearning.moiapp",
+      "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json"
+    },
+    "android": {
+      "package": "com.moisociallearning.moiapp",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+    }
+  }
+}
