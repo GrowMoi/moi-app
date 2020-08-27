@@ -68,8 +68,8 @@ export default class PhotoPicker extends Component {
   }
 
   _takePhoto = async() => {
-    const { status: cameraStatus } = await Permissions.askAsync(Permissions.CAMERA);
-    const { status: rollStatus } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    const { status: cameraStatus } = await Permissions.requestCameraPermissionsAsync(Permissions.CAMERA);
+    const { status: rollStatus } = await Permissions.requestCameraRollPermissionsAsync(Permissions.CAMERA_ROLL);
 
     if(cameraStatus === 'granted' && rollStatus === 'granted') {
       try {
@@ -87,7 +87,7 @@ export default class PhotoPicker extends Component {
   }
 
   _pickPhoto = async() => {
-    const { status: rollStatus } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    const { status: rollStatus } = await Permissions.requestCameraRollPermissionsAsync(Permissions.CAMERA_ROLL);
 
     if(rollStatus === 'granted') {
       try {

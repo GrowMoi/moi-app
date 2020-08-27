@@ -34,7 +34,7 @@ export default class TempSplash extends Component {
     return (
       <Background
         source={{ uri: "splashv2" }}
-        resizeMode="stretch"
+        resizeMode="cover"
       ></Background>
     );
   }
