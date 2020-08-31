@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Alert, TouchableOpacity } from 'react-native';
+import { View, ImageBackground, TouchableOpacity, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 import uuid from 'uuid';
 import ModalOptions from '../ModalOptions/ModalOptions';
@@ -61,6 +60,7 @@ export default class PhotoPicker extends Component {
   state = {
     image: null,
     isModalOpen: false,
+    selectedAction: null
   }
 
   _setModalVisible = visible => {
@@ -68,13 +68,14 @@ export default class PhotoPicker extends Component {
   }
 
   _takePhoto = async() => {
-    const { status: cameraStatus } = await Permissions.requestCameraPermissionsAsync(Permissions.CAMERA);
-    const { status: rollStatus } = await Permissions.requestCameraRollPermissionsAsync(Permissions.CAMERA_ROLL);
+    const { status: cameraStatus } = await ImagePicker.requestCameraPermissionsAsync();
+    const { status: rollStatus } = await ImagePicker.requestCameraRollPermissionsAsync();
 
     if(cameraStatus === 'granted' && rollStatus === 'granted') {
       try {
         const result = await ImagePicker.launchCameraAsync({
-          allowsEditing: true,
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowsEditing: false,
           aspect: [4, 3],
           base64: true
         });
@@ -87,12 +88,13 @@ export default class PhotoPicker extends Component {
   }
 
   _pickPhoto = async() => {
-    const { status: rollStatus } = await Permissions.requestCameraRollPermissionsAsync(Permissions.CAMERA_ROLL);
+    const { status: rollStatus } = await ImagePicker.requestCameraRollPermissionsAsync();
 
     if(rollStatus === 'granted') {
       try {
         const result = await ImagePicker.launchImageLibraryAsync({
-          allowsEditing: true,
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowsEditing: false,
           aspect: [4, 3],
           base64: true
         });
@@ -117,13 +119,31 @@ export default class PhotoPicker extends Component {
     const { takePhotoLabel = 'Take a Photo', pickPhotoLabel = 'Pick a Photo' } = this.props;
 
     return [
-      {key: 'takePhoto', label: takePhotoLabel, id: uuid.v4(), fn: async () => {
-        this._setModalVisible(false);
-        await this._takePhoto();
+      {
+        key: 'takePhoto',
+        label: takePhotoLabel,
+        id: 0,
+        fn: async () => {
+          this.setState({
+            isModalOpen: false,
+            selectedAction: this._takePhoto
+          });
+          if (Platform.OS === 'android') {
+            await this._takePhoto();
+          }
       }},
-      {key: 'galleryPhoto', label: pickPhotoLabel, id: uuid.v4(), fn: async () => {
-        this._setModalVisible(false);
-        await this._pickPhoto();
+      {
+        key: 'galleryPhoto',
+        label: pickPhotoLabel,
+        id: 1,
+        fn: async () => {
+          this.setState({
+            isModalOpen: false,
+            selectedAction: this._pickPhoto
+          });
+          if (Platform.OS === 'android') {
+            await this._pickPhoto();
+          }
       }},
     ]
   }
@@ -155,11 +175,11 @@ export default class PhotoPicker extends Component {
         onPress={() => this._setModalVisible(true)}>
         <Container style={style}>
           {children}
-          {!children && image &&
+          {!children && image && (
             <ImagePreview source={{uri: image}} {...sizeProps}>
               {IcoPhoto}
             </ImagePreview>
-          }
+          )}
           {IcoPhoto}
         </Container>
         <ModalOptions
@@ -167,6 +187,12 @@ export default class PhotoPicker extends Component {
           options={this.options}
           cancelLabel={cancelLabel}
           onCloseRequest={() => this._setModalVisible(false)}
+          onDismiss={async () => {
+            const {selectedAction} = this.state
+            if (selectedAction) {
+              await selectedAction();
+            }
+          }}
         />
       </Preview>
     )

@@ -66,11 +66,13 @@ export default class ActionSheet extends Component {
     if (Platform.OS === 'android') {
       Animated.spring(this.scaleValue, {
         toValue: scaleValue,
+        useNativeDriver: true,
       }).start();
     } else {
       Animated.timing(this.translateValue, {
         toValue: { x: 0, y: valueY },
         duration: 250,
+        useNativeDriver: true,
       }).start();
     }
   }
