@@ -119,31 +119,23 @@ export default class PhotoPicker extends Component {
     const { takePhotoLabel = 'Take a Photo', pickPhotoLabel = 'Pick a Photo' } = this.props;
 
     return [
-      {
-        key: 'takePhoto',
-        label: takePhotoLabel,
-        id: 0,
-        fn: async () => {
-          this.setState({
-            isModalOpen: false,
-            selectedAction: this._takePhoto
-          });
-          if (Platform.OS === 'android') {
-            await this._takePhoto();
-          }
+      {key: 'takePhoto', label: takePhotoLabel, id: uuid.v4(), fn: async () => {
+        this.setState({
+          isModalOpen: false,
+          selectedAction: this._takePhoto
+        });
+        if (Platform.OS === 'android') {
+          await this._takePhoto();
+        }
       }},
-      {
-        key: 'galleryPhoto',
-        label: pickPhotoLabel,
-        id: 1,
-        fn: async () => {
-          this.setState({
-            isModalOpen: false,
-            selectedAction: this._pickPhoto
-          });
-          if (Platform.OS === 'android') {
-            await this._pickPhoto();
-          }
+      {key: 'galleryPhoto', label: pickPhotoLabel, id: uuid.v4(), fn: async () => {
+        this.setState({
+          isModalOpen: false,
+          selectedAction: this._pickPhoto
+        });
+        if (Platform.OS === 'android') {
+          await this._pickPhoto();
+        }
       }},
     ]
   }
@@ -175,11 +167,11 @@ export default class PhotoPicker extends Component {
         onPress={() => this._setModalVisible(true)}>
         <Container style={style}>
           {children}
-          {!children && image && (
+          {!children && image &&
             <ImagePreview source={{uri: image}} {...sizeProps}>
               {IcoPhoto}
             </ImagePreview>
-          )}
+          }
           {IcoPhoto}
         </Container>
         <ModalOptions
