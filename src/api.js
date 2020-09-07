@@ -192,7 +192,7 @@ const api = {
       const endpoint = '/api/tree';
 
       try {
-        const res = await axiosLimit.get(endpoint, { params: { username }, configTimeout: 6000 });
+        const res = await axiosLimit.get(endpoint, { params: { username }, configTimeout: 15000 });
         return res;
       } catch (error) {
         throw new Error(error);

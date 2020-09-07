@@ -4,7 +4,7 @@ import rateLimit from 'axios-rate-limit';
 import { networkAlertDispatched } from './actions/deviceActions'
 
 const defaults = {
-  timeout: 3000
+  timeout: 10000
 }
 
 const client = axios.create({
