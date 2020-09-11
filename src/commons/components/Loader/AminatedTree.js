@@ -61,12 +61,11 @@ export default class AnimatedTree extends Component {
 
   createTopAnimation() {
     const { topPosition } = this.state;
-    return Animated.timing(
-      topPosition,
+    return Animated.timing(topPosition,
       {
         toValue: this.getNextPosition(topPosition._value),
         duration: this.getRandomDuration(),
-      }
+        useNativeDriver: false,      }
     );
   }
 

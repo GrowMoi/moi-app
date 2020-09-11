@@ -60,6 +60,7 @@ export default class Neuron extends Component {
     Sound.stopOverBackgroundSound();
     Animated.spring(this.animatedValue, {
       toValue: 0.5,
+      useNativeDriver: true
     }).start();
   }
 
@@ -68,6 +69,7 @@ export default class Neuron extends Component {
       toValue: 1,
       friction: 3,
       tension: 40,
+      useNativeDriver: true
     }).start();
   }
 

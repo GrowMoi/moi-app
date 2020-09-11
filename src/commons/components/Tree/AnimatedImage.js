@@ -36,6 +36,7 @@ export class AnimatedImage extends Component {
     Animated.timing(this.state.opacity, {
       toValue: 1,
       duration: 2000,
+      useNativeDriver: false,
     }).start();
   }
 
@@ -52,6 +53,7 @@ export class AnimatedImage extends Component {
     return Animated.timing(
       animationValue,
       {
+        useNativeDriver: false,
         toValue: maxValue || 300,
         duration: timeRange ? this.calculateIntermediateValue(timeRange[0], timeRange[1]) : animationTime,
       }

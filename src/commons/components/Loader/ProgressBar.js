@@ -76,6 +76,7 @@ export default class ProgressBar extends Component {
       {
         toValue: 100,
         duration: this.duration,
+        useNativeDriver: false,
       }
     );
   }
