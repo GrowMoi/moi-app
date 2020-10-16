@@ -134,9 +134,6 @@ class SingleContentScene extends Component {
     const neuronId = fromReadContent && parentContent ? parentContent.neuronId : neuron_id;
     const contentId = fromReadContent && parentContent ? parentContent.contentId : content_id;
 
-
-    console.log('Initial load content')
-
     this.toggleLoading(true);
 
     if(contentType === constants.CONTENT_TYPE_RECOMMENDED) {
@@ -358,7 +355,7 @@ class SingleContentScene extends Component {
   render() {
     const { contentSelected: content, device, scene, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
 
-    // console.log(this.props.state);
+    console.log('CONTENT', content);
 
     const {
       loading,
