@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Alert,
@@ -105,6 +105,13 @@ const PlayIcon = styled(FontAwesome)`
   opacity: 0.8;
 `;
 
+const MediaUrlBox = styled(View)`
+  border-radius: 5px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid #4d4e23;
+`
+
 const styles = StyleSheet.create({
   scrollContainer: {
     alignSelf: 'stretch',
@@ -112,7 +119,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class SingleContentScene extends Component {
+class SingleContentScene extends PureComponent {
   state = {
     loading: false,
     videoModalVisible: false,
@@ -354,8 +361,9 @@ class SingleContentScene extends Component {
 
   render() {
     const { contentSelected: content, device, scene, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
+    // const { consigna: { content_instruction, last_request_sent } } = content
 
-    console.log('CONTENT', content);
+    console.log('CONTENT', content.consigna);
 
     const {
       loading,
@@ -384,85 +392,97 @@ class SingleContentScene extends Component {
 
     return (
       <View style={{flex:1}} collapsable={false} ref={view => this.contentView = view }>
-          <MoiBackground>
+        <MoiBackground>
           {(loading && !reading) && <Preloader />}
           {!loading && isShowingContent && (
-              <ContentBox>
+            <ContentBox>
               <KeyboardAvoidingView keyboardVerticalOffset={50} behavior="padding">
-                  <ScrollView contentContainerStyle={styles.scrollContainer}>
+                <ScrollView contentContainerStyle={styles.scrollContainer}>
 
-                  <HeaderContent>
-                      <Header bolder inverted>{content.title}</Header>
-                  </HeaderContent>
+                <HeaderContent>
+                  <Header bolder inverted>{content.title}</Header>
+                </HeaderContent>
 
-                  <Carousel
-                      showsPagination
-                      loop
-                      autoplay
-                      size={{ height: 200, width: (width - Size.spaceXLarge) }}
-                      images={content.media}
-                  />
+                <Carousel
+                  showsPagination
+                  loop
+                  autoplay
+                  size={{ height: 200, width: (width - Size.spaceXLarge) }}
+                  images={content.media}
+                />
 
-                  <ActionsHeader>
-                      {(content.favorite || favorite) && <MoiIcon name='fav' size={20} />}
-                      {/* <Icon onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} /> */}
-                      <Icon name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
-                  </ActionsHeader>
+                <ActionsHeader>
+                  {(content.favorite || favorite) && <MoiIcon name='fav' size={20} />}
+                  {/* <Icon onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} /> */}
+                  <Icon name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
+                </ActionsHeader>
 
-                  <Section>
-                      <TextBody inverted>{content.description}</TextBody>
-                      <Source>
-                      <TextBody bolder color={Palette.dark}>Fuente</TextBody>
-                      <Divider color={Palette.dark.alpha(0.2).css()} />
-                      <TextBody inverted>{content.source}</TextBody>
-                      </Source>
-                  </Section>
+                <Section>
+                  <TextBody inverted>{content.description}</TextBody>
+                  <Source>
+                  <TextBody bolder color={Palette.dark}>Fuente</TextBody>
+                  <Divider color={Palette.dark.alpha(0.2).css()} />
+                  <TextBody inverted>{content.source}</TextBody>
+                  </Source>
+                </Section>
 
-                  <Section>
-                      <Header inverted bolder>Links</Header>
-                      {((content || {}).links || []).map((link, i) => (
-                      <TextLeftBorder key={i}>
-                          <TouchableOpacity onPress={() => this.handleOpenLinks(link)}>
-                          <TextBody inverted>{link}</TextBody>
-                          </TouchableOpacity>
-                      </TextLeftBorder>
-                      ))}
-                  </Section>
+                {(content || {}).links && <Section>
+                  <Header inverted bolder>Links</Header>
+                  {((content || {}).links || []).map((link, i) => (
+                  <TextLeftBorder key={i}>
+                    <TouchableOpacity onPress={() => this.handleOpenLinks(link)}>
+                    <TextBody inverted>{link}</TextBody>
+                    </TouchableOpacity>
+                  </TextLeftBorder>
+                  ))}
+                </Section>}
 
-                  <Section>
+                <Section>
+                  {((content.consigna || {}).content_instruction || {}).required_media ? (
+                    <React.Fragment>
+                      <Header inverted bolder>{content.consigna.content_instruction.title}</Header>
+                      <TextBody>{content.consigna.content_instruction.description}</TextBody>
+                      <View>
+
+                      </View>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
                       <Header inverted bolder>Notas</Header>
                       <TextLeftBorder>
                       <NoteInput
-                          text={content.user_notes}
-                          onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
+                        text={content.user_notes}
+                        onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
                       />
                       </TextLeftBorder>
-                  </Section>
+                    </React.Fragment>
+                  )}
+                </Section>
 
-                  <Section notBottomSpace>
-                      <Header inverted bolder>Recomendados</Header>
+                <Section notBottomSpace>
+                  <Header inverted bolder>Recomendados</Header>
 
-                      <VideoContainer>
-                      {((content || {}).recommended_contents || []).map(rContent => {
-                          const showRecomendationContent = !rContent.read && !rContent.learnt;
-                          return showRecomendationContent && <ContentImagePreview
-                              data={rContent}
-                              key={uuid()}
-                              width={'46%'}
-                              touchProps={{
-                                onPress: () => {
-                                  this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title)
-                                },
-                              }}
-                          />
-                      })}
-                      </VideoContainer>
-                  </Section>
+                  <VideoContainer>
+                  {((content || {}).recommended_contents || []).map(rContent => {
+                    const showRecomendationContent = !rContent.read && !rContent.learnt;
+                    return showRecomendationContent && <ContentImagePreview
+                      data={rContent}
+                      key={uuid()}
+                      width={'46%'}
+                      touchProps={{
+                        onPress: () => {
+                          this.goToSingleContent(rContent.id, rContent.neuron_id, rContent.title)
+                        },
+                      }}
+                    />
+                  })}
+                  </VideoContainer>
+                </Section>
 
-                  </ScrollView>
-                  </KeyboardAvoidingView>
+                </ScrollView>
+                </KeyboardAvoidingView>
               </ContentBox>
-              )}
+            )}
           {!loading && <BottomBarWithButtons
               readButton={!(content.learnt || content.read) || fromEvent}
               onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
@@ -497,7 +517,7 @@ class SingleContentScene extends Component {
               message='Cuando termines de leer la explicación, presiona el botón
               celeste para enviar la pregunta al test'
           />
-          </MoiBackground>
+        </MoiBackground>
       </View>
     );
   }
@@ -510,7 +530,6 @@ const mapStateToProps = (state) => ({
   quiz: state.user.quiz,
   scene: state.routes.scene,
   showPassiveMessage: state.user.showPassiveMessage,
-  state,
 })
 
 const mapDispatchToProps = {
