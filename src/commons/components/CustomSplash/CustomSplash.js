@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ImageBackground } from "react-native";
+import { SplashScreen } from 'expo'
 import styled from "styled-components/native";
 
 const Background = styled(ImageBackground)`
@@ -12,7 +13,6 @@ const Background = styled(ImageBackground)`
 `;
 
 export default class TempSplash extends Component {
-
   async componentDidMount() {
     const { onFinish, startAsync, onError } = this.props;
 

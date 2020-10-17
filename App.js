@@ -55,7 +55,7 @@ class App extends Component {
 
   componentDidMount() {
     Orientation.lockToPortrait();
-    SplashScreen.preventAutoHide();
+    SplashScreen.preventAutoHideAsync();
   }
 
   // handleStatusConnection = (isConnected) => {
@@ -143,7 +143,7 @@ class App extends Component {
   }
 
   _cacheResourcesAsync = async () => {
-    SplashScreen.hide();
+    SplashScreen.hideAsync();
     this.setState({ appIsReady: true });
   };
 

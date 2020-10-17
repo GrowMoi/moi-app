@@ -5,6 +5,10 @@
     "name": "Moi",
     "slug": "moi",
     "version": "1.0.0",
+    "splash": {
+      "xib": "./ios/moi/Base.lproj/LaunchScreen.xib",
+      "resizeMode": "cover"
+    },
     "assetBundlePatterns": [
       "**/*"
     ],
