@@ -119,6 +119,14 @@ const getNeuronInfoByIdAsync = (id) => async (dispatch) => {
   }
 }
 
+const sendMediaFiles = (formData) => async (dispatch) => {
+  try {
+    return api.contents.sendMediaRequest(formData);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
 export default {
   loadNeuronByIdAsync,
   loadContentByIdAsync,
@@ -130,4 +138,5 @@ export default {
   setNeuronLabelInfo,
   loadRandomNeuronContentByIdAsync,
   getNeuronInfoByIdAsync,
+  sendMediaFiles,
 };

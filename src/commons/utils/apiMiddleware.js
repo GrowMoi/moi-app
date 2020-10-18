@@ -14,7 +14,7 @@ const tokenMiddleware = args => store => next => async (action) => {
   } = args;
 
   HEADERS = [...new Set([...HEADERS, ...customHeaders])]; // ["access-token", "token-type", "client", "expiry", "uid"]
-  client.defaults.headers.common['Content-type'] = 'application/json';
+  // client.defaults.headers.common['Content-type'] = 'application/json';
 
   // Clean All - remove axios client, headers and async storage from the app.
   const cleanAll = async () => {

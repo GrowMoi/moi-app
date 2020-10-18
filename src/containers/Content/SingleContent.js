@@ -41,6 +41,7 @@ import * as constants from '../../constants';
 import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
 import { backButtonWithSound } from '../../routes';
+import ConsignaPicker from '../../commons/components/ConsignaPicker/ConsignaPicker';
 
 const { width } = Dimensions.get('window');
 
@@ -110,6 +111,9 @@ const MediaUrlBox = styled(View)`
   width: 100%;
   background: transparent;
   border: 1px solid #4d4e23;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 2px;
 `
 
 const styles = StyleSheet.create({
@@ -130,6 +134,7 @@ class SingleContentScene extends PureComponent {
     animationFinished: false,
     hasTest: false,
     isShowingContent: true,
+    mediaUri: null,
   }
 
   componentDidMount() {
@@ -363,7 +368,7 @@ class SingleContentScene extends PureComponent {
     const { contentSelected: content, device, scene, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
     // const { consigna: { content_instruction, last_request_sent } } = content
 
-    console.log('CONTENT', content.consigna);
+    console.log('CONTENT', content.links);
 
     const {
       loading,
@@ -426,7 +431,7 @@ class SingleContentScene extends PureComponent {
                   </Source>
                 </Section>
 
-                {(content || {}).links && <Section>
+                {!!((content || {}).links || []).length && <Section>
                   <Header inverted bolder>Links</Header>
                   {((content || {}).links || []).map((link, i) => (
                   <TextLeftBorder key={i}>
@@ -438,23 +443,39 @@ class SingleContentScene extends PureComponent {
                 </Section>}
 
                 <Section>
-                  {((content.consigna || {}).content_instruction || {}).required_media ? (
+                  {(((content || {}).consigna || {}).content_instruction || {}).required_media ? (
                     <React.Fragment>
-                      <Header inverted bolder>{content.consigna.content_instruction.title}</Header>
-                      <TextBody>{content.consigna.content_instruction.description}</TextBody>
-                      <View>
-
-                      </View>
+                      <Header style={{ marginBottom: 10 }} inverted bolder>{((content.consigna || {}).content_instruction|| {}).title}</Header>
+                      <TextBody>{((content.consigna || {}).content_instruction|| {}).description}</TextBody>
+                      <MediaUrlBox>
+                        {(((content || {}).consigna || {}).last_request_sent || {}).media &&
+                          <TextBody ellipsizeMode="head" numberOfLines={1} inverted>
+                            { this.state.mediaUri || content.consigna.last_request_sent.media || "Elige una imagen/video para subir"}
+                          </TextBody>
+                        }
+                      </MediaUrlBox>
+                      <ConsignaPicker
+                        contentId={content.id}
+                        onPickedMedia={(media) => {
+                          this.setState({ mediaUri: media.filename})
+                          console.log('Media', media);
+                        }}
+                      />
                     </React.Fragment>
                   ) : (
                     <React.Fragment>
-                      <Header inverted bolder>Notas</Header>
-                      <TextLeftBorder>
-                      <NoteInput
-                        text={content.user_notes}
-                        onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
-                      />
-                      </TextLeftBorder>
+                      {!!(((content || {}).consigna || {}).content_instruction) && (
+                      <>
+                        <Header inverted bolder>{((content.consigna || {}).content_instruction|| {}).title}</Header>
+                        <TextBody>{((content.consigna || {}).content_instruction|| {}).description}</TextBody>
+                        <TextLeftBorder>
+                          <NoteInput
+                            text={content.user_notes}
+                            onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
+                          />
+                        </TextLeftBorder>
+                      </>
+                      )}
                     </React.Fragment>
                   )}
                 </Section>

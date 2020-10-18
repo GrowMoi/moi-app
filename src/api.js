@@ -1,5 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import client, { axiosLimit, cloudinaryClient, http } from './axios-client';
+import { URL_BASE } from './constants'
 
 const api = {
   neuron: {
@@ -174,6 +175,28 @@ const api = {
         const res = await axiosLimit.get(endpoint);
         return res
       } catch (error) {
+        throw new Error(error)
+      }
+    },
+
+    async sendMediaRequest(formData) {
+      const endpoint = `api/content_validations/send_request`
+
+      const options = {
+        method: 'POST',
+        data: formData,
+        headers: {
+          'Accept': 'application/json',
+          'Content-type': 'multipart/form-data',
+        },
+        url: endpoint
+      }
+
+      try {
+        const res = await client(options);
+        return res
+      } catch (error) {
+        console.log(error)
         throw new Error(error)
       }
     }

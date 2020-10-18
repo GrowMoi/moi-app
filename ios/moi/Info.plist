@@ -47,7 +47,7 @@
 	<string>Puedes darle a Moi los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Puedes darle a Moi el permiso a tu cámara para subir una foto personalizada a tu perfil</string>
-	
+
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

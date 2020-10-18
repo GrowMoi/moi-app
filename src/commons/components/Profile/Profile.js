@@ -90,15 +90,15 @@ class ProfileAvatar extends Component {
           width={MASK_WIDTH}
           maskElement={
             <MaskImageContainer>
-              <MaskImage  height={MASK_HEIGHT} width={MASK_WIDTH} source={{uri: 'profile_mask'}} />
+              <MaskImage height={MASK_HEIGHT} width={MASK_WIDTH} source={{uri: 'profile_mask'}} />
             </MaskImageContainer>
           }
-          >
+        >
           <ProfileImage
             {...rest}
             source={sourceImage}
             resizeMode='cover'
-            />
+          />
           <BackgroundImage />
         </MaskContainer>
         <Frame source={{ uri: 'profile_frame' }}/>
