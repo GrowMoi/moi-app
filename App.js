@@ -42,7 +42,6 @@ class App extends Component {
     appIsReady: false,
     showMainApp: false,
     netInfo: {},
-    isShowingAlert: false,
   }
 
   async componentWillMount() {
@@ -57,36 +56,6 @@ class App extends Component {
     Orientation.lockToPortrait();
     SplashScreen.preventAutoHideAsync();
   }
-
-  // handleStatusConnection = (isConnected) => {
-  //   const netInfo = {isConnected};
-  //   if(netInfo.isConnected) {
-  //     store.dispatch(setNetInfo(netInfo))
-  //     this.setState({ netInfo: netInfo })
-  //   }
-
-  //   if(!netInfo.isConnected && !this.state.isShowingAlert) {
-  //     store.dispatch(setNetInfo(netInfo))
-  //     this.setState(
-  //       prevState => ({ netInfo: netInfo, isShowingAlert: true }),
-  //       () => {
-  //         Alert.alert(
-  //           'Tienes problemas de conexión',
-  //           'Asegurate de estar conectado a una red estable de internet, para disfrutar la experiencia',
-  //           [
-  //             {text: 'Intentar nuevamente', onPress: () => {
-  //               this.setState(() => ({ showMainApp: false, isShowingAlert: false }),
-  //               () => {
-  //                 Actions.login({ type: ActionConst.RESET });
-  //               });
-  //             }},
-  //           ],
-  //           {cancelable: false},
-  //         )
-  //       }
-  //     );
-  //   }
-  // }
 
   componentWillUnmount() {
     Dimensions.removeEventListener('change', this.setOrientation);
@@ -131,10 +100,6 @@ class App extends Component {
   validateAuthentication = async () => {
     this.setOrientation();
     await validateAuth();
-  }
-
-  showPassiveMessage = async () => {
-    await store.dispatch(userActions.showPassiveMessageAsync());
   }
 
   onAppReady = () => {
@@ -187,17 +152,7 @@ class App extends Component {
     if (showMainApp) {
       return (
         <Provider store={store}>
-          <UserInactivity
-            timeForInactivity={TIME_FOR_INACTIVITY}
-            onAction={(isActive) => {
-              if(!isActive) {
-                Keyboard.dismiss()
-                this.showPassiveMessage();
-              }
-            }}
-          >
-            <AppContainer scenes={routes} />
-          </UserInactivity>
+          <AppContainer scenes={routes} />
         </Provider>
       );
     }
