@@ -21,6 +21,8 @@ import userActions from '../../actions/userActions';
 import { generateAlertData } from '../../commons/components/Alert/alertUtils';
 import ModalAlert from '../../commons/components/Alert/ModalAlert';
 
+const VIDEO_KEY = `neuron-video`
+
 class ContentListScene extends PureComponent {
   state = {
     isFirstTimeEvents: false,
@@ -30,13 +32,17 @@ class ContentListScene extends PureComponent {
   }
 
   async componentDidMount() {
-    const { getEventsTodayAsync } = this.props;
+    const { getEventsTodayAsync, neuronSelected } = this.props;
     const isFirstTime = await this.fistTimeOfTheDay();
+    if(!isFirstTime) {
+      if(!!(neuronSelected || {}).video) {
+        this.showNeuronVideo();
+      }
 
-    if(!isFirstTime) return;
+      return;
+    }
 
     let events = await getEventsTodayAsync();
-
 
     this.setState({
       isFirstTimeEvents: isFirstTime,
@@ -51,6 +57,23 @@ class ContentListScene extends PureComponent {
       await AsyncStorage.setItem('dateEventShown', today);
     }
     return today !== dateEventShown;
+  }
+
+  showNeuronVideo = async () => {
+    const { neuronSelected } = this.props;
+    const key = `${VIDEO_KEY}-${neuronSelected.id}`;
+
+    if((neuronSelected || {}).id) {
+      const videoWasShown = await AsyncStorage.getItem(key)
+
+      if(!videoWasShown) {
+        Actions.videoPlayer({
+          sourceVideo: 'http://moi-backend.growmoi.com/videos/yosiembro1.mp4',
+        });
+
+        AsyncStorage.setItem(key, 'shown');
+      }
+    }
   }
 
   getTodayDate = () => {
@@ -87,7 +110,7 @@ class ContentListScene extends PureComponent {
   }
 
   render() {
-    const { device, neuron_id, showPassiveMessage, showPassiveMessageAsync, neuronSelected } = this.props;
+    const { device, neuron_id, showPassiveMessage, showPassiveMessageAsync, neuronSelected, scene } = this.props;
     const { events, isFirstTimeEvents, isAlertOpen, showNoMoreContentsModal } = this.state
 
     const showEvents = events && events.length > 0 && isFirstTimeEvents;
@@ -118,13 +141,17 @@ class ContentListScene extends PureComponent {
               width={device.dimensions.width}
               events={events}
               onCloseButtonPress={() => {
+                if(!!neuronSelected.video) {
+                  this.showNeuronVideo();
+                }
+
                 this.setState({ events: [] })
               }}/>
           )
         )}
 
         <PassiveMessageAlert
-          isOpenPassiveMessage={showPassiveMessage}
+          isOpenPassiveMessage={showPassiveMessage && scene.name === 'content'}
           touchableProps={{
             onPress: () => {
               showPassiveMessageAsync(false);
@@ -160,6 +187,7 @@ const mapStateToProps = (state) => ({
   device: state.device,
   showPassiveMessage: state.user.showPassiveMessage,
   neuronSelected: state.neuron.neuronSelected,
+  scene: state.routes.scene,
 })
 
 const mapDispatchToProps = {

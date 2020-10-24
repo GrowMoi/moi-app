@@ -17,6 +17,9 @@ const Container = styled(View)`
   position: absolute;
   top: 0;
   left: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.8);
 `;
 
 const CloseIcon = styled(Ionicons)`
@@ -53,10 +56,8 @@ class VideoScene extends PureComponent {
         />
         <SimpleVideoPlayer
           resizeMode={Video.RESIZE_MODE_CONTAIN}
-          inFullscreen={true}
           source={sourceVideo}
           style={{ width: '100%', height: '100%' }}
-          showFullscreenButton={false}
         />
       </Container>
     )

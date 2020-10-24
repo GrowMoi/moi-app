@@ -448,11 +448,9 @@ class SingleContentScene extends PureComponent {
                       <Header style={{ marginBottom: 10 }} inverted bolder>{((content.consigna || {}).content_instruction|| {}).title}</Header>
                       <TextBody>{((content.consigna || {}).content_instruction|| {}).description}</TextBody>
                       <MediaUrlBox>
-                        {(((content || {}).consigna || {}).last_request_sent || {}).media &&
-                          <TextBody ellipsizeMode="head" numberOfLines={1} inverted>
-                            { this.state.mediaUri || content.consigna.last_request_sent.media || "Elige una imagen/video para subir"}
-                          </TextBody>
-                        }
+                        <TextBody ellipsizeMode="head" numberOfLines={1} inverted>
+                          { this.state.mediaUri || content?.consigna?.last_request_sent?.media || "Elige una imagen/video para subir"}
+                        </TextBody>
                       </MediaUrlBox>
                       <ConsignaPicker
                         contentId={content.id}

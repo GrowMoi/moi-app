@@ -105,7 +105,7 @@ class EventModal extends Component {
   }
 
   render() {
-    const { open = true, animationType = 'slide', noOverlay = false } = this.props;
+    const { open = true, animationType = 'fade', noOverlay = false } = this.props;
     const { selectedEvent, events, showAlert, alertTitle, alertDescription } = this.state;
 
     return (

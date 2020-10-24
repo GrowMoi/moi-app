@@ -1,39 +1,44 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Video } from 'expo-av';
-import VideoPlayer from 'expo-video-player'
-// import { Dimensions } from 'react-native'
+import { Dimensions, ActivityIndicator } from 'react-native'
 import Sound from '../SoundPlayer/Sound';
-// import { getHeightAspectRatio } from '../../utils';
+import { getHeightAspectRatio } from '../../utils';
 
+const VIDEO_WIDTH = 640
+const VIDEO_HEIGHT = 360
+const width = Dimensions.get('window').width
+const height = getHeightAspectRatio(VIDEO_WIDTH, VIDEO_HEIGHT, width)
 
-// const VIDEO_WIDTH = 640
-// const VIDEO_HEIGHT = 360
-// const width = Dimensions.get('window').width
-// const height = getHeightAspectRatio(VIDEO_WIDTH, VIDEO_HEIGHT, width)
+const SimpleVideoPlayer = (props) => {
+  const [loading, setLoading] = useState(false);
 
-class SimpleVideoPlayer extends PureComponent {
-  componentDidMount() {
+  useEffect(() => {
     Sound.pause();
-  }
+    return () => {
+      Sound.play();
+    }
+  }, [])
 
-  componentWillUnmount() {
-    Sound.play();
-  }
 
-  render() {
-    const { source, resizeMode, inFullscreen, showFullscreenButton } = this.props;
-    return (
-      <VideoPlayer
-        videoProps={{
-          shouldPlay: true,
-          resizeMode,
-          source,
-        }}
-        inFullscreen={inFullscreen}
-        showFullscreenButton={showFullscreenButton}
+  return (
+    <>
+      {loading && (<ActivityIndicator size="large"/> )}
+      <Video
+        source={{ uri: props.source }}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        resizeMode={props.resizeMode}
+        shouldPlay
+        isLooping
+        onLoadStart={() => { setLoading(true); }}
+        onLoad={() => { setLoading(false); }}
+        useNativeControls
+        style={{ width: width, height: height }}
       />
-    );
-  }
+    </>
+  )
+
 }
 
 SimpleVideoPlayer.defaultProps = {
