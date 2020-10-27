@@ -18,19 +18,6 @@ class NotificationTabContainer extends PureComponent {
     isLoading: false,
   }
 
-  componentDidMount() {
-    // this.getData();
-  }
-
-  getData = async () => {
-    const { getNotificationsAsync } = this.props;
-    try {
-      await getNotificationsAsync();
-    } catch (error) {
-      // console.log(error);
-    }
-  }
-
   openContainer = () => {
     this.setState(prevState => ({ open: !prevState.open }));
   }
@@ -81,10 +68,29 @@ class NotificationTabContainer extends PureComponent {
     return item[0] === 'super_event';
   }
 
+  isContentValidation = (item = {}) => {
+    return item.type === 'tutor_validated_content'
+  }
+
+  getContentValidationMetaData = (data) => {
+    const { approved, content_title, message } = data || {};
+    let title, description;
+    if (approved) {
+      title = `¡Bien hecho! Tu respuesta a ${content_title} fue aprobada por tu tutor`;
+      description = '';
+    } else {
+      title = `Gracias por subir una respuesta a ${content_title}. Lamentablemente, no cumplió con los requisitos mínimos para ser aprobada.`;
+      description = `Nota: ${message}`;
+    }
+    return { title, description };
+  }
+
   _renderItem = ({ item }) => {
     const { onClickItem = () => null } = this.props;
 
     const isEvent = this.isEvent(item);
+
+    const isContentValidation = this.isContentValidation(item);
 
     let title;
     let description;
@@ -92,6 +98,10 @@ class NotificationTabContainer extends PureComponent {
     if (isEvent) {
       title = this.isSuperEvent(item) ? 'Super Evento' : 'Eventos';
       description = this.isSuperEvent(item) ? '' : `(${item[0]})`;
+    } else if (isContentValidation) {
+      const meta = this.getContentValidationMetaData(item.data);
+      title = meta.title;
+      description = meta.description;
     } else {
       title = item.title;
       description = item.description;
@@ -113,7 +123,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   render() {
-    const { title, icon, data } = this.props;
+    const { title, icon, data, onTouchStart, onMomentumScrollEnd  } = this.props;
     const { open } = this.state;
 
     return (
@@ -123,14 +133,20 @@ class NotificationTabContainer extends PureComponent {
         {open && (
           <View style={styles.subItemContainer}>
             <FlatList
-              data={[...data.notifications, ...this.events]}
+              data={[...this.events, ...data.notifications]}
               keyExtractor={this._keyExtractor}
               onEndReached={this.handleLoadMore}
-              onEndReachedThreshold={0}
+              onEndReachedThreshold={1}
               renderItem={this._renderItem}
               ListEmptyComponent={
                 <TextBody style={styles.emptyText} center>{`No tienes ${(title || '').toLowerCase()}.`}</TextBody>
               }
+              onTouchStart={() => {
+                if(onTouchStart) onTouchStart()
+              }}
+              onScrollEndDrag={() => {
+                if(onMomentumScrollEnd) onMomentumScrollEnd();
+              }}
             />
           </View>
         )}
@@ -149,6 +165,7 @@ const styles = StyleSheet.create(
     },
     subItemContainer: {
       backgroundColor: Palette.tasksSubList,
+      position: 'relative',
       width: '95%',
       marginRight: 5,
       marginLeft: 5,
@@ -160,7 +177,6 @@ const styles = StyleSheet.create(
       borderTopRightRadius: 10,
       paddingTop: 10,
       paddingBottom: 10,
-      zIndex: -9
     },
   }
 )

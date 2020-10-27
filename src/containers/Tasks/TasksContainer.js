@@ -19,10 +19,10 @@ import NotesTabContainer from './components/NotesTabContainer';
 import FavoritesTabContainer from './components/FavoritesTabContainer';
 import ContentsToLearnTabContainer from './components/ContentsToLearnTabContainer';
 import TutorGenericAlert from '../../commons/components/Alert/TutorGenericAlert';
+import TutorValidatedContentAlert from '../../commons/components/Alert/TutorValidatedContentAlert';
 import EventModal from '../Events/EventModal';
 import LeaderBoardModal from '../LeaderBoard/LeaderboardModal';
 import leaderboardActions from '../../actions/leaderboardActions';
-
 
 class TasksContainer extends Component {
   state = {
@@ -30,7 +30,6 @@ class TasksContainer extends Component {
     isAlertOpen: false,
     alertType: false,
     itemSelected: {},
-    enableScroll: true,
     superEvent: {},
   }
 
@@ -128,12 +127,24 @@ class TasksContainer extends Component {
     }
   }
 
+  goToSingleContent = () => {
+    const { itemSelected } = this.state;
+    this.setState({ isAlertOpen: false });
+    const { content_id, content_title, neuron_id } = itemSelected.data || {};
+
+    Actions.singleContent({
+      content_id,
+      neuron_id,
+      title: content_title,
+    });
+  }
+
   closeAlert = () => {
     this.setState({ isAlertOpen: false });
   }
 
   correspondingAlert = () => {
-    const { itemSelected } = this.state;
+    const { itemSelected = {} } = this.state;
 
     if (itemSelected.type === 'tutor_quiz') {
       const tutorMessage = `El tutor ${(itemSelected.tutor || {}).name || ''} ha creado un test para ti`;
@@ -163,12 +174,21 @@ class TasksContainer extends Component {
           message={itemSelected.title}
           description={itemSelected.description}
           onCancel={this.closeAlert}
-          media={itemSelected.media[0]}
+          media={itemSelected.media}
+          cancelText='Ok'
+          videoUrl={((itemSelected || {}).videos[0]) || ''}
+        />
+      )
+    } else if(itemSelected.type === 'tutor_validated_content') {
+      return (
+        <TutorValidatedContentAlert
+          data={itemSelected.data}
+          onCancel={this.closeAlert}
+          onNext={this.goToSingleContent}
           cancelText='Ok'
         />
       )
-    }
-    else {
+    } else {
       return (
         <GenericAlert
           message={itemSelected.title}
@@ -180,12 +200,14 @@ class TasksContainer extends Component {
     }
   }
 
-  enableMainScroll = (scrollEnabled) => () => {
-    this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
+  enableMainScroll = (scrollEnabled = true) => {
+    if(this.scrollRef) {
+      this.scrollRef.setNativeProps({ scrollEnabled: scrollEnabled });
+    }
   }
 
   render() {
-    const { device: { dimensions: { width } }, leaders, profile } = this.props;
+    const { device: { dimensions: { width } }, leaders, profile, onDismissLoader } = this.props;
     const { loading, isAlertOpen, isEventModalOpen, itemSelected, isLeaderboardModalOpen, superEvent } = this.state;
     const leaderboardParams = {
       user_id: profile.id,
@@ -195,7 +217,10 @@ class TasksContainer extends Component {
     return (
       <View style={styles.container}>
         <Header title='Mis Tareas' />
-        <ScrollView ref={(e) => { this.scrollRef = e }}>
+        <ScrollView
+          style={{flexGrow: 1}}
+          ref={(e) => { this.scrollRef = e }}
+        >
           {!loading && <View style={styles.scrollContainer}>
             <NotesTabContainer
               title='Notas'
@@ -215,6 +240,8 @@ class TasksContainer extends Component {
               onClickItem={item => this.onPressItem(item)}
             />
             <NotificationTabContainer
+              onTouchStart={() => { this.enableMainScroll(false)}}
+              onMomentumScrollEnd={() => { this.enableMainScroll(true) }}
               title='Notificaciones'
               icon='bell'
               onClickItem={(item) => this.onPressNotification(item)}
@@ -227,7 +254,7 @@ class TasksContainer extends Component {
               disableScroll={this.enableMainScroll(false)}
             />
           </View>}
-          {loading && <Preloader />}
+          {loading && <Preloader notFullScreen />}
         </ScrollView>
 
         {isEventModalOpen &&
