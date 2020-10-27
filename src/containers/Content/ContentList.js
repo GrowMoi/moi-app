@@ -63,12 +63,12 @@ class ContentListScene extends PureComponent {
     const { neuronSelected } = this.props;
     const key = `${VIDEO_KEY}-${neuronSelected.id}`;
 
-    if((neuronSelected || {}).id) {
+    if((neuronSelected || {}).id && !!(neuronSelected || {}).video) {
       const videoWasShown = await AsyncStorage.getItem(key)
 
       if(!videoWasShown) {
         Actions.videoPlayer({
-          sourceVideo: 'http://moi-backend.growmoi.com/videos/yosiembro1.mp4',
+          sourceVideo: neuronSelected.video,
         });
 
         AsyncStorage.setItem(key, 'shown');

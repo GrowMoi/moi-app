@@ -126,6 +126,13 @@ const sendMediaFiles = (formData) => async (dispatch) => {
     throw new Error(error.message);
   }
 }
+const sendMediaText = (formData) => async (dispatch) => {
+  try {
+    return api.contents.sendMediaText(formData);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
 
 export default {
   loadNeuronByIdAsync,
@@ -139,4 +146,5 @@ export default {
   loadRandomNeuronContentByIdAsync,
   getNeuronInfoByIdAsync,
   sendMediaFiles,
+  sendMediaText,
 };

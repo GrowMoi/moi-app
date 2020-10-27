@@ -4,7 +4,7 @@ import { AppLoading, Updates, SplashScreen } from 'expo';
 import * as Localization from 'expo-localization';
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import * as Font from 'expo-font';
-import { Dimensions, AsyncStorage, Keyboard, View } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import 'intl';
 import en from 'intl/locale-data/jsonp/en';
 import es from 'intl/locale-data/jsonp/es';
@@ -17,10 +17,8 @@ import { cacheImages } from './src/commons/utils';
 import validateAuth from './src/commons/utils/validation';
 import allImages from './assets/images';
 import fonts from './assets/fonts';
-import { setDeviceDimensions, setNetInfo } from './src/actions/deviceActions';
+import { setDeviceDimensions } from './src/actions/deviceActions';
 import userActions from './src/actions/userActions';
-import UserInactivity from 'react-native-user-inactivity';
-import { TIME_FOR_INACTIVITY } from './src/constants';
 import Loader from './src/commons/components/Loader/Loader';
 import CustomSplash from './src/commons/components/CustomSplash/CustomSplash'
 import AppContainer from './src/containers/App/AppContainer'

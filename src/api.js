@@ -179,6 +179,17 @@ const api = {
       }
     },
 
+    async sendMediaText(formData) {
+      const endpoint = `api/content_validations/send_request`
+
+      try {
+        const res = await axiosLimit.post(endpoint, formData);
+        return res
+      } catch (error) {
+        throw new Error(error)
+      }
+    },
+
     async sendMediaRequest(formData) {
       const endpoint = `api/content_validations/send_request`
 

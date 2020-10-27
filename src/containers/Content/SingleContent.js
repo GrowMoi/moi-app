@@ -42,6 +42,7 @@ import neuronActions from '../../actions/neuronActions';
 import userActions from '../../actions/userActions';
 import { backButtonWithSound } from '../../routes';
 import ConsignaPicker from '../../commons/components/ConsignaPicker/ConsignaPicker';
+import ConsignaText from '../../commons/components/ConsignaText/ConsignaText';
 
 const { width } = Dimensions.get('window');
 
@@ -220,9 +221,7 @@ class SingleContentScene extends PureComponent {
     const { storeNotesAsync } = this.props;
     try {
       await storeNotesAsync(neuronId, contentId, notes);
-      this.showAlert('Este contenido fué almacenado correctamente');
     } catch (error) {
-      this.showAlert('Este contenido no fué almacenado correctamente, intentalo nuevamente');
     }
   }
 
@@ -366,10 +365,6 @@ class SingleContentScene extends PureComponent {
 
   render() {
     const { contentSelected: content, device, scene, fromEvent, showPassiveMessage, showPassiveMessageAsync } = this.props;
-    // const { consigna: { content_instruction, last_request_sent } } = content
-
-    console.log('CONTENT', content.links);
-
     const {
       loading,
       actionSheetsVisible,
@@ -442,45 +437,63 @@ class SingleContentScene extends PureComponent {
                   ))}
                 </Section>}
 
-                <Section>
-                  {(((content || {}).consigna || {}).content_instruction || {}).required_media ? (
-                    <React.Fragment>
-                      <Header style={{ marginBottom: 10 }} inverted bolder>{((content.consigna || {}).content_instruction|| {}).title}</Header>
-                      <TextBody>{((content.consigna || {}).content_instruction|| {}).description}</TextBody>
-                      <MediaUrlBox>
-                        <TextBody ellipsizeMode="head" numberOfLines={1} inverted>
-                          { this.state.mediaUri || content?.consigna?.last_request_sent?.media || "Elige una imagen/video para subir"}
-                        </TextBody>
-                      </MediaUrlBox>
-                      <ConsignaPicker
-                        contentId={content.id}
-                        onPickedMedia={(media) => {
-                          this.setState({ mediaUri: media.filename})
-                          console.log('Media', media);
+                {!!(content || {}).consigna && (
+                  <Section>
+                    {(((content || {}).consigna || {}).content_instruction || {}).required_media && (
+                      <React.Fragment>
+                        <Header style={{ marginBottom: 10 }} inverted bolder>{((content.consigna || {}).content_instruction|| {}).title}</Header>
+                        <TextBody>{((content.consigna || {}).content_instruction|| {}).description}</TextBody>
+                        <MediaUrlBox>
+                          <TextBody ellipsizeMode="head" numberOfLines={1} inverted>
+                            { this.state.mediaUri || content?.consigna?.last_request_sent?.media || "Elige una imagen/video para subir"}
+                          </TextBody>
+                        </MediaUrlBox>
+                        <ConsignaPicker
+                          contentId={content.id}
+                          onOk={() => {
+                            this.loadContentAsync();
+                          }}
+                          onPickedMedia={(media) => {
+                            this.setState({ mediaUri: media.filename})
+                          }}
+                        />
+                      </React.Fragment>
+                    )}
+                    {!(((content || {}).consigna || {}).content_instruction || {}).required_media && (
+                      <React.Fragment>
+                        {!!(((content || {}).consigna || {}).content_instruction) && (
+                        <>
+                          <Header inverted bolder>{((content.consigna || {}).content_instruction|| {}).title}</Header>
+                          <TextBody>{((content.consigna || {}).content_instruction|| {}).description}</TextBody>
+                          <ConsignaText
+                            text={content?.consigna?.last_request_sent?.text}
+                            contentId={content.id}
+                            onOk={() => {
+                              this.loadContentAsync();
+                            }}
+                          />
+                        </>
+                        )}
+                      </React.Fragment>
+                    )}
+                  </Section>
+                )}
+                {!(content || {}).consigna && (
+                  <Section>
+                    <Header inverted bolder>Notas:</Header>
+                    <TextLeftBorder>
+                      <NoteInput
+                        text={content.user_notes}
+                        onEndEditing={(e) => {
+                          this.storeNotes((content || {}).neuron_id, (content || {}).id, e.nativeEvent.text);
                         }}
                       />
-                    </React.Fragment>
-                  ) : (
-                    <React.Fragment>
-                      {!!(((content || {}).consigna || {}).content_instruction) && (
-                      <>
-                        <Header inverted bolder>{((content.consigna || {}).content_instruction|| {}).title}</Header>
-                        <TextBody>{((content.consigna || {}).content_instruction|| {}).description}</TextBody>
-                        <TextLeftBorder>
-                          <NoteInput
-                            text={content.user_notes}
-                            onEndEditing={e => this.storeNotes(content.neuron_id, content.id, e.nativeEvent.text)}
-                          />
-                        </TextLeftBorder>
-                      </>
-                      )}
-                    </React.Fragment>
-                  )}
-                </Section>
+                    </TextLeftBorder>
+                  </Section>
+                )}
 
                 <Section notBottomSpace>
                   <Header inverted bolder>Recomendados</Header>
-
                   <VideoContainer>
                   {((content || {}).recommended_contents || []).map(rContent => {
                     const showRecomendationContent = !rContent.read && !rContent.learnt;
@@ -503,18 +516,24 @@ class SingleContentScene extends PureComponent {
               </ContentBox>
             )}
           {!loading && <BottomBarWithButtons
-              readButton={!(content.learnt || content.read) || fromEvent}
-              onPressReadButton={() => this.readContent(content.neuron_id, content.id)}
-              width={device.dimensions.width}
+            readButton={!(content.learnt || content.read) || fromEvent}
+            onPressReadButton={() => {
+              if(content.content_can_read) {
+                this.readContent(content.neuron_id, content.id)
+              } else {
+                Alert.alert("Aún no has subido tu consigna, por favor subela para poder aprender este contenido");
+              }
+            }}
+            width={device.dimensions.width}
           />}
           {/* Animation */}
           {reading && (
-              <ReadingAnimation
-              ref={ref => this.readingAnim = ref}
-              onFinishAnimation={() => {
-                  this.afterFinishAnimation(content.neuron_id);
-              }}
-              />
+            <ReadingAnimation
+            ref={ref => this.readingAnim = ref}
+            onFinishAnimation={() => {
+                this.afterFinishAnimation(content.neuron_id);
+            }}
+            />
           )}
 
           {/* Action Sheets */}
@@ -565,6 +584,7 @@ const mapDispatchToProps = {
   generateShareDataAsync: userActions.generateShareDataAsync,
   showPassiveMessageAsync: userActions.showPassiveMessageAsync,
   getNeuronInfoByIdAsync: neuronActions.getNeuronInfoByIdAsync,
+  sendMediaText: neuronActions.sendMediaText,
 }
 
 SingleContentScene.propTypes = {

@@ -16,7 +16,10 @@ function ConsignaPicker(props) {
     if(!uploading && !!errors) {
       Alert.alert('Error de Subida', 'Lo sentimos, no se pudo cargar el archivo.', [{
         text: "Entendido",
-        onPress: () => { setError(null) }
+        onPress: () => {
+          setError(null)
+          if(props.onError) props.onError(error)
+        }
       }])
     }
   }, [errors, uploading])
@@ -27,6 +30,7 @@ function ConsignaPicker(props) {
         text: "Entendido",
         onPress: () => {
           setOk(null);
+          if(props.onOk) props.onOk(true)
         }
       }])
     }
