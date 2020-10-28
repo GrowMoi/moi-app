@@ -521,7 +521,7 @@ class SingleContentScene extends PureComponent {
               if(content.content_can_read) {
                 this.readContent(content.neuron_id, content.id)
               } else {
-                Alert.alert("Aún no has subido tu consigna, por favor subela para poder aprender este contenido");
+                Alert.alert("Consigna", "Aún no has subido tu consigna, por favor subela para poder aprender este contenido");
               }
             }}
             width={device.dimensions.width}
