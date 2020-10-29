@@ -73,7 +73,7 @@ class NotificationTabContainer extends PureComponent {
   }
 
   getContentValidationMetaData = (data) => {
-    const { approved, content_title, message } = data || {};
+    const { approved, content_title, message = '' } = data || {};
     let title, description;
     if (approved) {
       title = `¡Bien hecho! Tu respuesta a ${content_title} fue aprobada por tu tutor`;

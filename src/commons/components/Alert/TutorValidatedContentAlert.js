@@ -50,14 +50,14 @@ export const TutorValidatedContentAlert = ({
   return (
     <Container>
       <CloseIcon onPress={onCancel} style={{ top: -10 }} />
-      <ContentContainer width={300} height={approved ? 300 : 500} colorsMargin={colorsMargin} colorsContent={colorsContent}>
+      <ContentContainer width={300} height={approved ? 300 : 400} colorsMargin={colorsMargin} colorsContent={colorsContent}>
         <ContentBox>
           <Title center book color='white'>
             {approved ? `¡Bien hecho! Tu respuesta a ${contentTitle} fue aprobada por tu tutor` :
-              'Gracias por subir una respuesta. Lamentablemente, no cumplió con los requisitos mínimos para ser aprobada. Por favor vuelve al tema, revisa sus contenidos y la consigna y sube una nueva respuesta.'}
+              'Gracias por subir una respuesta. Lamentablemente, no cumplió con los requisitos mínimos para ser aprobada.'}
           </Title>
           {!approved && <Description>
-            {message && <TextBody inverted center>{message}</TextBody>}
+            {message && <TextBody inverted center>{`Nota: ${message}`}</TextBody>}
           </Description>}
         </ContentBox>
       </ContentContainer>
