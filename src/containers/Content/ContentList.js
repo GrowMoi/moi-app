@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AsyncStorage } from 'react-native'
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -95,8 +96,11 @@ class ContentListScene extends PureComponent {
   get filterReadedContents() {
     const { neuronSelected } = this.props;
     const contents = (neuronSelected || {}).contents || []
+    const dataContent = contents
+      .filter(d => (!d.read || d.learnt))
 
-    return contents.filter(d => (!d.read || d.learnt));
+    const orderContentsByLevel = _.sortBy(dataContent, ['level', 'read']);
+    return orderContentsByLevel;
   }
   get existContentsToRead() {
     return this.filterReadedContents.length > 0;
