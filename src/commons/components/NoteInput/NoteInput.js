@@ -4,10 +4,11 @@ import { TextInput, View } from 'react-native';
 import styled from 'styled-components/native';
 import { Size, Font, Palette } from '../../styles';
 
-const lineHeight = 20;
+const lineHeight = 15;
 const Box = styled(View)`
   padding-horizontal: ${Size.spaceXSmall};
   position: relative;
+  overflow: hidden;
 `;
 const Input = styled(TextInput)`
   font-size: ${Size.fontBody};
@@ -55,14 +56,19 @@ export default class NoteInput extends Component {
           {lines && lines.length > 0 && lines.map((line, i) => <Line key={i}/>)}
         </LinesContainer>
         <Input
+          {...this.props}
           autoCorrect={false}
           onContentSizeChange={e => this.setState({ currentHeight: e.nativeEvent.contentSize.height })}
           underlineColorAndroid='transparent'
           editable
           multiline
-          onChangeText={text => this.setState({ text })}
+          onChangeText={text => {
+            this.setState({ text })
+            if(this.props.onChangeText) {
+              this.props.onChangeText(text)
+            }
+          }}
           value={this.state.text}
-          {...this.props}
         />
       </Box>
     );
