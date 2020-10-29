@@ -64,9 +64,10 @@ class ContentsToLearnTabContainer extends PureComponent {
         {open && (
           <View style={styles.subItemContainer}
             onStartShouldSetResponderCapture={() => {
-              disableScroll();
+              if(disableScroll) { disableScroll(); }
+
               setTimeout(() => {
-                enableScroll();
+                if(enableScroll) { enableScroll(); }
               }, 1000);
             }}
           >
