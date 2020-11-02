@@ -198,10 +198,10 @@ export default {
     '2.0.3.1.4.0.5.1.6.3.7.1.8.0.9.1': { position: { right: 33, bottom: 29 }, floweredBranches: [{uri: 'fondo059'}] },
     '2.0.3.1.4.0.5.1.6.3.7.1.8.0.9.2': { position: { right: 23, bottom: 31 }, floweredBranches: [{uri: 'fondo059'}] },
 
-    "2.0.3.2": { position: { right: 25, bottom: 20 }, floweredBranches: [] },
-    "2.0.3.2.4.0": { position: { right: 14, bottom: 8 }, floweredBranches: [] },
-    "2.0.3.2.4.0.5.0": { position: { right: 5, bottom: 14 }, floweredBranches: [] },
-    "2.0.3.2.4.0.5.0.6.0": { position: { right: 5, bottom: 14 }, floweredBranches: [] },
+    "2.0.3.2": { position: { right: 25, bottom: 20 }, floweredBranches: [{ uri: 'fondo001' }, { uri: 'fondo_rama004' }] },
+    "2.0.3.2.4.0": { position: { right: 14, bottom: 8 }, floweredBranches: [{ uri: 'fondo003' }, { uri: 'fondo007' }] },
+    "2.0.3.2.4.0.5.0": { position: { right: 5, bottom: 14 }, floweredBranches: [{ uri: 'fondo009' }, { uri: 'fondo010' }] },
+    "2.0.3.2.4.0.5.0.6.0": { position: { right: 5, bottom: 14 }, floweredBranches: [{ uri: 'fondo011' }] },
     "2.0.3.2.4.0.5.0.6.0.7.0": { position: { right: 16, bottom: 10 }, floweredBranches: [] },
   },
 
