@@ -44,7 +44,7 @@ class VideoScene extends PureComponent {
   }
 
   render() {
-    const { sourceVideo } = this.props;
+    const { sourceVideo, closeOnFinish } = this.props;
 
     return (
       <Container>
@@ -57,6 +57,9 @@ class VideoScene extends PureComponent {
         <SimpleVideoPlayer
           resizeMode={Video.RESIZE_MODE_CONTAIN}
           source={sourceVideo}
+          onVideoFinished={() => {
+            if(closeOnFinish) { this.dismiss(); }
+          }}
           style={{ width: '100%', height: '100%' }}
         />
       </Container>

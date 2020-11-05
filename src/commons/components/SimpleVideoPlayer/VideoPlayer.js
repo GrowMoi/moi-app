@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Video } from 'expo-av';
-import { Dimensions, ActivityIndicator } from 'react-native'
+import { Dimensions, ActivityIndicator, View } from 'react-native'
 import Sound from '../SoundPlayer/Sound';
 import { getHeightAspectRatio } from '../../utils';
 
@@ -10,6 +10,7 @@ const width = Dimensions.get('window').width
 const height = getHeightAspectRatio(VIDEO_WIDTH, VIDEO_HEIGHT, width)
 
 const SimpleVideoPlayer = (props) => {
+  const video = useRef(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -19,22 +20,33 @@ const SimpleVideoPlayer = (props) => {
     }
   }, [])
 
-
   return (
     <>
-      {loading && (<ActivityIndicator size="large"/> )}
+      {loading && (
+        <View style={{ height: height, alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator size="large"/>
+        </View>
+      )}
       <Video
+        ref={video}
         source={{ uri: props.source }}
         rate={1.0}
         volume={1.0}
+        onPlaybackStatusUpdate={(playBack) => {
+          if(playBack.didJustFinish) {
+            if(props.onVideoFinished()) {
+              props.onVideoFinished();
+            }
+          }
+        }}
         isMuted={false}
         resizeMode={props.resizeMode}
         shouldPlay
-        isLooping
+        isLooping={false}
         onLoadStart={() => { setLoading(true); }}
         onLoad={() => { setLoading(false); }}
         useNativeControls
-        style={{ width: width, height: height }}
+        style={{ width: width, height: loading ? 0 : height }}
       />
     </>
   )

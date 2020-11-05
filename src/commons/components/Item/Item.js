@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import {
-  View,
   Image,
   ImageBackground,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
 } from 'react-native';
 import styled, { css } from 'styled-components/native';
-import * as Animatable from 'react-native-animatable';
 import { object } from '../../utils';
 
 import { getHeightAspectRatio } from '../../utils';
@@ -34,62 +32,42 @@ const Container = styled(ImageBackground)`
   }
 `;
 
-const itemWidth = 70;
-const itemHeight = 70;
-const ItemImage = styled(Image)`
-  width: ${props => props.width};
-  height: ${props => getHeightAspectRatio(itemWidth, itemHeight, props.width)};
+const TouchableContainer = styled(TouchableOpacity)`
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 `
-const ItemImageAnimated = Animatable.createAnimatableComponent(ItemImage);
+const ItemImage = styled(Image)`
+  width: ${props => props.disabled ? '70%' : '100%'};
+  height: ${props => props.disabled ? '70%' : '100%'};
+`
 
 class Item extends Component {
-  handleViewRef = ref => this.item = ref;
-
-  getItemSource = (item, active, disabled) => {
-    if (disabled) {
-      return item.disabled;
-    } else {
-      return active ? item.source : item.inactive;
-    }
-  }
-
-  onPressItem = (disabled = false) => {
-    const { onPress } = this.props;
-
-    if(onPress) {
-      if (disabled) {
-        onPress();
-        return;
-      }
-      this.item.bounceIn(800)
-        .then(endState => {
-          if(endState.finished) {
-            onPress();
-          }
-        })
-    }
-  }
-
   render() {
-    const { type = 1, width = 90, active, disabled } = this.props;
-
-    const paddingForItem = 30;
-    const renderTypeItem = resources.getItem(type);
+    const { width = 90, active, disabled, image } = this.props;
     const box = resources.getBox(disabled);
-    if(object.isEmpty(renderTypeItem)) return null;
-
-    const source = this.getItemSource(renderTypeItem, active, disabled);
 
     return (
-      <Container source={{uri: box}} resizeMode='contain' width={width} active={active}>
-        <TouchableWithoutFeedback onPress={() => this.onPressItem(disabled)}>
-          <ItemImageAnimated
-            ref={this.handleViewRef}
-            source={{uri: source}}
+      <Container
+        source={{uri: box}}
+        resizeMode='contain'
+        width={width}
+        active={active}
+      >
+        <TouchableContainer
+          onPress={() => {
+            if(this.props.onPress) {
+              this.props.onPress();
+            }
+          }}
+        >
+          <ItemImage
+            disabled={disabled}
+            source={{ uri: image }}
             resizeMode='contain'
-            width={(width - paddingForItem)}
           />
-        </TouchableWithoutFeedback>
+        </TouchableContainer>
       </Container>
     )
   }

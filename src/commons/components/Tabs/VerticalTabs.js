@@ -76,7 +76,7 @@ export default class VerticalTabs extends Component {
 
           return (
             <LabelText
-              key={`${d.label}-${i}`}
+              key={i}
               selected={isSelected}
               onPress={() => this.onPressLabel(d.label)}
               style={!horizontalTabs ? {

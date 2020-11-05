@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import _ from 'lodash'
 import {
   View,
   FlatList,
-  SectionList,
-  TouchableOpacity,
-  Image,
-  Alert,
-  ImageBackground,
 } from 'react-native';
 
 import { Video } from '../../commons/components/VideoPlayer';
@@ -33,7 +29,7 @@ import Certificate from '../Certificate/Certificate';
 import PassiveMessageAlert from '../../commons/components/Alert/PassiveMessageAlert';
 import VerticalTabs from '../../commons/components/Tabs/VerticalTabs';
 import ListCertificates from '../Certificate/ListCertificates';
-import { PORTRAIT } from '../../constants';
+import { PORTRAIT, WEB_URL_BASE } from '../../constants';
 import { ContentBox } from '../../commons/components/ContentComponents';
 import deviceUtils from '../../commons/utils/device-utils';
 import resources from '../../commons/components/Item/resources';
@@ -49,32 +45,11 @@ const StyledContentBox = styled(ContentBox)`
   padding-right: 12;
 `;
 
-const width = 108;
-const height = 107;
-const Container = styled(TouchableOpacity)`
-  justify-content: center;
-  align-items: center;
-  margin-horizontal: 5;
-  margin-vertical: 5;
-  width: ${props => props.width};
-  height: ${props => getHeightAspectRatio(width, height, props.width)};
-  border: solid 0px #40582D;
-  border-radius: 13px;
-  overflow: hidden;
-`;
-
-const EventImage = styled(Image)`
-  width: ${ props => props.width};
-  height: ${ props => getHeightAspectRatio(width, height, props.width)};
-`;
-
-const ItemBackground = styled(ImageBackground)`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
+const REWARDS_TYPE = {
+  video: 'video',
+  theme: 'theme',
+  runFunction: 'runFunction',
+}
 
 class Inventory extends Component {
   state = {
@@ -148,125 +123,69 @@ class Inventory extends Component {
   }
 
   activeItem = item => {
-    const source = resources.getItem(item.number);
-    if (item.disabled) {
-      this.setState({ isEventModalOpen: true, itemSelected: {item: generateAlertData(item.name, item.description, source.disabled)} });
+    if (!item.is_available) {
+      this.setState({
+        isEventModalOpen: true,
+        itemSelected: {
+          item: generateAlertData(item.name, item.description, item.inactive_image)
+        }
+      });
+
       return
     }
 
-    if (item.number === 1) {
-      this.showVideo();
-      return;
-    }
-    else if (item.number === 6) {
-      this.showVideo(true, vineta_4);
-      return;
-    }
-    else if (item.number === 7) {
-      this.showVideo(true, vineta_3);
-      return;
-    }
-    else if (item.number === 9) {
-      this.showVideo(true, vineta_2);
-      return;
-    } else if (item.number === 10) {
-      this.setState({ isEventModalOpen: true, itemSelected: {
-        item: generateAlertData(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', source.source),
-        buttonProps: this.generateButtonProps('OK', this.goFinalQuiz) }
+    if(_.isEmpty(item.rewards)) {
+      this.setState({
+        isEventModalOpen: true,
+        itemSelected: {
+          item: generateAlertData(item.name, item.description, item.image)
+        }
       });
-      return;
-    }
-
-    let currentStatus = {};
-
-    if (item.active) {
-      currentStatus = {
-        status: 'Habilitado',
-        textButton: 'Desactivar',
-      }
     } else {
-      currentStatus = {
-        status: 'Desabilitado',
-        textButton: 'Activar',
+      if ((Object.keys(item.rewards || {}) || []).includes(REWARDS_TYPE.video)) {
+        const VIDEO_URL = `${WEB_URL_BASE}/${item.rewards.video}`
+
+        Actions.videoPlayer({
+          sourceVideo: VIDEO_URL,
+          closeOnFinish: true,
+        });
+
+        return;
+      }else if((Object.keys(item.rewards || {}) || []).includes(REWARDS_TYPE.runFunction)) {
+        if(item.rewards[REWARDS_TYPE.runFunction] === 'openModal') {
+          this.setState({ isEventModalOpen: true,
+            itemSelected: {
+              item: generateAlertData(item.name, 'Responderás 21 preguntas y al final recibirás tus resultados y recompensa inmediatamente', item.image),
+              buttonProps: this.generateButtonProps('OK', this.goFinalQuiz) }
+          });
+        }
+      } else {
+        let currentStatus = {};
+
+        if (item.active) {
+          currentStatus = {
+            status: 'Habilitado',
+            textButton: 'Desactivar',
+          }
+        } else {
+          currentStatus = {
+            status: 'Desabilitado',
+            textButton: 'Activar',
+          }
+        }
+
+        this.setState({
+          isEventModalOpen: true,
+          itemSelected: {
+            item: generateAlertData(item.name, item.description, item.active ? item.image : item.inactive_image),
+            buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item))
+          }
+        });
       }
     }
-
-    this.setState({ isEventModalOpen: true, itemSelected: { item: generateAlertData(item.name, item.description, item.active ? source.source : source.inactive), buttonProps: this.generateButtonProps(currentStatus.textButton, this.updateItem(item)) } });
   }
 
-  addDisabledAchievements = (currentAchievements = []) => {
-    const disabledAchievements = [
-      {
-        disabled: true,
-        description: 'Aprende tus primeros 4 contenidos para ganar este item',
-        name: 'Contenidos Aprendidos',
-        number: 1
-      },
-      {
-        disabled: true,
-        description: 'Aprende 20 contenidos de color amarillo para ganar este item',
-        name: 'Contenidos color Amarillo',
-        number: 2
-      },
-      {
-        disabled: true,
-        description: 'Aprende 20 contenidos de color rojo para ganar este item',
-        name: 'Contenidos color Rojo',
-        number: 3
-      },
-      {
-        disabled: true,
-        description: 'Aprende 20 contenidos de color azul',
-        name: 'Contenidos color Azul',
-        number: 4
-      },
-      {
-        disabled: true,
-        description: 'Aprende 20 contenidos de color verde para ganar este item',
-        name: 'Contenidos color verde',
-        number: 5
-      },
-      {
-        disabled: true,
-        description: 'Despliega 50 pruebas para ganar este item',
-        name: 'Despliega 50 pruebas',
-        number: 6
-      },
-      {
-        disabled: true,
-        description: 'Aprende un contenido en cada fruto para ganar este item',
-        name: 'Contenidos de cada fruto',
-        number: 7
-      },
-      {
-        disabled: true,
-        description: 'Aprende todos los contenidos para ganar este item',
-        name: 'Aprende todos los contenidos',
-        number: 8
-      },
-      {
-        disabled: true,
-        description: 'Completa 4 pruebas sin errores (16 preguntas sin errores) para ganar este item',
-        name: 'Completa 4 pruebas',
-        number: 9
-      },
-      {
-        disabled: true,
-        description: 'Alcanzar el nivel 9 para ganar este item',
-        name: 'Final del juego',
-        number: 10
-      }
-    ];
-
-    return disabledAchievements.map(disabledAchievement => {
-      const itemExists = currentAchievements.find(currentAchievement => {
-        return currentAchievement.number === disabledAchievement.number
-      });
-      return itemExists ? itemExists : disabledAchievement;
-    })
-  }
-
-  _keyExtractor = (item, index) => index.toString();
+  _keyExtractor = (item, index) => (item.id || "").toString();
 
   get itemWidth() {
     return isTablet ? 125 : 90;
@@ -275,9 +194,9 @@ class Inventory extends Component {
   _renderMainItem = ({ item }) => {
     return (
       <Item
-        type={item.number}
         active={item.active}
-        disabled={item.disabled}
+        disabled={!item.is_available}
+        image={item.is_available ? item.image : item.inactive_image}
         width={this.itemWidth}
         onPress={() => this.activeItem(item)}
       />
@@ -285,25 +204,15 @@ class Inventory extends Component {
   }
 
   _renderEventsItem = ({ item }) => {
-    const width = this.itemWidth;
-    const box = resources.getBox(!item.completed)
     return (
-      <Container
+      <Item
+        active={item.completed}
+        disabled={!item.completed}
+        image={item.completed ? item.image : item.inactive_image}
+        width={this.itemWidth}
         onPress={() => this.setState({ isEventModalOpen: true, itemSelected: {item} })}
-        activeOpacity={0.8}
-        width={width}
-        inactive={!item.completed}
-      >
-        <ItemBackground
-          width={width}
-          source={{ uri: box }}>
-          <EventImage
-            source={{ uri: item.completed ? item.image : item.inactive_image }}
-            width={item.completed ?  width + 10: width - 40}
-          />
-        </ItemBackground>
-      </Container>
-    );
+      />
+    )
   }
 
   _renderItem = ({ item }) => {
@@ -313,27 +222,6 @@ class Inventory extends Component {
 
     return this._renderMainItem({ item });
   }
-
-  _renderSection = ({ section, index }) => {
-    const data = section.data[0];
-
-    return (
-      <View style={{ flex: 1 }}>
-        {/* {data.key === 'events' && <Line style={{marginTop:10, marginBottom:10}}  size={5}/> } */}
-        <FlatList
-          data={data.list}
-          ListEmptyComponent={
-            <TextBody center>No tienes logros ganados aún</TextBody>
-          }
-          renderItem={this._renderItem}
-          keyExtractor={this._keyExtractor}
-          numColumns={this.columnsNumber}
-          columnWrapperStyle={{ justifyContent: 'center' }}
-          key={index}
-        />
-      </View>
-    );
-  };
 
   async getEventItems() {
     const { getEventsAsync } = this.props;
@@ -350,6 +238,30 @@ class Inventory extends Component {
     return allEvents;
   }
 
+  renderItems() {
+    const { achievements = [] } = this.props;
+    const { events } = this.state;
+
+    const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
+
+    if (this.state.loading) return <Preloader key={'preloader'} />;
+
+    return (
+      <View style={{ flex: 1 }} key={0}>
+        <FlatList
+          data={[...sortedAchievements, ...events]}
+          ListEmptyComponent={
+            <TextBody center>No tienes logros ganados aún</TextBody>
+          }
+          renderItem={this._renderItem}
+          keyExtractor={this._keyExtractor}
+          numColumns={this.columnsNumber}
+          columnWrapperStyle={{ justifyContent: 'center' }}
+        />
+      </View>
+    );
+  }
+
   renderTabs() {
     const ContentCertificate = <ListCertificates key={1} />;
 
@@ -361,28 +273,6 @@ class Inventory extends Component {
     return (
       <VerticalTabs data={tabsData} horizontalTabs />
     )
-  }
-
-  renderItems() {
-    const { achievements = [] } = this.props;
-    const { events } = this.state;
-
-    const sortedAchievements = object.sortObjectsByKey(achievements, 'number');
-    const allAchievements = this.addDisabledAchievements(sortedAchievements);
-
-    if (this.state.loading) return <Preloader key={0} />;
-
-    return (
-      <SectionList
-        renderItem={this._renderSection}
-        sections={[
-          { title: '', data: [{ key: 'items', list: [...allAchievements, ...events] }] },
-          // {title: '', data: [{key: 'events', list: allEvents}]},
-        ]}
-        keyExtractor={(item, index) => item.name + index}
-        key={0}
-      />
-    );
   }
 
   render() {

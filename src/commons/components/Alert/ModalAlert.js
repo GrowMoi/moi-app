@@ -62,7 +62,7 @@ export default class ModalAlert extends Component {
   }
 
   render() {
-    const { item: { title, description, image }, open = true, animationType = 'slide', noOverlay = false, onClose, okButtonProps, cancelButtonProps, defaultButton } = this.props;
+    const { item: { title, description, image }, open = true, animationType = 'fade', noOverlay = false, onClose, okButtonProps, cancelButtonProps, defaultButton } = this.props;
 
     const itemTitle = normalize.capitalizeFirstLetter(title);
     const itemDescription = normalize.capitalizeFirstLetter(description);

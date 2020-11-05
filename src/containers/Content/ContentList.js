@@ -70,6 +70,7 @@ class ContentListScene extends PureComponent {
       if(!videoWasShown) {
         Actions.videoPlayer({
           sourceVideo: neuronSelected.video,
+          closeOnFinish: true,
         });
 
         AsyncStorage.setItem(key, 'shown');
