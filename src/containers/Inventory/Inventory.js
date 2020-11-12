@@ -12,8 +12,8 @@ import { Video } from '../../commons/components/VideoPlayer';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
 import Navbar from '../../commons/components/Navbar/Navbar';
 import { Size } from '../../commons/styles';
-import { object, getHeightAspectRatio } from '../../commons/utils';
-import { BottomBar, Line } from '../../commons/components/SceneComponents';
+import { object } from '../../commons/utils';
+import { BottomBar } from '../../commons/components/SceneComponents';
 import Item from '../../commons/components/Item/Item';
 import { TextBody } from '../../commons/components/Typography';
 
