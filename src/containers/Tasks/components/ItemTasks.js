@@ -17,7 +17,7 @@ function ItemTasks(props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Palette.tasksList,
+    backgroundColor: Palette.tasksList.css(),
     height: 60,
     width: '95%',
     borderBottomLeftRadius: 10,

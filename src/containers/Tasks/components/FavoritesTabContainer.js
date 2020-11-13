@@ -86,7 +86,7 @@ const styles = StyleSheet.create(
       paddingHorizontal: 10,
     },
     subItemContainer: {
-      backgroundColor: Palette.tasksSubList,
+      backgroundColor: Palette.tasksSubList.css(),
       width: '95%',
       marginRight: 5,
       marginLeft: 5,

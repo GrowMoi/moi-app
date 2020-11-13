@@ -25,7 +25,6 @@ project.xcworkspace
 # Android/IntelliJ
 #
 build/
-/android/app/release/
 .idea
 .gradle
 local.properties
@@ -41,6 +40,7 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+!debug.keystore
 
 # fastlane
 #
@@ -62,9 +62,3 @@ buck-out/
 # Expo
 .expo/*
 web-build/
-
-# Others
-*.patch
-.env
-.env.*
-.vscode/

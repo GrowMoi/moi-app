@@ -12,23 +12,23 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		49D689FE24F078F600923591 /* tree_actions.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689EE24F078F500923591 /* tree_actions.mp3 */; };
-		49D689FF24F078F600923591 /* btn_select_option.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689EF24F078F500923591 /* btn_select_option.mp3 */; };
-		49D68A0024F078F600923591 /* fondo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F024F078F500923591 /* fondo.mp3 */; };
-		49D68A0124F078F600923591 /* btn_settings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F124F078F500923591 /* btn_settings.mp3 */; };
-		49D68A0224F078F600923591 /* btn_recomendation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F224F078F500923591 /* btn_recomendation.mp3 */; };
-		49D68A0324F078F600923591 /* btn_next.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F324F078F500923591 /* btn_next.mp3 */; };
-		49D68A0424F078F600923591 /* read_content.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F424F078F500923591 /* read_content.mp3 */; };
-		49D68A0524F078F600923591 /* recompensa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F524F078F500923591 /* recompensa.mp3 */; };
-		49D68A0624F078F600923591 /* btn_inventory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F624F078F500923591 /* btn_inventory.mp3 */; };
-		49D68A0724F078F600923591 /* btn_profile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F724F078F500923591 /* btn_profile.mp3 */; };
-		49D68A0824F078F600923591 /* btn_learn_content.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F824F078F500923591 /* btn_learn_content.mp3 */; };
-		49D68A0924F078F600923591 /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689F924F078F600923591 /* intro.mp3 */; };
-		49D68A0A24F078F600923591 /* btn_amigos.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689FA24F078F600923591 /* btn_amigos.mp3 */; };
-		49D68A0B24F078F600923591 /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689FB24F078F600923591 /* test.mp3 */; };
-		49D68A0C24F078F600923591 /* btn_search.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689FC24F078F600923591 /* btn_search.mp3 */; };
-		49D68A0D24F078F600923591 /* btn_show_tasks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D689FD24F078F600923591 /* btn_show_tasks.mp3 */; };
-		49D68A1024F0830100923591 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49D68A0F24F0830100923591 /* Media.xcassets */; };
+		755143FD255E1C4200DFD5A7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 755143FC255E1C4200DFD5A7 /* Media.xcassets */; };
+		75514410255E1CAA00DFD5A7 /* btn_show_tasks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514400255E1CAA00DFD5A7 /* btn_show_tasks.mp3 */; };
+		75514411255E1CAA00DFD5A7 /* fondo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514401255E1CAA00DFD5A7 /* fondo.mp3 */; };
+		75514412255E1CAA00DFD5A7 /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514402255E1CAA00DFD5A7 /* test.mp3 */; };
+		75514413255E1CAA00DFD5A7 /* tree_actions.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514403255E1CAA00DFD5A7 /* tree_actions.mp3 */; };
+		75514414255E1CAA00DFD5A7 /* btn_profile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514404255E1CAA00DFD5A7 /* btn_profile.mp3 */; };
+		75514415255E1CAA00DFD5A7 /* btn_amigos.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514405255E1CAA00DFD5A7 /* btn_amigos.mp3 */; };
+		75514416255E1CAA00DFD5A7 /* btn_recomendation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514406255E1CAA00DFD5A7 /* btn_recomendation.mp3 */; };
+		75514417255E1CAA00DFD5A7 /* read_content.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514407255E1CAA00DFD5A7 /* read_content.mp3 */; };
+		75514418255E1CAA00DFD5A7 /* btn_settings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514408255E1CAA00DFD5A7 /* btn_settings.mp3 */; };
+		75514419255E1CAA00DFD5A7 /* btn_learn_content.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 75514409255E1CAA00DFD5A7 /* btn_learn_content.mp3 */; };
+		7551441A255E1CAA00DFD5A7 /* btn_select_option.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7551440A255E1CAA00DFD5A7 /* btn_select_option.mp3 */; };
+		7551441B255E1CAA00DFD5A7 /* btn_next.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7551440B255E1CAA00DFD5A7 /* btn_next.mp3 */; };
+		7551441C255E1CAB00DFD5A7 /* btn_inventory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7551440C255E1CAA00DFD5A7 /* btn_inventory.mp3 */; };
+		7551441D255E1CAB00DFD5A7 /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7551440D255E1CAA00DFD5A7 /* intro.mp3 */; };
+		7551441E255E1CAB00DFD5A7 /* recompensa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7551440E255E1CAA00DFD5A7 /* recompensa.mp3 */; };
+		7551441F255E1CAB00DFD5A7 /* btn_search.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7551440F255E1CAA00DFD5A7 /* btn_search.mp3 */; };
 		96905EF65AED1B983A6B3ABC /* libPods-moi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-moi.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 /* End PBXBuildFile section */
@@ -42,25 +42,25 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = moi/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = moi/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = moi/main.m; sourceTree = "<group>"; };
-		49D689EE24F078F500923591 /* tree_actions.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tree_actions.mp3; path = ../../android/app/src/main/res/raw/tree_actions.mp3; sourceTree = "<group>"; };
-		49D689EF24F078F500923591 /* btn_select_option.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_select_option.mp3; path = ../../android/app/src/main/res/raw/btn_select_option.mp3; sourceTree = "<group>"; };
-		49D689F024F078F500923591 /* fondo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fondo.mp3; path = ../../android/app/src/main/res/raw/fondo.mp3; sourceTree = "<group>"; };
-		49D689F124F078F500923591 /* btn_settings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_settings.mp3; path = ../../android/app/src/main/res/raw/btn_settings.mp3; sourceTree = "<group>"; };
-		49D689F224F078F500923591 /* btn_recomendation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_recomendation.mp3; path = ../../android/app/src/main/res/raw/btn_recomendation.mp3; sourceTree = "<group>"; };
-		49D689F324F078F500923591 /* btn_next.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_next.mp3; path = ../../android/app/src/main/res/raw/btn_next.mp3; sourceTree = "<group>"; };
-		49D689F424F078F500923591 /* read_content.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = read_content.mp3; path = ../../android/app/src/main/res/raw/read_content.mp3; sourceTree = "<group>"; };
-		49D689F524F078F500923591 /* recompensa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = recompensa.mp3; path = ../../android/app/src/main/res/raw/recompensa.mp3; sourceTree = "<group>"; };
-		49D689F624F078F500923591 /* btn_inventory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_inventory.mp3; path = ../../android/app/src/main/res/raw/btn_inventory.mp3; sourceTree = "<group>"; };
-		49D689F724F078F500923591 /* btn_profile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_profile.mp3; path = ../../android/app/src/main/res/raw/btn_profile.mp3; sourceTree = "<group>"; };
-		49D689F824F078F500923591 /* btn_learn_content.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_learn_content.mp3; path = ../../android/app/src/main/res/raw/btn_learn_content.mp3; sourceTree = "<group>"; };
-		49D689F924F078F600923591 /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = intro.mp3; path = ../../android/app/src/main/res/raw/intro.mp3; sourceTree = "<group>"; };
-		49D689FA24F078F600923591 /* btn_amigos.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_amigos.mp3; path = ../../android/app/src/main/res/raw/btn_amigos.mp3; sourceTree = "<group>"; };
-		49D689FB24F078F600923591 /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = test.mp3; path = ../../android/app/src/main/res/raw/test.mp3; sourceTree = "<group>"; };
-		49D689FC24F078F600923591 /* btn_search.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_search.mp3; path = ../../android/app/src/main/res/raw/btn_search.mp3; sourceTree = "<group>"; };
-		49D689FD24F078F600923591 /* btn_show_tasks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_show_tasks.mp3; path = ../../android/app/src/main/res/raw/btn_show_tasks.mp3; sourceTree = "<group>"; };
-		49D68A0F24F0830100923591 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = moi/Media.xcassets; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-moi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-moi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2E3173556A471DD304B334 /* Pods-moi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moi.debug.xcconfig"; path = "Target Support Files/Pods-moi/Pods-moi.debug.xcconfig"; sourceTree = "<group>"; };
+		755143FC255E1C4200DFD5A7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		75514400255E1CAA00DFD5A7 /* btn_show_tasks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_show_tasks.mp3; path = ../../android/app/src/main/res/raw/btn_show_tasks.mp3; sourceTree = "<group>"; };
+		75514401255E1CAA00DFD5A7 /* fondo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fondo.mp3; path = ../../android/app/src/main/res/raw/fondo.mp3; sourceTree = "<group>"; };
+		75514402255E1CAA00DFD5A7 /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = test.mp3; path = ../../android/app/src/main/res/raw/test.mp3; sourceTree = "<group>"; };
+		75514403255E1CAA00DFD5A7 /* tree_actions.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tree_actions.mp3; path = ../../android/app/src/main/res/raw/tree_actions.mp3; sourceTree = "<group>"; };
+		75514404255E1CAA00DFD5A7 /* btn_profile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_profile.mp3; path = ../../android/app/src/main/res/raw/btn_profile.mp3; sourceTree = "<group>"; };
+		75514405255E1CAA00DFD5A7 /* btn_amigos.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_amigos.mp3; path = ../../android/app/src/main/res/raw/btn_amigos.mp3; sourceTree = "<group>"; };
+		75514406255E1CAA00DFD5A7 /* btn_recomendation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_recomendation.mp3; path = ../../android/app/src/main/res/raw/btn_recomendation.mp3; sourceTree = "<group>"; };
+		75514407255E1CAA00DFD5A7 /* read_content.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = read_content.mp3; path = ../../android/app/src/main/res/raw/read_content.mp3; sourceTree = "<group>"; };
+		75514408255E1CAA00DFD5A7 /* btn_settings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_settings.mp3; path = ../../android/app/src/main/res/raw/btn_settings.mp3; sourceTree = "<group>"; };
+		75514409255E1CAA00DFD5A7 /* btn_learn_content.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_learn_content.mp3; path = ../../android/app/src/main/res/raw/btn_learn_content.mp3; sourceTree = "<group>"; };
+		7551440A255E1CAA00DFD5A7 /* btn_select_option.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_select_option.mp3; path = ../../android/app/src/main/res/raw/btn_select_option.mp3; sourceTree = "<group>"; };
+		7551440B255E1CAA00DFD5A7 /* btn_next.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_next.mp3; path = ../../android/app/src/main/res/raw/btn_next.mp3; sourceTree = "<group>"; };
+		7551440C255E1CAA00DFD5A7 /* btn_inventory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_inventory.mp3; path = ../../android/app/src/main/res/raw/btn_inventory.mp3; sourceTree = "<group>"; };
+		7551440D255E1CAA00DFD5A7 /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = intro.mp3; path = ../../android/app/src/main/res/raw/intro.mp3; sourceTree = "<group>"; };
+		7551440E255E1CAA00DFD5A7 /* recompensa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = recompensa.mp3; path = ../../android/app/src/main/res/raw/recompensa.mp3; sourceTree = "<group>"; };
+		7551440F255E1CAA00DFD5A7 /* btn_search.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = btn_search.mp3; path = ../../android/app/src/main/res/raw/btn_search.mp3; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-moi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moi.release.xcconfig"; path = "Target Support Files/Pods-moi/Pods-moi.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = moi/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
@@ -83,8 +83,10 @@
 		13B07FAE1A68108700A75B9A /* moi */ = {
 			isa = PBXGroup;
 			children = (
+				755143FF255E1C8400DFD5A7 /* Sounds */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				755143FC255E1C4200DFD5A7 /* Media.xcassets */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -106,25 +108,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		49D689ED24F078C900923591 /* Sounds */ = {
+		755143FF255E1C8400DFD5A7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				49D689FA24F078F600923591 /* btn_amigos.mp3 */,
-				49D689F624F078F500923591 /* btn_inventory.mp3 */,
-				49D689F824F078F500923591 /* btn_learn_content.mp3 */,
-				49D689F324F078F500923591 /* btn_next.mp3 */,
-				49D689F724F078F500923591 /* btn_profile.mp3 */,
-				49D689F224F078F500923591 /* btn_recomendation.mp3 */,
-				49D689FC24F078F600923591 /* btn_search.mp3 */,
-				49D689EF24F078F500923591 /* btn_select_option.mp3 */,
-				49D689F124F078F500923591 /* btn_settings.mp3 */,
-				49D689FD24F078F600923591 /* btn_show_tasks.mp3 */,
-				49D689F024F078F500923591 /* fondo.mp3 */,
-				49D689F924F078F600923591 /* intro.mp3 */,
-				49D689F424F078F500923591 /* read_content.mp3 */,
-				49D689F524F078F500923591 /* recompensa.mp3 */,
-				49D689FB24F078F600923591 /* test.mp3 */,
-				49D689EE24F078F500923591 /* tree_actions.mp3 */,
+				75514405255E1CAA00DFD5A7 /* btn_amigos.mp3 */,
+				7551440C255E1CAA00DFD5A7 /* btn_inventory.mp3 */,
+				75514409255E1CAA00DFD5A7 /* btn_learn_content.mp3 */,
+				7551440B255E1CAA00DFD5A7 /* btn_next.mp3 */,
+				75514404255E1CAA00DFD5A7 /* btn_profile.mp3 */,
+				75514406255E1CAA00DFD5A7 /* btn_recomendation.mp3 */,
+				7551440F255E1CAA00DFD5A7 /* btn_search.mp3 */,
+				7551440A255E1CAA00DFD5A7 /* btn_select_option.mp3 */,
+				75514408255E1CAA00DFD5A7 /* btn_settings.mp3 */,
+				75514400255E1CAA00DFD5A7 /* btn_show_tasks.mp3 */,
+				75514401255E1CAA00DFD5A7 /* fondo.mp3 */,
+				7551440D255E1CAA00DFD5A7 /* intro.mp3 */,
+				75514407255E1CAA00DFD5A7 /* read_content.mp3 */,
+				7551440E255E1CAA00DFD5A7 /* recompensa.mp3 */,
+				75514402255E1CAA00DFD5A7 /* test.mp3 */,
+				75514403255E1CAA00DFD5A7 /* tree_actions.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -139,8 +141,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				49D68A0F24F0830100923591 /* Media.xcassets */,
-				49D689ED24F078C900923591 /* Sounds */,
 				13B07FAE1A68108700A75B9A /* moi */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -191,6 +191,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -212,7 +213,6 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = SH8S5MHA9P;
 						LastSwiftMigration = 1120;
-						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -239,27 +239,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49D689FF24F078F600923591 /* btn_select_option.mp3 in Resources */,
+				755143FD255E1C4200DFD5A7 /* Media.xcassets in Resources */,
+				75514417255E1CAA00DFD5A7 /* read_content.mp3 in Resources */,
+				75514415255E1CAA00DFD5A7 /* btn_amigos.mp3 in Resources */,
+				75514419255E1CAA00DFD5A7 /* btn_learn_content.mp3 in Resources */,
+				75514416255E1CAA00DFD5A7 /* btn_recomendation.mp3 in Resources */,
+				7551441E255E1CAB00DFD5A7 /* recompensa.mp3 in Resources */,
+				75514418255E1CAA00DFD5A7 /* btn_settings.mp3 in Resources */,
+				75514414255E1CAA00DFD5A7 /* btn_profile.mp3 in Resources */,
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
-				49D68A0B24F078F600923591 /* test.mp3 in Resources */,
-				49D68A0424F078F600923591 /* read_content.mp3 in Resources */,
-				49D68A0924F078F600923591 /* intro.mp3 in Resources */,
-				49D68A0824F078F600923591 /* btn_learn_content.mp3 in Resources */,
-				49D68A0124F078F600923591 /* btn_settings.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				49D68A0524F078F600923591 /* recompensa.mp3 in Resources */,
-				49D68A0A24F078F600923591 /* btn_amigos.mp3 in Resources */,
-				49D68A0624F078F600923591 /* btn_inventory.mp3 in Resources */,
-				49D68A0724F078F600923591 /* btn_profile.mp3 in Resources */,
-				49D68A0024F078F600923591 /* fondo.mp3 in Resources */,
-				49D68A0D24F078F600923591 /* btn_show_tasks.mp3 in Resources */,
-				49D689FE24F078F600923591 /* tree_actions.mp3 in Resources */,
-				49D68A0C24F078F600923591 /* btn_search.mp3 in Resources */,
-				49D68A1024F0830100923591 /* Media.xcassets in Resources */,
-				49D68A0324F078F600923591 /* btn_next.mp3 in Resources */,
+				75514411255E1CAA00DFD5A7 /* fondo.mp3 in Resources */,
+				7551441C255E1CAB00DFD5A7 /* btn_inventory.mp3 in Resources */,
+				75514410255E1CAA00DFD5A7 /* btn_show_tasks.mp3 in Resources */,
+				75514413255E1CAA00DFD5A7 /* tree_actions.mp3 in Resources */,
+				7551441D255E1CAB00DFD5A7 /* intro.mp3 in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				75514412255E1CAA00DFD5A7 /* test.mp3 in Resources */,
+				7551441A255E1CAA00DFD5A7 /* btn_select_option.mp3 in Resources */,
+				7551441B255E1CAA00DFD5A7 /* btn_next.mp3 in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				49D68A0224F078F600923591 /* btn_recomendation.mp3 in Resources */,
+				7551441F255E1CAB00DFD5A7 /* btn_search.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +300,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-moi/Pods-moi-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-moi/Pods-moi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -354,17 +372,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = SH8S5MHA9P;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = moi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = (
@@ -372,12 +389,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growmoisociallearning.moiapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moisociallearning.moiapp;
 				PRODUCT_NAME = moi;
-				PROVISIONING_PROFILE_SPECIFIER = "Moi Development Profile";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -388,12 +403,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = SH8S5MHA9P;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = moi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = (
@@ -401,11 +415,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growmoisociallearning.moiapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moisociallearning.moiapp;
 				PRODUCT_NAME = moi;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

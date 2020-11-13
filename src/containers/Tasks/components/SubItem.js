@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   onIcon: {
-    backgroundColor: Palette.tasksList,
+    backgroundColor: Palette.tasksList.css(),
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     borderTopLeftRadius: 10,

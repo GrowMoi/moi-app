@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   rowContainer: {
-    backgroundColor: Palette.tasksList,
+    backgroundColor: Palette.tasksList.css(),
     height: '100%',
     borderRadius: 5,
     shadowColor: '#90a058',
