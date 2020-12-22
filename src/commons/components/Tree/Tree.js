@@ -223,7 +223,7 @@ class Tree extends Component {
     const zoom = isTablet ? this.getTabletScale(zoomScale) : 1;
 
     const resultScreenShot = await takeSnapshotAsync(this.treeView, {
-      result: 'base64',
+      result: 'tmpfile',
       height: this.sizeTreeScreenShot / pixelRatio,
       width: this.sizeTreeScreenShot / pixelRatio,
       quality: 1,
