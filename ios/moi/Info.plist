@@ -22,8 +22,6 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -39,16 +37,8 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Puedes darle a Moi el permiso a tu cámara para subir una foto personalizada a tu perfil</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Permite a Moi usar la localización</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Permite a Moi acceder a tu microfono</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Puedes darle a Moi los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Puedes darle a Moi los permisos para acceder a la libreria de fotos y elegir una para agregar a tu perfil de usuario.</string>
+	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

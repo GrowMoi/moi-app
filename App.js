@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { AppLoading, Updates } from 'expo';
+import { Updates } from 'expo';
+import AppLoading from 'expo-app-loading';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Localization from 'expo-localization';
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
