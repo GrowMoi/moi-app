@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import uuid from 'uuid/v4'
 
 import Navbar from '../../commons/components/Navbar/Navbar';
@@ -51,7 +51,7 @@ const HeaderContent = styled(View)`
   align-items: center;
 `;
 
-const Icon = styled(Ionicons)`
+const Icon = styled(MaterialIcons)`
   background-color: transparent;
 `;
 
@@ -414,7 +414,7 @@ class SingleContentScene extends PureComponent {
                 <ActionsHeader>
                   {(content.favorite || favorite) && <MoiIcon name='fav' size={20} />}
                   {/* <Icon onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} /> */}
-                  <Icon name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
+                  <Icon name='more-vert' style={{ padding: 5 }} size={24} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
                 </ActionsHeader>
 
                 <Section>
@@ -538,10 +538,10 @@ class SingleContentScene extends PureComponent {
 
           {/* Action Sheets */}
           <ActionSheet
-              hasCancelOption
-              visible={actionSheetsVisible}
-              options={options}
-              dismiss={this.dismissActionSheets}
+            hasCancelOption
+            visible={actionSheetsVisible}
+            options={options}
+            dismiss={this.dismissActionSheets}
           />
           <Navbar/>
 
