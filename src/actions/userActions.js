@@ -618,9 +618,9 @@ const getLatestCertificatesAsync = () => async (dispatch) => {
   }
 }
 
-const uploadTreeImageAsync = (base64Image) => async (dispatch) => {
+const uploadTreeImageAsync = (image) => async (dispatch) => {
   try{
-    const res = await api.tree_image.uploadTreeImage(base64Image);
+    const res = await api.tree_image.uploadTreeImage(image);
     return res;
   } catch (error) {
 		console.log("​error", error)

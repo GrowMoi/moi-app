@@ -235,10 +235,25 @@ class Tree extends Component {
 
   uploadTreeImage = async (image) => {
     const { uploadTreeImageAsync, getUserProfileAsync, user } = this.props;
-    await uploadTreeImageAsync(this.normalizeBase64Image(image));
-    await getUserProfileAsync(user.profile.id);
-    AsyncStorage.setItem('lastLearntContents', this.getLearntContents().toString());
-    console.log("upload ok");
+    
+    const filename = (image || "").split("/").pop();
+    const treeImageResult = {
+      uri: `file://${image}`,
+      filename,
+      name: filename,
+      type: 'image/png',
+    }
+
+    let formData = new FormData();
+    formData.append('image_app', treeImageResult)
+    try {
+      await uploadTreeImageAsync(formData);
+      await getUserProfileAsync(user.profile.id);
+      AsyncStorage.setItem('lastLearntContents', this.getLearntContents().toString());
+      console.log("upload ok");
+    } catch (error) {
+      console.log('not upload');
+    }
   }
 
   normalizeBase64Image(base64Image) {

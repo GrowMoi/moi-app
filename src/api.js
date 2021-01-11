@@ -235,11 +235,11 @@ const api = {
   },
 
   tree_image: {
-    async uploadTreeImage(image) {
+    async uploadTreeImage(formData) {
       const endpoint = '/api/users/tree_image';
 
       try {
-        const res = await axiosLimit.put(endpoint, { image_app: image });
+        const res = await axiosLimit.put(endpoint, formData);
         return res;
       } catch (error) {
         throw new Error(error);

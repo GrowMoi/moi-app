@@ -38,7 +38,7 @@ function ConsignaPicker(props) {
 
   const allowAccess = () => {
     if (Platform.OS !== 'web') {
-      return ImagePicker.requestCameraRollPermissionsAsync();
+      return ImagePicker.requestMediaLibraryPermissionsAsync();
     }
   }
 
