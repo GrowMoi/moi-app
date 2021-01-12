@@ -20,12 +20,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.moisociallearning.moiapp",
+      "bundleIdentifier": "com.growmoisociallearning.moiapp",
       "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
       "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "package": "com.moisociallearning.moiapp",
+      "package": "com.growmoisociallearning.moiapp",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     }
