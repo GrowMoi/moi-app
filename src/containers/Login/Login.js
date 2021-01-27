@@ -23,6 +23,7 @@ import Input from '../../commons/components/Input/Input';
 import { Size } from '../../commons/styles';
 import Button from '../../commons/components/Buttons/Button';
 import MoiBackground from '../../commons/components/Background/MoiBackground';
+import { URL_BASE } from '../../constants'
 
 // Login Images
 import loginImages from './loginImages';
@@ -109,7 +110,7 @@ class Login extends PureComponent {
     try {
       await loginAsync({ login, authorization_key });
     } catch (error) {
-      console.log(error)
+      console.log(error, URL_BASE)
       const unauthorizedRegex = /401/gi
       const { user: { authenticate } } = this.props
       if(!authenticate) {
