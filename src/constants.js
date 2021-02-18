@@ -1,0 +1,10 @@
+export const LANDSCAPE = 'LANDSCAPE';
+export const PORTRAIT = 'PORTRAIT';
+export const FLORECIDA = 'florecida';
+export const CONTENT_TYPE_RECOMMENDED = 'recommended'
+export const TIME_FOR_INACTIVITY = 12000;
+export const URL_BASE = __DEV__ ? 'https://backend.miaulabdp.com' : 'https://backend.miaulabdp.com';
+export const WEB_URL_BASE = __DEV__ ? 'https://aula.miaulabdp.com' : 'https://aula.miaulabdp.com';
+export const CLOUDINARY_BASE = 'https://api.cloudinary.com';
+export const ACHIEVEMENT_FINAL_QUIZ_NUMBER = 7;
+export const PUSHER_KEY =  __DEV__ ? '2fd9acbd37b06708983b' : 'f43df1534c561963bc67';

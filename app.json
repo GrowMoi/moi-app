@@ -1,0 +1,34 @@
+{
+  "name": "moi",
+  "displayName": "moi",
+  "expo": {
+    "name": "Moi Pacifico",
+    "slug": "moi-pacifico",
+    "version": "1.5.1",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "orientation": "portrait",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "enabled": false,
+      "checkAutomatically": "ON_ERROR_RECOVERY",
+      "fallbackToCacheTimeout": 0
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.miaulabancodp.mabdp",
+      "publishBundlePath": "ios/moi/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/moi/Supporting/shell-app-manifest.json"
+    },
+    "android": {
+      "package": "com.miaulabancodp.mabdp",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+    }
+  }
+}
