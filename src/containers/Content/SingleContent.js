@@ -419,7 +419,7 @@ class SingleContentScene extends Component {
                   <ActionsHeader>
                       {(content.favorite || favorite) && <MoiIcon name='fav' size={20} />}
                       {/* <Icon onPress={() => Alert.alert('Circle Clicked')} name='md-information-circle' size={20} color={Palette.white.css()} /> */}
-                      <Icon name='ios-more' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
+                      <Icon name='ellipsis-horizontal' size={20} color={Palette.white.css()} onPress={this.toggleActionSheets}/>
                   </ActionsHeader>
 
                   <Section>
