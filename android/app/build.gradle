@@ -124,6 +124,10 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
+    dexOptions {
+        javaMaxHeapSize "4G"
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     compileOptions {
@@ -135,8 +139,8 @@ android {
         applicationId "com.miaulabancodp.mabdp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16
-        versionName "1.7.4"
+        versionCode 18
+        versionName "1.7.6"
     }
     splits {
         abi {
