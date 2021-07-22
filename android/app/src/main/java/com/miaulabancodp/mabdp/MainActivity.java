@@ -1,4 +1,4 @@
-package com.moi;
+package com.miaulabancodp.mabdp;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.moi.generated;
+package com.miaulabancodp.mabdp.generated;
 
 import java.util.Arrays;
 import java.util.List;
