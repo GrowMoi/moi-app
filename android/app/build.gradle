@@ -139,8 +139,8 @@ android {
         applicationId "com.miaulabancodp.mabdp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 18
-        versionName "1.7.6"
+        versionCode 19
+        versionName "1.7.7"
     }
     splits {
         abi {
