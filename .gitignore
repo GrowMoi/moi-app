@@ -19,6 +19,7 @@ xcuserdata
 DerivedData
 *.hmap
 *.ipa
+*.dSYM.zip
 *.xcuserstate
 project.xcworkspace
 
@@ -63,3 +64,6 @@ buck-out/
 # Expo
 .expo/*
 web-build/
+
+*.env
+.env
